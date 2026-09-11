@@ -10,9 +10,9 @@ https://ritesh-firodiya.github.io/ via GitHub Actions on every push to `main`.
 Stack: **Deno Fresh 1.1.2 + Preact + Twind**, prerendered to static HTML at
 build time. No Node, no npm, no package.json.
 
-The old Deno Deploy host (`riteshf.deno.dev`) was sunset along with Deno Deploy
-Classic. The site has no request-time data and zero islands, so it is exported
-statically by `build.ts` rather than served by `main.ts` in production.
+The previous `*.deno.dev` host was sunset along with Deno Deploy Classic. The
+site has no request-time data and zero islands, so it is exported statically by
+`build.ts` rather than served by `main.ts` in production.
 
 ## Commands
 

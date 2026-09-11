@@ -49,6 +49,10 @@ export default function ResumePage() {
   const skills = profile.skills as Record<string, string[]>;
   const education = profile.education;
   const phoneFmt = profile.phone.replace(/^\+91/, "+91 ");
+  const websiteLabel = profile.website.replace(/^https?:\/\//, "").replace(
+    /\/$/,
+    "",
+  );
 
   return (
     <>
@@ -101,7 +105,10 @@ export default function ResumePage() {
                 <h1>{profile.name}</h1>
                 <span class="meta">{profile.location}</span>
               </div>
-              <p class="desc text-slate-700" style="font-size:0.85rem; margin-top:0.15rem;">
+              <p
+                class="desc text-slate-700"
+                style="font-size:0.85rem; margin-top:0.15rem;"
+              >
                 {profile.headline} {profile.tagline}
               </p>
               <div class="contact-row">
@@ -129,7 +136,7 @@ export default function ResumePage() {
                 </span>
                 <span>
                   <a href={profile.website} target="_blank" rel="noreferrer">
-                    riteshf.deno.dev
+                    {websiteLabel}
                   </a>
                 </span>
               </div>
@@ -161,8 +168,7 @@ export default function ResumePage() {
                 <div key={i} class="entry">
                   <div class="entry-head">
                     <span class="role">
-                      {e.position} ·{" "}
-                      {e.companyLink
+                      {e.position} · {e.companyLink
                         ? (
                           <a
                             href={e.companyLink}

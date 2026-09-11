@@ -1,4 +1,4 @@
-### [Website](https://riteshf.deno.dev/)
+### [Website](https://ritesh-firodiya.github.io/)
 
 Create your live auto-update portfolio by fetching latest information from
 github.

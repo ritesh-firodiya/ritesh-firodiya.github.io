@@ -68,13 +68,16 @@ export default function Page() {
           <div class="lg:w-3/5 lg:py-24 pt-4 pb-24">
             <About paragraphs={profile.about} currently={profile.currently} />
             <Experience experiences={profile.experiences} />
-            <Projects projects={profile.projects} contactEmail={profile.email} />
+            <Projects
+              projects={profile.projects}
+              contactEmail={profile.email}
+            />
 
             <footer class="mt-12 text-xs text-slate-dark font-mono">
               <p>
                 Designed and built by {profile.name}. · Deno Fresh ·{" "}
                 <a
-                  href={`https://github.com/${profile.github}/riteshf.github.io`}
+                  href={`https://github.com/${profile.github}/${profile.github}.github.io`}
                   class="hover:text-accent transition-colors"
                   target="_blank"
                   rel="noreferrer"

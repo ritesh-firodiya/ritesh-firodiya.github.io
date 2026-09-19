@@ -260,6 +260,25 @@
       "private": true
     },
     {
+      "name": "Imposter: Find the Liar",
+      "tagline": "Social deduction for 3–20 people on one phone",
+      "description": "Most players see a secret word. The Imposter sees only a one-word hint, hand-written for every single word. Mr. White sees nothing and can still steal the round. Three categories free forever, the other seven are one payment — no ads and no analytics in the project at all.",
+      "stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "RevenueCat"
+      ],
+      "status": "Closed testing — Android open",
+      "private": true,
+      "links": [
+        {
+          "label": "Join Android Beta",
+          "url": "https://play.google.com/apps/testing/com.ritvi.imposter"
+        }
+      ]
+    },
+    {
       "name": "AskCal",
       "tagline": "AI calorie counter that admits what it can't see",
       "description": "Every camera-first calorie app turns a photo into one confident number, but a photo cannot show the oil a dish was cooked in. AskCal marks each value Seen, Guessed or Unknown, resolves against USDA data, and asks one or two questions instead of guessing. In review on the Play closed track, with the first App Store build submitted.",
@@ -271,19 +290,6 @@
         "RevenueCat"
       ],
       "status": "In review",
-      "private": true
-    },
-    {
-      "name": "Imposter: Find the Liar",
-      "tagline": "Social deduction for 3–20 people on one phone",
-      "description": "Most players see a secret word. The Imposter sees only a one-word hint, hand-written for every single word. Mr. White sees nothing and can still steal the round. Three categories free forever, the other seven are one payment — no ads and no analytics in the project at all.",
-      "stack": [
-        "React Native",
-        "Expo",
-        "TypeScript",
-        "RevenueCat"
-      ],
-      "status": "In build",
       "private": true
     },
     {

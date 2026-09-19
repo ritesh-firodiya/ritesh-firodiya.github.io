@@ -9,6 +9,7 @@ export type IProjectEntry = {
   stack: string[];
   status?: string;
   link?: string;
+  links?: { label: string; url: string }[];
   private?: boolean;
 };
 
@@ -53,6 +54,7 @@ const ProjectCard = (
     stack,
     status,
     link,
+    links,
     private: isPrivate,
     contactEmail,
   }: ProjectCardProps,
@@ -101,6 +103,25 @@ const ProjectCard = (
           </li>
         ))}
       </ul>
+      {links?.length
+        ? (
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {links.map((l, i) => (
+              <li key={i}>
+                <a
+                  href={l.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-1 rounded border border-slate-dark/40 text-slate-light hover:text-accent hover:border-accent transition-colors"
+                >
+                  {l.label}
+                  <IconExternalLink class="w-3 h-3 opacity-70" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+        : null}
       <a
         href={buildContributeMailto(contactEmail, name)}
         class="mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-slate-light hover:text-accent transition-colors"

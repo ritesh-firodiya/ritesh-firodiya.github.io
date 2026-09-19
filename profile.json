@@ -9,7 +9,7 @@
   "location": "Pune, India",
   "avatar": "https://avatars.githubusercontent.com/u/40817224?v=4",
   "headline": "Engineer who ships.",
-  "tagline": "~9 years across web, mobile, and backend. Now shipping small, focused mobile apps for India, and building agent tooling on Anthropic SDK + MCP.",
+  "tagline": "~9 years across web, mobile, and backend. Now building my own products for India — web and mobile — and agent tooling on Anthropic SDK + MCP.",
   "about": [
     "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. Most recently, I spent a year as a Senior Engineer at Walmart on internal revenue tooling — wrapped up May 2026.",
     "Before that I ran short-term contract engagements (TopLegal as Tech Lead, ManifestIT, Speechify), and held senior IC roles at Masai, Swiggy, Globant, and Confluxsys. I move comfortably across the stack — Postgres schema, GraphQL APIs, React/RN UI, EAS releases — and I've shipped solo on monorepos using Turborepo + Yarn workspaces.",
@@ -178,9 +178,25 @@
   ],
   "projects": [
     {
+      "name": "Chitragupt (चित्रगुप्त)",
+      "tagline": "Household tax review for salaried Indian filers",
+      "description": "Upload Form 16 and see your tax under both regimes side by side, run a 15-question Quick Check, and print the refund you can claim or the deductions you can still use. Free, with a household lens that covers spouse, parents and kids. Next.js on Cloud Run over roughly 189 Firebase Functions, with Zod schemas as the shared contract.",
+      "stack": [
+        "Next.js",
+        "Cloud Run",
+        "Firebase Functions",
+        "Firestore",
+        "Zod",
+        "Turborepo"
+      ],
+      "status": "Live",
+      "link": "https://chitragupt.ai",
+      "private": true
+    },
+    {
       "name": "Charades — Act it Out!",
       "tagline": "Offline party game, 5,149 cards",
-      "description": "A charades party game with 5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline with no daily limits. Live on the Play Store at 1.0.30; the iOS build is staged on the same codebase.",
+      "description": "A charades party game with 5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline with no daily limits. Live on the Play Store at 1.0.30, with a public TestFlight beta on iOS.",
       "stack": [
         "React Native",
         "Expo Router",
@@ -189,13 +205,64 @@
         "RevenueCat"
       ],
       "status": "Live on Play Store",
-      "link": "https://play.google.com/store/apps/details?id=com.riteshf.charadesbollywood",
+      "links": [
+        {
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.charadesbollywood"
+        },
+        {
+          "label": "iOS Beta",
+          "url": "https://testflight.apple.com/join/fBBEpk9h"
+        }
+      ],
+      "private": true
+    },
+    {
+      "name": "Tic Tac Toe — 2 Player XO",
+      "tagline": "The classic 3×3, done properly",
+      "description": "Two players on one device, or a minimax AI that plays perfectly on Hard. Live on the Play Store with a public TestFlight beta on iOS.",
+      "stack": [
+        "Expo Router",
+        "React Native",
+        "UniWind",
+        "Zustand"
+      ],
+      "status": "Live on Play Store",
+      "links": [
+        {
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.tictactoe"
+        },
+        {
+          "label": "iOS Beta",
+          "url": "https://testflight.apple.com/join/uryk8DSa"
+        }
+      ],
+      "private": true
+    },
+    {
+      "name": "Aakalan (आकलन)",
+      "tagline": "Your expenses and everyone else's, on one ledger",
+      "description": "Track what you spend on your own, split anything with friends, flatmates and colleagues, and settle up over UPI without leaving the app. iOS beta is open to anyone via TestFlight; Android is in closed testing.",
+      "stack": [
+        "Expo",
+        "React Native",
+        "Firestore",
+        "RevenueCat"
+      ],
+      "status": "Closed testing — iOS beta open",
+      "links": [
+        {
+          "label": "Join iOS Beta",
+          "url": "https://testflight.apple.com/join/S45tHrsf"
+        }
+      ],
       "private": true
     },
     {
       "name": "AskCal",
       "tagline": "AI calorie counter that admits what it can't see",
-      "description": "Photograph a meal and get an honest estimate. Every camera-first calorie app turns a photo into one confident number, but a photo cannot show the oil a dish was cooked in. AskCal marks each value Seen, Guessed or Unknown, resolves against USDA data, and asks one or two questions instead of guessing.",
+      "description": "Every camera-first calorie app turns a photo into one confident number, but a photo cannot show the oil a dish was cooked in. AskCal marks each value Seen, Guessed or Unknown, resolves against USDA data, and asks one or two questions instead of guessing. In review on the Play closed track, with the first App Store build submitted.",
       "stack": [
         "Expo",
         "React Native",
@@ -203,7 +270,7 @@
         "Firebase",
         "RevenueCat"
       ],
-      "status": "In store review",
+      "status": "In review",
       "private": true
     },
     {
@@ -220,18 +287,44 @@
       "private": true
     },
     {
-      "name": "Chitragupt (चित्रगुप्त)",
-      "tagline": "Personal tax ledger for Indian filers",
-      "description": "A tax ledger that ingests broker statements and documents, parses them through per-broker adapters, and keeps the whole year reconciled. Next.js on Cloud Run over roughly 189 Firebase Functions, with Zod schemas as the shared contract between web and functions.",
+      "name": "Scrvio",
+      "tagline": "Privacy-first browser screen recorder",
+      "description": "Record screen, camera and audio straight from the browser with no install and no sign-up, then keep recordings in your own S3 bucket rather than a vendor's cloud. Team workspaces, shareable links with expiry, and Stripe-backed per-seat billing.",
       "stack": [
+        "NestJS",
         "Next.js",
-        "Firebase Functions",
-        "Firestore",
-        "Zod",
-        "Turborepo",
-        "Cloud Run"
+        "PostgreSQL",
+        "Prisma",
+        "Stripe",
+        "S3"
       ],
-      "status": "In development",
+      "status": "In build",
+      "link": "https://scrvio.com"
+    },
+    {
+      "name": "Dwarseva",
+      "tagline": "Map-based property listings for India",
+      "description": "Property search on a map, with a prepaid wallet and a universal ₹5-per-action friction filter so only serious enquiries get through. Every listing is verified by a human.",
+      "stack": [
+        "Turborepo",
+        "Next.js",
+        "Expo",
+        "NestJS",
+        "PostgreSQL"
+      ],
+      "status": "In design",
+      "private": true
+    },
+    {
+      "name": "Plan-Kid",
+      "tagline": "Parenthood journey app for couples in India",
+      "description": "From the pre-decision stage through to parenting, across Knowledge, Journal, Motivation and Tracking. Design and product stage.",
+      "stack": [
+        "Expo",
+        "React Native",
+        "Firebase"
+      ],
+      "status": "In design",
       "private": true
     }
   ],

@@ -20,50 +20,75 @@
   "skills": {
     "Languages": [
       "TypeScript",
-      "JavaScript"
-    ],
-    "Web": [
-      "React",
-      "Next.js",
-      "Tailwind / UniWind"
+      "JavaScript",
+      "Python",
+      "SQL"
     ],
     "Mobile": [
       "React Native",
       "Expo",
+      "Expo Router",
       "EAS",
+      "UniWind / NativeWind",
+      "Zustand",
+      "Reanimated",
       "MMKV",
       "SQLite"
+    ],
+    "Web": [
+      "Next.js",
+      "React",
+      "Tailwind",
+      "TanStack Query",
+      "tRPC"
     ],
     "Backend": [
       "Node.js",
       "NestJS",
-      "Express",
       "GraphQL",
-      "Apollo"
+      "Apollo",
+      "Firebase Functions",
+      "Cloud Run"
     ],
     "Data": [
       "PostgreSQL",
       "Prisma",
-      "DynamoDB",
-      "Firebase"
+      "Drizzle",
+      "Firestore",
+      "DynamoDB"
     ],
-    "Tooling": [
-      "Turborepo",
-      "Yarn workspaces",
+    "Payments": [
+      "Razorpay",
+      "RevenueCat",
+      "Stripe",
+      "UPI",
+      "AdMob"
+    ],
+    "Auth": [
+      "Clerk",
+      "Firebase Auth",
+      "Passport",
+      "JWT",
+      "Google OAuth"
+    ],
+    "Infra & tooling": [
       "Docker",
+      "AWS (S3, SES)",
+      "Turborepo",
+      "pnpm",
+      "GitHub Actions",
       "Jest",
+      "Vitest",
       "ESLint"
     ],
-    "Product": [
-      "Stripe",
-      "RevenueCat",
-      "AdMob",
+    "Observability": [
+      "Sentry",
       "PostHog"
     ],
     "AI / Agents": [
       "Anthropic SDK",
       "MCP",
-      "Tool-use",
+      "Tool use",
       "Prompt caching"
     ]
   },

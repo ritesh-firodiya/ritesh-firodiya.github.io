@@ -281,7 +281,7 @@
     {
       "name": "AskCal",
       "tagline": "AI calorie counter that admits what it can't see",
-      "description": "Every camera-first calorie app turns a photo into one confident number, but a photo cannot show the oil a dish was cooked in. AskCal marks each value Seen, Guessed or Unknown, resolves against USDA data, and asks one or two questions instead of guessing. In review on the Play closed track, with the first App Store build submitted.",
+      "description": "Every camera-first calorie app turns a photo into one confident number, but a photo cannot show the oil a dish was cooked in. AskCal marks each value Seen, Guessed or Unknown, resolves against USDA data, and asks one or two questions instead of guessing. In review on the Play closed track. No iOS build has been uploaded yet, so there is no TestFlight to join.",
       "stack": [
         "Expo",
         "React Native",

@@ -6,9 +6,7 @@ import {
   products,
   verifiedOn,
   mediaFor,
-  byRank,
   rank,
-  RANK_LABEL,
   type Product,
 } from "@/lib/products";
 
@@ -99,11 +97,10 @@ function Row({ p }: { p: Product }) {
 const HEADERS = ["Product", "Model", "Ads", "Analytics", "Get it"];
 
 export default function ProductsPage() {
-  const sorted = [...products].sort(byRank);
-  const groups = [0, 1, 2, 3]
-    .map((r) => ({ r, items: sorted.filter((p) => rank(p) === r) }))
-    .filter((g) => g.items.length > 0);
-  const available = sorted.filter((p) => rank(p) <= 1).length;
+  // Listed in the order set in products.json, not by availability. The state
+  // is still on every row in the "Get it" column; what changed is that it no
+  // longer overrides which product is read first.
+  const available = products.filter((p) => rank(p) <= 1).length;
 
   return (
     <>
@@ -143,21 +140,11 @@ export default function ProductsPage() {
                     ))}
                   </tr>
                 </thead>
-                {groups.map((g) => (
-                  <tbody key={g.r} className="text-small">
-                    <tr className="border-b border-line bg-paper-2">
-                      <td
-                        colSpan={HEADERS.length}
-                        className="px-4 py-2 font-mono text-label uppercase tracking-label text-ink-3"
-                      >
-                        {RANK_LABEL[g.r]} · {g.items.length}
-                      </td>
-                    </tr>
-                    {g.items.map((p) => (
-                      <Row key={p.slug} p={p} />
-                    ))}
-                  </tbody>
-                ))}
+                <tbody className="text-small">
+                  {products.map((p) => (
+                    <Row key={p.slug} p={p} />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>

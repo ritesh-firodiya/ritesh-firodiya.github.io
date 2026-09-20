@@ -10,7 +10,9 @@ const DOORS = [
   { kicker: "You are curious", title: "See the products", body: "Thirteen products — how each is paid for, what it shows you, what it measures.", href: "/products", cta: "Products" },
 ];
 
-const FEATURED = ["charades", "tic-tac-toe", "chitragupt"];
+// The first three of products.json, named rather than sliced so a reorder of
+// the file cannot silently promote something with no screenshot to the top.
+const FEATURED = ["chitragupt", "askcal", "aakalan"];
 const LOGOS = ["Walmart", "Swiggy", "Globant", "Speechify", "Masai", "TopLegal"];
 
 export default function Home() {

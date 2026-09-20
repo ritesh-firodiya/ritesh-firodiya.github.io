@@ -78,6 +78,13 @@ export const mediaGeneratedOn: string = mediaRaw.generatedOn;
 export const mediaMissing = mediaRaw.missing as { slug: string; why: string }[];
 
 export const verifiedOn: string = raw.verifiedOn;
+/**
+ * **The array order in products.json is the running order of this site** —
+ * set by hand (Sep 2026), not derived. It leads with the products worth
+ * leading with and ends with Tic Tac Toe. Every listing renders in this order:
+ * the products table, the landing page, the résumé, "more products".
+ * To re-order the site, re-order the file.
+ */
 export const products = raw.products as unknown as Product[];
 
 export const bySlug = (slug: string): Product | undefined =>
@@ -109,13 +116,9 @@ export function rank(p: Product): number {
   if (p.notBuilt) return 3;
   return 2;
 }
+/** Availability order. Kept for counting what is usable today; it no longer
+ *  decides what is listed first — see the note on `products` below. */
 export const byRank = (a: Product, b: Product) => rank(a) - rank(b) || a.name.localeCompare(b.name);
-export const RANK_LABEL = [
-  "Available now",
-  "Open beta — you can join",
-  "Built, not released yet",
-  "In design — no code yet",
-];
 
 /** Model → the token pair. Deliberately no "good"/"bad" ordering: a
  *  subscription is not a warning and ad-supported is not a confession. */

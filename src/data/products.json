@@ -439,30 +439,36 @@
       "name": "Chitragupt",
       "fullName": "Chitragupt — Household tax review",
       "tagline": "Household tax review for salaried Indian filers.",
-      "blurb": "Upload a Form 16, see both regimes side by side, and print the refund you can actually claim.",
+      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
       "sourceOfTruth": "apps/chitragupt",
       "model": "per-period",
       "price": "₹249 / ₹499 / ₹799",
       "priceNote": "per assessment year, three tiers",
-      "modelDetail": "Not a subscription and not quite one-time. Each assessment year is its own purchase, so the charge repeats annually — but only if you come back. Nothing auto-renews. Which regime wins, and by how much, is free; the full workings and the household lens are the paid tiers.",
+      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
       "tiers": [
+        {
+          "label": "Free",
+          "amount": "₹0",
+          "unit": " forever",
+          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
+        },
         {
           "label": "Self",
           "amount": "₹249",
-          "unit": "/year",
-          "note": "One filer, both regimes, the full result."
+          "unit": "/AY",
+          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
         },
         {
-          "label": "Self + AI",
+          "label": "AI Self",
           "amount": "₹499",
-          "unit": "/year",
-          "note": "Adds the assisted review."
+          "unit": "/AY",
+          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
         },
         {
-          "label": "Household",
+          "label": "Pro Family",
           "amount": "₹799",
-          "unit": "/year",
-          "note": "Spouse, parents and kids on one return."
+          "unit": "/AY",
+          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
         }
       ],
       "ads": "None",
@@ -501,27 +507,28 @@
       ],
       "features": [
         {
+          "icon": "inbox",
+          "title": "Four pillars, one ledger",
+          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
+        },
+        {
           "icon": "upload",
-          "title": "Form 16 in, structured return out",
-          "body": "Parses the upload rather than asking you to retype it."
+          "title": "Parses what you upload",
+          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
         },
         {
           "icon": "columns-2",
           "title": "Both regimes, side by side",
-          "body": "With the delta stated in rupees, not drawn as a chart."
+          "body": "With the right ITR form picked for you and the delta stated in rupees."
         },
         {
-          "icon": "users",
-          "title": "A household lens",
-          "body": "Spouse, parents and kids — and the deductions that only exist across people."
+          "icon": "file-text",
+          "title": "CA-ready handoff",
+          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
         }
       ],
       "permissions": [],
-      "screens": [
-        "Regime comparison",
-        "Quick Check",
-        "Printable result"
-      ],
+      "screens": [],
       "legal": {
         "privacy": "https://chitragupt.ai/legal/privacy",
         "delete": "https://ritvi-apps.github.io/legal/chitragupt/delete-account.html",

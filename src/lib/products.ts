@@ -59,10 +59,16 @@ export type Product = {
 /** Web-sized derivatives written by scripts/sync-assets.mjs. An app with no
  *  entry has no store assets to derive from, and the page renders a labelled
  *  placeholder — visibly missing beats a grey box, which is rule 8. */
-export type Media = { icon: string | null; shots: { src: string; label: string }[] };
+export type Media = {
+  /** Decides the frame the site draws: a phone bezel, or browser chrome.
+   *  Drawing a web product inside a phone would be a small lie about it. */
+  kind: "mobile" | "web";
+  icon: string | null;
+  shots: { src: string; label: string }[];
+};
 const media = mediaRaw.media as Record<string, Media>;
 export const mediaFor = (slug: string): Media =>
-  media[slug] ?? { icon: null, shots: [] };
+  media[slug] ?? { kind: "mobile", icon: null, shots: [] };
 export const mediaGeneratedOn: string = mediaRaw.generatedOn;
 /** Apps the sync could not find assets for, with the reason. Rendered on
  *  /design/gallery so the gap is stated rather than hidden. */

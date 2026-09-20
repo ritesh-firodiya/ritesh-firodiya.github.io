@@ -4,20 +4,24 @@
  * derivatives into public/media/.
  *
  * WHY DERIVATIVES AND NOT THE ORIGINALS
- * Store screenshots are 1080×2400 and up because the stores demand it — the
- * five apps here hold ~42MB of PNG. The site displays them at ~210px wide.
- * Committing the originals would add 42MB to a repo whose entire history is
- * under 2MB, and git never forgets a blob. WebP at 640px wide lands at ~40-70KB,
- * which is ~20x smaller and indistinguishable at display size.
+ * Store screenshots are 1080×2400 and up because the stores demand it. The site
+ * displays them at ~210px wide. Committing originals would add tens of MB to a
+ * repo whose whole history is under 2MB, and git never forgets a blob. WebP at
+ * 640px lands around 1% of the source bytes and is indistinguishable here.
  *
- * WHY IT RUNS LOCALLY AND NOT IN CI
- * The app repos are private and live as siblings under ~/git. A GitHub Action
- * on this public repo cannot read them. So this runs on a machine that has the
- * whole tree, and the derivatives are committed. Same shape as ~/git/bin/index.
+ * WHY IT RUNS LOCALLY
+ * The app repos are private siblings under ~/git. A GitHub Action on this
+ * public repo cannot read them, so this runs on a machine with the whole tree
+ * and the derivatives are committed. Same shape as ~/git/bin/index.
  *
- * WHAT IT WILL NOT DO
- * It never copies video. The two .mp4 files in the tree are 55MB between them
- * and would be unrecoverable once pushed.
+ * WHY CANDIDATE PATHS AND NOT ONE CONVENTION
+ * The apps do not agree on where store assets live, and pretending they do is
+ * how the first version of this script reported "no assets" for an app that had
+ * both an icon and five screenshots. Each app lists the paths it actually uses,
+ * first match wins, and anything still unfound is reported rather than silently
+ * skipped.
+ *
+ * It never copies video — the .mp4 files in the tree are tens of MB.
  *
  *   node scripts/sync-assets.mjs
  */
@@ -32,26 +36,69 @@ const APPS = join(homedir(), "git", "apps");
 const OUT = join(process.cwd(), "public", "media");
 const DATA = join(process.cwd(), "src", "data", "media.json");
 
-const SHOT_WIDTH = 640;   // displayed ~210px; 640 covers 3x displays
+const SHOT_WIDTH = 640;
+const WEB_SHOT_WIDTH = 1280; // web products are landscape; they need the pixels
 const ICON_SIZE = 256;
 const QUALITY = 78;
+const MAX_SHOTS = 4;
 
-/** slug → app repo directory name. Only apps with a real store folder. */
+const S = ".context/documents/store";
+
+/**
+ * `kind` decides the frame the site draws around a shot: a phone bezel for
+ * mobile, a browser chrome for web. Drawing chitragupt.ai inside a phone would
+ * be a small lie about what the product is.
+ */
 const SOURCES = {
-  charades: "charades",
-  imposter: "imposter",
-  aakalan: "aakalan",
-  askcal: "askcal",
-  "tic-tac-toe": "tic-tac-toe",
-  chitragupt: "chitragupt",
+  charades:      { kind: "mobile", icons: [`${S}/icon-512.png`, "assets/icons/icon.png"],
+                   shots: [`${S}/screenshots`, `${S}/android/phone`, `${S}/ios/iphone-6.9`] },
+  imposter:      { kind: "mobile", icons: [`${S}/icon-512.png`, "assets/icons/icon.png"],
+                   shots: [`${S}/screenshots`, `${S}/android/phone`, `${S}/ios/iphone-6.9`] },
+  aakalan:       { kind: "mobile", icons: [`${S}/icon-512.png`, "assets/icons/icon.png"],
+                   shots: [`${S}/screenshots`, `${S}/android/phone`, `${S}/ios/iphone-6.9`] },
+  askcal:        { kind: "mobile", icons: [`${S}/icon-512.png`, "apps/mobile/assets/icons/icon.png"],
+                   shots: [`${S}/screenshots`, `${S}/android/phone`, `${S}/ios/iphone-6.9`] },
+  // Its store folder uses android/phone and ios/iphone-6.9 rather than
+  // screenshots/, and its icon lives with the Expo assets, not in the store
+  // folder. Both were missed by the first pass.
+  "tic-tac-toe": { kind: "mobile", dir: "tic-tac-toe",
+                   icons: [`${S}/icon-512.png`, "assets/icons/icon.png",
+                           "ios/TicTacToe/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png"],
+                   shots: [`${S}/android/phone`, `${S}/ios/iphone-6.9`, `${S}/screenshots`] },
+  // A web product with no store folder at all. Its icon is in the mobile app's
+  // Expo assets; its screenshots are captured from the live site by
+  // scripts/capture-web.mjs into .capture/, which this then processes.
+  // A web product with no store folder. Its icon is in the mobile app's Expo
+  // assets. It has no in-product screenshots here, and the live app cannot be
+  // captured without a signed-in session — publishing someone's account view is
+  // not something to do casually — so the one public artifact is its own
+  // OpenGraph card, fetched into scripts/captured/ and labelled as a card
+  // rather than dressed up as a screenshot.
+  chitragupt:    { kind: "web",
+                   icons: ["apps/mobile/assets/icons/icon.png", "apps/website/src/app/icon.png"],
+                   shots: [`${S}/screenshots`], localShots: "chitragupt" },
 };
-
-const MAX_SHOTS = 4; // curated, not a dump — see /design/gallery
 
 const exists = async (p) => { try { await stat(p); return true; } catch { return false; } };
 
+async function firstFile(root, candidates) {
+  for (const c of candidates) {
+    const p = join(root, c);
+    if (await exists(p)) return p;
+  }
+  return null;
+}
+async function firstDirWithImages(root, candidates) {
+  for (const c of candidates) {
+    const p = join(root, c);
+    if (!(await exists(p))) continue;
+    const files = (await readdir(p)).filter((f) => [".png", ".jpg", ".jpeg"].includes(extname(f).toLowerCase()));
+    if (files.length) return { dir: p, files: files.sort() };
+  }
+  return null;
+}
+
 async function toWebp(src, dest, width) {
-  // sips resizes (built into macOS, no dependency); cwebp converts.
   const tmp = dest.replace(/\.webp$/, ".tmp.png");
   await run("sips", ["--resampleWidth", String(width), src, "--out", tmp]);
   await run("cwebp", ["-quiet", "-q", String(QUALITY), tmp, "-o", dest]);
@@ -60,62 +107,54 @@ async function toWebp(src, dest, width) {
 }
 
 const manifest = {};
-const skipped = [];
+const missing = [];
 let bytes = 0, files = 0;
-
 await rm(OUT, { recursive: true, force: true });
 
-for (const [slug, dir] of Object.entries(SOURCES)) {
-  const store = join(APPS, dir, ".context", "documents", "store");
-  if (!(await exists(store))) { skipped.push({ slug, why: "no store folder in the app repo" }); continue; }
+for (const [slug, cfg] of Object.entries(SOURCES)) {
+  const root = join(APPS, cfg.dir ?? slug);
+  if (!(await exists(root))) { missing.push({ slug, why: "app repo not found" }); continue; }
 
   const destDir = join(OUT, slug);
-  const entry = { icon: null, shots: [] };
+  const entry = { kind: cfg.kind, icon: null, shots: [] };
 
-  const icon = join(store, "icon-512.png");
-  if (await exists(icon)) {
+  const icon = await firstFile(root, cfg.icons);
+  if (icon) {
     await mkdir(destDir, { recursive: true });
-    const d = join(destDir, "icon.webp");
-    bytes += await toWebp(icon, d, ICON_SIZE); files++;
+    bytes += await toWebp(icon, join(destDir, "icon.webp"), ICON_SIZE); files++;
     entry.icon = `/media/${slug}/icon.webp`;
   }
 
-  const shotsDir = join(store, "screenshots");
-  if (await exists(shotsDir)) {
-    const pngs = (await readdir(shotsDir)).filter((f) => extname(f) === ".png").sort().slice(0, MAX_SHOTS);
-    for (const f of pngs) {
-      await mkdir(destDir, { recursive: true });
-      const name = basename(f, ".png").replace(/^\d+[-_]?/, "") || basename(f, ".png");
+  let found = await firstDirWithImages(root, cfg.shots);
+  if (!found && cfg.localShots) {
+    found = await firstDirWithImages(process.cwd(), [join("scripts", "captured", cfg.localShots)]);
+  }
+  if (found) {
+    await mkdir(destDir, { recursive: true });
+    for (const f of found.files.slice(0, MAX_SHOTS)) {
+      const name = basename(f, extname(f)).replace(/^\d+[-_]?/, "") || basename(f, extname(f));
       const d = join(destDir, `${name}.webp`);
-      bytes += await toWebp(join(shotsDir, f), d, SHOT_WIDTH); files++;
-      // The filename is the caption source — "01-setup.png" becomes "setup".
+      bytes += await toWebp(join(found.dir, f), d, cfg.kind === "web" ? WEB_SHOT_WIDTH : SHOT_WIDTH); files++;
       entry.shots.push({ src: `/media/${slug}/${name}.webp`, label: name.replace(/[-_]/g, " ") });
     }
   }
 
   if (!entry.icon && entry.shots.length === 0) {
-    skipped.push({ slug, why: "store folder exists but holds no icon-512.png or screenshots/" });
+    missing.push({ slug, why: "no icon or screenshots found in any candidate path" });
     continue;
   }
+  if (entry.shots.length === 0) missing.push({ slug, why: "icon only — no screenshots found" });
   manifest[slug] = entry;
 }
 
-await writeFile(
-  DATA,
-  JSON.stringify(
-    {
-      $comment:
-        "GENERATED by scripts/sync-assets.mjs from the private app repos. Do not hand-edit. Apps absent from `media` have no store assets to derive from — the site renders a labelled placeholder for those, which is the point.",
-      generatedOn: new Date().toISOString().slice(0, 10),
-      media: manifest,
-      missing: skipped,
-    },
-    null,
-    2,
-  ) + "\n",
-);
+await writeFile(DATA, JSON.stringify({
+  $comment: "GENERATED by scripts/sync-assets.mjs from the private app repos. Do not hand-edit. `kind` decides whether the site frames a shot as a phone or a browser.",
+  generatedOn: new Date().toISOString().slice(0, 10),
+  media: manifest,
+  missing,
+}, null, 2) + "\n");
 
-console.log(`synced ${files} file(s), ${(bytes / 1024).toFixed(0)}KB total`);
+console.log(`synced ${files} file(s), ${(bytes / 1024).toFixed(0)}KB`);
 for (const [slug, e] of Object.entries(manifest))
-  console.log(`  ${slug.padEnd(18)} icon:${e.icon ? "yes" : " no"}  shots:${e.shots.length}`);
-for (const s of skipped) console.log(`  ${s.slug.padEnd(18)} SKIPPED — ${s.why}`);
+  console.log(`  ${slug.padEnd(14)} ${e.kind.padEnd(7)} icon:${e.icon ? "yes" : " no"}  shots:${e.shots.length}`);
+for (const m of missing) console.log(`  ${m.slug.padEnd(14)} — ${m.why}`);

@@ -273,17 +273,23 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <h2 className="font-display text-h2 font-semibold">Screens</h2>
               <div className="rail mt-7 flex gap-6 overflow-x-auto pb-4">
                 {m.shots.length > 0
-                  ? m.shots.map((s) => (
-                      <div key={s.src} className="device w-[210px] shrink-0">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={s.src}
-                          alt={`${p.name} — ${s.label}`}
-                          loading="lazy"
-                          className="device-screen w-full"
-                        />
-                      </div>
-                    ))
+                  ? m.shots.map((s) =>
+                      m.kind === "web" ? (
+                        <div key={s.src} className="browser w-full max-w-3xl shrink-0">
+                          <div className="browser-bar">
+                            <span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" />
+                            <span className="ml-3 font-mono text-xs2 text-ink-3">chitragupt.ai</span>
+                          </div>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="block w-full" />
+                        </div>
+                      ) : (
+                        <div key={s.src} className="device w-[210px] shrink-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="device-screen w-full" />
+                        </div>
+                      ),
+                    )
                   : p.screens.map((s) => (
                       <div key={s} className="device w-[210px] shrink-0">
                         <div className="device-screen shot-ph aspect-[9/19.5]">
@@ -292,6 +298,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       </div>
                     ))}
               </div>
+              {m.kind === "web" && m.shots.length > 0 && (
+                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
+                  This is the product&rsquo;s own public card, not an in-app capture. Screens behind
+                  the sign-in are not published — a screenshot of a signed-in session shows someone&rsquo;s
+                  account, and that is not mine to publish.
+                </p>
+              )}
               {p.model === "free-ads" && (
                 <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
                   The banner appears in the first screenshot on purpose — a store screenshot that

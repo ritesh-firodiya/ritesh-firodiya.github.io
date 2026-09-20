@@ -93,11 +93,19 @@ export default function Home() {
                 {(() => {
                   const m = mediaFor(p.slug);
                   return m.shots[0] ? (
-                    <div className="flex h-[320px] items-center justify-center rounded-card border border-line bg-paper-2">
-                      <div className="device w-[150px]">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={m.shots[0].src} alt={`${p.name} — ${m.shots[0].label}`} loading="lazy" className="device-screen w-full" />
-                      </div>
+                    <div className="flex h-[320px] items-center justify-center overflow-hidden rounded-card border border-line bg-paper-2 p-5">
+                      {m.kind === "web" ? (
+                        <div className="browser w-full">
+                          <div className="browser-bar"><span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" /></div>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={m.shots[0].src} alt={`${p.name} — ${m.shots[0].label}`} loading="lazy" className="block w-full" />
+                        </div>
+                      ) : (
+                        <div className="device w-[150px]">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={m.shots[0].src} alt={`${p.name} — ${m.shots[0].label}`} loading="lazy" className="device-screen w-full" />
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <div className="shot-ph flex h-[320px] items-center justify-center rounded-card border border-line">

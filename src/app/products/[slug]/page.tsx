@@ -5,7 +5,8 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
 import { IconGit, IconDesign, IconLive, IconAndroid, IconApple } from "@/components/icons";
 import {
-  products, bySlug, mediaFor, screensFor, MODEL, type Product,
+  products, bySlug, mediaFor, screensFor, galleriesFor, MODEL,
+  type Product, type Gallery,
 } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 
@@ -23,17 +24,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const SURFACE_LABEL: Record<string, string> = { mobile: "Phone", web: "Web" };
+
 /* One row of small links, and only the ones that exist. A disabled icon in a
    nav row is noise; what is genuinely unavailable is said in words underneath,
    once, where it can carry the reason. */
-function LinkRow({ p, hasDesigns }: { p: Product; hasDesigns: boolean }) {
+function LinkRow({ p, gallery }: { p: Product; gallery: Gallery | undefined }) {
   const web = p.platforms.web, ios = p.platforms.ios, android = p.platforms.android;
   const open = (v?: { state: string; url: string | null }) =>
     v && v.url && (v.state === "live" || v.state === "beta") ? v.url : null;
 
   const links = [
     p.repo ? { href: p.repo, label: "Source", Icon: IconGit, external: true } : null,
-    hasDesigns ? { href: `/products/${p.slug}/designs/`, label: "Designs", Icon: IconDesign, external: false } : null,
+    gallery ? { href: gallery.path, label: "Designs", Icon: IconDesign, external: true } : null,
     open(web) ? { href: open(web)!, label: "Live", Icon: IconLive, external: true } : null,
     open(android) ? { href: open(android)!, label: "Google Play", Icon: IconAndroid, external: true } : null,
     open(ios) ? { href: open(ios)!, label: ios!.state === "beta" ? "TestFlight" : "App Store", Icon: IconApple, external: true } : null,
@@ -77,6 +80,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const m = mediaFor(p.slug);
   const screens = screensFor(p.slug);
+  const galleries = galleriesFor(p.slug);
   const study = studyBySlug(p.slug);
   const others = products.filter((o) => o.slug !== p.slug).slice(0, 4);
 
@@ -114,7 +118,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <h1 className="mt-3 font-display text-d1 font-semibold">{p.name}</h1>
               <p className="mt-2 max-w-measure font-display text-lead italic text-ink-2">{p.tagline}</p>
               <p className="mt-3 max-w-prose text-body text-ink-2">{p.blurb}</p>
-              <LinkRow p={p} hasDesigns={screens.length > 0} />
+              <LinkRow p={p} gallery={galleries[0]} />
             </div>
           </div>
         </section>
@@ -165,20 +169,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {/* 4 · designs, as a link rather than 80 embedded frames */}
-        {screens.length > 0 && (
+        {/* 4 · designs. The link leaves the site: each set ships its own
+               gallery in its app repo, and that page — not a frame around it —
+               is the thing worth reading. */}
+        {galleries.length > 0 && (
           <section className="border-t border-line bg-paper-2">
             <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-gutter py-6">
               <div>
                 <Label>Designs · {screens.length} screens</Label>
                 <p className="mt-1 max-w-prose text-small text-ink-2">
-                  The HTML wireframes this was built from, rendering live.
+                  The HTML wireframes this was built from, rendering live — the same gallery the
+                  screens were reviewed against.
                 </p>
               </div>
-              <Link href={`/products/${p.slug}/designs/`}
-                    className="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
-                <IconDesign size={15} strokeWidth={1.75} aria-hidden /> Browse the design set →
-              </Link>
+              <div className="flex flex-wrap gap-2">
+                {galleries.map((g) => (
+                  <a key={g.path} href={g.path}
+                     className="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+                    <IconDesign size={15} strokeWidth={1.75} aria-hidden />
+                    {galleries.length > 1 ? `${SURFACE_LABEL[g.surface] ?? g.surface} designs` : "Browse the design set"} &rarr;
+                  </a>
+                ))}
+              </div>
             </div>
           </section>
         )}

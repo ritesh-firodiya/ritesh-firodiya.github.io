@@ -175,7 +175,9 @@ for (const [slug, dir] of Object.entries(SETS)) {
     manifest[slug] = {
       // The set's own gallery pages, one per surface (mobile / web).
       indexes: entries.filter((e) => e.isIndex).map(({ path, title, surface }) => ({ path, title, surface })),
-      screens: entries.filter((e) => !e.isIndex).map(({ isIndex, ...s }) => s),
+      screens: entries
+        .filter((e) => !e.isIndex)
+        .map((e) => ({ path: e.path, title: e.title, surface: e.surface, area: e.area })),
     };
   }
 }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { Label } from "@/components/pills";
 import { profile, otherProjects, appProjects, STATUS_TOKEN } from "@/lib/profile";
+import { CASE_STUDIES } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -44,6 +45,25 @@ export default function WorkPage() {
                 </article>
               );
             })}
+          </div>
+
+          <div className="mt-section">
+            <div className="rule-fade mb-8" />
+            <h2 className="font-display text-d2 font-semibold">Written up in full</h2>
+            <p className="mt-3 max-w-prose text-body text-ink-2">
+              One project at a time, end to end — the problem, the architecture, and the decisions
+              worth defending. Added when a build teaches something transferable, not on a schedule.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {CASE_STUDIES.map((c) => (
+                <Link key={c.slug} href={`/work/${c.slug}/`} className="group rounded-card border border-line bg-surface p-6 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+                  <p className="font-mono text-label uppercase tracking-label text-ink-3">{c.period} · {c.status}</p>
+                  <h3 className="mt-3 font-display text-h2 font-semibold group-hover:text-accent">{c.product}</h3>
+                  <p className="mt-2 max-w-prose text-small text-ink-2">{c.title}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-small font-medium text-accent">Read the case study →</span>
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">

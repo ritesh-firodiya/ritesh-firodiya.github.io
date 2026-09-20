@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
-import { products, shipped, unbuilt, verifiedOn, type Product, type Model } from "@/lib/products";
+import { products, shipped, unbuilt, verifiedOn, mediaFor, type Product, type Model } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -57,9 +57,19 @@ function Row({ p }: { p: Product }) {
   return (
     <tr className="border-b border-line last:border-0">
       <th scope="row" className={`tbl-stick px-4 py-4 text-left font-display text-h3 font-semibold ${p.notBuilt ? "text-ink-2" : ""}`}>
-        {p.notBuilt ? p.name : <Link href={`/products/${p.slug}/`} className="link-u hover:text-accent">{p.name}</Link>}
-        <span className="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">
-          {p.fullName.includes("—") ? p.fullName.split("—")[1].trim() : p.tagline}
+        <span className="flex items-start gap-3">
+          {mediaFor(p.slug).icon ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={mediaFor(p.slug).icon!} alt="" width={34} height={34} className="mt-0.5 h-[34px] w-[34px] shrink-0 rounded-lg border border-line" />
+          ) : (
+            <span className="shot-ph mt-0.5 h-[34px] w-[34px] shrink-0 rounded-lg" aria-hidden="true" />
+          )}
+          <span className="min-w-0">
+            {p.notBuilt ? p.name : <Link href={`/products/${p.slug}/`} className="link-u hover:text-accent">{p.name}</Link>}
+            <span className="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">
+              {p.fullName.includes("—") ? p.fullName.split("—")[1].trim() : p.tagline}
+            </span>
+          </span>
         </span>
       </th>
       <td className="px-4 py-4"><ModelPill model={p.model} /></td>

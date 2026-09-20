@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
-import { products, shipped } from "@/lib/products";
+import { products, shipped, mediaFor } from "@/lib/products";
 import { profile } from "@/lib/profile";
 
 const DOORS = [
@@ -90,9 +90,21 @@ export default function Home() {
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
             {featured.map((p) => (
               <article key={p.slug} className="flex flex-col">
-                <div className="shot-ph aspect-[4/3] rounded-card border border-line">
-                  <p className="px-6 font-mono text-xs2 uppercase tracking-label text-ink-3">Screenshot · {p.name}</p>
-                </div>
+                {(() => {
+                  const m = mediaFor(p.slug);
+                  return m.shots[0] ? (
+                    <div className="flex h-[320px] items-center justify-center rounded-card border border-line bg-paper-2">
+                      <div className="device w-[150px]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={m.shots[0].src} alt={`${p.name} — ${m.shots[0].label}`} loading="lazy" className="device-screen w-full" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="shot-ph flex h-[320px] items-center justify-center rounded-card border border-line">
+                      <p className="px-6 font-mono text-xs2 uppercase tracking-label text-ink-3">No screenshot yet · {p.name}</p>
+                    </div>
+                  );
+                })()}
                 <div className="mt-5 flex flex-wrap items-center gap-2">
                   <ModelPill model={p.model} />
                   {Object.entries(p.platforms)

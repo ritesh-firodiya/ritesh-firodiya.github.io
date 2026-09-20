@@ -1,4 +1,5 @@
 import raw from "@/data/products.json";
+import mediaRaw from "@/data/media.json";
 
 /**
  * The five monetization models, and they render at equal visual weight.
@@ -54,6 +55,18 @@ export type Product = {
   screens: string[];
   legal: { privacy: string | null; delete: string | null; privacyNote?: string };
 };
+
+/** Web-sized derivatives written by scripts/sync-assets.mjs. An app with no
+ *  entry has no store assets to derive from, and the page renders a labelled
+ *  placeholder — visibly missing beats a grey box, which is rule 8. */
+export type Media = { icon: string | null; shots: { src: string; label: string }[] };
+const media = mediaRaw.media as Record<string, Media>;
+export const mediaFor = (slug: string): Media =>
+  media[slug] ?? { icon: null, shots: [] };
+export const mediaGeneratedOn: string = mediaRaw.generatedOn;
+/** Apps the sync could not find assets for, with the reason. Rendered on
+ *  /design/gallery so the gap is stated rather than hidden. */
+export const mediaMissing = mediaRaw.missing as { slug: string; why: string }[];
 
 export const verifiedOn: string = raw.verifiedOn;
 export const products = raw.products as unknown as Product[];

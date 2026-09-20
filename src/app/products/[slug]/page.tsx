@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
-import { products, bySlug, MODEL, type Product, type Platform } from "@/lib/products";
+import { products, bySlug, mediaFor, MODEL, type Product, type Platform } from "@/lib/products";
+import { studyBySlug } from "@/lib/case-studies";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -152,6 +153,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
 
   const others = products.filter((o) => o.slug !== p.slug).slice(0, 4);
+  const m = mediaFor(p.slug);
+  const study = studyBySlug(p.slug);
 
   return (
     <>
@@ -164,9 +167,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </Link>
 
             <div className="mt-7 flex flex-wrap items-start gap-7">
-              <span className="shot-ph h-[120px] w-[120px] shrink-0 rounded-card font-mono text-xs2 text-ink-3">
-                Icon 512
-              </span>
+              {m.icon ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={m.icon}
+                  alt={`${p.name} app icon`}
+                  width={120}
+                  height={120}
+                  className="h-[120px] w-[120px] shrink-0 rounded-card border border-line"
+                />
+              ) : (
+                <span className="shot-ph h-[120px] w-[120px] shrink-0 rounded-card font-mono text-xs2 text-ink-3">
+                  No icon yet
+                </span>
+              )}
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   {Object.entries(p.platforms)
@@ -198,6 +212,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </dl>
             )}
             {p.analyticsNote && <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">{p.analyticsNote}</p>}
+            {study && (
+              <Link href={`/work/${study.slug}/`} className="mt-6 inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">
+                How it was built →
+              </Link>
+            )}
           </div>
         </section>
 
@@ -243,18 +262,30 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {p.screens.length > 0 && (
+        {(m.shots.length > 0 || p.screens.length > 0) && (
           <section className="border-t border-line bg-paper-2">
             <div className="mx-auto max-w-page px-gutter py-section">
               <h2 className="font-display text-h2 font-semibold">Screens</h2>
               <div className="rail mt-7 flex gap-6 overflow-x-auto pb-4">
-                {p.screens.map((s) => (
-                  <div key={s} className="device w-[210px] shrink-0">
-                    <div className="device-screen shot-ph aspect-[9/19.5]">
-                      <p className="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">{s}</p>
-                    </div>
-                  </div>
-                ))}
+                {m.shots.length > 0
+                  ? m.shots.map((s) => (
+                      <div key={s.src} className="device w-[210px] shrink-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={s.src}
+                          alt={`${p.name} — ${s.label}`}
+                          loading="lazy"
+                          className="device-screen w-full"
+                        />
+                      </div>
+                    ))
+                  : p.screens.map((s) => (
+                      <div key={s} className="device w-[210px] shrink-0">
+                        <div className="device-screen shot-ph aspect-[9/19.5]">
+                          <p className="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">{s}</p>
+                        </div>
+                      </div>
+                    ))}
               </div>
               {p.model === "free-ads" && (
                 <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">

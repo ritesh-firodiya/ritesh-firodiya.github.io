@@ -19,22 +19,68 @@
       "analytics": "None",
       "version": "1.0.30",
       "platforms": {
-        "android": { "state": "live", "label": "Google Play", "url": "#", "note": "" },
-        "ios": { "state": "beta", "label": "Join the TestFlight", "url": "#", "note": "" }
+        "android": {
+          "state": "live",
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.charadesbollywood",
+          "note": ""
+        },
+        "ios": {
+          "state": "closed",
+          "label": "Staged, not submitted",
+          "url": null,
+          "note": "1.0.30 is built and signed; the App Store submit has not been made"
+        }
       },
-      "stack": ["React Native", "Expo Router", "UniWind", "Zustand", "RevenueCat"],
+      "stack": [
+        "React Native",
+        "Expo Router",
+        "UniWind",
+        "Zustand",
+        "RevenueCat"
+      ],
       "features": [
-        { "icon": "layers", "title": "Four packs, 5,149 cards", "body": "Bollywood, Tollywood, Hollywood, Family & Kids. Enough that a group will not see a repeat in a night." },
-        { "icon": "wifi-off", "title": "Entirely offline", "body": "Every card ships inside the app. Aeroplane mode, a basement, a road trip — it does not care." },
-        { "icon": "timer", "title": "Tilt to score", "body": "Down for got it, up for pass — the way everyone already plays it." }
+        {
+          "icon": "layers",
+          "title": "Four packs, 5,149 cards",
+          "body": "Bollywood, Tollywood, Hollywood, Family & Kids. Enough that a group will not see a repeat in a night."
+        },
+        {
+          "icon": "wifi-off",
+          "title": "Entirely offline",
+          "body": "Every card ships inside the app. Aeroplane mode, a basement, a road trip — it does not care."
+        },
+        {
+          "icon": "timer",
+          "title": "Tilt to score",
+          "body": "Down for got it, up for pass — the way everyone already plays it."
+        }
       ],
       "permissions": [
-        { "name": "Billing", "why": "Only if you buy a pack. Handled by the store, never by us." },
-        { "name": "Vibration", "why": "The buzz when a round ends." },
-        { "name": "Not requested", "why": "No camera, microphone, contacts, location or storage — and no network permission for gameplay.", "absent": true }
+        {
+          "name": "Billing",
+          "why": "Only if you buy a pack. Handled by the store, never by us."
+        },
+        {
+          "name": "Vibration",
+          "why": "The buzz when a round ends."
+        },
+        {
+          "name": "Not requested",
+          "why": "No camera, microphone, contacts, location or storage — and no network permission for gameplay.",
+          "absent": true
+        }
       ],
-      "screens": ["Card in play", "Pack picker", "Team setup", "Round result"],
-      "legal": { "privacy": "#", "delete": null }
+      "screens": [
+        "Card in play",
+        "Pack picker",
+        "Team setup",
+        "Round result"
+      ],
+      "legal": {
+        "privacy": "https://ritvi-apps.github.io/legal/charades/privacy-policy.html",
+        "delete": null
+      }
     },
     {
       "slug": "tic-tac-toe",
@@ -49,30 +95,84 @@
       "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, no other app of mine has ads at all.",
       "ads": "Banner + interstitial",
       "adSurfaces": [
-        { "kind": "Banner", "where": "Bottom of the board, always on screen" },
-        { "kind": "Interstitial", "where": "Full screen, when a game finishes" },
-        { "kind": "Rewarded", "where": "None — not used", "absent": true }
+        {
+          "kind": "Banner",
+          "where": "Bottom of the board, always on screen"
+        },
+        {
+          "kind": "Interstitial",
+          "where": "Full screen, when a game finishes"
+        },
+        {
+          "kind": "Rewarded",
+          "where": "None — not used",
+          "absent": true
+        }
       ],
       "offline": "No — ads need a network",
       "analytics": "AdMob measurement",
       "version": "1.0.10",
       "platforms": {
-        "android": { "state": "live", "label": "Google Play", "url": "#", "note": "" },
-        "ios": { "state": "none", "label": "Not submitted yet", "url": null, "note": "Apple Developer enrolment not complete" }
+        "android": {
+          "state": "live",
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.tictactoe",
+          "note": ""
+        },
+        "ios": {
+          "state": "none",
+          "label": "Not submitted yet",
+          "url": null,
+          "note": "Apple Developer enrolment not complete"
+        }
       },
-      "stack": ["Expo Router", "React Native", "UniWind", "Zustand"],
+      "stack": [
+        "Expo Router",
+        "React Native",
+        "UniWind",
+        "Zustand"
+      ],
       "features": [
-        { "icon": "users", "title": "Two players on one phone", "body": "Pass and tap. No accounts, no lobby, no second device to pair." },
-        { "icon": "cpu", "title": "A perfect opponent", "body": "Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten." },
-        { "icon": "history", "title": "Running score", "body": "Kept across a session, so a best-of-seven actually resolves." }
+        {
+          "icon": "users",
+          "title": "Two players on one phone",
+          "body": "Pass and tap. No accounts, no lobby, no second device to pair."
+        },
+        {
+          "icon": "cpu",
+          "title": "A perfect opponent",
+          "body": "Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten."
+        },
+        {
+          "icon": "history",
+          "title": "Running score",
+          "body": "Kept across a session, so a best-of-seven actually resolves."
+        }
       ],
       "permissions": [
-        { "name": "Network", "why": "Required — it is what fetches the ads." },
-        { "name": "Ad identifier", "why": "Asked for on iOS via the system prompt. Declining costs you nothing." },
-        { "name": "Not requested", "why": "No camera, microphone, contacts, location or storage.", "absent": true }
+        {
+          "name": "Network",
+          "why": "Required — it is what fetches the ads."
+        },
+        {
+          "name": "Ad identifier",
+          "why": "Asked for on iOS via the system prompt. Declining costs you nothing."
+        },
+        {
+          "name": "Not requested",
+          "why": "No camera, microphone, contacts, location or storage.",
+          "absent": true
+        }
       ],
-      "screens": ["Board, with banner visible", "Difficulty", "Win state"],
-      "legal": { "privacy": "#", "delete": null }
+      "screens": [
+        "Board, with banner visible",
+        "Difficulty",
+        "Win state"
+      ],
+      "legal": {
+        "privacy": "https://ritvi-apps.github.io/legal/tictactoe/privacy-policy.html",
+        "delete": null
+      }
     },
     {
       "slug": "aakalan",
@@ -86,8 +186,18 @@
       "priceNote": "renews until cancelled",
       "modelDetail": "It charges again every month or every year until you cancel. Cancelling happens in your Google Play or App Store account rather than in the app — we cannot cancel it for you — and access runs to the end of the period you already paid for. There is a free tier and it is not time-limited.",
       "tiers": [
-        { "label": "Monthly", "amount": "₹99", "unit": "/month", "note": "Charged every month until cancelled." },
-        { "label": "Annual", "amount": "₹749", "unit": "/year", "note": "Charged every year until cancelled. Works out to ₹62 a month." }
+        {
+          "label": "Monthly",
+          "amount": "₹99",
+          "unit": "/month",
+          "note": "Charged every month until cancelled."
+        },
+        {
+          "label": "Annual",
+          "amount": "₹749",
+          "unit": "/year",
+          "note": "Charged every year until cancelled. Works out to ₹62 a month."
+        }
       ],
       "ads": "None",
       "adSurfaces": [],
@@ -95,23 +205,70 @@
       "analytics": "None",
       "version": "1.0.18",
       "platforms": {
-        "android": { "state": "closed", "label": "Closed testing only", "url": null, "note": "Console declarations pending" },
-        "ios": { "state": "beta", "label": "Join the TestFlight", "url": "#", "note": "" }
+        "android": {
+          "state": "closed",
+          "label": "Closed testing only",
+          "url": null,
+          "note": "Play Console declarations pending; alpha is the ceiling"
+        },
+        "ios": {
+          "state": "beta",
+          "label": "Join the TestFlight",
+          "url": "https://testflight.apple.com/join/S45tHrsf",
+          "note": ""
+        }
       },
-      "stack": ["Expo", "React Native", "Firestore", "RevenueCat"],
+      "stack": [
+        "Expo",
+        "React Native",
+        "Firestore",
+        "RevenueCat"
+      ],
       "features": [
-        { "icon": "wallet", "title": "One ledger, not two apps", "body": "Track your own spending and shared spending in the same place, instead of two apps that disagree." },
-        { "icon": "users", "title": "Split anything", "body": "With friends, flatmates or colleagues, in whatever proportion you agreed on." },
-        { "icon": "indian-rupee", "title": "Settle over UPI", "body": "Settlement is immediate — no confirmation step the other person has to remember." }
+        {
+          "icon": "wallet",
+          "title": "One ledger, not two apps",
+          "body": "Track your own spending and shared spending in the same place, instead of two apps that disagree."
+        },
+        {
+          "icon": "users",
+          "title": "Split anything",
+          "body": "With friends, flatmates or colleagues, in whatever proportion you agreed on."
+        },
+        {
+          "icon": "indian-rupee",
+          "title": "Settle over UPI",
+          "body": "Settlement is immediate — no confirmation step the other person has to remember."
+        }
       ],
       "permissions": [
-        { "name": "Contacts", "why": "Only to pick who you are splitting with. Read-only — writing to contacts is blocked outright." },
-        { "name": "Camera & photos", "why": "Attaching a receipt to an expense. Optional." },
-        { "name": "Network", "why": "A shared ledger has to sync. Your data lives in Firestore in the Mumbai region." },
-        { "name": "Analytics", "why": "None. There is no analytics SDK in this app.", "absent": true }
+        {
+          "name": "Contacts",
+          "why": "Only to pick who you are splitting with. Read-only — writing to contacts is blocked outright."
+        },
+        {
+          "name": "Camera & photos",
+          "why": "Attaching a receipt to an expense. Optional."
+        },
+        {
+          "name": "Network",
+          "why": "A shared ledger has to sync. Your data lives in Firestore in the Mumbai region."
+        },
+        {
+          "name": "Analytics",
+          "why": "None. There is no analytics SDK in this app.",
+          "absent": true
+        }
       ],
-      "screens": ["Ledger", "Split & settle", "Paywall, both prices visible"],
-      "legal": { "privacy": "#", "delete": "#" }
+      "screens": [
+        "Ledger",
+        "Split & settle",
+        "Paywall, both prices visible"
+      ],
+      "legal": {
+        "privacy": "https://ritvi-apps.github.io/legal/aakalan/privacy-policy.html",
+        "delete": "https://ritvi-apps.github.io/legal/aakalan/delete-account.html"
+      }
     },
     {
       "slug": "imposter",
@@ -130,21 +287,59 @@
       "analytics": "None",
       "version": "1.0.0",
       "platforms": {
-        "android": { "state": "closed", "label": "Closed testing, not public", "url": null, "note": "Production track has never had a release" },
-        "ios": { "state": "closed", "label": "TestFlight only, not public", "url": null, "note": "App Store version never submitted" }
+        "android": {
+          "state": "closed",
+          "label": "Closed testing, not public",
+          "url": null,
+          "note": "Production track has never had a release"
+        },
+        "ios": {
+          "state": "closed",
+          "label": "TestFlight only, not public",
+          "url": null,
+          "note": "App Store version never submitted"
+        }
       },
       "unreleasedNote": "Neither store has a public release yet. The build is finished and in review on iOS; the Android production track has never had a release. Rather than link a testing URL that most people cannot open, there is no button here until a track is genuinely open.",
-      "stack": ["React Native", "Expo", "TypeScript", "RevenueCat"],
+      "stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "RevenueCat"
+      ],
       "features": [
-        { "icon": "venetian-mask", "title": "A hint, hand-written", "body": "The Imposter sees one word of help, written by a person for that exact word — not generated." },
-        { "icon": "ghost", "title": "Mr. White sees nothing", "body": "And can still steal the round by naming the word at the end." },
-        { "icon": "eye-off", "title": "No analytics, at all", "body": "There is no analytics SDK in the project. Nothing about your rounds leaves the phone." }
+        {
+          "icon": "venetian-mask",
+          "title": "A hint, hand-written",
+          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
+        },
+        {
+          "icon": "ghost",
+          "title": "Mr. White sees nothing",
+          "body": "And can still steal the round by naming the word at the end."
+        },
+        {
+          "icon": "eye-off",
+          "title": "No analytics, at all",
+          "body": "There is no analytics SDK in the project. Nothing about your rounds leaves the phone."
+        }
       ],
       "permissions": [
-        { "name": "Not requested", "why": "None declared at all. The app makes exactly one network call, to the purchase service.", "absent": true }
+        {
+          "name": "Not requested",
+          "why": "None declared at all. The app makes exactly one network call, to the purchase service.",
+          "absent": true
+        }
       ],
-      "screens": ["Word reveal", "The hint", "Pack picker"],
-      "legal": { "privacy": "#", "delete": null }
+      "screens": [
+        "Word reveal",
+        "The hint",
+        "Pack picker"
+      ],
+      "legal": {
+        "privacy": "https://ritvi-apps.github.io/legal/imposter/privacy-policy.html",
+        "delete": null
+      }
     },
     {
       "slug": "askcal",
@@ -158,8 +353,18 @@
       "priceNote": "renews until cancelled",
       "modelDetail": "It charges again every month or every year until you cancel, in your store account rather than in the app. There is a metered free tier — ten scans — before anything is charged.",
       "tiers": [
-        { "label": "Monthly", "amount": "$5.99", "unit": "/month", "note": "Charged every month until cancelled." },
-        { "label": "Annual", "amount": "$39.99", "unit": "/year", "note": "Charged every year until cancelled." }
+        {
+          "label": "Monthly",
+          "amount": "$5.99",
+          "unit": "/month",
+          "note": "Charged every month until cancelled."
+        },
+        {
+          "label": "Annual",
+          "amount": "$39.99",
+          "unit": "/year",
+          "note": "Charged every year until cancelled."
+        }
       ],
       "ads": "None",
       "adSurfaces": [],
@@ -167,23 +372,67 @@
       "analytics": "None",
       "version": "1.0.0",
       "platforms": {
-        "android": { "state": "closed", "label": "Internal testing only", "url": null, "note": "In review on the closed track" },
-        "ios": { "state": "none", "label": "Not started", "url": null, "note": "No iOS build has been uploaded" }
+        "android": {
+          "state": "closed",
+          "label": "Internal testing only",
+          "url": null,
+          "note": "In review on the closed track"
+        },
+        "ios": {
+          "state": "none",
+          "label": "Not started",
+          "url": null,
+          "note": "No iOS build has been uploaded"
+        }
       },
       "unreleasedNote": "Nothing is installable today. We would rather say that than show a button that goes nowhere.",
-      "stack": ["Expo", "React Native", "UniWind", "Firebase", "RevenueCat"],
+      "stack": [
+        "Expo",
+        "React Native",
+        "UniWind",
+        "Firebase",
+        "RevenueCat"
+      ],
       "features": [
-        { "icon": "eye", "title": "Seen", "body": "Visible in the photo and identified." },
-        { "icon": "circle-help", "title": "Guessed", "body": "Inferred from the dish, with the assumption stated out loud." },
-        { "icon": "circle-off", "title": "Unknown", "body": "It asks one or two questions instead of filling in a number." }
+        {
+          "icon": "eye",
+          "title": "Seen",
+          "body": "Visible in the photo and identified."
+        },
+        {
+          "icon": "circle-help",
+          "title": "Guessed",
+          "body": "Inferred from the dish, with the assumption stated out loud."
+        },
+        {
+          "icon": "circle-off",
+          "title": "Unknown",
+          "body": "It asks one or two questions instead of filling in a number."
+        }
       ],
       "permissions": [
-        { "name": "Camera", "why": "Photographing a meal. It is the whole product." },
-        { "name": "Photo library", "why": "Picking a photo you already took." },
-        { "name": "Network", "why": "Required — the scan runs on a server, not on the phone." }
+        {
+          "name": "Camera",
+          "why": "Photographing a meal. It is the whole product."
+        },
+        {
+          "name": "Photo library",
+          "why": "Picking a photo you already took."
+        },
+        {
+          "name": "Network",
+          "why": "Required — the scan runs on a server, not on the phone."
+        }
       ],
-      "screens": ["A result with all three labels", "Camera", "Day view"],
-      "legal": { "privacy": "#", "delete": "#" }
+      "screens": [
+        "A result with all three labels",
+        "Camera",
+        "Day view"
+      ],
+      "legal": {
+        "privacy": "https://ritvi-apps.github.io/legal/askcal/privacy-policy.html",
+        "delete": "https://ritvi-apps.github.io/legal/askcal/delete-account.html"
+      }
     },
     {
       "slug": "chitragupt",
@@ -197,9 +446,24 @@
       "priceNote": "per assessment year, three tiers",
       "modelDetail": "Not a subscription and not quite one-time. Each assessment year is its own purchase, so the charge repeats annually — but only if you come back. Nothing auto-renews. Which regime wins, and by how much, is free; the full workings and the household lens are the paid tiers.",
       "tiers": [
-        { "label": "Self", "amount": "₹249", "unit": "/year", "note": "One filer, both regimes, the full result." },
-        { "label": "Self + AI", "amount": "₹499", "unit": "/year", "note": "Adds the assisted review." },
-        { "label": "Household", "amount": "₹799", "unit": "/year", "note": "Spouse, parents and kids on one return." }
+        {
+          "label": "Self",
+          "amount": "₹249",
+          "unit": "/year",
+          "note": "One filer, both regimes, the full result."
+        },
+        {
+          "label": "Self + AI",
+          "amount": "₹499",
+          "unit": "/year",
+          "note": "Adds the assisted review."
+        },
+        {
+          "label": "Household",
+          "amount": "₹799",
+          "unit": "/year",
+          "note": "Spouse, parents and kids on one return."
+        }
       ],
       "ads": "None",
       "adSurfaces": [],
@@ -208,19 +472,61 @@
       "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
       "version": null,
       "platforms": {
-        "web": { "state": "live", "label": "Open chitragupt.ai", "url": "#", "note": "" },
-        "android": { "state": "none", "label": "Mobile app paused", "url": null, "note": "Paused for V1" },
-        "ios": { "state": "none", "label": "Mobile app paused", "url": null, "note": "Paused for V1" }
+        "web": {
+          "state": "live",
+          "label": "Open chitragupt.ai",
+          "url": "https://chitragupt.ai",
+          "note": ""
+        },
+        "android": {
+          "state": "none",
+          "label": "Mobile app paused",
+          "url": null,
+          "note": "Paused for V1"
+        },
+        "ios": {
+          "state": "none",
+          "label": "Mobile app paused",
+          "url": null,
+          "note": "Paused for V1"
+        }
       },
-      "stack": ["Next.js", "Cloud Run", "Firebase Functions", "Firestore", "Zod", "Turborepo"],
+      "stack": [
+        "Next.js",
+        "Cloud Run",
+        "Firebase Functions",
+        "Firestore",
+        "Zod",
+        "Turborepo"
+      ],
       "features": [
-        { "icon": "upload", "title": "Form 16 in, structured return out", "body": "Parses the upload rather than asking you to retype it." },
-        { "icon": "columns-2", "title": "Both regimes, side by side", "body": "With the delta stated in rupees, not drawn as a chart." },
-        { "icon": "users", "title": "A household lens", "body": "Spouse, parents and kids — and the deductions that only exist across people." }
+        {
+          "icon": "upload",
+          "title": "Form 16 in, structured return out",
+          "body": "Parses the upload rather than asking you to retype it."
+        },
+        {
+          "icon": "columns-2",
+          "title": "Both regimes, side by side",
+          "body": "With the delta stated in rupees, not drawn as a chart."
+        },
+        {
+          "icon": "users",
+          "title": "A household lens",
+          "body": "Spouse, parents and kids — and the deductions that only exist across people."
+        }
       ],
       "permissions": [],
-      "screens": ["Regime comparison", "Quick Check", "Printable result"],
-      "legal": { "privacy": "#", "delete": "#", "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy." }
+      "screens": [
+        "Regime comparison",
+        "Quick Check",
+        "Printable result"
+      ],
+      "legal": {
+        "privacy": "https://chitragupt.ai/legal/privacy",
+        "delete": "https://ritvi-apps.github.io/legal/chitragupt/delete-account.html",
+        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
+      }
     },
     {
       "slug": "plan-kid",
@@ -240,14 +546,31 @@
       "version": null,
       "notBuilt": true,
       "platforms": {
-        "android": { "state": "none", "label": "In design", "url": null, "note": "No application code exists yet" },
-        "ios": { "state": "none", "label": "In design", "url": null, "note": "No application code exists yet" }
+        "android": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "No application code exists yet"
+        },
+        "ios": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "No application code exists yet"
+        }
       },
-      "stack": ["Expo", "React Native", "Firebase"],
+      "stack": [
+        "Expo",
+        "React Native",
+        "Firebase"
+      ],
       "features": [],
       "permissions": [],
       "screens": [],
-      "legal": { "privacy": null, "delete": null }
+      "legal": {
+        "privacy": null,
+        "delete": null
+      }
     },
     {
       "slug": "dwarseva-property",
@@ -267,14 +590,33 @@
       "version": null,
       "notBuilt": true,
       "platforms": {
-        "android": { "state": "none", "label": "In design", "url": null, "note": "Pre-product" },
-        "ios": { "state": "none", "label": "In design", "url": null, "note": "Pre-product" }
+        "android": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Pre-product"
+        },
+        "ios": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Pre-product"
+        }
       },
-      "stack": ["Turborepo", "Next.js", "Expo", "NestJS", "PostgreSQL"],
+      "stack": [
+        "Turborepo",
+        "Next.js",
+        "Expo",
+        "NestJS",
+        "PostgreSQL"
+      ],
       "features": [],
       "permissions": [],
       "screens": [],
-      "legal": { "privacy": null, "delete": null }
+      "legal": {
+        "privacy": null,
+        "delete": null
+      }
     }
   ]
 }

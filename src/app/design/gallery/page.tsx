@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { StatePill, Label } from "@/components/pills";
+import { mediaFor, mediaMissing, mediaGeneratedOn } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "The screens",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 
 const SETS = [
   {
+    slug: "imposter",
     name: "Imposter", state: "live" as const, badge: "Canonical set",
     intro: "The reference implementation — the only set that satisfies every rule at once, and the source of the token architecture the others are measured against.",
     screens: [
@@ -20,6 +22,7 @@ const SETS = [
     ],
   },
   {
+    slug: "charades",
     name: "Charades", state: "beta" as const, badge: "Drifted — see /design/drift",
     intro: "Published anyway, labelled. Hiding the sets that break the rules would make the system look better than it is.",
     screens: [
@@ -45,13 +48,22 @@ export default function GalleryPage() {
               Chosen because each one explains something — not a dump of all 264. Paywall internals
               and unreleased features are not published.
             </p>
-            <p className="mt-5 max-w-prose rounded-card border border-dashed border-line-2 bg-paper-2 px-5 py-3.5 text-small text-ink-2">
-              <b className="text-ink">Not synced yet.</b> These frames are labelled placeholders
-              until the sync step runs. It has to copy each published screen out of its (private) app
-              repo, vendor the CDN scripts those files load at runtime, and strip the development
-              chrome every design file carries. Left visible rather than faked, because a placeholder
-              that hides the gap is worse than one that shows it.
-            </p>
+            <div className="mt-5 max-w-prose rounded-card border border-dashed border-line-2 bg-paper-2 px-5 py-3.5 text-small text-ink-2">
+              <p>
+                <b className="text-ink">Screenshots are derivatives.</b> The originals are 1080×2400
+                and up because the stores demand it — about 42MB across the apps. A build step resizes
+                and converts them to WebP at 640px, which is roughly a hundredth of the bytes and
+                indistinguishable at this size. The originals stay in the app repos.
+                Last synced {mediaGeneratedOn}.
+              </p>
+              {mediaMissing.length > 0 && (
+                <p className="mt-2">
+                  <b className="text-ink">No assets to sync for:</b>{" "}
+                  {mediaMissing.map((m) => `${m.slug} (${m.why})`).join("; ")}. Those render labelled
+                  placeholders — a gap you can see beats a grey box.
+                </p>
+              )}
+            </div>
           </div>
         </section>
 
@@ -64,11 +76,19 @@ export default function GalleryPage() {
               </div>
               <p className="mt-2 max-w-prose text-small text-ink-2">{s.intro}</p>
               <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                {s.screens.map((sc) => (
+                {s.screens.map((sc, i) => {
+                  const shot = mediaFor(s.slug).shots[i];
+                  return (
                   <figure key={sc.title}>
-                    <div className="shot-ph aspect-[9/19.5] overflow-hidden rounded-xl border border-line">
-                      <p className="px-3 font-mono text-[10px] uppercase tracking-label text-ink-3">{sc.title}</p>
-                    </div>
+                    {shot ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={shot.src} alt={`${s.name} — ${sc.title}`} loading="lazy"
+                           className="aspect-[9/19.5] w-full rounded-xl border border-line object-cover object-top" />
+                    ) : (
+                      <div className="shot-ph aspect-[9/19.5] overflow-hidden rounded-xl border border-line">
+                        <p className="px-3 font-mono text-[10px] uppercase tracking-label text-ink-3">{sc.title}</p>
+                      </div>
+                    )}
                     <figcaption className="mt-4">
                       <h3 className="font-display text-h3 font-semibold">{sc.title}</h3>
                       {/* The reasoning renders as page text, never inside a frame — an
@@ -77,7 +97,8 @@ export default function GalleryPage() {
                       <p className="mt-2 text-small text-ink-2">{sc.why}</p>
                     </figcaption>
                   </figure>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

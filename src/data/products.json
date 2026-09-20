@@ -557,7 +557,7 @@
       "name": "DwarSeva Property",
       "fullName": "DwarSeva — Property",
       "tagline": "Map-based property listings for India.",
-      "blurb": "Every listing verified by a human, with a ₹5-per-action friction filter so only serious enquiries get through.",
+      "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",
       "sourceOfTruth": "apps/property-app",
       "model": "undecided",
       "price": null,

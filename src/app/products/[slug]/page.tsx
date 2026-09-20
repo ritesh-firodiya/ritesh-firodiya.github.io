@@ -213,13 +213,56 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </dl>
             )}
             {p.analyticsNote && <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">{p.analyticsNote}</p>}
-            {study && (
-              <Link href={`/work/${study.slug}/`} className="mt-6 inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">
-                How it was built →
-              </Link>
-            )}
           </div>
         </section>
+
+        {(m.shots.length > 0 || p.screens.length > 0) && (
+          <section className="border-t border-line bg-paper-2">
+            <div className="mx-auto max-w-page px-gutter py-section">
+              <h2 className="font-display text-h2 font-semibold">Screens</h2>
+              <div className="rail mt-7 flex gap-6 overflow-x-auto pb-4">
+                {m.shots.length > 0
+                  ? m.shots.map((s) =>
+                      m.kind === "web" ? (
+                        <div key={s.src} className="browser w-full max-w-3xl shrink-0">
+                          <div className="browser-bar">
+                            <span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" />
+                            <span className="ml-3 font-mono text-xs2 text-ink-3">chitragupt.ai</span>
+                          </div>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="block w-full" />
+                        </div>
+                      ) : (
+                        <div key={s.src} className="device w-[210px] shrink-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="device-screen w-full" />
+                        </div>
+                      ),
+                    )
+                  : p.screens.map((s) => (
+                      <div key={s} className="device w-[210px] shrink-0">
+                        <div className="device-screen shot-ph aspect-[9/19.5]">
+                          <p className="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">{s}</p>
+                        </div>
+                      </div>
+                    ))}
+              </div>
+              {m.kind === "web" && m.shots.length > 0 && (
+                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
+                  This is the product&rsquo;s own public card, not an in-app capture. Screens behind
+                  the sign-in are not published — a screenshot of a signed-in session shows someone&rsquo;s
+                  account, and that is not mine to publish.
+                </p>
+              )}
+              {p.model === "free-ads" && (
+                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
+                  The banner appears in the first screenshot on purpose — a store screenshot that
+                  crops the ad out is a small lie.
+                </p>
+              )}
+            </div>
+          </section>
+        )}
 
         {(p.features.length > 0 || p.permissions.length > 0) && (
           <section className="mx-auto max-w-page px-gutter py-section">
@@ -268,50 +311,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {(m.shots.length > 0 || p.screens.length > 0) && (
+
+        {study && (
           <section className="border-t border-line bg-paper-2">
             <div className="mx-auto max-w-page px-gutter py-section">
-              <h2 className="font-display text-h2 font-semibold">Screens</h2>
-              <div className="rail mt-7 flex gap-6 overflow-x-auto pb-4">
-                {m.shots.length > 0
-                  ? m.shots.map((s) =>
-                      m.kind === "web" ? (
-                        <div key={s.src} className="browser w-full max-w-3xl shrink-0">
-                          <div className="browser-bar">
-                            <span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" />
-                            <span className="ml-3 font-mono text-xs2 text-ink-3">chitragupt.ai</span>
-                          </div>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="block w-full" />
-                        </div>
-                      ) : (
-                        <div key={s.src} className="device w-[210px] shrink-0">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="device-screen w-full" />
-                        </div>
-                      ),
-                    )
-                  : p.screens.map((s) => (
-                      <div key={s} className="device w-[210px] shrink-0">
-                        <div className="device-screen shot-ph aspect-[9/19.5]">
-                          <p className="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">{s}</p>
-                        </div>
-                      </div>
-                    ))}
-              </div>
-              {m.kind === "web" && m.shots.length > 0 && (
-                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
-                  This is the product&rsquo;s own public card, not an in-app capture. Screens behind
-                  the sign-in are not published — a screenshot of a signed-in session shows someone&rsquo;s
-                  account, and that is not mine to publish.
-                </p>
-              )}
-              {p.model === "free-ads" && (
-                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
-                  The banner appears in the first screenshot on purpose — a store screenshot that
-                  crops the ad out is a small lie.
-                </p>
-              )}
+              <Label>Written up in full</Label>
+              <h2 className="mt-2 font-display text-h2 font-semibold">How {p.name} was built</h2>
+              <p className="mt-2 max-w-prose text-small text-ink-2">
+                The problem, the architecture, and the decisions worth defending.
+              </p>
+              <Link
+                href={`/work/${study.slug}/`}
+                className="mt-4 inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent"
+              >
+                Read the case study →
+              </Link>
             </div>
           </section>
         )}

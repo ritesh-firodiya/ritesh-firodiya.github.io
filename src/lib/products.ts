@@ -53,6 +53,7 @@ export type Product = {
   features: { icon: string; title: string; body: string }[];
   permissions: { name: string; why: string; absent?: boolean }[];
   screens: string[];
+  kind: "app" | "platform";
   legal: { privacy: string | null; delete: string | null; privacyNote?: string };
 };
 
@@ -87,6 +88,32 @@ export const isAvailable = (p: Product): boolean =>
 
 export const shipped = products.filter((p) => !p.notBuilt);
 export const unbuilt = products.filter((p) => p.notBuilt);
+
+/** Consumer apps versus platforms and tools. An explicit field, because the
+ *  first version inferred this by matching names against profile.json and
+ *  "DwarSeva — Societies" matched "DwarSeva Property" on the shared first word.
+ *  It was classified as an app, filtered out of /work, and was in no product
+ *  list either — the product disappeared from the site entirely. Never infer a
+ *  category you can just store. */
+export type Kind = "app" | "platform";
+
+/** Order by how real a thing is: something you can install or open today, then
+ *  a beta you can join, then work in progress, then an idea. Derived from the
+ *  platform states rather than typed, so it cannot drift from the table. */
+export function rank(p: Product): number {
+  const states = Object.values(p.platforms).filter(Boolean).map((v) => v!.state);
+  if (states.includes("live")) return 0;
+  if (states.includes("beta")) return 1;
+  if (p.notBuilt) return 3;
+  return 2;
+}
+export const byRank = (a: Product, b: Product) => rank(a) - rank(b) || a.name.localeCompare(b.name);
+export const RANK_LABEL = [
+  "Available now",
+  "Open beta — you can join",
+  "Built, not released yet",
+  "In design — no code yet",
+];
 
 /** Model → the token pair. Deliberately no "good"/"bad" ordering: a
  *  subscription is not a warning and ad-supported is not a confession. */

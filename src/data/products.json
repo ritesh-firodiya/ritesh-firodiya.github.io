@@ -80,7 +80,8 @@
       "legal": {
         "privacy": "/legal/charades/privacy-policy.html",
         "delete": null
-      }
+      },
+      "kind": "app"
     },
     {
       "slug": "tic-tac-toe",
@@ -172,7 +173,8 @@
       "legal": {
         "privacy": "/legal/tictactoe/privacy-policy.html",
         "delete": null
-      }
+      },
+      "kind": "app"
     },
     {
       "slug": "aakalan",
@@ -268,7 +270,8 @@
       "legal": {
         "privacy": "/legal/aakalan/privacy-policy.html",
         "delete": "/legal/aakalan/delete-account.html"
-      }
+      },
+      "kind": "app"
     },
     {
       "slug": "imposter",
@@ -339,7 +342,8 @@
       "legal": {
         "privacy": "/legal/imposter/privacy-policy.html",
         "delete": null
-      }
+      },
+      "kind": "app"
     },
     {
       "slug": "askcal",
@@ -432,7 +436,8 @@
       "legal": {
         "privacy": "/legal/askcal/privacy-policy.html",
         "delete": "/legal/askcal/delete-account.html"
-      }
+      },
+      "kind": "app"
     },
     {
       "slug": "chitragupt",
@@ -533,6 +538,59 @@
         "privacy": "https://chitragupt.ai/legal/privacy",
         "delete": "/legal/chitragupt/delete-account.html",
         "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
+      },
+      "kind": "app"
+    },
+    {
+      "slug": "learning-platform",
+      "name": "Learning Platform",
+      "fullName": "Learning Platform",
+      "tagline": "An LMS where courses are code.",
+      "blurb": "Courses are authored as markdown in a Git repository and synced into the product on push, so content review happens in pull requests rather than in a CMS.",
+      "sourceOfTruth": "private",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Built for a client rather than sold directly, so there is no public price.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "live",
+          "label": "Open the demo",
+          "url": "https://learning-platform-web-gamma.vercel.app/",
+          "note": ""
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Apollo GraphQL",
+        "Next.js",
+        "Prisma",
+        "PostgreSQL"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Courses live in Git",
+          "body": "Authored as markdown and synced on push, so a content change is a pull request."
+        },
+        {
+          "icon": "check",
+          "title": "Review before publish",
+          "body": "Content goes through the same review as code, because it is code."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
       }
     },
     {
@@ -577,7 +635,8 @@
       "legal": {
         "privacy": null,
         "delete": null
-      }
+      },
+      "kind": "app"
     },
     {
       "slug": "dwarseva-property",
@@ -618,6 +677,201 @@
         "PostgreSQL"
       ],
       "features": [],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "kind": "app"
+    },
+    {
+      "slug": "scrvio",
+      "name": "Scrvio",
+      "fullName": "Scrvio",
+      "tagline": "Privacy-first browser screen recorder.",
+      "blurb": "Record screen, camera and audio from the browser with no install and no sign-up, then keep the recordings in your own S3 bucket rather than a vendor's cloud.",
+      "sourceOfTruth": "ventures/scrvio",
+      "kind": "platform",
+      "model": "subscription",
+      "price": "Not priced yet",
+      "priceNote": "per-seat, planned",
+      "modelDetail": "Planned as per-seat billing through Stripe. Nothing is charged yet — it is still in build.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Not open to sign-ups yet"
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Next.js",
+        "PostgreSQL",
+        "Prisma",
+        "Stripe",
+        "S3"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Your bucket, not ours",
+          "body": "Recordings land in your own S3, which is the whole point."
+        },
+        {
+          "icon": "check",
+          "title": "No install, no sign-up",
+          "body": "It records from the browser."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      }
+    },
+    {
+      "slug": "trunk",
+      "name": "Trunk",
+      "fullName": "Trunk",
+      "tagline": "Product development where every change is a delta.",
+      "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
+      "sourceOfTruth": "ventures/trunk",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Not decided. It is in build and not open.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Not open yet"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Turborepo"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "One record per change",
+          "body": "Spec, flag, signal and doc all hang off the same delta."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      }
+    },
+    {
+      "slug": "dwarseva-societies",
+      "name": "DwarSeva Societies",
+      "fullName": "DwarSeva — Societies",
+      "tagline": "Approval and society management.",
+      "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
+      "sourceOfTruth": "ventures/dwarseva",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Sold to societies rather than to individuals, so there is no consumer price.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Not open yet"
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Next.js",
+        "GraphQL",
+        "Prisma",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Visitors, events, dues, staff",
+          "body": "The four things a society actually runs on, in one system."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      }
+    },
+    {
+      "slug": "tradx",
+      "name": "tradx",
+      "fullName": "tradx",
+      "tagline": "India-focused trading research and paper trading.",
+      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
+      "sourceOfTruth": "trading/tradx",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Internal. Not sold.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Internal, not open"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Prisma",
+        "PostgreSQL",
+        "Docker",
+        "TypeScript"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Paper-only by default",
+          "body": "Live routing is gated behind a flag, deliberately."
+        }
+      ],
       "permissions": [],
       "screens": [],
       "legal": {

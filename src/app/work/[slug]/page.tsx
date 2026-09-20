@@ -26,7 +26,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <main id="main">
         <article>
           <div className="mx-auto max-w-page px-gutter pb-12 pt-section">
-            <Link href="/work" className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">← Work</Link>
+            <Link href="/products" className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">← Work</Link>
             <div className="mt-7 flex flex-wrap items-center gap-2">
               <StatePill state="live">{c.status}</StatePill>
               <span className="rounded-pill bg-paper-2 px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">Solo build</span>

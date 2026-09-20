@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const NAV = [
   { href: "/products", label: "Products" },
-  { href: "/work", label: "Work" },
   { href: "/resume", label: "Résumé" },
 ] as const;
 
@@ -48,7 +47,6 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-page flex-wrap items-center gap-x-6 gap-y-3 px-gutter py-7 font-mono text-xs2 text-ink-inv/55">
         <span>© {new Date().getFullYear()} Ritesh Firodiya</span>
         <Link href="/products" className="link-u hover:text-ink-inv">Products</Link>
-        <Link href="/work" className="link-u hover:text-ink-inv">Work</Link>
         <Link href="/legal" className="link-u hover:text-ink-inv">Legal</Link>
         <Link href="/support" className="link-u hover:text-ink-inv">Support</Link>
         <Link href="/#contact" className="link-u ml-auto hover:text-ink-inv">Get in touch →</Link>

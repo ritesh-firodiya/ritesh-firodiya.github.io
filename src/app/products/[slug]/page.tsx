@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
-import { products, bySlug, mediaFor, screensFor, designsGeneratedOn, MODEL, type Product, type Platform } from "@/lib/products";
+import { IconGit, IconDesign, IconLive, IconAndroid, IconApple } from "@/components/icons";
+import {
+  products, bySlug, mediaFor, screensFor, MODEL, type Product,
+} from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 
 export function generateStaticParams() {
@@ -14,136 +17,56 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = bySlug(slug);
   if (!p) return {};
-  const price = p.price ? ` ${p.price}.` : "";
   return {
     title: p.name,
-    description: `${p.tagline} ${MODEL[p.model].label}.${price} ${p.blurb}`.trim(),
+    description: `${p.tagline} ${MODEL[p.model].label}${p.price ? `, ${p.price}` : ""}. ${p.blurb}`.trim(),
   };
 }
 
-const PLATFORM_LABEL: Record<string, string> = { web: "Web", ios: "iOS", android: "Android" };
+/* One row of small links, and only the ones that exist. A disabled icon in a
+   nav row is noise; what is genuinely unavailable is said in words underneath,
+   once, where it can carry the reason. */
+function LinkRow({ p, hasDesigns }: { p: Product; hasDesigns: boolean }) {
+  const web = p.platforms.web, ios = p.platforms.ios, android = p.platforms.android;
+  const open = (v?: { state: string; url: string | null }) =>
+    v && v.url && (v.state === "live" || v.state === "beta") ? v.url : null;
 
-/* One Get block, always the same order, and an unavailable platform renders
-   DISABLED WITH THE REASON rather than hidden. "Not on iOS yet" is
-   information; a missing button is a dead end. */
-function GetBlock({ p }: { p: Product }) {
-  const entries = Object.entries(p.platforms).filter(([, v]) => v) as [string, Platform][];
-  const order = ["web", "ios", "android"];
-  entries.sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
-  const anyOpen = entries.some(([, v]) => v.state === "live" || v.state === "beta");
+  const links = [
+    p.repo ? { href: p.repo, label: "Source", Icon: IconGit, external: true } : null,
+    hasDesigns ? { href: `/products/${p.slug}/designs/`, label: "Designs", Icon: IconDesign, external: false } : null,
+    open(web) ? { href: open(web)!, label: "Live", Icon: IconLive, external: true } : null,
+    open(android) ? { href: open(android)!, label: "Google Play", Icon: IconAndroid, external: true } : null,
+    open(ios) ? { href: open(ios)!, label: ios!.state === "beta" ? "TestFlight" : "App Store", Icon: IconApple, external: true } : null,
+  ].filter(Boolean) as { href: string; label: string; Icon: typeof IconGit; external: boolean }[];
 
-  return (
-    <div id="get" className="mt-6 scroll-mt-24 rounded-card border border-line bg-surface p-6 shadow-lift">
-      <Label>Get the app</Label>
-      <div className={`mt-4 grid gap-3 ${entries.length > 2 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
-        {entries.map(([key, v]) => {
-          const open = v.state === "live" || v.state === "beta";
-          const inner = (
-            <span className="min-w-0">
-              <span className={`block font-mono text-label uppercase tracking-label ${open ? "opacity-70" : "text-ink-3"}`}>
-                {PLATFORM_LABEL[key]}
-              </span>
-              <span className="block truncate text-small">{v.label}</span>
-            </span>
-          );
-          return open ? (
-            <Link
-              key={key}
-              href={v.url ?? "#"}
-              className="flex items-center gap-3 rounded-pill bg-ink px-5 py-3 font-medium text-ink-inv transition hover:bg-accent"
-            >
-              {inner}
-            </Link>
-          ) : (
-            <div
-              key={key}
-              aria-disabled="true"
-              title={v.note || v.label}
-              className="btn-off flex items-center gap-3 rounded-pill border border-line-2 bg-paper-2 px-5 py-3 font-medium text-ink-2"
-            >
-              {inner}
-            </div>
-          );
-        })}
-      </div>
-      {!anyOpen && p.unreleasedNote && (
-        <p className="mt-5 max-w-prose text-small text-ink-2">{p.unreleasedNote}</p>
-      )}
-      {anyOpen ? (
-        <p className="mt-4 font-mono text-xs2 text-ink-3">
-          One short link sends a phone to the right one of these:{" "}
-          <Link href={`/go/${p.slug}/`} className="link-u text-accent">/go/{p.slug}</Link>
-        </p>
-      ) : (
-        <Link
-          href="/support"
-          className="mt-5 inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent"
-        >
-          Email me when it opens
-        </Link>
-      )}
-    </div>
-  );
-}
-
-/* The model block. Above the Get block, never below it. The wash is the model's
-   own token so the page is colour-coded by what it charges, not by how good
-   that is. */
-function ModelBlock({ p }: { p: Product }) {
-  const m = MODEL[p.model];
-  const border =
-    p.model === "free-ads" ? "border-m-ads/30" :
-    p.model === "subscription" ? "border-m-sub/30" :
-    p.model === "one-time" ? "border-m-once/30" :
-    p.model === "per-period" ? "border-m-year/30" : "border-line-2";
-  const solid =
-    p.model === "free-ads" ? "bg-m-ads" :
-    p.model === "subscription" ? "bg-m-sub" :
-    p.model === "one-time" ? "bg-m-once" :
-    p.model === "per-period" ? "bg-m-year" : "bg-ink";
+  const shut = (["ios", "android", "web"] as const)
+    .map((k) => [k, p.platforms[k]] as const)
+    .filter(([, v]) => v && !open(v))
+    .map(([k, v]) => `${k === "ios" ? "iOS" : k === "android" ? "Android" : "Web"}: ${v!.note || v!.label}`);
 
   return (
-    <div className={`mt-10 rounded-card border ${border} ${m.bg} p-7`}>
-      <div className="flex flex-wrap items-center gap-3">
-        <span className={`rounded-pill ${solid} px-3 py-1 font-mono text-label uppercase tracking-label text-ink-inv`}>
-          {m.label}
-        </span>
-        {p.priceNote && (
-          <span className={`font-mono text-xs2 uppercase tracking-label ${m.fg}`}>{p.priceNote}</span>
-        )}
-      </div>
-
-      {p.price && (
-        <p className="nums mt-5 font-display text-d2 font-semibold text-ink">{p.price}</p>
-      )}
-      <p className="mt-4 max-w-prose text-body text-ink-2">{p.modelDetail}</p>
-
-      {p.tiers && p.tiers.length > 0 && (
-        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {p.tiers.map((t) => (
-            <div key={t.label} className={`rounded-card border ${border} bg-surface p-6`}>
-              <Label>{t.label}</Label>
-              <p className="nums mt-2 font-display text-d2 font-semibold">
-                {t.amount}
-                <span className="font-sans text-lead font-normal text-ink-3">{t.unit}</span>
-              </p>
-              <p className="mt-2 text-small text-ink-2">{t.note}</p>
-            </div>
-          ))}
+    <>
+      {links.length > 0 && (
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          {links.map((l) =>
+            l.external ? (
+              <a key={l.label} href={l.href}
+                 className="inline-flex items-center gap-2 rounded-pill border border-line-2 bg-surface px-3 py-1.5 text-small font-medium transition hover:border-accent hover:text-accent">
+                <l.Icon /> {l.label}
+              </a>
+            ) : (
+              <Link key={l.label} href={l.href}
+                    className="inline-flex items-center gap-2 rounded-pill border border-line-2 bg-surface px-3 py-1.5 text-small font-medium transition hover:border-accent hover:text-accent">
+                <l.Icon /> {l.label}
+              </Link>
+            ),
+          )}
         </div>
       )}
-
-      {p.adSurfaces.length > 0 && (
-        <dl className="mt-7 grid gap-px overflow-hidden rounded-card border border-m-ads/20 bg-m-ads/20 sm:grid-cols-3">
-          {p.adSurfaces.map((a) => (
-            <div key={a.kind} className="bg-surface px-5 py-4">
-              <dt className="font-mono text-label uppercase tracking-label text-ink-3">{a.kind}</dt>
-              <dd className={`mt-1.5 text-small ${a.absent ? "text-ink-3" : "text-ink"}`}>{a.where}</dd>
-            </div>
-          ))}
-        </dl>
+      {shut.length > 0 && (
+        <p className="mt-3 font-mono text-xs2 text-ink-3">Not available — {shut.join(" · ")}</p>
       )}
-    </div>
+    </>
   );
 }
 
@@ -152,238 +75,166 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const p = bySlug(slug);
   if (!p) notFound();
 
-  const others = products.filter((o) => o.slug !== p.slug).slice(0, 4);
   const m = mediaFor(p.slug);
-  const study = studyBySlug(p.slug);
   const screens = screensFor(p.slug);
+  const study = studyBySlug(p.slug);
+  const others = products.filter((o) => o.slug !== p.slug).slice(0, 4);
 
   return (
     <>
-      <SiteHeader active="/products" cta={{ href: "#get", label: "Get the app" }} />
+      <SiteHeader active="/products" />
       <main id="main">
-        <section className="grain relative overflow-hidden border-b border-line">
-          <div className="mx-auto max-w-page px-gutter pb-14 pt-section">
-            <Link href="/products" className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">
-              ← All products
-            </Link>
+        {/* 1 · icon, name, description, links */}
+        <section className="mx-auto max-w-page px-gutter pb-section pt-section">
+          <Link href="/products" className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">
+            ← All products
+          </Link>
 
-            <div className="mt-7 flex flex-wrap items-start gap-7">
-              {m.icon ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={m.icon}
-                  alt={`${p.name} app icon`}
-                  width={120}
-                  height={120}
-                  className="h-[120px] w-[120px] shrink-0 rounded-card border border-line"
-                />
-              ) : (
-                <span className="shot-ph h-[120px] w-[120px] shrink-0 rounded-card font-mono text-xs2 text-ink-3">
-                  No icon yet
-                </span>
-              )}
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  {Object.entries(p.platforms)
-                    .filter(([, v]) => v && (v.state === "live" || v.state === "beta"))
-                    .map(([k, v]) => (
-                      <StatePill key={k} state={v!.state}>
-                        {v!.state === "live" ? `Live · ${PLATFORM_LABEL[k]}` : `${PLATFORM_LABEL[k]} beta`}
-                      </StatePill>
-                    ))}
-                  {p.notBuilt && <StatePill state="none">In design — no code yet</StatePill>}
-                </div>
-                <h1 className="mt-4 max-w-[16ch] font-display text-d1 font-semibold">{p.name}</h1>
-                <p className="mt-3 max-w-measure font-display text-lead italic text-ink-2">{p.tagline}</p>
-                <p className="mt-3 max-w-measure text-body text-ink-2">{p.blurb}</p>
-              </div>
-            </div>
-
-            <ModelBlock p={p} />
-            <GetBlock p={p} />
-
-            {(p.version || p.offline || p.analytics) && (
-              <dl className="mt-6 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-                {p.version && (
-                  <div className="bg-surface px-5 py-4"><dt className="font-mono text-label uppercase tracking-label text-ink-3">Version</dt><dd className="nums mt-1.5 font-display text-h3 font-semibold">{p.version}</dd></div>
-                )}
-                <div className="bg-surface px-5 py-4"><dt className="font-mono text-label uppercase tracking-label text-ink-3">Ads</dt><dd className="mt-1.5 font-display text-h3 font-semibold">{p.ads ?? "—"}</dd></div>
-                <div className="bg-surface px-5 py-4"><dt className="font-mono text-label uppercase tracking-label text-ink-3">Offline</dt><dd className="mt-1.5 font-display text-h3 font-semibold">{p.offline ?? "—"}</dd></div>
-                <div className="bg-surface px-5 py-4"><dt className="font-mono text-label uppercase tracking-label text-ink-3">Analytics</dt><dd className="mt-1.5 font-display text-h3 font-semibold">{p.analytics ?? "—"}</dd></div>
-              </dl>
+          <div className="mt-6 flex flex-wrap items-start gap-6">
+            {m.icon ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={m.icon} alt={`${p.name} icon`} width={88} height={88}
+                   className="h-[88px] w-[88px] shrink-0 rounded-card border border-line" />
+            ) : (
+              <span className="shot-ph h-[88px] w-[88px] shrink-0 rounded-card font-mono text-xs2 text-ink-3">
+                No icon
+              </span>
             )}
-            {p.analyticsNote && <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">{p.analyticsNote}</p>}
+
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <ModelPill model={p.model} />
+                {p.price && <span className="nums text-small font-medium">{p.price}</span>}
+                {p.priceNote && <span className="text-xs2 text-ink-3">{p.priceNote}</span>}
+                {Object.entries(p.platforms)
+                  .filter(([, v]) => v && v.state === "live")
+                  .slice(0, 1)
+                  .map(([k, v]) => <StatePill key={k} state={v!.state}>Live</StatePill>)}
+              </div>
+              <h1 className="mt-3 font-display text-d1 font-semibold">{p.name}</h1>
+              <p className="mt-2 max-w-measure font-display text-lead italic text-ink-2">{p.tagline}</p>
+              <p className="mt-3 max-w-prose text-body text-ink-2">{p.blurb}</p>
+              <LinkRow p={p} hasDesigns={screens.length > 0} />
+            </div>
           </div>
         </section>
 
-        {(m.shots.length > 0 || p.screens.length > 0) && (
-          <section className="border-t border-line bg-paper-2">
-            <div className="mx-auto max-w-page px-gutter py-section">
-              <h2 className="font-display text-h2 font-semibold">Screens</h2>
-              <div className="rail mt-7 flex gap-6 overflow-x-auto pb-4">
-                {m.shots.length > 0
-                  ? m.shots.map((s) =>
-                      m.kind === "web" ? (
-                        <div key={s.src} className="browser w-full max-w-3xl shrink-0">
-                          <div className="browser-bar">
-                            <span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" />
-                            <span className="ml-3 font-mono text-xs2 text-ink-3">chitragupt.ai</span>
-                          </div>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="block w-full" />
-                        </div>
-                      ) : (
-                        <div key={s.src} className="device w-[210px] shrink-0">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="device-screen w-full" />
-                        </div>
-                      ),
-                    )
-                  : p.screens.map((s) => (
-                      <div key={s} className="device w-[210px] shrink-0">
-                        <div className="device-screen shot-ph aspect-[9/19.5]">
-                          <p className="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">{s}</p>
-                        </div>
-                      </div>
-                    ))}
-              </div>
-              {m.kind === "web" && m.shots.length > 0 && (
-                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
-                  This is the product&rsquo;s own public card, not an in-app capture. Screens behind
-                  the sign-in are not published — a screenshot of a signed-in session shows someone&rsquo;s
-                  account, and that is not mine to publish.
-                </p>
-              )}
-              {p.model === "free-ads" && (
-                <p className="mt-3 max-w-prose font-mono text-xs2 text-ink-3">
-                  The banner appears in the first screenshot on purpose — a store screenshot that
-                  crops the ad out is a small lie.
-                </p>
-              )}
+        {/* 2 · tech */}
+        {p.stack.length > 0 && (
+          <section className="border-y border-line bg-paper-2">
+            <div className="mx-auto flex max-w-page flex-wrap items-baseline gap-x-8 gap-y-3 px-gutter py-6">
+              <Label>Tech</Label>
+              <ul className="flex flex-wrap gap-2">
+                {p.stack.map((s) => (
+                  <li key={s} className="rounded-pill border border-line-2 bg-surface px-2.5 py-1 font-mono text-xs2 text-ink-2">
+                    {s}
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         )}
 
-        {(p.features.length > 0 || p.permissions.length > 0) && (
+        {/* 3 · screenshots */}
+        {m.shots.length > 0 && (
           <section className="mx-auto max-w-page px-gutter py-section">
-            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-              {p.features.length > 0 && (
-                <div>
-                  <h2 className="font-display text-d2 font-semibold">What it does</h2>
-                  <ul className="mt-6 space-y-5">
-                    {p.features.map((f) => (
-                      <li key={f.title}>
-                        <h3 className="font-display text-h3 font-semibold">{f.title}</h3>
-                        <p className="mt-1.5 max-w-prose text-body text-ink-2">{f.body}</p>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-7 font-mono text-xs2 text-ink-3">{p.stack.join(" · ")}</p>
-                </div>
-              )}
-              {p.permissions.length > 0 && (
-                <div>
-                  <h2 className="font-display text-d2 font-semibold">Permissions</h2>
-                  <dl className="mt-6 divide-y divide-line border-y border-line">
-                    {p.permissions.map((perm) => (
-                      <div key={perm.name} className="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-5">
-                        <dt className={`font-medium ${perm.absent ? "text-ink-3" : ""}`}>{perm.name}</dt>
-                        <dd className="text-small text-ink-2">{perm.why}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  {/* These go straight to the document. Sending someone who
-                      wants a privacy policy to an index of privacy policies is
-                      one click of friction for no reason — and store reviewers
-                      follow these links too. */}
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    {p.legal.privacy && (
-                      <a href={p.legal.privacy} className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Privacy policy</a>
-                    )}
-                    {p.legal.delete && (
-                      <a href={p.legal.delete} className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Delete my account</a>
-                    )}
-                    <Link href="/support" className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Support</Link>
+            <h2 className="font-display text-h2 font-semibold">Screenshots</h2>
+            <div className="rail mt-5 flex gap-5 overflow-x-auto pb-3">
+              {m.shots.map((s) =>
+                m.kind === "web" ? (
+                  <div key={s.src} className="browser w-full max-w-3xl shrink-0">
+                    <div className="browser-bar">
+                      <span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" />
+                    </div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="block w-full" />
                   </div>
-                </div>
+                ) : (
+                  <div key={s.src} className="device w-[196px] shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="device-screen w-full" />
+                  </div>
+                ),
               )}
             </div>
+            {m.kind === "web" && (
+              <p className="mt-2 font-mono text-xs2 text-ink-3">
+                The product&rsquo;s own public card. Screens behind the sign-in are not published.
+              </p>
+            )}
           </section>
         )}
 
-
-        {study && (
+        {/* 4 · designs, as a link rather than 80 embedded frames */}
+        {screens.length > 0 && (
           <section className="border-t border-line bg-paper-2">
-            <div className="mx-auto max-w-page px-gutter py-section">
-              <Label>Written up in full</Label>
-              <h2 className="mt-2 font-display text-h2 font-semibold">How {p.name} was built</h2>
-              <p className="mt-2 max-w-prose text-small text-ink-2">
-                The problem, the architecture, and the decisions worth defending.
-              </p>
-              <Link
-                href={`/work/${study.slug}/`}
-                className="mt-4 inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent"
-              >
-                Read the case study →
+            <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-gutter py-6">
+              <div>
+                <Label>Designs · {screens.length} screens</Label>
+                <p className="mt-1 max-w-prose text-small text-ink-2">
+                  The HTML wireframes this was built from, rendering live.
+                </p>
+              </div>
+              <Link href={`/products/${p.slug}/designs/`}
+                    className="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+                <IconDesign /> Browse the design set →
               </Link>
             </div>
           </section>
         )}
 
-        {screens.length > 0 && (
-          <section className="border-t border-line">
-            <div className="mx-auto max-w-page px-gutter py-section">
-              <div className="flex flex-wrap items-baseline justify-between gap-3">
-                <h2 className="font-display text-h2 font-semibold">
-                  The design set · {screens.length} screens
-                </h2>
-                <p className="font-mono text-xs2 text-ink-3">
-                  live HTML, not screenshots · synced {designsGeneratedOn}
-                </p>
-              </div>
-              <p className="mt-2 max-w-prose text-small text-ink-2">
-                Every screen was drawn in HTML before the app existed. These are those files,
-                rendering for real — scroll one, or open it full size.
-              </p>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {screens.map((s) => (
-                  <figure key={s.path} className="min-w-0">
-                    <div className="overflow-hidden rounded-card border border-line bg-surface">
-                      <iframe
-                        src={s.path}
-                        title={s.title}
-                        loading="lazy"
-                        className="h-[420px] w-full border-0"
-                      />
-                    </div>
-                    <figcaption className="mt-2 flex items-baseline gap-2">
-                      <a href={s.path} className="link-u truncate text-small font-medium hover:text-accent">
-                        {s.title}
-                      </a>
-                      {s.area && (
-                        <span className="shrink-0 font-mono text-[10px] uppercase tracking-label text-ink-3">
-                          {s.area}
-                        </span>
-                      )}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
+        {/* 5 · the quieter facts */}
+        {(p.permissions.length > 0 || p.analytics || study) && (
+          <section className="mx-auto max-w-page px-gutter py-section">
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+              {p.permissions.length > 0 && (
+                <div>
+                  <h2 className="font-display text-h2 font-semibold">Permissions &amp; data</h2>
+                  <dl className="mt-4 divide-y divide-line border-y border-line">
+                    {p.permissions.map((perm) => (
+                      <div key={perm.name} className="grid gap-1 py-3 sm:grid-cols-[9rem_1fr] sm:gap-5">
+                        <dt className={`text-small font-medium ${perm.absent ? "text-ink-3" : ""}`}>{perm.name}</dt>
+                        <dd className="text-small text-ink-2">{perm.why}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {p.analyticsNote && <p className="mt-3 max-w-prose text-small text-ink-2">{p.analyticsNote}</p>}
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {p.legal.privacy && (
+                      <a href={p.legal.privacy} className="link-u text-small font-medium text-accent">Privacy policy</a>
+                    )}
+                    {p.legal.delete && (
+                      <a href={p.legal.delete} className="link-u text-small font-medium text-accent">Delete my account</a>
+                    )}
+                  </div>
+                </div>
+              )}
+              {study && (
+                <div>
+                  <h2 className="font-display text-h2 font-semibold">Written up in full</h2>
+                  <p className="mt-3 max-w-prose text-small text-ink-2">
+                    The problem, the architecture, and the decisions worth defending.
+                  </p>
+                  <Link href={`/work/${study.slug}/`}
+                        className="mt-4 inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">
+                    Read the case study →
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
         )}
 
         <section className="border-t border-line">
-          <div className="mx-auto max-w-page px-gutter py-section">
-            <h2 className="font-display text-h2 font-semibold">More products</h2>
-            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto max-w-page px-gutter py-6">
+            <Label>More products</Label>
+            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
               {others.map((o) => (
-                <Link key={o.slug} href={`/products/${o.slug}/`} className="group rounded-card border border-line bg-surface p-4 transition hover:border-accent/40">
-                  <span className="block truncate font-semibold group-hover:text-accent">{o.name}</span>
-                  <span className="mt-2 block"><ModelPill model={o.model} /></span>
-                  {o.price && <span className="nums mt-2 block text-small text-ink-2">{o.price}</span>}
+                <Link key={o.slug} href={`/products/${o.slug}/`} className="link-u text-small font-medium hover:text-accent">
+                  {o.name}
                 </Link>
               ))}
+              <Link href="/products" className="link-u ml-auto text-small font-medium text-accent">All 13 →</Link>
             </div>
           </div>
         </section>

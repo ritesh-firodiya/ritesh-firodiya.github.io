@@ -54,6 +54,8 @@ export type Product = {
   permissions: { name: string; why: string; absent?: boolean }[];
   screens: string[];
   kind: "app" | "platform";
+  /** Public source, where one exists. Null while a product is commercial. */
+  repo: string | null;
   legal: { privacy: string | null; delete: string | null; privacyNote?: string };
 };
 

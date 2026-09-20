@@ -81,7 +81,8 @@
         "privacy": "/legal/charades/privacy-policy.html",
         "delete": null
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "tic-tac-toe",
@@ -174,7 +175,8 @@
         "privacy": "/legal/tictactoe/privacy-policy.html",
         "delete": null
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "aakalan",
@@ -271,7 +273,8 @@
         "privacy": "/legal/aakalan/privacy-policy.html",
         "delete": "/legal/aakalan/delete-account.html"
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "imposter",
@@ -343,7 +346,8 @@
         "privacy": "/legal/imposter/privacy-policy.html",
         "delete": null
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "askcal",
@@ -437,7 +441,8 @@
         "privacy": "/legal/askcal/privacy-policy.html",
         "delete": "/legal/askcal/delete-account.html"
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "chitragupt",
@@ -539,7 +544,8 @@
         "delete": "/legal/chitragupt/delete-account.html",
         "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "learning-platform",
@@ -591,7 +597,8 @@
       "legal": {
         "privacy": null,
         "delete": null
-      }
+      },
+      "repo": null
     },
     {
       "slug": "plan-kid",
@@ -636,7 +643,8 @@
         "privacy": null,
         "delete": null
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "dwarseva-property",
@@ -683,7 +691,8 @@
         "privacy": null,
         "delete": null
       },
-      "kind": "app"
+      "kind": "app",
+      "repo": null
     },
     {
       "slug": "scrvio",
@@ -736,7 +745,8 @@
       "legal": {
         "privacy": null,
         "delete": null
-      }
+      },
+      "repo": null
     },
     {
       "slug": "trunk",
@@ -782,7 +792,8 @@
       "legal": {
         "privacy": null,
         "delete": null
-      }
+      },
+      "repo": null
     },
     {
       "slug": "dwarseva-societies",
@@ -830,7 +841,8 @@
       "legal": {
         "privacy": null,
         "delete": null
-      }
+      },
+      "repo": null
     },
     {
       "slug": "tradx",
@@ -877,7 +889,8 @@
       "legal": {
         "privacy": null,
         "delete": null
-      }
+      },
+      "repo": null
     }
   ]
 }

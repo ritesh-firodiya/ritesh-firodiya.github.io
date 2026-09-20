@@ -89,6 +89,20 @@ Two independent scales carry meaning and must not be conflated:
 `--color-m-*` is the monetization model, `--color-live|beta|build|design` is the
 release state. No model colour reads as a warning.
 
+## Legal documents
+
+`public/legal/` holds the privacy policies, deletion pages and terms for every
+app. This repo is their home now — they moved off `ritvi-apps.github.io` in
+Sep 2026.
+
+**`ritvi-apps/legal` must never be deleted, and Pages must stay enabled on it.**
+Six shipped app source files hardcode the old URLs and installed builds never
+update, and two live Play listings use them as their privacy-policy URL. A 404
+there is grounds for an app to be pulled. That repo is now a set of redirect
+pages, each keeping its original path and carrying a canonical to here.
+
+Edit the documents here. Nothing syncs them back.
+
 ## Gotchas
 
 - **`public/app-ads.txt` is live AdMob revenue.** AdMob only honours it on the
@@ -100,6 +114,9 @@ release state. No model colour reads as a warning.
 - `trailingSlash: true`, so internal links are written `/products/charades/`.
 - pnpm 12 reads settings from `pnpm-workspace.yaml`, not package.json's `pnpm`
   field. The build-script allowlist key is `allowBuilds`.
+- `/legal/<app>/<doc>.html` are static files in `public/`, deliberately not Next
+  routes — the path suffix stays byte-identical to the old URL, so the redirect
+  is a pure host swap and no legal text passes through a re-author.
 - The design set in `.context/designs/` is the spec. **When a page and its
   wireframe disagree, the wireframe wins** and the page is corrected.
 

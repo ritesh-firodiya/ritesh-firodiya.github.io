@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imposter — settings</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+<div class="breadcrumb"><div class="breadcrumb-inner">
+  <span class="breadcrumb-label">Mobile · <span class="text-ink-2">/settings</span> ›</span>
+  <a href="index.html" class="breadcrumb-chip is-current">Settings</a>
+  <a href="how-to-play.html" class="breadcrumb-chip">How to play</a>
+  <a href="../index.html" class="breadcrumb-chip ml-auto">← All routes</a>
+</div></div>
+
+<div class="screen-layout">
+  <aside class="shrink-0 w-[264px] self-start my-5 bg-surface rounded-lg border border-line shadow p-[18px]">
+    <p class="text-base font-bold mb-3">Settings</p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p><b class="text-ink">The promise is repeated at the top, not buried.</b> Settings is where a suspicious user goes looking for the subscription they think they were tricked into. Finding the opposite, stated plainly, is worth more than any feature on this screen.</p>
+      <p><b class="text-ink">"You own Imposter Pro · Bought 4 Sep 2026" is a deliberate receipt.</b> The recurring complaint in competitor reviews is a lifetime purchase that silently re-locks; a visible, dated ownership state is the cheapest possible answer to it.</p>
+      <p><b class="text-ink">Restore Purchases must stay reachable without scrolling past the fold on any device.</b> App Store review requires it for a non-consumable, and it is the first thing a locked-out payer looks for.</p>
+      <p><b class="text-ink">There is no theme control, because there is no theme.</b> Every screen is flooded — black outside a round, night inside one, role value at the payoff. A "Match device" row would be a switch with nothing behind it, and rule 9 says a control that cannot be operated is a sentence. Splash, Fakeit and Imposter Up each ship exactly one look too.</p>
+      <p>Sound and haptics are device-local and never synced — the person hosting is not the person who set the phone up.</p>
+      <p>No notifications section, because the app sends none. A party game has no business pushing anything.</p>
+    </div>
+  </aside>
+
+  <div class="phone phone--flood phone--brand">
+    <div class="flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 px-3.5 pt-1.5 pb-2.5">
+      <a href="../setup/index.html" class="w-11 h-11 shrink-0 rounded-pill grid place-items-center bg-sunken text-ink-2"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+      <h2 class="text-h2 font-black">Settings</h2>
+    </div>
+
+    <div class="px-[18px] space-y-4">
+
+      <div class="flex gap-2.5 items-start p-3 rounded-lg border border-success bg-success-bg">
+        <i data-lucide="shield-check" class="w-5 h-5 mt-0.5 shrink-0 text-success-fg"></i>
+        <div>
+          <p class="text-body font-black text-success-fg tracking-[-0.01em]">No subscription. No ads. Ever.</p>
+          <p class="mt-0.5 text-xs leading-relaxed text-ink-2">You own Imposter Pro · bought 4 Sep 2026. Nothing renews and nothing expires.</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-2xs font-bold uppercase tracking-label text-ink-3 mb-2">Feel</p>
+        <div class="rounded-3xl overflow-hidden border border-line">
+          <div class="flex items-center gap-2.5 px-3 py-2.5 bg-surface">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-sunken text-ink-2"><i data-lucide="vibrate" class="w-[18px] h-[18px]"></i></div>
+            <p class="flex-1 text-body font-black">Haptics</p>
+            <button class="relative w-11 h-[26px] rounded-pill shrink-0 bg-accent-500 toggle is-on"></button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-2xs font-bold uppercase tracking-label text-ink-3 mb-2">Game</p>
+        <div class="rounded-3xl overflow-hidden border border-line">
+          <a href="how-to-play.html" class="flex items-center gap-2.5 px-3 py-2.5 bg-surface border-b border-line">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-surface text-accent-300"><i data-lucide="book-open" class="w-[18px] h-[18px]"></i></div>
+            <p class="flex-1 text-body font-black">How to play</p>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </a>
+          <button class="w-full flex items-center gap-2.5 px-3 py-2.5 bg-surface">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-sunken text-ink-2"><i data-lucide="users" class="w-[18px] h-[18px]"></i></div>
+            <div class="flex-1 min-w-0 text-left">
+              <p class="text-body font-black">Saved players</p>
+              <p class="mt-0.5 text-xs text-ink-3">Riya, Arjun, Meera, Kabir, Sana</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-2xs font-bold uppercase tracking-label text-ink-3 mb-2">Purchase</p>
+        <div class="rounded-3xl overflow-hidden border border-line">
+          <a href="../store/paywall.html#restore-failed" class="flex items-center gap-2.5 px-3 py-2.5 bg-surface border-b border-line">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-surface text-accent-300"><i data-lucide="rotate-ccw" class="w-[18px] h-[18px]"></i></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-body font-black">Restore purchases</p>
+              <p class="mt-0.5 text-xs text-ink-3">New phone? Reinstalled? Tap here.</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </a>
+          <a href="../store/paywall.html" class="flex items-center gap-2.5 px-3 py-2.5 bg-surface">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-sunken text-ink-2"><i data-lucide="package" class="w-[18px] h-[18px]"></i></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-body font-black">What you own</p>
+              <p class="mt-0.5 text-xs text-ink-3">All 10 packs · forever</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-2xs font-bold uppercase tracking-label text-ink-3 mb-2">About</p>
+        <div class="rounded-3xl overflow-hidden border border-line">
+          <button class="w-full flex items-center gap-2.5 px-3 py-2.5 bg-surface border-b border-line">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-sunken text-ink-2"><i data-lucide="star" class="w-[18px] h-[18px]"></i></div>
+            <p class="flex-1 text-left text-body font-black">Rate Imposter</p>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </button>
+          <button class="w-full flex items-center gap-2.5 px-3 py-2.5 bg-surface border-b border-line">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-sunken text-ink-2"><i data-lucide="mail" class="w-[18px] h-[18px]"></i></div>
+            <p class="flex-1 text-left text-body font-black">Contact us</p>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </button>
+          <button class="w-full flex items-center gap-2.5 px-3 py-2.5 bg-surface">
+            <div class="w-9 h-9 shrink-0 rounded-[11px] grid place-items-center bg-sunken text-ink-2"><i data-lucide="file-text" class="w-[18px] h-[18px]"></i></div>
+            <p class="flex-1 text-left text-body font-black">Privacy policy</p>
+            <i data-lucide="chevron-right" class="w-[18px] h-[18px] shrink-0 text-ink-4"></i>
+          </button>
+        </div>
+        <p class="mt-2.5 text-center text-xs text-ink-3 num">Imposter 1.0.0 · no analytics, no tracking</p>
+      </div>
+
+      <div class="h-3"></div>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

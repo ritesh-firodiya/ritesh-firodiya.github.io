@@ -3,77 +3,102 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { Label } from "@/components/pills";
-import { products, bySlug, screensFor, designsGeneratedOn } from "@/lib/products";
+import { IconBack, IconExternal } from "@/components/icons";
+import {
+  products,
+  bySlug,
+  screensFor,
+  galleriesFor,
+  designsGeneratedOn,
+} from "@/lib/products";
+
+/* This page deliberately does NOT lay the screens out itself.
+   Every design set already ships an index.html — the gallery the app was
+   actually designed and reviewed against, written alongside the screens in its
+   own repo. A second, prettier grid invented here would be a different
+   document that drifts the moment a screen is added. So the real page is
+   embedded, and the site only supplies the frame around it. */
 
 export function generateStaticParams() {
-  return products.filter((p) => screensFor(p.slug).length > 0).map((p) => ({ slug: p.slug }));
+  return products
+    .filter((p) => galleriesFor(p.slug).length > 0)
+    .map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const p = bySlug(slug);
   if (!p) return {};
   return {
     title: `${p.name} — designs`,
-    description: `The ${screensFor(slug).length} design screens ${p.name} was built from — the original HTML wireframes, rendering live.`,
+    description: `The design gallery ${p.name} was built from: ${screensFor(slug).length} HTML wireframes, rendering live.`,
   };
 }
 
-export default async function DesignsPage({ params }: { params: Promise<{ slug: string }> }) {
+const SURFACE_LABEL: Record<string, string> = { mobile: "Phone", web: "Web" };
+
+export default async function DesignsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const p = bySlug(slug);
   if (!p) notFound();
+  const galleries = galleriesFor(slug);
+  if (galleries.length === 0) notFound();
   const screens = screensFor(slug);
-  if (screens.length === 0) notFound();
-
-  // Group by the folder the screen lives in — that is the app's own flow
-  // structure, so the index mirrors how the product is actually organised.
-  const groups = new Map<string, typeof screens>();
-  for (const s of screens) {
-    const k = s.area ?? s.surface;
-    if (!groups.has(k)) groups.set(k, []);
-    groups.get(k)!.push(s);
-  }
 
   return (
     <>
       <SiteHeader active="/products" />
       <main id="main">
-        <section className="mx-auto max-w-page px-gutter pb-6 pt-section">
-          <Link href={`/products/${p.slug}/`} className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">
-            ← {p.name}
+        <section className="mx-auto max-w-page px-gutter pb-5 pt-section">
+          <Link
+            href={`/products/${p.slug}/`}
+            className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink"
+          >
+            <IconBack size={14} strokeWidth={1.75} aria-hidden /> {p.name}
           </Link>
           <Label>
-            {screens.length} screens · {groups.size} areas · synced {designsGeneratedOn}
+            {screens.length} screens · synced {designsGeneratedOn}
           </Label>
           <h1 className="mt-2 max-w-[22ch] font-display text-d1 font-semibold">
-            {p.name} — every screen
+            {p.name} — the design set
           </h1>
           <p className="mt-3 max-w-measure text-body text-ink-2">
-            The original HTML wireframes this was built from, rendering live. Not screenshots —
-            open any of them full size.
+            The gallery from {p.name}&rsquo;s own repository, unchanged — the page the screens
+            were reviewed against. Every frame below is live HTML, not a screenshot, so open
+            one and click through it the way the app is meant to read.
           </p>
         </section>
 
-        {[...groups.entries()].map(([area, items]) => (
-          <section key={area} className="mx-auto max-w-page px-gutter pb-section">
-            <div className="flex items-baseline justify-between gap-3 border-b border-line pb-2">
-              <h2 className="font-display text-h2 font-semibold capitalize">{area.replace(/-/g, " ")}</h2>
-              <span className="font-mono text-xs2 text-ink-3">{items.length}</span>
+        {galleries.map((g) => (
+          <section key={g.path} className="mx-auto max-w-page px-gutter pb-section">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-2">
+              <h2 className="font-display text-h2 font-semibold">
+                {SURFACE_LABEL[g.surface] ?? g.surface}
+              </h2>
+              <a
+                href={g.path}
+                className="link-u inline-flex items-center gap-1.5 font-mono text-xs2 text-ink-3 hover:text-accent"
+              >
+                Open full size <IconExternal size={13} strokeWidth={1.75} aria-hidden />
+              </a>
             </div>
-            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {items.map((s) => (
-                <figure key={s.path} className="min-w-0">
-                  <div className="overflow-hidden rounded-card border border-line bg-surface">
-                    <iframe src={s.path} title={s.title} loading="lazy" className="h-[420px] w-full border-0" />
-                  </div>
-                  <figcaption className="mt-2">
-                    <a href={s.path} className="link-u block truncate text-small font-medium hover:text-accent">
-                      {s.title}
-                    </a>
-                  </figcaption>
-                </figure>
-              ))}
+            {/* Tall by design: this is a gallery page, and a short frame turns it
+                into a scroll-within-a-scroll that nobody reaches the bottom of. */}
+            <div className="mt-4 overflow-hidden rounded-card border border-line bg-surface shadow-lift">
+              <iframe
+                src={g.path}
+                title={`${p.name} — ${SURFACE_LABEL[g.surface] ?? g.surface} design gallery`}
+                loading="lazy"
+                className="h-[min(85vh,900px)] w-full border-0"
+              />
             </div>
           </section>
         ))}

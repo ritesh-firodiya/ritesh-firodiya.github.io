@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Spending</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <span class="breadcrumb-label">Spending · flagship · 2 states</span>
+    <a href="../index.html" class="breadcrumb-chip">← All</a>
+    <span class="breadcrumb-chip is-current">Spending</span>
+    <a href="../balances/index.html" class="breadcrumb-chip">← Balances</a>
+    <a href="../expense/index.html" class="breadcrumb-chip">Expense detail →</a>
+    <a href="../account/pro.html" class="breadcrumb-chip">Pro →</a>
+  </div>
+</div>
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Spending · the whole tracker half</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> One month, summarised and then itemised. This is the expense-tracker payoff <em>and</em> the shared-expense audit trail, which turn out to be the same screen.</p>
+
+      <p class="mt-3"><strong>This absorbed Insights.</strong> Insights' own rationale said <em>"a second screen to break them down would be a screen showing the same data again"</em> — and that is exactly what Insights and Activity were to each other. One summed the month, the other listed it. Someone asking "where did my money go" had to visit both, and neither told them to. Now the summary is the header and the rows are the body.</p>
+
+      <p class="mt-3"><strong>Insights used to be a 20px icon while Settings had a whole tab.</strong> The tracker half of the pitch was the hardest thing in the app to find. It is now one of two tabs.</p>
+
+      <p class="mt-3"><strong>The filter governs the whole screen, not just the list.</strong> All / Just me / Groups re-cuts the total, the categories and the rows together. A filter that changes the list under a total it does not change is a filter that makes the screen lie — and "Just me" re-cut is the pure personal tracker, which is the thing Splitwise has no answer to.</p>
+
+      <p class="mt-3"><strong>A column of amounts, not a feed of sentences.</strong> "Arjun added an expense" cannot be scanned. Figures right-aligned and tabular can, so a whole month reads at a glance.</p>
+
+      <p class="mt-3"><strong>The right-hand number is always <em>your share</em></strong>, never the bill total. On a ₹18,000 villa split five ways it reads ₹3,600 — because that is what it cost <em>you</em>, and it has to agree with the total at the top of the same screen.</p>
+
+      <p class="mt-3"><strong>Bars, not a donut.</strong> A donut needs a legend, and a legend means reading the value in one place and the label in another. Labelled bars put the category, the bar and the rupee figure on one line.</p>
+
+      <p class="mt-3"><strong>Product rule 5 is visible here.</strong> Deleted and edited expenses stay in the log as struck-through audit rows. An expense can be removed; the record that someone removed it cannot.</p>
+
+      <p class="mt-3"><strong>The only paywall that bites is history depth.</strong> This month and last are free; older months are Pro. Adding, splitting, settling and exporting are never gated — product rule 4, and the export button is in this screen's header to prove it.</p>
+    </div>
+  </div>
+
+<!-- ============ STATE 1 · All (the default) ============ -->
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="appheader">
+    <h2 class="text-xl font-black text-brand-900">Spending</h2>
+    <!-- Export lives here, in the header of the screen it exports. Never Pro. -->
+    <a href="../account/index.html" class="iconbtn" aria-label="Export as CSV"><i data-lucide="download" class="w-5 h-5"></i></a>
+  </div>
+
+  <div class="px-4 pb-24 space-y-3">
+
+    <div class="monthnav">
+      <button><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+      <span class="monthnav-label">September 2026</span>
+      <button disabled><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+    </div>
+
+    <!-- ONE filter for the whole screen. It re-cuts the total, the categories
+         and the rows together — a filter that moves the list but not the
+         number above it is how a screen starts lying. -->
+    <div class="segmented segmented--full">
+      <button class="is-active">All</button>
+      <button>Just me</button>
+      <button>Groups</button>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="card">
+      <p class="section-label">You spent</p>
+      <p class="text-[34px] font-black num leading-none mt-1.5">₹11,860</p>
+      <p class="text-xs text-ink-2 mt-1.5"><b class="text-brand-700">19% more</b> than August (₹9,940)</p>
+
+      <div class="split-bar mt-3.5">
+        <i class="seg-own w-[45%]"></i>
+        <i class="seg-share w-[55%]"></i>
+      </div>
+      <div class="flex gap-4 mt-2.5">
+        <div class="flex-1">
+          <p class="flex items-center gap-1.5 text-2xs text-ink-3"><span class="legend-dot bg-brand-500"></span>Your own</p>
+          <p class="text-base font-black num mt-0.5">₹5,340</p>
+        </div>
+        <div class="flex-1">
+          <p class="flex items-center gap-1.5 text-2xs text-ink-3"><span class="legend-dot bg-saffron-400"></span>Your share of splits</p>
+          <p class="text-base font-black num mt-0.5">₹6,520</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BY CATEGORY -->
+    <div class="card">
+      <p class="section-label mb-1">Where it went</p>
+      <div class="catbar">
+        <div class="cat cat-sm cat-food"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Food</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[100%] bg-cat-food"></div></div>
+        </div>
+        <span class="catbar-val">₹4,120</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-travel"><i data-lucide="car-taxi-front" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Travel</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[80%] bg-cat-travel"></div></div>
+        </div>
+        <span class="catbar-val">₹3,280</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-stay"><i data-lucide="bed-double" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Stay</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[46%] bg-cat-stay"></div></div>
+        </div>
+        <span class="catbar-val">₹1,900</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-fun"><i data-lucide="clapperboard" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Fun</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[30%] bg-cat-fun"></div></div>
+        </div>
+        <span class="catbar-val">₹1,240</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-shop"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Shopping</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[20%] bg-cat-shop"></div></div>
+        </div>
+        <span class="catbar-val">₹840</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-util"><i data-lucide="zap" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Bills</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[12%] bg-cat-util"></div></div>
+        </div>
+        <span class="catbar-val">₹480</span>
+      </div>
+    </div>
+
+    <!-- ONE OBSERVATION, NOT SIX -->
+    <div class="card card--indigo flex items-start gap-3">
+      <i data-lucide="lightbulb" class="w-5 h-5 flex-shrink-0 mt-0.5 text-brand-500"></i>
+      <p class="text-xs leading-relaxed text-brand-900">
+        Food is <b>35%</b> of your month, and <b>₹2,880</b> of it was your share of Goa Trip '26.
+        Without the trip you'd be spending <b>₹8,980</b> — roughly your August pace.
+      </p>
+    </div>
+
+    <!-- LOCKED HISTORY — the one paywall that bites. Sits with the other
+         month-shaped things, above the rows, because the rows are about
+         this month and this is about every other one. -->
+    <div class="card locked min-h-[150px]">
+      <p class="section-label">Last 6 months</p>
+      <div class="bars mt-3 h-[86px]">
+        <div class="bar h-[55%]"></div>
+        <div class="bar h-[72%]"></div>
+        <div class="bar h-[48%]"></div>
+        <div class="bar h-[80%]"></div>
+        <div class="bar h-[66%]"></div>
+        <div class="bar is-active h-[92%]"></div>
+      </div>
+      <div class="bars-axis"><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div>
+
+      <div class="locked-veil">
+        <i data-lucide="lock" class="w-5 h-5 text-saffron-600"></i>
+        <p class="text-sm font-black">See every month you've tracked</p>
+        <p class="text-2xs text-ink-3 leading-relaxed">Free covers this month and last. Pro keeps the whole history.</p>
+        <a href="../account/pro.html" class="btn btn-accent btn-sm mt-1">Try Pro free for 7 days</a>
+      </div>
+    </div>
+
+    <p class="section-label pt-1">Every line in September</p>
+  </div>
+
+  <div class="pb-24">
+    <p class="list-date">Today · 9 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-food"><i data-lucide="shopping-basket" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Groceries</p>
+          <p class="exp-sub"><span class="solo-tag"><i data-lucide="user-round" class="w-3 h-3"></i> Just me</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md text-ink num">₹1,840</p></div>
+      </a>
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-stay"><i data-lucide="bed-double" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Beach villa, 2 nights</p>
+          <p class="exp-sub">Goa Trip '26 · you paid ₹18,000</p>
+        </div>
+        <div class="exp-right">
+          <p class="amt amt-md text-ink num">₹3,600</p>
+          <p class="text-2xs amt-pos font-bold">+₹14,400 lent</p>
+        </div>
+      </a>
+      <!-- A settlement awaiting the other side, so it moves nothing yet. -->
+      <a aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none" class="exp-row">
+        <div class="cat cat-sm bg-warn-bg text-warn-fg"><i data-lucide="clock" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Kabir says he paid you</p>
+          <p class="exp-sub">UPI · <span class="font-bold text-warn-fg">waiting for you to confirm</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md amt-neutral num">₹2,500</p></div>
+      </a>
+      <a aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none" class="exp-row">
+        <div class="cat cat-sm bg-pos-bg text-pos-fg"><i data-lucide="handshake" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Kabir paid you</p>
+          <p class="exp-sub">Cash · confirmed by you</p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md amt-pos num">₹2,340</p></div>
+      </a>
+    </div>
+
+    <p class="list-date">Yesterday · 8 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-travel"><i data-lucide="car-taxi-front" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Airport cab</p>
+          <p class="exp-sub">Goa Trip '26 · Arjun paid ₹2,400</p>
+        </div>
+        <div class="exp-right">
+          <p class="amt amt-md text-ink num">₹480</p>
+          <p class="text-2xs amt-neg font-bold">−₹480 owed</p>
+        </div>
+      </a>
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-travel"><i data-lucide="train-front" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Metro card top-up</p>
+          <p class="exp-sub"><span class="solo-tag"><i data-lucide="user-round" class="w-3 h-3"></i> Just me</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md text-ink num">₹500</p></div>
+      </a>
+    </div>
+
+    <p class="list-date">Sat · 6 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-food"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Dinner at Gunpowder</p>
+          <p class="exp-sub">Goa Trip '26 · you paid ₹6,200</p>
+        </div>
+        <div class="exp-right">
+          <p class="amt amt-md text-ink num">₹1,240</p>
+          <p class="text-2xs amt-pos font-bold">+₹4,960 lent</p>
+        </div>
+      </a>
+
+      <!-- AUDIT ROWS · product rule 5. Permanent, muted, never removable. -->
+      <div class="audit">
+        <i data-lucide="rotate-ccw-clock" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
+        <div>
+          <p><b class="text-ink-2">Meera</b> deleted <span class="strike">Scooter rental · ₹1,600</span></p>
+          <p class="text-2xs mt-1">6 Sep, 4:12 pm · balances recalculated</p>
+        </div>
+      </div>
+
+      <div class="audit">
+        <i data-lucide="pencil" class="w-4 h-4 flex-shrink-0 mt-0.5"></i>
+        <div>
+          <p><b class="text-ink-2">Arjun</b> changed Airport cab from <span class="strike">₹2,000</span> to ₹2,400</p>
+          <p class="text-2xs mt-1">6 Sep, 9:30 am · your share went up ₹80</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="list-date">Fri · 5 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-util"><i data-lucide="zap" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Electricity bill</p>
+          <p class="exp-sub">Flat 402 · you paid ₹1,500</p>
+        </div>
+        <div class="exp-right">
+          <p class="amt amt-md text-ink num">₹500</p>
+          <p class="text-2xs amt-pos font-bold">+₹1,000 lent</p>
+        </div>
+      </a>
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-fun"><i data-lucide="clapperboard" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Movie tickets</p>
+          <p class="exp-sub"><span class="solo-tag"><i data-lucide="user-round" class="w-3 h-3"></i> Just me</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md text-ink num">₹740</p></div>
+      </a>
+    </div>
+
+    <p class="px-4 pt-4 text-center text-2xs text-ink-4">₹11,860 in 8 lines. That's everything in September.</p>
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../balances/index.html" class="tab"><i data-lucide="scale" class="tab-icon"></i><span>Balances</span></a>
+      <a href="../add/index.html" class="tab-fab">
+        <div class="tab-fab-inner"><i data-lucide="plus" class="w-7 h-7"></i></div>
+        <span class="tab-fab-label">Add</span>
+      </a>
+      <a href="index.html" class="tab is-active"><i data-lucide="chart-pie" class="tab-icon"></i><span>Spending</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+</div>
+
+<!-- ============ STATE 2 · Just me — the pure tracker ============ -->
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="appheader">
+    <h2 class="text-xl font-black text-brand-900">Spending</h2>
+    <a href="../account/index.html" class="iconbtn" aria-label="Export as CSV"><i data-lucide="download" class="w-5 h-5"></i></a>
+  </div>
+
+  <div class="px-4 pb-24 space-y-3">
+    <div class="monthnav">
+      <button><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+      <span class="monthnav-label">September 2026</span>
+      <button disabled><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+    </div>
+
+    <div class="segmented segmented--full">
+      <button>All</button>
+      <button class="is-active">Just me</button>
+      <button>Groups</button>
+    </div>
+
+    <!-- The total moved with the filter. ₹5,340, not ₹11,860 — because the
+         question the filter asked was "what did I spend on myself", and an
+         answer of ₹11,860 would be the answer to a different question. -->
+    <div class="card">
+      <p class="section-label">You spent, on your own</p>
+      <p class="text-[34px] font-black num leading-none mt-1.5">₹5,340</p>
+      <p class="text-xs text-ink-2 mt-1.5">45% of your ₹11,860 month · <b class="text-brand-700">8% less</b> than August</p>
+    </div>
+
+    <div class="card">
+      <p class="section-label mb-1">Where it went</p>
+      <div class="catbar">
+        <div class="cat cat-sm cat-food"><i data-lucide="shopping-basket" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Food</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[100%] bg-cat-food"></div></div>
+        </div>
+        <span class="catbar-val">₹2,180</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-travel"><i data-lucide="train-front" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Travel</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[64%] bg-cat-travel"></div></div>
+        </div>
+        <span class="catbar-val">₹1,400</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-fun"><i data-lucide="clapperboard" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Fun</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[45%] bg-cat-fun"></div></div>
+        </div>
+        <span class="catbar-val">₹980</span>
+      </div>
+      <div class="catbar">
+        <div class="cat cat-sm cat-shop"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <p class="text-xs font-bold">Shopping</p>
+          <div class="catbar-track mt-1"><div class="catbar-fill w-[36%] bg-cat-shop"></div></div>
+        </div>
+        <span class="catbar-val">₹780</span>
+      </div>
+    </div>
+
+    <p class="section-label pt-1">Every line in September</p>
+  </div>
+
+  <div class="pb-24">
+    <p class="list-date">Today · 9 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-food"><i data-lucide="shopping-basket" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Groceries</p>
+          <p class="exp-sub"><span class="solo-tag"><i data-lucide="user-round" class="w-3 h-3"></i> Just me</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md text-ink num">₹1,840</p></div>
+      </a>
+    </div>
+
+    <p class="list-date">Yesterday · 8 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-travel"><i data-lucide="train-front" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Metro card top-up</p>
+          <p class="exp-sub"><span class="solo-tag"><i data-lucide="user-round" class="w-3 h-3"></i> Just me</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md text-ink num">₹500</p></div>
+      </a>
+    </div>
+
+    <p class="list-date">Fri · 5 Sep</p>
+    <div class="card card-flat mx-4">
+      <a href="../expense/index.html" class="exp-row">
+        <div class="cat cat-sm cat-fun"><i data-lucide="clapperboard" class="w-4 h-4"></i></div>
+        <div class="exp-body">
+          <p class="exp-title">Movie tickets</p>
+          <p class="exp-sub"><span class="solo-tag"><i data-lucide="user-round" class="w-3 h-3"></i> Just me</span></p>
+        </div>
+        <div class="exp-right"><p class="amt amt-md text-ink num">₹740</p></div>
+      </a>
+    </div>
+
+    <p class="px-4 pt-4 text-center text-2xs text-ink-4">No balances in this cut — nothing here is split with anyone.</p>
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../balances/index.html" class="tab"><i data-lucide="scale" class="tab-icon"></i><span>Balances</span></a>
+      <a href="../add/index.html" class="tab-fab">
+        <div class="tab-fab-inner"><i data-lucide="plus" class="w-7 h-7"></i></div>
+        <span class="tab-fab-label">Add</span>
+      </a>
+      <a href="index.html" class="tab is-active"><i data-lucide="chart-pie" class="tab-icon"></i><span>Spending</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

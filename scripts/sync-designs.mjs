@@ -11,17 +11,23 @@
  *  - the two CDN scripts are vendored once into public/designs/_vendor/ and the
  *    tags rewritten. A public site should not depend on two third-party hosts
  *    being up, and unpkg would otherwise see every visitor's IP
- *  - the development chrome — the breadcrumb strip every screen carries while
- *    it is being worked on — is removed by walking tag depth rather than by
- *    regex, because it contains nested divs and a lazy `</div>` match would
- *    truncate the page
- *  - index.html and _review.html are skipped: those are the dev galleries, and
- *    a gallery of galleries is the meta-commentary being removed
+ *  - each set's own index.html is kept and is what /products/<slug>/designs
+ *    shows. It is the gallery the screens were designed and reviewed against;
+ *    a second grid written here would be a different document that drifts the
+ *    moment a screen is added
+ *  - the breadcrumb strip is kept for the same reason — with the index present
+ *    the copied set is a self-navigating mini-site, and stripping it left every
+ *    screen a dead end. `stripElement` is retained for when that changes again
+ *  - links that cannot resolve (never-drawn screens, the skipped _review.html)
+ *    are neutralised rather than deleted, so the gap stays visible
+ *  - _review.html is skipped: a 14-iframe local contact sheet, not a document
+ *    anyone else needs
  *
  *   node scripts/sync-designs.mjs
  */
 import { mkdir, readdir, readFile, writeFile, rm, stat, copyFile } from "node:fs/promises";
-import { join, dirname, relative, extname, basename, sep } from "node:path";
+import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } from "node:path";
+import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 
 const APPS = join(homedir(), "git", "apps");
@@ -40,7 +46,11 @@ const SETS = {
   "dwarseva-property": "property-app",
 };
 
-const SKIP_FILES = new Set(["index.html", "_review.html"]);
+// index.html is KEPT: it is the design set's own gallery, written in the app
+// repo, and the site shows that page rather than inventing a second one.
+// _review.html is a 14-iframe contact sheet for local review — not a document
+// anyone else needs.
+const SKIP_FILES = new Set(["_review.html"]);
 const COPY_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg"]);
 
 const exists = async (p) => {
@@ -71,10 +81,11 @@ function stripElement(html, openRe) {
   return html;
 }
 
-const CHROME = [
-  /<div class="breadcrumb"[^>]*>/i,
-  /<div class="border-b border-dashed[^"]*"[^>]*>/i,
-];
+// The breadcrumb strip is NOT stripped any more. It is the set's own
+// navigation, and with the index page included the copied set becomes a
+// self-navigating mini-site: index -> screen -> back. Removing it left every
+// screen a dead end.
+const CHROME = [];
 
 async function vendor() {
   await mkdir(VENDOR, { recursive: true });
@@ -156,9 +167,46 @@ for (const [slug, dir] of Object.entries(SETS)) {
       title,
       surface: parts[0],
       area: parts.length > 2 ? parts[parts.length - 2] : null,
+      isIndex: basename(file) === "index.html",
     });
   }
-  if (entries.length) manifest[slug] = entries.sort((a, b) => a.path.localeCompare(b.path));
+  if (entries.length) {
+    entries.sort((a, b) => a.path.localeCompare(b.path));
+    manifest[slug] = {
+      // The set's own gallery pages, one per surface (mobile / web).
+      indexes: entries.filter((e) => e.isIndex).map(({ path, title, surface }) => ({ path, title, surface })),
+      screens: entries.filter((e) => !e.isIndex).map(({ isIndex, ...s }) => s),
+    };
+  }
+}
+
+/* Second pass: neutralise links that cannot resolve.
+ *
+ * Some galleries link to screens that were never drawn (aakalan's account and
+ * settle flows), and imposter's links to the _review.html contact sheet this
+ * script deliberately does not publish. Left alone those are 404s on a public
+ * page; deleted outright the gap disappears, which the site's own rule forbids
+ * — a missing thing is visibly missing. So the anchor keeps its label and
+ * loses its href, and says why on hover.
+ *
+ * Runs after everything is on disk, because a link may point forward to a file
+ * this walk had not reached yet. */
+const LINK = /<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi;
+let neutralised = 0;
+
+for await (const file of walk(OUT)) {
+  if (extname(file).toLowerCase() !== ".html") continue;
+  const dir = dirname(file);
+  const before = await readFile(file, "utf8");
+  const after = before.replace(LINK, (whole, pre, href, post) => {
+    const clean = decodeURIComponent(href.split("#")[0].split("?")[0]);
+    if (!clean.endsWith(".html")) return whole;
+    if (/^(?:[a-z]+:)?\/\//i.test(clean) || isAbsolute(clean)) return whole;
+    if (existsSync(resolve(dir, clean))) return whole;
+    neutralised++;
+    return `<a${pre}aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none"${post}>`;
+  });
+  if (after !== before) await writeFile(file, after);
 }
 
 await writeFile(
@@ -176,10 +224,11 @@ await writeFile(
   ) + "\n",
 );
 
+console.log(`neutralised ${neutralised} dead link(s) to screens that were never drawn`);
 console.log(`synced ${screens} screens, ${(bytes / 1024 / 1024).toFixed(2)}MB html`);
 console.log(
   `vendored tailwind ${(v.tailwind / 1024).toFixed(0)}KB · lucide ${(v.lucide / 1024).toFixed(0)}KB`,
 );
 for (const [s, e] of Object.entries(manifest)) {
-  console.log(`  ${s.padEnd(20)} ${String(e.length).padStart(3)} screens`);
+  console.log(`  ${s.padEnd(20)} ${String(e.screens.length).padStart(3)} screens · ${e.indexes.length} gallery page(s)`);
 }

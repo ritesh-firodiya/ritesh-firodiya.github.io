@@ -52,12 +52,12 @@ function LinkRow({ p, hasDesigns }: { p: Product; hasDesigns: boolean }) {
             l.external ? (
               <a key={l.label} href={l.href}
                  className="inline-flex items-center gap-2 rounded-pill border border-line-2 bg-surface px-3 py-1.5 text-small font-medium transition hover:border-accent hover:text-accent">
-                <l.Icon /> {l.label}
+                <l.Icon size={15} strokeWidth={1.75} aria-hidden /> {l.label}
               </a>
             ) : (
               <Link key={l.label} href={l.href}
                     className="inline-flex items-center gap-2 rounded-pill border border-line-2 bg-surface px-3 py-1.5 text-small font-medium transition hover:border-accent hover:text-accent">
-                <l.Icon /> {l.label}
+                <l.Icon size={15} strokeWidth={1.75} aria-hidden /> {l.label}
               </Link>
             ),
           )}
@@ -177,7 +177,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
               <Link href={`/products/${p.slug}/designs/`}
                     className="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
-                <IconDesign /> Browse the design set →
+                <IconDesign size={15} strokeWidth={1.75} aria-hidden /> Browse the design set →
               </Link>
             </div>
           </section>

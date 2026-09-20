@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Add expense</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <span class="breadcrumb-label">Add expense · flagship · 4 states</span>
+    <a href="../index.html" class="breadcrumb-chip">← All</a>
+    <span class="breadcrumb-chip is-current">Add</span>
+    <a href="one-person.html" class="breadcrumb-chip">One person →</a>
+    <a href="../expense/index.html" class="breadcrumb-chip">Expense detail →</a>
+  </div>
+</div>
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Add expense · one screen</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> The most repeated action in the app. It has to be finishable in under ten seconds without a decision you didn't want to make.</p>
+
+      <p class="mt-3"><strong>"With" is a row, not a scroller.</strong> It used to be a horizontal strip of chips: Just me, then your groups, then your friends, then "New group". That works for three items and breaks for seven. It hid everything past the third behind a sideways swipe with no affordance that anything was there; it could not be searched; and it put four different <em>kinds</em> of thing — yourself, a person, a group, and an action that creates a group — on one axis as if they were the same kind of choice. With a flat, five groups and a dozen people it stops being a picker and becomes a carousel you scrub.</p>
+
+      <p class="mt-3"><strong>The row costs the same zero taps when the default is right</strong>, which is the case the scroller was built for. It arrives pre-set — to the group you opened Add from, or to whatever you used last — so the common path is unchanged. What changed is the uncommon path: instead of swiping past six chips looking for "Flat 402", you open a sheet that is searchable and sorted, and it works identically at nine hundred contacts.</p>
+
+      <p class="mt-3"><strong>The sheet sorts by kind, and puts Recent above everything.</strong> Just me first, because it is the answer that makes this an expense tracker. Then the three or four contexts you actually used this month, mixed — a person and a group are the same kind of answer to "who is this with", even though they are different rows everywhere else. Then all groups, then all people. "New group" is last, where a create action belongs.</p>
+
+      <p class="mt-3"><strong>One screen and one sheet each for the two questions.</strong> <em>Who</em> opens the With sheet; <em>how it divides</em> opens the split sheet. The split editor still opens only when the default is wrong, and the category is still guessed from what you typed rather than picked. Neither is a step in the common path.</p>
+
+      <p class="mt-3"><strong>"Just me" is the first option, and it is a real expense.</strong> This is what makes Aakalan an expense tracker and not only a Splitwise clone — same screen, same categories, same monthly total, not a group of one. When it is selected the split card simply isn't there.</p>
+
+      <p class="mt-3"><strong>Save is a sticky footer, not a header button.</strong> A footer sits outside the scroll container, so scrolling cannot hide it, and it is within reach of a thumb — which the top-right corner of a 6.7" phone is not.</p>
+
+      <p class="mt-3"><strong>The system keyboard, not a bespoke keypad.</strong> The description needs the system keyboard anyway, so a custom keypad would swap input methods mid-task. Description → amount → Save, on one keyboard.</p>
+
+      <p class="mt-3"><strong>Nothing is a required decision except two fields.</strong> Who, payer, split mode, category, date and receipt all arrive pre-answered on rows you may ignore. Product rule 3 — the per-head figure is printed, so nobody does arithmetic.</p>
+
+      <p class="mt-3"><strong>Paid-by wraps, it does not scroll either.</strong> Same reasoning, smaller list: a ten-person group's payer strip hid four people behind the edge of a sheet.</p>
+    </div>
+  </div>
+
+<!-- ============ STATE 1 · Just me (personal expense) ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-3">
+
+    <!-- WITH · one row that names the current answer. Tapping it opens the
+         sheet in state 3. Pre-set, so the common path never touches it. -->
+    <button class="picker">
+      <div class="row-icon bg-brand-50"><i data-lucide="user-round" class="w-4 h-4 text-brand-700"></i></div>
+      <div class="picker-body">
+        <p class="picker-label">With</p>
+        <p class="picker-value">Just me</p>
+      </div>
+      <i data-lucide="chevron-down" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <!-- Description. Category puck to the left is derived from the text and
+         tappable to override — it is a result, not a question. -->
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <button class="cat cat-food"><i data-lucide="shopping-basket" class="w-5 h-5"></i></button>
+      <input class="flex-1 text-lg font-bold bg-transparent border-0 outline-none" value="Groceries" />
+    </div>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <span class="text-[28px] font-extrabold text-ink-3">₹</span>
+      <span class="text-[34px] font-black num flex-1">1,840</span>
+      <span class="caret h-[38px]"></span>
+    </div>
+
+    <!-- No "this is a personal expense" card any more. The With row above
+         already says "Just me", and repeating it in a panel underneath was
+         the same answer twice in 80px of screen. -->
+
+    <button class="row rounded-lg border border-line">
+      <div class="row-icon bg-sunken"><i data-lucide="calendar" class="w-4 h-4 text-ink-3"></i></div>
+      <div class="row-body"><p class="row-title">Today, 9 Sep</p></div>
+      <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <!-- Visible on free with a Pro mark, never hidden: a feature nobody can
+         see is a feature nobody buys. -->
+    <a href="../account/pro.html" class="row rounded-lg border border-line no-underline text-inherit">
+      <div class="row-icon bg-sunken"><i data-lucide="camera" class="w-4 h-4 text-ink-3"></i></div>
+      <div class="row-body"><p class="row-title">Attach the bill</p></div>
+      <span class="chip chip-warning">Pro</span>
+    </a>
+
+    <p class="text-2xs text-ink-3 leading-relaxed">Counts toward your September spending. It will not appear in any group and nobody else can see it.</p>
+  </div>
+
+  <div class="mt-auto"></div>
+  <div class="px-4 py-3 text-center text-2xs text-ink-4">System keyboard occupies this area</div>
+  <div class="sticky-bottom">
+    <button class="btn btn-primary"><i data-lucide="check" class="w-4 h-4"></i> Save expense</button>
+  </div>
+</div>
+
+<!-- ============ STATE 2 · Split with a group ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-3">
+    <!-- Same row, different answer. The avatars are the group; the label is
+         its name. Nothing about the control changes with the choice. -->
+    <button class="picker">
+      <div class="av-stack flex-shrink-0">
+        <div class="avatar avatar-sm av-arjun">A</div>
+        <div class="avatar avatar-sm av-meera">M</div>
+        <div class="avatar avatar-sm av-kabir">K</div>
+      </div>
+      <div class="picker-body">
+        <p class="picker-label">With</p>
+        <p class="picker-value">Goa Trip '26</p>
+      </div>
+      <i data-lucide="chevron-down" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <button class="cat cat-stay"><i data-lucide="bed-double" class="w-5 h-5"></i></button>
+      <input class="flex-1 text-lg font-bold bg-transparent border-0 outline-none" value="Beach villa, 2 nights" />
+    </div>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <span class="text-[28px] font-extrabold text-ink-3">₹</span>
+      <span class="text-[34px] font-black num flex-1">18,000</span>
+      <span class="caret h-[38px]"></span>
+    </div>
+
+    <!-- One tappable sentence carries payer + mode + participants + the
+         per-head figure. Tapping it opens the split sheet in state 4. -->
+    <button class="card card--interactive text-left w-full">
+      <div class="flex items-start gap-2">
+        <i data-lucide="split" class="w-4 h-4 text-brand-500 mt-0.5"></i>
+        <div class="flex-1">
+          <p class="text-sm leading-relaxed text-ink-2">
+            Paid by <b class="text-ink">you</b>, split <b class="text-ink">equally</b> between
+            <b class="text-ink">5 people</b> — <b class="text-brand-700 num">₹3,600 each</b>.
+          </p>
+          <p class="text-2xs text-ink-3 mt-1">You, Arjun, Meera, Kabir, Sana</p>
+        </div>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4 mt-0.5"></i>
+      </div>
+    </button>
+
+    <button class="row rounded-lg border border-line">
+      <div class="row-icon bg-sunken"><i data-lucide="calendar" class="w-4 h-4 text-ink-3"></i></div>
+      <div class="row-body"><p class="row-title">Today, 9 Sep</p></div>
+      <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <a href="../account/pro.html" class="row rounded-lg border border-line no-underline text-inherit">
+      <div class="row-icon bg-sunken"><i data-lucide="camera" class="w-4 h-4 text-ink-3"></i></div>
+      <div class="row-body"><p class="row-title">Attach the bill</p></div>
+      <span class="chip chip-warning">Pro</span>
+    </a>
+
+    <p class="text-2xs text-ink-3 leading-relaxed">₹18,000 ÷ 5 = ₹3,600 exactly. When it doesn't divide evenly the leftover paise go to whoever paid — stated here, and implemented that way.</p>
+  </div>
+  <div class="mt-auto"></div>
+  <div class="sticky-bottom">
+    <button class="btn btn-primary"><i data-lucide="check" class="w-4 h-4"></i> Save expense</button>
+  </div>
+</div>
+
+<!-- ============ STATE 3 · the "With" sheet ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-3 opacity-40">
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <div class="cat cat-stay"><i data-lucide="bed-double" class="w-5 h-5"></i></div>
+      <span class="flex-1 text-lg font-bold">Beach villa, 2 nights</span>
+    </div>
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <span class="text-[28px] font-extrabold text-ink-3">₹</span>
+      <span class="text-[34px] font-black num flex-1">18,000</span>
+    </div>
+  </div>
+
+  <div class="backdrop"></div>
+  <div class="sheet sheet--tall">
+    <div class="sheet-grip"></div>
+    <p class="text-base font-black mb-2">Who is this with?</p>
+
+    <!-- The thing a scroller could never have. One query over groups and
+         people together, because "who is this with" takes either. -->
+    <div class="searchfield mb-3">
+      <i data-lucide="search" class="w-4 h-4 searchfield-icon"></i>
+      <input class="field" placeholder="Search people and groups" />
+    </div>
+
+    <div class="sheet-scroll">
+      <!-- Just me first. It is the answer that makes this an expense tracker
+           rather than a splitter, so it never moves and never scrolls away. -->
+      <div class="card card-flat mb-3">
+        <button class="row">
+          <div class="row-icon bg-brand-50"><i data-lucide="user-round" class="w-4 h-4 text-brand-700"></i></div>
+          <div class="row-body">
+            <p class="row-title">Just me</p>
+            <p class="row-sub">A personal expense — nobody else can see it</p>
+          </div>
+          <div class="check is-on"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+        </button>
+      </div>
+
+      <!-- RECENT · people and groups mixed, because to this one question they
+           are the same kind of answer. Everywhere else in the app they are
+           separate lists; here, separating them would make you look twice. -->
+      <p class="section-label mb-1.5">Recent</p>
+      <div class="card card-flat mb-3">
+        <button class="row">
+          <div class="av-stack flex-shrink-0">
+            <div class="avatar avatar-sm av-arjun">A</div>
+            <div class="avatar avatar-sm av-meera">M</div>
+          </div>
+          <div class="row-body"><p class="row-title">Goa Trip '26</p><p class="row-sub">5 people · yesterday</p></div>
+          <div class="check"></div>
+        </button>
+        <button class="row">
+          <div class="avatar av-sana">S</div>
+          <div class="row-body"><p class="row-title">Sana Qureshi</p><p class="row-sub">Just the two of you · 3 days ago</p></div>
+          <div class="check"></div>
+        </button>
+        <button class="row">
+          <div class="av-stack flex-shrink-0">
+            <div class="avatar avatar-sm av-meera">M</div>
+            <div class="avatar avatar-sm av-dev">D</div>
+          </div>
+          <div class="row-body"><p class="row-title">Flat 402</p><p class="row-sub">3 people · 5 Sep</p></div>
+          <div class="check"></div>
+        </button>
+      </div>
+
+      <p class="section-label mb-1.5">Groups · 4</p>
+      <div class="card card-flat mb-3">
+        <button class="row">
+          <div class="av-stack flex-shrink-0">
+            <div class="avatar avatar-sm av-riya">R</div>
+            <div class="avatar avatar-sm av-kabir">K</div>
+          </div>
+          <div class="row-body"><p class="row-title">Office Lunch</p><p class="row-sub">4 people</p></div>
+          <div class="check"></div>
+        </button>
+        <button class="row">
+          <div class="av-stack flex-shrink-0">
+            <div class="avatar avatar-sm av-dev">D</div>
+            <div class="avatar avatar-sm av-arjun">A</div>
+          </div>
+          <div class="row-body"><p class="row-title">Ladakh '25</p><p class="row-sub">6 people · settled</p></div>
+          <div class="check"></div>
+        </button>
+      </div>
+
+      <p class="section-label mb-1.5">People · 7</p>
+      <div class="card card-flat mb-3">
+        <button class="row">
+          <div class="avatar av-kabir">K</div>
+          <div class="row-body"><p class="row-title">Kabir Shah</p><p class="row-sub">owes you ₹2,500</p></div>
+          <div class="check"></div>
+        </button>
+        <button class="row">
+          <div class="avatar av-arjun">A</div>
+          <div class="row-body"><p class="row-title">Arjun Nair</p><p class="row-sub">owes you ₹2,400</p></div>
+          <div class="check"></div>
+        </button>
+        <button class="row">
+          <div class="avatar av-meera">M</div>
+          <div class="row-body"><p class="row-title">Meera Iyer</p><p class="row-sub">owes you ₹1,250</p></div>
+          <div class="check"></div>
+        </button>
+      </div>
+
+      <!-- Last, because it creates something rather than choosing something.
+           It used to be a chip in the middle of the scroller, one swipe away
+           from "Just me" and shaped exactly like it. -->
+      <a href="../group/new.html" class="row mb-1 rounded-lg border border-dashed border-line-strong no-underline text-inherit">
+        <div class="row-icon bg-brand-50"><i data-lucide="plus" class="w-4 h-4 text-brand-700"></i></div>
+        <div class="row-body"><p class="row-title text-brand-700">New group</p><p class="row-sub">For three people or more — two needs no group</p></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STATE 4 · Split sheet open ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-3 opacity-40">
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <div class="cat cat-stay"><i data-lucide="bed-double" class="w-5 h-5"></i></div>
+      <span class="flex-1 text-lg font-bold">Beach villa, 2 nights</span>
+    </div>
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <span class="text-[28px] font-extrabold text-ink-3">₹</span>
+      <span class="text-[34px] font-black num flex-1">18,000</span>
+    </div>
+  </div>
+
+  <div class="backdrop"></div>
+  <div class="sheet">
+    <div class="sheet-grip"></div>
+
+    <p class="text-base font-black mb-1">How is this split?</p>
+    <p class="text-2xs text-ink-3 mb-3">₹18,000 · Goa Trip '26</p>
+
+    <!-- Paid by. Wraps rather than scrolls: a ten-person group used to hide
+         four payers past the edge of the sheet, with nothing saying so.
+         Multiple payers are supported, but the common case is one tap. -->
+    <p class="field-label">Paid by</p>
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button class="chip-lg is-selected w-auto flex-none py-[6px] px-[11px]">
+        <div class="avatar avatar-sm av-riya">R</div><span class="text-xs">You</span>
+      </button>
+      <button class="chip-lg w-auto flex-none py-[6px] px-[11px]">
+        <div class="avatar avatar-sm av-arjun">A</div><span class="text-xs">Arjun</span>
+      </button>
+      <button class="chip-lg w-auto flex-none py-[6px] px-[11px]">
+        <div class="avatar avatar-sm av-meera">M</div><span class="text-xs">Meera</span>
+      </button>
+      <button class="chip-lg w-auto flex-none py-[6px] px-[11px]">
+        <div class="avatar avatar-sm av-kabir">K</div><span class="text-xs">Kabir</span>
+      </button>
+      <button class="chip-lg w-auto flex-none py-[6px] px-[11px]">
+        <div class="avatar avatar-sm av-sana">S</div><span class="text-xs">Sana</span>
+      </button>
+      <button class="chip-lg w-auto flex-none py-[6px] px-[11px]">
+        <i data-lucide="users-round" class="w-4 h-4"></i><span class="text-xs">Several</span>
+      </button>
+    </div>
+
+    <p class="field-label">Split</p>
+    <div class="segmented segmented--full mb-3">
+      <button class="is-active">Equally</button>
+      <button>Exact</button>
+      <button>%</button>
+      <button>Shares</button>
+    </div>
+
+    <div class="card card-flat mb-3">
+      <div class="split-row">
+        <div class="check is-on"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+        <div class="avatar avatar-sm av-riya">R</div>
+        <div class="flex-1"><p class="text-sm font-bold">You</p></div>
+        <div class="split-amount is-locked">3,600</div>
+      </div>
+      <div class="split-row">
+        <div class="check is-on"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+        <div class="avatar avatar-sm av-arjun">A</div>
+        <div class="flex-1"><p class="text-sm font-bold">Arjun</p></div>
+        <div class="split-amount is-locked">3,600</div>
+      </div>
+      <div class="split-row">
+        <div class="check is-on"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+        <div class="avatar avatar-sm av-meera">M</div>
+        <div class="flex-1"><p class="text-sm font-bold">Meera</p></div>
+        <div class="split-amount is-locked">3,600</div>
+      </div>
+      <div class="split-row">
+        <div class="check is-on"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+        <div class="avatar avatar-sm av-kabir">K</div>
+        <div class="flex-1"><p class="text-sm font-bold">Kabir</p></div>
+        <div class="split-amount is-locked">3,600</div>
+      </div>
+      <div class="split-row">
+        <div class="check is-on"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+        <div class="avatar avatar-sm av-sana">S</div>
+        <div class="flex-1"><p class="text-sm font-bold">Sana</p></div>
+        <div class="split-amount is-locked">3,600</div>
+      </div>
+    </div>
+
+    <!-- The reconciliation line. In Exact/%/Shares mode this turns rose and
+         names the gap, so you can never save a split that doesn't add up. -->
+    <div class="card card--pos flex items-center gap-2 mb-3">
+      <i data-lucide="circle-check" class="w-4 h-4 text-pos-fg"></i>
+      <p class="text-xs font-bold text-pos-fg">₹18,000 of ₹18,000 accounted for</p>
+    </div>
+
+    <button class="btn btn-primary">Done</button>
+  </div>
+  <div class="mt-auto"></div>
+  <!-- Dimmed behind the sheet: the split is mid-edit, so there is nothing
+       valid to save until Done reconciles it. -->
+  <div class="sticky-bottom">
+    <button class="btn btn-primary opacity-40"><i data-lucide="check" class="w-4 h-4"></i> Save expense</button>
+  </div>
+</div>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -6,1273 +6,1406 @@
     "lucide": 599034
   },
   "sets": {
-    "imposter": [
-      {
-        "path": "/designs/imposter/mobile/game/card.html",
-        "title": "Imposter — the card",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/imposter/mobile/game/recheck.html",
-        "title": "Imposter — re-check your word",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/imposter/mobile/game/result.html",
-        "title": "Imposter — the answer",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/imposter/mobile/game/talk.html",
-        "title": "Imposter — talk it out",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/imposter/mobile/onboarding/promise.html",
-        "title": "Imposter — the promise",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/imposter/mobile/onboarding/welcome.html",
-        "title": "Imposter — welcome",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/imposter/mobile/settings/how-to-play.html",
-        "title": "Imposter — how to play",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/imposter/mobile/setup/custom.html",
-        "title": "Imposter — your own words",
-        "surface": "mobile",
-        "area": "setup"
-      },
-      {
-        "path": "/designs/imposter/mobile/setup/packs.html",
-        "title": "Imposter — word packs",
-        "surface": "mobile",
-        "area": "setup"
-      },
-      {
-        "path": "/designs/imposter/mobile/setup/players.html",
-        "title": "Imposter — players",
-        "surface": "mobile",
-        "area": "setup"
-      },
-      {
-        "path": "/designs/imposter/mobile/states/error.html",
-        "title": "Imposter — error",
-        "surface": "mobile",
-        "area": "states"
-      },
-      {
-        "path": "/designs/imposter/mobile/states/loading.html",
-        "title": "Imposter — states",
-        "surface": "mobile",
-        "area": "states"
-      },
-      {
-        "path": "/designs/imposter/mobile/store/paywall.html",
-        "title": "Imposter — paywall",
-        "surface": "mobile",
-        "area": "store"
-      }
-    ],
-    "charades": [
-      {
-        "path": "/designs/charades/mobile/game/active.html",
-        "title": "Game · active — Charades mobile",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/charades/mobile/game/end-modal.html",
-        "title": "Game · end modal — Charades mobile",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/charades/mobile/game/score.html",
-        "title": "Score — Charades mobile",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/charades/mobile/history/detail.html",
-        "title": "History detail — Charades mobile",
-        "surface": "mobile",
-        "area": "history"
-      },
-      {
-        "path": "/designs/charades/mobile/history/list.html",
-        "title": "History — Charades mobile",
-        "surface": "mobile",
-        "area": "history"
-      },
-      {
-        "path": "/designs/charades/mobile/home.html",
-        "title": "Home — Charades mobile",
-        "surface": "mobile",
-        "area": null
-      },
-      {
-        "path": "/designs/charades/mobile/how-to-play.html",
-        "title": "How to play — Charades mobile",
-        "surface": "mobile",
-        "area": null
-      },
-      {
-        "path": "/designs/charades/mobile/onboarding/categories.html",
-        "title": "Pick categories — Charades mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/charades/mobile/onboarding/ready.html",
-        "title": "Ready — Charades mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/charades/mobile/onboarding/welcome.html",
-        "title": "Welcome — Charades mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/charades/mobile/packs/bundle.html",
-        "title": "Bundle promo — Charades mobile",
-        "surface": "mobile",
-        "area": "packs"
-      },
-      {
-        "path": "/designs/charades/mobile/packs/pack-detail.html",
-        "title": "Pack detail — Charades mobile",
-        "surface": "mobile",
-        "area": "packs"
-      },
-      {
-        "path": "/designs/charades/mobile/packs/store.html",
-        "title": "Pack store — Charades mobile",
-        "surface": "mobile",
-        "area": "packs"
-      },
-      {
-        "path": "/designs/charades/mobile/patterns/purchase-success.html",
-        "title": "Purchase success — Charades mobile",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/charades/mobile/patterns/toasts.html",
-        "title": "Toasts — Charades mobile",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/charades/mobile/settings/settings.html",
-        "title": "Settings — Charades mobile",
-        "surface": "mobile",
-        "area": "settings"
-      }
-    ],
-    "aakalan": [
-      {
-        "path": "/designs/aakalan/mobile/account/pro.html",
-        "title": "Aakalan — Pro",
-        "surface": "mobile",
-        "area": "account"
-      },
-      {
-        "path": "/designs/aakalan/mobile/add/one-person.html",
-        "title": "Aakalan — Add with one person",
-        "surface": "mobile",
-        "area": "add"
-      },
-      {
-        "path": "/designs/aakalan/mobile/add/recurring.html",
-        "title": "Aakalan — Recurring expenses",
-        "surface": "mobile",
-        "area": "add"
-      },
-      {
-        "path": "/designs/aakalan/mobile/auth/profile.html",
-        "title": "Aakalan — Your profile",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/aakalan/mobile/auth/sign-in.html",
-        "title": "Aakalan — Sign in",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/aakalan/mobile/auth/verify.html",
-        "title": "Aakalan — Verify",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/aakalan/mobile/balances/empty.html",
-        "title": "Aakalan — First run",
-        "surface": "mobile",
-        "area": "balances"
-      },
-      {
-        "path": "/designs/aakalan/mobile/expense/receipt.html",
-        "title": "Aakalan — Receipt photos",
-        "surface": "mobile",
-        "area": "expense"
-      },
-      {
-        "path": "/designs/aakalan/mobile/group/new.html",
-        "title": "Aakalan — New group",
-        "surface": "mobile",
-        "area": "group"
-      },
-      {
-        "path": "/designs/aakalan/mobile/group/settings.html",
-        "title": "Aakalan — Group settings",
-        "surface": "mobile",
-        "area": "group"
-      }
-    ],
-    "askcal": [
-      {
-        "path": "/designs/askcal/mobile/food/barcode.html",
-        "title": "Barcode — AskCal mobile",
-        "surface": "mobile",
-        "area": "food"
-      },
-      {
-        "path": "/designs/askcal/mobile/food/detail.html",
-        "title": "Food detail — AskCal mobile",
-        "surface": "mobile",
-        "area": "food"
-      },
-      {
-        "path": "/designs/askcal/mobile/food/meal.html",
-        "title": "Logged meal — AskCal mobile",
-        "surface": "mobile",
-        "area": "food"
-      },
-      {
-        "path": "/designs/askcal/mobile/food/search.html",
-        "title": "Search — AskCal mobile",
-        "surface": "mobile",
-        "area": "food"
-      },
-      {
-        "path": "/designs/askcal/mobile/gallery/empty.html",
-        "title": "Gallery — empty — AskCal mobile",
-        "surface": "mobile",
-        "area": "gallery"
-      },
-      {
-        "path": "/designs/askcal/mobile/gallery/off.html",
-        "title": "Gallery — photos off — AskCal mobile",
-        "surface": "mobile",
-        "area": "gallery"
-      },
-      {
-        "path": "/designs/askcal/mobile/gallery/photo-bare.html",
-        "title": "Photo and post, nothing on it — AskCal mobile",
-        "surface": "mobile",
-        "area": "gallery"
-      },
-      {
-        "path": "/designs/askcal/mobile/gallery/photo.html",
-        "title": "Photo and post — AskCal mobile",
-        "surface": "mobile",
-        "area": "gallery"
-      },
-      {
-        "path": "/designs/askcal/mobile/history/trends.html",
-        "title": "Trends — AskCal mobile",
-        "surface": "mobile",
-        "area": "history"
-      },
-      {
-        "path": "/designs/askcal/mobile/home/day-nav.html",
-        "title": "Today — day switcher — AskCal mobile",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/askcal/mobile/home/day-past.html",
-        "title": "A past day — AskCal mobile",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/askcal/mobile/home/empty.html",
-        "title": "Today (empty) — AskCal mobile",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/askcal/mobile/home/out-of-scans.html",
-        "title": "Today — out of scans — AskCal mobile",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/askcal/mobile/home/today.html",
-        "title": "Today — AskCal mobile",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/askcal/mobile/log/backdate.html",
-        "title": "When did you eat this? — AskCal mobile",
-        "surface": "mobile",
-        "area": "log"
-      },
-      {
-        "path": "/designs/askcal/mobile/log/confirm.html",
-        "title": "Logged — confirm & adjust — AskCal mobile",
-        "surface": "mobile",
-        "area": "log"
-      },
-      {
-        "path": "/designs/askcal/mobile/log/repeat.html",
-        "title": "Repeat a meal — AskCal mobile",
-        "surface": "mobile",
-        "area": "log"
-      },
-      {
-        "path": "/designs/askcal/mobile/onboarding/body.html",
-        "title": "About you — AskCal mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/askcal/mobile/onboarding/goals.html",
-        "title": "Your goal — AskCal mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/askcal/mobile/onboarding/paywall-upgrade.html",
-        "title": "Upgrade — AskCal mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/askcal/mobile/onboarding/paywall.html",
-        "title": "Paywall — AskCal mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/askcal/mobile/onboarding/welcome.html",
-        "title": "Welcome — AskCal mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/askcal/mobile/patterns/components.html",
-        "title": "Components — AskCal mobile",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/askcal/mobile/patterns/toasts.html",
-        "title": "Toasts &amp; sheets — AskCal mobile",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/analyzing.html",
-        "title": "Analyzing — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/camera.html",
-        "title": "Camera — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/clarify.html",
-        "title": "Clarify — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/failed.html",
-        "title": "Scan failed — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/quota-exhausted.html",
-        "title": "Out of scans — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/result-same.html",
-        "title": "Scan result — same photo, same answer — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      },
-      {
-        "path": "/designs/askcal/mobile/scan/result.html",
-        "title": "Scan result — AskCal mobile",
-        "surface": "mobile",
-        "area": "scan"
-      }
-    ],
-    "tic-tac-toe": [
-      {
-        "path": "/designs/tic-tac-toe/mobile/game/board.html",
-        "title": "Tic Tac Toe — board",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/tic-tac-toe/mobile/game/result.html",
-        "title": "Tic Tac Toe — result",
-        "surface": "mobile",
-        "area": "game"
-      },
-      {
-        "path": "/designs/tic-tac-toe/mobile/settings/how-to-play.html",
-        "title": "Tic Tac Toe — how to play",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/tic-tac-toe/mobile/states/ads.html",
-        "title": "Tic Tac Toe — ad states",
-        "surface": "mobile",
-        "area": "states"
-      }
-    ],
-    "plan-kid": [
-      {
-        "path": "/designs/plan-kid/mobile/auth/forgot-password.html",
-        "title": "Pattaya — 6-digit code",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/auth/sign-in.html",
-        "title": "Pattaya — Sign in",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/flows/milestone-share.html",
-        "title": "Pattaya — Milestone share",
-        "surface": "mobile",
-        "area": "flows"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/flows/stage-transition-loss.html",
-        "title": "Pattaya — After loss",
-        "surface": "mobile",
-        "area": "flows"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/flows/stage-transition-pregnant.html",
-        "title": "Pattaya — Stage transition · pregnant",
-        "surface": "mobile",
-        "area": "flows"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-conceive.html",
-        "title": "Pattaya — Home (Trying)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-conceived.html",
-        "title": "Pattaya — Home (Pregnancy)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-decision.html",
-        "title": "Pattaya — Home (Decision)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-delivery.html",
-        "title": "Pattaya — Home (Delivery)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-parenting.html",
-        "title": "Pattaya — Home (Parenting)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-postpartum.html",
-        "title": "Pattaya — Home (Post Partum)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-shared.html",
-        "title": "Pattaya — Home (shared)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/home-solo.html",
-        "title": "Pattaya — Home (solo)",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/home/partner-activity.html",
-        "title": "Pattaya — Partner activity",
-        "surface": "mobile",
-        "area": "home"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/entry-new.html",
-        "title": "Pattaya — New entry",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/entry-share-confirm.html",
-        "title": "Pattaya — Share this entry?",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/entry-shared.html",
-        "title": "Pattaya — Shared entry view",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/list.html",
-        "title": "Pattaya — Journal list",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/reflection-ritual-done.html",
-        "title": "Pattaya — Ritual done",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/reflection-ritual-reveal.html",
-        "title": "Pattaya — Ritual reveal",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/reflection-ritual.html",
-        "title": "Pattaya — Reflection ritual",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/journal/weekly-couple-report.html",
-        "title": "Pattaya — Weekly couple report",
-        "surface": "mobile",
-        "area": "journal"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/ai-chat-history.html",
-        "title": "Pattaya — AI chat history",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/ai-chat-refusal.html",
-        "title": "Pattaya — AI refusal",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/ai-chat.html",
-        "title": "Pattaya — AI chat",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/audio-player.html",
-        "title": "Pattaya — Audio player",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/card-detail.html",
-        "title": "Pattaya — Card detail",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/doctor-referral.html",
-        "title": "Pattaya — Doctor referral",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/feed.html",
-        "title": "Pattaya — Knowledge feed",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/knowledge/search.html",
-        "title": "Pattaya — Search",
-        "surface": "mobile",
-        "area": "knowledge"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/motivation/milestones.html",
-        "title": "Pattaya — Milestones",
-        "surface": "mobile",
-        "area": "motivation"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/motivation/streaks.html",
-        "title": "Pattaya — Streaks",
-        "surface": "mobile",
-        "area": "motivation"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/notifications/center.html",
-        "title": "Pattaya — Notifications",
-        "surface": "mobile",
-        "area": "notifications"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/notifications/permission-prime.html",
-        "title": "Pattaya — Notification prime",
-        "surface": "mobile",
-        "area": "notifications"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/onboarding/context-quiz.html",
-        "title": "Pattaya — Context quiz",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/onboarding/pair-accept.html",
-        "title": "Pattaya — Accept partner invite",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/onboarding/pair-partner.html",
-        "title": "Pattaya — Pair partner",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/onboarding/ready.html",
-        "title": "Pattaya — Ready",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/onboarding/stage-picker.html",
-        "title": "Pattaya — Stage picker",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/onboarding/welcome.html",
-        "title": "Pattaya — Welcome",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/patterns/empty-states.html",
-        "title": "Pattaya — Empty states (gallery)",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/patterns/stage-transitions.html",
-        "title": "Pattaya — Stage transitions",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/patterns/toasts.html",
-        "title": "Pattaya — Toasts (gallery)",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/paywall/paywall-b2b.html",
-        "title": "Pattaya — B2B enrollment (preview)",
-        "surface": "mobile",
-        "area": "paywall"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/paywall/paywall.html",
-        "title": "Pattaya — Paywall",
-        "surface": "mobile",
-        "area": "paywall"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/paywall/trial-start.html",
-        "title": "Pattaya — Trial start",
-        "surface": "mobile",
-        "area": "paywall"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/settings/account.html",
-        "title": "Pattaya — Account",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/settings/data-export.html",
-        "title": "Pattaya — Export & delete",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/settings/household.html",
-        "title": "Pattaya — Household",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/settings/privacy.html",
-        "title": "Pattaya — Privacy",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/settings/subscription-manage.html",
-        "title": "Pattaya — Manage subscription",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/tracking/cycle.html",
-        "title": "Pattaya — Cycle tracking",
-        "surface": "mobile",
-        "area": "tracking"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/tracking/mood-sleep.html",
-        "title": "Pattaya — Mood + sleep",
-        "surface": "mobile",
-        "area": "tracking"
-      },
-      {
-        "path": "/designs/plan-kid/mobile/tracking/pregnancy-symptoms.html",
-        "title": "Pattaya — Pregnancy symptoms",
-        "surface": "mobile",
-        "area": "tracking"
-      }
-    ],
-    "dwarseva-property": [
-      {
-        "path": "/designs/dwarseva-property/mobile/404.html",
-        "title": "404 — Dwarseva mobile",
-        "surface": "mobile",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/500.html",
-        "title": "500 — Dwarseva mobile",
-        "surface": "mobile",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/area-list-section.html",
-        "title": "Map · section selected — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/favorites.html",
-        "title": "Favorites — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/filters.html",
-        "title": "Filters — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/home.html",
-        "title": "Buyer home (map · zoomed in) — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/property-detail-unlocked.html",
-        "title": "Property detail · unlocked — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/property-detail.html",
-        "title": "Property detail — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/recharge-gate.html",
-        "title": "Recharge gate — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/report-listing.html",
-        "title": "Report listing — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/unlock-confirm.html",
-        "title": "Unlock confirm — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/buyer/unlock-history.html",
-        "title": "Unlock history — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/agent-noc.html",
-        "title": "Agent NoC — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/buyer-interest.html",
-        "title": "Buyer interest — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/home.html",
-        "title": "Seller home — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/listing-edit.html",
-        "title": "Edit listing — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/listing-live.html",
-        "title": "Listing live — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/listing-needs-changes.html",
-        "title": "Needs changes — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/listing-paused.html",
-        "title": "Listing paused — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/listing-pending.html",
-        "title": "Listing pending — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/listing-sold.html",
-        "title": "Listing sold/rented — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/new-listing-basics.html",
-        "title": "New listing · Basics — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/new-listing-location.html",
-        "title": "New listing · Location &amp; config — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/app/seller/new-listing-photos.html",
-        "title": "New listing · Photos &amp; submit — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/auth/otp.html",
-        "title": "OTP verify — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/auth/sign-in.html",
-        "title": "Sign in — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/maintenance.html",
-        "title": "Maintenance — Dwarseva mobile",
-        "surface": "mobile",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/offline.html",
-        "title": "Offline — Dwarseva mobile",
-        "surface": "mobile",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/onboarding/city-selector.html",
-        "title": "City selector — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/onboarding/role-select.html",
-        "title": "Role select — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/patterns/confirm-destructive.html",
-        "title": "Confirm destructive — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/patterns/toasts.html",
-        "title": "Toasts — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "patterns"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/settings/notifications.html",
-        "title": "Notifications — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/settings/profile-edit.html",
-        "title": "Edit profile — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/settings/settings.html",
-        "title": "Settings — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/wallet/recharge.html",
-        "title": "Recharge — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "wallet"
-      },
-      {
-        "path": "/designs/dwarseva-property/mobile/wallet/wallet.html",
-        "title": "Wallet — Dwarseva mobile",
-        "surface": "mobile",
-        "area": "wallet"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/404.html",
-        "title": "404 · Listing not found — Dwarseva web",
-        "surface": "web",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/web/500.html",
-        "title": "500 · Server error — Dwarseva web",
-        "surface": "web",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/audit.html",
-        "title": "Audit log — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/complaint-detail.html",
-        "title": "Complaint detail — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/complaints-queue.html",
-        "title": "Complaints queue — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/home.html",
-        "title": "Ops dashboard — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/polygons.html",
-        "title": "Polygons &amp; areas — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/user-detail.html",
-        "title": "User detail — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/users.html",
-        "title": "Users — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/verification-detail.html",
-        "title": "Verification detail — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/admin/verification-queue.html",
-        "title": "Verification queue — Dwarseva admin",
-        "surface": "web",
-        "area": "admin"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/area-list-section.html",
-        "title": "Baner Lane 7 · section listings — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/favorites.html",
-        "title": "Favorites — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/filters.html",
-        "title": "Filters — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/home.html",
-        "title": "Buyer home (map + list) — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/property-detail-unlocked.html",
-        "title": "Property detail · unlocked — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/property-detail.html",
-        "title": "Property detail · locked — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/recharge-gate.html",
-        "title": "Recharge gate — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/report-listing.html",
-        "title": "Report listing — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/unlock-confirm.html",
-        "title": "Unlock confirm — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/buyer/unlock-history.html",
-        "title": "Unlock history — Dwarseva web",
-        "surface": "web",
-        "area": "buyer"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/agent-noc.html",
-        "title": "Seller · Agent NoC — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/buyer-interest.html",
-        "title": "Seller · Buyer interest — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/home.html",
-        "title": "Seller · My listings — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/listing-edit.html",
-        "title": "Seller · Edit listing — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/listing-live.html",
-        "title": "Seller · Listing live — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/listing-needs-changes.html",
-        "title": "Seller · Needs changes — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/listing-paused.html",
-        "title": "Seller · Listing paused — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/listing-pending.html",
-        "title": "Seller · Listing pending — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/listing-sold.html",
-        "title": "Seller · Listing sold / rented — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/new-listing-basics.html",
-        "title": "Seller · New listing · Basics — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/new-listing-location.html",
-        "title": "Seller · New listing · Location &amp; config — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/app/seller/new-listing-photos.html",
-        "title": "Seller · New listing · Photos &amp; publish — Dwarseva web",
-        "surface": "web",
-        "area": "seller"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/auth/otp.html",
-        "title": "OTP verify — Dwarseva web",
-        "surface": "web",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/auth/sign-in.html",
-        "title": "Sign in — Dwarseva web",
-        "surface": "web",
-        "area": "auth"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/landing.html",
-        "title": "Dwarseva — Find your dream home. Every listing verified by a human.",
-        "surface": "web",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/web/maintenance.html",
-        "title": "Scheduled maintenance — Dwarseva web",
-        "surface": "web",
-        "area": null
-      },
-      {
-        "path": "/designs/dwarseva-property/web/onboarding/city-selector.html",
-        "title": "City selector — Dwarseva web",
-        "surface": "web",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/onboarding/role-select.html",
-        "title": "Role select — Dwarseva web",
-        "surface": "web",
-        "area": "onboarding"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/settings/notifications.html",
-        "title": "Notifications — Dwarseva web",
-        "surface": "web",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/settings/profile-edit.html",
-        "title": "Edit profile — Dwarseva web",
-        "surface": "web",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/settings/settings.html",
-        "title": "Settings — Dwarseva web",
-        "surface": "web",
-        "area": "settings"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/wallet/recharge.html",
-        "title": "Recharge — Dwarseva web",
-        "surface": "web",
-        "area": "wallet"
-      },
-      {
-        "path": "/designs/dwarseva-property/web/wallet/wallet.html",
-        "title": "Wallet — Dwarseva web",
-        "surface": "web",
-        "area": "wallet"
-      }
-    ]
+    "imposter": {
+      "indexes": [
+        {
+          "path": "/designs/imposter/mobile/index.html",
+          "title": "Imposter",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/imposter/mobile/settings/index.html",
+          "title": "Imposter — settings",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/imposter/mobile/setup/index.html",
+          "title": "Imposter — set up the round",
+          "surface": "mobile"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/imposter/mobile/game/card.html",
+          "title": "Imposter — the card",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/imposter/mobile/game/recheck.html",
+          "title": "Imposter — re-check your word",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/imposter/mobile/game/result.html",
+          "title": "Imposter — the answer",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/imposter/mobile/game/talk.html",
+          "title": "Imposter — talk it out",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/imposter/mobile/onboarding/promise.html",
+          "title": "Imposter — the promise",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/imposter/mobile/onboarding/welcome.html",
+          "title": "Imposter — welcome",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/imposter/mobile/settings/how-to-play.html",
+          "title": "Imposter — how to play",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/imposter/mobile/setup/custom.html",
+          "title": "Imposter — your own words",
+          "surface": "mobile",
+          "area": "setup"
+        },
+        {
+          "path": "/designs/imposter/mobile/setup/packs.html",
+          "title": "Imposter — word packs",
+          "surface": "mobile",
+          "area": "setup"
+        },
+        {
+          "path": "/designs/imposter/mobile/setup/players.html",
+          "title": "Imposter — players",
+          "surface": "mobile",
+          "area": "setup"
+        },
+        {
+          "path": "/designs/imposter/mobile/states/error.html",
+          "title": "Imposter — error",
+          "surface": "mobile",
+          "area": "states"
+        },
+        {
+          "path": "/designs/imposter/mobile/states/loading.html",
+          "title": "Imposter — states",
+          "surface": "mobile",
+          "area": "states"
+        },
+        {
+          "path": "/designs/imposter/mobile/store/paywall.html",
+          "title": "Imposter — paywall",
+          "surface": "mobile",
+          "area": "store"
+        }
+      ]
+    },
+    "charades": {
+      "indexes": [
+        {
+          "path": "/designs/charades/mobile/index.html",
+          "title": "Charades",
+          "surface": "mobile"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/charades/mobile/game/active.html",
+          "title": "Game · active — Charades mobile",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/charades/mobile/game/end-modal.html",
+          "title": "Game · end modal — Charades mobile",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/charades/mobile/game/score.html",
+          "title": "Score — Charades mobile",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/charades/mobile/history/detail.html",
+          "title": "History detail — Charades mobile",
+          "surface": "mobile",
+          "area": "history"
+        },
+        {
+          "path": "/designs/charades/mobile/history/list.html",
+          "title": "History — Charades mobile",
+          "surface": "mobile",
+          "area": "history"
+        },
+        {
+          "path": "/designs/charades/mobile/home.html",
+          "title": "Home — Charades mobile",
+          "surface": "mobile",
+          "area": null
+        },
+        {
+          "path": "/designs/charades/mobile/how-to-play.html",
+          "title": "How to play — Charades mobile",
+          "surface": "mobile",
+          "area": null
+        },
+        {
+          "path": "/designs/charades/mobile/onboarding/categories.html",
+          "title": "Pick categories — Charades mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/charades/mobile/onboarding/ready.html",
+          "title": "Ready — Charades mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/charades/mobile/onboarding/welcome.html",
+          "title": "Welcome — Charades mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/charades/mobile/packs/bundle.html",
+          "title": "Bundle promo — Charades mobile",
+          "surface": "mobile",
+          "area": "packs"
+        },
+        {
+          "path": "/designs/charades/mobile/packs/pack-detail.html",
+          "title": "Pack detail — Charades mobile",
+          "surface": "mobile",
+          "area": "packs"
+        },
+        {
+          "path": "/designs/charades/mobile/packs/store.html",
+          "title": "Pack store — Charades mobile",
+          "surface": "mobile",
+          "area": "packs"
+        },
+        {
+          "path": "/designs/charades/mobile/patterns/purchase-success.html",
+          "title": "Purchase success — Charades mobile",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/charades/mobile/patterns/toasts.html",
+          "title": "Toasts — Charades mobile",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/charades/mobile/settings/settings.html",
+          "title": "Settings — Charades mobile",
+          "surface": "mobile",
+          "area": "settings"
+        }
+      ]
+    },
+    "aakalan": {
+      "indexes": [
+        {
+          "path": "/designs/aakalan/mobile/account/index.html",
+          "title": "Aakalan — Account",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/add/index.html",
+          "title": "Aakalan — Add expense",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/balances/index.html",
+          "title": "Aakalan — Balances",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/expense/index.html",
+          "title": "Aakalan — Expense",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/group/index.html",
+          "title": "Aakalan — Group",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/index.html",
+          "title": "Aakalan",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/person/index.html",
+          "title": "Aakalan — Person ledger",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/settle/index.html",
+          "title": "Aakalan — Settle up",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/aakalan/mobile/spending/index.html",
+          "title": "Aakalan — Spending",
+          "surface": "mobile"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/aakalan/mobile/account/pro.html",
+          "title": "Aakalan — Pro",
+          "surface": "mobile",
+          "area": "account"
+        },
+        {
+          "path": "/designs/aakalan/mobile/add/one-person.html",
+          "title": "Aakalan — Add with one person",
+          "surface": "mobile",
+          "area": "add"
+        },
+        {
+          "path": "/designs/aakalan/mobile/add/recurring.html",
+          "title": "Aakalan — Recurring expenses",
+          "surface": "mobile",
+          "area": "add"
+        },
+        {
+          "path": "/designs/aakalan/mobile/auth/profile.html",
+          "title": "Aakalan — Your profile",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/aakalan/mobile/auth/sign-in.html",
+          "title": "Aakalan — Sign in",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/aakalan/mobile/auth/verify.html",
+          "title": "Aakalan — Verify",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/aakalan/mobile/balances/empty.html",
+          "title": "Aakalan — First run",
+          "surface": "mobile",
+          "area": "balances"
+        },
+        {
+          "path": "/designs/aakalan/mobile/expense/receipt.html",
+          "title": "Aakalan — Receipt photos",
+          "surface": "mobile",
+          "area": "expense"
+        },
+        {
+          "path": "/designs/aakalan/mobile/group/new.html",
+          "title": "Aakalan — New group",
+          "surface": "mobile",
+          "area": "group"
+        },
+        {
+          "path": "/designs/aakalan/mobile/group/settings.html",
+          "title": "Aakalan — Group settings",
+          "surface": "mobile",
+          "area": "group"
+        }
+      ]
+    },
+    "askcal": {
+      "indexes": [
+        {
+          "path": "/designs/askcal/mobile/gallery/index.html",
+          "title": "Food gallery — AskCal mobile",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/askcal/mobile/index.html",
+          "title": "AskCal",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/askcal/mobile/settings/index.html",
+          "title": "Settings — AskCal mobile",
+          "surface": "mobile"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/askcal/mobile/food/barcode.html",
+          "title": "Barcode — AskCal mobile",
+          "surface": "mobile",
+          "area": "food"
+        },
+        {
+          "path": "/designs/askcal/mobile/food/detail.html",
+          "title": "Food detail — AskCal mobile",
+          "surface": "mobile",
+          "area": "food"
+        },
+        {
+          "path": "/designs/askcal/mobile/food/meal.html",
+          "title": "Logged meal — AskCal mobile",
+          "surface": "mobile",
+          "area": "food"
+        },
+        {
+          "path": "/designs/askcal/mobile/food/search.html",
+          "title": "Search — AskCal mobile",
+          "surface": "mobile",
+          "area": "food"
+        },
+        {
+          "path": "/designs/askcal/mobile/gallery/empty.html",
+          "title": "Gallery — empty — AskCal mobile",
+          "surface": "mobile",
+          "area": "gallery"
+        },
+        {
+          "path": "/designs/askcal/mobile/gallery/off.html",
+          "title": "Gallery — photos off — AskCal mobile",
+          "surface": "mobile",
+          "area": "gallery"
+        },
+        {
+          "path": "/designs/askcal/mobile/gallery/photo-bare.html",
+          "title": "Photo and post, nothing on it — AskCal mobile",
+          "surface": "mobile",
+          "area": "gallery"
+        },
+        {
+          "path": "/designs/askcal/mobile/gallery/photo.html",
+          "title": "Photo and post — AskCal mobile",
+          "surface": "mobile",
+          "area": "gallery"
+        },
+        {
+          "path": "/designs/askcal/mobile/history/trends.html",
+          "title": "Trends — AskCal mobile",
+          "surface": "mobile",
+          "area": "history"
+        },
+        {
+          "path": "/designs/askcal/mobile/home/day-nav.html",
+          "title": "Today — day switcher — AskCal mobile",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/askcal/mobile/home/day-past.html",
+          "title": "A past day — AskCal mobile",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/askcal/mobile/home/empty.html",
+          "title": "Today (empty) — AskCal mobile",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/askcal/mobile/home/out-of-scans.html",
+          "title": "Today — out of scans — AskCal mobile",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/askcal/mobile/home/today.html",
+          "title": "Today — AskCal mobile",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/askcal/mobile/log/backdate.html",
+          "title": "When did you eat this? — AskCal mobile",
+          "surface": "mobile",
+          "area": "log"
+        },
+        {
+          "path": "/designs/askcal/mobile/log/confirm.html",
+          "title": "Logged — confirm & adjust — AskCal mobile",
+          "surface": "mobile",
+          "area": "log"
+        },
+        {
+          "path": "/designs/askcal/mobile/log/repeat.html",
+          "title": "Repeat a meal — AskCal mobile",
+          "surface": "mobile",
+          "area": "log"
+        },
+        {
+          "path": "/designs/askcal/mobile/onboarding/body.html",
+          "title": "About you — AskCal mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/askcal/mobile/onboarding/goals.html",
+          "title": "Your goal — AskCal mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/askcal/mobile/onboarding/paywall-upgrade.html",
+          "title": "Upgrade — AskCal mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/askcal/mobile/onboarding/paywall.html",
+          "title": "Paywall — AskCal mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/askcal/mobile/onboarding/welcome.html",
+          "title": "Welcome — AskCal mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/askcal/mobile/patterns/components.html",
+          "title": "Components — AskCal mobile",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/askcal/mobile/patterns/toasts.html",
+          "title": "Toasts &amp; sheets — AskCal mobile",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/analyzing.html",
+          "title": "Analyzing — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/camera.html",
+          "title": "Camera — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/clarify.html",
+          "title": "Clarify — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/failed.html",
+          "title": "Scan failed — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/quota-exhausted.html",
+          "title": "Out of scans — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/result-same.html",
+          "title": "Scan result — same photo, same answer — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        },
+        {
+          "path": "/designs/askcal/mobile/scan/result.html",
+          "title": "Scan result — AskCal mobile",
+          "surface": "mobile",
+          "area": "scan"
+        }
+      ]
+    },
+    "tic-tac-toe": {
+      "indexes": [
+        {
+          "path": "/designs/tic-tac-toe/mobile/home/index.html",
+          "title": "Tic Tac Toe — home",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/tic-tac-toe/mobile/index.html",
+          "title": "Tic Tac Toe",
+          "surface": "mobile"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/tic-tac-toe/mobile/game/board.html",
+          "title": "Tic Tac Toe — board",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/tic-tac-toe/mobile/game/result.html",
+          "title": "Tic Tac Toe — result",
+          "surface": "mobile",
+          "area": "game"
+        },
+        {
+          "path": "/designs/tic-tac-toe/mobile/settings/how-to-play.html",
+          "title": "Tic Tac Toe — how to play",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/tic-tac-toe/mobile/states/ads.html",
+          "title": "Tic Tac Toe — ad states",
+          "surface": "mobile",
+          "area": "states"
+        }
+      ]
+    },
+    "plan-kid": {
+      "indexes": [
+        {
+          "path": "/designs/plan-kid/mobile/index.html",
+          "title": "Pattaya",
+          "surface": "mobile"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/plan-kid/mobile/auth/forgot-password.html",
+          "title": "Pattaya — 6-digit code",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/auth/sign-in.html",
+          "title": "Pattaya — Sign in",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/flows/milestone-share.html",
+          "title": "Pattaya — Milestone share",
+          "surface": "mobile",
+          "area": "flows"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/flows/stage-transition-loss.html",
+          "title": "Pattaya — After loss",
+          "surface": "mobile",
+          "area": "flows"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/flows/stage-transition-pregnant.html",
+          "title": "Pattaya — Stage transition · pregnant",
+          "surface": "mobile",
+          "area": "flows"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-conceive.html",
+          "title": "Pattaya — Home (Trying)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-conceived.html",
+          "title": "Pattaya — Home (Pregnancy)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-decision.html",
+          "title": "Pattaya — Home (Decision)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-delivery.html",
+          "title": "Pattaya — Home (Delivery)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-parenting.html",
+          "title": "Pattaya — Home (Parenting)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-postpartum.html",
+          "title": "Pattaya — Home (Post Partum)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-shared.html",
+          "title": "Pattaya — Home (shared)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/home-solo.html",
+          "title": "Pattaya — Home (solo)",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/home/partner-activity.html",
+          "title": "Pattaya — Partner activity",
+          "surface": "mobile",
+          "area": "home"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/entry-new.html",
+          "title": "Pattaya — New entry",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/entry-share-confirm.html",
+          "title": "Pattaya — Share this entry?",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/entry-shared.html",
+          "title": "Pattaya — Shared entry view",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/list.html",
+          "title": "Pattaya — Journal list",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/reflection-ritual-done.html",
+          "title": "Pattaya — Ritual done",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/reflection-ritual-reveal.html",
+          "title": "Pattaya — Ritual reveal",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/reflection-ritual.html",
+          "title": "Pattaya — Reflection ritual",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/journal/weekly-couple-report.html",
+          "title": "Pattaya — Weekly couple report",
+          "surface": "mobile",
+          "area": "journal"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/ai-chat-history.html",
+          "title": "Pattaya — AI chat history",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/ai-chat-refusal.html",
+          "title": "Pattaya — AI refusal",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/ai-chat.html",
+          "title": "Pattaya — AI chat",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/audio-player.html",
+          "title": "Pattaya — Audio player",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/card-detail.html",
+          "title": "Pattaya — Card detail",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/doctor-referral.html",
+          "title": "Pattaya — Doctor referral",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/feed.html",
+          "title": "Pattaya — Knowledge feed",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/knowledge/search.html",
+          "title": "Pattaya — Search",
+          "surface": "mobile",
+          "area": "knowledge"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/motivation/milestones.html",
+          "title": "Pattaya — Milestones",
+          "surface": "mobile",
+          "area": "motivation"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/motivation/streaks.html",
+          "title": "Pattaya — Streaks",
+          "surface": "mobile",
+          "area": "motivation"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/notifications/center.html",
+          "title": "Pattaya — Notifications",
+          "surface": "mobile",
+          "area": "notifications"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/notifications/permission-prime.html",
+          "title": "Pattaya — Notification prime",
+          "surface": "mobile",
+          "area": "notifications"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/onboarding/context-quiz.html",
+          "title": "Pattaya — Context quiz",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/onboarding/pair-accept.html",
+          "title": "Pattaya — Accept partner invite",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/onboarding/pair-partner.html",
+          "title": "Pattaya — Pair partner",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/onboarding/ready.html",
+          "title": "Pattaya — Ready",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/onboarding/stage-picker.html",
+          "title": "Pattaya — Stage picker",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/onboarding/welcome.html",
+          "title": "Pattaya — Welcome",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/patterns/empty-states.html",
+          "title": "Pattaya — Empty states (gallery)",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/patterns/stage-transitions.html",
+          "title": "Pattaya — Stage transitions",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/patterns/toasts.html",
+          "title": "Pattaya — Toasts (gallery)",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/paywall/paywall-b2b.html",
+          "title": "Pattaya — B2B enrollment (preview)",
+          "surface": "mobile",
+          "area": "paywall"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/paywall/paywall.html",
+          "title": "Pattaya — Paywall",
+          "surface": "mobile",
+          "area": "paywall"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/paywall/trial-start.html",
+          "title": "Pattaya — Trial start",
+          "surface": "mobile",
+          "area": "paywall"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/settings/account.html",
+          "title": "Pattaya — Account",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/settings/data-export.html",
+          "title": "Pattaya — Export & delete",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/settings/household.html",
+          "title": "Pattaya — Household",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/settings/privacy.html",
+          "title": "Pattaya — Privacy",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/settings/subscription-manage.html",
+          "title": "Pattaya — Manage subscription",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/tracking/cycle.html",
+          "title": "Pattaya — Cycle tracking",
+          "surface": "mobile",
+          "area": "tracking"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/tracking/mood-sleep.html",
+          "title": "Pattaya — Mood + sleep",
+          "surface": "mobile",
+          "area": "tracking"
+        },
+        {
+          "path": "/designs/plan-kid/mobile/tracking/pregnancy-symptoms.html",
+          "title": "Pattaya — Pregnancy symptoms",
+          "surface": "mobile",
+          "area": "tracking"
+        }
+      ]
+    },
+    "dwarseva-property": {
+      "indexes": [
+        {
+          "path": "/designs/dwarseva-property/mobile/index.html",
+          "title": "Dwarseva",
+          "surface": "mobile"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/index.html",
+          "title": "Dwarseva",
+          "surface": "web"
+        }
+      ],
+      "screens": [
+        {
+          "path": "/designs/dwarseva-property/mobile/404.html",
+          "title": "404 — Dwarseva mobile",
+          "surface": "mobile",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/500.html",
+          "title": "500 — Dwarseva mobile",
+          "surface": "mobile",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/area-list-section.html",
+          "title": "Map · section selected — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/favorites.html",
+          "title": "Favorites — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/filters.html",
+          "title": "Filters — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/home.html",
+          "title": "Buyer home (map · zoomed in) — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/property-detail-unlocked.html",
+          "title": "Property detail · unlocked — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/property-detail.html",
+          "title": "Property detail — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/recharge-gate.html",
+          "title": "Recharge gate — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/report-listing.html",
+          "title": "Report listing — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/unlock-confirm.html",
+          "title": "Unlock confirm — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/buyer/unlock-history.html",
+          "title": "Unlock history — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/agent-noc.html",
+          "title": "Agent NoC — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/buyer-interest.html",
+          "title": "Buyer interest — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/home.html",
+          "title": "Seller home — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/listing-edit.html",
+          "title": "Edit listing — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/listing-live.html",
+          "title": "Listing live — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/listing-needs-changes.html",
+          "title": "Needs changes — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/listing-paused.html",
+          "title": "Listing paused — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/listing-pending.html",
+          "title": "Listing pending — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/listing-sold.html",
+          "title": "Listing sold/rented — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/new-listing-basics.html",
+          "title": "New listing · Basics — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/new-listing-location.html",
+          "title": "New listing · Location &amp; config — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/app/seller/new-listing-photos.html",
+          "title": "New listing · Photos &amp; submit — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/auth/otp.html",
+          "title": "OTP verify — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/auth/sign-in.html",
+          "title": "Sign in — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/maintenance.html",
+          "title": "Maintenance — Dwarseva mobile",
+          "surface": "mobile",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/offline.html",
+          "title": "Offline — Dwarseva mobile",
+          "surface": "mobile",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/onboarding/city-selector.html",
+          "title": "City selector — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/onboarding/role-select.html",
+          "title": "Role select — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/patterns/confirm-destructive.html",
+          "title": "Confirm destructive — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/patterns/toasts.html",
+          "title": "Toasts — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "patterns"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/settings/notifications.html",
+          "title": "Notifications — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/settings/profile-edit.html",
+          "title": "Edit profile — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/settings/settings.html",
+          "title": "Settings — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/wallet/recharge.html",
+          "title": "Recharge — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "wallet"
+        },
+        {
+          "path": "/designs/dwarseva-property/mobile/wallet/wallet.html",
+          "title": "Wallet — Dwarseva mobile",
+          "surface": "mobile",
+          "area": "wallet"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/404.html",
+          "title": "404 · Listing not found — Dwarseva web",
+          "surface": "web",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/web/500.html",
+          "title": "500 · Server error — Dwarseva web",
+          "surface": "web",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/audit.html",
+          "title": "Audit log — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/complaint-detail.html",
+          "title": "Complaint detail — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/complaints-queue.html",
+          "title": "Complaints queue — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/home.html",
+          "title": "Ops dashboard — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/polygons.html",
+          "title": "Polygons &amp; areas — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/user-detail.html",
+          "title": "User detail — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/users.html",
+          "title": "Users — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/verification-detail.html",
+          "title": "Verification detail — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/admin/verification-queue.html",
+          "title": "Verification queue — Dwarseva admin",
+          "surface": "web",
+          "area": "admin"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/area-list-section.html",
+          "title": "Baner Lane 7 · section listings — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/favorites.html",
+          "title": "Favorites — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/filters.html",
+          "title": "Filters — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/home.html",
+          "title": "Buyer home (map + list) — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/property-detail-unlocked.html",
+          "title": "Property detail · unlocked — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/property-detail.html",
+          "title": "Property detail · locked — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/recharge-gate.html",
+          "title": "Recharge gate — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/report-listing.html",
+          "title": "Report listing — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/unlock-confirm.html",
+          "title": "Unlock confirm — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/buyer/unlock-history.html",
+          "title": "Unlock history — Dwarseva web",
+          "surface": "web",
+          "area": "buyer"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/agent-noc.html",
+          "title": "Seller · Agent NoC — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/buyer-interest.html",
+          "title": "Seller · Buyer interest — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/home.html",
+          "title": "Seller · My listings — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/listing-edit.html",
+          "title": "Seller · Edit listing — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/listing-live.html",
+          "title": "Seller · Listing live — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/listing-needs-changes.html",
+          "title": "Seller · Needs changes — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/listing-paused.html",
+          "title": "Seller · Listing paused — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/listing-pending.html",
+          "title": "Seller · Listing pending — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/listing-sold.html",
+          "title": "Seller · Listing sold / rented — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/new-listing-basics.html",
+          "title": "Seller · New listing · Basics — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/new-listing-location.html",
+          "title": "Seller · New listing · Location &amp; config — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/app/seller/new-listing-photos.html",
+          "title": "Seller · New listing · Photos &amp; publish — Dwarseva web",
+          "surface": "web",
+          "area": "seller"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/auth/otp.html",
+          "title": "OTP verify — Dwarseva web",
+          "surface": "web",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/auth/sign-in.html",
+          "title": "Sign in — Dwarseva web",
+          "surface": "web",
+          "area": "auth"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/landing.html",
+          "title": "Dwarseva — Find your dream home. Every listing verified by a human.",
+          "surface": "web",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/web/maintenance.html",
+          "title": "Scheduled maintenance — Dwarseva web",
+          "surface": "web",
+          "area": null
+        },
+        {
+          "path": "/designs/dwarseva-property/web/onboarding/city-selector.html",
+          "title": "City selector — Dwarseva web",
+          "surface": "web",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/onboarding/role-select.html",
+          "title": "Role select — Dwarseva web",
+          "surface": "web",
+          "area": "onboarding"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/settings/notifications.html",
+          "title": "Notifications — Dwarseva web",
+          "surface": "web",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/settings/profile-edit.html",
+          "title": "Edit profile — Dwarseva web",
+          "surface": "web",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/settings/settings.html",
+          "title": "Settings — Dwarseva web",
+          "surface": "web",
+          "area": "settings"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/wallet/recharge.html",
+          "title": "Recharge — Dwarseva web",
+          "surface": "web",
+          "area": "wallet"
+        },
+        {
+          "path": "/designs/dwarseva-property/web/wallet/wallet.html",
+          "title": "Wallet — Dwarseva web",
+          "surface": "web",
+          "area": "wallet"
+        }
+      ]
+    }
   }
 }

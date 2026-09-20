@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — mobile wireframes</title>
+  <script src="../../_vendor/tailwind.js"></script>
+  <script src="tailwind.config.js"></script>
+  <script src="../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body class="bg-page h-auto block">
+
+<header class="border-b border-line bg-surface">
+  <div class="mx-auto max-w-6xl px-6 py-6">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-[image:var(--mark)]">
+        <span class="text-white font-black text-2xl leading-none">आ</span>
+      </div>
+      <div>
+        <p class="section-label">Aakalan · mobile wireframes · MVP</p>
+        <h1 class="mt-1 text-2xl font-black tracking-tight text-brand-900">Track what you spend. Split what you share.</h1>
+        <p class="mt-1 text-2xs text-ink-3">23 screens · 2 tabs + Add · phone frame 390 × 844 · Riya as the signed-in user · ₹ INR</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-6 py-8 space-y-6">
+
+  <section class="rationale">
+    <p class="rationale-title">The product</p>
+    <p>Aakalan is two things that share one ledger. <b>A personal expense tracker</b> — log what you spend, see where it goes each month. <b>A bill splitter</b> — split anything with anyone, see who owes what, settle over UPI without leaving the app. An expense does not have to belong to a group: "Just me" is the first option on the add screen, and a personal expense uses the same categories and the same monthly totals as a shared one.</p>
+    <p class="mt-2">The wedge against Splitwise: the balance is the first thing you see, adding an expense takes three taps, settling happens in-app over UPI, and <b>the free tier never caps the core loop</b>. One Pro tier, priced below the incumbent, gating depth only.</p>
+  </section>
+
+  <section class="card card--indigo">
+    <p class="section-label">The simplification pass</p>
+    <p class="mt-2 text-2xs leading-relaxed text-brand-900">
+      The set had grown to 24 screens and five tabs for a product with two halves. It is
+      <b>two tabs and one action</b> now, each tab owning one half of the pitch. Every merge below
+      was argued with a rule the set had already written down and was breaking somewhere else; the
+      full reasoning is in each screen's sidebar rather than repeated here.
+    </p>
+    <div class="mt-3 grid grid-cols-2 gap-x-6 gap-y-2.5 text-2xs text-ink-2 leading-relaxed">
+      <p><b class="text-ink">Friends → Balances.</b> Home already refused a Groups tab because "a tab showing the same balance over the same list is the same screen twice". Friends was that exact screen, cut by person. It is a segmented control now, over one list sorted by size.</p>
+      <p><b class="text-ink">Insights → Spending.</b> Insights refused a category-detail screen because it "would be a screen showing the same data again" — which is what it and Activity were to each other. The summary is the header and the rows are the body.</p>
+      <p><b class="text-ink">Account → the header avatar.</b> It was always opened by tapping your own face. A settings screen visited twice a year held a tab while Insights, the whole tracker half, was a 20px icon.</p>
+      <p><b class="text-ink">Contacts browser → search.</b> Two routes to one address book, one of them a list you scroll to find one name in nine hundred. What is left is the permission ask, the failures and the merge.</p>
+      <p class="col-span-2"><b class="text-ink">Eight horizontal chip scrollers → one picker row.</b> A sideways strip works at three items and hides everything past the third, cannot be searched, and puts unlike things — yourself, a person, a group, and an action that <i>creates</i> a group — on one axis. Add, Add-with-one-person, Recurring and Settle all use the same row now: it names the current answer at rest, costs zero taps when the default is right, and opens one searchable sheet that works the same at nine hundred contacts.</p>
+      <p class="col-span-2"><b class="text-ink">Seventeen features removed:</b> the expense comment thread, Google and Apple sign-in, the group Type picker, the duplicate Simplify toggle, weekly debt-reminder pushes, a notification switch labelled "can't be turned off", the "Half" settle amount, a UPI ID printed twice on one screen, the first-run explainer bullets, the separate contacts-browse destination — and now the "Add people" screen that replaced it, the per-contact "Add" button, the "Settle up" list screen, the UPI app chips, the settle-screen group breakdown, both all-square accordions, and the confirmation step on money you record receiving. Two undocumented shipped screens became <b class="text-ink">one</b> wireframed screen, and the group card became a group row.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="section-label">Rules the design never breaks</p>
+    <div class="mt-3 grid grid-cols-2 gap-x-6 gap-y-2.5 text-2xs text-ink-2 leading-relaxed">
+      <p><b class="text-ink">1 · Green means someone owes you, rose means you owe.</b> Reserved for money direction, including the <b class="text-ink">balance hero</b> — green, rose or neutral by direction, and all square is neutral, never green. <b class="text-ink">The reservation covers every wheel</b>: no avatar, group cover or category puck may be green or rose. Three were: <code class="mono">av-riya</code> was the literal <code class="mono">--neg</code>, so "you" wore a rose disc in every money row; <code class="mono">av-meera</code> and <code class="mono">cat-home</code> were the literal <code class="mono">--pos</code>. The one carve-out is a destructive action — Delete stays rose, because that convention is older and stronger than this rule.</p>
+      <p><b class="text-ink">2 · Every rupee figure is tabular-aligned</b> (<code class="mono">font-variant-numeric: tabular-nums</code>) so columns of amounts line up.</p>
+      <p><b class="text-ink">3 · No screen makes the user do arithmetic.</b> If a split is shown, the per-person figure is shown with it.</p>
+      <p><b class="text-ink">4 · Adding an expense is never paywalled</b>, and neither is splitting, settling or exporting your own data.</p>
+      <p><b class="text-ink">5 · Edits and deletions are permanent, visible audit entries.</b> An expense can be removed; the record that someone removed it cannot.</p>
+      <p><b class="text-ink">6 · A payment the PAYER claims requires the receiver's confirmation</b> before any balance changes. Money you record <em>receiving</em> is true at once — you are the only one who can know it arrived, and the record reduces what the other person owes, so there is nobody it could cheat. This used to run "whichever side recorded it", which meant asking a debtor for permission to forgive their debt.</p>
+      <p><b class="text-ink">7 · Offline is the normal case.</b> Writes queue locally and appear immediately as pending — never hidden until sync, or people add the same bill twice.</p>
+      <p><b class="text-ink">8 · A control that cannot be operated is a sentence.</b> No disabled switches, no chips that set a number nobody owes, no second control over a behaviour that already has one.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="section-label">Navigation · 2 tabs and the centre action</p>
+    <div class="mt-3 grid grid-cols-3 gap-3 text-center">
+      <a href="balances/index.html" class="card card--interactive py-3">
+        <i data-lucide="scale" class="w-5 h-5 mx-auto text-brand-500"></i>
+        <p class="text-2xs font-bold mt-1.5">Balances</p>
+        <p class="text-2xs text-ink-3 mt-0.5 leading-tight">where you stand — by person or by group</p>
+      </a>
+      <a href="add/index.html" class="card card--interactive py-3 border-brand-500 bg-brand-50">
+        <i data-lucide="plus" class="w-5 h-5 mx-auto text-brand-700"></i>
+        <p class="text-2xs font-bold mt-1.5 text-brand-700">Add</p>
+        <p class="text-2xs text-brand-700 mt-0.5 leading-tight opacity-75">solo, one friend, or a group</p>
+      </a>
+      <a href="spending/index.html" class="card card--interactive py-3">
+        <i data-lucide="chart-pie" class="w-5 h-5 mx-auto text-brand-500"></i>
+        <p class="text-2xs font-bold mt-1.5">Spending</p>
+        <p class="text-2xs text-ink-3 mt-0.5 leading-tight">the month, summarised then itemised</p>
+      </a>
+    </div>
+    <p class="mt-3 text-2xs text-ink-3 leading-relaxed">
+      Two tabs, because the product is two things. Everything else is <i>pushed</i>: account, group
+      detail, friend ledger, expense detail, settle, recurring, the paywall. A tab is for a place you
+      return to; a push is for a place you go, do a thing and leave. Account is reached by tapping
+      your own avatar, which is how it was always reached.
+      There is no notifications screen and no pending-settlement banner. A claim someone made is a
+      fact about <i>that person</i>, so it is an "Unconfirmed" flag on their row in Balances and the
+      two buttons live on their ledger, one tap away — and a push notification deep-links straight
+      to it. A banner reserved the top of the screen for a card that is absent most days and printed
+      the same amount twice, once in itself and once in the row beneath it.
+    </p>
+  </section>
+
+  <section class="card">
+    <p class="section-label">All 23 screens · one folder per route area</p>
+    <p class="mt-1.5 text-2xs text-ink-3 leading-relaxed">
+      Every folder is a route area and every <code class="mono">index.html</code> is that area's main
+      screen, so the tree reads the same as <code class="mono">src/app/</code>. ★ = flagship.
+    </p>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">auth/</code> · getting in, phone number only</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="auth/sign-in.html" class="chip chip-indigo">sign-in</a>
+      <a href="auth/verify.html" class="chip chip-indigo">verify · the OTP</a>
+      <a href="auth/profile.html" class="chip chip-indigo">profile · name and UPI ID</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">balances/</code> · where you stand</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="balances/index.html" class="chip chip-indigo">index ★ · people / groups / search / states</a>
+      <a href="balances/empty.html" class="chip chip-neutral">empty · first run</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">add/</code> · the core loop</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="add/index.html" class="chip chip-saffron">index ★ · solo / group / who sheet / split sheet</a>
+      <a href="add/one-person.html" class="chip chip-saffron">one-person · no group needed</a>
+      <a href="add/recurring.html" class="chip chip-warning">recurring · rules / new / catch-up</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">spending/</code> · the tracker half</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="spending/index.html" class="chip chip-info">index ★ · all / just me</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">expense/</code> · one bill</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="expense/index.html" class="chip chip-saffron">index · split / solo</a>
+      <a href="expense/receipt.html" class="chip chip-warning">receipt · attach / free / pending</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">group/</code> · a shared ledger</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="group/index.html" class="chip chip-indigo">index ★ · pairwise / simplified</a>
+      <a href="group/new.html" class="chip chip-indigo">new · form / invite</a>
+      <a href="group/settings.html" class="chip chip-indigo">settings · members, currency, leave</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">person/</code> · one person</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="person/index.html" class="chip chip-info">person/index ★ · the running ledger</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">settle/</code> · the payoff loop</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="settle/index.html" class="chip chip-success">index · pay / record</a>
+    </div>
+
+    <p class="mt-4 mb-1.5 text-2xs font-bold text-ink-2"><code class="mono">account/</code> · you</p>
+    <div class="flex flex-wrap gap-1.5">
+      <a href="account/index.html" class="chip chip-neutral">index</a>
+      <a href="account/pro.html" class="chip chip-warning">pro · the paywall</a>
+    </div>
+
+    <p class="mt-4 text-2xs text-ink-3 leading-relaxed">
+      Several files hold more than one frame — Balances and Add have four each, Contacts five — laid
+      out side by side so the difference between them is visible at a glance. Each screen carries a
+      sidebar stating what it is for and the decisions behind it, including what was removed and why.
+    </p>
+  </section>
+
+  <section class="card card--muted">
+    <p class="section-label">Sample data · reconciles across every screen</p>
+    <div class="mt-3 flex flex-wrap items-center gap-4">
+      <div class="flex items-center gap-2">
+        <div class="avatar av-riya">R</div>
+        <div>
+          <p class="text-sm font-bold">Riya <span class="text-2xs font-semibold text-ink-3">(you)</span></p>
+          <p class="text-2xs text-ink-3">Bangalore · ₹ INR</p>
+        </div>
+      </div>
+      <div class="av-stack">
+        <div class="avatar av-arjun">A</div><div class="avatar av-meera">M</div>
+        <div class="avatar av-kabir">K</div><div class="avatar av-sana">S</div><div class="avatar av-dev">D</div>
+      </div>
+      <p class="text-2xs text-ink-3">Arjun · Meera · Kabir · Sana · Dev</p>
+    </div>
+
+    <div class="mt-4 grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-2xs font-bold text-ink-2 mb-1.5">Splitting · net +₹4,280</p>
+        <p class="text-2xs text-ink-3 leading-relaxed">
+          Owed ₹6,150 (Kabir 2,500 · Arjun 2,400 · Meera 1,250) minus owed ₹1,870 (Sana 1,120 · Dev 750).<br/>
+          Goa Trip '26 +₹3,780 · Flat 402 +₹500 · Office Lunch square.
+        </p>
+      </div>
+      <div>
+        <p class="text-2xs font-bold text-ink-2 mb-1.5">Tracking · September ₹11,860</p>
+        <p class="text-2xs text-ink-3 leading-relaxed">
+          Your own ₹5,340 + your share of splits ₹6,520. August was ₹9,940, so +19%.<br/>
+          Food 4,120 · Travel 3,280 · Stay 1,900 · Fun 1,240 · Shop 840 · Bills 480.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card card-flat">
+    <div class="p-3 border-b border-line"><p class="section-label">Screen → app route</p></div>
+    <table class="route-table">
+      <thead><tr><th class="w-[38%]">Wireframe</th><th>expo-router route</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">auth/sign-in · verify · profile</td><td class="mono text-brand-700">src/app/(auth)/sign-in · verify · profile</td></tr>
+        <tr><td class="mono">balances/index · empty</td><td class="mono text-brand-700">src/app/(tabs)/index</td></tr>
+        <tr><td class="mono">add/index · one-person</td><td class="mono text-brand-700">src/app/(tabs)/add</td></tr>
+        <tr><td class="mono">add/recurring</td><td class="mono text-brand-700">src/app/recurring/index · new</td></tr>
+        <tr><td class="mono">spending/index</td><td class="mono text-brand-700">src/app/(tabs)/spending</td></tr>
+        <tr><td class="mono">expense/index</td><td class="mono text-brand-700">src/app/expense/[id]</td></tr>
+        <tr><td class="mono">expense/receipt</td><td class="mono text-brand-700">src/app/(tabs)/add · expense/[id]</td></tr>
+        <tr><td class="mono">group/index · new · settings</td><td class="mono text-brand-700">src/app/group/[id]/index · new · [id]/settings</td></tr>
+        <tr><td class="mono">person/index</td><td class="mono text-brand-700">src/app/person/[id]</td></tr>
+                <tr><td class="mono">settle/index · done</td><td class="mono text-brand-700">src/app/settle/[id] · done</td></tr>
+        <tr><td class="mono">account/index</td><td class="mono text-brand-700">src/app/account</td></tr>
+        <tr><td class="mono">account/payment-details</td><td class="mono text-brand-700">src/app/payment-details</td></tr>
+        <tr><td class="mono">account/appearance · currency</td><td class="mono text-brand-700">src/app/appearance · currency</td></tr>
+        <tr><td class="mono">account/pro</td><td class="mono text-brand-700">src/app/pricing</td></tr>
+      </tbody>
+    </table>
+    <p class="p-3 text-2xs text-ink-3 leading-relaxed border-t border-line">
+      <b class="text-ink">The folder tree and the route tree are the same shape.</b> One folder per
+      route area, <code class="mono">index.html</code> for that area's main screen, siblings named
+      after their own route segment. The old tree was named after an information architecture that
+      no longer exists — <code class="mono">home/</code> held Balances, <code class="mono">friends/</code>
+      held a ledger and a contacts picker for a tab that had been deleted, and
+      <code class="mono">expense/</code> held the Add screen.
+      <br/><br/>
+      Every route now has a wireframe behind it, which was not true before:
+      <code class="mono">payments</code> and <code class="mono">numbers</code> shipped with nothing
+      describing either, and they are one screen now.
+      Routes that go away: <code class="mono">(tabs)/friends</code>,
+      <code class="mono">(tabs)/activity</code>, <code class="mono">insights</code>,
+      <code class="mono">(tabs)/account</code>, <code class="mono">payments</code>,
+      <code class="mono">numbers</code>. <code class="mono">friend/[id]</code> becomes
+      <code class="mono">person/[id]</code> — the People cut is the only place the product still
+      names them, and it does not say "friend".
+    </p>
+  </section>
+
+  <section class="card">
+    <p class="section-label">Flagged, not cut</p>
+    <p class="mt-2 text-2xs text-ink-2 leading-relaxed">
+      <b class="text-ink">Multi-currency is the most expensive feature in the set per user served.</b>
+      It pays for a currency screen, a per-group currency, a money-bag type that cannot be summed,
+      a two-currency hero state, and a currency selector on Spending — for an India-first app whose
+      overwhelming case is rupees only. It ships, so removing it is not free, and nothing here
+      removes it. It is recorded as the one place where the complexity and the audience do not
+      match, so the next feature that looks like it gets asked the same question first.
+    </p>
+  </section>
+
+  <section class="card">
+    <p class="section-label">Design system</p>
+    <p class="mt-2 text-2xs text-ink-2 leading-relaxed">
+      Two files mirror each other: <code class="mono">shared.css</code> holds the tokens as CSS
+      variables plus the components Tailwind can't express (phone frame, tab bar with the raised FAB,
+      balance hero, money rows, split editor), and <code class="mono">tailwind.config.js</code> holds
+      the same tokens as Tailwind scales — <code class="mono">brand</code>,
+      <code class="mono">saffron</code>, <code class="mono">pos</code>, <code class="mono">neg</code>,
+      <code class="mono">ink</code>, <code class="mono">line</code>, <code class="mono">cat</code>.
+      When porting to React Native, translate those tokens into
+      <code class="mono">src/theme/tokens.ts</code> rather than re-deriving colours by eye.
+      Icons are <a href="https://lucide.dev" class="font-bold text-brand-700">Lucide</a>, and every
+      name used here exists in the app's installed <code class="mono">lucide-react-native</code>.
+    </p>
+  </section>
+
+</main>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

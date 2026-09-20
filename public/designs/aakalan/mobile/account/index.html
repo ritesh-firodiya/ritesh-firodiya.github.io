@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Account</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <span class="breadcrumb-label">Account</span>
+    <a href="../index.html" class="breadcrumb-chip">← All</a>
+    <span class="breadcrumb-chip is-current">Account</span>
+    <a aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none" class="breadcrumb-chip">Payment details →</a>
+    <a href="pro.html" class="breadcrumb-chip">Pro →</a>
+  </div>
+</div>
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Account</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Everything that isn't money, on one scrollable screen.</p>
+
+      <p class="mt-3"><strong>It is a pushed screen now, not a tab.</strong> It is reached by tapping your own avatar — which is how it was always reached anyway. A screen visited twice a year does not earn one of the five most valuable slots in the app; the tab it gave up went to Spending, which people open every week.</p>
+
+      <p class="mt-3"><strong>One screen, not four.</strong> Profile is three fields, export is one button, privacy is a paragraph. None of them earns a destination of its own.</p>
+
+      <p class="mt-3"><strong>Your UPI ID appears once.</strong> It used to be printed in the profile card <em>and</em> in the row below it, on the same screen — the same string twice, six rows apart, one of them not tappable. The card identifies you; the row is where you change it.</p>
+
+      <p class="mt-3"><strong>One "How people pay you" screen, not two.</strong> Your UPI IDs and your phone numbers were heading for a screen each, and they are one topic: how somebody reaches you and how they send you money. Both are lists — one person routinely has a personal number and a work one, a personal VPA and a work VPA — and which to use is the payee's call, so all of them are kept and all of them are offered.</p>
+
+      <p class="mt-3"><strong>Export is a first-class row, not a footnote</strong> — product rule 4: exporting your own data is never Pro. It sits directly above the Pro card, deliberately, so it is obvious that the paywall does not touch it.</p>
+
+      <p class="mt-3"><strong>Two notification settings, and neither is fake.</strong> There used to be three, one of which was drawn as a switch and then labelled "can't be turned off". A control that cannot be operated is not a control — that one is a sentence now. The third, a weekly nudge about old debts, is gone: an app that messages your friends on a timer is doing something you did not ask for in a relationship you have to maintain.</p>
+
+      <p class="mt-3"><strong>Delete account is present, real, and states what happens to shared groups.</strong> Required by both stores, and the honest answer — your expenses stay in groups so other people's balances don't break — is better said here than discovered later.</p>
+    </div>
+  </div>
+
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <!-- Pushed, not a tab. Back goes to wherever the avatar was tapped. -->
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Account</h2>
+  </div>
+
+  <div class="px-4 pt-1 pb-8 space-y-4">
+
+    <!-- Identity only. The UPI ID used to be printed here as well as in the
+         row below — the same string twice on one screen, and the copy up here
+         was the one you could not tap to fix. -->
+    <div class="card flex items-center gap-3.5">
+      <div class="avatar avatar-lg av-riya">R</div>
+      <div class="flex-1 min-w-0">
+        <p class="text-lg font-black">Riya Sharma</p>
+        <p class="text-2xs text-ink-3 num">+91 98765 43210</p>
+      </div>
+      <button class="iconbtn"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+    </div>
+
+    <div>
+      <p class="section-label mb-2">Money</p>
+      <div class="card card-flat">
+        <a aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none" class="row no-underline text-inherit">
+          <div class="row-icon bg-brand-50"><i data-lucide="smartphone-nfc" class="w-4 h-4 text-brand-500"></i></div>
+          <div class="row-body">
+            <p class="row-title">How people pay you</p>
+            <p class="row-sub">1 UPI ID · 2 phone numbers</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </a>
+        <a aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none" class="row no-underline text-inherit">
+          <div class="row-icon bg-sunken"><i data-lucide="indian-rupee" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body"><p class="row-title">Default currency</p><p class="row-sub">Indian Rupee · ₹</p></div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </a>
+        <!-- Never Pro. Placed above the Pro card on purpose. -->
+        <button class="row">
+          <div class="row-icon bg-pos-bg"><i data-lucide="download" class="w-4 h-4 text-pos-fg"></i></div>
+          <div class="row-body">
+            <p class="row-title">Export your data</p>
+            <p class="row-sub">Every expense and settlement, as CSV — always free</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <a href="pro.html" class="card card--saffron flex items-center gap-3">
+      <div class="w-11 h-11 rounded-xl bg-surface flex items-center justify-center flex-shrink-0">
+        <i data-lucide="sparkles" class="w-5 h-5 text-saffron-600"></i>
+      </div>
+      <div class="flex-1">
+        <p class="text-base font-black text-saffron-700">Aakalan Pro</p>
+        <p class="text-2xs mt-0.5 text-saffron-700 opacity-85">Full spending history, multi-currency, recurring expenses, receipts</p>
+      </div>
+      <i data-lucide="chevron-right" class="w-5 h-5 text-saffron-600"></i>
+    </a>
+
+    <!-- NO notification settings, because there are no notifications. This
+         held two toggles — "New expenses in my groups" and "Quiet hours" —
+         for a feature that has never been built, on the one screen whose job
+         is to tell the truth about what the app does with your data. A design
+         for something unbuilt is a roadmap; drawn as a working switch it is a
+         claim. The switch that used to sit here at 50% opacity labelled
+         "can't be turned off" was cut for the same reason, and this is the
+         rest of that cut.
+
+         The sentence stays, because it is true today. -->
+    <p class="text-2xs text-ink-3 leading-relaxed">
+      You are always told when someone says they paid you, or confirms that you did — a balance
+      cannot move without it, so there is nothing to switch.
+    </p>
+
+    <div>
+      <p class="section-label mb-2">App</p>
+      <div class="card card-flat">
+        <a aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none" class="row no-underline text-inherit">
+          <div class="row-icon bg-sunken"><i data-lucide="moon" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body"><p class="row-title">Appearance</p><p class="row-sub">Match device</p></div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </a>
+        <a href="../add/recurring.html" class="row no-underline text-inherit">
+          <div class="row-icon bg-sunken"><i data-lucide="repeat" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body"><p class="row-title">Recurring expenses</p><p class="row-sub">3 active · rent, wifi, gym</p></div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </a>
+        <button class="row">
+          <div class="row-icon bg-sunken"><i data-lucide="life-buoy" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body"><p class="row-title">Help &amp; feedback</p></div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- The privacy screen, compressed to the three claims that matter, and
+         printed rather than hidden behind a row. A privacy page nobody opens
+         is a privacy page that says nothing. -->
+    <div class="card card--muted space-y-2">
+      <p class="section-label">What Aakalan does not do</p>
+      <p class="text-2xs text-ink-2 leading-relaxed">· Never uploads your address book — matching happens on your device, one scrambled number at a time.</p>
+      <p class="text-2xs text-ink-2 leading-relaxed">· Never sees a UPI PIN, card or bank credential. Payments hand off to your UPI app.</p>
+      <p class="text-2xs text-ink-2 leading-relaxed">· Never sells or shares your expense data. Your "Just me" expenses are visible to you alone.</p>
+      <p class="text-2xs text-ink-3 leading-relaxed pt-1">Adding someone to a group does share their name and number with the others in it — that is how they see whose row is whose.</p>
+      <button class="text-2xs font-extrabold text-brand-700 pt-1 text-left">Read the full policy</button>
+    </div>
+
+    <div class="card card-flat">
+      <button class="row">
+        <div class="row-icon bg-sunken"><i data-lucide="log-out" class="w-4 h-4 text-ink-2"></i></div>
+        <div class="row-body"><p class="row-title">Sign out</p></div>
+      </button>
+      <button class="row">
+        <div class="row-icon bg-danger-bg"><i data-lucide="user-x" class="w-4 h-4 text-danger-fg"></i></div>
+        <div class="row-body">
+          <p class="row-title text-danger-fg">Delete account</p>
+          <p class="row-sub">Your solo expenses go. Expenses in shared groups stay, so nobody else's balance breaks.</p>
+        </div>
+      </button>
+    </div>
+
+    <p class="text-2xs text-ink-4 text-center">Aakalan 1.0.0 (build 1) · made in Bangalore</p>
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

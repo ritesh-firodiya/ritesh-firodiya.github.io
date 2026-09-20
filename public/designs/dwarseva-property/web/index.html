@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dwarseva — web wireframe routes</title>
+  <script src="../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .chip { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 10.5px; line-height: 1.4; }
+  </style>
+</head>
+<body class="bg-zinc-100 text-zinc-900">
+
+<header class="border-b border-zinc-200">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
+    <div>
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Dwarseva · web wireframes</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Routes &amp; variations · web (desktop)</h1>
+      <p class="mt-1 text-[11px] text-zinc-500">Desktop 1440-wide app canvas. Buyer + Seller + Admin. Companion to <a href="../mobile/index.html" class="text-blue-700 underline">/mobile</a>.</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="../mobile/index.html" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[11px] text-zinc-700 hover:border-blue-500/40">Mobile routes</a>
+      <a href="../../README.md" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[11px] text-zinc-700 hover:border-blue-500/40">README</a>
+      <a href="../../documents/product/spec.md" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[11px] text-zinc-700 hover:border-blue-500/40">SPEC</a>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-5 py-8">
+
+  <section class="mb-6 rounded-xl border border-zinc-200 bg-zinc-100/75 px-4 py-3">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Quick links · primary flows</p>
+    <div class="mt-2 flex flex-wrap gap-1.5">
+      <a href="landing.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Public landing</a>
+      <a href="auth/sign-in.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Sign in</a>
+      <a href="auth/otp.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">OTP verify</a>
+      <a href="onboarding/city-selector.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">City</a>
+      <a href="onboarding/role-select.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Role</a>
+      <a href="app/buyer/home.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Buyer home (map + list)</a>
+      <a href="app/buyer/property-detail.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Property detail</a>
+      <a href="app/seller/home.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Seller home</a>
+      <a href="app/seller/new-listing-basics.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">New listing</a>
+      <a href="app/admin/home.html" class="chip border border-rose-500/40 bg-rose-500/10 text-rose-700 hover:border-rose-500">Admin home</a>
+      <a href="app/admin/verification-detail.html" class="chip border border-rose-500/40 bg-rose-500/10 text-rose-700 hover:border-rose-500">Verification detail</a>
+      <a href="wallet/wallet.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Wallet</a>
+    </div>
+  </section>
+
+  <section class="mb-6 rounded-xl border border-zinc-200 bg-zinc-100/75 px-4 py-3">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">System &amp; utility states</p>
+    <div class="mt-2 flex flex-wrap gap-1.5">
+      <a href="404.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">404</a>
+      <a href="500.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">500</a>
+      <a href="maintenance.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Maintenance</a>
+    </div>
+  </section>
+
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-zinc-200 text-[10px] uppercase tracking-widest text-zinc-500">
+        <th class="px-3 py-2 text-left font-normal w-1/4">Route</th>
+        <th class="px-3 py-2 text-left font-normal">Variations</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="landing.html" class="mono text-amber-700 hover:underline">/</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="landing.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Public landing</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="auth/sign-in.html" class="mono text-blue-700 hover:underline">/auth</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="auth/sign-in.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Sign in (name + phone)</a>
+            <a href="auth/otp.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">OTP verify</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="onboarding/role-select.html" class="mono text-blue-700 hover:underline">/onboarding</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="onboarding/city-selector.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">1 · City</a>
+            <a href="onboarding/role-select.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">2 · Role</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="app/buyer/home.html" class="mono text-amber-700 hover:underline">/buyer</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/buyer/home.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Home (map + list)</a>
+            <a href="app/buyer/favorites.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Favorites</a>
+            <a href="app/buyer/filters.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Filters</a>
+            <a href="app/buyer/area-list-section.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Map · section</a>
+            <a href="app/buyer/property-detail.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Detail · locked</a>
+            <a href="app/buyer/property-detail-unlocked.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Detail · unlocked</a>
+            <a href="app/buyer/unlock-confirm.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Unlock confirm</a>
+            <a href="app/buyer/recharge-gate.html" class="chip border border-rose-500/40 bg-rose-500/10 text-rose-700 hover:border-rose-500">Recharge gate</a>
+            <a href="app/buyer/unlock-history.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Unlock history</a>
+            <a href="app/buyer/report-listing.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Report</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="app/seller/home.html" class="mono text-emerald-700 hover:underline">/seller</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/seller/home.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Home (my listings)</a>
+            <a href="app/seller/new-listing-basics.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">New · 1 Basics</a>
+            <a href="app/seller/new-listing-location.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">New · 2 Location</a>
+            <a href="app/seller/new-listing-photos.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">New · 3 Photos</a>
+            <a href="app/seller/agent-noc.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Agent NoC</a>
+            <a href="app/seller/listing-pending.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Pending</a>
+            <a href="app/seller/listing-needs-changes.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Needs changes</a>
+            <a href="app/seller/listing-live.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Live</a>
+            <a href="app/seller/listing-edit.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Edit listing</a>
+            <a href="app/seller/listing-paused.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Paused</a>
+            <a href="app/seller/listing-sold.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Sold / rented</a>
+            <a href="app/seller/buyer-interest.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Buyer interest</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="app/admin/home.html" class="mono text-rose-700 hover:underline">/admin</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/admin/home.html" class="chip border border-rose-500/40 bg-rose-500/10 text-rose-700 hover:border-rose-500">Dashboard</a>
+            <a href="app/admin/verification-queue.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Verification queue</a>
+            <a href="app/admin/verification-detail.html" class="chip border border-amber-500/40 bg-amber-500/10 text-amber-700 hover:border-amber-500">Verification detail</a>
+            <a href="app/admin/complaints-queue.html" class="chip border border-rose-500/40 bg-rose-500/10 text-rose-700 hover:border-rose-500">Complaints queue</a>
+            <a href="app/admin/complaint-detail.html" class="chip border border-rose-500/40 bg-rose-500/10 text-rose-700 hover:border-rose-500">Complaint · refund</a>
+            <a href="app/admin/users.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Users</a>
+            <a href="app/admin/user-detail.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">User detail</a>
+            <a href="app/admin/polygons.html" class="chip border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 hover:border-emerald-500">Polygon editor</a>
+            <a href="app/admin/audit.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Audit log</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="wallet/wallet.html" class="mono text-blue-700 hover:underline">/wallet</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="wallet/wallet.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Wallet</a>
+            <a href="wallet/recharge.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Recharge</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-200">
+        <td class="px-3 py-3 align-top"><a href="settings/settings.html" class="mono text-zinc-700 hover:underline">/settings</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="settings/settings.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Settings</a>
+            <a href="settings/profile-edit.html" class="chip border border-blue-500/40 bg-blue-500/10 text-blue-700 hover:border-blue-500">Edit profile</a>
+            <a href="settings/notifications.html" class="chip border border-zinc-300 bg-white text-zinc-700 hover:border-blue-500/40">Notifications</a>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <section class="mt-10 rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-3 text-[11px] text-blue-800">
+    <p class="text-[10px] uppercase tracking-widest text-blue-700">Visual language</p>
+    <p class="mt-1">Dark canvas (<code class="mono">zinc-950</code>). Primary <code class="mono">blue-500</code>. Verified / live <code class="mono">emerald-500</code>. Pending / wallet-warning <code class="mono">amber-500</code>. Errors / scam reports <code class="mono">rose-500</code>. Admin uses a persistent left sidebar. Buyer/seller use a top app-bar with role tabs. All prices, tier names, copy → <a href="../../catalog.md" class="underline">CATALOG.md</a>.</p>
+  </section>
+
+</main>
+
+</body>
+</html>

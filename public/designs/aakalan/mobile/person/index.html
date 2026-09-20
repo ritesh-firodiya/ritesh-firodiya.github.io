@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Person ledger</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <span class="breadcrumb-label">Person ledger · flagship</span>
+    <a href="../index.html" class="breadcrumb-chip">← All</a>
+    <a href="../balances/index.html" class="breadcrumb-chip">← Balances</a>
+    <span class="breadcrumb-chip is-current">Kabir</span>
+    <a href="../settle/index.html" class="breadcrumb-chip">Settle →</a>
+  </div>
+</div>
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Person ledger</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> The receipt you can show someone. Every line that produced the number at the top, across every group, in order.</p>
+
+      <p class="mt-3"><strong>The running balance column is the point.</strong> "You are owed ₹2,500" is a claim; a column that starts at zero and arrives at ₹2,500 is a proof. This is the screen that ends the argument the app exists to prevent, so it has to be legible to the other person, not only to you.</p>
+
+      <p class="mt-3"><strong>Groups are labels here, not sections.</strong> Splitting the ledger by group would break the running total, which is the one thing that makes it a ledger.</p>
+
+      <p class="mt-3"><strong>Remind is one tap and writes the message for you.</strong> The thing stopping people from chasing ₹2,500 is the awkwardness of composing the text, not the tap.</p>
+
+      <p class="mt-3"><strong>The name lives in the header, not in a second hero.</strong> The built screen spent its first 140px on a larger copy of the same avatar over the same name, pushing the balance — the thing you opened the screen for — most of the way down the fold.</p>
+
+      <p class="mt-3"><strong>At most two buttons on a line.</strong> It had four: Add expense, Remind, Settle up and Invite, each an icon plus a label, all <code class="mono">flex-1</code> on a 390px phone. Remind shows only when they owe you, Settle up whenever anything is open, Invite only for somebody who is not on Aakalan — and Add expense takes its own full-width row.</p>
+
+      <p class="mt-3">Note the unconfirmed settlement at the top: it is <em>in</em> the list, greyed, and explicitly excluded from the running total. Product rule 6 — until Kabir's claim is confirmed it moves nothing, and pretending otherwise would make the balance lie.</p>
+    </div>
+  </div>
+
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    <div class="flex items-center gap-2.5 flex-1 min-w-0">
+      <div class="avatar av-kabir">K</div>
+      <div class="min-w-0">
+        <h2 class="truncate">Kabir Shah</h2>
+        <p class="text-2xs text-ink-3">kabir@okhdfcbank · 1 group</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-4 pb-8 space-y-3">
+
+    <div class="card card--pos">
+      <p class="section-label text-pos-fg opacity-80">Kabir owes you</p>
+      <p class="amt amt-pos amt-xl mt-0.5">₹2,500</p>
+      <p class="text-xs mt-1 text-pos-fg opacity-90">Since 6 Sep · 3 shared expenses</p>
+      <!-- NEVER more than two in a row. The built screen had grown to four
+           equal-width buttons on one line — Add expense, Remind, Settle up,
+           Invite — each with an icon and a label, on a 390px phone. Remind
+           only appears when they owe you; Settle up whenever anything is
+           open; Add expense gets its own full-width row below, because it is
+           the reason this screen is open as often as the balance is. -->
+      <div class="flex gap-2 mt-3">
+        <button class="btn btn-pos btn-sm flex-1"><i data-lucide="bell-ring" class="w-4 h-4"></i> Remind</button>
+        <a href="../settle/index.html" class="btn btn-secondary btn-sm flex-1"><i data-lucide="handshake" class="w-4 h-4"></i> Settle up</a>
+      </div>
+    </div>
+
+    <a href="../add/one-person.html" class="btn btn-primary no-underline"><i data-lucide="plus" class="w-4 h-4"></i> Add expense</a>
+
+    <!-- Pending claim: listed, greyed, excluded from the running total. -->
+    <div class="pending">
+      <div class="flex-1">
+        <p class="text-sm font-black text-warn-fg">Kabir says he sent ₹2,500 over UPI</p>
+        <p class="text-2xs mt-1 text-warn-fg opacity-85">Today, 7:40 am · the balance above still includes it until you confirm</p>
+        <div class="pending-actions">
+          <button class="btn btn-pos btn-sm"><i data-lucide="check" class="w-3.5 h-3.5"></i> Confirm received</button>
+          <button class="btn btn-secondary btn-sm">Not received</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-label mb-2">Every line, oldest first</p>
+      <div class="card card-flat">
+
+        <div class="exp-row bg-muted">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">2</p></div>
+          <div class="exp-body"><p class="exp-title text-ink-3">Started splitting</p></div>
+          <div class="exp-right"><p class="text-2xs text-ink-3 font-bold uppercase tracking-wider">Running</p><p class="amt amt-sm amt-neutral">₹0</p></div>
+        </div>
+
+        <a href="../expense/index.html" class="exp-row">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">5</p></div>
+          <div class="cat cat-sm cat-travel"><i data-lucide="plane" class="w-4 h-4"></i></div>
+          <div class="exp-body">
+            <p class="exp-title">Flights</p>
+            <p class="exp-sub">Goa Trip · Sana paid · Kabir's share ₹1,120</p>
+          </div>
+          <div class="exp-right"><p class="amt amt-sm amt-neutral">—</p><p class="amt amt-sm amt-neutral">₹0</p></div>
+        </a>
+
+        <a href="../expense/index.html" class="exp-row">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">6</p></div>
+          <div class="cat cat-sm cat-food"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+          <div class="exp-body">
+            <p class="exp-title">Dinner at Gunpowder</p>
+            <p class="exp-sub">Goa Trip · you paid ₹6,200 · his share ₹1,240</p>
+          </div>
+          <div class="exp-right"><p class="amt amt-sm amt-pos">+₹1,240</p><p class="amt amt-sm amt-pos">₹1,240</p></div>
+        </a>
+
+        <a href="../expense/index.html" class="exp-row">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">8</p></div>
+          <div class="cat cat-sm cat-travel"><i data-lucide="car-taxi-front" class="w-4 h-4"></i></div>
+          <div class="exp-body">
+            <p class="exp-title">Airport cab</p>
+            <p class="exp-sub">Goa Trip · Arjun paid · nothing between you</p>
+          </div>
+          <div class="exp-right"><p class="amt amt-sm amt-neutral">—</p><p class="amt amt-sm amt-pos">₹1,240</p></div>
+        </a>
+
+        <a href="../expense/index.html" class="exp-row">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">9</p></div>
+          <div class="cat cat-sm cat-stay"><i data-lucide="bed-double" class="w-4 h-4"></i></div>
+          <div class="exp-body">
+            <p class="exp-title">Beach villa, 2 nights</p>
+            <p class="exp-sub">Goa Trip · you paid ₹18,000 · his share ₹3,600</p>
+          </div>
+          <div class="exp-right"><p class="amt amt-sm amt-pos">+₹3,600</p><p class="amt amt-sm amt-pos">₹4,840</p></div>
+        </a>
+
+        <div class="exp-row">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">9</p></div>
+          <div class="cat cat-sm bg-pos-bg text-pos-fg"><i data-lucide="handshake" class="w-4 h-4"></i></div>
+          <div class="exp-body">
+            <p class="exp-title">Kabir paid you</p>
+            <p class="exp-sub">Cash · ₹2,340 of the ₹4,840 · confirmed by you</p>
+          </div>
+          <div class="exp-right"><p class="amt amt-sm amt-neg">−₹2,340</p><p class="amt amt-sm amt-pos">₹2,500</p></div>
+        </div>
+
+        <!-- The claimed-but-unconfirmed row. Struck out of the running column
+             so the total can never quietly include an unverified payment. -->
+        <div class="exp-row opacity-55">
+          <div class="exp-date"><p class="m">Sep</p><p class="d">9</p></div>
+          <div class="cat cat-sm bg-warn-bg text-warn-fg"><i data-lucide="clock" class="w-4 h-4"></i></div>
+          <div class="exp-body">
+            <p class="exp-title">Kabir says he paid ₹2,500</p>
+            <p class="exp-sub">UPI · awaiting your confirmation</p>
+          </div>
+          <div class="exp-right"><p class="amt amt-sm amt-neutral">not counted</p><p class="amt amt-sm amt-pos">₹2,500</p></div>
+        </div>
+      </div>
+
+      <p class="text-2xs text-ink-3 mt-2 px-1 leading-relaxed">
+        The right column is the running balance after each line. It starts at ₹0 and ends at the
+        number on the card above — so you can hand someone this screen instead of an explanation.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

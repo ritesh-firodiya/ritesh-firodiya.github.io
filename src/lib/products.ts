@@ -150,8 +150,26 @@ export const modelCounts = products.reduce<Record<string, number>>((acc, p) => {
 import designsRaw from "@/data/designs.json";
 
 export type Screen = { path: string; title: string; surface: string; area: string | null };
-const designSets = designsRaw.sets as Record<string, Screen[]>;
+export type Gallery = { path: string; title: string; surface: string };
+type DesignSet = { indexes: Gallery[]; screens: Screen[] };
+const designSets = designsRaw.sets as Record<string, DesignSet>;
 
-export const screensFor = (slug: string): Screen[] => designSets[slug] ?? [];
+export const screensFor = (slug: string): Screen[] => designSets[slug]?.screens ?? [];
+
+/** The set's own gallery page for each surface — the index.html sitting at the
+ *  top of `mobile/` or `web/`, written in the app repo. Deeper index.html files
+ *  (one per flow) are still copied so the links inside it work, but they are
+ *  reached by navigating the gallery, not by entering at them. */
+export function galleriesFor(slug: string): Gallery[] {
+  const all = designSets[slug]?.indexes ?? [];
+  const depth = (g: Gallery) => g.path.split("/").length;
+  const roots = new Map<string, Gallery>();
+  for (const g of all) {
+    const held = roots.get(g.surface);
+    if (!held || depth(g) < depth(held)) roots.set(g.surface, g);
+  }
+  return [...roots.values()].sort((a, b) => a.surface.localeCompare(b.surface));
+}
+
 export const designsGeneratedOn: string = designsRaw.generatedOn;
-export const totalScreens = Object.values(designSets).reduce((n, s) => n + s.length, 0);
+export const totalScreens = Object.values(designSets).reduce((n, s) => n + s.screens.length, 0);

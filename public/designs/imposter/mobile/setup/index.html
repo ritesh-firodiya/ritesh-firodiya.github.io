@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imposter — set up the round</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+<div class="breadcrumb"><div class="breadcrumb-inner">
+  <span class="breadcrumb-label">Mobile ›</span>
+  <a href="index.html" class="breadcrumb-chip is-current">Setup</a>
+  <a href="players.html" class="breadcrumb-chip">Players</a>
+  <a href="packs.html" class="breadcrumb-chip">Packs</a>
+  <a href="../game/card.html" class="breadcrumb-chip">Card</a>
+  <a href="../game/talk.html" class="breadcrumb-chip">Talk</a>
+  <a href="../game/result.html" class="breadcrumb-chip">Result</a>
+  <a href="../game/recheck.html" class="breadcrumb-chip">Re-check</a>
+  <a href="../index.html" class="breadcrumb-chip ml-auto">← All routes</a>
+</div></div>
+
+<div class="screen-layout">
+  <aside class="shrink-0 w-[288px] self-start my-5 bg-surface rounded-lg border border-line shadow p-[18px]">
+    <p class="text-base font-bold mb-3">Setup is the app</p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p class="p-2.5 rounded bg-success-bg border border-success text-ink"><b>v5 — the home screen is gone.</b> Launch lands here. There is no hero screen with a PLAY button in front of a setup wizard, because there was never a reason for one: a party game is opened with five people already waiting, and the first thing anyone needs is the thing they are about to change.</p>
+      <p><b class="text-ink">Checked against the market, not guessed.</b> Imposter Who? (5M+ installs) launches straight onto four drill-down rows. imposter.app is one list and a Start button. Neither ships a home screen, and neither ships a three-step setup wizard.</p>
+      <p><b class="text-ink">v4 had four ways to start a game</b> — NEW GAME, "Same 5 again", a category tile, and "All 10 →" — each landing in a different step of players → roles → category. Tapping a category set the pack and then made you pick it again two screens later. One screen cannot contradict itself.</p>
+      <p><b class="text-ink">Two rows drill down, three do not.</b> Players and Packs open a sheet because their content is unbounded — 20 names, 10 packs. Imposters, hints and the clock are one control each and stay here. A sheet for a stepper is a screen that exists to hold three taps.</p>
+      <p><b class="text-ink">The screen height never changes.</b> Three players or twenty, one pack or ten, it is the same five rows. That is the whole reason the unbounded things sit behind a chevron.</p>
+      <p><b class="text-ink">The CTA states what is missing</b> rather than greying out with no reason — "Add 1 more player", not a dead button. Rule 9.</p>
+      <p>Hints stay a row rather than becoming a buried preference. A hand-written hint for every word is the one thing no competitor advertises, because no competitor writes them.</p>
+    </div>
+  </aside>
+
+  <!-- ============================================ READY -->
+  <div class="phone phone--flood phone--brand">
+
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center px-4 pt-2 pb-1">
+      <a href="../settings/how-to-play.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="circle-help" class="w-5 h-5"></i>
+      </a>
+      <div class="flex-1 text-center">
+        <p class="text-h3 font-black tracking-tight">IMPOSTER</p>
+      </div>
+      <a href="../settings/index.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="settings" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <p class="relative px-5 pt-1 pb-4 text-center text-sm text-ink-3">Everyone gets the word. Except one of you.</p>
+
+    <div class="relative px-4 space-y-2.5">
+
+      <!-- PLAYERS — drill-down, because 20 names have no fixed height -->
+      <a href="players.html" class="block rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="users" class="w-[18px] h-[18px]"></i>
+          <p class="flex-1 text-2xs font-extrabold uppercase tracking-label text-ink-3">Players</p>
+          <span class="text-sm font-black num">5</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </div>
+        <div class="mt-2.5 flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Arjun</span>
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Riya</span>
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Sam</span>
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Ana</span>
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Dev</span>
+        </div>
+      </a>
+
+      <!-- PACKS — drill-down. Multi-select, which is what the market ships. -->
+      <a href="packs.html" class="block rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="layers" class="w-[18px] h-[18px]"></i>
+          <p class="flex-1 text-2xs font-extrabold uppercase tracking-label text-ink-3">Word packs</p>
+          <span class="text-sm font-black">Everyday <span class="text-accent-300">+2</span></span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </div>
+        <p class="mt-1.5 text-xs text-ink-3 num">228 words · 228 hints in play</p>
+      </a>
+
+      <!-- IMPOSTERS — inline stepper. One control, so no sheet. -->
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="venetian-mask" class="w-[18px] h-[18px]"></i>
+          <div class="flex-1">
+            <p class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Imposters</p>
+            <p class="mt-0.5 text-xs text-ink-3">No word — just a one-word hint</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="w-9 h-9 grid place-items-center rounded-pill bg-sunken"><i data-lucide="minus" class="w-4 h-4"></i></button>
+            <span class="min-w-[24px] text-center text-h3 font-black num">1</span>
+            <button class="w-9 h-9 grid place-items-center rounded-pill bg-sunken"><i data-lucide="plus" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- HINTS — inline toggle -->
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="lightbulb" class="w-[18px] h-[18px]"></i>
+          <div class="flex-1">
+            <p class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Hint for the imposter</p>
+            <p class="mt-0.5 text-xs text-ink-3">Hand-written for every word</p>
+          </div>
+          <span class="toggle is-on relative w-[44px] h-[26px] rounded-pill bg-accent-500"></span>
+        </div>
+        <div class="mt-3 flex items-center gap-2.5 rounded-2xl bg-muted border border-line p-2.5">
+          <span class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Example</span>
+          <span class="text-sm font-black">Will Smith</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-ink-4"></i>
+          <span class="text-sm font-black text-accent-300">“Slap”</span>
+        </div>
+      </div>
+
+      <!-- CLOCK — inline segment. Rule 6: it never decides anything. -->
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="timer" class="w-[18px] h-[18px]"></i>
+          <div class="flex-1">
+            <p class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Talking time</p>
+            <p class="mt-0.5 text-xs text-ink-3">It never decides anything — you do</p>
+          </div>
+        </div>
+        <div class="mt-3 flex gap-1 rounded-pill bg-muted p-1">
+          <button class="flex-1 py-2 rounded-pill text-xs font-black text-ink-3">Off</button>
+          <button class="flex-1 py-2 rounded-pill text-xs font-black text-ink-3 num">1:00</button>
+          <button class="flex-1 py-2 rounded-pill bg-sunken text-xs font-black num">2:00</button>
+          <button class="flex-1 py-2 rounded-pill text-xs font-black text-ink-3 num">3:00</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-4 pb-5">
+      <a href="../game/card.html" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        <i data-lucide="shuffle" class="w-5 h-5"></i> DEAL THE CARDS
+      </a>
+      <!-- Rule 5: no screen makes the table do arithmetic. -->
+      <p class="mt-2.5 text-center text-xs text-ink-3">4 of you get the word. 1 is faking it.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ FIRST RUN -->
+  <div class="phone phone--flood phone--brand" id="empty">
+
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center px-4 pt-2 pb-1">
+      <a href="../settings/how-to-play.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="circle-help" class="w-5 h-5"></i>
+      </a>
+      <div class="flex-1 text-center">
+        <p class="text-h3 font-black tracking-tight">IMPOSTER</p>
+      </div>
+      <a href="../settings/index.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="settings" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <p class="relative px-5 pt-1 pb-4 text-center text-sm text-ink-3">Everyone gets the word. Except one of you.</p>
+
+    <div class="relative px-4 space-y-2.5">
+
+      <a href="players.html" class="block rounded-3xl bg-surface border-2 border-accent-300 p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="users" class="w-[18px] h-[18px]"></i>
+          <p class="flex-1 text-2xs font-extrabold uppercase tracking-label text-ink-3">Players</p>
+          <span class="text-sm font-black num">2</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-accent-300"></i>
+        </div>
+        <div class="mt-2.5 flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Arjun</span>
+          <span class="px-2.5 py-1 rounded-pill bg-sunken text-sm font-bold">Riya</span>
+          <span class="px-2.5 py-1 rounded-pill border border-dashed border-line-strong text-sm font-bold text-ink-3">+ add</span>
+        </div>
+      </a>
+
+      <a href="packs.html" class="block rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="layers" class="w-[18px] h-[18px]"></i>
+          <p class="flex-1 text-2xs font-extrabold uppercase tracking-label text-ink-3">Word packs</p>
+          <span class="text-sm font-black">Everyday</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+        </div>
+        <p class="mt-1.5 text-xs text-ink-3 num">75 words · 75 hints in play</p>
+      </a>
+
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="venetian-mask" class="w-[18px] h-[18px]"></i>
+          <div class="flex-1">
+            <p class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Imposters</p>
+            <p class="mt-0.5 text-xs text-ink-3">No word — just a one-word hint</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="w-9 h-9 grid place-items-center rounded-pill bg-sunken opacity-40"><i data-lucide="minus" class="w-4 h-4"></i></button>
+            <span class="min-w-[24px] text-center text-h3 font-black num">1</span>
+            <button class="w-9 h-9 grid place-items-center rounded-pill bg-sunken opacity-40"><i data-lucide="plus" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="lightbulb" class="w-[18px] h-[18px]"></i>
+          <div class="flex-1">
+            <p class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Hint for the imposter</p>
+            <p class="mt-0.5 text-xs text-ink-3">Hand-written for every word</p>
+          </div>
+          <span class="toggle is-on relative w-[44px] h-[26px] rounded-pill bg-accent-500"></span>
+        </div>
+      </div>
+
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <div class="flex items-center gap-3">
+          <i data-lucide="timer" class="w-[18px] h-[18px]"></i>
+          <div class="flex-1">
+            <p class="text-2xs font-extrabold uppercase tracking-label text-ink-3">Talking time</p>
+            <p class="mt-0.5 text-xs text-ink-3">It never decides anything — you do</p>
+          </div>
+        </div>
+        <div class="mt-3 flex gap-1 rounded-pill bg-muted p-1">
+          <button class="flex-1 py-2 rounded-pill text-xs font-black text-ink-3">Off</button>
+          <button class="flex-1 py-2 rounded-pill text-xs font-black text-ink-3 num">1:00</button>
+          <button class="flex-1 py-2 rounded-pill bg-sunken text-xs font-black num">2:00</button>
+          <button class="flex-1 py-2 rounded-pill text-xs font-black text-ink-3 num">3:00</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-4 pb-5">
+      <!-- Rule 9: a control that cannot be operated is a sentence, not a grey box. -->
+      <a href="players.html" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-ink-3 bg-surface border border-line-strong">
+        Add 1 more player
+      </a>
+      <p class="mt-2.5 text-center text-xs text-ink-3">Three is the minimum — with two, there is nobody to suspect.</p>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

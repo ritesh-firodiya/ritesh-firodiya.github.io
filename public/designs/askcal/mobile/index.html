@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AskCal — mobile wireframes</title>
+  <script src="../../_vendor/tailwind.js"></script>
+  <script src="tailwind.config.js"></script>
+  <script src="../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="shared.css" />
+  <style> body { height: auto; display: block; } </style>
+</head>
+<body class="bg-page">
+
+<header class="border-b border-line bg-surface">
+  <div class="mx-auto max-w-5xl px-6 py-6">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:var(--brand-500)">
+        <i data-lucide="utensils-crossed" style="width:24px;height:24px;color:#fff"></i>
+      </div>
+      <div>
+        <p class="section-label">AskCal · mobile wireframes · v1</p>
+        <h1 class="mt-1 text-2xl font-black tracking-tight" style="color:var(--brand-900)">
+          Ask one question the camera can't answer.
+        </h1>
+        <p class="mt-1 text-xs text-ink-3">
+          <span class="num">33</span> wireframes &middot; phone frame <span class="num">390 &times; 844</span> &middot; <span class="num">kcal</span> and grams, integers only
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-5xl px-6 py-8">
+
+  <div class="card card--ask mb-7">
+    <p class="font-extrabold text-[15px]" style="color:var(--ask-700)">The one idea</p>
+    <p class="mt-1.5 text-[13.5px] leading-relaxed" style="color:var(--ask-700)">
+      Every competitor turns a photo into one confident number. A photo cannot show cooking fat,
+      the inside of a mixed dish, or whose share of a shared plate this is — so that number is
+      often wrong, and worst on exactly the food most of the world eats.
+      AskCal estimates, then asks <strong>at most two</strong> questions the camera cannot answer,
+      and resolves the answer against USDA data rather than the model's memory.
+      <strong>Amber means the app is asking.</strong> It is used for nothing else.
+    </p>
+  </div>
+
+  <!-- Three states, and only three. "Proposed" and "Needs review" used to mean
+       the same thing on different cards, and a screen that was signed off but
+       not yet written had no honest label at all. -->
+  <div class="card mb-7">
+    <p class="section-label">Status on every card</p>
+    <div class="mt-2.5 grid sm:grid-cols-3 gap-2.5">
+      <div class="flex items-start gap-2.5">
+        <span class="chip chip-brand" style="flex:none">Built</span>
+        <p class="text-[12px] text-ink-3 leading-relaxed">The screen exists in the Expo app and matches this file.</p>
+      </div>
+      <div class="flex items-start gap-2.5">
+        <span class="chip chip-neutral" style="flex:none">Approved</span>
+        <p class="text-[12px] text-ink-3 leading-relaxed">Signed off, not written yet. This file is the spec when it is.</p>
+      </div>
+      <div class="flex items-start gap-2.5">
+        <span class="chip chip-ask" style="flex:none">Needs review</span>
+        <p class="text-[12px] text-ink-3 leading-relaxed">Waiting on you. Nothing is built from it until you say so.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding -->
+  <section class="mb-7">
+    <p class="section-label">Onboarding — 4 steps, in order</p>
+    <p class="text-[11px] text-ink-3 mt-1 mb-2.5">
+      Running the warm-paper palette (<span class="mono">onboarding/onboarding.css</span>) while it is
+      under review. The rest of the app is still on the original tokens, so expect the jump.
+    </p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+      <a href="onboarding/welcome.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">1 · Welcome</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">The promise, as the thing others get wrong</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="onboarding/body.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">2 · About you</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Sex, age, height, weight, activity — one screen</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="onboarding/goals.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">3 · Goal</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Opens with what you burn, then the goal, then what it gives you</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="onboarding/paywall.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">4 · Paywall</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Price shown plainly, before any card. Last step — skip it and you are in</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+    </div>
+
+    <!-- The same screen, second frame. It sits here rather than under Home &
+         because a reader looking for "the paywall" must find both copies in one
+         place — that is exactly how the two drift apart. -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5 mt-2.5">
+      <a href="onboarding/paywall-upgrade.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Upgrade (in-app)</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Step 4 again, reached from Today. Same offer, different frame</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Scan -->
+  <section class="mb-7">
+    <p class="section-label mb-2.5">Scan — the core loop</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+      <a href="scan/camera.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Camera</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Viewfinder, capture, quota visible</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="scan/analyzing.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Analyzing</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">~2s wait, skeleton of the result</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="scan/result.html" class="card card--interactive no-underline text-inherit" style="border-color:var(--brand-200)">
+        <p class="font-extrabold text-[14px]">Result</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Components + confidence, never one number</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="scan/clarify.html" class="card card--interactive no-underline text-inherit" style="border-color:var(--ask-400);background:var(--ask-50)">
+        <p class="font-extrabold text-[14px]" style="color:var(--ask-700)">★ Clarify</p>
+        <p class="text-[11.5px] mt-1" style="color:var(--ask-700);opacity:0.85">The question. This screen is the product.</p>
+        <span class="chip chip-ask mt-2.5">Built</span>
+      </a>
+      <a href="scan/result-same.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Same photo, same answer</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">The cache made visible — same photo, same answer, no scan spent</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="scan/failed.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Failed</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Not food, too dark, offline</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="scan/quota-exhausted.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Quota out</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Metering is visible, not a surprise</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+    </div>
+  </section>
+
+  <!--
+    Home, the log, and food lookup.
+
+    This used to be two sections — "Home & food" and a separate "Proposed" —
+    which meant a screen physically moved between sections the day it was signed
+    off, and a reader had to check two places to find, say, the home screen.
+    Status now lives on the card where it belongs, and a screen never moves.
+  -->
+  <section class="mb-7">
+    <p class="section-label mb-2.5">Home, log &amp; food</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+      <a href="home/today.html" class="card card--interactive no-underline text-inherit" style="border-color:var(--brand-200)">
+        <p class="font-extrabold text-[14px]">Today</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Ring, macros, the day’s log</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="home/empty.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Today — empty</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">First run, nothing logged</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="home/day-nav.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Today + day switcher</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Seven days above the ring; the dot carries the day’s outcome</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="home/day-past.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">A past day</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">A closed day reads “eaten”, not “left”, and can still be added to</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="home/out-of-scans.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Today — out of scans</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Allowance spent — the upgrade prompt, on the screen they already open</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="log/confirm.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Logged — confirm &amp; adjust</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Built as a hybrid — the toast opens the meal screen instead of interrupting</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="log/backdate.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Backdate a meal</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Built as a sheet on the meal screen — relative days, no calendar</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="log/repeat.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Repeat a meal</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Repeats, then yesterday, then recent. Copy a meal or the whole day</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="food/meal.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Logged meal</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">A meal already in the log — items, edit, delete</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="food/detail.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Item detail</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">One component — portion, swap the match</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="food/search.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Search</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">USDA text search · free, unlimited</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="food/barcode.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Barcode</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">OpenFoodFacts · free, unlimited</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="history/trends.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Trends</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Weekly intake, streak, weight</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Food gallery. New, not built. -->
+  <section class="mb-7">
+    <p class="section-label mb-2.5">Food gallery</p>
+    <p class="text-[11px] text-ink-3 mt-1 mb-2.5">
+      A view over photos the app already keeps &mdash; <span class="mono">lib/photos.ts</span> writes them to
+      the app&rsquo;s document directory and nothing has ever uploaded one. Posting hands a rendered
+      card to the OS share sheet; the app holds no social credentials and cannot post by itself.
+    </p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+      <a href="gallery/index.html" class="card card--interactive no-underline text-inherit" style="border-color:var(--brand-200)">
+        <p class="font-extrabold text-[14px]">The wall</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Every kept photo, newest day first, calories on the tile</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="gallery/photo.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Photo &amp; post</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">The picture, the card and the toggles in one screen — what you see is what posts</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="gallery/photo-bare.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Photo &amp; post — nothing on it</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Every field off: the band goes with the text, the mark stays</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="gallery/empty.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Gallery — empty</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Photos on, none taken yet. Offers the camera, not a setting</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="gallery/off.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Gallery — photos off</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">A different cause and a one-tap fix. Says nothing was deleted</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Settings & patterns -->
+  <section class="mb-7">
+    <p class="section-label mb-2.5">Settings &amp; patterns</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+      <a href="settings/index.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Settings</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Targets, units, subscription, data</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="patterns/components.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Component library</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Every token, button, chip, confidence state</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+      <a href="patterns/toasts.html" class="card card--interactive no-underline text-inherit">
+        <p class="font-extrabold text-[14px]">Toasts &amp; sheets</p>
+        <p class="text-[11.5px] text-ink-3 mt-1">Logged, undo, errors</p>
+        <span class="chip chip-brand mt-2.5">Built</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="card card--muted">
+    <p class="section-label">Conventions</p>
+    <ul class="mt-2 text-[13px] text-ink-2 leading-relaxed list-disc pl-4 space-y-1">
+      <li>Tokens live in <span class="mono text-[12px]">tailwind.config.js</span>; components in <span class="mono text-[12px]">shared.css</span>. Mirrored, so either works.</li>
+      <li>Colours are named by <strong>role</strong>, never hue — <span class="mono text-[12px]">brand</span>, <span class="mono text-[12px]">ask</span>, <span class="mono text-[12px]">conf</span>.</li>
+      <li><strong>Amber = the app is asking.</strong> Never decorative.</li>
+      <li>Every estimate carries a confidence: <span class="conf conf-high">Seen</span> <span class="conf conf-med">Guessed</span> <span class="conf conf-low">Unknown</span></li>
+      <li>All figures use <span class="mono text-[12px]">.num</span> for tabular alignment. Integers only — no fractional grams.</li>
+      <li><strong>Every screen lives in exactly one folder, and the breadcrumb lists that folder in full.</strong>
+          Same chips, same order, on every screen in the group — so the strip is a map, not a guess.
+          Cross-group jumps are the tab bar's job, not the breadcrumb's.</li>
+      <li><strong>Status lives on the gallery card, never in the section heading.</strong> A screen must not
+          move sections the day it is approved — that is how the same screen ends up listed twice.</li>
+      <li><strong>Numbers in the wireframes are one persona, computed, not invented</strong> — male, 34, 178&nbsp;cm,
+          80&nbsp;kg, 1&ndash;3 workouts a week. That is BMR <span class="num">1,748</span> &rarr;
+          TDEE <span class="num">2,272</span> &rarr; maintain <span class="num">2,272</span>, protein
+          <span class="num">144 g</span>. If a screen shows a figure, it must be derivable from those.</li>
+    </ul>
+  </div>
+
+</main>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

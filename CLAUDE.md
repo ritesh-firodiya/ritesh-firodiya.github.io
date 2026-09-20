@@ -79,6 +79,19 @@ public/          app-ads.txt, resume.pdf, favicon, logo
 Dynamic route families: `/products/[slug]`, `/go/[slug]`, `/notes/[slug]`. Each
 has `generateStaticParams`; a new one without it will not be exported.
 
+**`/products/<slug>/designs/` is not a route.** It is a static file written by
+`scripts/sync-designs.mjs` into `public/products/`, and its contents are the app
+repo's own `.context/designs/index.html` — the gallery the screens were designed
+and reviewed against — byte-identical apart from an injected `<base href>` that
+keeps its relative links pointing at the real screens under `/designs/`. Do not
+wrap it in a Next route: a header, a back link and a scroll container of ours
+around a document that already has its own is a second gallery that drifts. A
+set with two surfaces also gets `/products/<slug>/designs/<surface>/`.
+
+The same script neutralises links a gallery makes to screens that were never
+drawn — the href goes, the label and a `title` stay — so the gap is visible
+rather than a 404.
+
 ## Tokens
 
 `src/app/globals.css` holds the entire theme in a Tailwind v4 `@theme` block,

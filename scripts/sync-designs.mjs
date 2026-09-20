@@ -34,6 +34,11 @@ const APPS = join(homedir(), "git", "apps");
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
 const DATA = join(process.cwd(), "src", "data", "designs.json");
+/* Clean per-product URLs for the galleries. These are static files, not Next
+   routes — the page served is the app repo's own index.html, unaltered but
+   for a <base> tag. Wrapping it in a route would put our header, our back
+   link and our scroll container around a document that already has its own. */
+const PAGES = join(process.cwd(), "public", "products");
 
 /** slug → repo dir. Keys match products.json so a product page finds its set. */
 const SETS = {
@@ -211,6 +216,45 @@ for await (const file of walk(OUT)) {
   if (after !== before) await writeFile(file, after);
 }
 
+/* Publish each root gallery at /products/<slug>/designs/ (and, where a set has
+ * more than one surface, /products/<slug>/designs/<surface>/ as well).
+ *
+ * The file is the original byte-for-byte apart from one injected <base>. Every
+ * link and script src inside it is relative to where it lives under /designs/,
+ * so <base> is what lets the same bytes be served from a second path without
+ * rewriting a single href. Clicking through then lands on the real screen at
+ * its real URL, which is the point — these pages are a front door, not a copy. */
+await rm(PAGES, { recursive: true, force: true }).catch(() => {});
+let pages = 0;
+
+for (const [slug, set] of Object.entries(manifest)) {
+  const roots = [];
+  for (const g of set.indexes) {
+    const held = roots.find((r) => r.surface === g.surface);
+    const depth = (x) => x.path.split("/").length;
+    if (!held) roots.push(g);
+    else if (depth(g) < depth(held)) roots[roots.indexOf(held)] = g;
+  }
+  roots.sort((a, b) => a.surface.localeCompare(b.surface));
+  if (roots.length === 0) continue;
+
+  for (const [i, g] of roots.entries()) {
+    const html = await readFile(join(OUT, g.path.replace("/designs/", "")), "utf8");
+    const base = `${g.path.slice(0, g.path.lastIndexOf("/"))}/`;
+    const withBase = html.replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}">`);
+    if (withBase === html) throw new Error(`${g.path}: no <head> to anchor <base> to`);
+
+    // The first surface is the product's designs page; the rest get their own.
+    const dests = [join(PAGES, slug, "designs", g.surface, "index.html")];
+    if (i === 0) dests.push(join(PAGES, slug, "designs", "index.html"));
+    for (const dest of dests) {
+      await mkdir(dirname(dest), { recursive: true });
+      await writeFile(dest, withBase);
+      pages++;
+    }
+  }
+}
+
 await writeFile(
   DATA,
   JSON.stringify(
@@ -226,6 +270,7 @@ await writeFile(
   ) + "\n",
 );
 
+console.log(`published ${pages} gallery page(s) under /products/<slug>/designs/`);
 console.log(`neutralised ${neutralised} dead link(s) to screens that were never drawn`);
 console.log(`synced ${screens} screens, ${(bytes / 1024 / 1024).toFixed(2)}MB html`);
 console.log(

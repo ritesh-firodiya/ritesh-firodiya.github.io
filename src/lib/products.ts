@@ -150,9 +150,18 @@ export const modelCounts = products.reduce<Record<string, number>>((acc, p) => {
 import designsRaw from "@/data/designs.json";
 
 export type Screen = { path: string; title: string; surface: string; area: string | null };
-export type Gallery = { path: string; title: string; surface: string };
-type DesignSet = { indexes: Gallery[]; screens: Screen[] };
-const designSets = designsRaw.sets as Record<string, DesignSet>;
+export type Gallery = {
+  /** The original file under /designs/, where its own relative links resolve. */
+  path: string;
+  /** The clean per-product URL that serves those same bytes via <base>. */
+  href: string;
+  title: string;
+  surface: string;
+};
+/* The generated JSON carries no `href` — that is derived here, and `area` is
+   narrowed per-set by TS's literal inference, so the cast goes via unknown. */
+type DesignSet = { indexes: Omit<Gallery, "href">[]; screens: Screen[] };
+const designSets = designsRaw.sets as unknown as Record<string, DesignSet>;
 
 export const screensFor = (slug: string): Screen[] => designSets[slug]?.screens ?? [];
 
@@ -162,13 +171,22 @@ export const screensFor = (slug: string): Screen[] => designSets[slug]?.screens 
  *  reached by navigating the gallery, not by entering at them. */
 export function galleriesFor(slug: string): Gallery[] {
   const all = designSets[slug]?.indexes ?? [];
-  const depth = (g: Gallery) => g.path.split("/").length;
-  const roots = new Map<string, Gallery>();
+  const depth = (g: { path: string }) => g.path.split("/").length;
+  const roots = new Map<string, Omit<Gallery, "href">>();
   for (const g of all) {
     const held = roots.get(g.surface);
     if (!held || depth(g) < depth(held)) roots.set(g.surface, g);
   }
-  return [...roots.values()].sort((a, b) => a.surface.localeCompare(b.surface));
+  const sorted = [...roots.values()].sort((a, b) => a.surface.localeCompare(b.surface));
+  // One surface needs no disambiguating segment; several do. Kept in step with
+  // the paths scripts/sync-designs.mjs writes into public/products/.
+  return sorted.map((g) => ({
+    ...g,
+    href:
+      sorted.length === 1
+        ? `/products/${slug}/designs/`
+        : `/products/${slug}/designs/${g.surface}/`,
+  }));
 }
 
 export const designsGeneratedOn: string = designsRaw.generatedOn;

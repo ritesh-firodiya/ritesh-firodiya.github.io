@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic Tac Toe — 2 Player XO — Ritesh Firodiya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="bg-paper text-ink">
+<div class="border-b border-dashed border-line-2 bg-paper-2 px-5 py-2">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-1.5 font-mono text-xs2">
+    <span class="mr-1 text-label uppercase tracking-label text-ink-3">Web ·&nbsp;/products/tic-tac-toe ›</span>
+    <a href="home.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Home</a>
+    <a href="products.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Products</a>
+    <a href="product-onetime.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·one-time</a>
+    <a href="product-ads.html" class="rounded border border-accent/50 bg-accent-wash px-2 py-0.5 font-medium text-accent">·ads</a>
+    <a href="product-sub.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·sub</a>
+    <a href="product-unreleased.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·unreleased</a>
+    <a href="go.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Go</a>
+    <a href="project.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Case study</a>
+    <a href="design.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Design</a>
+    <a href="design-system.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·system</a>
+    <a href="design-gallery.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·gallery</a>
+    <a href="design-drift.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·drift</a>
+    <a href="process.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Process</a>
+    <a href="process-build.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·build</a>
+    <a href="process-pipeline.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·pipeline</a>
+    <a href="notes.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Notes</a>
+    <a href="note.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·note</a>
+    <a href="work.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Work</a>
+    <a href="hire.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Hire</a>
+    <a href="resume.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Résumé</a>
+    <a href="legal.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Legal</a>
+    <a href="support.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Support</a>
+    <a href="404.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">404</a>
+    <a href="../index.html" class="ml-auto rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">← All screens</a>
+  </div>
+</div>
+<header class="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
+  <div class="mx-auto flex max-w-page items-center gap-6 px-gutter py-4">
+    <a href="home.html" class="font-display text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
+    <nav class="ml-auto hidden items-center gap-7 text-small text-ink-2 md:flex">
+      <a href="products.html" class="link-u text-ink">Products</a>
+      <a href="design.html" class="link-u hover:text-ink">Design</a>
+      <a href="process.html" class="link-u hover:text-ink">Process</a>
+      <a href="notes.html" class="link-u hover:text-ink">Notes</a>
+      <a href="resume.html" class="link-u hover:text-ink">Résumé</a>
+    </nav>
+    <a href="#get" class="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+      Get the app <i data-lucide="arrow-down" class="h-4 w-4"></i></a>
+  </div>
+</header>
+<section class="grain relative overflow-hidden border-b border-line">
+  <div class="mx-auto max-w-page px-gutter pb-14 pt-section">
+    <a href="products.html" class="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">
+      <i data-lucide="arrow-left" class="h-4 w-4"></i> All products</a>
+
+    <div class="mt-7 flex flex-wrap items-start gap-7">
+      <span class="shot-ph h-[120px] w-[120px] shrink-0 rounded-card text-xs2 text-ink-3">Icon 512</span>
+      <div class="min-w-0 flex-1">
+        <h1 class="max-w-[16ch] font-display text-d1 font-semibold">Tic Tac Toe</h1>
+        <p class="mt-3 max-w-measure font-display text-lead italic text-ink-2">The classic 3×3, done properly — two players on one device, or a minimax AI that never loses on Hard.</p>
+      </div>
+    </div>
+
+    <!-- ══ THE MODEL BLOCK — RULE 1 ══════════════════════════════════════════
+         Above the install button, never below. For this app that means saying
+         "ads" in the largest type on the page, because it is the one thing a
+         person would otherwise find out only after installing. -->
+    <div class="mt-10 rounded-card border border-m-ads/30 bg-m-ads-wash p-7">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="rounded-pill bg-m-ads px-3 py-1 font-mono text-label uppercase tracking-label text-ink-inv">Free · ad-supported</span>
+        <span class="font-mono text-xs2 uppercase tracking-label text-m-ads">No in-app purchases at all</span>
+      </div>
+      <p class="mt-5 max-w-prose font-display text-h2 font-semibold text-ink">
+        This one is free because it shows you ads.
+      </p>
+      <p class="mt-4 max-w-prose text-body text-ink-2">
+        A banner sits at the bottom of the board, and a full-screen ad appears when a game ends.
+        There is nothing to buy — no ad-free tier, no unlock, no subscription. If that trade is not
+        one you want, <a href="products.html" class="link-u font-medium text-accent">no other app of mine has ads at all</a>.
+      </p>
+      <dl class="mt-7 grid gap-px overflow-hidden rounded-card border border-m-ads/20 bg-m-ads/20 sm:grid-cols-3">
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Banner</dt><dd class="mt-1.5 text-small text-ink">Bottom of the board, always on screen</dd></div>
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Interstitial</dt><dd class="mt-1.5 text-small text-ink">Full screen, when a game finishes</dd></div>
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Rewarded</dt><dd class="mt-1.5 text-small text-ink-3">None — not used</dd></div>
+      </dl>
+      <p class="mt-5 max-w-prose text-small text-ink-2">
+        Ads are served by Google AdMob, which means the app needs a network connection and AdMob
+        receives an advertising identifier from your device. On iOS you are asked before that
+        happens, and saying no does not change the game.
+      </p>
+    </div>
+
+    <div id="get" class="mt-6 scroll-mt-24 rounded-card border border-line bg-surface p-6 shadow-lift">
+      <p class="font-mono text-label uppercase tracking-label text-ink-3">Get the app</p>
+      <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        <a href="#" class="flex items-center gap-3 rounded-pill bg-ink px-5 py-3 font-medium text-ink-inv transition hover:bg-accent">
+          <i data-lucide="play" class="h-5 w-5 shrink-0"></i>
+          <span class="min-w-0"><span class="block font-mono text-label uppercase tracking-label opacity-70">Android</span>
+            <span class="block truncate text-small">Google Play</span></span></a>
+        <div class="btn-off flex items-center gap-3 rounded-pill border border-line-2 bg-paper-2 px-5 py-3 font-medium text-ink-2">
+          <i data-lucide="apple" class="h-5 w-5 shrink-0"></i>
+          <span class="min-w-0"><span class="block font-mono text-label uppercase tracking-label text-ink-3">iOS</span>
+            <span class="block truncate text-small">Not submitted yet</span></span></div>
+        <a href="go.html" class="flex items-center gap-3 rounded-pill border border-line-2 px-5 py-3 font-medium transition hover:border-accent hover:text-accent">
+          <i data-lucide="link" class="h-5 w-5 shrink-0"></i>
+          <span class="min-w-0"><span class="block font-mono text-label uppercase tracking-label text-ink-3">Short link</span>
+            <span class="block truncate text-small">/go/tic-tac-toe</span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-page px-gutter py-section">
+  <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+    <div>
+      <h2 class="font-display text-d2 font-semibold">What it does</h2>
+      <ul class="mt-6 space-y-3 text-body text-ink-2">
+        <li class="flex gap-3"><i data-lucide="users" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i>Two players on one phone, pass and tap.</li>
+        <li class="flex gap-3"><i data-lucide="cpu" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i>Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten.</li>
+        <li class="flex gap-3"><i data-lucide="history" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i>Running score across a session.</li>
+      </ul>
+      <p class="mt-7 font-mono text-xs2 text-ink-3">Expo Router · React Native · UniWind · Zustand</p>
+    </div>
+    <div>
+      <h2 class="font-display text-d2 font-semibold">Permissions</h2>
+      <dl class="mt-6 divide-y divide-line border-y border-line">
+        <div class="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-5"><dt class="font-medium">Network</dt><dd class="text-small text-ink-2">Required — it is what fetches the ads.</dd></div>
+        <div class="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-5"><dt class="font-medium">Ad identifier</dt><dd class="text-small text-ink-2">Asked for on iOS via the system prompt. Declining costs you nothing.</dd></div>
+        <div class="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-5"><dt class="font-medium text-ink-3">Not requested</dt><dd class="text-small text-ink-2">No camera, microphone, contacts, location or storage.</dd></div>
+      </dl>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="legal.html" class="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent"><i data-lucide="scale" class="h-4 w-4"></i> Privacy policy</a>
+        <a href="support.html" class="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent"><i data-lucide="life-buoy" class="h-4 w-4"></i> Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="border-t border-line bg-paper-2">
+  <div class="mx-auto max-w-page px-gutter py-section">
+    <h2 class="font-display text-h2 font-semibold">Screens</h2>
+    <div class="rail mt-7 flex gap-6 overflow-x-auto pb-4">
+      <div class="device w-[210px] shrink-0"><div class="device-screen shot-ph aspect-[9/19.5]"><p class="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">Board<br><span class="normal-case tracking-normal">with banner visible</span></p></div></div>
+      <div class="device w-[210px] shrink-0"><div class="device-screen shot-ph aspect-[9/19.5]"><p class="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">Difficulty</p></div></div>
+      <div class="device w-[210px] shrink-0"><div class="device-screen shot-ph aspect-[9/19.5]"><p class="px-4 font-mono text-xs2 uppercase tracking-label text-ink-3">Win state</p></div></div>
+    </div>
+    <p class="mt-3 font-mono text-xs2 text-ink-3">The banner appears in the first screenshot on purpose — a store screenshot that crops the ad out is a small lie.</p>
+    <a href="design-gallery.html" class="link-u mt-6 inline-flex items-center gap-1.5 text-small font-medium text-accent">See the design set <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+  </div>
+</section>
+<footer class="bg-ink text-ink-inv">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-x-6 gap-y-3 px-gutter py-7 font-mono text-xs2 text-ink-inv/55">
+    <span>© 2026 Ritesh Firodiya</span>
+    <a href="legal.html" class="link-u hover:text-ink-inv">Legal</a>
+    <a href="support.html" class="link-u hover:text-ink-inv">Support</a>
+    <a href="products.html" class="link-u ml-auto hover:text-ink-inv">All products →</a>
+  </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body>
+</html>

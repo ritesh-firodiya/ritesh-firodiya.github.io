@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Résumé — Ritesh Firodiya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="bg-paper-3 text-ink">
+
+<div class="no-print border-b border-dashed border-line-2 bg-paper-2 px-5 py-2">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-1.5 font-mono text-xs2">
+    <span class="mr-1 text-label uppercase tracking-label text-ink-3">Web ·&nbsp;/resume ›</span>
+    <a href="home.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Home</a>
+    <a href="products.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Products</a>
+    <a href="product-onetime.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·one-time</a>
+    <a href="product-ads.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·ads</a>
+    <a href="product-sub.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·sub</a>
+    <a href="product-unreleased.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·unreleased</a>
+    <a href="go.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Go</a>
+    <a href="project.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Case study</a>
+    <a href="design.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Design</a>
+    <a href="design-system.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·system</a>
+    <a href="design-gallery.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·gallery</a>
+    <a href="design-drift.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·drift</a>
+    <a href="process.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Process</a>
+    <a href="process-build.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·build</a>
+    <a href="process-pipeline.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·pipeline</a>
+    <a href="notes.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Notes</a>
+    <a href="note.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·note</a>
+    <a href="work.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Work</a>
+    <a href="hire.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Hire</a>
+    <a href="resume.html" class="rounded border border-accent/50 bg-accent-wash px-2 py-0.5 font-medium text-accent">Résumé</a>
+    <a href="legal.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Legal</a>
+    <a href="support.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Support</a>
+    <a href="404.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">404</a>
+    <a href="../index.html" class="ml-auto rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">← All screens</a>
+  </div>
+</div>
+
+<!-- ══ toolbar · disappears in print ════════════════════════════════════════ -->
+<div class="no-print sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-3 px-gutter py-3.5">
+    <a href="home.html" class="link-u inline-flex items-center gap-1.5 text-small text-ink-2 hover:text-ink">
+      <i data-lucide="arrow-left" class="h-4 w-4"></i> Back to site</a>
+    <div class="ml-auto flex flex-wrap items-center gap-2.5">
+      <a href="#" class="inline-flex items-center gap-2 rounded-pill border border-line-2 bg-surface px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">
+        <i data-lucide="printer" class="h-4 w-4"></i> Print</a>
+      <a href="#" class="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+        <i data-lucide="download" class="h-4 w-4"></i> Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ the sheet ════════════════════════════════════════════════════════════
+     A4 proportion on a darker ground so the page reads as a document, not as
+     another web section. The @media print block in shared.css strips the
+     ground, the toolbar and the shadow, so Cmd+P produces exactly this.
+
+     One section the old résumé did not have: PRODUCTS, above employment.
+     For a candidate whose differentiator is thirteen shipped things, burying
+     them under eight jobs throws away the whole case. -->
+<main class="mx-auto my-10 max-w-[52rem] bg-surface px-10 py-12 shadow-frame print:my-0 print:shadow-none sm:px-14">
+
+  <header class="border-b-2 border-ink pb-7">
+    <h1 class="font-display text-d2 font-semibold">Ritesh Firodiya</h1>
+    <p class="mt-1.5 font-display text-lead italic text-ink-2">Full-stack engineer &amp; tech lead · ~9 years</p>
+    <div class="mt-5 flex flex-wrap gap-x-6 gap-y-1.5 font-mono text-xs2 text-ink-2">
+      <span>Pune, India</span>
+      <a href="#" class="link-u">firodiya.ritesh@gmail.com</a>
+      <a href="#" class="link-u">+91 92267 37797</a>
+      <a href="#" class="link-u">github.com/ritesh-firodiya</a>
+      <a href="#" class="link-u">linkedin.com/in/riteshfirodiya</a>
+    </div>
+  </header>
+
+  <section class="pt-8">
+    <p class="text-body text-ink-2">
+      Full-stack engineer and lead with ~9 years shipping production TypeScript across React,
+      Next.js, React Native and NestJS. Comfortable end to end — Postgres schema to Play Store
+      release. Currently building AI-assisted developer tooling on the Anthropic SDK and MCP.
+    </p>
+  </section>
+
+  <!-- ── products first ──────────────────────────────────────────────────── -->
+  <section class="pt-9">
+    <h2 class="border-b border-line pb-2 font-mono text-label uppercase tracking-label text-ink-3">Products shipped</h2>
+    <ul class="mt-4 space-y-3.5">
+      <li class="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+        <div><span class="font-semibold">Chitragupt</span> <span class="text-ink-2">— household tax review for salaried Indian filers. Next.js on Cloud Run over ~189 Firebase Functions, Zod as the shared contract.</span></div>
+        <span class="font-mono text-xs2 uppercase tracking-label text-live sm:text-right">Live</span>
+      </li>
+      <li class="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+        <div><span class="font-semibold">Charades — Act it Out!</span> <span class="text-ink-2">— offline party game, 5,149 cards, React Native + Expo + RevenueCat. v1.0.30.</span></div>
+        <span class="font-mono text-xs2 uppercase tracking-label text-live sm:text-right">Google Play</span>
+      </li>
+      <li class="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+        <div><span class="font-semibold">Tic Tac Toe — 2 Player XO</span> <span class="text-ink-2">— pass-and-play plus a minimax AI. Expo Router, Zustand.</span></div>
+        <span class="font-mono text-xs2 uppercase tracking-label text-live sm:text-right">Google Play</span>
+      </li>
+      <li class="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+        <div><span class="font-semibold">Aakalan</span> <span class="text-ink-2">— personal spend and shared splits on one ledger, settled over UPI. Expo, Firestore.</span></div>
+        <span class="font-mono text-xs2 uppercase tracking-label text-beta sm:text-right">iOS beta</span>
+      </li>
+      <li class="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+        <div><span class="font-semibold">Imposter: Find the Liar</span> <span class="text-ink-2">— social deduction for 3–20 players on one phone. No ads, no analytics.</span></div>
+        <span class="font-mono text-xs2 uppercase tracking-label text-beta sm:text-right">Android beta</span>
+      </li>
+      <li class="text-ink-2">…and eight more in build or design — <a href="work.html" class="link-u font-medium text-accent">the full list</a>.</li>
+    </ul>
+  </section>
+
+  <!-- ── experience ──────────────────────────────────────────────────────── -->
+  <section class="pt-9">
+    <h2 class="border-b border-line pb-2 font-mono text-label uppercase tracking-label text-ink-3">Experience</h2>
+
+    <div class="mt-5 space-y-6">
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Senior Software Engineer · Walmart</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Apr 2025 — May 2026</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Built and shipped on an internal revenue management system across web and mobile, end to end in React, React Native, TypeScript and Node.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Tech Lead &amp; Full-Stack Engineer · TopLegal</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Jul 2024 — Jan 2025</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Led architecture and delivery of a contract management platform. Owned GraphQL schema design, DynamoDB modelling and team direction.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Senior Frontend Engineer · ManifestIT</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Oct 2023 — May 2024</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Complex UI workflows for a CMDB management tool in Next.js, integrated against backend services and shipped iteratively.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Software Engineer (Contract) · Speechify</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">May 2023 — Aug 2023</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Multiplatform TTS SDK and Dubbing Studio, a video-translation product. Full-stack across Svelte components and GraphQL APIs.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Senior Software Engineer (SDE-3) · Masai School</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Oct 2021 — May 2023</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Took several applications from idea to production with full delivery ownership. Mentored junior engineers across React, Node, GraphQL, Prisma and AWS.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Senior Software Engineer · Swiggy (via Recro)</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Nov 2020 — Sep 2021</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Consumer-app features in React, TypeScript and Node. Auth and ticketing modules; production triage with PM and QA.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Senior Software Engineer · Globant</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Sep 2019 — Nov 2020</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Web applications for banking and auditing clients. Pixel-accurate React, integrated with backend systems over Node.</p>
+      </div>
+
+      <div class="break-inside-avoid">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+          <h3 class="font-display text-h3 font-semibold">Software Engineer · Confluxsys</h3>
+          <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">Jun 2017 — Sep 2019</span>
+        </div>
+        <p class="mt-1.5 text-small text-ink-2">Full-stack at a startup. Frontend, backend and database work with end-to-end delivery ownership.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── skills ──────────────────────────────────────────────────────────── -->
+  <section class="break-inside-avoid pt-9">
+    <h2 class="border-b border-line pb-2 font-mono text-label uppercase tracking-label text-ink-3">Skills</h2>
+    <dl class="mt-4 grid gap-x-8 gap-y-3 text-small sm:grid-cols-2">
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Languages</dt><dd class="text-ink-2">TypeScript · JavaScript · Python · SQL</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Mobile</dt><dd class="text-ink-2">React Native · Expo · Expo Router · EAS · UniWind · Zustand · Reanimated · MMKV</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Web</dt><dd class="text-ink-2">Next.js · React · Tailwind · TanStack Query · tRPC</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Backend</dt><dd class="text-ink-2">Node · NestJS · GraphQL · Apollo · Firebase Functions · Cloud Run</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Data</dt><dd class="text-ink-2">PostgreSQL · Prisma · Drizzle · Firestore · DynamoDB</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Payments</dt><dd class="text-ink-2">Razorpay · RevenueCat · Stripe · UPI · AdMob</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">Infra</dt><dd class="text-ink-2">Docker · AWS (S3, SES) · Turborepo · pnpm · GitHub Actions · Sentry · PostHog</dd></div>
+      <div class="grid grid-cols-[6.5rem_1fr] gap-3"><dt class="font-mono text-xs2 uppercase tracking-label text-ink-3">AI</dt><dd class="text-ink-2">Anthropic SDK · MCP · Tool use · Prompt caching</dd></div>
+    </dl>
+  </section>
+
+  <section class="break-inside-avoid pt-9">
+    <h2 class="border-b border-line pb-2 font-mono text-label uppercase tracking-label text-ink-3">Education</h2>
+    <div class="mt-4 flex flex-wrap items-baseline justify-between gap-x-4">
+      <h3 class="font-display text-h3 font-semibold">B.E. Computer Engineering · P.V.G. College of Engineering and Technology</h3>
+      <span class="font-mono text-xs2 uppercase tracking-label text-ink-3">2013 — 2017</span>
+    </div>
+  </section>
+
+</main>
+
+<p class="no-print pb-12 text-center font-mono text-xs2 text-ink-3">Cmd&nbsp;+&nbsp;P produces this sheet with the toolbar and ground stripped.</p>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

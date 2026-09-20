@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products — Ritesh Firodiya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="bg-paper text-ink">
+
+<!-- ══ design-set chrome · not part of the product ══════════════════════════ -->
+<div class="border-b border-dashed border-line-2 bg-paper-2 px-5 py-2">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-1.5 font-mono text-xs2">
+    <span class="mr-1 text-label uppercase tracking-label text-ink-3">Web ·&nbsp;/products ›</span>
+    <a href="home.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Home</a>
+    <a href="products.html" class="rounded border border-accent/50 bg-accent-wash px-2 py-0.5 font-medium text-accent">Products</a>
+    <a href="product-onetime.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·one-time</a>
+    <a href="product-ads.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·ads</a>
+    <a href="product-sub.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·sub</a>
+    <a href="product-unreleased.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·unreleased</a>
+    <a href="go.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Go</a>
+    <a href="project.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Case study</a>
+    <a href="design.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Design</a>
+    <a href="design-system.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·system</a>
+    <a href="design-gallery.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·gallery</a>
+    <a href="design-drift.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·drift</a>
+    <a href="process.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Process</a>
+    <a href="process-build.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·build</a>
+    <a href="process-pipeline.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·pipeline</a>
+    <a href="notes.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Notes</a>
+    <a href="note.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·note</a>
+    <a href="work.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Work</a>
+    <a href="hire.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Hire</a>
+    <a href="resume.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Résumé</a>
+    <a href="legal.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Legal</a>
+    <a href="support.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Support</a>
+    <a href="404.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">404</a>
+    <a href="../index.html" class="ml-auto rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">← All screens</a>
+  </div>
+</div>
+
+<!-- ══ site header ══════════════════════════════════════════════════════════ -->
+<header class="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
+  <div class="mx-auto flex max-w-page items-center gap-6 px-gutter py-4">
+    <a href="home.html" class="font-display text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
+    <nav class="ml-auto hidden items-center gap-7 text-small text-ink-2 md:flex">
+      <a href="products.html" class="link-u text-ink">Products</a>
+      <a href="design.html"   class="link-u hover:text-ink">Design</a>
+      <a href="process.html"  class="link-u hover:text-ink">Process</a>
+      <a href="notes.html"    class="link-u hover:text-ink">Notes</a>
+      <a href="resume.html"   class="link-u hover:text-ink">Résumé</a>
+    </nav>
+    <a href="home.html#contact" class="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+      Get in touch <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+  </div>
+</header>
+
+<!-- ══ hero ═════════════════════════════════════════════════════════════════ -->
+<section class="grain relative overflow-hidden">
+  <div class="mx-auto max-w-page px-gutter pb-12 pt-section">
+    <p class="font-mono text-label uppercase tracking-label text-ink-3">Products · 8 apps</p>
+    <h1 class="mt-4 max-w-[17ch] font-display text-d1 font-semibold">What each one costs, before you install it.</h1>
+    <p class="mt-7 max-w-measure text-lead text-ink-2">
+      One of these is free and carries ads. Two are a single payment. Three are subscriptions.
+      One re-charges every tax year. The table says which is which, and so does every product page.
+    </p>
+  </div>
+</section>
+
+<!-- ══ THE TABLE — RULE 1 ═══════════════════════════════════════════════════
+     Five models at equal visual weight. No column is hidden at any width; the
+     table scrolls sideways with the app name pinned, and the right edge fades
+     while more remains so a phone reader knows to keep going. -->
+<section class="mx-auto max-w-page px-gutter">
+  <div class="tbl-wrap overflow-hidden rounded-card border border-line bg-surface shadow-lift">
+    <div class="tbl-scroll">
+    <table class="w-full border-collapse text-left">
+      <caption class="sr-only">Every Ritvi app with its monetization model, price, ad surfaces, offline behaviour, analytics and availability</caption>
+      <thead>
+        <tr class="border-b border-line bg-paper-2">
+          <th scope="col" class="tbl-stick bg-paper-2 px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">App</th>
+          <th scope="col" class="whitespace-nowrap px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">Model</th>
+          <th scope="col" class="whitespace-nowrap px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">You pay</th>
+          <th scope="col" class="whitespace-nowrap px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">Ads</th>
+          <th scope="col" class="whitespace-nowrap px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">Offline</th>
+          <th scope="col" class="whitespace-nowrap px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">Analytics</th>
+          <th scope="col" class="whitespace-nowrap px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">Get it</th>
+        </tr>
+      </thead>
+      <tbody class="text-small">
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold">
+            <a href="product-onetime.html" class="link-u hover:text-accent">Charades</a>
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Act it Out!</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-once-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-once">One-time</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 font-medium">from ₹99 <span class="block text-xs2 font-normal text-ink-3">32 packs, buy what you want</span></td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4 text-ink-2">Yes — fully</td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4"><span class="inline-block rounded-pill bg-live-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-live">Play</span>
+            <span class="mt-1 block text-xs2 text-ink-3">iOS TestFlight</span></td>
+        </tr>
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold">
+            <a href="product-ads.html" class="link-u hover:text-accent">Tic Tac Toe</a>
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">2 Player XO</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-ads-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-ads">Free · ads</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 font-medium">Nothing <span class="block text-xs2 font-normal text-ink-3">no in-app purchases at all</span></td>
+          <td class="px-4 py-4 font-medium text-m-ads">Banner<br>+ interstitial</td>
+          <td class="px-4 py-4 text-ink-2">No — ads need a network</td>
+          <td class="px-4 py-4 text-ink-2">AdMob measurement</td>
+          <td class="px-4 py-4"><span class="inline-block rounded-pill bg-live-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-live">Play</span></td>
+        </tr>
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold">
+            <a href="product-sub.html" class="link-u hover:text-accent">Aakalan</a>
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Split expenses</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-sub-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-sub">Subscription</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 font-medium">₹99/mo · ₹749/yr <span class="block text-xs2 font-normal text-ink-3">renews until cancelled</span></td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4 text-ink-2">Partly — it syncs a ledger</td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4"><span class="rounded-pill bg-beta-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-beta">TestFlight</span>
+            <span class="mt-1 block text-xs2 text-ink-3">Android closed testing</span></td>
+        </tr>
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold">
+            <a href="product-unreleased.html" class="link-u hover:text-accent">Imposter</a>
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Find the Liar</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-once-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-once">One-time</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 font-medium text-ink-3">Not priced yet <span class="block text-xs2 font-normal">3 packs free, rest in one payment</span></td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4 text-ink-2">Yes — fully</td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4"><span class="rounded-pill bg-design-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-design">Not out</span>
+            <span class="mt-1 block text-xs2 text-ink-3">no public track yet</span></td>
+        </tr>
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold">
+            <a href="product-sub.html" class="link-u hover:text-accent">AskCal</a>
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Calorie counter</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-sub-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-sub">Subscription</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 font-medium">$5.99/mo · $39.99/yr <span class="block text-xs2 font-normal text-ink-3">renews until cancelled</span></td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4 text-ink-2">No — scans run on a server</td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4"><span class="rounded-pill bg-design-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-design">Not out</span></td>
+        </tr>
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold">
+            <a href="product-sub.html" class="link-u hover:text-accent">Chitragupt</a>
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Household tax review</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-year-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-year">Per tax year</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 font-medium">₹249 / ₹499 / ₹799 <span class="block text-xs2 font-normal text-ink-3">per assessment year, three tiers</span></td>
+          <td class="px-4 py-4 text-ink-2">None</td>
+          <td class="px-4 py-4 text-ink-2">No — it is a web app</td>
+          <td class="px-4 py-4 font-medium text-m-year">PostHog + Sentry</td>
+          <td class="px-4 py-4"><span class="rounded-pill bg-live-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-live">Live</span>
+            <span class="mt-1 block text-xs2 text-ink-3">mobile app paused</span></td>
+        </tr>
+
+        <!-- Separator: nothing below this line is installable by anyone. -->
+        <tr class="border-b border-line bg-paper-2">
+          <td colspan="7" class="px-4 py-2.5 font-mono text-label uppercase tracking-label text-ink-3">Not built yet — listed so the list is complete</td>
+        </tr>
+
+        <tr class="border-b border-line">
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold text-ink-2">Plan-Kid
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Parenthood journey</span></th>
+          <td class="px-4 py-4"><span class="whitespace-nowrap rounded-pill bg-m-sub-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-sub">Subscription</span></td>
+          <td class="nums whitespace-nowrap px-4 py-4 text-ink-2">₹2,499/yr <span class="block text-xs2 text-ink-3">planned, not charged yet</span></td>
+          <td class="px-4 py-4 text-ink-2">None — ruled out by design</td>
+          <td class="px-4 py-4 text-ink-3">—</td>
+          <td class="px-4 py-4 text-ink-3">—</td>
+          <td class="px-4 py-4"><span class="rounded-pill bg-design-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-design">In design</span></td>
+        </tr>
+
+        <tr>
+          <th scope="row" class="tbl-stick px-4 py-4 font-display text-h3 font-semibold text-ink-2">DwarSeva Property
+            <span class="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">Map-based listings</span></th>
+          <td class="px-4 py-4 text-ink-3">Undecided</td>
+          <td class="px-4 py-4 text-ink-3">—</td>
+          <td class="px-4 py-4 text-ink-3">—</td>
+          <td class="px-4 py-4 text-ink-3">—</td>
+          <td class="px-4 py-4 text-ink-3">—</td>
+          <td class="px-4 py-4"><span class="rounded-pill bg-design-wash px-2 py-0.5 font-mono text-label uppercase tracking-label text-design">In design</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <p class="mt-3 font-mono text-xs2 text-ink-3 md:hidden">Scroll the table sideways — the app name stays pinned.</p>
+</section>
+
+<!-- ══ what each model actually means ═══════════════════════════════════════
+     The pill in the table is a label; a label is only honest if the reader can
+     find out what it commits them to. Five models, five plain definitions. -->
+<section class="mx-auto max-w-page px-gutter py-section">
+  <h2 class="max-w-[22ch] font-display text-d2 font-semibold">What each of those words commits you to.</h2>
+  <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+    <div class="rounded-card border border-line bg-surface p-6">
+      <span class="rounded-pill bg-m-once-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-once">One-time</span>
+      <p class="mt-4 text-body text-ink-2">You pay once and keep it. Nothing renews, nothing expires, and it restores on a new phone from your store account.</p>
+      <p class="mt-3 font-mono text-xs2 text-ink-3">Charades · Imposter</p>
+    </div>
+
+    <div class="rounded-card border border-line bg-surface p-6">
+      <span class="rounded-pill bg-m-ads-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-ads">Free · ads</span>
+      <p class="mt-4 text-body text-ink-2">Free to install with no purchase available. It is paid for by a banner and an interstitial between games, which means it needs a network and the ad network sees a device identifier.</p>
+      <p class="mt-3 font-mono text-xs2 text-ink-3">Tic Tac Toe</p>
+    </div>
+
+    <div class="rounded-card border border-line bg-surface p-6">
+      <span class="rounded-pill bg-m-sub-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-sub">Subscription</span>
+      <p class="mt-4 text-body text-ink-2">It charges again every month or every year until you cancel. Cancelling is done in the store account, not in the app, and access runs to the end of the period you paid for.</p>
+      <p class="mt-3 font-mono text-xs2 text-ink-3">Aakalan · AskCal · Plan-Kid</p>
+    </div>
+
+    <div class="rounded-card border border-line bg-surface p-6">
+      <span class="rounded-pill bg-m-year-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-year">Per tax year</span>
+      <p class="mt-4 text-body text-ink-2">Not a subscription and not quite one-time. Each assessment year is its own purchase, so the charge repeats annually but only if you come back. Nothing auto-renews.</p>
+      <p class="mt-3 font-mono text-xs2 text-ink-3">Chitragupt</p>
+    </div>
+
+    <div class="rounded-card border border-line bg-surface p-6">
+      <span class="rounded-pill bg-m-free-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-free">Free</span>
+      <p class="mt-4 text-body text-ink-2">No ads, no purchases, nothing to buy. Nothing currently sits here — it is on the table so the absence is visible rather than implied.</p>
+      <p class="mt-3 font-mono text-xs2 text-ink-3">None today</p>
+    </div>
+
+    <div class="rounded-card border border-dashed border-line-2 bg-paper-2 p-6">
+      <p class="font-mono text-label uppercase tracking-label text-ink-3">And the rule</p>
+      <p class="mt-4 text-body text-ink-2">Whichever it is, the model is on the product page <b class="text-ink">above</b> the install button — never below it, never in a footnote, and never softened into a word like "unlock".</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ why this page exists ═════════════════════════════════════════════════
+     The honest version. Not self-flagellation — a stated standard with the
+     evidence that it was needed. This is the page most likely to be linked to. -->
+<section class="border-y border-line bg-paper-2">
+  <div class="mx-auto max-w-page px-gutter py-section">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-20">
+      <div>
+        <p class="font-mono text-label uppercase tracking-label text-ink-3">Why this page exists</p>
+        <h2 class="mt-3 max-w-[20ch] font-display text-d2 font-semibold">This site used to say something that was not true.</h2>
+        <div class="mt-7 max-w-prose space-y-5 text-body text-ink-2">
+          <p>
+            An earlier version of these pages carried two studio-wide promises: <i>no ads in our
+            games</i>, and <i>one-time purchases, not subscriptions you forget about</i>. Both read
+            well. Neither was true.
+          </p>
+          <p>
+            Tic Tac Toe ships an AdMob banner and an interstitial. Four of the eight apps are
+            subscriptions. A third page said Chitragupt was free and would stay free, while its own
+            config defined three priced tiers.
+          </p>
+          <p>
+            The mistake was not the wording, it was the <b class="text-ink">shape of the claim</b>.
+            A promise made on behalf of every app is only as true as the least convenient app, and
+            it goes stale the moment one of them changes. A fact stated per app cannot do that.
+          </p>
+          <p>
+            So there are no studio promises here any more. There is a table, and every row is
+            checked against the app's own source before this page is built.
+          </p>
+        </div>
+      </div>
+
+      <aside class="lg:pt-16">
+        <div class="rounded-card border border-line bg-surface p-7">
+          <p class="font-mono text-label uppercase tracking-label text-ink-3">How this stays true</p>
+          <ul class="mt-5 space-y-4 text-small text-ink-2">
+            <li class="flex gap-3"><i data-lucide="file-code-2" class="mt-0.5 h-4 w-4 shrink-0 text-accent"></i>
+              Every fact here is generated from the app repositories, not typed into a page.</li>
+            <li class="flex gap-3"><i data-lucide="shield-alert" class="mt-0.5 h-4 w-4 shrink-0 text-accent"></i>
+              The generator refuses to build if a stated fact disagrees with the source — an app that
+              gains an ad SDK breaks the build rather than the promise.</li>
+            <li class="flex gap-3"><i data-lucide="calendar-clock" class="mt-0.5 h-4 w-4 shrink-0 text-accent"></i>
+              Each row carries the commit it was read from and the date it was checked.</li>
+          </ul>
+          <p class="mt-6 border-t border-line pt-5 font-mono text-xs2 text-ink-3">
+            Last verified <span class="text-ink-2">20 Sep 2026</span> · <a href="process.html" class="link-u text-accent">how the pipeline works</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══ next ═════════════════════════════════════════════════════════════════ -->
+<section class="mx-auto max-w-page px-gutter py-section">
+  <div class="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
+    <a href="design.html" class="group bg-surface p-7 transition hover:bg-paper-2">
+      <i data-lucide="palette" class="h-5 w-5 text-accent"></i>
+      <h3 class="mt-4 font-display text-h3 font-semibold group-hover:text-accent">The design system</h3>
+      <p class="mt-2 text-small text-ink-2">Nine rules pulled out of nine design sets, and the screens they produced.</p>
+    </a>
+    <a href="process.html" class="group bg-surface p-7 transition hover:bg-paper-2">
+      <i data-lucide="git-branch" class="h-5 w-5 text-accent"></i>
+      <h3 class="mt-4 font-display text-h3 font-semibold group-hover:text-accent">How these get built</h3>
+      <p class="mt-2 text-small text-ink-2">Idea to money in eight stages, every gate a number rather than a feeling.</p>
+    </a>
+    <a href="support.html" class="group bg-surface p-7 transition hover:bg-paper-2">
+      <i data-lucide="life-buoy" class="h-5 w-5 text-accent"></i>
+      <h3 class="mt-4 font-display text-h3 font-semibold group-hover:text-accent">Support &amp; privacy</h3>
+      <p class="mt-2 text-small text-ink-2">A bug, a refund, or deleting your account and data.</p>
+    </a>
+  </div>
+</section>
+
+<footer class="bg-ink text-ink-inv">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-x-6 gap-y-3 px-gutter py-7 font-mono text-xs2 text-ink-inv/55">
+    <span>© 2026 Ritesh Firodiya</span>
+    <a href="legal.html" class="link-u hover:text-ink-inv">Legal</a>
+    <a href="support.html" class="link-u hover:text-ink-inv">Support</a>
+    <a href="#" class="link-u hover:text-ink-inv">GitHub</a>
+    <a href="home.html#contact" class="link-u ml-auto hover:text-ink-inv">Get in touch →</a>
+  </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

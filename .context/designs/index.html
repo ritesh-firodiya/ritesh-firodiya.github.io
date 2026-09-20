@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>One site — all screens</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body class="bg-paper text-ink">
+
+<header class="border-b border-line bg-paper-2">
+  <div class="mx-auto max-w-page px-gutter py-9">
+    <p class="font-mono text-label uppercase tracking-label text-ink-3">ritesh-firodiya.github.io · consolidated · designs only</p>
+    <h1 class="mt-3 max-w-[24ch] font-display text-d1 font-semibold">One site, and it tells the truth about every app.</h1>
+    <p class="mt-5 max-w-prose text-lead text-ink-2">
+      21 web screens · 11 mobile screens · editorial light · Fraunces + Inter + JetBrains Mono.
+      Nothing is wired to a framework — this is the gate before any code.
+    </p>
+  </div>
+</header>
+
+<main class="mx-auto max-w-page space-y-10 px-gutter py-10">
+
+  <section class="rationale">
+    <p class="rationale-title">What was wrong — and it was not the wording</p>
+    <p>The previous design pass carried two studio-wide promises: <b>"no ads in our games"</b> and <b>"one-time purchases, not subscriptions you forget about"</b>. Checked against the app repositories, both were false. <b>Tic Tac Toe ships an AdMob banner and interstitial.</b> Four of eight apps are subscriptions. A third page said Chitragupt was <i>"free, and it stays free"</i> while its own config defines ₹249 / ₹499 / ₹799 tiers. A fourth showed Imposter a working <i>"Join the beta"</i> button while its <code class="font-mono text-xs2">STATUS.md</code> said <i>"Neither store has a public release. Nothing is live."</i></p>
+    <p>These sat on the developer website linked from live store listings. The mistake was the <b>shape of the claim</b>: a promise on behalf of every app is only as true as the least convenient app, and it decays silently because the thing that breaks it is a change in a different repository.</p>
+  </section>
+
+  <section class="rationale">
+    <p class="rationale-title">The four rules this set adds</p>
+    <p><b>1 · The model is stated before the install button, always.</b> Free+ads, one-time and subscription render at equal visual weight. A subscription is never softened into "unlock"; ads are never omitted. There is no "good" colour in the model palette.</p>
+    <p><b>2 · No studio-wide promise.</b> Any claim not true of every app on the page is scoped to the apps it is true of, or cut.</p>
+    <p><b>3 · Availability is never a euphemism.</b> A platform with nothing installable renders disabled <b>with the reason</b> — never hidden, and never a link that most people cannot open.</p>
+    <p><b>4 · A missing asset is visibly missing.</b> Every image slot is a labelled placeholder naming what belongs there and at what size.</p>
+  </section>
+
+  <!-- ══ web ══ -->
+  <section>
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h2 class="font-display text-h2 font-semibold">Web · desktop</h2>
+      <p class="font-mono text-xs2 text-ink-3">max-w 1120 · fluid to 390</p>
+    </div>
+
+    <h3 class="mt-7 font-mono text-label uppercase tracking-label text-ink-3">Products — the correction</h3>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="web/products.html" class="group rounded-card border border-accent/40 bg-surface p-5 shadow-lift transition hover:-translate-y-0.5">
+        <span class="font-mono text-xs2 text-ink-3">/products</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">The comparison table ★</h4>
+        <p class="mt-1.5 text-small text-ink-2">All 8 apps × model × price × ads × offline × analytics × availability. Seven columns that survive 390 by scrolling with the app name pinned, never by hiding a column.</p>
+      </a>
+      <a href="web/product-onetime.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/products/charades</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Variant · one-time</h4>
+        <p class="mt-1.5 text-small text-ink-2">Live on Play. 32 purchases from ₹99, genuinely offline, no ad SDK anywhere.</p>
+      </a>
+      <a href="web/product-ads.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/products/tic-tac-toe</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Variant · ad-supported</h4>
+        <p class="mt-1.5 text-small text-ink-2">The hardest honesty case. Names both ad surfaces in the largest type on the page, because it is the one thing you would otherwise discover after installing.</p>
+      </a>
+      <a href="web/product-sub.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/products/aakalan</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Variant · subscription</h4>
+        <p class="mt-1.5 text-small text-ink-2">Both prices, the word "renews", and where to cancel — stated before the install button rather than in a FAQ.</p>
+      </a>
+      <a href="web/product-unreleased.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/products/imposter</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Variant · not released</h4>
+        <p class="mt-1.5 text-small text-ink-2">Both buttons disabled with reasons. No price, because none is set. This is the page that replaces a button that went nowhere.</p>
+      </a>
+      <a href="web/go.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/go/[slug]</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Get redirect</h4>
+        <p class="mt-1.5 text-small text-ink-2">One short link per app for bios and QR codes. Three states, none of them a dead end.</p>
+      </a>
+    </div>
+
+    <h3 class="mt-9 font-mono text-label uppercase tracking-label text-ink-3">Design — published as an artifact</h3>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="web/design.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/design</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">The nine rules</h4>
+        <p class="mt-1.5 text-small text-ink-2">Extracted from nine design sets by noticing which arguments recurred independently — not written as a manifesto.</p>
+      </a>
+      <a href="web/design-system.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/design/system</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">The system</h4>
+        <p class="mt-1.5 text-small text-ink-2">Tokens, type scale, and the config/CSS split that makes them un-driftable.</p>
+      </a>
+      <a href="web/design-gallery.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/design/[slug]</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">The screens</h4>
+        <p class="mt-1.5 text-small text-ink-2">Live iframes, not screenshots. Two frames on this page are real — scroll them.</p>
+      </a>
+      <a href="web/design-drift.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/design/drift</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Where it drifted ★</h4>
+        <p class="mt-1.5 text-small text-ink-2">Four of nine sets break the rules. The matrix, and the migration order — cheapest-to-change first, not worst first.</p>
+      </a>
+    </div>
+
+    <h3 class="mt-9 font-mono text-label uppercase tracking-label text-ink-3">Process — the operating manual</h3>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="web/process.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/process</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Idea → money, 8 stages</h4>
+        <p class="mt-1.5 text-small text-ink-2">Every gate answered with a number. The argument: most process writing stops at stage 4.</p>
+      </a>
+      <a href="web/process-build.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/process/build</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">How an app gets built</h4>
+        <p class="mt-1.5 text-small text-ink-2">Five stages, two hard gates, and the rule that a plan approved is not code approved.</p>
+      </a>
+      <a href="web/process-pipeline.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/process/pipeline</span>
+        <h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">After it builds</h4>
+        <p class="mt-1.5 text-small text-ink-2">Launch, market, money, improve — plus the positioning method that reads competitors' one-star reviews.</p>
+      </a>
+    </div>
+
+    <h3 class="mt-9 font-mono text-label uppercase tracking-label text-ink-3">The rest</h3>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="web/home.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Home</h4>
+        <p class="mt-1.5 text-small text-ink-2">Revised — three doors, model pills on the featured products, Chitragupt's price corrected.</p></a>
+      <a href="web/notes.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/notes</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Notes</h4>
+        <p class="mt-1.5 text-small text-ink-2">Index. The first piece is the post-mortem of the false claim.</p></a>
+      <a href="web/note.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/notes/[slug]</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">A note</h4>
+        <p class="mt-1.5 text-small text-ink-2">Article template, filled with "The marketing claim that outlived the fact".</p></a>
+      <a href="web/project.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/work/[slug]</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Case study</h4>
+        <p class="mt-1.5 text-small text-ink-2">Template, filled with Chitragupt — problem, architecture, decisions worth defending. Its pricing claim was the fifth false one, found during verification.</p></a>
+      <a href="web/legal.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/legal</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Legal</h4>
+        <p class="mt-1.5 text-small text-ink-2">App → policy table. Notes that old URLs still resolve, permanently.</p></a>
+      <a href="web/support.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/support</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Support</h4>
+        <p class="mt-1.5 text-small text-ink-2">Three paths, including the account deletion both stores require.</p></a>
+      <a href="web/work.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/work</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Work</h4>
+        <p class="mt-1.5 text-small text-ink-2">All 13 projects. The 8 apps carry prices on /products; the rest are platforms and tools.</p></a>
+      <a href="web/hire.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/hire</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Work with me</h4>
+        <p class="mt-1.5 text-small text-ink-2">Three engagement shapes and a four-step process.</p></a>
+      <a href="web/resume.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/resume</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Résumé</h4>
+        <p class="mt-1.5 text-small text-ink-2">A document, not a web section. Print CSS makes Cmd+P the PDF.</p></a>
+      <a href="web/404.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/404</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Not found</h4>
+        <p class="mt-1.5 text-small text-ink-2">Routes instead of apologising.</p></a>
+    </div>
+  </section>
+
+  <!-- ══ mobile ══ -->
+  <section>
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h2 class="font-display text-h2 font-semibold">Mobile · 390</h2>
+      <p class="font-mono text-xs2 text-ink-3">tall frames scroll · fixed frames are states</p>
+    </div>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="mobile/products.html" class="group rounded-card border border-accent/40 bg-surface p-5 shadow-lift transition hover:-translate-y-0.5">
+        <span class="font-mono text-xs2 text-ink-3">/products</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Products ★</h4>
+        <p class="mt-1.5 text-small text-ink-2">The hardest problem in the set. Seven columns become cards — but the model and price stay in the card head, never behind a tap.</p></a>
+      <a href="mobile/product.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/products/[slug]</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Product</h4>
+        <p class="mt-1.5 text-small text-ink-2">Subscription variant, plus a sticky install bar that carries the model with it.</p></a>
+      <a href="mobile/go.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">state · 390×844 ×2</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Get redirect</h4>
+        <p class="mt-1.5 text-small text-ink-2">Redirecting, and nothing-to-install.</p></a>
+      <a href="mobile/design.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/design</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Design</h4>
+        <p class="mt-1.5 text-small text-ink-2">Rules as cards. Nothing behind an accordion — a rule you must tap to read is a rule nobody reads.</p></a>
+      <a href="mobile/design-gallery.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/design/[slug]</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Gallery</h4>
+        <p class="mt-1.5 text-small text-ink-2">One column, reasoning below each frame as real text.</p></a>
+      <a href="mobile/process.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/process</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Process</h4>
+        <p class="mt-1.5 text-small text-ink-2">The eight-stage table becomes a numbered list.</p></a>
+      <a href="mobile/home.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Home</h4>
+        <p class="mt-1.5 text-small text-ink-2">Three doors within one thumb-flick of the headline.</p></a>
+      <a href="mobile/nav-open.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">state · 390×844</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Menu open</h4>
+        <p class="mt-1.5 text-small text-ink-2">The nav the old site never had.</p></a>
+      <a href="mobile/work.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/work</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Work</h4>
+        <p class="mt-1.5 text-small text-ink-2">Filters scroll horizontally instead of eating the fold.</p></a>
+      <a href="mobile/project.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/work/[slug]</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Case study</h4>
+        <p class="mt-1.5 text-small text-ink-2">The sticky rail collapses into a 2×2 facts block.</p></a>
+      <a href="mobile/resume.html" class="group rounded-card border border-line bg-surface p-5 shadow-lift transition hover:-translate-y-0.5 hover:border-accent/40">
+        <span class="font-mono text-xs2 text-ink-3">/resume</span><h4 class="mt-2.5 font-display text-h3 font-semibold group-hover:text-accent">Résumé</h4>
+        <p class="mt-1.5 text-small text-ink-2">The sheet drops its margins and becomes the page.</p></a>
+    </div>
+  </section>
+
+  <section class="rationale">
+    <p class="rationale-title">What is deliberately not here</p>
+    <p><b>The generator.</b> Every fact on /products is meant to be produced by a script that reads the app repositories and <b>refuses to build when a stated fact disagrees with source</b> — so an app that gains an ad SDK breaks a deployment rather than a promise. That is the next phase, not this one.</p>
+    <p><b>Chrome stripping in the gallery sync.</b> The live iframes on <code class="font-mono text-xs2">/design/[slug]</code> currently render the development chrome that every design file carries while being worked on. The sync step must remove it. Visible on the page on purpose.</p>
+    <p><b>Real assets.</b> Roughly 60 labelled placeholder slots. Most already exist in the app repos' store folders and can be copied rather than made.</p>
+    <p><b>The framework.</b> No route, component or config has been touched. These are plain HTML and Tailwind on purpose, so they port to whatever the site is eventually built with — including a Next.js + Tailwind v4 rewrite, where the <code class="font-mono text-xs2">:root</code> block in <code class="font-mono text-xs2">shared.css</code> becomes the real theme almost verbatim.</p>
+    <p><b>The legal documents themselves.</b> Only the index page is designed here; moving the 13 files and shimming the old URLs is an ops task with a hard gate on the in-flight Charades submission.</p>
+  </section>
+
+</main>
+
+<footer class="border-t border-line bg-paper-2">
+  <div class="mx-auto max-w-page px-gutter py-7 font-mono text-xs2 text-ink-3">
+    Designs only · nothing wired · approve before any site code is written
+  </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

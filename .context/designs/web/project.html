@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chitragupt — case study — Ritesh Firodiya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="bg-paper text-ink">
+
+<div class="border-b border-dashed border-line-2 bg-paper-2 px-5 py-2">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-1.5 font-mono text-xs2">
+    <span class="mr-1 text-label uppercase tracking-label text-ink-3">Web ·&nbsp;/work/[slug] ›</span>
+    <a href="home.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Home</a>
+    <a href="products.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Products</a>
+    <a href="product-onetime.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·one-time</a>
+    <a href="product-ads.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·ads</a>
+    <a href="product-sub.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·sub</a>
+    <a href="product-unreleased.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·unreleased</a>
+    <a href="go.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Go</a>
+    <a href="project.html" class="rounded border border-accent/50 bg-accent-wash px-2 py-0.5 font-medium text-accent">Case study</a>
+    <a href="design.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Design</a>
+    <a href="design-system.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·system</a>
+    <a href="design-gallery.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·gallery</a>
+    <a href="design-drift.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·drift</a>
+    <a href="process.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Process</a>
+    <a href="process-build.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·build</a>
+    <a href="process-pipeline.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·pipeline</a>
+    <a href="notes.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Notes</a>
+    <a href="note.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">·note</a>
+    <a href="work.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Work</a>
+    <a href="hire.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Hire</a>
+    <a href="resume.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Résumé</a>
+    <a href="legal.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Legal</a>
+    <a href="support.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">Support</a>
+    <a href="404.html" class="rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">404</a>
+    <a href="../index.html" class="ml-auto rounded border border-line-2 bg-surface px-2 py-0.5 text-ink-2 hover:border-accent/40">← All screens</a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
+  <div class="mx-auto flex max-w-page items-center gap-6 px-gutter py-4">
+    <a href="home.html" class="font-display text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
+        <nav class="ml-auto hidden items-center gap-7 text-small text-ink-2 md:flex">
+      <a href="products.html" class="link-u hover:text-ink">Products</a>
+      <a href="design.html" class="link-u hover:text-ink">Design</a>
+      <a href="process.html" class="link-u hover:text-ink">Process</a>
+      <a href="notes.html" class="link-u hover:text-ink">Notes</a>
+      <a href="resume.html" class="link-u hover:text-ink">Résumé</a>
+    </nav>
+    <a href="home.html#contact" class="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+      Get in touch <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+  </div>
+</header>
+
+<!-- ══ case-study hero ══════════════════════════════════════════════════════
+     This template is the reason the grid cards are clickable at all. A
+     recruiter skims; a founder evaluating a build partner wants to see one
+     thing thought through end to end. That reader gets this page. -->
+<article>
+  <div class="mx-auto max-w-page px-gutter pb-12 pt-section">
+    <a href="work.html" class="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">
+      <i data-lucide="arrow-left" class="h-4 w-4"></i> All products</a>
+
+    <div class="mt-7 flex flex-wrap items-center gap-2">
+      <span class="rounded-pill bg-live-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-live">Live</span>
+      <span class="rounded-pill bg-m-year-wash px-2.5 py-1 font-mono text-label uppercase tracking-label text-m-year">Per tax year</span>
+      <span class="rounded-pill bg-paper-2 px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">Solo build</span>
+      <span class="rounded-pill bg-paper-2 px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">2025 — now</span>
+    </div>
+
+    <h1 class="mt-6 max-w-[14ch] font-display text-d1 font-semibold">Chitragupt</h1>
+    <p class="mt-5 max-w-measure font-display text-lead italic text-ink-2">Household tax review for salaried Indian filers.</p>
+
+    <div class="mt-9 flex flex-wrap items-center gap-3">
+      <a href="#" class="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+        Open chitragupt.ai <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+    </div>
+  </div>
+
+  <!-- hero shot, full bleed -->
+  <div class="mx-auto max-w-page px-gutter">
+    <div class="browser">
+      <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+        <span class="ml-3 font-mono text-xs2 text-ink-3">chitragupt.ai/review</span></div>
+      <div class="shot-ph aspect-[16/9]">
+        <p class="max-w-[30ch] px-6 font-mono text-xs2 uppercase tracking-label text-ink-3">
+          Hero screenshot slot<br><span class="normal-case tracking-normal">The side-by-side regime result, both columns and the verdict visible · 2000×1125</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ the facts strip ════════════════════════════════════════════════════ -->
+  <div class="mx-auto mt-14 max-w-page px-gutter">
+    <dl class="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <div class="bg-surface px-5 py-5"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Role</dt><dd class="mt-2 text-small text-ink">Everything — product, design, build, deploy</dd></div>
+      <div class="bg-surface px-5 py-5"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Surface</dt><dd class="mt-2 text-small text-ink">Web app, responsive, no native build</dd></div>
+      <div class="bg-surface px-5 py-5"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Backend</dt><dd class="mt-2 text-small text-ink">~189 Firebase Functions behind Cloud Run</dd></div>
+      <div class="bg-surface px-5 py-5"><dt class="font-mono text-label uppercase tracking-label text-ink-3">Price</dt><dd class="mt-2 text-small text-ink">₹249 / ₹499 / ₹799 per assessment year</dd></div>
+    </dl>
+  </div>
+
+  <!-- ══ body ═══════════════════════════════════════════════════════════════ -->
+  <div class="mx-auto max-w-page px-gutter py-section">
+    <div class="grid gap-14 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-20">
+      <div class="max-w-prose">
+
+        <h2 class="font-display text-h2 font-semibold">The problem</h2>
+        <p class="mt-4 text-body text-ink-2">
+          Every Indian tax calculator answers one question — which regime is cheaper for you, one
+          person, this year. That is the wrong unit. Tax in an Indian household moves across people:
+          a parent's medical premium, a spouse's home-loan interest, a child's tuition. Filed one at a
+          time, a family routinely leaves a deduction on the table that was always claimable.
+        </p>
+
+        <h2 class="mt-12 font-display text-h2 font-semibold">What it does</h2>
+        <ul class="mt-4 space-y-3 text-body text-ink-2">
+          <li class="flex gap-3"><i data-lucide="upload" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i><span>Takes a Form 16 upload and parses it into a structured return.</span></li>
+          <li class="flex gap-3"><i data-lucide="columns-2" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i><span>Shows old and new regime side by side, with the delta stated in rupees, not in a chart.</span></li>
+          <li class="flex gap-3"><i data-lucide="users" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i><span>Adds a household lens — spouse, parents, kids — and surfaces deductions that only exist across people.</span></li>
+          <li class="flex gap-3"><i data-lucide="list-checks" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i><span>A 15-question Quick Check for anyone who does not have a Form 16 to hand.</span></li>
+          <li class="flex gap-3"><i data-lucide="printer" class="mt-1.5 h-4 w-4 shrink-0 text-accent"></i><span>Prints the refund you can claim and the deductions still unused, as a document you can act on.</span></li>
+        </ul>
+
+        <h2 class="mt-12 font-display text-h2 font-semibold">How it is built</h2>
+        <p class="mt-4 text-body text-ink-2">
+          One Next.js app on Cloud Run, roughly 189 Firebase Functions behind it, Firestore for
+          state, and a Turborepo holding the lot. The decision that mattered was the contract.
+        </p>
+
+        <div class="mt-7 overflow-hidden rounded-card border border-line bg-surface">
+          <div class="shot-ph aspect-[16/9]">
+            <p class="max-w-[32ch] px-6 font-mono text-xs2 uppercase tracking-label text-ink-3">
+              Architecture diagram slot<br><span class="normal-case tracking-normal">Next.js / Cloud Run → Functions → Firestore, with the Zod contract drawn across the boundary</span></p>
+          </div>
+        </div>
+
+        <h2 class="mt-12 font-display text-h2 font-semibold">Decisions worth defending</h2>
+
+        <div class="mt-6 space-y-5">
+          <div class="rounded-card border border-line bg-surface p-5">
+            <p class="font-mono text-label uppercase tracking-label text-accent">Zod as the only contract</p>
+            <p class="mt-2.5 text-small text-ink-2">Tax rules change every budget. A schema shared by the form, the function and the stored document means a rule change is one edit with the type system finding the rest. No hand-written DTOs on either side.</p>
+          </div>
+          <div class="rounded-card border border-line bg-surface p-5">
+            <p class="font-mono text-label uppercase tracking-label text-accent">189 small functions, not one big service</p>
+            <p class="mt-2.5 text-small text-ink-2">Each deduction is its own function with its own tests. Wrong numbers are the only failure mode that matters here, and this shape makes a wrong number traceable to one file.</p>
+          </div>
+          <div class="rounded-card border border-line bg-surface p-5">
+            <p class="font-mono text-label uppercase tracking-label text-accent">You see the verdict before you pay</p>
+            <p class="mt-2.5 text-small text-ink-2">A tax tool that shows a number and then asks for money before revealing it has already lost the user's trust. Which regime wins, and by how much, is free. The full workings and the household lens are the paid tiers — ₹249, ₹499 or ₹799 for an assessment year.</p>
+          </div>
+        </div>
+
+        <h2 class="mt-12 font-display text-h2 font-semibold">Where it stands</h2>
+        <p class="mt-4 text-body text-ink-2">
+          Live at chitragupt.ai and in use through the filing season. Next up is a multi-year view,
+          so a household can see what a decision this year costs or saves the next.
+        </p>
+
+      </div>
+
+      <!-- sticky facts rail -->
+      <aside class="lg:sticky lg:top-24 lg:self-start">
+        <p class="font-mono text-label uppercase tracking-label text-ink-3">Stack</p>
+        <ul class="mt-3 space-y-1.5 text-small text-ink-2">
+          <li>Next.js</li><li>Cloud Run</li><li>Firebase Functions</li><li>Firestore</li><li>Zod</li><li>Turborepo</li><li>TypeScript</li>
+        </ul>
+
+        <p class="mt-8 font-mono text-label uppercase tracking-label text-ink-3">Links</p>
+        <ul class="mt-3 space-y-2 text-small">
+          <li><a href="#" class="link-u inline-flex items-center gap-1.5 text-accent">chitragupt.ai <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i></a></li>
+          <li class="text-ink-3">Source is closed while commercial</li>
+          <li class="text-ink-3">PostHog + Sentry, behind a consent gate</li>
+        </ul>
+
+        <div class="mt-8 rounded-card border border-line bg-paper-2 p-5">
+          <p class="text-small text-ink-2">Building something in this shape?</p>
+          <a href="hire.html" class="mt-3 inline-flex items-center gap-1.5 text-small font-medium text-accent">Work with me <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ══ prev / next ════════════════════════════════════════════════════════ -->
+  <nav class="border-t border-line bg-paper-2">
+    <div class="mx-auto grid max-w-page gap-px bg-line sm:grid-cols-2">
+      <a href="project.html" class="group bg-paper-2 px-gutter py-8 transition hover:bg-surface">
+        <p class="font-mono text-label uppercase tracking-label text-ink-3">← Previous</p>
+        <p class="mt-2 font-display text-h3 font-semibold group-hover:text-accent">Learning Platform</p>
+      </a>
+      <a href="project.html" class="group bg-paper-2 px-gutter py-8 text-right transition hover:bg-surface">
+        <p class="font-mono text-label uppercase tracking-label text-ink-3">Next →</p>
+        <p class="mt-2 font-display text-h3 font-semibold group-hover:text-accent">Charades — Act it Out!</p>
+      </a>
+    </div>
+  </nav>
+</article>
+
+<footer class="bg-ink text-ink-inv">
+  <div class="mx-auto flex max-w-page flex-wrap items-center gap-x-6 gap-y-3 px-gutter py-7 font-mono text-xs2 text-ink-inv/55">
+    <span>© 2026 Ritesh Firodiya</span>
+    <a href="products.html" class="link-u hover:text-ink-inv">Products</a>
+    <a href="design.html" class="link-u hover:text-ink-inv">Design</a>
+    <a href="legal.html" class="link-u hover:text-ink-inv">Legal</a>
+    <a href="support.html" class="link-u hover:text-ink-inv">Support</a>
+    <a href="home.html#contact" class="link-u ml-auto hover:text-ink-inv">Get in touch →</a>
+  </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

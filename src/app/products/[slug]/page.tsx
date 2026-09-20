@@ -248,13 +248,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       </div>
                     ))}
                   </dl>
+                  {/* These go straight to the document. Sending someone who
+                      wants a privacy policy to an index of privacy policies is
+                      one click of friction for no reason — and store reviewers
+                      follow these links too. */}
                   <div className="mt-6 flex flex-wrap gap-3">
                     {p.legal.privacy && (
-                      <Link href="/legal" className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Privacy policy</Link>
+                      <a href={p.legal.privacy} className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Privacy policy</a>
                     )}
-                    <Link href="/support" className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">
-                      {p.legal.delete ? "Delete my account" : "Support"}
-                    </Link>
+                    {p.legal.delete && (
+                      <a href={p.legal.delete} className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Delete my account</a>
+                    )}
+                    <Link href="/support" className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">Support</Link>
                   </div>
                 </div>
               )}

@@ -1,50 +1,67 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
+# Build the static export and publish it. The site has no request-time data and
+# no islands, so `next build` with output:"export" produces the whole thing as
+# plain HTML and Pages just serves it.
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Allow GITHUB_TOKEN to publish to Pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Let a newer push cancel an in-flight deploy, but never a running one.
+# Never run two deploys at once, but do not cancel one in flight — a cancelled
+# deploy can leave Pages pointing at a half-uploaded artifact.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
         with:
-          deno-version: v2.x
+          node-version-file: .nvmrc
+          cache: pnpm
 
-      - name: Prerender site to _site/
-        run: deno task build
+      - run: pnpm install --frozen-lockfile
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      # Lint and types are separate steps on purpose: a red type-check and a red
+      # lint are different problems and the log should say which one failed.
+      - run: pnpm lint
+      - run: pnpm exec tsc --noEmit
+
+      - run: pnpm build
+
+      # app-ads.txt is live AdMob revenue for Tic Tac Toe — AdMob only honours it
+      # on the domain named in the Play listing's developer-website field, and a
+      # missing file silently marks the inventory unauthorised. Fail loudly here
+      # rather than find out from a revenue chart three weeks later.
+      - name: Verify app-ads.txt survived the export
+        run: |
+          test -f out/app-ads.txt || { echo "::error::out/app-ads.txt is missing"; exit 1; }
+          grep -q "pub-" out/app-ads.txt || { echo "::error::out/app-ads.txt has no publisher id"; exit 1; }
+          echo "app-ads.txt ok: $(cat out/app-ads.txt)"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
         with:
-          path: ./_site
+          path: ./out
 
   deploy:
-    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4

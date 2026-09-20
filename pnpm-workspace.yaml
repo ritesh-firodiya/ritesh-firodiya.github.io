@@ -1,0 +1,19 @@
+# Not a workspace — this is a single app. The file exists for two settings,
+# because pnpm 12 moved all settings here out of package.json's "pnpm" field.
+
+# Hold back any dependency version published less than 24h ago. Most npm
+# supply-chain compromises are caught and yanked within hours, so a day of lag
+# removes the majority of the blast radius for the cost of never being first to
+# a patch. Same value as every other repo in ~/git.
+minimumReleaseAge: 1440
+
+# pnpm blocks postinstall scripts by default, which is the right default. This
+# is the explicit allowlist rather than a blanket opt-out, and it is what makes
+# `pnpm install --frozen-lockfile` exit 0 on a clean CI runner.
+#
+# unrs-resolver is the native module resolver behind eslint-plugin-import-x,
+# pulled in by eslint-config-next. Nothing else in this tree needs a build
+# script. Written by `pnpm approve-builds`; the key is `allowBuilds` in pnpm 12,
+# not the `onlyBuiltDependencies` the older docs describe.
+allowBuilds:
+  unrs-resolver: true

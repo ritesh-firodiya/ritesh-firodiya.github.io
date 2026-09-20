@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Design tokens — ported from .context/designs/shared.css
+
+   This is the payoff for the rule every design set in ~/git follows: a Tailwind
+   value is always `var(--token)`, never a literal. Tailwind v4 defines its
+   theme in CSS rather than in JavaScript, so the `:root` block from the
+   wireframes becomes the real theme almost verbatim. A port, not a rewrite.
+
+   v4 namespaces decide which utility a variable generates:
+     --color-*     → bg-*, text-*, border-*
+     --text-*      → text-*  (+ --text-*--line-height / --letter-spacing)
+     --font-*      → font-*
+     --radius-*    → rounded-*
+     --shadow-*    → shadow-*
+     --tracking-*  → tracking-*
+     --container-* → max-w-*
+
+   A token with no entry here simply has no utility. That is the enforcement:
+   you cannot use a colour you did not define.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Ground ───────────────────────────────────────────────────────────────
+     Warm paper, not white. #FFF is reserved for a card lifted off the page, so
+     "white" reads as elevation rather than as the default. */
+  --color-paper:   #fbf9f4;
+  --color-paper-2: #f4f0e6;
+  --color-paper-3: #ebe5d6;
+  --color-surface: #ffffff;
+
+  /* ── Ink ──────────────────────────────────────────────────────────────────
+     Warm near-black, not #000. ink-3 is the quiet floor at 4.6:1 on paper —
+     the theme this replaced used a grey at 2.9:1 that failed AA outright. */
+  --color-ink:     #14130f;
+  --color-ink-2:   #45423a;
+  --color-ink-3:   #78736a;
+  --color-ink-inv: #fbf9f4;
+
+  --color-line:   #e4dfd2;
+  --color-line-2: #cfc8b6;
+
+  /* ── Accent — burnt sienna ────────────────────────────────────────────────
+     7.3:1 on paper, so it is safe for body links and not only decoration.
+     One accent only. */
+  --color-accent:      #8a3324;
+  --color-accent-2:    #a9452f;
+  --color-accent-wash: #f7ebe6;
+
+  /* ── Monetization model — five, all at EQUAL weight ───────────────────────
+     There is no "good" colour and no "bad" colour here. A subscription is not
+     a warning and ad-supported is not a confession; they are facts a person
+     needs before they tap install.
+
+     This scale exists because an earlier version of this site claimed "no ads
+     in our games" and "one-time purchases, not subscriptions" on a page linked
+     from live store listings. Tic Tac Toe ships an AdMob banner and
+     interstitial. Four of eight apps are subscriptions. A studio-wide promise
+     was the wrong SHAPE of claim; a per-app fact is the right one, and a
+     per-app fact needs a palette. */
+  --color-m-free:      #5a5750;
+  --color-m-free-wash: #efece3;
+  --color-m-ads:       #8a5a0b;
+  --color-m-ads-wash:  #f7eeda;
+  --color-m-once:      #2c6e49;
+  --color-m-once-wash: #e6f1ea;
+  --color-m-sub:       #34508c;
+  --color-m-sub-wash:  #e7ecf5;
+  --color-m-year:      #6b3a7a;
+  --color-m-year-wash: #f1e9f4;
+
+  /* ── Status — where a product actually is ─────────────────────────────────
+     Independent of model. A product has a price AND a release state, and
+     conflating them is how "coming soon" ends up meaning four things. */
+  --color-live:        #2c6e49;
+  --color-live-wash:   #e6f1ea;
+  --color-beta:        #8a6114;
+  --color-beta-wash:   #f7eeda;
+  --color-build:       #38587a;
+  --color-build-wash:  #e8eef5;
+  --color-design:      #6b6357;
+  --color-design-wash: #efebe1;
+
+  /* ── Type ─────────────────────────────────────────────────────────────────
+     Fraunces for display only — a variable optical-size serif, warm, editorial,
+     and almost unused in engineer portfolios, which is the point when the thing
+     being replaced was a template everyone recognises. Inter carries every word
+     anyone reads. Mono is labels, dates and stacks.
+     Families are injected by next/font in layout.tsx. */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-d1: clamp(2.75rem, 1.4rem + 5.6vw, 5.25rem);
+  --text-d1--line-height: 0.95;
+  --text-d1--letter-spacing: -0.03em;
+  --text-d2: clamp(2rem, 1.3rem + 2.9vw, 3.25rem);
+  --text-d2--line-height: 1.04;
+  --text-d2--letter-spacing: -0.02em;
+  --text-h2: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: 1.1875rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.01em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  --text-lead--line-height: 1.6;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.6;
+  --text-xs2: 0.8125rem;
+  --text-xs2--line-height: 1.5;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.14em;
+
+  --tracking-label: 0.14em;
+
+  /* ── Measure ──────────────────────────────────────────────────────────────
+     The site this replaced gave content 50% of the viewport and left the rest
+     empty. Content owns the page now; the measure caps line length on purpose
+     rather than a column cap doing it by accident. */
+  --container-page:    70rem;
+  --container-prose:   68ch;
+  --container-measure: 58ch;
+
+  --radius-card: 14px;
+  --radius-pill: 999px;
+
+  --shadow-lift:  0 1px 2px rgb(20 19 15 / 0.04), 0 8px 24px -12px rgb(20 19 15 / 0.18);
+  --shadow-frame: 0 2px 6px rgb(20 19 15 / 0.06), 0 24px 56px -24px rgb(20 19 15 / 0.34);
+}
+
+/* Section rhythm and page gutter. Outside @theme because they are only ever
+   used as padding, so a full utility scale would add nothing. */
+:root {
+  --sp-section: clamp(3.5rem, 2rem + 5vw, 7rem);
+  --sp-gutter: clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  /* Fraunces ships soft/wonk axes; dial them warm once, globally, so no
+     component has to remember a font-variation-settings string. */
+  .font-display {
+    font-variation-settings: "SOFT" 28, "WONK" 1;
+  }
+  ::selection {
+    background: var(--color-accent-wash);
+    color: var(--color-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .px-gutter { padding-inline: var(--sp-gutter); }
+  .py-section { padding-block: var(--sp-section); }
+  .pt-section { padding-top: var(--sp-section); }
+  .pb-section { padding-bottom: var(--sp-section); }
+  .mt-section { margin-top: var(--sp-section); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Things Tailwind cannot express
+   There is no .btn, .card, .chip or .row in here. A component class Tailwind
+   can already express is a second source of truth, and it drifts.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* An editorial hairline that fades out rather than stopping dead. */
+.rule-fade {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-line-2), var(--color-line-2) 45%, transparent);
+}
+
+/* Paper grain over the hero band only. Without it a large flat warm field
+   banners on wide displays. */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Underline that grows from the left on hover. Used on every prose link. */
+.link-u {
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.22s ease;
+}
+.link-u:hover { background-size: 100% 1px; }
+
+/* Device and browser frames for product screenshots. */
+.device {
+  border-radius: 34px;
+  background: linear-gradient(160deg, #2a2822, #15140f);
+  padding: 9px;
+  box-shadow: var(--shadow-frame);
+}
+.device-screen {
+  border-radius: 26px;
+  overflow: hidden;
+  display: block;
+  background: var(--color-surface);
+}
+.browser {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-frame);
+  background: var(--color-surface);
+}
+.browser-bar {
+  height: 34px;
+  background: var(--color-paper-2);
+  border-bottom: 1px solid var(--color-line);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+}
+.browser-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--color-line-2); }
+
+/* Every image slot is a labelled placeholder, so an asset that never arrived is
+   obvious at review instead of shipping as a grey box. */
+.shot-ph {
+  background:
+    repeating-linear-gradient(135deg, transparent 0 11px, rgb(20 19 15 / 0.045) 11px 12px),
+    linear-gradient(160deg, var(--color-paper-2), var(--color-paper-3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* A store button that is real but unavailable — disabled, with the reason
+   beside it. Not a hidden button, and not a live-looking one. */
+.btn-off { opacity: 0.45; cursor: not-allowed; }
+
+/* ── The comparison table ──────────────────────────────────────────────────
+   Three things Tailwind cannot do, all about surviving 390px without lying:
+   the scroller must SAY it scrolls or a phone reader never sees the price
+   column; the app name must stay pinned or a row of numbers detaches from its
+   subject; and prices need tabular figures to be comparable by eye.
+
+   The fade lives on the WRAPPER, never the scroller — a pseudo-element inside
+   an overflow-x container scrolls away exactly when it is needed. The scroller
+   must also never carry Tailwind's `overflow-hidden`, which sets both axes and
+   silently kills the scrolling. Learned the hard way. */
+.tbl-scroll { overflow-x: auto; scrollbar-width: thin; }
+.tbl-wrap { position: relative; }
+.tbl-wrap::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: 44px;
+  pointer-events: none;
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  background: linear-gradient(90deg, transparent, var(--color-surface));
+}
+@media (min-width: 1120px) {
+  .tbl-wrap::after { display: none; }
+}
+.tbl-stick { position: sticky; left: 0; z-index: 1; background: var(--color-surface); }
+.nums { font-variant-numeric: tabular-nums; }
+
+/* Horizontal rail with snap — snap-stop and the hidden scrollbar have no
+   utility form, and both matter on a phone. */
+.rail { scroll-snap-type: x mandatory; scrollbar-width: none; }
+.rail::-webkit-scrollbar { display: none; }
+.rail > * { scroll-snap-align: start; scroll-snap-stop: always; }
+
+/* Drift matrix — pass/fail cells carry a glyph as well as a colour. A
+   red/green matrix is unreadable to a red-green colourblind reviewer, and that
+   page is about being honest, including about that. */
+.cell-pass::before { content: "✓"; color: var(--color-live); font-weight: 700; }
+.cell-fail::before { content: "✕"; color: var(--color-accent); font-weight: 700; }
+.cell-na::before   { content: "–"; color: var(--color-ink-3); }
+
+/* ── Print · /resume only ──────────────────────────────────────────────────
+   The résumé is the one route with a second, non-screen output. Cmd+P has to
+   produce the sheet and nothing else. */
+@media print {
+  @page { margin: 14mm; }
+  .no-print { display: none !important; }
+  html, body { background: #fff !important; }
+  a { color: inherit !important; text-decoration: none !important; }
+  .link-u { background-image: none !important; }
+}

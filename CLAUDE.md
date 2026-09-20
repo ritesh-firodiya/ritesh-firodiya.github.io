@@ -4,121 +4,108 @@ Guidance for Claude Code working in this repository.
 
 ## What this is
 
-Public portfolio for Ritesh Firodiya, deployed to **GitHub Pages** at
+The single public site for Ritesh Firodiya, deployed to **GitHub Pages** at
 https://ritesh-firodiya.github.io/ via GitHub Actions on every push to `main`.
 
-Stack: **Deno Fresh 1.1.2 + Preact + Twind**, prerendered to static HTML at
-build time. No Node, no npm, no package.json.
+It carries everything: the portfolio, every app with its real price, the
+published design system, the development and marketing process, and legal.
 
-The previous `*.deno.dev` host was sunset along with Deno Deploy Classic. The
-site has no request-time data and zero islands, so it is exported statically by
-`build.ts` rather than served by `main.ts` in production.
+Stack: **Next.js 16 (App Router) + React 19 + Tailwind v4**, statically exported.
+Node 22, pnpm. No server, no request-time data, no client state.
+
+Replaced a Deno Fresh 1.1.2 + Twind site in Sep 2026. Twind was unmaintained and
+Fresh 2 drops the plugin, so a Tailwind port was owed either way; Tailwind v4's
+CSS-first `@theme` meant the design tokens ported almost verbatim.
 
 ## Commands
 
 ```bash
-deno task start                # dev server with watch on routes/ and static/
-deno task build                 # prerender the whole site into _site/
-deno fmt                       # format
-deno check routes/*.tsx        # type check (no dedicated task wired)
+pnpm dev          # dev server
+pnpm build        # static export → out/
+pnpm lint         # eslint
+pnpm typecheck    # tsc --noEmit
+pnpm check        # lint + typecheck + build — run this before pushing
 ```
 
-There is **no test suite and no lint task**. `deno task build` is the only build
-step; CI runs it and publishes the result (see `.github/workflows/deploy.yml`).
+## The rule this site exists to enforce
 
-## How the site is wired
+An earlier version claimed **"no ads in our games"** and **"one-time purchases,
+not subscriptions"** on a page linked from live store listings. Both were false:
+Tic Tac Toe ships an AdMob banner and interstitial, and four of eight apps are
+subscriptions. A third page called Chitragupt free while its config defined
+three priced tiers.
 
-- `main.ts` → boots Fresh with the Twind plugin
-- `dev.ts` → watch-mode wrapper; **regenerates `fresh.gen.ts`** by scanning
-  `routes/`
-- `fresh.gen.ts` → **route manifest. MUST be committed.** Adding a file under
-  `routes/` does nothing in production until `deno task start` is run locally
-  to regenerate this file.
-- `routes/index.tsx` → home; **no network calls** — everything reads from
-  `profile.json`. Brittany-Chiang-style sticky sidebar (left, 50%) + scrolling
-  content (right, 50%).
-- `routes/resume.tsx` → renders the résumé directly from `profile.json` (it no
-  longer reads `data/resume.md`; `data/` is empty). Toolbar with print + PDF
-  download. Dedicated `@media print` CSS produces a clean PDF via
-  `Cmd+P → Save as PDF`.
-- `build.ts` → boots the Fresh handler in-process, fetches every route in
-  `ROUTES`, and writes `_site/`. **Adding a route means adding it to `ROUTES`**,
-  or it will not be published.
-- `static/*` → served as-is (so `static/resume.md` at `/resume.md`,
-  `static/resume.pdf` at `/resume.pdf`).
+The mistake was the **shape of the claim** — a promise on behalf of every app is
+only as true as the least convenient app, and it decays silently because the
+thing that breaks it lives in a different repo.
 
-## File layout
+So:
 
-```
-components/    Sidebar, Section, About, Experience(+Card), Projects(+Card), Contact
-routes/        index.tsx, resume.tsx
-build.ts       static export → _site/ (gitignored)
-static/        resume.pdf, favicon, logo, app-ads.txt, sample.png
-profile.json   single source of truth for the home page AND the résumé
-twind.config.ts  custom theme: navy/slate/accent palette
-```
-
-There is no `layout/`, `utils/`, `islands/`, or shared types directory —
-component types live next to the component.
+1. **No studio-wide claims.** Any statement not true of every app it covers is
+   scoped to the apps it is true of, or cut.
+2. **The model is stated above the install button.** Never below, never in a
+   footnote, never softened into "unlock".
+3. **An unavailable platform renders disabled with the reason**, never hidden and
+   never linked to a track most people cannot open.
+4. **Facts live in `src/data/products.json`, never in a page.** If you find
+   yourself typing a price into JSX, stop.
 
 ## Data model
 
-`profile.json` is the single source of truth for the home page:
+`src/data/products.json` is the single source of truth for every app fact.
+`src/lib/products.ts` types it and derives everything else (counts, filters,
+model→token maps). `src/data/profile.json` drives `/`, `/work` and `/resume`.
 
-- `name`, `headline`, `tagline` — hero copy
-- `about[]` — paragraphs of the About section
-- `currently` — short "what I'm doing now" line under About
-- `experiences[]` — each entry has `company`, `position`, `from`, `to`,
-  `companyLink`, `description`, `tags[]`
-- `projects[]` — each entry has `name`, `tagline`, `description`, `stack[]`,
-  `status`, `link?`, `private`
-- `education[]` — only used by `/resume`, not on the home page
-- `github`, `linkedin`, `email`, `avatar`, `location`, `website` — identity
+`verifiedOn` is the date a human last checked every row against the app repos.
+Update it whenever you touch a fact.
 
-The home page does **not** fetch from the GitHub API. Avatar URL is
-hard-coded in `profile.json` as a GitHub avatar URL (no rate-limit risk).
+**Not yet built:** `bin/products` in `~/git`, which will re-derive each fact from
+the (private) app repos and **refuse to emit when a declared fact disagrees with
+source** — so an app that gains an ad SDK breaks a build rather than a promise.
+Until that exists, `products.json` is hand-maintained and `verifiedOn` is the
+only guarantee.
 
-## Résumé
+## Layout
 
-`profile.json` is the source of truth — `routes/resume.tsx` renders it. There is
-no `data/resume.md` or `static/resume.md` any more.
+```
+src/app/         routes — App Router, all statically exported
+src/components/  site-chrome (header/footer), pills
+src/lib/         products, profile, design, notes, process — typed accessors
+src/data/        products.json, profile.json
+public/          app-ads.txt, resume.pdf, favicon, logo
+.context/designs/  the approved HTML+Tailwind design set this was built from
+```
 
-The PDF at `static/resume.pdf` is regenerated by opening `/resume` in a browser
-→ `Cmd+P → Save as PDF`. Print CSS is wired in `routes/resume.tsx`.
+Dynamic route families: `/products/[slug]`, `/go/[slug]`, `/notes/[slug]`. Each
+has `generateStaticParams`; a new one without it will not be exported.
 
-## projects on a public site
+## Tokens
 
-Most projects under `../` (DwarSeva, Scrvio, Learning Platform, Codestar,
-Aakalan, Charades-Bollywood, Chitragupt, Tic-Tac-Toe) are **private repos**.
-Policy:
+`src/app/globals.css` holds the entire theme in a Tailwind v4 `@theme` block,
+ported from `.context/designs/shared.css`. **Every value is a variable.** A
+token with no entry there has no utility — that is the enforcement.
 
-- OK to list them with stack + outcome — they're in `profile.json.projects[]`,
-  which drives both the home page and `/resume`.
-- Do **not** link to source — link to the public artifact instead (Play Store,
-  a live URL, etc.) when one exists.
-- Do **not** paste excerpts of private code, infra config, secrets, or
-  internal-only product details from `../` into this repo.
+Two independent scales carry meaning and must not be conflated:
+`--color-m-*` is the monetization model, `--color-live|beta|build|design` is the
+release state. No model colour reads as a warning.
 
-## Common gotchas
+## Gotchas
 
-- Adding a route → run `deno task start` once locally to regenerate
-  `fresh.gen.ts`, commit it, **and** add the route path to `ROUTES` in
-  `build.ts`. CI regenerates neither.
-- Links in the prerendered HTML are absolute (`/resume`, `/resume.pdf`), so the
-  repo must stay named `ritesh-firodiya.github.io` — a project-page subpath
-  would break them.
-- Deno 2.7+ requires `with { type: "json" }` (not `assert`). All JSON imports
-  in this repo already use `with`.
-- Theme tokens (`bg-navy`, `text-slate-light`, `text-accent`, etc.) are
-  defined in `twind.config.ts` — adding new tokens requires extending it
-  there.
-- Imports use `@/...` (configured in `import_map.json`). Prefer this over
-  relative paths.
+- **`public/app-ads.txt` is live AdMob revenue.** AdMob only honours it on the
+  domain in the Play listing's developer-website field, and a missing file
+  silently marks the inventory unauthorised. CI asserts it survived the export.
+  Never delete it.
+- `output: "export"` means no server features: no route handlers, no middleware,
+  no `next/image` optimisation, no `dynamic = "force-dynamic"`.
+- `trailingSlash: true`, so internal links are written `/products/charades/`.
+- pnpm 12 reads settings from `pnpm-workspace.yaml`, not package.json's `pnpm`
+  field. The build-script allowlist key is `allowBuilds`.
+- The design set in `.context/designs/` is the spec. **When a page and its
+  wireframe disagree, the wireframe wins** and the page is corrected.
 
 ## Deploy
 
-Push to `main` → `.github/workflows/deploy.yml` runs `deno task build` and
-publishes `_site/` to GitHub Pages via `actions/deploy-pages`. No staging
-environment.
+Push to `main` → `.github/workflows/deploy.yml` runs lint, typecheck, build, the
+`app-ads.txt` assertion, then publishes `out/`. No staging environment.
 
 One-time setup: repo **Settings → Pages → Source = GitHub Actions**.

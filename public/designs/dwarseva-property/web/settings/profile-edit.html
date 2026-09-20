@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit profile — Dwarseva web</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 60px); box-shadow: 0 0 0 1px #18181b; }
+    .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; border-left: 2px solid transparent; font-size: 13px; color: #a1a1aa; }
+    .sidebar-item:hover { background: rgba(63,63,70,0.35); color: #e4e4e7; }
+    .sidebar-item-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left-color: #3b82f6; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../app/buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="../app/seller/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="notifications.html" class="grid h-8 w-8 place-items-center rounded-md border border-zinc-200 bg-white text-zinc-600 hover:border-blue-500/40">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </a>
+      <a href="settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-blue-500/20 text-[10px] font-semibold text-blue-700">RS</span>
+        <span>Ritvi</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="mx-auto max-w-[1440px] bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+<div class="grid grid-cols-[260px_minmax(0,1fr)] gap-0" style="min-height: calc(100dvh - 60px);">
+
+  <aside class="bg-zinc-50 border-zinc-200 border-r border-zinc-200 bg-zinc-100/75 p-3">
+    <p class="px-2 pb-1.5 pt-1 text-[10px] uppercase tracking-widest text-zinc-500">Account</p>
+    <nav class="space-y-0.5">
+      <a href="profile-edit.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 bg-blue-50 text-blue-700 border-blue-500">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+        Profile
+      </a>
+      <a href="notifications.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+        Notifications
+      </a>
+      <a href="../wallet/wallet.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        Payments &amp; wallet
+      </a>
+      <a href="settings.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6z"/></svg>
+        Privacy
+      </a>
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+        Language · <span class="mono text-zinc-500">EN</span>
+      </a>
+    </nav>
+
+    <p class="mt-5 px-2 pb-1.5 pt-1 text-[10px] uppercase tracking-widest text-zinc-500">Support</p>
+    <nav class="space-y-0.5">
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">Grievance officer</a>
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">Terms &amp; Refund</a>
+    </nav>
+
+    <p class="mt-5 px-2 pb-1.5 pt-1 text-[10px] uppercase tracking-widest text-rose-700">Danger zone</p>
+    <nav class="space-y-0.5">
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 text-rose-700 hover:text-rose-700">Delete my account</a>
+    </nav>
+  </aside>
+
+  <main class="p-6">
+
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">/settings › profile</p>
+    <div class="mt-1 flex items-start justify-between">
+      <div>
+        <h1 class="text-2xl font-semibold tracking-tight">Edit profile</h1>
+        <p class="mt-1 text-[13px] text-zinc-600">Basic details we show on receipts and to owners once they accept your unlock.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="settings.html" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Cancel</a>
+        <a href="settings.html" class="rounded-md bg-blue-500 px-3 py-1.5 text-[12px] font-semibold text-zinc-950 hover:bg-blue-400">Save changes</a>
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(320px,1fr)]">
+
+      <!-- Left: form -->
+      <form class="space-y-6">
+
+        <section class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Identity</p>
+          <div class="mt-4 flex items-center gap-5">
+            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500/20 text-xl font-semibold text-blue-700">RS</span>
+            <div>
+              <button type="button" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[12px] text-zinc-800 hover:border-blue-500/40">Upload photo</button>
+              <p class="mt-2 text-[10.5px] text-zinc-500">Optional. Owners see this after they accept an unlock. Square, ≤ 2 MB.</p>
+            </div>
+          </div>
+
+          <div class="mt-5 grid gap-4 md:grid-cols-2">
+            <label class="block">
+              <span class="text-[11px] text-zinc-600">Full name</span>
+              <input type="text" value="Ritvi Firodiya" class="mt-1 block w-full rounded-md border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/40" />
+              <p class="mt-1 text-[10.5px] text-zinc-500">Shown on unlock receipts and to owners.</p>
+            </label>
+
+            <label class="block">
+              <span class="text-[11px] text-zinc-600">Email · for receipts</span>
+              <input type="email" value="ritvi@example.com" class="mt-1 block w-full rounded-md border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/40" />
+              <p class="mt-1 text-[10.5px] text-zinc-500">GST invoices and grievance replies go here.</p>
+            </label>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Phone</p>
+          <div class="mt-3 flex items-center gap-3 rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-3">
+            <span class="text-base leading-none">🇮🇳</span>
+            <span class="mono text-[14px] text-zinc-800">+91 98220 14455</span>
+            <span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">Verified ✓</span>
+            <span class="ml-auto grid h-7 w-7 place-items-center rounded-full bg-zinc-100 text-zinc-600" title="Locked">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+          </div>
+          <p class="mt-2 text-[11px] text-zinc-500">Changing your phone requires a fresh OTP verification. <a href="../auth/sign-in.html" class="text-blue-700 underline">Change number</a>.</p>
+        </section>
+
+        <section class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Role</p>
+          <p class="mt-1 text-[12.5px] text-zinc-600">Decide which tabs and defaults you see. You can switch anytime — one wallet covers both.</p>
+
+          <div class="mt-4 grid gap-2 md:grid-cols-3">
+            <label class="cursor-pointer rounded-xl border-2 border-zinc-200 bg-white p-3 hover:border-amber-500/50 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10">
+              <input type="radio" name="role" class="sr-only" />
+              <p class="text-[13px] font-semibold text-zinc-900">Buyer</p>
+              <p class="mt-1 text-[11px] text-zinc-600">Browse map · unlock owners</p>
+            </label>
+            <label class="cursor-pointer rounded-xl border-2 border-zinc-200 bg-white p-3 hover:border-emerald-500/50 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-500/10">
+              <input type="radio" name="role" class="sr-only" />
+              <p class="text-[13px] font-semibold text-zinc-900">Seller</p>
+              <p class="mt-1 text-[11px] text-zinc-600">List, review, manage</p>
+            </label>
+            <label class="cursor-pointer rounded-xl border-2 border-blue-500 bg-blue-500/10 p-3">
+              <input type="radio" name="role" class="sr-only" checked />
+              <p class="text-[13px] font-semibold text-zinc-900">Both · selected</p>
+              <p class="mt-1 text-[11px] text-zinc-600">Buy/Sell tabs in top bar</p>
+            </label>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">City</p>
+          <div class="mt-3 flex items-center gap-3">
+            <select class="w-full max-w-xs rounded-md border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:outline-none">
+              <option>Pune · Maharashtra</option>
+              <option>Mumbai · Maharashtra</option>
+              <option>Bengaluru · Karnataka</option>
+              <option>Delhi NCR</option>
+              <option>Hyderabad · Telangana</option>
+              <option>Chennai · Tamil Nadu</option>
+              <option>Kolkata · West Bengal</option>
+              <option>Ahmedabad · Gujarat</option>
+              <option>Indore · Madhya Pradesh</option>
+              <option>Kochi · Kerala</option>
+              <option>Jaipur · Rajasthan</option>
+              <option>Lucknow · Uttar Pradesh</option>
+              <option>Chandigarh</option>
+              <option>Bhopal · Madhya Pradesh</option>
+              <option>Nagpur · Maharashtra</option>
+              <option>Other · type below</option>
+            </select>
+            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">All India</span>
+          </div>
+          <p class="mt-2 text-[11px] text-zinc-500">Dwarseva serves every Indian city — search for yours if it isn't listed.</p>
+        </section>
+
+        <div class="flex items-center justify-between gap-3">
+          <p class="text-[11px] text-zinc-500">Changes save immediately after you click Save.</p>
+          <div class="flex items-center gap-2">
+            <a href="settings.html" class="rounded-md border border-zinc-300 bg-white px-4 py-2 text-[13px] text-zinc-800 hover:border-blue-500/40">Cancel</a>
+            <a href="settings.html" class="rounded-md bg-blue-500 px-4 py-2 text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">Save changes</a>
+          </div>
+        </div>
+      </form>
+
+      <!-- Right: helper card -->
+      <aside class="space-y-4">
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">What owners see</p>
+          <div class="mt-3 rounded-xl border border-zinc-200 bg-zinc-100 p-4">
+            <div class="flex items-center gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-full bg-blue-500/20 text-[11px] font-semibold text-blue-700">RS</span>
+              <div>
+                <p class="text-[13px] font-semibold text-zinc-900">Ritvi Firodiya</p>
+                <p class="text-[10.5px] text-zinc-500">Verified buyer · Pune</p>
+              </div>
+            </div>
+            <p class="mt-3 text-[11.5px] text-zinc-600">"Unlocked your Baner Lane 7 listing on 20 Jul at 21:14 · will WhatsApp you shortly."</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-5 text-[12px] text-zinc-700">
+          <p class="text-[10px] uppercase tracking-widest text-blue-700">Data privacy</p>
+          <p class="mt-2">Your name, phone and email are used only for OTP, receipts and owner-buyer contact — never sold, never used for ads. DPDP 2023 compliant.</p>
+          <a href="settings.html" class="mt-3 inline-block text-blue-700 underline">Read the privacy notice →</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+</div>
+
+</body>
+</html>

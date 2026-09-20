@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller · Agent NoC — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 128px); box-shadow: 0 0 0 1px #18181b; }
+    .field { background: #18181b; border: 1px solid #27272a; border-radius: 8px; }
+    .field-label { font-size: 11px; color: #a1a1aa; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+<!-- Route ribbon -->
+
+
+<!-- Top app bar -->
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="home.html" class="rounded-md bg-emerald-500/15 px-3 py-1.5 font-semibold text-emerald-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="../../settings/notifications.html" class="grid h-8 w-8 place-items-center rounded-md border border-zinc-200 bg-white text-zinc-600 hover:border-blue-500/40">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/20 text-[10px] font-semibold text-emerald-700">SP</span>
+        <span>Sanjay</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] mx-auto max-w-[1440px]">
+  <div class="mx-auto max-w-4xl px-8 py-10">
+
+    <div class="mb-6 flex items-end justify-between">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-amber-700">/seller/agent-noc</p>
+        <h1 class="mt-0.5 text-2xl font-semibold">Agent verification</h1>
+        <p class="mt-1 text-[13px] text-zinc-600">You're listing on behalf of the owner. Before this listing can go live we need proof of authorisation and your RERA number.</p>
+      </div>
+      <a href="new-listing-basics.html" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">← Back to new listing</a>
+    </div>
+
+    <div class="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4 text-[12.5px] text-amber-700">
+      <p class="font-semibold">Why we need this</p>
+      <p class="mt-1 text-amber-700">Owner-listed properties go live faster. Agent-listed properties need a signed NoC (No-Objection Certificate) from the owner + a valid RERA agent registration. This protects buyers from scam re-listings.</p>
+    </div>
+
+    <!-- NoC uploader -->
+    <section class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">1 · Owner No-Objection Certificate <span class="text-rose-600">*</span></p>
+      <h2 class="mt-1 text-lg font-semibold">Signed NoC document</h2>
+
+      <div class="mt-4 grid grid-cols-[minmax(0,1fr)_260px] gap-4">
+        <label class="block flex h-40 flex-col items-center justify-center rounded-xl border-2 border-dashed border-amber-500/50 bg-amber-500/10 text-center">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-amber-700"><path d="M12 5v14M5 12h14"/></svg>
+          <p class="mt-2 text-[13px] font-semibold text-amber-700">Drop NoC here or click to upload</p>
+          <p class="mt-1 text-[10.5px] text-zinc-600">PDF or JPG · max 10 MB · signed within 30 days</p>
+        </label>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100 p-4 text-[11.5px] text-zinc-700">
+          <p class="font-semibold text-zinc-900">NoC must include</p>
+          <ul class="mt-2 space-y-1 text-zinc-600">
+            <li>· Owner full legal name</li>
+            <li>· Complete property address</li>
+            <li>· Your name as authorised agent</li>
+            <li>· Owner signature + date (≤ 30 days)</li>
+            <li>· Owner phone number for our call-back</li>
+          </ul>
+          <a href="#" class="mt-3 inline-block text-blue-700 hover:underline">Download blank NoC template (PDF) →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RERA number -->
+    <section class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">2 · RERA agent number <span class="text-rose-600">*</span></p>
+      <h2 class="mt-1 text-lg font-semibold">Maharashtra RERA registration</h2>
+
+      <label class="mt-4 block max-w-md">
+        <span class="text-zinc-600">RERA agent number</span>
+        <input type="text" placeholder="A123456789012345" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-3 text-base uppercase tracking-wider text-zinc-900 focus:outline-none focus:border-blue-500" />
+        <p class="mt-1.5 text-[11px] text-zinc-500">We verify against the state portal <span class="mono text-zinc-700">maharera.mahaonline.gov.in</span> before publishing. Usually takes under a minute.</p>
+      </label>
+    </section>
+
+    <!-- Owner authorization checkbox -->
+    <section class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">3 · Owner authorisation</p>
+      <h2 class="mt-1 text-lg font-semibold">Confirm consent</h2>
+
+      <div class="mt-3 space-y-3 text-[12.5px] text-zinc-800">
+        <label class="flex items-start gap-3 rounded-xl border border-zinc-200 bg-zinc-100 p-4">
+          <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-zinc-300 bg-white accent-emerald-500" checked>
+          <span>I confirm the owner <span class="font-semibold text-zinc-900">Anita Deshpande</span> has authorised me to list <span class="font-semibold text-zinc-900">Sukhwani Sepia · Wing B · Flat B-704</span> on Dwarseva.</span>
+        </label>
+        <label class="flex items-start gap-3 rounded-xl border border-zinc-200 bg-zinc-100 p-4">
+          <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-zinc-300 bg-white accent-emerald-500" checked>
+          <span>I understand Dwarseva may call the owner on the number in the NoC to verify authorisation.</span>
+        </label>
+        <label class="flex items-start gap-3 rounded-xl border border-zinc-200 bg-zinc-100 p-4">
+          <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-zinc-300 bg-white accent-emerald-500">
+          <span>I understand that listing without valid NoC or with a forged one will result in permanent account takedown.</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Optional -->
+    <section class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Optional supporting docs</p>
+      <div class="mt-3 grid grid-cols-2 gap-3 text-[12px]">
+        <label class="flex items-center justify-between rounded-lg border border-dashed border-zinc-300 bg-white px-3 py-3 text-zinc-700">
+          <span>Agent ID card</span>
+          <span class="text-blue-700 underline">+ Upload</span>
+        </label>
+        <label class="flex items-center justify-between rounded-lg border border-dashed border-zinc-300 bg-white px-3 py-3 text-zinc-700">
+          <span>Brokerage agreement with owner</span>
+          <span class="text-blue-700 underline">+ Upload</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Expected verification -->
+    <div class="mt-6 rounded-2xl border border-blue-500/30 bg-blue-500/10 p-4 text-[12px] text-blue-800">
+      <p class="font-semibold text-blue-700">Expected verification</p>
+      <p class="mt-1 text-blue-700">Agent listings take slightly longer than owner listings — typical SLA <span class="mono">6–48 hours</span>. If we can't reach the owner in 48 hours, the listing stays in <span class="mono">needs_changes</span> until we do.</p>
+    </div>
+
+    <div class="mt-6 flex items-center gap-3">
+      <a href="new-listing-basics.html" class="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-[13px] text-zinc-800 hover:border-blue-500/40">← Back</a>
+      <a href="listing-pending.html" class="flex-1 rounded-lg bg-amber-500 px-4 py-2.5 text-center text-[14px] font-semibold text-zinc-950 hover:bg-amber-400">Save NoC &amp; continue to submit →</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

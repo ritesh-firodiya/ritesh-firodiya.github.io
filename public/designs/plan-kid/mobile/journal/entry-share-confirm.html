@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Share this entry?</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Share Confirm</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Secure consent flow for sharing encrypted journal entries.</p>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Encryption flow:</strong> Journal is end-to-end encrypted per entry. Sharing means re-encrypting to partner's key — irreversible (they'll see it forever, even if you unshare). Confirming with real friction is the trust anchor.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Encryption transparency</li>
+        <li>Permanent share confirmation</li>
+        <li>Entry preview</li>
+        <li>Irreversibility acknowledgment</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone phone--cream" style="position:relative">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <!-- Dimmed background (previous screen preview) -->
+  <div class="px-5 pt-2 pb-40 opacity-40 pointer-events-none">
+    <p class="text-[15px] font-black teal text-center">New entry</p>
+    <div class="mt-4 card card--coral"><p class="text-[12px] coral">Today's prompt · trying stage</p></div>
+    <div class="mt-4 h-32 bg-white rounded-lg border border-[color:var(--border)]"></div>
+  </div>
+
+  <!-- Backdrop -->
+  <div class="backdrop"></div>
+
+  <!-- Sheet -->
+  <div class="sheet">
+    <div class="mx-auto w-12 h-1 rounded-full bg-[color:var(--border-strong)] mb-3"></div>
+
+    <div class="flex items-center gap-3">
+      <div class="avatar avatar-r avatar-lg">R</div>
+      <div>
+        <p class="text-[17px] font-black teal leading-tight">Share this entry with Rahul?</p>
+        <p class="text-[12px] text-[color:var(--text-tertiary)] mt-1">Once he opens it, he'll always have seen it.</p>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div class="mt-4 card card--sunken">
+      <p class="section-label mb-2">What Rahul will see</p>
+      <div class="flex items-center gap-2 mb-2">
+        <div class="avatar avatar-p" style="width:22px;height:22px;font-size:10px">P</div>
+        <span class="chip chip-coral"><i data-lucide="users" class="w-2.5 h-2.5"></i>Shared with you</span>
+        <span class="chip chip-neutral">Calm</span>
+      </div>
+      <p class="text-[13px] leading-snug line-clamp-3">Rahul has been the one carrying most of the appointment scheduling this cycle. I keep meaning to thank him and it never comes out at the right time…</p>
+    </div>
+
+    <!-- What sharing does -->
+    <div class="mt-4 space-y-2.5">
+      <div class="flex items-start gap-2 text-[12.5px]">
+        <i data-lucide="check" class="w-4 h-4 success mt-0.5 flex-shrink-0"></i>
+        <span>Rahul can react with a heart, "heard you," or write a support entry back.</span>
+      </div>
+      <div class="flex items-start gap-2 text-[12.5px]">
+        <i data-lucide="check" class="w-4 h-4 success mt-0.5 flex-shrink-0"></i>
+        <span>You can un-share later — it disappears from his feed, but he may remember.</span>
+      </div>
+      <div class="flex items-start gap-2 text-[12.5px]">
+        <i data-lucide="x" class="w-4 h-4 danger mt-0.5 flex-shrink-0"></i>
+        <span>Rahul cannot comment, edit, or forward the entry.</span>
+      </div>
+      <div class="flex items-start gap-2 text-[12.5px]">
+        <i data-lucide="shield-check" class="w-4 h-4 teal-700 mt-0.5 flex-shrink-0"></i>
+        <span>This share is logged in your <a href="../settings/privacy.html" class="teal-700 font-bold">audit log</a>.</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-5 space-y-2">
+      <button class="btn btn-primary"><i data-lucide="send" class="w-4 h-4"></i>Share with Rahul</button>
+      <a href="entry-new.html" class="btn btn-secondary">Keep private for now</a>
+    </div>
+
+    <label class="mt-3 flex items-center gap-2 text-[11.5px] text-[color:var(--text-secondary)] justify-center">
+      <input type="checkbox" class="w-4 h-4 accent-[color:var(--teal-500)]" />
+      Don't ask again this session
+    </label>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

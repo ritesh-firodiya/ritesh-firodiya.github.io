@@ -1,0 +1,407 @@
+/* Imposter wireframes — tokens, and only what Tailwind cannot express
+   ===================================================================
+   A party game played in a lit room with the phone passed around a table.
+   Black ground, white ink, one light green. No red anywhere.
+
+   Phone frame: 390 × 844 (iPhone 14/15 logical size).
+
+   THE SPLIT, and it is load-bearing:
+     tailwind.config.js  every token as a utility scale, all of them var(--…)
+     shared.css          the token definitions, plus pseudo-elements, gradients
+                         and keyframes that have no utility form
+     *.html              100% Tailwind. No style=, no <style>.
+
+   There is no .btn, .card, .chip or .row in here. A component class Tailwind
+   can already express is a second source of truth, and it drifts.
+
+   RULE 1 — the two roles ARE two values of the palette.
+   Light green = Civilian (you know the word). Black = Imposter (you do not).
+   No category plate and no avatar may use them. A player reads this screen in
+   two seconds across a noisy table; if green can also mean "Food & Drink" then
+   the one colour carrying the whole game carries nothing. There is no red even
+   for a destructive action — that convention is older than this palette and it
+   loses, deliberately.
+
+   ---------------------------------------------------------------------------
+   v5 · the simplification pass. Five things were removed, and each was removed
+   because it never rendered, never shipped, or contradicted rule 1:
+
+     · --amber-400/-500/-700 were referenced and never defined, so
+       --shadow-press — the chunky 3D button edge that v2 called a core
+       decision — resolved to nothing on all 26 primary CTAs in the set. It
+       reads var(--accent-700) now and the edge is finally visible.
+     · --magenta-*, --cat-* (20 vars) and --av-* (8 vars) had zero uses. The
+       category and avatar wheels had already collapsed to one white plate
+       carrying a line icon; thirty variables holding the same two values were
+       the fossil of the wheel that used to exist.
+     · --violet-* held green in four slots and grey in three. The name lied in
+       both directions. The greens were byte-identical to --accent-*, so they
+       are gone; the greys are --coal-* now, which is what they always were.
+     · --grad-civilian / -imposter / -mrwhite hardcoded rgba(45,212,191) teal
+       and rgba(251,113,133) rose — the exact two hues rule 1 forbids — inside
+       a file whose own header forbids them.
+     · .phone--dark was a second full theme nothing in the set used except the
+       gallery. The flood is the theme; there is no switch.
+
+   Mr. White, the vote and the scoreboard left the game in this pass, so
+   --mrwhite, --stage-mrwhite and --stage-win went with them.
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* ---------------------------------------------------------------------
+     DEV CHROME. The gallery page, the annotation sidebars and the breadcrumb
+     are a light document wrapped around the phone — they are not the product,
+     and these tokens never reach a screen inside a .phone. */
+  --page-bg: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #fafafa;
+  --surface-sunken: #f4f4f5;
+
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-tertiary: #71717a;
+  --text-quaternary: #a1a1aa;
+  --text-inverse: #ffffff;
+
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+
+  /* ---------------------------------------------------------------------
+     COAL — the ground, and the greys lifted off it. Every stage bottoms out
+     at #000000; these are the stops above it. */
+  --coal-900: #000000;
+  --coal-800: #0a0a0a;
+  --coal-700: #141414;
+  --coal-600: #1f1f1f;
+  --coal-500: #2b2b2b;
+  --coal-400: #3f3f46;
+  --coal-300: #52525b;
+
+  /* ---------------------------------------------------------------------
+     ACCENT · the one light green. The CTA, and the Civilian role. */
+  --accent-50: #f2fdf5;
+  --accent-100: #dcfce7;
+  --accent-200: #bbf7d0;
+  --accent-300: #86efac;
+  --accent-400: #4ade80;
+  --accent-500: #22c55e;
+  --accent-600: #16a34a;
+  --accent-700: #15803d;
+  --accent-900: #052e16;
+
+  /* Ink on the green CTA. The button is the same green on every stage, so its
+     label cannot follow the ink ramp or it turns white-on-green. */
+  --on-accent: #052e16;
+
+  /* ---------------------------------------------------------------------
+     THE TWO ROLES. Reserved by rule 1, and there are only two of them now. */
+  --civilian: #86efac;  --civilian-bg: #052e16;  --civilian-fg: #15803d;
+  --imposter: #0a0a0a;  --imposter-bg: #ffffff;  --imposter-fg: #3f3f46;
+
+  /* Paper — the one light surface, for anything that must read as a physical
+     object rather than a tint: a pack plate, a face-down card back. */
+  --paper: #ffffff;
+  --paper-ink: #0a0a0a;
+
+  /* ---------------------------------------------------------------------
+     SEMANTIC. Success is the accent. Everything else is neutral, because a
+     warning hue and a danger hue would both have to be red. */
+  --success: #86efac;  --success-bg: rgba(134,239,172,0.14);  --success-fg: #86efac;
+  --warning: rgba(255,255,255,0.5);  --warning-bg: rgba(255,255,255,0.12);  --warning-fg: #ffffff;
+  --danger: rgba(255,255,255,0.5);  --danger-bg: rgba(255,255,255,0.12);  --danger-fg: #ffffff;
+  --info: rgba(255,255,255,0.5);  --info-bg: rgba(255,255,255,0.12);  --info-fg: #ffffff;
+
+  /* ---------------------------------------------------------------------
+     THE FOUR STAGES. Every screen is flooded; only which one changes.
+     A full-bleed saturated ground with one card on it is what every app above
+     5M downloads in this category does, and what v1 did not.
+
+     Each stage's LIGHTEST stop has to carry white body copy at AA or better.
+     This is checked, not assumed: civilian started at #86efac and white text
+     on it measured about 1.5:1. A stage is not a swatch. The light green
+     survives as the glow, the CTA and the accent — which is what an accent is
+     for. */
+  --stage-brand:
+    radial-gradient(130% 80% at 80% -10%, rgba(34,197,94,0.55) 0%, transparent 55%),
+    linear-gradient(165deg, #2b2b2b 0%, #141414 55%, #000000 100%);
+  --stage-night:
+    linear-gradient(165deg, #1f1f1f 0%, #0a0a0a 55%, #000000 100%);
+  --stage-civilian:
+    radial-gradient(130% 80% at 80% -10%, rgba(134,239,172,0.45) 0%, transparent 55%),
+    linear-gradient(165deg, #15803d 0%, #08351b 55%, #000000 100%);
+  --stage-imposter:
+    radial-gradient(130% 80% at 80% -10%, rgba(255,255,255,0.35) 0%, transparent 55%),
+    linear-gradient(165deg, #3f3f46 0%, #141414 55%, #000000 100%);
+
+  /* The brand mark. */
+  --mark: linear-gradient(140deg, var(--accent-300), var(--accent-900));
+
+  /* The face-down card back. Unlit, so the lift comes entirely from the stage
+     behind it — a card that glows is a card someone else at the table can read
+     from across the room. */
+  --card-back: linear-gradient(150deg, var(--coal-500) 0%, var(--coal-800) 100%);
+
+  /* The corner lift. The CSS equivalent of the blurred orb that
+     src/components/ui/stage.tsx renders, so the wireframe and the app describe
+     the same screen.
+
+     The sunburst that used to sit here is gone, and it was a mistake twice
+     over. Visually: a repeating conic gradient has hard stops, so even at 2%
+     white it bands into twenty visible wedges across every card — noise
+     carrying no information, competing with the one thing the screen exists to
+     show. Structurally: stage.tsx never had it, so the wireframes specified a
+     treatment the app does not implement. */
+  --glow-corner: radial-gradient(60% 45% at 82% 4%, rgba(255,255,255,0.13) 0%, transparent 70%);
+
+  /* ---------------------------------------------------------------------
+     ELEVATION. --shadow-card is the party-game lift: a card sitting ON a
+     saturated stage has to read as a physical object, and a 14px blur at 7%
+     opacity does not. --shadow-press is the 3D button bottom edge — the chunky
+     pressable every app in this category uses for its primary action. */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow:    0 6px 18px rgba(0,0,0,0.35);
+  --shadow-lg: 0 14px 34px -10px rgba(0,0,0,0.6);
+  --shadow-card: 0 24px 48px -12px rgba(0,0,0,0.55), 0 2px 0 0 rgba(255,255,255,0.12) inset;
+  --shadow-press: 0 5px 0 0 var(--accent-700);
+
+  /* Radii */
+  --r-sm: 8px;  --r: 12px;  --r-lg: 16px;
+  --r-xl: 20px; --r-2xl: 24px; --r-3xl: 28px;
+  --r-card: 34px;   /* the player card and the pack tiles */
+  --r-pill: 999px;
+}
+
+/* Base */
+html, body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  /* min-height, NOT height. `height: 100vh` locked every frame to the browser
+     window, so on a 780px-tall screen a 390x844 phone rendered 64px short and
+     silently clipped its own footer — the wireframe showed a layout the device
+     will never produce. The page scrolls now; the frames keep their size. */
+  min-height: 100vh;
+}
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.num  { font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+/* ============================================================
+   Phone frame — a device, not a utility
+   ============================================================
+   A column flex container so a sticky footer can be pinned with margin-top:auto
+   rather than depending on the content being tall enough to push it there. */
+.phone {
+  width: 390px;
+  max-width: 390px;
+  margin: 0 auto;
+  background: var(--coal-900);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border);
+}
+.phone > .pin-bottom { margin-top: auto; }
+@media (min-width: 640px) {
+  .phone {
+    /* 844px is the iPhone 14/15 logical height and it is not negotiable: a
+       frame shorter than the device hides exactly the overflow the wireframe
+       exists to expose. */
+    min-height: 844px;
+    height: 844px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 40px;
+    box-shadow: 0 0 0 1px var(--border-strong), 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+}
+
+/* ============================================================
+   FLOOD — the one surface language, as a scope
+   ============================================================
+   .phone--flood remaps the tokens ONCE, so a screen converts by gaining a
+   class rather than by having forty utilities rewritten. bg-surface,
+   text-ink-2, border-line and the rest keep working and simply resolve to
+   their on-colour values.
+
+   The modifiers below set a background and nothing else.
+
+   WHICH FLOOD, AND WHY:
+     brand      outside a round: onboarding, setup, store, settings
+     night      inside a round, working: the talk screen, the re-check
+     civilian   a card that knows the word
+     imposter   a card that does not — and the unmasking at the end
+
+   Brand and night are both black; the only difference is that brand carries
+   the green glow and night has no light in it at all. That one difference
+   separates "the app" from "a round is happening" without spending a second
+   hue. Flooding the working screens in colour too would spend the effect and
+   leave the card with nothing left to say. */
+.phone--flood {
+  --page-bg: #000000;
+  --surface: rgba(255,255,255,0.12);
+  --surface-muted: rgba(255,255,255,0.08);
+  --surface-sunken: rgba(255,255,255,0.18);
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.82);
+  --text-tertiary: rgba(255,255,255,0.64);
+  --text-quaternary: rgba(255,255,255,0.44);
+  --text-inverse: var(--accent-900);
+
+  --border: rgba(255,255,255,0.18);
+  --border-strong: rgba(255,255,255,0.32);
+
+  /* Semantic backgrounds stop being pale washes here — a #eafaf1 panel on a
+     saturated stage reads as a hole punched through the screen. */
+  --success-bg: rgba(134,239,172,0.14);  --success-fg: #86efac;
+  --warning-bg: rgba(255,255,255,0.12);  --warning-fg: #ffffff;
+  --danger-bg: rgba(255,255,255,0.12);   --danger-fg: #ffffff;
+  --info-bg: rgba(255,255,255,0.12);     --info-fg: #ffffff;
+
+  --shadow-lg: var(--shadow-card);
+
+  color: #ffffff;
+  background-color: var(--coal-900);
+  background-image: var(--stage-brand);
+}
+.phone--brand    { background-image: var(--stage-brand); }
+.phone--night    { background-image: var(--stage-night); }
+.phone--civilian { background-image: var(--stage-civilian); }
+.phone--imposter { background-image: var(--stage-imposter); }
+
+/* The corner lift, as part of the scope rather than a hand-placed div on every
+   screen — four copies of one overlay is four chances to forget it. */
+.phone--flood::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--glow-corner);
+  pointer-events: none;
+  z-index: 0;
+}
+.phone--flood > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   Timer ring — a conic gradient with a hole punched through it
+   ============================================================
+   A ring, not a bar: the talk phase is the loudest part of the game and nobody
+   is watching the phone, so "time left" has to read from across a table. The
+   hole is a pseudo-element, which is why this is not a utility. The sweep
+   comes from --pct, set per instance with Tailwind's arbitrary-property form
+   [--pct:65%]. */
+.timer {
+  position: relative;
+  background: conic-gradient(var(--accent-400) var(--pct, 65%), rgba(255,255,255,0.14) 0);
+}
+.timer::after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border-radius: 999px;
+  background: var(--coal-800);
+}
+/* The hole is a later positioned sibling, so without this it paints OVER the
+   countdown and the ring renders with an empty middle. */
+.timer > * { position: relative; z-index: 1; }
+.timer--warning { background: conic-gradient(#ffffff var(--pct, 15%), rgba(255,255,255,0.14) 0); }
+
+/* Toggle knob — a pseudo-element, so no utility form exists */
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 20px; height: 20px;
+  border-radius: 999px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: left 0.15s;
+}
+.toggle.is-on::after { left: 21px; }
+
+/* Overlapping avatar stack — a negative margin on every child but the first */
+.av-stack > * { margin-left: -9px; box-shadow: 0 0 0 2px var(--coal-800); }
+.av-stack > *:first-child { margin-left: 0; }
+
+/* Skeleton shimmer */
+@keyframes shimmer { from { background-position: -200px 0; } to { background-position: 200px 0; } }
+.skel {
+  background: linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.10) 100%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* ============================================================
+   Dev chrome — not part of the product
+   ============================================================ */
+.breadcrumb {
+  border-bottom: 1px dashed var(--border-strong);
+  background: rgba(255,255,255,0.7);
+  padding: 8px 20px;
+}
+.breadcrumb-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 6px; font-size: 11px;
+}
+.breadcrumb-label {
+  margin-right: 4px; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+}
+.breadcrumb-chip {
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+  padding: 2px 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.breadcrumb-chip:hover { border-color: var(--accent-600); }
+.breadcrumb-chip.is-current {
+  border-color: var(--accent-600);
+  background: var(--accent-50);
+  color: var(--accent-700);
+  font-weight: 600;
+}
+
+/* Frames keep their real width and the row scrolls instead. `.phone` is
+   `flex: 1`, so with four frames in one file they would otherwise shrink below
+   390px — and a wireframe narrower than the device it specifies shows wrapping
+   the real screen will never have. */
+.screen-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding: 0 20px 24px;
+}
+.screen-layout > .phone { flex: 0 0 390px; }
+
+.rationale { font-size: 12px; line-height: 1.6; color: var(--text-secondary); }
+.rationale-title {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+  font-weight: 700; color: var(--text-tertiary); margin-bottom: 6px;
+}
+
+.route-table { width: 100%; font-size: 13px; }
+.route-table th {
+  text-align: left; padding: 9px 13px;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-muted);
+}
+.route-table td { padding: 9px 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.route-table tr:last-child td { border-bottom: none; }
+
+/* a11y baseline */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent-300);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+.lucide { stroke-width: 2; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

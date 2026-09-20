@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clarify — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<!--
+  THE screen. Everything else in this app is table stakes; this is the product.
+
+  Rules it must never break:
+  1. ONE question visible at a time. Max two per scan, ever.
+  2. Options are big and tappable. No free text, no sliders, no number pads.
+  3. Skip is always right there and costs the user nothing.
+  4. It says WHY it is asking, in calories, so the question feels worth it.
+  If this ever starts feeling like a form, the product has failed.
+-->
+
+<div class="phone phone--page">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="subheader">
+    <a href="result.html" class="backbtn" aria-label="Back">
+      <i data-lucide="arrow-left" style="width:22px;height:22px"></i>
+    </a>
+    <div>
+      <p class="subheader-title">One quick thing</p>
+      <p class="subheader-sub">Question 1 of 2</p>
+    </div>
+    <a href="result.html" class="backbtn" aria-label="Skip all" style="font-size:12px;font-weight:800;color:var(--ink-3)">Skip</a>
+  </div>
+
+  <!-- Progress: two dots, because there are never more than two -->
+  <div class="px-5 flex items-center gap-1.5">
+    <div class="h-1 flex-1 rounded-full" style="background:var(--ask-500)"></div>
+    <div class="h-1 flex-1 rounded-full" style="background:var(--line-strong)"></div>
+  </div>
+
+  <!-- What we're looking at. Small — the photo is context now, not the subject. -->
+  <div class="px-5 mt-4 flex items-center gap-3">
+    <div class="meal-thumb" style="width:44px;height:44px;background:#f0e4d4">
+      <i data-lucide="utensils" style="width:18px;height:18px;color:#a1785a"></i>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="font-extrabold text-[14px] leading-tight">Chicken biryani</p>
+      <p class="text-[11.5px] text-ink-3 mt-0.5">
+        Now <span class="num font-bold text-ink-2">649 kcal</span> · assuming a middling amount of fat
+      </p>
+    </div>
+  </div>
+
+  <!-- The question -->
+  <div class="px-5 mt-5">
+    <div class="flex items-center gap-2">
+      <span class="chip chip-ask">
+        <i data-lucide="help-circle" style="width:12px;height:12px"></i>
+        Can't see this
+      </span>
+    </div>
+
+    <h1 class="mt-3 text-[24px] font-black leading-[1.2] tracking-tight">
+      What was it cooked in?
+    </h1>
+    <p class="mt-2 text-[13px] text-ink-2 leading-relaxed">
+      A photo can't show cooking fat. On this plate it's the difference between
+      <span class="num font-bold">538</span> and
+      <span class="num font-bold">663 kcal</span>.
+    </p>
+
+    <!-- Options. Three max, each one tap, each showing its consequence. -->
+    <div class="mt-4 flex items-center justify-between px-1">
+      <span class="section-label">Option</span>
+      <span class="section-label">Plate becomes</span>
+    </div>
+
+    <div class="mt-2 grid gap-2.5">
+
+      <button class="opt opt--ask">
+        <div class="comp-puck" style="background:var(--carbs-bg);color:var(--carbs)">
+          <i data-lucide="droplet" style="width:18px;height:18px"></i>
+        </div>
+        <div class="flex-1">
+          <p class="opt-title">Oil</p>
+          <p class="opt-sub">Vegetable, sunflower, refined</p>
+        </div>
+        <span class="num text-[13px] font-extrabold text-ink-3">613</span>
+      </button>
+
+      <button class="opt opt--ask is-selected">
+        <div class="comp-puck" style="background:var(--ask-100);color:var(--ask-700)">
+          <i data-lucide="flame" style="width:18px;height:18px"></i>
+        </div>
+        <div class="flex-1">
+          <p class="opt-title">Ghee or butter</p>
+          <p class="opt-sub">Richer — common in biryani</p>
+        </div>
+        <span class="num text-[13px] font-extrabold" style="color:var(--ask-700)">663</span>
+      </button>
+
+      <button class="opt opt--ask">
+        <div class="comp-puck" style="background:var(--conf-high-bg);color:var(--conf-high)">
+          <i data-lucide="leaf" style="width:18px;height:18px"></i>
+        </div>
+        <div class="flex-1">
+          <p class="opt-title">Barely any</p>
+          <p class="opt-sub">Steamed, grilled or air-fried</p>
+        </div>
+        <span class="num text-[13px] font-extrabold text-ink-3">538</span>
+      </button>
+
+    </div>
+
+    <!-- Skip is a first-class choice, not a punishment -->
+    <button class="mt-3 w-full text-center py-2.5 text-[12.5px] font-bold text-ink-3">
+      I don't know — just estimate it
+    </button>
+  </div>
+
+  <div class="sticky-bottom">
+    <button class="btn btn-ask">
+      <span>Next question</span>
+      <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
+    </button>
+    <p class="text-center text-[10.5px] text-ink-3 mt-2">
+      Two questions, then you're done. We never ask about anything the camera can already see.
+    </p>
+  </div>
+
+</div>
+
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

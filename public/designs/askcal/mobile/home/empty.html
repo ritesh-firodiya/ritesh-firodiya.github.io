@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Today (empty) — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<!--
+  First run. The ring is still shown — at zero — because the target is the thing
+  the user just set up and hiding it would waste the onboarding. Three entry
+  points, ordered by what we want them to try first.
+-->
+
+<div class="phone phone--page">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--brand-500)">
+        <i data-lucide="utensils-crossed" style="width:19px;height:19px;color:#fff"></i>
+      </div>
+      <div>
+        <p class="text-2xs uppercase tracking-label text-ink-3 leading-none font-bold">Thursday, 11 Sep</p>
+        <p class="text-lg font-black leading-tight" style="color:var(--brand-900)">Today</p>
+      </div>
+    </div>
+    <a href="../settings/index.html" class="iconbtn" aria-label="Settings">
+      <i data-lucide="settings" style="width:20px;height:20px"></i>
+    </a>
+  </div>
+
+  <div class="px-5 mt-1">
+    <div class="card" style="padding:20px">
+      <div class="flex items-center gap-5">
+        <div class="ring-wrap" style="width:118px;height:118px;flex:none">
+          <svg width="118" height="118" viewBox="0 0 118 118" style="transform:rotate(-135deg)">
+            <circle cx="59" cy="59" r="50" fill="none" stroke="var(--sunken)" stroke-width="11" stroke-linecap="round" stroke-dasharray="235 314" />
+          </svg>
+          <div class="ring-center">
+            <p class="ring-kcal num" style="color:var(--ink-4)">0</p>
+            <p class="ring-unit">of 2,272</p>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="section-label">Nothing logged yet</p>
+          <p class="text-[13px] text-ink-2 mt-1.5 leading-relaxed">
+            Your first meal takes about five seconds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-5 mt-5">
+    <p class="section-label">Three ways in</p>
+
+    <a href="../scan/camera.html" class="block no-underline text-inherit mt-2.5">
+      <div class="card card--interactive flex items-center gap-3.5" style="padding:15px;border-color:var(--brand-200);background:var(--brand-50)">
+        <div class="comp-puck" style="background:var(--brand-500);color:#fff;width:42px;height:42px">
+          <i data-lucide="camera" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1">
+          <p class="font-black text-[14.5px]" style="color:var(--brand-900)">Photograph it</p>
+          <p class="text-[11.5px] mt-0.5" style="color:var(--brand-700)">Best for home cooking and mixed dishes</p>
+        </div>
+        <span class="chip chip-brand"><span class="num">10</span> free</span>
+      </div>
+    </a>
+
+    <a href="../food/barcode.html" class="block no-underline text-inherit mt-2">
+      <div class="card card--interactive flex items-center gap-3.5" style="padding:15px">
+        <div class="comp-puck" style="background:var(--info-bg);color:var(--info-fg);width:42px;height:42px">
+          <i data-lucide="scan-barcode" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1">
+          <p class="font-black text-[14.5px]">Scan a barcode</p>
+          <p class="text-[11.5px] text-ink-3 mt-0.5">Exact numbers straight off the label</p>
+        </div>
+        <span class="chip chip-neutral">Unlimited</span>
+      </div>
+    </a>
+
+    <a href="../food/search.html" class="block no-underline text-inherit mt-2">
+      <div class="card card--interactive flex items-center gap-3.5" style="padding:15px">
+        <div class="comp-puck" style="background:var(--sunken);color:var(--ink-2);width:42px;height:42px">
+          <i data-lucide="search" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1">
+          <p class="font-black text-[14.5px]">Type what you ate</p>
+          <p class="text-[11.5px] text-ink-3 mt-0.5">USDA database, no photo needed</p>
+        </div>
+        <span class="chip chip-neutral">Unlimited</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="px-5 mt-6">
+    <div class="card card--muted" style="padding:14px">
+      <p class="text-[12px] text-ink-2 leading-relaxed">
+        <strong>One habit worth forming:</strong> photograph the plate before you start eating.
+        Half-finished food is the hardest thing for any of these apps to read.
+      </p>
+    </div>
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="today.html" class="tab is-active">
+        <i data-lucide="circle-gauge" class="tab-icon" stroke-width="2.5"></i>
+        <span>Today</span>
+      </a>
+      <a href="../history/trends.html" class="tab">
+        <i data-lucide="trending-up" class="tab-icon"></i>
+        <span>Trends</span>
+      </a>
+      <a href="../scan/camera.html" class="tab-fab">
+        <span class="tab-fab-inner"><i data-lucide="camera" style="width:24px;height:24px"></i></span>
+        <span class="tab-fab-label">Scan</span>
+      </a>
+      <a href="../food/search.html" class="tab">
+        <i data-lucide="search" class="tab-icon"></i>
+        <span>Add</span>
+      </a>
+      <a href="../settings/index.html" class="tab">
+        <i data-lucide="user" class="tab-icon"></i>
+        <span>You</span>
+      </a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

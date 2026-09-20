@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>500 · Server error — Dwarseva web</title>
+  <script src="../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-6">
+    <a href="landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] font-semibold text-rose-700">Status: degraded</span>
+    <a href="landing.html" class="ml-auto text-[12px] text-zinc-600 hover:text-zinc-700">Back to landing →</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-[1440px] px-6 py-16">
+
+  <section class="mx-auto grid max-w-4xl items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+
+    <div>
+      <p class="mono text-[110px] font-semibold leading-none text-rose-500/25">500</p>
+      <p class="mt-2 text-[11px] uppercase tracking-widest text-rose-700">Server error · our side</p>
+      <h1 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Something went wrong on our end.</h1>
+      <p class="mt-4 max-w-md text-[14px] text-zinc-600">
+        Not your fault, not your money. Our team has been auto-paged and is looking into it. <span class="text-emerald-700">No wallet deductions</span> happen while this is broken — the 30-day live-period timer is frozen for every live listing until we recover.
+      </p>
+
+      <div class="mt-6 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-[12px] text-zinc-700">
+        <div class="flex items-center justify-between">
+          <span class="mono text-rose-700">trace_id: dws-web-9af2c14e</span>
+          <button class="rounded border border-rose-500/40 px-2 py-0.5 text-[10.5px] text-rose-700">Copy</button>
+        </div>
+        <p class="mt-1 text-[11px] text-zinc-500">Quote this if you contact the grievance officer — helps us find the exact request.</p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <button class="rounded-lg bg-blue-500 px-5 py-2.5 text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">
+          ↻ Try again
+        </button>
+        <a href="landing.html" class="rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-[13px] font-semibold text-zinc-900 hover:border-blue-500/40">
+          Go to landing
+        </a>
+        <a href="settings/settings.html" class="rounded-lg border border-rose-500/40 bg-rose-500/10 px-5 py-2.5 text-[13px] font-semibold text-rose-700 hover:border-rose-500">
+          Contact grievance officer
+        </a>
+      </div>
+    </div>
+
+    <div class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Status right now</p>
+      <ul class="mt-3 space-y-2 text-[12.5px]">
+        <li class="flex items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2">
+          <span>Map &amp; listing browse</span>
+          <span class="inline-flex items-center gap-1.5 text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> OK</span>
+        </li>
+        <li class="flex items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2">
+          <span>Owner contact unlock (₹5)</span>
+          <span class="inline-flex items-center gap-1.5 text-rose-700"><span class="h-2 w-2 rounded-full bg-rose-500"></span> Down</span>
+        </li>
+        <li class="flex items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2">
+          <span>Wallet recharge (Razorpay)</span>
+          <span class="inline-flex items-center gap-1.5 text-amber-700"><span class="h-2 w-2 rounded-full bg-amber-500"></span> Degraded</span>
+        </li>
+        <li class="flex items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2">
+          <span>Human verification queue</span>
+          <span class="inline-flex items-center gap-1.5 text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> OK</span>
+        </li>
+        <li class="flex items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2">
+          <span>OTP delivery</span>
+          <span class="inline-flex items-center gap-1.5 text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> OK</span>
+        </li>
+      </ul>
+
+      <div class="mt-5 rounded-lg border border-zinc-200 bg-zinc-100 p-3 text-[11.5px] text-zinc-600">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Incident timeline</p>
+        <ul class="mt-2 space-y-1">
+          <li><span class="mono text-zinc-700">14:22</span> · engineers paged</li>
+          <li><span class="mono text-zinc-700">14:24</span> · unlock endpoint failing (~7% requests)</li>
+          <li><span class="mono text-zinc-700">14:31</span> · investigation in progress</li>
+        </ul>
+      </div>
+
+      <a href="#" class="mt-4 inline-block text-[12px] text-blue-700 hover:underline">Follow @dwarseva on X for live updates →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-zinc-200 bg-zinc-100 py-6">
+  <div class="mx-auto flex max-w-[1440px] flex-wrap items-center gap-4 px-6 text-[11px] text-zinc-500">
+    <span>© 2026 Dwarseva</span>
+    <a href="settings/settings.html" class="hover:text-zinc-600">Grievance officer</a>
+    <a href="settings/settings.html" class="hover:text-zinc-600">Privacy</a>
+    <span class="ml-auto mono text-zinc-500">dws-web-9af2c14e</span>
+  </div>
+</footer>
+
+</body>
+</html>

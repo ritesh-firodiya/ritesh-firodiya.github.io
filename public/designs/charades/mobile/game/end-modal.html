@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game · end modal — Charades mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="phone phone--sunken">
+
+  <!-- Faded card behind -->
+  <div class="absolute inset-0 flex flex-col justify-center px-5">
+    <div class="rounded-3xl bg-white/50 shadow p-6 flex flex-col" style="aspect-ratio: 3/4;">
+      <div class="flex-1 flex items-center justify-center">
+        <h1 class="text-5xl font-black text-zinc-300 text-center leading-tight">Jurassic<br/>Park</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="backdrop"></div>
+
+  <!-- Modal -->
+  <div class="absolute inset-x-0 bottom-0 bg-white px-6 pt-4 pb-8" style="border-top-left-radius:28px;border-top-right-radius:28px;">
+    <div class="flex justify-center mb-3">
+      <div class="w-10 h-1 rounded-full bg-zinc-300"></div>
+    </div>
+
+    <div class="text-center">
+      <div class="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-3">
+        <i data-lucide="alert-circle" class="gold" style="width:26px;height:26px" stroke-width="2.5"></i>
+      </div>
+      <h2 class="text-xl font-black navy">End this round?</h2>
+      <p class="mt-1 text-[13px] text-zinc-500">
+        <span class="text-emerald-700 font-bold">7 guessed</span>
+        <span class="mx-1">·</span>
+        <span class="text-orange-700 font-bold">2 skipped</span>
+      </p>
+    </div>
+
+    <div class="mt-5 space-y-2.5">
+      <a href="score.html" class="flex items-center gap-3 rounded-2xl bg-navy p-4 no-underline">
+        <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+          <i data-lucide="trophy" class="text-white" style="width:20px;height:20px" stroke-width="2.5"></i>
+        </div>
+        <div class="flex-1">
+          <p class="text-white font-black text-sm">End and see results</p>
+          <p class="text-white/70 text-[11px]">Save this round to History</p>
+        </div>
+        <i data-lucide="chevron-right" class="text-white/60" style="width:18px;height:18px"></i>
+      </a>
+
+      <a href="../home.html" class="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 no-underline">
+        <div class="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center">
+          <i data-lucide="bookmark" class="text-zinc-700" style="width:20px;height:20px" stroke-width="2"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <p class="text-zinc-900 font-black text-sm">Save &amp; go home</p>
+          <p class="text-zinc-500 text-[11px]">Resume later from Home</p>
+        </div>
+        <i data-lucide="chevron-right" class="text-zinc-400" style="width:18px;height:18px"></i>
+      </a>
+
+      <a href="active.html" class="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 no-underline">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
+          <i data-lucide="play" class="text-emerald-600" fill="currentColor" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <p class="text-zinc-900 font-black text-sm">Continue playing</p>
+          <p class="text-zinc-500 text-[11px]">Back to the current card</p>
+        </div>
+        <i data-lucide="chevron-right" class="text-zinc-400" style="width:18px;height:18px"></i>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../../_vendor/lucide.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

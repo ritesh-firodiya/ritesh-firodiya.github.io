@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller home — Dwarseva mobile</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; padding-bottom: 88px; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+    .tabbar { position: absolute; inset-inline: 0; bottom: 0; }
+    .h { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #71717a; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-700">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <div class="flex h-12 items-center justify-between px-3">
+    <a href="../../settings/settings.html" aria-label="Menu" class="inline-flex h-10 w-10 items-center justify-center">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 bg-white text-[11px] font-semibold text-zinc-800">AP</span>
+    </a>
+    <h1 class="text-base font-semibold">Your listings</h1>
+    <a href="../../settings/notifications.html" class="relative inline-flex h-10 w-10 items-center justify-center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span class="absolute top-1 right-1 inline-flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-amber-500 px-1 text-[8px] font-semibold text-zinc-950">3</span>
+    </a>
+  </div>
+
+  <main class="px-5 pt-3">
+
+    <ul class="divide-y divide-zinc-800">
+
+      <li>
+        <a href="listing-live.html" class="block py-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+            <span class="text-[10px] uppercase tracking-widest text-emerald-700">Live · 21d left</span>
+            <span class="ml-auto text-[10px] text-zinc-500">12 views · 2 unlocks</span>
+          </div>
+          <p class="mt-1.5 text-sm font-semibold">2BHK · Aundh · Rent</p>
+          <p class="mt-0.5 text-[11.5px] text-zinc-600">850 sqft · 1st · Semi-furnished</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="listing-pending.html" class="block py-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-widest text-blue-700">In review</span>
+            <span class="ml-auto text-[10px] text-zinc-500">SLA 2–48h</span>
+          </div>
+          <p class="mt-1.5 text-sm font-semibold">3BHK · Wakad · Rent</p>
+          <p class="mt-0.5 text-[11.5px] text-zinc-600">1,200 sqft · 4th · Fully-furnished</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="listing-needs-changes.html" class="block py-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+            <span class="text-[10px] uppercase tracking-widest text-amber-700">Needs changes</span>
+            <span class="ml-auto text-[10px] text-amber-700">3 items</span>
+          </div>
+          <p class="mt-1.5 text-sm font-semibold">3BHK · Hinjewadi · Rent</p>
+          <p class="mt-0.5 text-[11.5px] text-zinc-600">Megapolis · clearer photos requested</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="listing-paused.html" class="block py-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-zinc-400"></span>
+            <span class="text-[10px] uppercase tracking-widest text-zinc-500">Expired</span>
+            <span class="ml-auto text-[10px] text-amber-700">Renew ₹5</span>
+          </div>
+          <p class="mt-1.5 text-sm font-semibold">1BHK · Hadapsar · Rent</p>
+          <p class="mt-0.5 text-[11.5px] text-zinc-600">480 sqft · 30-day period ended</p>
+        </a>
+      </li>
+
+    </ul>
+
+    <a href="new-listing-basics.html" class="mt-5 flex items-center justify-center gap-2 rounded-xl border border-dashed border-blue-500/60 px-4 py-3 text-sm font-semibold text-blue-700">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      Add a new listing
+    </a>
+
+    <a href="buyer-interest.html" class="mt-4 flex items-center justify-between border-y border-zinc-200 py-3">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-amber-700">Buyer interest</p>
+        <p class="mt-0.5 text-sm">2 buyers want your Aundh flat</p>
+      </div>
+      <span class="text-zinc-500">›</span>
+    </a>
+
+  </main>
+
+  <nav class="tabbar border-t border-zinc-200 bg-white/95 backdrop-blur">
+    <div class="flex items-end">
+      <a href="home.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-emerald-700">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="text-[10px] font-semibold">My listings</span>
+      </a>
+      <a href="buyer-interest.html" class="relative flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span class="text-[10px] font-medium">Interest</span>
+        <span class="absolute top-1 right-3 inline-flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-amber-500 px-1 text-[8px] font-semibold text-zinc-950">2</span>
+      </a>
+      <a href="new-listing-basics.html" class="flex flex-1 flex-col items-center pb-1.5">
+        <span class="-mt-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-zinc-950 shadow-lg shadow-blue-500/40 ring-4 ring-white">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="mt-1 text-[10px] font-semibold text-blue-700">New</span>
+      </a>
+      <a href="../../wallet/wallet.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span class="text-[10px] font-medium">Wallet</span>
+      </a>
+      <a href="../../settings/settings.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20a6 6 0 0 1 12 0"/></svg>
+        <span class="text-[10px] font-medium">You</span>
+      </a>
+    </div>
+    <div class="flex items-center justify-center pb-2 pt-1">
+      <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+    </div>
+  </nav>
+
+</div>
+
+</body>
+</html>

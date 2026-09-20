@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imposter — talk it out</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <aside class="shrink-0 w-[288px] self-start my-5 bg-surface rounded-lg border border-line shadow p-[18px]">
+    <p class="text-base font-bold mb-3">Talk it out</p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p class="p-2.5 rounded bg-success-bg border border-success text-ink"><b>v3 — no round number.</b> The chip used to read "Round 2". It implied a match — a best-of, a series, something being counted toward — and this app decides nothing and scores nothing; how-to-play says so in as many words. It was not even an accurate tally: the counter is ephemeral, so closing the app mid-evening restarted it at 1 while the group was twelve rounds in. A number nobody can use, that is also wrong.</p>
+      <p class="p-2.5 rounded bg-success-bg border border-success text-ink"><b>v5 — four screens became one.</b> v4 ran clue-round → discussion → vote → vote-result, and the clue round needed one tap per player to advance. Five players meant five taps to reach a screen that already carried a "Skip to discussion" button — the design admitting its own friction.</p>
+      <p><b class="text-ink">Nobody in this category ships a vote screen.</b> Imposter Who? (5M+ installs) writes its own rule as <i>"keep giving words and talking until someone thinks they've figured it out."</i> imposter.app has one button called Reveal Imposter. The accusation happens at the table, out loud, which is the fun part — a tally UI moves it onto a phone that five people are not looking at.</p>
+      <p><b class="text-ink">The screen says who starts and gets out of the way.</b> The starting player is randomised every round: always starting with player one hands a permanent advantage to whoever speaks last, because they hear every clue before inventing one.</p>
+      <p><b class="text-ink">The order is shown, not enforced.</b> An arrow row, no tap-through. The table can already see whose turn it is; the phone repeating it five times is not information.</p>
+      <p><b class="text-ink">Rule 6 — the clock never decides anything.</b> Time running out turns the ring white and stops. It does not force the reveal and it does not buzz anyone into a decision. "Add 30 seconds" is always there.</p>
+      <p><b class="text-ink">Re-check is the one competitor gap we keep.</b> Straight out of Imposter Who?'s reviews: <i>"a button that lets people who have forgotten what they are re-check it would be very helpful."</i> It is the <span class="mono">?</span> in the header.</p>
+    </div>
+  </aside>
+
+  <!-- ============================================ RUNNING -->
+  <div class="phone phone--flood phone--night">
+
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-2 px-4 pt-2 pb-1">
+      <span class="px-2.5 py-1 rounded-pill text-2xs font-extrabold uppercase tracking-label bg-sunken">Everyday</span>
+      <a href="recheck.html" class="ml-auto w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="circle-help" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <div class="relative flex-1 flex flex-col items-center justify-center px-6">
+      <p class="text-2xs font-extrabold uppercase tracking-role text-ink-3">Going round, starting with</p>
+      <p class="mt-2 text-display font-black">Arjun</p>
+
+      <!-- The order, shown once. No tap-through. -->
+      <div class="mt-6 flex items-center gap-1.5">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken border-2 border-accent-300"><i data-lucide="cat" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="dog" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="bird" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="rabbit" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="fish" class="w-5 h-5"></i></div>
+      </div>
+      <p class="mt-3 text-center text-body text-ink-2 leading-relaxed">One word each, then argue.<br />Who hesitated? Who was vague?</p>
+
+      <div class="mt-7 w-[148px] h-[148px] rounded-pill timer [--pct:62%] grid place-items-center">
+        <span class="relative text-h1 font-black num">1:14</span>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-2 pb-5 space-y-2.5">
+      <a href="result.html" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        <i data-lucide="venetian-mask" class="w-5 h-5"></i> REVEAL THE IMPOSTER
+      </a>
+      <button class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-pill font-black text-sm text-ink-2 bg-surface border border-line">
+        <i data-lucide="plus" class="w-4 h-4"></i> Add 30 seconds
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================ LAST TEN SECONDS -->
+  <div class="phone phone--flood phone--night" id="warning">
+
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-2 px-4 pt-2 pb-1">
+      <span class="px-2.5 py-1 rounded-pill text-2xs font-extrabold uppercase tracking-label bg-sunken">Everyday</span>
+      <a href="recheck.html" class="ml-auto w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="circle-help" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <div class="relative flex-1 flex flex-col items-center justify-center px-6">
+      <p class="text-2xs font-extrabold uppercase tracking-role">Nearly up</p>
+      <p class="mt-2 text-display font-black">Arjun</p>
+
+      <div class="mt-6 flex items-center gap-1.5">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken border-2 border-accent-300"><i data-lucide="cat" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="dog" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="bird" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="rabbit" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="fish" class="w-5 h-5"></i></div>
+      </div>
+      <p class="mt-3 text-center text-body text-ink-2 leading-relaxed">One word each, then argue.<br />Who hesitated? Who was vague?</p>
+
+      <div class="mt-7 w-[148px] h-[148px] rounded-pill timer timer--warning [--pct:7%] grid place-items-center">
+        <span class="relative text-h1 font-black num">0:08</span>
+      </div>
+      <!-- Rule 6: this is the whole of what running out does. -->
+      <p class="mt-3 text-xs text-ink-3">The clock stops here. It does not vote.</p>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-2 pb-5 space-y-2.5">
+      <a href="result.html" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        <i data-lucide="venetian-mask" class="w-5 h-5"></i> REVEAL THE IMPOSTER
+      </a>
+      <button class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-pill font-black text-sm text-ink-2 bg-surface border border-line">
+        <i data-lucide="plus" class="w-4 h-4"></i> Add 30 seconds
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================ NO CLOCK -->
+  <div class="phone phone--flood phone--night" id="noclock">
+
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-2 px-4 pt-2 pb-1">
+      <span class="px-2.5 py-1 rounded-pill text-2xs font-extrabold uppercase tracking-label bg-sunken">Everyday</span>
+      <a href="recheck.html" class="ml-auto w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="circle-help" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <div class="relative flex-1 flex flex-col items-center justify-center px-6">
+      <p class="text-2xs font-extrabold uppercase tracking-role text-ink-3">Going round, starting with</p>
+      <p class="mt-2 text-display font-black">Arjun</p>
+
+      <div class="mt-6 flex items-center gap-1.5">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken border-2 border-accent-300"><i data-lucide="cat" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="dog" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="bird" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="rabbit" class="w-5 h-5"></i></div>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-ink-4"></i>
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="fish" class="w-5 h-5"></i></div>
+      </div>
+      <p class="mt-3 text-center text-body text-ink-2 leading-relaxed">One word each, then argue.<br />Who hesitated? Who was vague?</p>
+
+      <div class="mt-8 flex items-center gap-2 rounded-pill bg-surface border border-line px-5 py-3">
+        <i data-lucide="timer-off" class="w-4 h-4 text-ink-3"></i>
+        <span class="text-sm font-black text-ink-2">No clock — take as long as you like</span>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-2 pb-5">
+      <a href="result.html" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        <i data-lucide="venetian-mask" class="w-5 h-5"></i> REVEAL THE IMPOSTER
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

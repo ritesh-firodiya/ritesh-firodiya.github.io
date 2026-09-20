@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A past day — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="phone phone--page">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <!--
+    Viewing Monday from Thursday.
+
+    The header states the date plainly and offers one way back. Nothing here
+    says "Today", and the ring says "eaten", not "left" — "left" is a budget
+    for a day you can still act on, and Monday is closed.
+  -->
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="day-nav.html" class="backbtn" aria-label="Back to today">
+        <i data-lucide="arrow-left" style="width:19px;height:19px"></i>
+      </a>
+      <div>
+        <p class="text-2xs uppercase tracking-label text-ink-3 leading-none font-bold">3 days ago</p>
+        <p class="text-lg font-black leading-tight" style="color:var(--brand-900)">Monday, 16 Sep</p>
+      </div>
+    </div>
+    <a href="day-nav.html" class="chip chip-neutral" style="text-decoration:none">Today</a>
+  </div>
+
+  <div class="px-5 mt-1">
+    <div class="flex items-center gap-1.5">
+      <button class="iconbtn" aria-label="Previous week" style="width:34px;height:34px;flex:none">
+        <i data-lucide="chevron-left" style="width:17px;height:17px"></i>
+      </button>
+      <div class="flex-1 flex items-stretch justify-between gap-1">
+        <a href="day-past.html" class="daychip no-underline"><span class="daychip-letter">F</span><span class="daychip-num num">13</span><span class="daychip-dot daychip-dot--over"></span></a>
+        <a href="day-past.html" class="daychip no-underline"><span class="daychip-letter">S</span><span class="daychip-num num">14</span><span class="daychip-dot daychip-dot--met"></span></a>
+        <a href="day-past.html" class="daychip no-underline"><span class="daychip-letter">S</span><span class="daychip-num num">15</span><span class="daychip-dot daychip-dot--none"></span></a>
+        <a href="day-past.html" class="daychip is-current no-underline"><span class="daychip-letter">M</span><span class="daychip-num num">16</span><span class="daychip-dot daychip-dot--on-dark"></span></a>
+        <a href="day-past.html" class="daychip no-underline"><span class="daychip-letter">T</span><span class="daychip-num num">17</span><span class="daychip-dot daychip-dot--under"></span></a>
+        <a href="day-past.html" class="daychip no-underline"><span class="daychip-letter">W</span><span class="daychip-num num">18</span><span class="daychip-dot daychip-dot--met"></span></a>
+        <a href="day-nav.html" class="daychip no-underline"><span class="daychip-letter">T</span><span class="daychip-num num">19</span><span class="daychip-dot daychip-dot--none"></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-5 mt-3">
+    <div class="card" style="padding:20px">
+      <div class="flex items-center gap-5">
+        <div class="ring-wrap" style="width:118px;height:118px;flex:none">
+          <svg width="118" height="118" viewBox="0 0 118 118" style="transform:rotate(-135deg)">
+            <circle cx="59" cy="59" r="50" fill="none" stroke="var(--sunken)" stroke-width="11" stroke-linecap="round" stroke-dasharray="235 314" />
+            <circle cx="59" cy="59" r="50" fill="none" stroke="var(--brand-500)" stroke-width="11" stroke-linecap="round" stroke-dasharray="212 314" />
+          </svg>
+          <div class="ring-center">
+            <p class="ring-kcal num">2,048</p>
+            <p class="ring-unit">of 2,272</p>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <!-- "Eaten", not "left". A closed day is a record, not a budget. -->
+          <p class="section-label">Eaten</p>
+          <p class="num mt-0.5" style="font-size:26px;font-weight:900;line-height:1;color:var(--brand-700)">2,048</p>
+          <p class="text-[11px] mt-1" style="color:var(--brand-700);font-weight:800">Met the target — 222 under</p>
+
+          <div class="mt-3 grid gap-2.5">
+            <div class="macro-row">
+              <span class="macro-dot m-protein"></span>
+              <div class="macro-track"><div class="macro-fill m-protein" style="width:88%"></div></div>
+              <span class="num text-[11px] font-extrabold text-ink-2" style="width:52px;text-align:right">127/144g</span>
+            </div>
+            <div class="macro-row">
+              <span class="macro-dot m-carbs"></span>
+              <div class="macro-track"><div class="macro-fill m-carbs" style="width:91%"></div></div>
+              <span class="num text-[11px] font-extrabold text-ink-2" style="width:52px;text-align:right">230/253g</span>
+            </div>
+            <div class="macro-row">
+              <span class="macro-dot m-fat"></span>
+              <div class="macro-track"><div class="macro-fill m-fat" style="width:80%"></div></div>
+              <span class="num text-[11px] font-extrabold text-ink-2" style="width:52px;text-align:right">61/76g</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Adding to a past day is offered here, not hidden behind the camera.
+
+    The scan button always files against today, which is right for the common
+    case and wrong for the one the user came to this screen to fix.
+  -->
+  <a href="../log/backdate.html" class="block px-5 mt-3 no-underline">
+    <div class="card card--interactive flex items-center gap-3" style="padding:13px 14px">
+      <div class="comp-puck" style="background:var(--sunken);color:var(--ink-2);width:34px;height:34px">
+        <i data-lucide="calendar-plus" style="width:17px;height:17px"></i>
+      </div>
+      <div class="flex-1">
+        <p class="font-extrabold text-[13px] text-ink">Add something to Monday</p>
+        <p class="text-[11px] mt-0.5 text-ink-3">Scan, search or repeat a meal</p>
+      </div>
+      <i data-lucide="chevron-right" style="width:18px;height:18px;color:var(--ink-3)"></i>
+    </div>
+  </a>
+
+  <div class="px-5 mt-5 flex items-baseline justify-between">
+    <p class="section-label">Monday's meals</p>
+    <span class="num text-[11px] font-extrabold text-ink-3">4 logged</span>
+  </div>
+
+  <div class="px-5">
+    <a href="../food/meal.html" class="meal no-underline text-inherit">
+      <div class="meal-thumb" style="background:#f5ecdc"><i data-lucide="egg-fried" style="width:20px;height:20px;color:#b08442"></i></div>
+      <div class="meal-body">
+        <p class="meal-title">Upma</p>
+        <p class="meal-sub">8:05 am · breakfast</p>
+      </div>
+      <div class="text-right">
+        <p class="num font-black text-[15px]">290</p>
+        <span class="conf conf-high mt-0.5"><span class="conf-dot conf-dot--high"></span>Seen</span>
+      </div>
+    </a>
+    <div class="divider"></div>
+
+    <a href="../food/meal.html" class="meal no-underline text-inherit">
+      <div class="meal-thumb" style="background:#f0e4d4"><i data-lucide="utensils" style="width:20px;height:20px;color:#a1785a"></i></div>
+      <div class="meal-body">
+        <p class="meal-title">Rajma chawal</p>
+        <p class="meal-sub">1:20 pm · lunch</p>
+      </div>
+      <div class="text-right">
+        <p class="num font-black text-[15px]">640</p>
+        <span class="conf conf-med mt-0.5"><span class="conf-dot conf-dot--med"></span>Asked</span>
+      </div>
+    </a>
+    <div class="divider"></div>
+
+    <!-- Added after the fact. Said plainly, because a record that quietly
+         rewrites itself is a record nobody can rely on. -->
+    <a href="../food/meal.html" class="meal no-underline text-inherit">
+      <div class="meal-thumb" style="background:#e8eee9"><i data-lucide="cookie" style="width:20px;height:20px;color:#5c7a68"></i></div>
+      <div class="meal-body">
+        <p class="meal-title">Two biscuits</p>
+        <p class="meal-sub">5:00 pm · snack <span class="text-ink-3">· added later</span></p>
+      </div>
+      <div class="text-right">
+        <p class="num font-black text-[15px]">118</p>
+        <span class="conf conf-high mt-0.5"><span class="conf-dot conf-dot--high"></span>Label</span>
+      </div>
+    </a>
+    <div class="divider"></div>
+
+    <a href="../food/meal.html" class="meal no-underline text-inherit">
+      <div class="meal-thumb" style="background:#f0e4d4"><i data-lucide="soup" style="width:20px;height:20px;color:#a1785a"></i></div>
+      <div class="meal-body">
+        <p class="meal-title">Khichdi</p>
+        <p class="meal-sub">8:40 pm · dinner</p>
+      </div>
+      <div class="text-right">
+        <p class="num font-black text-[15px]">1,000</p>
+        <span class="conf conf-high mt-0.5"><span class="conf-dot conf-dot--high"></span>Seen</span>
+      </div>
+    </a>
+  </div>
+
+  <div style="height:104px"></div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="today.html" class="tab is-active"><i data-lucide="circle-gauge" class="tab-icon" stroke-width="2.5"></i><span>Today</span></a>
+      <a href="../history/trends.html" class="tab"><i data-lucide="trending-up" class="tab-icon"></i><span>Trends</span></a>
+      <a href="../scan/camera.html" class="tab-fab"><span class="tab-fab-inner"><i data-lucide="camera" style="width:24px;height:24px"></i></span><span class="tab-fab-label">Scan</span></a>
+      <a href="../food/search.html" class="tab"><i data-lucide="search" class="tab-icon"></i><span>Add</span></a>
+      <a href="../settings/index.html" class="tab"><i data-lucide="user" class="tab-icon"></i><span>You</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+
+</div>
+
+<script>lucide.createIcons()</script>
+</body>
+</html>

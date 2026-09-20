@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Filters — Dwarseva mobile</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-700">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <div class="flex h-12 items-center justify-between px-4">
+    <a href="area-list-section.html" aria-label="Back" class="inline-flex h-10 w-10 items-center justify-center text-zinc-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="text-sm font-semibold">Filters</h1>
+    <button class="text-[11px] text-zinc-600">Reset</button>
+  </div>
+
+  <main class="px-5 pb-32 pt-3">
+
+    <section>
+      <p class="text-[11px] font-semibold text-zinc-700">BHK</p>
+      <div class="mt-2 flex gap-1.5">
+        <span class="flex-1 rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">1RK</span>
+        <span class="flex-1 rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">1</span>
+        <span class="flex-1 rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center text-[11px] font-semibold text-amber-700">2</span>
+        <span class="flex-1 rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center text-[11px] font-semibold text-amber-700">3</span>
+        <span class="flex-1 rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">4</span>
+        <span class="flex-1 rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">5+</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <div class="flex items-baseline justify-between">
+        <p class="text-[11px] font-semibold text-zinc-700">Budget (₹ / month)</p>
+        <p class="mono text-[11px] text-amber-700">₹20k — ₹35k</p>
+      </div>
+      <div class="mt-3 relative h-2 rounded-full bg-zinc-100">
+        <div class="absolute left-[25%] right-[25%] h-2 rounded-full bg-amber-500"></div>
+        <span class="absolute left-[25%] -translate-x-1/2 -top-1.5 h-5 w-5 rounded-full border-2 border-amber-500 bg-zinc-100"></span>
+        <span class="absolute right-[25%] translate-x-1/2 -top-1.5 h-5 w-5 rounded-full border-2 border-amber-500 bg-zinc-100"></span>
+      </div>
+      <div class="mt-1.5 flex justify-between text-[10px] text-zinc-500">
+        <span>₹8k</span><span>₹60k+</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Kind</p>
+      <div class="mt-2 flex flex-wrap gap-1.5">
+        <span class="rounded-full border border-amber-500 bg-amber-500/10 px-3 py-1 text-[11px] font-semibold text-amber-700">Apartment / Flat</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Independent house</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Builder floor</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Villa</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Bungalow</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Rowhouse</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Studio</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">PG</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Plot / Land</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Farm</span>
+        <span class="rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] text-zinc-700">Commercial</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Project status</p>
+      <div class="mt-2 grid grid-cols-2 gap-1.5 text-[11px]">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center font-semibold text-amber-700">Ready-to-move</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">Upcoming</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Furnishing</p>
+      <div class="mt-2 grid grid-cols-4 gap-1.5">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center text-[11px] font-semibold text-amber-700">Any</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Unfurnished</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Semi</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Fully</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Age</p>
+      <div class="mt-2 grid grid-cols-4 gap-1.5">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center text-[11px] font-semibold text-amber-700">Any</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">&lt;1 yr</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">1–5</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">5–10</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Floor</p>
+      <div class="mt-2 grid grid-cols-5 gap-1.5 text-[11px]">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center font-semibold text-amber-700">Any</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">Ground</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">1–3</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">4–6</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">7+</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Area (sqft carpet)</p>
+      <div class="mt-2 grid grid-cols-4 gap-1.5 text-[11px]">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center font-semibold text-amber-700">Any</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">&lt;500</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">500–900</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-zinc-700">900+</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Parking</p>
+      <div class="mt-2 grid grid-cols-4 gap-1.5">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center text-[11px] font-semibold text-amber-700">Any</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">None</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Open</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Covered</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Multiple</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Tenant preference (Rent only)</p>
+      <div class="mt-2 grid grid-cols-3 gap-1.5">
+        <span class="rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-center text-[11px] font-semibold text-amber-700">Any</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Family</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-2 py-2 text-center text-[11px] text-zinc-700">Bachelor</span>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <p class="text-[11px] font-semibold text-zinc-700">Utilities &amp; amenities</p>
+      <p class="mt-0.5 text-[10.5px] text-zinc-500">Pick all that you need.</p>
+      <div class="mt-2 grid grid-cols-2 gap-1.5 text-[11px]">
+        <label class="flex items-center gap-1.5 rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-amber-700"><span class="inline-block h-3 w-3 rounded-sm bg-amber-500"></span> Lift</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-amber-700"><span class="inline-block h-3 w-3 rounded-sm bg-amber-500"></span> Power backup</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> Water 24×7</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-amber-700"><span class="inline-block h-3 w-3 rounded-sm bg-amber-500"></span> MNGL Gas</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> Swimming pool</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> Gym</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> Clubhouse</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> Park / garden</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-amber-500 bg-amber-500/10 px-2 py-2 text-amber-700"><span class="inline-block h-3 w-3 rounded-sm bg-amber-500"></span> Security 24×7</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> CCTV</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> Intercom</label>
+        <label class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2 py-2 text-zinc-700"><span class="inline-block h-3 w-3 rounded-sm border border-zinc-300"></span> EV charging</label>
+      </div>
+    </section>
+
+    <label class="mt-5 flex items-center gap-2 text-[12px] text-zinc-700">
+      <input type="checkbox" class="h-4 w-4 rounded border-zinc-300 bg-white accent-amber-500" checked />
+      Pet-friendly only
+    </label>
+
+    <label class="mt-2 flex items-center gap-2 text-[12px] text-zinc-700">
+      <input type="checkbox" class="h-4 w-4 rounded border-zinc-300 bg-white accent-amber-500" />
+      Show only owner-listed (hide agents)
+    </label>
+
+    <label class="mt-2 flex items-center gap-2 text-[12px] text-zinc-700">
+      <input type="checkbox" class="h-4 w-4 rounded border-zinc-300 bg-white accent-amber-500" />
+      Show only society-grouped listings
+    </label>
+
+  </main>
+
+  <div class="absolute inset-x-0 bottom-0 border-t border-zinc-200 bg-white/95 px-5 pt-3 pb-2 backdrop-blur">
+    <a href="area-list-section.html" class="block w-full rounded-xl bg-amber-500 px-4 py-3.5 text-center text-sm font-semibold text-zinc-950 hover:bg-amber-400">
+      Apply · 17 results
+    </a>
+    <div class="mt-2 flex items-center justify-center">
+      <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

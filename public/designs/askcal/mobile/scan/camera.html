@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camera — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<!--
+  Quota sits in the header, always. A metered feature that hides its meter is
+  how you get the billing complaints Cal AI got. One tap to capture; the guide
+  text teaches the framing that makes estimates better.
+-->
+
+<div class="phone phone--camera">
+
+  <div class="statusbar statusbar--on-dark">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="appheader" style="padding-top:4px">
+    <a href="../home/today.html" class="iconbtn iconbtn--on-dark" aria-label="Close">
+      <i data-lucide="x" style="width:20px;height:20px"></i>
+    </a>
+    <a href="quota-exhausted.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full no-underline" style="background:rgba(255,255,255,0.14)">
+      <i data-lucide="sparkles" style="width:13px;height:13px;color:#fff"></i>
+      <span class="num text-[11.5px] font-extrabold text-white">72</span>
+      <span class="text-[11.5px] text-white" style="opacity:0.75">scans left</span>
+    </a>
+    <div class="flex items-center gap-1">
+      <!-- Photo already taken. Sits beside flash rather than in the bottom row:
+           four slots there push the shutter visibly off centre, and the shutter
+           being dead centre is the one thing a camera screen must not get wrong. -->
+      <a href="analyzing.html" class="iconbtn iconbtn--on-dark" aria-label="Choose a photo from your gallery">
+        <i data-lucide="images" style="width:19px;height:19px"></i>
+      </a>
+      <button class="iconbtn iconbtn--on-dark" aria-label="Flash">
+        <i data-lucide="zap" style="width:19px;height:19px"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Viewfinder -->
+  <div style="position:relative;height:430px;margin-top:8px">
+    <div class="viewfinder" style="position:absolute;inset:0;background:#171f1c">
+      <div class="vf-frame">
+        <span class="vf-corner" style="top:-2px;left:-2px;border-right:none;border-bottom:none;border-radius:8px 0 0 0"></span>
+        <span class="vf-corner" style="top:-2px;right:-2px;border-left:none;border-bottom:none;border-radius:0 8px 0 0"></span>
+        <span class="vf-corner" style="bottom:-2px;left:-2px;border-right:none;border-top:none;border-radius:0 0 0 8px"></span>
+        <span class="vf-corner" style="bottom:-2px;right:-2px;border-left:none;border-top:none;border-radius:0 0 8px 0"></span>
+      </div>
+    </div>
+
+    <div style="position:absolute;bottom:18px;left:0;right:0;text-align:center">
+      <p class="text-[12.5px] font-bold text-white" style="opacity:0.9">Whole plate in frame, from above</p>
+      <p class="text-[11px] mt-1" style="color:rgba(255,255,255,0.6)">Straight down beats an angle — it's how portion gets estimated</p>
+    </div>
+  </div>
+
+  <!-- Capture -->
+  <div style="position:absolute;bottom:0;left:0;right:0;padding:0 20px 26px">
+    <div class="flex items-center justify-between">
+      <a href="../food/barcode.html" class="flex flex-col items-center gap-1 no-underline" style="width:64px">
+        <span class="iconbtn iconbtn--on-dark"><i data-lucide="scan-barcode" style="width:20px;height:20px"></i></span>
+        <span class="text-2xs font-bold text-white" style="opacity:0.8">Barcode</span>
+      </a>
+
+      <a href="analyzing.html" aria-label="Capture"
+         style="width:76px;height:76px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,0.25)">
+        <span style="width:62px;height:62px;border-radius:999px;background:var(--brand-500);display:flex;align-items:center;justify-content:center">
+          <i data-lucide="camera" style="width:27px;height:27px;color:#fff"></i>
+        </span>
+      </a>
+
+      <a href="../food/search.html" class="flex flex-col items-center gap-1 no-underline" style="width:64px">
+        <span class="iconbtn iconbtn--on-dark"><i data-lucide="search" style="width:20px;height:20px"></i></span>
+        <span class="text-2xs font-bold text-white" style="opacity:0.8">Search</span>
+      </a>
+    </div>
+
+    <p class="text-center text-[10.5px] mt-4" style="color:rgba(255,255,255,0.5)">
+      Barcode and search don't use a scan
+    </p>
+  </div>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

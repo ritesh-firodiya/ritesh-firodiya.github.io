@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline — Dwarseva mobile</title>
+  <script src="../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-600">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="1" y1="9" x2="13" y2="1"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/><line x1="1" y1="0" x2="13" y2="10" stroke="#71717a"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <main class="flex min-h-[calc(100dvh-32px)] flex-col items-center justify-center px-6 text-center">
+    <span class="inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-amber-500/20 text-amber-700">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+    </span>
+    <h1 class="mt-4 text-xl font-semibold">You're offline</h1>
+    <p class="mt-2 text-[13px] text-zinc-600">Connect to the internet to browse verified listings or update your wallet.</p>
+
+    <div class="mt-6 w-full max-w-[280px] rounded-xl border border-zinc-200 bg-zinc-100/75 p-3 text-left text-[11px] text-zinc-600">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Cached locally</p>
+      <ul class="mt-1.5 space-y-1">
+        <li class="flex justify-between"><span>Your 3 listings</span><span class="text-emerald-700">available</span></li>
+        <li class="flex justify-between"><span>4 most-recent searches</span><span class="text-emerald-700">available</span></li>
+        <li class="flex justify-between"><span>Wallet balance</span><span class="text-zinc-500">stale</span></li>
+        <li class="flex justify-between"><span>New listing submit</span><span class="text-rose-700">offline</span></li>
+      </ul>
+    </div>
+
+    <button class="mt-6 w-full max-w-[280px] rounded-xl bg-blue-500 px-4 py-3.5 text-sm font-semibold text-zinc-950">Try again</button>
+  </main>
+
+  <div class="flex items-center justify-center pb-2 pt-1">
+    <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

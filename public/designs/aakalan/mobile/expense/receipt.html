@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Receipt photos</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Receipt photos</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Answer "what was this ₹6,200?" three weeks later. A photo answers it and nothing else in the app does.</p>
+
+      <p class="mt-3"><strong>One photo, not an album.</strong> A bill is one piece of paper. Allowing five turns an expense row into a gallery and the question it answers into a browsing task.</p>
+
+      <p class="mt-3"><strong>The photo belongs to the expense, so it is visible to exactly the people the expense is.</strong> A group expense: every member. A personal one: nobody but you. The Storage rules mirror <code class="mono">firestore.rules</code> rather than approximating it — a readable image under an unreadable expense is a leak with extra steps.</p>
+
+      <p class="mt-3"><strong>Compressed on the device before it leaves.</strong> Long edge 1600px, JPEG. A bill is legible at that size, and a 12MP original is six megabytes of someone's data plan for no gain.</p>
+
+      <p class="mt-3"><strong>Nothing is read out of the image.</strong> No OCR, no amount guessed, no category inferred. The photo is evidence for a human, and an app that quietly fills in ₹6,200 from a blurry total is an app that will one day fill in ₹62,000.</p>
+
+      <p class="mt-3"><strong>Deleting the expense deletes the image.</strong> Product rule 5 keeps the record that something was removed — it does not require keeping a picture of it, and a photo nobody can reach from any screen is just a bill someone forgot they uploaded.</p>
+
+      <p class="mt-3"><strong>Pro, and visible to everyone.</strong> The camera button is on the free add screen with a Pro mark, not hidden. A feature nobody can see is a feature nobody buys — and hiding it would also make the row jump around when someone subscribes.</p>
+
+      <p class="mt-3"><strong>Uploads are not blocking.</strong> Saving an expense never waits for an image: the expense is written immediately and the photo follows, showing as pending on the detail screen. Offline is the normal case (rule 7), and a bill that cannot be saved in a basement restaurant is worse than one without a picture.</p>
+    </div>
+  </div>
+
+<!-- ============ STATE 1 · Attaching, on the add screen ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <button class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <h2 class="text-base font-black">Add expense</h2>
+    <button class="btn btn-sm btn-primary ml-auto"><i data-lucide="check" class="w-4 h-4"></i> Save</button>
+  </div>
+
+  <div class="px-4 pt-2 space-y-3">
+
+    <div class="field-row">
+      <div class="cat cat-food cat-sm"><i data-lucide="utensils" class="w-3.5 h-3.5"></i></div>
+      <input class="field text-[17px] font-bold" value="Dinner at Toit" />
+    </div>
+
+    <div class="field-row">
+      <span class="text-2xl font-black text-ink-3">₹</span>
+      <input class="field num text-[30px] font-black" value="6,200" />
+    </div>
+
+    <div class="card flex items-start gap-2.5">
+      <i data-lucide="split" class="w-4 h-4 text-brand-500 mt-0.5"></i>
+      <p class="text-sm text-ink-2 leading-relaxed flex-1">
+        Paid by <b class="text-ink">you</b>, split <b class="text-ink">equally</b> between
+        <b class="text-ink">4 people</b> — <b class="text-brand-700">₹1,550 each</b>.
+      </p>
+      <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4 mt-0.5"></i>
+    </div>
+
+    <!-- Attached, with the size it will actually send. -->
+    <div class="card card-flat flex items-center gap-3">
+      <div class="shot w-14 h-16 flex-shrink-0"></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-bold">Receipt attached</p>
+        <p class="text-2xs text-ink-3 mt-0.5">Resized to 1600px · 240 KB</p>
+      </div>
+      <button class="iconbtn"><i data-lucide="trash-2" class="w-4 h-4 text-neg-fg"></i></button>
+    </div>
+
+    <p class="text-2xs text-ink-3 leading-relaxed px-1">
+      Everyone in Goa Trip '26 can see this photo. Nothing is read from it — the amount above
+      is yours alone to set.
+    </p>
+
+  </div>
+</div>
+
+<!-- ============ STATE 2 · Free, and the offer ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <button class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <h2 class="text-base font-black">Add expense</h2>
+    <button class="btn btn-sm btn-primary ml-auto"><i data-lucide="check" class="w-4 h-4"></i> Save</button>
+  </div>
+
+  <div class="px-4 pt-2 space-y-3">
+
+    <div class="field-row">
+      <div class="cat cat-food cat-sm"><i data-lucide="utensils" class="w-3.5 h-3.5"></i></div>
+      <input class="field text-[17px] font-bold" value="Dinner at Toit" />
+    </div>
+
+    <div class="field-row">
+      <span class="text-2xl font-black text-ink-3">₹</span>
+      <input class="field num text-[30px] font-black" value="6,200" />
+    </div>
+
+    <!-- Visible, not hidden. Tapping goes to the paywall; the expense you were
+         typing survives it. -->
+    <button class="card card-flat flex items-center gap-3 w-full text-left">
+      <div class="row-icon bg-saffron-50"><i data-lucide="camera" class="w-4 h-4 text-saffron-600"></i></div>
+      <div class="flex-1">
+        <p class="text-sm font-bold">Attach the bill</p>
+        <p class="text-2xs text-ink-3 mt-0.5">So "what was this ₹6,200" answers itself</p>
+      </div>
+      <span class="chip chip-saffron">Pro</span>
+    </button>
+
+    <div class="card card--muted flex items-start gap-2.5">
+      <i data-lucide="info" class="w-4 h-4 text-ink-3 flex-shrink-0 mt-0.5"></i>
+      <p class="text-2xs text-ink-2 leading-relaxed">
+        Adding and splitting this expense is free, with or without a photo. Pro only adds the photo.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ STATE 3 · On the expense, and pending ============ -->
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="index.html" class="backbtn"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    <h2 class="text-base font-black">Dinner at Toit</h2>
+  </div>
+
+  <div class="px-4 pt-3 space-y-3">
+
+    <div class="card text-center">
+      <p class="section-label">Goa Trip '26 · 11 Sep</p>
+      <p class="amt amt-neutral amt-xl num mt-1">₹6,200</p>
+      <p class="text-2xs text-ink-3 mt-1">You paid · ₹1,550 each</p>
+    </div>
+
+    <button class="shot w-full h-56 flex items-end justify-end p-2">
+      <span class="chip chip-neutral"><i data-lucide="maximize-2" class="w-3 h-3"></i> Tap to open</span>
+    </button>
+
+    <!-- Offline is the normal case, so the expense is saved and the image
+         catches up. It says so rather than pretending to be done. -->
+    <div class="card card--muted flex items-center gap-2.5">
+      <i data-lucide="cloud-upload" class="w-4 h-4 text-ink-3"></i>
+      <p class="text-2xs text-ink-2 flex-1">Photo will upload when you're back online. The expense is already saved.</p>
+    </div>
+
+    <div class="card card-flat">
+      <div class="split-row">
+        <div class="avatar avatar-sm av-riya">R</div>
+        <div class="flex-1"><p class="text-sm font-bold">You</p><p class="text-2xs text-ink-3">paid ₹6,200</p></div>
+        <span class="amt amt-pos amt-sm num">+₹4,650</span>
+      </div>
+      <div class="split-row">
+        <div class="avatar avatar-sm av-arjun">A</div>
+        <div class="flex-1"><p class="text-sm font-bold">Arjun</p></div>
+        <span class="amt amt-neg amt-sm num">₹1,550</span>
+      </div>
+    </div>
+
+    <!-- .btn is width:100%, so an icon-only .btn beside a flex-1 one eats the
+         row and wraps the label. Icon-only buttons are .iconbtn everywhere
+         else in the system; this is no exception. -->
+    <div class="flex items-center gap-2">
+      <button class="btn btn-secondary flex-1"><i data-lucide="image" class="w-4 h-4"></i> Replace photo</button>
+      <button class="iconbtn flex-shrink-0 text-neg-fg" aria-label="Remove photo"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

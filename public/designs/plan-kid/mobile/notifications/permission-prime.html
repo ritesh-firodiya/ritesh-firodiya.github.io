@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Notification prime</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Notification Permission</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Prime users for notification permissions with transparency about what they'll receive.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Permission benefit explanation</li>
+        <li>Transparency about notification types</li>
+        <li>System prompt trigger on acceptance</li>
+        <li>Permanent opt-out acknowledgment</li>
+      </ul>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Why:</strong> Never ask iOS for push permission cold — one deny is a permanent loss. Prime first, promise what we'll send (and what we won't), then trigger the system prompt only if they say yes.</p>
+    </div>
+  </div>
+
+<div class="phone phone--cream">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="px-6 pt-6 pb-8 flex flex-col min-h-full">
+    <div class="hero">
+      <div class="hero-orb" style="width:160px;height:160px;background:var(--coral-400);top:-40px;right:-40px"></div>
+      <p class="hero-eyebrow">Stay in rhythm</p>
+      <p class="hero-title mt-2">A gentle nudge, never a nag.</p>
+    </div>
+
+    <div class="mt-6">
+      <p class="section-label">You'll get</p>
+      <div class="mt-3 space-y-3">
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-coral-100 flex items-center justify-center flex-shrink-0"><i data-lucide="heart-handshake" class="w-4 h-4 coral"></i></div>
+          <div>
+            <p class="text-[13px] font-bold">Weekly ritual reminder</p>
+            <p class="text-[12px] text-[color:var(--text-tertiary)]">Sundays, 8pm — the one moment that matters most.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0"><i data-lucide="sparkles" class="w-4 h-4 teal-700"></i></div>
+          <div>
+            <p class="text-[13px] font-bold">Milestones from your partner</p>
+            <p class="text-[12px] text-[color:var(--text-tertiary)]">First heartbeat, first kick — never miss it.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-info-bg flex items-center justify-center flex-shrink-0"><i data-lucide="calendar" class="w-4 h-4 info"></i></div>
+          <div>
+            <p class="text-[13px] font-bold">Cycle & stage cues (you pick)</p>
+            <p class="text-[12px] text-[color:var(--text-tertiary)]">Fully off, quiet, or full — always your choice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 card card--sunken">
+      <div class="flex items-start gap-2">
+        <i data-lucide="shield-check" class="w-4 h-4 teal-700 flex-shrink-0 mt-0.5"></i>
+        <p class="text-[12px] text-[color:var(--text-secondary)]"><b>What you won't get:</b> streak guilt, marketing, other users. Ever.</p>
+      </div>
+    </div>
+
+    <div class="mt-auto pt-6 space-y-3">
+      <button class="btn btn-primary">Turn on notifications</button>
+      <button class="btn btn-ghost text-[13px]">Maybe later</button>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

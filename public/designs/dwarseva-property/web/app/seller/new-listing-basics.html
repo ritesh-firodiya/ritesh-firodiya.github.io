@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller · New listing · Basics — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 128px); box-shadow: 0 0 0 1px #18181b; }
+    .chip { padding: 8px 10px; text-align: center; font-size: 12px; border-radius: 8px; border: 1px solid #27272a; background: #18181b; color: #d4d4d8; cursor: pointer; }
+    .chip:hover { border-color: rgba(59,130,246,0.4); }
+    .chip-on { border-color: #3b82f6; background: rgba(59,130,246,0.10); color: #bfdbfe; font-weight: 600; }
+    .field { background: #18181b; border: 1px solid #27272a; border-radius: 8px; }
+    .field-label { font-size: 11px; color: #a1a1aa; }
+    .step { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #a1a1aa; }
+    .step-done { color: #6ee7b7; }
+    .step-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left: 3px solid #3b82f6; padding-left: 9px; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="home.html" class="rounded-md bg-emerald-500/15 px-3 py-1.5 font-semibold text-emerald-700">Sell</a>
+    </nav>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/20 text-[10px] font-semibold text-emerald-700">SP</span>
+        <span>Sanjay</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] mx-auto max-w-[1440px]">
+  <div class="mx-auto grid max-w-[1100px] grid-cols-[220px_minmax(0,1fr)] gap-8 px-8 py-8">
+
+    <aside class="sticky top-20 self-start rounded-2xl border border-zinc-200 bg-zinc-100/75 p-3">
+      <p class="px-3 text-[10px] uppercase tracking-widest text-zinc-500">Draft · #LST-2026-07-1149</p>
+      <nav class="mt-2 space-y-0.5">
+        <a href="new-listing-basics.html" class="step step-active">1 · Basics</a>
+        <a href="agent-noc.html" class="step">1.5 · Agent NoC <span class="ml-auto text-[10px] text-zinc-500">if agent</span></a>
+        <a href="new-listing-location.html" class="step">2 · Location &amp; config</a>
+        <a href="new-listing-photos.html" class="step">3 · Photos &amp; publish</a>
+      </nav>
+      <div class="mt-4 rounded-lg border border-zinc-200 bg-zinc-100 p-2.5 text-[10.5px] text-zinc-600">
+        Autosaved 12 sec ago · <a href="home.html" class="text-blue-700 hover:underline">Exit to drafts</a>
+      </div>
+    </aside>
+
+    <main class="space-y-6">
+
+      <div class="flex items-end justify-between">
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-blue-700">/seller/new · Step 1 of 3</p>
+          <h1 class="mt-0.5 text-xl font-semibold">Property basics</h1>
+          <p class="mt-0.5 text-[12px] text-zinc-600">What are you listing? Our reviewer will write the title after submission — you don't enter one.</p>
+        </div>
+        <div class="rounded-lg border border-blue-500/30 bg-blue-500/10 px-3 py-2 text-[11px] text-blue-700">
+          <span class="mono font-semibold">Draft</span> · not visible to buyers
+        </div>
+      </div>
+
+      <section class="scroll-mt-20 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6 space-y-5">
+
+        <div>
+          <p class="text-zinc-600">Listing variant</p>
+          <div class="mt-1.5 grid grid-cols-4 gap-2">
+            <div class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700"><p class="font-semibold">Rent</p><p class="mt-0.5 text-[10px] text-blue-700">Monthly + deposit</p></div>
+            <div class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40"><p class="font-semibold">Sell · New</p><p class="mt-0.5 text-[10px] text-zinc-500">Under-construction</p></div>
+            <div class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40"><p class="font-semibold">Sell · Resale</p><p class="mt-0.5 text-[10px] text-zinc-500">Ready to move</p></div>
+            <div class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40"><p class="font-semibold">Lease</p><p class="mt-0.5 text-[10px] text-zinc-500">Multi-year term</p></div>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-zinc-600">Who is listing?</p>
+          <div class="mt-1.5 grid grid-cols-2 gap-2 max-w-md">
+            <div class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">Owner</div>
+            <a href="agent-noc.html" class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Agent <span class="text-[10px] text-zinc-500">(+ NoC required)</span></a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-zinc-600">Property kind</p>
+          <div class="mt-1.5 grid grid-cols-4 gap-2 md:grid-cols-6">
+            <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">Apartment / Flat</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Ind. House</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Builder Floor</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Villa</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Bungalow</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Rowhouse</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Studio</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">PG</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Plot / Land</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Farm</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Commercial</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-zinc-600">Configuration <span class="text-zinc-500">(N/A for Plot / Land / Farm / Commercial)</span></p>
+          <div class="mt-1.5 grid grid-cols-6 gap-1 max-w-md">
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">1RK</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">1</span>
+            <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">2</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">3</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">4</span>
+            <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">5+</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-[1.4fr_1fr_1fr] gap-3">
+          <label class="block">
+            <span class="text-zinc-600">Rent · monthly</span>
+            <div class="mt-1 flex items-center rounded-md border border-zinc-200 bg-white">
+              <span class="mono px-3 py-2.5 text-sm text-zinc-600 border-r border-zinc-200">₹</span>
+              <input type="text" value="28,000" class="mono block w-full bg-transparent px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+            </div>
+          </label>
+          <div>
+            <span class="text-zinc-600">Deposit <span class="text-zinc-500">(rent only)</span></span>
+            <div class="mt-1 grid grid-cols-3 gap-1.5">
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">1 mo</span>
+              <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">2 mo</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">3 mo</span>
+            </div>
+          </div>
+          <label class="mt-6 flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2.5 text-[12px] text-zinc-800">
+            <input type="checkbox" class="h-4 w-4 rounded border-zinc-300 bg-white accent-blue-500" checked />
+            Price negotiable
+          </label>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <label class="block">
+            <span class="text-zinc-600">Carpet / Plot area (sqft) *</span>
+            <input type="text" value="780" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="text-zinc-600">Built-up (sqft)</span>
+            <input type="text" value="940" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="text-zinc-600">Super built-up (sqft)</span>
+            <input type="text" value="1,050" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+          </label>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <span class="text-zinc-600">Furnishing</span>
+            <div class="mt-1 grid grid-cols-3 gap-1.5">
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Unfurn</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Semi</span>
+              <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">Fully</span>
+            </div>
+          </div>
+          <div>
+            <span class="text-zinc-600">Age</span>
+            <div class="mt-1 grid grid-cols-4 gap-1.5">
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">&lt;1y</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">1–5</span>
+              <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">5–10</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">10+</span>
+            </div>
+          </div>
+          <div>
+            <span class="text-zinc-600">Floor <span class="text-zinc-500">/ 11</span></span>
+            <div class="mt-1 grid grid-cols-5 gap-1.5">
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">G</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">1</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">2–3</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">4–6</span>
+              <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">7+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <label class="block">
+            <span class="text-zinc-600">Wing (optional)</span>
+            <input type="text" value="B" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="text-zinc-600">Flat number</span>
+            <input type="text" value="B-704" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+          </label>
+          <label class="mt-6 flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2.5 text-[12px] text-zinc-800">
+            <input type="checkbox" class="h-4 w-4 rounded border-zinc-300 bg-white accent-blue-500">
+            Pet-friendly
+          </label>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block">
+            <span class="text-zinc-600">Available from</span>
+            <input type="date" value="2026-08-01" class="mono bg-white border-zinc-200 mt-1 block w-full px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+          </label>
+          <div>
+            <span class="text-zinc-600">Tenant preference <span class="text-zinc-500">(rent only)</span></span>
+            <div class="mt-1 grid grid-cols-3 gap-1.5">
+              <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">Family</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Bachelor</span>
+              <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Both</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="rounded-lg border border-blue-500/30 bg-blue-500/10 px-3 py-2 text-[11px] text-blue-700">
+          <span class="font-semibold">Note:</span> You do NOT enter a title. Our reviewer writes a clean factual title after checking your photos and fields — that title is what buyers see.
+        </p>
+      </section>
+
+      <div class="flex items-center justify-between">
+        <a href="home.html" class="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-[13px] text-zinc-800 hover:border-blue-500/40">Save draft &amp; exit</a>
+        <a href="new-listing-location.html" class="rounded-lg bg-blue-500 px-5 py-2.5 text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">Next · Location &amp; config →</a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

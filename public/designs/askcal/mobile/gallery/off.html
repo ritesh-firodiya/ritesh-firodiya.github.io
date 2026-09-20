@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — photos off — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+
+<!--
+  "Keep meal photos" is off.
+
+  A different screen from empty.html because it has a different cause and a
+  different fix. Here there IS something to do, and the fix is one tap rather
+  than a trip into Settings to hunt for a switch whose name the user would
+  have to guess.
+
+  The second paragraph is the part that stops this being a dark pattern. Prefs
+  says plainly that turning the setting off stops NEW photos and does not
+  delete existing ones, so a user who switches it back on finds whatever was
+  already there. Saying that here means the choice can be made without fear of
+  losing anything, which is the only way a privacy setting is a real choice.
+-->
+
+<div class="phone phone--page">
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="../history/trends.html" class="backbtn" aria-label="Back to trends">
+        <i data-lucide="arrow-left" style="width:19px;height:19px"></i>
+      </a>
+      <div>
+        <p class="text-2xs uppercase tracking-label text-ink-3 leading-none font-bold">Turned off</p>
+        <p class="text-lg font-black leading-tight" style="color:var(--brand-900)">Food gallery</p>
+      </div>
+    </div>
+    <a href="../settings/index.html" class="iconbtn" aria-label="Photo settings">
+      <i data-lucide="settings" style="width:20px;height:20px"></i>
+    </a>
+  </div>
+
+  <div class="empty" style="padding-top:56px">
+    <div class="empty-illus"><i data-lucide="image-off" style="width:30px;height:30px"></i></div>
+    <p class="empty-title">Meal photos are turned off</p>
+    <p class="empty-sub">
+      Scans still work and still count &mdash; the photo just isn&rsquo;t kept after the
+      estimate is made.
+    </p>
+    <p class="empty-sub" style="margin-top:12px">
+      Turning it back on only affects meals from here. Anything already saved is still
+      saved, and nothing was deleted.
+    </p>
+    <div class="mt-5 px-8 grid gap-2">
+      <button class="btn btn-primary">
+        <i data-lucide="image" style="width:17px;height:17px"></i>
+        <span>Keep meal photos</span>
+      </button>
+      <a href="../settings/index.html" class="btn btn-ghost no-underline">
+        <span>Open Settings</span>
+      </a>
+    </div>
+  </div>
+
+  <div style="height:22px"></div>
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../home/today.html" class="tab"><i data-lucide="circle-gauge" class="tab-icon"></i><span>Today</span></a>
+      <a href="../history/trends.html" class="tab is-active"><i data-lucide="trending-up" class="tab-icon" stroke-width="2.5"></i><span>Trends</span></a>
+      <a href="../scan/camera.html" class="tab-fab"><span class="tab-fab-inner"><i data-lucide="camera" style="width:24px;height:24px"></i></span><span class="tab-fab-label">Scan</span></a>
+      <a href="../food/search.html" class="tab"><i data-lucide="search" class="tab-icon"></i><span>Add</span></a>
+      <a href="../settings/index.html" class="tab"><i data-lucide="user" class="tab-icon"></i><span>You</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

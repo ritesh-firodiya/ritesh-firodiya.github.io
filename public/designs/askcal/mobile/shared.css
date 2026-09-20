@@ -1,0 +1,656 @@
+/* AskCal wireframes — shared design system
+   ======================================
+   Light theme. Deep green brand, amber reserved for the ask.
+   Every screen links this file. Mirrors tailwind.config.js token for token.
+
+   One rule runs through the whole system: a number is never shown without its
+   confidence. The camera can read a bread roll; it cannot read the butter. The
+   UI has to say which is which, or the product is just a guess with a font. */
+
+:root {
+  /* Surfaces */
+  --page:    #f4f6f5;
+  --surface: #ffffff;
+  --muted:   #fafbfa;
+  --sunken:  #eceff0;
+
+  /* Text */
+  --ink:   #16201c;
+  --ink-2: #4d5b55;
+  --ink-3: #7d8b85;
+  --ink-4: #adb8b3;
+  --ink-inv: #ffffff;
+
+  /* Borders */
+  --line: #e4e8e6;
+  --line-strong: #d0d6d3;
+
+  /* Brand · green */
+  --brand-50:  #e9f7f0;
+  --brand-100: #cdedde;
+  --brand-200: #9adcbe;
+  --brand-400: #3faa79;
+  --brand-500: #1f8b5c;
+  --brand-700: #136141;
+  --brand-900: #0a3a27;
+
+  /* Ask · amber — the question moment, nothing else */
+  --ask-50:  #fff8e8;
+  --ask-100: #ffefc6;
+  --ask-200: #ffdd8c;
+  --ask-400: #f7b731;
+  --ask-500: #e89c0d;
+  --ask-700: #9c650a;
+
+  /* Confidence */
+  --conf-high:   #1f8b5c; --conf-high-bg: #e9f7f0;
+  --conf-med:    #e89c0d; --conf-med-bg:  #fff8e8;
+  --conf-low:    #e5484d; --conf-low-bg:  #ffefef;
+
+  /* Macros */
+  --protein: #7c5cf0; --protein-bg: #f1edff;
+  --carbs:   #f7b731; --carbs-bg:   #fff8e8;
+  --fat:     #e5757a; --fat-bg:     #ffeff0;
+
+  /* Status */
+  --info:   #0091ff; --info-bg:   #e6f4ff; --info-fg:   #006adc;
+  --warn:   #e89c0d; --warn-bg:   #fff8e8; --warn-fg:   #9c650a;
+  --danger: #e5484d; --danger-bg: #ffefef; --danger-fg: #c62a2f;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(22,32,28,0.05);
+  --shadow:    0 4px 14px rgba(22,32,28,0.07);
+  --shadow-lg: 0 14px 34px -10px rgba(22,32,28,0.18);
+
+  /* Radii */
+  --r-sm: 8px; --r: 12px; --r-lg: 16px; --r-xl: 20px;
+  --r-2xl: 24px; --r-3xl: 28px;
+}
+
+/* Base */
+html, body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* Tabular numerals — every kcal and gram figure must line up column to column */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Phone frame */
+/* On a narrow screen the browser viewport IS the frame, so the page scrolls
+   naturally and a sticky footer pins to the bottom of the screen. On desktop we
+   have to fake that: a fixed 844px box that scrolls its own content, otherwise
+   the frame grows to fit and the "pinned" footer ends up parked below the fold
+   — which is exactly what it was doing before. */
+.phone {
+  max-width: 390px;
+  margin: 0 auto;
+  background: var(--surface);
+  min-height: 100dvh;
+  position: relative;
+  /* Flex column so a footer with margin-top:auto is pushed to the bottom when
+     content is short, instead of leaving a gap beneath it. */
+  display: flex;
+  flex-direction: column;
+  /* NOT overflow:hidden here. An overflow:hidden ancestor silently becomes the
+     sticky element's scroll container, and since it never scrolls, position:
+     sticky never activates — the footer just sits at the end of the content.
+     On narrow screens the page itself is the scroller, so this must stay
+     visible. Desktop re-introduces clipping via overflow-y:auto below. */
+}
+@media (min-width: 640px) {
+  .phone {
+    height: 844px;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    margin: 20px auto;
+    border-radius: 40px;
+    box-shadow: 0 0 0 1px var(--line-strong), 0 30px 60px -20px rgba(22,32,28,0.2);
+  }
+  .phone::-webkit-scrollbar { width: 0; }
+}
+.phone--page   { background: var(--page); }
+.phone--sunken { background: var(--sunken); }
+.phone--dark   { background: var(--brand-900); }
+.phone--camera { background: #0e1412; }
+
+/* Breadcrumb — dev nav, not part of the product */
+.breadcrumb {
+  border-bottom: 1px dashed var(--line-strong);
+  background: rgba(255,255,255,0.7);
+  padding: 8px 20px;
+}
+.breadcrumb-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  font-size: 11px;
+}
+.breadcrumb-label {
+  margin-right: 4px; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--ink-3);
+}
+.breadcrumb-chip {
+  border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fff; padding: 2px 8px;
+  color: var(--ink-2); text-decoration: none;
+}
+.breadcrumb-chip:hover { border-color: var(--brand-500); }
+.breadcrumb-chip.is-current {
+  border-color: var(--brand-500); background: var(--brand-50);
+  color: var(--brand-700); font-weight: 600;
+}
+
+/* Status bar */
+.statusbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px 2px; font-size: 13px; color: var(--ink);
+}
+.statusbar-time { font-weight: 600; letter-spacing: 0.02em; }
+.statusbar-icons { display: flex; align-items: center; gap: 6px; }
+.statusbar--on-dark, .statusbar--on-dark .statusbar-icons { color: #fff; }
+
+/* App header */
+.appheader {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 20px 12px;
+}
+.appheader-left { display: flex; align-items: center; gap: 10px; }
+.iconbtn {
+  width: 40px; height: 40px; border-radius: 999px;
+  background: var(--sunken);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-2); border: none; cursor: pointer;
+  text-decoration: none; transition: opacity 0.15s;
+}
+.iconbtn:active { opacity: 0.7; }
+.iconbtn--on-dark { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* Sub-header — back + title + optional action */
+.subheader {
+  display: grid; grid-template-columns: 40px 1fr 40px;
+  align-items: center; gap: 8px; padding: 4px 16px 12px;
+}
+.subheader-title { text-align: center; font-weight: 800; font-size: 15px; }
+.subheader-sub { text-align: center; font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+.backbtn {
+  width: 40px; height: 40px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink); text-decoration: none; background: transparent; border: none;
+}
+
+/* Sticky bottom action area */
+.sticky-bottom {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line);
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 8px));
+}
+.sticky-bottom--dark {
+  background: rgba(14,20,18,0.9); border-top-color: rgba(255,255,255,0.1);
+}
+
+/* Bottom tab bar */
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line);
+}
+.tabbar-row { display: flex; align-items: flex-end; }
+.tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px 4px; color: var(--ink-4); text-decoration: none;
+  font-size: 10px; font-weight: 600; transition: color 0.15s;
+}
+.tab.is-active { color: var(--brand-700); font-weight: 800; }
+.tab-icon { width: 22px; height: 22px; }
+/* Centre capture button — the app's primary verb */
+.tab-fab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 4px 10px; text-decoration: none; }
+.tab-fab-inner {
+  width: 54px; height: 54px; border-radius: 999px;
+  background: var(--brand-500); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-fab, 0 8px 20px -4px rgba(31,139,92,0.5));
+  margin-top: -18px; border: 4px solid #fff;
+}
+.tab-fab-label { font-size: 10px; font-weight: 800; color: var(--brand-700); }
+.tabbar-handle { display: flex; align-items: center; justify-content: center; padding: 4px 0 8px; }
+.tabbar-handle-bar { height: 4px; width: 128px; border-radius: 999px; background: var(--line-strong); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border-radius: var(--r-2xl);
+  font-weight: 800; font-size: 15px; letter-spacing: 0.01em;
+  border: none; cursor: pointer; text-decoration: none; width: 100%;
+  transition: opacity 0.15s, transform 0.05s;
+}
+.btn:active { opacity: 0.85; transform: scale(0.99); }
+.btn-primary   { background: var(--brand-500); color: #fff; }
+.btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); }
+.btn-ask       { background: var(--ask-500); color: #fff; }
+.btn-dark      { background: var(--brand-900); color: #fff; }
+.btn-ghost     { background: transparent; color: var(--ink-2); font-weight: 700; }
+.btn-danger    { background: var(--surface); color: var(--danger-fg); border: 1px solid var(--line-strong); }
+.btn-sm        { padding: 10px 14px; font-size: 13px; border-radius: var(--r-lg); }
+
+/* Cards */
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-lg); padding: 16px;
+}
+.card--muted  { background: var(--muted); }
+.card--sunken { background: var(--sunken); border-color: transparent; }
+.card--brand  { background: var(--brand-50); border-color: var(--brand-100); }
+.card--ask    { background: var(--ask-50); border-color: var(--ask-200); }
+.card--interactive { cursor: pointer; transition: border-color 0.15s, transform 0.05s; }
+.card--interactive:active { transform: scale(0.995); }
+
+/* Section labels */
+.section-label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--ink-3); font-weight: 700;
+}
+
+/* Chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 6px;
+  font-size: 10.5px; line-height: 1.3; font-weight: 700;
+}
+.chip-lg      { padding: 5px 10px; font-size: 11.5px; }
+.chip-brand   { background: var(--brand-50);  color: var(--brand-700); }
+.chip-ask     { background: var(--ask-100);   color: var(--ask-700); }
+.chip-neutral { background: var(--sunken);    color: var(--ink-2); }
+.chip-danger  { background: var(--danger-bg); color: var(--danger-fg); }
+.chip-info    { background: var(--info-bg);   color: var(--info-fg); }
+
+/* Confidence — the product's core signal.
+   high: the camera established it. med: reasonable inference.
+   low: the camera cannot know, and we say so rather than pretending. */
+.conf { display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+.conf-high { background: var(--conf-high-bg); color: var(--conf-high); }
+.conf-med  { background: var(--conf-med-bg);  color: var(--conf-med); }
+.conf-low  { background: var(--conf-low-bg);  color: var(--conf-low); }
+.conf-dot { width: 7px; height: 7px; border-radius: 999px; display: inline-block; }
+.conf-dot--high { background: var(--conf-high); }
+.conf-dot--med  { background: var(--conf-med); }
+.conf-dot--low  { background: var(--conf-low); }
+
+/* Calorie ring */
+.ring-wrap { position: relative; display: grid; place-items: center; }
+/*
+   Bounded to the clear space inside the stroke.
+
+   The ring is 118px across with a 11px stroke, so the widest a line through the
+   centre can be without touching the arc is 2*(50 - 5.5) = 89px, less a little
+   breathing room. 34px flat fits "1,123" and does not fit "2,270" — four digits
+   and a separator at weight 900 run past the arc, which is what the built app
+   was doing on any target above 2,000 kcal.
+
+   clamp() shrinks the number only when it needs to, so the common
+   three-digit case keeps its size. The app does the same thing with
+   adjustsFontSizeToFit; see components/calorie-ring.tsx.
+*/
+.ring-center { position: absolute; text-align: center; max-width: 75px; }
+.ring-kcal {
+  /* 24px, because that is what measurement says fits, not what looks right in
+     a mockup showing "1,123". Canvas-measured at weight 900 in this stack:
+     "2,270" is 96.7px at 34px and 68.3px at 24px, against 77px of clear space
+     inside the stroke. 34px overflowed by twenty pixels on any target above
+     2,000 kcal, which is most of them.
+
+     The app does better than this flat size: calorie-ring.tsx sets
+     adjustsFontSizeToFit, so a three-digit number still renders at 34px and
+     only a long one drops toward 24px. CSS cannot shrink text to fit, so the
+     design takes the worst case rather than promising a size the app cannot
+     always honour. */
+  font-size: 24px;
+  font-weight: 900; line-height: 1; letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.ring-unit { font-size: 10px; font-weight: 800; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.16em; margin-top: 3px; }
+
+/* Macro bars */
+.macro-row { display: flex; align-items: center; gap: 8px; }
+.macro-track { flex: 1; height: 6px; border-radius: 999px; background: var(--sunken); overflow: hidden; }
+.macro-fill { height: 100%; border-radius: 999px; }
+.macro-dot { width: 8px; height: 8px; border-radius: 999px; }
+.m-protein { background: var(--protein); }
+.m-carbs   { background: var(--carbs); }
+.m-fat     { background: var(--fat); }
+
+/* Component row — one identified part of a meal */
+.comp {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--r);
+}
+.comp--low { border-color: var(--conf-low); background: var(--conf-low-bg); }
+.comp-body { flex: 1; min-width: 0; }
+.comp-name { font-weight: 800; font-size: 14px; }
+.comp-sub  { font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+.comp-kcal { font-weight: 900; font-size: 15px; }
+.comp-puck {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex: none;
+}
+
+/* Meal list row (the day's log) */
+.meal { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+.meal-thumb { width: 48px; height: 48px; border-radius: var(--r); object-fit: cover; flex: none; background: var(--sunken); display: flex; align-items: center; justify-content: center; }
+.meal-body { flex: 1; min-width: 0; }
+.meal-title { font-weight: 800; font-size: 14px; }
+.meal-sub { font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+
+/* Big selectable option row — used by the quiz and the clarify screen */
+.opt {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 16px; border-radius: var(--r-lg);
+  border: 1.5px solid var(--line-strong); background: var(--surface);
+  text-align: left; cursor: pointer; text-decoration: none; color: inherit;
+  transition: border-color 0.12s, background 0.12s, transform 0.05s;
+}
+.opt:active { transform: scale(0.99); }
+.opt.is-selected { border-color: var(--brand-500); background: var(--brand-50); }
+.opt--ask.is-selected { border-color: var(--ask-500); background: var(--ask-50); }
+.opt-title { font-weight: 800; font-size: 15px; }
+.opt-sub { font-size: 11.5px; color: var(--ink-3); margin-top: 2px; }
+.opt-mark {
+  width: 22px; height: 22px; border-radius: 999px; flex: none;
+  border: 2px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+}
+.opt.is-selected .opt-mark { border-color: var(--brand-500); background: var(--brand-500); color: #fff; }
+.opt--ask.is-selected .opt-mark { border-color: var(--ask-500); background: var(--ask-500); }
+
+/* Segmented control */
+.segmented { display: inline-flex; background: var(--sunken); border-radius: 999px; padding: 3px; gap: 2px; }
+.segmented--full { display: flex; width: 100%; }
+.segmented > * {
+  flex: 1; text-align: center; padding: 8px 14px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 700; color: var(--ink-2);
+  border: none; background: transparent; cursor: pointer; text-decoration: none;
+}
+.segmented > .is-active { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); font-weight: 800; }
+
+/* List row (settings + generic) */
+.row { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; color: inherit; }
+.row-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--sunken); display: flex; align-items: center; justify-content: center; color: var(--ink-2); flex: none; }
+.row-body { flex: 1; min-width: 0; }
+.row-title { font-weight: 700; font-size: 14px; }
+.row-sub { font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+.divider { height: 1px; background: var(--line); }
+
+/* Form fields */
+.field { display: block; width: 100%; }
+.field-label { font-size: 11px; font-weight: 700; color: var(--ink-2); margin-bottom: 6px; display: block; }
+.field-input {
+  width: 100%; padding: 13px 14px; border-radius: var(--r);
+  border: 1.5px solid var(--line-strong); background: var(--surface);
+  font-size: 15px; font-weight: 600; color: var(--ink); box-sizing: border-box;
+}
+.field-input::placeholder { color: var(--ink-4); font-weight: 500; }
+.field-help { font-size: 11px; color: var(--ink-3); margin-top: 5px; }
+
+/* Search bar */
+.search {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px; border-radius: var(--r-lg);
+  background: var(--sunken); color: var(--ink-3);
+}
+.search input { border: none; background: transparent; outline: none; font-size: 14px; width: 100%; color: var(--ink); }
+
+/* Toggle */
+.toggle { width: 44px; height: 26px; border-radius: 999px; background: var(--line-strong); position: relative; flex: none; transition: background 0.15s; }
+.toggle.is-on { background: var(--brand-500); }
+.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 999px; background: #fff; box-shadow: var(--shadow-sm); transition: transform 0.15s; }
+.toggle.is-on::after { transform: translateX(18px); }
+
+/* Modal / sheet */
+.backdrop { position: absolute; inset: 0; background: rgba(10,20,16,0.55); }
+.sheet {
+  position: absolute; inset-inline: 0; bottom: 0;
+  background: var(--surface);
+  border-radius: var(--r-3xl) var(--r-3xl) 0 0;
+  padding: 8px 20px calc(20px + env(safe-area-inset-bottom, 8px));
+}
+.sheet-grip { width: 40px; height: 4px; border-radius: 999px; background: var(--line-strong); margin: 6px auto 14px; }
+
+/* Empty state */
+.empty { text-align: center; padding: 40px 28px; }
+.empty-illus { width: 72px; height: 72px; border-radius: 999px; background: var(--sunken); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--ink-4); }
+.empty-title { font-weight: 800; font-size: 16px; }
+.empty-sub { font-size: 13px; color: var(--ink-3); margin-top: 6px; line-height: 1.5; }
+
+/* Skeleton */
+.skel { background: linear-gradient(90deg, var(--sunken) 25%, #f4f6f5 50%, var(--sunken) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: var(--r-sm); }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* Quota meter — metering is visible, never a surprise */
+.quota { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; color: var(--ink-3); }
+.quota-track { flex: 1; height: 5px; border-radius: 999px; background: var(--sunken); overflow: hidden; }
+.quota-fill { height: 100%; border-radius: 999px; background: var(--brand-500); }
+.quota-fill--low { background: var(--ask-500); }
+.quota-fill--out { background: var(--danger); }
+
+/* Camera scrim + framing */
+.viewfinder { position: absolute; inset: 0; background: #0e1412; display: flex; align-items: center; justify-content: center; }
+.vf-frame { width: 260px; height: 260px; border-radius: var(--r-2xl); box-shadow: 0 0 0 9999px rgba(14,20,18,0.55); position: relative; }
+.vf-corner { position: absolute; width: 26px; height: 26px; border: 3px solid #fff; }
+
+/* Lucide defaults */
+.lucide { stroke-width: 2; }
+
+/* Utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Toast — bottom, above the tab bar, auto-dismiss. Every destructive or
+   silent action gets one with an Undo; logging a meal is reversible. */
+.toast {
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 14px; border-radius: var(--r-lg);
+  background: var(--ink); color: #fff;
+  box-shadow: var(--shadow-lg);
+}
+.toast-body { flex: 1; min-width: 0; }
+.toast-title { font-size: 13px; font-weight: 800; }
+.toast-sub { font-size: 11px; opacity: 0.7; margin-top: 1px; }
+.toast-action { font-size: 12px; font-weight: 800; color: var(--brand-200); text-decoration: none; flex: none; }
+.toast-success { background: var(--brand-700); }
+.toast-danger  { background: #7f1d21; }
+.toast-ask     { background: var(--ask-700); }
+.toast-ask .toast-action { color: var(--ask-100); }
+
+/* ---------------------------------------------------------------------------
+   Day strip — home/day-nav.html, home/day-past.html
+
+   Seven days of history sitting above the ring. The dot under each day is the
+   evidence for the streak count: filled means something is logged there. A
+   streak that shows its working is one nobody has to trust us about, which is
+   the single loudest complaint about the app that leads this category.
+   --------------------------------------------------------------------------- */
+.daychip {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 0 6px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+.daychip.is-current {
+  background: var(--brand-500);
+  border-color: var(--brand-500);
+  color: #fff;
+}
+.daychip-letter {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.66;
+  line-height: 1;
+}
+.daychip-num { font-size: 13px; font-weight: 900; line-height: 1; }
+/*
+   The dot carries the day's OUTCOME, not merely that something was logged.
+   Green met the target, amber fell short, red went over, hollow means nothing
+   is logged. A week of eating is then readable at a glance without opening a
+   single day — which is the whole reason the strip is on the home screen.
+
+   Slightly larger than a presence dot would need to be: it is now carrying
+   meaning, so it has to survive a glance.
+
+   Colour is never the only signal. Each day also states its outcome in text on
+   the day screen, and the aria-label on the chip spells it out — roughly one
+   man in twelve cannot separate the red from the green here.
+*/
+.daychip-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--ink-3);
+}
+/* Ate enough, without going over. */
+.daychip-dot--met  { background: var(--brand-500); }
+/* Short of the target. Not a failure, but not a day that met the goal. */
+.daychip-dot--under { background: var(--warn); }
+/* Over the target. */
+.daychip-dot--over { background: var(--danger); }
+.daychip-dot--none {
+  background: transparent;
+  border: 1.5px solid var(--line-strong);
+}
+/* On the selected (dark) chip the outcome colours lose contrast, so the
+   selected day shows white and states its outcome in the ring below instead. */
+.daychip-dot--on-dark { background: #fff; }
+
+/* Legend beneath the strip. Without it the colours are a private language. */
+.daylegend {
+  display: flex; align-items: center; gap: 12px;
+  padding: 7px 2px 0;
+}
+.daylegend-item {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; color: var(--ink-3);
+}
+
+/* ---------------------------------------------------------------------------
+   Stepper — log/confirm.html
+
+   Portion adjustment without a keyboard. "Having to edit every item" is the
+   most repeated usability complaint about the category leader, and a numeric
+   field is the slowest possible way to change 150g to 200g.
+   --------------------------------------------------------------------------- */
+.stepper {
+  display: flex; align-items: center; gap: 2px;
+  background: var(--sunken);
+  border-radius: 10px;
+  padding: 3px;
+}
+.stepper-btn {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+.stepper-value {
+  min-width: 58px; text-align: center;
+  font-size: 13px; font-weight: 900;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Cached-result badge — scan/result-cached.html
+
+   "Same meal, different numbers, varying by 400 calories" is the credibility
+   complaint about the category leader. An identical photo returns an identical
+   answer here, and that is worth saying out loud rather than leaving as
+   invisible plumbing.
+   --------------------------------------------------------------------------- */
+.samebadge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 9px; border-radius: 999px;
+  background: var(--info-bg); color: var(--info-fg);
+  font-size: 10px; font-weight: 800;
+}
+
+/* Informational card — scan/result-same.html. Sits alongside card--brand and
+   card--ask, for statements of fact rather than praise or a prompt. */
+.card--info {
+  background: var(--info-bg);
+  border-color: var(--info);
+}
+
+/* ── Food gallery ─────────────────────────────────────────────────────────
+   The photo wall. Everything here is local: meal photos live in the app's
+   own document directory (lib/photos.ts) and no screen in the app has ever
+   uploaded one. The gallery does not change that — the only way a photo
+   leaves the phone is the user choosing a destination in the OS share sheet.
+*/
+.gal-day { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.gal-tile {
+  position: relative; aspect-ratio: 1; overflow: hidden;
+  background: var(--sunken); display: block; cursor: pointer;
+}
+.gal-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* The number sits ON the photo rather than under it: the wall is a record of
+   what was eaten, and a grid of pictures with no figures is a mood board. */
+.gal-kcal {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 14px 6px 5px; color: #fff; font-size: 11px; font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(to top, rgba(10,20,16,0.78), rgba(10,20,16,0));
+}
+/* A meal logged without a photo still happened. Shown as a gap rather than
+   omitted, so a day of four meals does not read as a day of two. */
+.gal-tile--none {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-4); background: var(--muted);
+  border: 1px dashed var(--line-strong);
+}
+.gal-dayhead {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 0 20px 8px;
+}
+
+/* The composed post. Drawn at the proportions a phone camera actually
+   produces, because what is previewed here is what gets rendered to an image
+   and handed to the share sheet. */
+.post-card {
+  border-radius: var(--r-lg); overflow: hidden; background: var(--brand-900);
+  position: relative; aspect-ratio: 4 / 5;
+}
+.post-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-overlay {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 14px;
+  background: linear-gradient(to top, rgba(10,20,16,0.88), rgba(10,20,16,0));
+  color: #fff;
+}
+.post-kcal { font-size: 30px; font-weight: 900; line-height: 1; letter-spacing: -0.03em; }
+.post-macros { display: flex; gap: 12px; margin-top: 8px; font-size: 11px; font-weight: 700; opacity: 0.85; }
+.post-mark {
+  display: flex; align-items: center; gap: 6px; margin-top: 12px;
+  padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.18);
+  font-size: 11px; font-weight: 700; opacity: 0.8;
+}

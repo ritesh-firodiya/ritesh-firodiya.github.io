@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — First run</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Balances · first run</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> The screen that decides retention. Everything the app can do is currently zero, and the user has to be given exactly one thing to do next.</p>
+
+      <p class="mt-3"><strong>Nothing stands between signing up and this screen.</strong> Sign in, set your name, land here. A tour is a sequence of promises made before the user has seen a single feature.</p>
+
+      <p class="mt-3"><strong>Add an expense is the primary action, not Create a group.</strong> A solo expense works with zero friends and zero setup, so the app is useful on tap one. Group creation is the second button, for people who came here specifically to split something.</p>
+
+      <p class="mt-3"><strong>No contacts permission prompt.</strong> It is asked for at the moment someone actually adds a person to a group, with the reason on screen — not on day one for a feature they haven't reached.</p>
+
+      <p class="mt-3"><strong>The hero keeps its shape</strong> even at zero — the same compact card, the same neutral, so the screen the user learns on day one is the screen they use on day thirty. The two "₹0 / ₹0" sub-boxes went with it: printing zero three times is not reassurance, it is filler. <strong>And it keeps the colour rule too</strong>. It used to render the default indigo hero with a saffron orb, which made this the one frame in the set where the biggest number was painted a colour that meant nothing. ₹0 has no direction, so it takes the same neutral <code class="mono">--settled</code> treatment as the all-square state on <a href="index.html" class="text-brand-700 underline">Balances</a>. Two screens showing ₹0 in two different colours is how a colour rule stops being a rule.</p>
+
+      <p class="mt-3"><strong>The three explainer bullets are gone.</strong> "On your own… With people… Offline works…" was a tour with the animation taken off, sitting under a heading that rejects tours. The one line worth keeping is the one that changes behaviour in the next ten seconds: you can add a bill in a basement restaurant. The other two are things the user is about to find out by doing them.</p>
+    </div>
+  </div>
+
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="../account/index.html" class="avatar av-riya">R</a>
+      <div>
+        <p class="text-2xs text-ink-3 leading-tight">Wednesday, 9 Sep</p>
+        <p class="text-sm font-black text-brand-900 leading-tight">Hi, Riya</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-4 pb-24 space-y-3">
+
+    <!-- Settled, not the default indigo, and a white orb rather than a
+         saffron one. Rule 1: the hero is coloured by direction, and ₹0 has no
+         direction. This frame was the last one still painting the biggest
+         number in the app a colour that said nothing — and a saffron flood on
+         day one reads as an alert about a balance that does not exist. -->
+    <div class="balance-hero balance-hero--settled balance-hero--compact">
+      <div class="orb w-[110px] h-[110px] bg-white top-[-34px] right-[-20px]"></div>
+      <p class="balance-hero-eyebrow">Overall</p>
+      <p class="balance-hero-amount">₹0</p>
+      <p class="balance-hero-sub">You don't owe anyone, and nobody owes you.</p>
+    </div>
+
+    <div class="empty">
+      <div class="empty-illus"><i data-lucide="receipt-indian-rupee" class="w-7 h-7"></i></div>
+      <p class="empty-title">Log your first expense</p>
+      <p class="empty-sub">It can be just yours — a chai, a cab, the rent. Aakalan tracks it either way, and you can split it with people later.</p>
+      <a href="../add/index.html" class="btn btn-primary mt-3.5">
+        <i data-lucide="plus" class="w-4 h-4"></i> Add an expense
+      </a>
+      <a href="../group/new.html" class="btn btn-ghost mt-1">
+        or start a group with friends
+      </a>
+    </div>
+
+    <!-- One line, not three. A card of bullets promising what the app will
+         do is a tour with the animation removed, on the screen whose own
+         rule is that a tour is a sequence of promises made before the user
+         has seen a single feature. -->
+    <p class="text-2xs text-ink-3 text-center leading-relaxed px-6">
+      Works offline — add now, it syncs when you're back.
+    </p>
+
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="index.html" class="tab is-active"><i data-lucide="scale" class="tab-icon"></i><span>Balances</span></a>
+      <a href="../add/index.html" class="tab-fab">
+        <div class="tab-fab-inner"><i data-lucide="plus" class="w-7 h-7"></i></div>
+        <span class="tab-fab-label">Add</span>
+      </a>
+      <a href="../spending/index.html" class="tab"><i data-lucide="chart-pie" class="tab-icon"></i><span>Spending</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

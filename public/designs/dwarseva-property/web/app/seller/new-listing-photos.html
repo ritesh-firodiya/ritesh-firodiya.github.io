@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller · New listing · Photos &amp; publish — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 128px); box-shadow: 0 0 0 1px #18181b; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); }
+    .field-label { font-size: 11px; color: #a1a1aa; }
+    .step { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #a1a1aa; }
+    .step-done { color: #6ee7b7; }
+    .step-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left: 3px solid #3b82f6; padding-left: 9px; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="home.html" class="rounded-md bg-emerald-500/15 px-3 py-1.5 font-semibold text-emerald-700">Sell</a>
+    </nav>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/20 text-[10px] font-semibold text-emerald-700">SP</span>
+        <span>Sanjay</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] mx-auto max-w-[1440px]">
+  <div class="mx-auto grid max-w-[1100px] grid-cols-[220px_minmax(0,1fr)] gap-8 px-8 py-8">
+
+    <aside class="sticky top-20 self-start rounded-2xl border border-zinc-200 bg-zinc-100/75 p-3">
+      <p class="px-3 text-[10px] uppercase tracking-widest text-zinc-500">Draft · #LST-2026-07-1149</p>
+      <nav class="mt-2 space-y-0.5">
+        <a href="new-listing-basics.html" class="step step-done">1 ✓ Basics</a>
+        <a href="agent-noc.html" class="step">1.5 · Agent NoC <span class="ml-auto text-[10px] text-zinc-500">if agent</span></a>
+        <a href="new-listing-location.html" class="step step-done">2 ✓ Location</a>
+        <a href="new-listing-photos.html" class="step step-active">3 · Photos &amp; publish</a>
+      </nav>
+    </aside>
+
+    <main class="space-y-6">
+
+      <div class="flex items-end justify-between">
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-blue-700">/seller/new · Step 3 of 3</p>
+          <h1 class="mt-0.5 text-xl font-semibold">Photos, documents &amp; publish</h1>
+          <p class="mt-0.5 text-[12px] text-zinc-600">Take photos with your own phone. Stock photos or watermarked images will be rejected.</p>
+        </div>
+      </div>
+
+      <!-- Photos -->
+      <section class="scroll-mt-20 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Photos</p>
+        <h2 class="mt-1 text-lg font-semibold">Show the home honestly</h2>
+
+        <div class="mt-4 grid grid-cols-2 gap-6">
+          <div>
+            <div class="flex items-baseline justify-between">
+              <p class="text-zinc-600">Internal photos <span class="text-rose-600">*</span> <span class="text-zinc-500">(min 3)</span></p>
+              <span class="text-[10.5px] text-emerald-700">4 / 3 ✓</span>
+            </div>
+            <div class="mt-2 grid grid-cols-4 gap-2">
+              <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">1 · Living</span></div>
+              <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">2 · Kitchen</span></div>
+              <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">3 · Bedroom</span></div>
+              <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">4 · Balcony</span></div>
+            </div>
+            <label class="mt-2 flex h-24 items-center justify-center rounded-xl border-2 border-dashed border-blue-500/40 bg-blue-500/10 text-[12px] text-blue-700">
+              Drop internal photos here · or <span class="ml-1 underline">browse</span>
+            </label>
+          </div>
+
+          <div>
+            <div class="flex items-baseline justify-between">
+              <p class="text-zinc-600">External photos <span class="text-rose-600">*</span> <span class="text-zinc-500">(min 1)</span></p>
+              <span class="text-[10.5px] text-emerald-700">2 / 1 ✓</span>
+            </div>
+            <div class="mt-2 grid grid-cols-4 gap-2">
+              <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">1 · Facade</span></div>
+              <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">2 · Gate</span></div>
+              <div class="aspect-square rounded-lg border border-dashed border-zinc-300 bg-white"></div>
+              <div class="aspect-square rounded-lg border border-dashed border-zinc-300 bg-white"></div>
+            </div>
+            <label class="mt-2 flex h-24 items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 bg-white text-[12px] text-zinc-600">
+              Drop external photos here · or <span class="ml-1 underline">browse</span>
+            </label>
+            <p class="mt-1 text-[10.5px] text-zinc-500">Reviewer may keep these hidden from buyers until unlock (bypass safety).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Documents -->
+      <section class="scroll-mt-20 rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Documents</p>
+        <h2 class="mt-1 text-lg font-semibold">Proof of ownership</h2>
+
+        <div class="mt-4 grid grid-cols-2 gap-4">
+          <label class="block rounded-xl border border-dashed border-amber-500/40 bg-amber-500/10 p-4">
+            <p class="text-[10px] uppercase tracking-widest text-amber-700">Property tax receipt <span class="text-rose-600">*</span></p>
+            <p class="mt-2 text-[12px] text-zinc-900">tax-receipt-FY25-26.pdf · 428 KB</p>
+            <p class="mt-1 text-[10.5px] text-zinc-500">Must be within the last 12 months. We don't collect PAN or Aadhaar.</p>
+            <div class="mt-2 flex gap-2 text-[11px]">
+              <a href="#" class="text-blue-700 underline">Replace</a>
+              <a href="#" class="text-rose-700 underline">Remove</a>
+            </div>
+          </label>
+          <label class="block rounded-xl border border-dashed border-zinc-300 bg-white p-4">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Society NoC <span class="text-zinc-500">(optional)</span></p>
+            <p class="mt-2 text-[12px] text-zinc-600">Drop file or click to upload</p>
+            <p class="mt-1 text-[10.5px] text-zinc-500">Helps skip reviewer's phone-verification call.</p>
+          </label>
+        </div>
+      </section>
+
+      <!-- Review & Publish -->
+      <section class="scroll-mt-20 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-emerald-700">Review &amp; publish</p>
+        <h2 class="mt-1 text-lg font-semibold">Final check</h2>
+
+        <div class="mt-4 grid grid-cols-[minmax(0,1fr)_320px] gap-4">
+          <div class="rounded-xl border border-zinc-200 bg-zinc-100/90 p-4">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Summary</p>
+            <div class="mt-2 grid grid-cols-2 gap-y-2 text-[12px]">
+              <p class="text-zinc-500">Variant</p><p class="text-zinc-800">Rent · Apartment · 2 BHK · Owner</p>
+              <p class="text-zinc-500">Price</p><p class="mono text-zinc-800">₹28,000/mo · dep 2 mo · negotiable</p>
+              <p class="text-zinc-500">Area</p><p class="text-zinc-800">780 / 940 / 1,050 sqft</p>
+              <p class="text-zinc-500">Furnishing / age / floor</p><p class="text-zinc-800">Fully · 5–10 yrs · 7 of 11</p>
+              <p class="text-zinc-500">Wing / flat</p><p class="text-zinc-800">B · B-704</p>
+              <p class="text-zinc-500">Parking</p><p class="text-zinc-800">Covered · B2-17</p>
+              <p class="text-zinc-500">Utilities</p><p class="text-zinc-800">Lift · Power BU · Water · Gas · Gym · Clubhouse · Security · CCTV · Intercom · Servant room</p>
+              <p class="text-zinc-500">Location</p><p class="text-zinc-800">Baner Lane 7 · Sukhwani Sepia · Pune</p>
+              <p class="text-zinc-500">Photos</p><p class="text-zinc-800">4 internal · 2 external</p>
+              <p class="text-zinc-500">Documents</p><p class="text-zinc-800">Tax receipt FY25-26 · 428 KB</p>
+              <p class="text-zinc-500">Available from</p><p class="text-zinc-800">1 Aug 2026 · family only</p>
+            </div>
+            <p class="mt-3 rounded-md border border-blue-500/30 bg-blue-500/10 px-3 py-2 text-[11px] text-blue-700">
+              Title will be written by our reviewer during verification.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 space-y-3">
+            <p class="text-[10px] uppercase tracking-widest text-amber-700">One-time publish fee</p>
+            <div class="grid grid-cols-2 gap-2 text-center">
+              <div>
+                <p class="mono text-2xl font-semibold text-amber-700">₹5</p>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Publish</p>
+              </div>
+              <div>
+                <p class="mono text-2xl font-semibold text-emerald-700">30 d</p>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Live period</p>
+              </div>
+            </div>
+            <p class="text-[10.5px] text-zinc-600">
+              ₹5 will be deducted from your wallet on submit. Your listing stays live for <span class="mono text-emerald-700">30 days</span> once approved. After that it auto-expires and you can renew for another ₹5.
+            </p>
+            <div class="rounded-md border border-zinc-200 bg-zinc-100 px-3 py-2 text-[11px] flex items-center justify-between">
+              <span class="text-zinc-500">Wallet balance</span>
+              <span class="mono text-emerald-700">₹42</span>
+            </div>
+            <a href="../../wallet/recharge.html" class="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-center text-[11px] text-zinc-700 hover:border-blue-500/40">Top up wallet</a>
+          </div>
+        </div>
+
+        <label class="mt-4 flex items-start gap-2 text-[12px] text-zinc-700">
+          <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-zinc-300 bg-white accent-emerald-500" checked>
+          I confirm I'm authorised to list this property and every field is accurate. False info can result in permanent takedown.
+        </label>
+
+        <div class="mt-4 flex items-center gap-3">
+          <a href="new-listing-location.html" class="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-[13px] text-zinc-800 hover:border-blue-500/40">← Back</a>
+          <a href="listing-pending.html" class="flex-1 rounded-lg bg-emerald-500 px-4 py-2.5 text-center text-[14px] font-semibold text-zinc-950 hover:bg-emerald-400">Publish listing · ₹5 →</a>
+          <p class="text-[10.5px] text-zinc-500">SLA <span class="mono text-zinc-700">2–48 hrs</span> · human verifier</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

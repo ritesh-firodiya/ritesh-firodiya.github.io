@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imposter — error</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <aside class="shrink-0 w-[264px] self-start my-5 bg-surface rounded-lg border border-line shadow p-[18px]">
+    <p class="text-base font-bold mb-3">Error</p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p>The only failure this app can actually have is a purchase that would not go through — there is no server, no account and no sync, so nothing else can break at runtime.</p>
+      <p><b class="text-ink">It says explicitly that nothing was charged.</b> The single loudest fear in this category's reviews is being billed for something that did not arrive. Not saying it costs nothing; saying it defuses the review before it is written.</p>
+      <p><b class="text-ink">The way out is back to the game, not back to the paywall.</b> Retrying a failed charge is the user's decision, and pushing them at it after a failure is how a refund request starts.</p>
+      <p>No error code on screen. It helps nobody at a table and makes a party game look like a bank.</p>
+    </div>
+  </aside>
+
+  <div class="phone phone--flood phone--brand">
+    <div class="flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="flex items-center px-3.5 pt-1.5 pb-2.5">
+      <a href="../setup/index.html" class="w-11 h-11 shrink-0 rounded-pill grid place-items-center bg-sunken text-ink-2"><i data-lucide="x" class="w-5 h-5"></i></a>
+    </div>
+
+    <div class="flex-1 flex flex-col justify-center px-7">
+      <div class="w-[72px] h-[72px] rounded-pill grid place-items-center bg-danger-bg text-danger-fg">
+        <i data-lucide="circle-alert" class="w-9 h-9"></i>
+      </div>
+
+      <h1 class="mt-6 text-h1 font-black leading-[1.05] tracking-[-0.02em]">That purchase didn't go through</h1>
+      <p class="mt-3 text-body leading-relaxed text-ink-2">The App Store couldn't complete it. <b class="text-ink">You have not been charged.</b></p>
+
+      <div class="mt-5 flex gap-2.5 items-start p-3 rounded-lg border border-line bg-muted">
+        <i data-lucide="gamepad-2" class="w-[18px] h-[18px] mt-0.5 shrink-0 text-ink-3"></i>
+        <p class="text-sm leading-relaxed text-ink-2">Your three free categories are untouched. Carry on playing and try again whenever you feel like it.</p>
+      </div>
+    </div>
+
+    <div class="pin-bottom px-[18px] pt-2.5 pb-3 space-y-2">
+      <a href="../setup/packs.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        Back to the game
+      </a>
+      <a href="../store/paywall.html" class="w-full inline-flex items-center justify-center px-5 py-3.5 rounded-pill font-black text-body text-ink-2">Try again</a>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

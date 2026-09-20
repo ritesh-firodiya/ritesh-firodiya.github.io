@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — AI chat</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .bubble-user { background:var(--teal-900); color:white; border-radius:18px 18px 4px 18px; padding:12px 14px; font-size:14px; line-height:1.5; max-width:82%; }
+    .bubble-ai   { background:var(--surface); border:1px solid var(--border); border-radius:18px 18px 18px 4px; padding:14px; font-size:14px; line-height:1.55; max-width:88%; }
+    .ai-src { display:flex; align-items:center; gap:8px; padding:8px 10px; background:var(--surface-sunken); border-radius:10px; text-decoration:none; color:var(--text-primary); }
+    .ai-src-num { width:20px;height:20px;border-radius:6px;background:var(--teal-100);color:var(--teal-700);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .msg-actions button { color:var(--text-tertiary); }
+    .typing span { display:inline-block; width:6px; height:6px; border-radius:999px; background:var(--text-tertiary); animation:bounce 1.2s infinite; }
+    .typing span:nth-child(2) { animation-delay:0.15s; }
+    .typing span:nth-child(3) { animation-delay:0.3s; }
+    @keyframes bounce { 0%,60%,100%{transform:translateY(0);opacity:0.4} 30%{transform:translateY(-4px);opacity:1} }
+    .composer-chip { background:var(--surface-sunken); border-radius:999px; padding:6px 10px; font-size:11.5px; font-weight:700; color:var(--text-secondary); border:none; display:inline-flex; align-items:center; gap:4px; }
+  </style>
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">AI Chat</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> AI-powered health & pregnancy guidance.</p>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Redesign:</strong> Richer chat with real citations & context. Header shows AI's context (your stage, cycle day, partner). Sources render as tappable cards (not tiny chips). Composer supports voice, attaching journal entries, and starter chips when empty.</p>
+      <p class="mt-2"><strong>Features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Conversational AI</li>
+        <li>Contextual insights</li>
+        <li>Real citations as cards</li>
+        <li>Safe guardrails</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phone phone--cream">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="feed.html" class="backbtn"><i data-lucide="chevron-left" class="w-5 h-5"></i></a>
+      <div>
+        <div class="flex items-center gap-1.5">
+          <div class="w-5 h-5 rounded-full bg-coral flex items-center justify-center"><i data-lucide="sparkles" class="w-3 h-3 text-white"></i></div>
+          <p class="text-[15px] font-black teal">Ask Pattaya</p>
+        </div>
+        <p class="text-[10px] text-[color:var(--text-tertiary)]">Knows: Trying · cycle day 12 · Rahul paired</p>
+      </div>
+    </div>
+    <a href="ai-chat-history.html" class="iconbtn" aria-label="History"><i data-lucide="history" class="w-5 h-5"></i></a>
+  </div>
+
+  <div class="px-4 pb-40 space-y-3">
+
+    <!-- Context strip -->
+    <div class="flex items-center gap-2 text-[11px] text-[color:var(--text-tertiary)] px-2">
+      <i data-lucide="shield" class="w-3 h-3"></i>
+      <span>Answers never quote your journal unless you attach it.</span>
+    </div>
+
+    <!-- User -->
+    <div class="flex justify-end">
+      <div class="bubble-user">
+        <p>Should we start folic acid now or wait until pregnant?</p>
+      </div>
+    </div>
+
+    <!-- Assistant -->
+    <div class="flex">
+      <div class="bubble-ai">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 rounded-full bg-coral-100 flex items-center justify-center"><i data-lucide="sparkles" class="w-3 h-3 coral"></i></div>
+          <p class="text-[10px] font-black text-[color:var(--text-secondary)] uppercase tracking-wider">Pattaya</p>
+        </div>
+        <p>Start now. Most guidelines recommend <b>400 mcg of folic acid daily for at least 3 months before conception</b>. It reduces the risk of neural tube defects that form very early — often before you know you're pregnant.</p>
+        <p class="mt-2">For Indian women, 400 mcg is the same recommendation. Some doctors prescribe 5 mg if you have specific risk factors (diabetes, epilepsy meds) — that's a conversation for your OB, not me.</p>
+
+        <p class="section-label mt-3 mb-2">Sources</p>
+        <div class="space-y-1.5">
+          <a href="card-detail.html" class="ai-src">
+            <span class="ai-src-num">1</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-[12px] font-bold truncate">Folate basics — before & during pregnancy</p>
+              <p class="text-[10px] text-[color:var(--text-tertiary)]">3 min read · medically reviewed</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+          </a>
+          <a href="card-detail.html" class="ai-src">
+            <span class="ai-src-num">2</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-[12px] font-bold truncate">India-specific dose — ICMR guidance</p>
+              <p class="text-[10px] text-[color:var(--text-tertiary)]">2 min read</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+          </a>
+        </div>
+
+        <div class="msg-actions mt-3 pt-2 border-t border-[color:var(--border)] flex items-center gap-3 text-[11px]">
+          <button class="flex items-center gap-1"><i data-lucide="thumbs-up" class="w-3.5 h-3.5"></i>Helpful</button>
+          <button class="flex items-center gap-1"><i data-lucide="thumbs-down" class="w-3.5 h-3.5"></i>Not really</button>
+          <button class="flex items-center gap-1"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copy</button>
+          <button class="flex items-center gap-1 ml-auto"><i data-lucide="notebook-pen" class="w-3.5 h-3.5"></i>Save</button>
+        </div>
+
+        <p class="text-[10px] text-[color:var(--text-tertiary)] mt-2">Not medical advice. <a href="doctor-referral.html" class="teal-700 font-bold underline">When to see a doctor →</a></p>
+      </div>
+    </div>
+
+    <!-- Typing indicator (design reference for streaming state) -->
+    <div class="flex">
+      <div class="bubble-ai" style="max-width:auto;padding:14px 18px">
+        <div class="typing flex items-center gap-1"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+
+    <!-- Suggested follow-ups -->
+    <div class="pt-1">
+      <p class="section-label px-2">Follow-ups</p>
+      <div class="mt-2 flex flex-wrap gap-1.5 px-2">
+        <button class="chip chip-neutral">What foods have folate?</button>
+        <button class="chip chip-neutral">Should Rahul take anything?</button>
+        <button class="chip chip-neutral">When to test after positive</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Composer -->
+  <div class="sticky-bottom bg-white border-t border-[color:var(--border)]">
+    <!-- Attach row -->
+    <div class="px-3 pt-2 flex gap-1.5 overflow-x-auto no-scrollbar">
+      <button class="composer-chip flex-shrink-0"><i data-lucide="paperclip" class="w-3.5 h-3.5"></i>Attach journal entry</button>
+      <button class="composer-chip flex-shrink-0"><i data-lucide="calendar" class="w-3.5 h-3.5"></i>Today's cycle</button>
+      <button class="composer-chip flex-shrink-0"><i data-lucide="user" class="w-3.5 h-3.5"></i>Ask for Rahul</button>
+      <button class="composer-chip flex-shrink-0"><i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>Prep doctor visit</button>
+    </div>
+    <div class="p-3 pt-2">
+      <div class="flex items-end gap-2 bg-[color:var(--surface-sunken)] rounded-3xl pl-4 pr-1.5 py-1.5">
+        <textarea class="flex-1 bg-transparent text-[14px] outline-none py-2 resize-none" rows="1" placeholder="Ask about your journey…"></textarea>
+        <button class="w-9 h-9 rounded-full flex items-center justify-center text-[color:var(--text-secondary)]" aria-label="Voice"><i data-lucide="mic" class="w-5 h-5"></i></button>
+        <button class="w-9 h-9 rounded-full bg-coral flex items-center justify-center" aria-label="Send"><i data-lucide="arrow-up" class="w-4 h-4 text-white"></i></button>
+      </div>
+      <p class="text-[10px] text-center text-[color:var(--text-tertiary)] mt-1.5">2 of 3 free replies this week · <a href="../paywall/paywall.html" class="teal-700 font-bold">unlimited on plan</a></p>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

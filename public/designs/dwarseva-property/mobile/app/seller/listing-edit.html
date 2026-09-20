@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit listing — Dwarseva mobile</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+    .chip { padding: 6px 8px; text-align: center; font-size: 11px; border-radius: 6px; border: 1px solid #27272a; background: #18181b; color: #d4d4d8; }
+    .chip-on { border-color: #3b82f6; background: rgba(59,130,246,0.10); color: #bfdbfe; font-weight: 600; }
+    .field { background: #18181b; border: 1px solid #27272a; border-radius: 8px; }
+    .h { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #71717a; }
+    .label { font-size: 10.5px; color: #a1a1aa; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-700">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <div class="flex h-12 items-center justify-between px-4">
+    <a href="listing-live.html" aria-label="Back" class="inline-flex h-10 w-10 items-center justify-center text-zinc-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="text-sm font-semibold">Edit listing</h1>
+    <span class="mono text-[10px] text-zinc-500">#AUN-204</span>
+  </div>
+
+  <main class="px-5 pb-8 pt-3 space-y-5">
+
+    <div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-[11.5px] text-amber-700">
+      <p class="font-semibold">Editing restarts manual review</p>
+      <p class="mt-1 text-amber-700">Once saved, listing goes to pending. Buyers won't see it until our team re-approves (2–48 hrs). The 30-day live-period timer freezes during review — no days lost.</p>
+    </div>
+
+    <section>
+      <p class="h">Pricing</p>
+      <div class="mt-2 flex items-center gap-2">
+        <div class="flex-1 bg-white border-zinc-200 flex items-center">
+          <span class="mono px-3 py-2.5 text-sm text-zinc-600 border-r border-zinc-200">₹</span>
+          <input type="text" value="26,000" class="mono block w-full bg-transparent px-3 py-2.5 text-sm text-zinc-900 focus:outline-none" />
+        </div>
+        <label class="flex items-center gap-1.5 text-[10.5px] text-zinc-700">
+          <input type="checkbox" class="h-3.5 w-3.5 rounded border-zinc-300 bg-white accent-blue-500" checked />
+          Negotiable
+        </label>
+      </div>
+      <p class="mt-1 text-[10px] text-amber-700">↓ ₹2,000 from previous (₹28,000)</p>
+    </section>
+
+    <section>
+      <p class="h">Availability</p>
+      <label class="mt-2 block">
+        <span class="label">Available from</span>
+        <input type="date" value="2026-07-15" class="mono mt-1 bg-white border-zinc-200 block w-full px-3 py-2 text-[11.5px] text-zinc-900 focus:outline-none" />
+      </label>
+    </section>
+
+    <section>
+      <p class="h">Furnishing</p>
+      <div class="mt-2 grid grid-cols-3 gap-1.5">
+        <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Unfurnished</span>
+        <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">Semi</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Fully</span>
+      </div>
+    </section>
+
+    <section>
+      <p class="h">Tenant preference</p>
+      <div class="mt-2 grid grid-cols-3 gap-1.5">
+        <span class="rounded-md border border-blue-500 bg-blue-500/10 px-3 py-2 text-[12px] font-semibold text-blue-700">Family</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Single</span>
+        <span class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Both</span>
+      </div>
+    </section>
+
+    <details class="rounded-md border border-zinc-200 bg-zinc-100/75 p-3">
+      <summary class="cursor-pointer text-[12px] text-zinc-700">Edit more (photos, area, location)</summary>
+      <p class="mt-2 text-[10.5px] text-zinc-500">Re-uploading photos or changing area / society triggers stricter re-verification. Use Edit listing → Property to do that.</p>
+    </details>
+
+    <div class="grid grid-cols-2 gap-2">
+      <a href="listing-live.html" class="rounded-xl border border-zinc-300 bg-white px-3 py-3 text-center text-sm text-zinc-800">Cancel</a>
+      <a href="listing-pending.html" class="rounded-xl bg-blue-500 px-3 py-3 text-center text-sm font-semibold text-zinc-950">Save &amp; resubmit</a>
+    </div>
+
+  </main>
+
+  <div class="flex items-center justify-center pb-2 pt-1">
+    <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

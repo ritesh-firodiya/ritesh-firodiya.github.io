@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Partner activity</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Partner Activity</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> See partner's public activities only.</p>
+      <p class="mt-2"><strong>Visible actions:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Cards read/listened</li>
+        <li>Milestones logged</li>
+        <li>Shared entries</li>
+      </ul>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Why:</strong> Passive presence, not surveillance — partner never sees mood logs, private entries, or specific symptoms.</p>
+    </div>
+  </div>
+
+<div class="phone">
+  <div class="statusbar">
+    <span class="statusbar-time">9:41</span>
+    <span class="statusbar-icons text-xs">••• 5G ■</span>
+  </div>
+
+  <div class="appheader">
+    <button class="iconbtn"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+    <div class="flex items-center gap-2">
+      <div class="avatar avatar-r">R</div>
+      <p class="text-[15px] font-black teal">Rahul's activity</p>
+    </div>
+    <button class="iconbtn"><i data-lucide="settings" class="w-5 h-5"></i></button>
+  </div>
+
+  <div class="px-6 pb-28 space-y-4">
+    <!-- Weekly summary -->
+    <div class="card card--teal">
+      <p class="section-label teal-700">This week</p>
+      <div class="mt-3 grid grid-cols-3 gap-3 text-center">
+        <div>
+          <p class="text-2xl font-black teal">3</p>
+          <p class="text-[10px] text-[color:var(--text-tertiary)] uppercase tracking-widest">Read</p>
+        </div>
+        <div>
+          <p class="text-2xl font-black teal">2</p>
+          <p class="text-[10px] text-[color:var(--text-tertiary)] uppercase tracking-widest">Listened</p>
+        </div>
+        <div>
+          <p class="text-2xl font-black teal">4</p>
+          <p class="text-[10px] text-[color:var(--text-tertiary)] uppercase tracking-widest">Journal</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today -->
+    <div>
+      <p class="section-label mb-2">Today</p>
+      <div class="partner-activity">
+        <div class="partner-activity-item">
+          <div class="partner-activity-icon bg-info-bg"><i data-lucide="headphones" class="w-3.5 h-3.5 info"></i></div>
+          <div class="flex-1">
+            <p><b>Listened</b> to "Sperm health basics"</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)]">2 hrs ago · 4 min · finished</p>
+          </div>
+          <button class="chip chip-neutral">Listen too</button>
+        </div>
+        <div class="partner-activity-item">
+          <div class="partner-activity-icon bg-teal-50"><i data-lucide="notebook-pen" class="w-3.5 h-3.5 teal-700"></i></div>
+          <div class="flex-1">
+            <p><b>Wrote</b> a shared entry</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)]">3 hrs ago</p>
+          </div>
+          <button class="chip chip-teal">Read</button>
+        </div>
+        <div class="partner-activity-item">
+          <div class="partner-activity-icon bg-coral-100"><i data-lucide="check-circle" class="w-3.5 h-3.5 coral"></i></div>
+          <div class="flex-1">
+            <p><b>Logged</b> mood + sleep</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)]">This morning</p>
+          </div>
+          <span class="text-[10px] text-[color:var(--text-tertiary)]">Private</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yesterday -->
+    <div>
+      <p class="section-label mb-2">Yesterday</p>
+      <div class="partner-activity">
+        <div class="partner-activity-item">
+          <div class="partner-activity-icon bg-teal-50"><i data-lucide="book-open" class="w-3.5 h-3.5 teal-700"></i></div>
+          <div class="flex-1">
+            <p><b>Read</b> "Understanding your cycle"</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)]">3 min</p>
+          </div>
+        </div>
+        <div class="partner-activity-item">
+          <div class="partner-activity-icon bg-info-bg"><i data-lucide="headphones" class="w-3.5 h-3.5 info"></i></div>
+          <div class="flex-1">
+            <p><b>Listened</b> to "How the male body affects timing"</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)]">5 min · finished</p>
+          </div>
+        </div>
+        <div class="partner-activity-item">
+          <div class="partner-activity-icon bg-coral-100"><i data-lucide="award" class="w-3.5 h-3.5 coral"></i></div>
+          <div class="flex-1">
+            <p><b>Logged milestone:</b> First fertility consult</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)]">Dr Mehta, Cloudnine</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy note -->
+    <div class="card card--muted flex items-start gap-3">
+      <i data-lucide="shield" class="w-4 h-4 text-[color:var(--text-secondary)] mt-0.5 flex-shrink-0"></i>
+      <p class="text-[11px] text-[color:var(--text-secondary)]">You see Rahul's public activity — reads, listens, watches, shared entries, milestones. His private journal, mood logs, and AI chats remain his.</p>
+    </div>
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="home-shared.html" class="tab is-active"><i data-lucide="home" class="tab-icon"></i><span>Home</span></a>
+      <a href="../knowledge/feed.html" class="tab"><i data-lucide="book-open" class="tab-icon"></i><span>Knowledge</span></a>
+      <a href="../knowledge/ai-chat.html" class="tab-fab">
+        <div class="tab-fab-inner"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+        <span class="tab-fab-label">Ask AI</span>
+      </a>
+      <a href="../journal/list.html" class="tab"><i data-lucide="notebook-pen" class="tab-icon"></i><span>Journal</span></a>
+      <a href="../tracking/cycle.html" class="tab"><i data-lucide="calendar" class="tab-icon"></i><span>Track</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

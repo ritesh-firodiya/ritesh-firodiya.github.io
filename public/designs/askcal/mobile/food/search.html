@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<!--
+  Free and unlimited, and it has to feel first-class rather than like the
+  consolation prize. Recents at the top because repeat meals are most of real
+  logging. "Free" badge is stated once, calmly, not celebrated.
+-->
+
+<div class="phone phone--page">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="subheader">
+    <a href="../home/today.html" class="backbtn" aria-label="Back">
+      <i data-lucide="arrow-left" style="width:22px;height:22px"></i>
+    </a>
+    <div><p class="subheader-title">Add food</p></div>
+    <a href="barcode.html" class="backbtn" aria-label="Barcode">
+      <i data-lucide="scan-barcode" style="width:20px;height:20px"></i>
+    </a>
+  </div>
+
+  <div class="px-5">
+    <div class="search">
+      <i data-lucide="search" style="width:17px;height:17px"></i>
+      <input value="dal tadka" aria-label="Search food" />
+      <i data-lucide="x" style="width:16px;height:16px;color:var(--ink-4)"></i>
+    </div>
+    <div class="segmented segmented--full mt-2.5">
+      <button class="is-active">All</button>
+      <button>My foods</button>
+      <button>Recent</button>
+    </div>
+  </div>
+
+  <div class="px-5 mt-4">
+    <p class="section-label">Results</p>
+
+    <div class="mt-2.5 grid gap-2">
+      <a href="detail.html" class="card card--interactive no-underline text-inherit flex items-center gap-3" style="padding:13px 14px">
+        <div class="comp-puck" style="background:var(--carbs-bg);color:#b57d0a;width:36px;height:36px">
+          <i data-lucide="soup" style="width:17px;height:17px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-extrabold text-[13.5px]">Dal tadka, restaurant style</p>
+          <p class="text-[11px] text-ink-3 mt-0.5">1 cup · <span class="num">240g</span> · USDA</p>
+        </div>
+        <span class="num font-black text-[14px]">198</span>
+      </a>
+
+      <a href="detail.html" class="card card--interactive no-underline text-inherit flex items-center gap-3" style="padding:13px 14px">
+        <div class="comp-puck" style="background:var(--carbs-bg);color:#b57d0a;width:36px;height:36px">
+          <i data-lucide="soup" style="width:17px;height:17px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-extrabold text-[13.5px]">Dal, yellow lentil, home-cooked</p>
+          <p class="text-[11px] text-ink-3 mt-0.5">1 cup · <span class="num">240g</span> · USDA</p>
+        </div>
+        <span class="num font-black text-[14px]">146</span>
+      </a>
+
+      <a href="detail.html" class="card card--interactive no-underline text-inherit flex items-center gap-3" style="padding:13px 14px">
+        <div class="comp-puck" style="background:var(--brand-50);color:var(--brand-700);width:36px;height:36px">
+          <i data-lucide="bookmark" style="width:17px;height:17px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-extrabold text-[13.5px]">Mum's dal</p>
+          <p class="text-[11px] text-ink-3 mt-0.5">Saved by you · <span class="num">1 bowl</span></p>
+        </div>
+        <span class="num font-black text-[14px]">210</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="px-5 mt-5">
+    <p class="section-label">Logged recently</p>
+    <div class="mt-1.5">
+      <a href="detail.html" class="meal no-underline text-inherit">
+        <div class="meal-thumb" style="background:#f5ecdc">
+          <i data-lucide="egg-fried" style="width:19px;height:19px;color:#b08442"></i>
+        </div>
+        <div class="meal-body">
+          <p class="meal-title">Poha with peanuts</p>
+          <p class="meal-sub">Yesterday, twice this week</p>
+        </div>
+        <button class="iconbtn" aria-label="Log this again" style="width:40px;height:40px"><i data-lucide="plus" style="width:18px;height:18px"></i></button>
+      </a>
+      <div class="divider"></div>
+      <a href="detail.html" class="meal no-underline text-inherit">
+        <div class="meal-thumb" style="background:var(--info-bg)">
+          <i data-lucide="milk" style="width:19px;height:19px;color:var(--info-fg)"></i>
+        </div>
+        <div class="meal-body">
+          <p class="meal-title">Greek yoghurt, 170g</p>
+          <p class="meal-sub">Today · barcode</p>
+        </div>
+        <button class="iconbtn" aria-label="Log this again" style="width:40px;height:40px"><i data-lucide="plus" style="width:18px;height:18px"></i></button>
+      </a>
+    </div>
+  </div>
+
+  <div class="px-5 mt-5">
+    <div class="card card--muted flex items-center gap-3" style="padding:13px 14px">
+      <i data-lucide="infinity" style="width:18px;height:18px;color:var(--ink-2);flex:none"></i>
+      <p class="text-[12px] text-ink-2">
+        Search and barcode are unlimited on every plan. Only photo scans are metered.
+      </p>
+    </div>
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../home/today.html" class="tab">
+        <i data-lucide="circle-gauge" class="tab-icon"></i>
+        <span>Today</span>
+      </a>
+      <a href="../history/trends.html" class="tab">
+        <i data-lucide="trending-up" class="tab-icon"></i>
+        <span>Trends</span>
+      </a>
+      <a href="../scan/camera.html" class="tab-fab">
+        <span class="tab-fab-inner"><i data-lucide="camera" style="width:24px;height:24px"></i></span>
+        <span class="tab-fab-label">Scan</span>
+      </a>
+      <a href="search.html" class="tab is-active">
+        <i data-lucide="search" class="tab-icon" stroke-width="2.5"></i>
+        <span>Add</span>
+      </a>
+      <a href="../settings/index.html" class="tab">
+        <i data-lucide="user" class="tab-icon"></i>
+        <span>You</span>
+      </a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

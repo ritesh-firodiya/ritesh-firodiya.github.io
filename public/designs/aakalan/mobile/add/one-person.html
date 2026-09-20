@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Add with one person</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Splitting with one person, no group</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> The most common split there is — one bill, one other person — without making anyone invent a group called "Me and Sana" first.</p>
+
+      <p class="mt-3"><strong>The <em>With</em> picker takes a person, not only a group.</strong> It used to offer "Just me" and then your groups, so splitting with one friend meant leaving a half-typed expense to go and invent a group. In the sheet a person and a group sit in the same list, sorted by how recently you used them — because to the question "who is this with", they are the same kind of answer. A second coffee with Sana is far more likely than a new group, so Sana is near the top.</p>
+
+      <p class="mt-3"><strong>Save moves to a sticky footer.</strong> It sat in the header, on the reasoning that the form should never need scrolling past to reach it. That reasoning is right and the footer serves it better: it is outside the scroll container, so scrolling cannot hide it either — and it is within reach of a thumb on a 6.7" phone, which the top-right corner is not. The receipt row already made this screen scroll.</p>
+
+      <p class="mt-3"><strong>Under the hood this is a two-person group, and the design has to be honest about the consequence.</strong> Not because a pair is a group, but because of who can read it: a personal expense lives in your own private corner, which nobody else can open. Anything the other person must be able to see has to live somewhere you both can reach. So the first time you do this with someone, the app says plainly that it becomes visible to them — a personal expense is private, this one is not, and that difference cannot be silent.</p>
+
+      <p class="mt-3"><strong>It is never shown as a group.</strong> No card called "Sana" in the Groups cut. It appears in the People cut, on the friend's ledger, on Spending and in the export — everywhere an expense belongs, and nowhere a group belongs.</p>
+
+      <p class="mt-3"><strong>Add a third person and it becomes a real group</strong>, and asks for a name at that moment. That upgrade is the reason this shape was chosen over inventing a separate kind of expense: nothing has to be migrated, because it was always a group.</p>
+    </div>
+  </div>
+
+<!-- ============ STATE 1 · a friend selected ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-4">
+    <!-- The same picker row as every other screen. A person and a group are
+         the same kind of answer here, so they are the same control — which is
+         what the old chip scroller could not express without putting five
+         unlike things on one axis. -->
+    <button class="picker">
+      <div class="avatar av-sana">S</div>
+      <div class="picker-body">
+        <p class="picker-label">With</p>
+        <p class="picker-value">Sana Qureshi</p>
+      </div>
+      <i data-lucide="chevron-down" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <button class="cat cat-food"><i data-lucide="utensils-crossed" class="w-5 h-5"></i></button>
+      <input class="flex-1 text-lg font-bold bg-transparent border-0 outline-none" value="Dinner at Toit" />
+    </div>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <span class="text-[28px] font-extrabold text-ink-3">₹</span>
+      <span class="text-[34px] font-black num flex-1">2,400</span>
+      <span class="caret h-[38px]"></span>
+    </div>
+
+    <button class="card card--interactive text-left w-full">
+      <div class="flex items-start gap-2">
+        <i data-lucide="split" class="w-4 h-4 text-brand-500 mt-0.5"></i>
+        <div class="flex-1">
+          <p class="text-sm leading-relaxed text-ink-2">
+            Paid by <b class="text-ink">you</b>, split <b class="text-ink">equally</b> with
+            <b class="text-ink">Sana</b> — <b class="text-brand-700 num">₹1,200 each</b>.
+          </p>
+          <p class="text-2xs text-ink-3 mt-1">Sana will owe you ₹1,200</p>
+        </div>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4 mt-0.5"></i>
+      </div>
+    </button>
+
+    <button class="row rounded-lg border border-line">
+      <div class="row-icon bg-sunken"><i data-lucide="calendar" class="w-4 h-4 text-ink-3"></i></div>
+      <div class="row-body"><p class="row-title">Today, 9 Sep</p></div>
+      <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <button class="row rounded-lg border border-line">
+      <div class="row-icon bg-sunken"><i data-lucide="camera" class="w-4 h-4 text-ink-3"></i></div>
+      <div class="row-body"><p class="row-title">Attach a receipt</p></div>
+      <span class="chip chip-saffron">Pro</span>
+    </button>
+  </div>
+
+  <div class="mt-auto"></div>
+  <!-- Save, where the thumb is. Outside the scroll container, so the form can
+       grow without it ever leaving the screen. -->
+  <div class="sticky-bottom">
+    <button class="btn btn-primary"><i data-lucide="check" class="w-4 h-4"></i> Save expense</button>
+  </div>
+</div>
+
+<!-- ============ STATE 2 · the first time, with this person ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-4 opacity-40">
+    <div class="picker">
+      <div class="avatar av-sana">S</div>
+      <div class="picker-body">
+        <p class="picker-label">With</p>
+        <p class="picker-value">Sana Qureshi</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <button class="cat cat-food"><i data-lucide="utensils-crossed" class="w-5 h-5"></i></button>
+      <span class="flex-1 text-lg font-bold">Dinner at Toit</span>
+    </div>
+  </div>
+
+  <div class="backdrop"></div>
+  <!-- Shown once per person, at the moment it first matters — not buried in a
+       settings screen, and not on every expense afterwards. The difference
+       being disclosed is real: "Just me" is readable by nobody else, and this
+       is not. -->
+  <div class="sheet">
+    <div class="sheet-grip"></div>
+    <div class="px-4 pb-5 space-y-3">
+      <div class="flex items-center gap-3">
+        <div class="avatar av-sana">S</div>
+        <div>
+          <p class="text-base font-black">Sharing this with Sana</p>
+          <p class="text-2xs text-ink-3">First time splitting with her</p>
+        </div>
+      </div>
+
+      <div class="card card--muted space-y-2.5">
+        <div class="flex gap-2.5">
+          <i data-lucide="eye" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+          <p class="text-2xs text-ink-2 leading-relaxed"><b class="text-ink">Sana will see this expense</b> and every one you add with her — the amount, what it was for, and who paid.</p>
+        </div>
+        <div class="flex gap-2.5">
+          <i data-lucide="lock" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+          <p class="text-2xs text-ink-2 leading-relaxed"><b class="text-ink">Your "Just me" expenses stay private.</b> Nothing else on your ledger becomes visible.</p>
+        </div>
+        <div class="flex gap-2.5">
+          <i data-lucide="users" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+          <p class="text-2xs text-ink-2 leading-relaxed">It won't show up as a group — you'll find it under Sana on Balances.</p>
+        </div>
+      </div>
+
+      <button class="btn btn-primary">Save and share with Sana</button>
+      <button class="btn btn-ghost">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STATE 3 · Sana isn't on Aakalan yet ============ -->
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="../balances/index.html" class="backbtn"><i data-lucide="x" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Add expense</h2>
+  </div>
+
+  <div class="px-4 pt-1 space-y-4">
+    <button class="picker">
+      <div class="avatar av-ghost">A</div>
+      <div class="picker-body">
+        <p class="picker-label">With</p>
+        <p class="picker-value">Aditi Menon</p>
+        <p class="picker-sub">Not on Aakalan yet</p>
+      </div>
+      <i data-lucide="chevron-down" class="w-4 h-4 text-ink-4"></i>
+    </button>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <button class="cat cat-travel"><i data-lucide="car-front" class="w-5 h-5"></i></button>
+      <input class="flex-1 text-lg font-bold bg-transparent border-0 outline-none" value="Airport cab" />
+    </div>
+
+    <div class="flex items-center gap-3 border-b border-line pb-2">
+      <span class="text-[28px] font-extrabold text-ink-3">₹</span>
+      <span class="text-[34px] font-black num flex-1">900</span>
+      <span class="caret h-[38px]"></span>
+    </div>
+
+    <button class="card card--interactive text-left w-full">
+      <div class="flex items-start gap-2">
+        <i data-lucide="split" class="w-4 h-4 text-brand-500 mt-0.5"></i>
+        <div class="flex-1">
+          <p class="text-sm leading-relaxed text-ink-2">
+            Paid by <b class="text-ink">you</b>, split <b class="text-ink">equally</b> with
+            <b class="text-ink">Aditi</b> — <b class="text-brand-700 num">₹450 each</b>.
+          </p>
+        </div>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-ink-4 mt-0.5"></i>
+      </div>
+    </button>
+
+    <!-- Not a blocker. The ledger is correct for its owner whether or not the
+         other person can see it — that is the whole reason a local person is
+         allowed to exist. What must not happen is implying Aditi has been told. -->
+    <div class="card card--muted">
+      <div class="flex gap-2.5">
+        <i data-lucide="info" class="w-4 h-4 text-ink-3 shrink-0 mt-0.5"></i>
+        <p class="text-2xs text-ink-2 leading-relaxed">
+          <b class="text-ink">Aditi isn't on Aakalan yet</b>, so she won't see this. Your balance with her
+          stays correct, and everything appears for her if she joins on the same number.
+        </p>
+      </div>
+      <button class="btn btn-secondary btn-sm mt-3"><i data-lucide="send" class="w-3.5 h-3.5"></i> Invite Aditi</button>
+    </div>
+  </div>
+
+  <div class="mt-auto"></div>
+  <div class="sticky-bottom">
+    <button class="btn btn-primary"><i data-lucide="check" class="w-4 h-4"></i> Save expense</button>
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

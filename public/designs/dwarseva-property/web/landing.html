@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dwarseva — Find your dream home. Every listing verified by a human.</title>
+  <script src="../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .hero-map { background:
+      radial-gradient(circle at 30% 40%, rgba(245,158,11,0.15), transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(59,130,246,0.15), transparent 40%),
+      linear-gradient(135deg,#0f172a,#020617); }
+    .search-city:hover { background: rgba(59,130,246,0.10); border-color: rgba(59,130,246,0.4); color: #bfdbfe; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="border-b border-zinc-200 bg-white/95 backdrop-blur sticky top-0 z-30">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-6 px-6">
+    <a href="landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+      <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-700">All India · Live</span>
+    </a>
+    <nav class="ml-4 hidden gap-1 text-[13px] md:flex">
+      <a href="#buy" class="rounded-md px-3 py-1.5 text-zinc-700 hover:text-zinc-700">Buy / Rent</a>
+      <a href="#sell" class="rounded-md px-3 py-1.5 text-zinc-700 hover:text-zinc-700">List a property</a>
+      <a href="#how" class="rounded-md px-3 py-1.5 text-zinc-700 hover:text-zinc-700">How verification works</a>
+      <a href="#pricing" class="rounded-md px-3 py-1.5 text-zinc-700 hover:text-zinc-700">Pricing</a>
+    </nav>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="auth/sign-in.html" class="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Sign in</a>
+      <a href="auth/sign-in.html" class="rounded-md bg-amber-500 px-3 py-1.5 text-[12px] font-semibold text-zinc-950 hover:bg-amber-400">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-[1440px] px-6">
+
+  <!-- HERO -->
+  <section class="grid gap-8 py-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:py-20 md:items-center">
+    <div>
+      <p class="text-[11px] uppercase tracking-widest text-amber-700">All India · Verified by humans · One universal ₹5</p>
+      <h1 class="mt-3 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">Find your <span class="text-amber-700">dream home</span>. Every listing verified by a person.</h1>
+      <p class="mt-4 max-w-xl text-[15px] text-zinc-600">Apartments, villas, bungalows, PGs, plots, farms — across every Indian city. No brokers. No stale listings. Sellers publish for <span class="mono text-zinc-800">₹5</span>, buyers unlock owner contact for <span class="mono text-zinc-800">₹5</span>. That's the whole price list.</p>
+
+      <!-- All-India city search -->
+      <div class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-100 p-3 shadow-xl">
+        <label class="block">
+          <span class="text-[10px] uppercase tracking-widest text-zinc-500">Where do you want to find a home?</span>
+          <div class="mt-1.5 flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-500"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" placeholder="Type any city — Mumbai, Bengaluru, Indore, Kochi, Bhopal…" class="flex-1 bg-transparent text-[13px] text-zinc-900 focus:outline-none placeholder:text-zinc-500" />
+            <a href="app/buyer/home.html" class="rounded-md bg-amber-500 px-3 py-1.5 text-[12px] font-semibold text-zinc-950 hover:bg-amber-400">Search</a>
+          </div>
+        </label>
+        <div class="mt-2 flex flex-wrap gap-1.5">
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Mumbai</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Bengaluru</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Delhi NCR</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Pune</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Hyderabad</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Chennai</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Kolkata</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Ahmedabad</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Indore</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">Kochi</a>
+          <a href="app/buyer/home.html" class="search-city rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-700">+ 100s more</a>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="app/buyer/home.html" class="rounded-lg bg-amber-500 px-5 py-3 text-[14px] font-semibold text-zinc-950 hover:bg-amber-400">Find a verified home →</a>
+        <a href="app/seller/home.html" class="rounded-lg border border-zinc-300 bg-white px-5 py-3 text-[14px] font-semibold text-zinc-900 hover:border-blue-500/40">List your property · ₹5</a>
+      </div>
+
+      <div class="mt-8 grid grid-cols-3 gap-6 border-t border-zinc-200 pt-6 text-[12px]">
+        <div>
+          <p class="mono text-2xl font-semibold text-zinc-900">100%</p>
+          <p class="mt-1 text-zinc-500">human-verified listings</p>
+        </div>
+        <div>
+          <p class="mono text-2xl font-semibold text-zinc-900">2–48h</p>
+          <p class="mt-1 text-zinc-500">verification SLA</p>
+        </div>
+        <div>
+          <p class="mono text-2xl font-semibold text-zinc-900">7 days</p>
+          <p class="mt-1 text-zinc-500">scam-refund window</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual: map preview with polygons -->
+    <div class="relative">
+      <div class="hero-map relative aspect-[4/3] overflow-hidden rounded-2xl border border-zinc-200 shadow-2xl">
+        <svg viewBox="0 0 400 300" class="absolute inset-0 h-full w-full">
+          <path d="M 20,40 L 130,35 L 140,120 L 30,128 Z" fill="rgba(245,158,11,0.14)" stroke="rgba(245,158,11,0.7)" stroke-width="1.4"/>
+          <path d="M 130,35 L 260,42 L 250,120 L 140,120 Z" fill="rgba(59,130,246,0.16)" stroke="rgba(59,130,246,0.8)" stroke-width="1.5"/>
+          <path d="M 260,42 L 380,50 L 372,124 L 250,120 Z" fill="rgba(245,158,11,0.14)" stroke="rgba(245,158,11,0.7)" stroke-width="1.4"/>
+          <path d="M 30,128 L 140,120 L 148,220 L 40,228 Z" fill="rgba(59,130,246,0.16)" stroke="rgba(59,130,246,0.8)" stroke-width="1.5"/>
+          <path d="M 140,120 L 250,120 L 258,220 L 148,220 Z" fill="rgba(245,158,11,0.28)" stroke="#d97706" stroke-width="2"/>
+          <path d="M 250,120 L 372,124 L 372,220 L 258,220 Z" fill="rgba(245,158,11,0.14)" stroke="rgba(245,158,11,0.7)" stroke-width="1.4"/>
+        </svg>
+        <div class="absolute left-6 top-14 rounded-md bg-zinc-900/90 px-2 py-1 text-[10px]"><span class="rounded bg-amber-500 px-1 text-zinc-950 font-bold">3</span> <span class="ml-1">Andheri West</span></div>
+        <div class="absolute left-40 top-14 rounded-md bg-zinc-900/90 px-2 py-1 text-[10px]"><span class="rounded bg-blue-500 px-1 text-zinc-950 font-bold">12</span> <span class="ml-1">Oberoi Splendor</span></div>
+        <div class="absolute right-8 top-16 rounded-md bg-zinc-900/90 px-2 py-1 text-[10px]"><span class="rounded bg-amber-500 px-1 text-zinc-950 font-bold">4</span> <span class="ml-1">JVLR</span></div>
+        <div class="absolute left-40 top-40 rounded-md bg-amber-500 px-2 py-1 text-[10px] font-semibold text-zinc-950"><span class="rounded bg-zinc-100 px-1 text-amber-700 font-bold">9</span> Powai Ln 3</div>
+        <div class="absolute right-8 bottom-16 rounded-md bg-zinc-900/90 px-2 py-1 text-[10px]"><span class="rounded bg-blue-500 px-1 text-zinc-950 font-bold">7</span> <span class="ml-1">Hiranandani</span></div>
+
+        <div class="absolute right-4 top-4 rounded-lg border border-zinc-300 bg-zinc-900/90 px-2 py-1.5 text-[10px]">
+          <div class="flex items-center justify-between gap-3 py-0.5"><span class="text-zinc-500">city</span><span class="mono text-zinc-700">2,143</span></div>
+          <div class="my-0.5 flex items-center justify-between gap-3 rounded bg-amber-500 px-1.5 py-0.5 text-zinc-950"><span class="font-bold">sub</span><span class="mono font-bold">86</span></div>
+        </div>
+      </div>
+      <div class="absolute -bottom-4 -left-4 rounded-xl border border-emerald-500/30 bg-zinc-100 px-3 py-2 text-[11px] shadow-xl">
+        <p class="text-[9px] uppercase tracking-widest text-emerald-700">Verified by Priya · Ops team</p>
+        <p class="mt-1 text-zinc-800">"Photos + tax receipt match. Owner confirmed on call."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU CAN FIND -->
+  <section id="buy" class="border-t border-zinc-200 py-14">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">What you can find on Dwarseva</p>
+    <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">Every kind of home. Every Indian city.</h2>
+    <p class="mt-2 max-w-2xl text-[13px] text-zinc-600">No "residential only" restriction. If someone in India wants to rent it, buy it, or lease it, we list it — verified.</p>
+
+    <div class="mt-8 grid gap-3 md:grid-cols-3 lg:grid-cols-4">
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Apartments &amp; Flats</p><p class="mt-1 text-[11px] text-zinc-500">1RK to 5BHK+ · rent · sell · lease</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Villas &amp; Bungalows</p><p class="mt-1 text-[11px] text-zinc-500">Standalone homes with land</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Rowhouses</p><p class="mt-1 text-[11px] text-zinc-500">Multi-floor, shared walls</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Independent Houses</p><p class="mt-1 text-[11px] text-zinc-500">Full house, no society</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Studios</p><p class="mt-1 text-[11px] text-zinc-500">Compact urban living</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">PG accommodation</p><p class="mt-1 text-[11px] text-zinc-500">Paying-guest, with rules</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Plots &amp; Land</p><p class="mt-1 text-[11px] text-zinc-500">Residential + N.A. land</p></a>
+      <a href="app/buyer/home.html" class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40"><p class="text-[13px] font-semibold text-zinc-900">Farms</p><p class="mt-1 text-[11px] text-zinc-500">Agricultural land + farmhouse</p></a>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="border-t border-zinc-200 py-14">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">How it works</p>
+    <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">A property portal where the middleman is <span class="text-blue-700">a person you trust</span>, not one you avoid.</h2>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-5">
+        <div class="grid h-8 w-8 place-items-center rounded-md bg-amber-500/15 text-amber-700 font-bold">1</div>
+        <h3 class="mt-3 text-[15px] font-semibold">Seller lists in 3 short steps</h3>
+        <p class="mt-1 text-[13px] text-zinc-600">Basics → Location & config → Photos. No title — our reviewer writes one that's honest and factual. Pay ₹5 to publish.</p>
+      </div>
+      <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-5">
+        <div class="grid h-8 w-8 place-items-center rounded-md bg-emerald-500/15 text-emerald-700 font-bold">2</div>
+        <h3 class="mt-3 text-[15px] font-semibold">Human reviewer verifies</h3>
+        <p class="mt-1 text-[13px] text-zinc-600">Photos, tax receipt, owner call. Reviewer chooses what's visible before unlock — floor / wing / exterior stay hidden.</p>
+      </div>
+      <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-5">
+        <div class="grid h-8 w-8 place-items-center rounded-md bg-blue-500/15 text-blue-700 font-bold">3</div>
+        <h3 class="mt-3 text-[15px] font-semibold">Buyer unlocks for ₹5</h3>
+        <p class="mt-1 text-[13px] text-zinc-600">Map shows polygons, not pins. Click a polygon, browse verified cards, pay ₹5 to reveal owner phone + WhatsApp. Scam? Full refund in 7 days.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-xl border border-blue-500/30 bg-blue-500/10 p-5">
+      <p class="text-[11px] uppercase tracking-widest text-blue-700">Auto-takedown after 30 days</p>
+      <p class="mt-1 text-[13px] text-zinc-700">Listings expire on day 30 unless the seller consciously renews for another ₹5. That's how we kill the "old listing" fraud: if the seller doesn't care enough to renew, buyers don't see it.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="border-t border-zinc-200 py-14">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Pricing</p>
+    <h2 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">One universal ₹5. Both sides. Every action.</h2>
+    <p class="mt-2 max-w-2xl text-[13px] text-zinc-600">No subscriptions. No tier plans. No daily debits. You pay per action, and the price is symmetric — buyer or seller, it's ₹5.</p>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-emerald-700">Sellers</p>
+        <p class="mt-2 text-4xl font-semibold tracking-tight">₹5 <span class="text-base text-zinc-600">/ listing / 30 days</span></p>
+        <p class="mt-2 text-[13px] text-zinc-600">Pay ₹5 to publish. Your listing stays live for 30 days after review. When it expires, renew for another ₹5 — that's how buyers know it's still on offer. No auto-debit, no surprises.</p>
+        <a href="app/seller/home.html" class="mt-4 inline-flex items-center gap-1 text-[13px] font-semibold text-emerald-700">Start listing →</a>
+      </div>
+      <div class="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-blue-700">Buyers</p>
+        <p class="mt-2 text-4xl font-semibold tracking-tight">₹5 <span class="text-base text-zinc-600">/ owner contact</span></p>
+        <p class="mt-2 text-[13px] text-zinc-600">Browse the map free. Pay ₹5 only to unlock owner phone + WhatsApp. Every unlock is refundable within 7 days if the listing turns out to be a scam.</p>
+        <a href="app/buyer/home.html" class="mt-4 inline-flex items-center gap-1 text-[13px] font-semibold text-blue-700">Explore homes →</a>
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 text-[11px] text-zinc-500">
+      <span class="rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1">Recharge ₹10 / ₹50 / ₹100 via UPI</span>
+      <span class="rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1">One wallet for both sides</span>
+      <span class="rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1">No subscriptions</span>
+      <span class="rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1">GST inclusive</span>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="border-t border-zinc-200 py-14">
+    <div class="grid gap-8 md:grid-cols-4">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Verified by humans</p>
+        <p class="mt-2 text-[13px] text-zinc-600">Every listing checked by a real ops person. Every renewal re-checked. No auto-approve.</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Owner-only listings</p>
+        <p class="mt-2 text-[13px] text-zinc-600">Agents may list with an NoC and RERA number — always badged clearly.</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Refund guarantee</p>
+        <p class="mt-2 text-[13px] text-zinc-600">Scam / fake / sold-already report → refund within 7 days.</p>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">DPDP compliant</p>
+        <p class="mt-2 text-[13px] text-zinc-600">Your name, phone, and search history — used only to help you buy or list. Delete on request.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-zinc-200 bg-zinc-100 py-8 mt-8">
+  <div class="mx-auto flex max-w-[1440px] flex-wrap items-center gap-4 px-6 text-[11px] text-zinc-500">
+    <span>© 2026 Dwarseva</span>
+    <a href="settings/settings.html" class="hover:text-zinc-600">Grievance officer</a>
+    <a href="settings/settings.html" class="hover:text-zinc-600">Privacy</a>
+    <a href="settings/settings.html" class="hover:text-zinc-600">Terms</a>
+    <a href="settings/settings.html" class="hover:text-zinc-600">Contact</a>
+    <span class="ml-auto">Available across <span class="text-zinc-700">all Indian cities</span></span>
+  </div>
+</footer>
+
+</body>
+</html>

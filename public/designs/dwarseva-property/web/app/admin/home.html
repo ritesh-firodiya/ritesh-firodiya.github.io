@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ops dashboard — Dwarseva admin</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 40px); box-shadow: 0 0 0 1px #18181b; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); background-size: 8px 8px; }
+    .field { background: #18181b; border: 1px solid #27272a; }
+    .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #a1a1aa; }
+    .sidebar-item:hover { background: #18181b; color: #f4f4f5; }
+    .sidebar-item-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left: 3px solid #3b82f6; padding-left: 9px; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] w-full">
+<div class="grid grid-cols-[220px_minmax(0,1fr)]">
+
+  <!-- SIDEBAR -->
+  <aside class="bg-zinc-50 border-zinc-200 border-r border-zinc-200 bg-zinc-100 min-h-[calc(100dvh-40px)] p-3">
+    <div class="mb-4 flex items-center gap-2 px-2 py-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-rose-500 text-[13px] font-bold text-zinc-950">A</span>
+      <div>
+        <p class="text-[13px] font-semibold leading-tight">Dwarseva</p>
+        <p class="text-[10px] uppercase tracking-widest text-rose-700">Admin ops</p>
+      </div>
+    </div>
+
+    <p class="mt-2 px-3 text-[9px] uppercase tracking-widest text-zinc-500">Queues</p>
+    <nav class="mt-1 space-y-0.5">
+      <a href="home.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 bg-blue-50 text-blue-700 border-blue-500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2 4 4 8-8 4 4"/></svg>Dashboard</a>
+      <a href="verification-queue.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Verification <span class="ml-auto rounded bg-amber-500 px-1.5 py-0 text-[10px] font-bold text-zinc-950">18</span></a>
+      <a href="complaints-queue.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>Complaints <span class="ml-auto rounded bg-rose-500 px-1.5 py-0 text-[10px] font-bold text-white">3</span></a>
+    </nav>
+
+    <p class="mt-4 px-3 text-[9px] uppercase tracking-widest text-zinc-500">Manage</p>
+    <nav class="mt-1 space-y-0.5">
+      <a href="users.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Users</a>
+      <a href="polygons.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6l-8-4z"/></svg>Polygons &amp; areas</a>
+      <a href="audit.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>Audit log</a>
+    </nav>
+
+    <div class="mt-6 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-[11px]">
+      <p class="text-zinc-500">Signed in as</p>
+      <p class="mt-0.5 font-semibold text-zinc-900">Priya S · verifier</p>
+      <a href="../../auth/sign-in.html" class="mt-1 inline-block text-blue-700 hover:underline">Sign out</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="min-h-[calc(100dvh-40px)] overflow-y-auto">
+
+    <div class="sticky top-0 z-20 border-b border-zinc-200 bg-white/95 backdrop-blur">
+      <div class="flex items-center gap-3 px-6 py-3">
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Tuesday · 21 Jul 2026 · 11:03 IST</p>
+          <h1 class="text-[15px] font-semibold text-zinc-900">Ops dashboard</h1>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <span class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">All systems green</span>
+          <button class="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Refresh</button>
+          <button class="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Export ops CSV</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-6">
+
+      <!-- KPI ROW -->
+      <section class="grid grid-cols-7 gap-3">
+        <a href="verification-queue.html" class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 hover:border-amber-500/60">
+          <p class="text-[10px] uppercase tracking-widest text-amber-700">Pending review</p>
+          <p class="mt-1 text-[22px] font-semibold text-zinc-900 mono">18</p>
+          <p class="text-[10.5px] text-zinc-500">3 SLA-risk &gt;24h</p>
+        </a>
+        <a href="complaints-queue.html" class="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 hover:border-rose-500/60">
+          <p class="text-[10px] uppercase tracking-widest text-rose-700">New complaints</p>
+          <p class="mt-1 text-[22px] font-semibold text-zinc-900 mono">3</p>
+          <p class="text-[10.5px] text-zinc-500">1 flagged Scam</p>
+        </a>
+        <a href="complaints-queue.html?filter=refund" class="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 hover:border-rose-500/60">
+          <p class="text-[10px] uppercase tracking-widest text-rose-700">Refunds due</p>
+          <p class="mt-1 text-[22px] font-semibold text-zinc-900 mono">₹35</p>
+          <p class="text-[10.5px] text-zinc-500">7 buyers · 7-day SLA</p>
+        </a>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-700">Wallet cron</p>
+          <p class="mt-1 text-[13px] font-semibold text-emerald-700">Ran OK 23:55</p>
+          <p class="text-[10.5px] text-zinc-500">Next run in 12h 52m</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-3">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Listings live</p>
+          <p class="mt-1 text-[22px] font-semibold text-zinc-900 mono">642</p>
+          <p class="text-[10.5px] text-emerald-700">+14 vs yesterday</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-3">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Sellers active</p>
+          <p class="mt-1 text-[22px] font-semibold text-zinc-900 mono">418</p>
+          <p class="text-[10.5px] text-zinc-500">7 agents · 411 owners</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-3">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Wallet float</p>
+          <p class="mt-1 text-[22px] font-semibold text-zinc-900 mono">₹47,208</p>
+          <p class="text-[10.5px] text-zinc-500">across 3,142 users</p>
+        </div>
+      </section>
+
+      <!-- MIDDLE 3-col -->
+      <section class="mt-6 grid grid-cols-3 gap-4">
+
+        <!-- Queue snapshot -->
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-amber-700">Queue snapshot · pending</p>
+            <a href="verification-queue.html" class="text-[11px] text-blue-700 hover:underline">See all 18 →</a>
+          </div>
+          <ul class="mt-3 divide-y divide-zinc-800 text-[12px]">
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">LST-1148</span>
+              <span class="truncate text-zinc-800">2 BHK · Baner Lane 7 · Sanjay Patil</span>
+              <span class="ml-auto rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-700">2h</span>
+              <a href="verification-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">LST-1147</span>
+              <span class="truncate text-zinc-800">1 BHK · Aundh Gaon · Meera Joshi</span>
+              <span class="ml-auto rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-700">1h</span>
+              <a href="verification-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">LST-1146</span>
+              <span class="truncate text-zinc-800">3 BHK · Sukhwani Sepia · Nitin Deshmukh</span>
+              <span class="ml-auto rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] text-amber-700">6h</span>
+              <a href="verification-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">LST-1145</span>
+              <span class="truncate text-zinc-800">2 BHK · Wakad · Amit Bhosale <span class="ml-1 rounded bg-blue-500/20 px-1 py-0 text-[9px] text-blue-700">Agent</span></span>
+              <span class="ml-auto rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] text-amber-700">14h</span>
+              <a href="verification-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">LST-1140</span>
+              <span class="truncate text-zinc-800">2 BHK · Kothrud · Prakash Kale</span>
+              <span class="ml-auto rounded bg-rose-500/15 px-1.5 py-0.5 text-[10px] text-rose-700">31h ⚠</span>
+              <a href="verification-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Latest complaints -->
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-rose-700">Latest complaints</p>
+            <a href="complaints-queue.html" class="text-[11px] text-blue-700 hover:underline">See all →</a>
+          </div>
+          <ul class="mt-3 divide-y divide-zinc-800 text-[12px]">
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">CMP-084</span>
+              <span class="truncate text-zinc-800">Ritvi Firodiya · Scam</span>
+              <span class="ml-auto rounded bg-rose-500/15 px-1.5 py-0.5 text-[10px] text-rose-700">₹5</span>
+              <a href="complaint-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">CMP-083</span>
+              <span class="truncate text-zinc-800">Kartik Naik · Sold-already</span>
+              <span class="ml-auto rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] text-amber-700">2h ago</span>
+              <a href="complaint-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">CMP-082</span>
+              <span class="truncate text-zinc-800">Sneha Iyer · Wrong-price</span>
+              <span class="ml-auto rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] text-amber-700">5h ago</span>
+              <a href="complaint-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">CMP-081</span>
+              <span class="truncate text-zinc-800">Aditya Rao · Wrong-loc</span>
+              <span class="ml-auto rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-600">closed</span>
+              <a href="complaint-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+            <li class="flex items-center gap-2 py-2">
+              <span class="mono text-[10.5px] text-zinc-500">CMP-080</span>
+              <span class="truncate text-zinc-800">Payal Shah · Fake photos</span>
+              <span class="ml-auto rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-600">closed</span>
+              <a href="complaint-detail.html" class="rounded border border-zinc-300 bg-white px-2 py-0.5 text-[10.5px] text-zinc-700 hover:border-blue-500/40">Open</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Recent approvals -->
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-emerald-700">Recent approvals</p>
+            <a href="audit.html" class="text-[11px] text-blue-700 hover:underline">Audit log →</a>
+          </div>
+          <ul class="mt-3 divide-y divide-zinc-800 text-[12px]">
+            <li class="py-2">
+              <div class="flex items-center gap-2"><span class="mono text-[10.5px] text-zinc-500">LST-1139</span><span class="truncate text-zinc-800">2 BHK · Baner-Pashan Link</span></div>
+              <p class="text-[10.5px] text-zinc-500">Approved by Priya S · 10:41</p>
+            </li>
+            <li class="py-2">
+              <div class="flex items-center gap-2"><span class="mono text-[10.5px] text-zinc-500">LST-1138</span><span class="truncate text-zinc-800">1 BHK · Balewadi Phata</span></div>
+              <p class="text-[10.5px] text-zinc-500">Approved by Rohan K · 10:18</p>
+            </li>
+            <li class="py-2">
+              <div class="flex items-center gap-2"><span class="mono text-[10.5px] text-zinc-500">LST-1137</span><span class="truncate text-zinc-800">3 BHK · Magarpatta City</span></div>
+              <p class="text-[10.5px] text-zinc-500">Approved by Priya S · 09:52</p>
+            </li>
+            <li class="py-2">
+              <div class="flex items-center gap-2"><span class="mono text-[10.5px] text-zinc-500">LST-1136</span><span class="truncate text-zinc-800">2 BHK · Veerbhadra Nagar</span><span class="rounded bg-amber-500/20 px-1 py-0 text-[9px] text-amber-700">↩ changes</span></div>
+              <p class="text-[10.5px] text-zinc-500">Requested changes by Priya S · 09:33</p>
+            </li>
+            <li class="py-2">
+              <div class="flex items-center gap-2"><span class="mono text-[10.5px] text-zinc-500">LST-1135</span><span class="truncate text-zinc-800">1RK · Aundh ITI</span><span class="rounded bg-rose-500/20 px-1 py-0 text-[9px] text-rose-700">✕ rejected</span></div>
+              <p class="text-[10.5px] text-zinc-500">Rejected by Rohan K · 09:11 · stock photos</p>
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- BOTTOM: chart + cron -->
+      <section class="mt-6 grid grid-cols-3 gap-4">
+
+        <div class="col-span-2 rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Verifications · last 7 days</p>
+            <div class="flex items-center gap-3 text-[10.5px]">
+              <span class="flex items-center gap-1 text-emerald-700"><span class="inline-block h-2 w-2 rounded-sm bg-emerald-500"></span>Approved</span>
+              <span class="flex items-center gap-1 text-rose-700"><span class="inline-block h-2 w-2 rounded-sm bg-rose-500"></span>Rejected</span>
+              <span class="flex items-center gap-1 text-amber-700"><span class="inline-block h-2 w-2 rounded-sm bg-amber-500"></span>Pending EOD</span>
+            </div>
+          </div>
+
+          <svg viewBox="0 0 700 220" class="mt-3 w-full">
+            <!-- grid -->
+            <g stroke="#27272a" stroke-width="1">
+              <line x1="40" y1="30"  x2="690" y2="30"/>
+              <line x1="40" y1="80"  x2="690" y2="80"/>
+              <line x1="40" y1="130" x2="690" y2="130"/>
+              <line x1="40" y1="180" x2="690" y2="180"/>
+            </g>
+            <g fill="#71717a" font-size="10" font-family="ui-monospace, monospace">
+              <text x="8" y="34">60</text>
+              <text x="8" y="84">40</text>
+              <text x="8" y="134">20</text>
+              <text x="8" y="184">0</text>
+            </g>
+
+            <!-- x-axis labels -->
+            <g fill="#71717a" font-size="10" text-anchor="middle">
+              <text x="85"  y="205">Wed</text>
+              <text x="180" y="205">Thu</text>
+              <text x="275" y="205">Fri</text>
+              <text x="370" y="205">Sat</text>
+              <text x="465" y="205">Sun</text>
+              <text x="560" y="205">Mon</text>
+              <text x="655" y="205">Tue</text>
+            </g>
+
+            <!-- Approved bars -->
+            <g fill="#10b981">
+              <rect x="60"  y="80"  width="14" height="100"/>
+              <rect x="155" y="60"  width="14" height="120"/>
+              <rect x="250" y="90"  width="14" height="90"/>
+              <rect x="345" y="105" width="14" height="75"/>
+              <rect x="440" y="125" width="14" height="55"/>
+              <rect x="535" y="50"  width="14" height="130"/>
+              <rect x="630" y="72"  width="14" height="108"/>
+            </g>
+            <!-- Rejected bars -->
+            <g fill="#f43f5e">
+              <rect x="76"  y="160" width="10" height="20"/>
+              <rect x="171" y="150" width="10" height="30"/>
+              <rect x="266" y="165" width="10" height="15"/>
+              <rect x="361" y="155" width="10" height="25"/>
+              <rect x="456" y="170" width="10" height="10"/>
+              <rect x="551" y="152" width="10" height="28"/>
+              <rect x="646" y="158" width="10" height="22"/>
+            </g>
+            <!-- Pending EOD line -->
+            <polyline fill="none" stroke="#f59e0b" stroke-width="2" points="67,140 162,132 257,138 352,142 447,148 542,120 637,128"/>
+            <g fill="#f59e0b">
+              <circle cx="67"  cy="140" r="2.5"/>
+              <circle cx="162" cy="132" r="2.5"/>
+              <circle cx="257" cy="138" r="2.5"/>
+              <circle cx="352" cy="142" r="2.5"/>
+              <circle cx="447" cy="148" r="2.5"/>
+              <circle cx="542" cy="120" r="2.5"/>
+              <circle cx="637" cy="128" r="2.5"/>
+            </g>
+          </svg>
+
+          <div class="mt-3 grid grid-cols-3 gap-3 text-[11px]">
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-2"><p class="text-zinc-500">Approved (7d)</p><p class="mono text-[15px] text-emerald-700">312</p></div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-2"><p class="text-zinc-500">Rejected (7d)</p><p class="mono text-[15px] text-rose-700">47</p></div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-2"><p class="text-zinc-500">Median TTR</p><p class="mono text-[15px] text-zinc-900">3h 42m</p></div>
+          </div>
+        </div>
+
+        <!-- Cron job status -->
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Scheduled jobs</p>
+
+          <div class="mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3">
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <p class="text-[12px] font-semibold text-zinc-900">Daily wallet fee run</p>
+              <span class="ml-auto rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700 mono">0 55 23 * * *</span>
+            </div>
+            <p class="mt-1 text-[11px] text-zinc-600">Last run <span class="text-emerald-700">23:55 last night</span> · collected <span class="mono text-zinc-900">₹1,284</span> from <span class="mono text-zinc-900">642</span> listings.</p>
+            <p class="text-[10.5px] text-zinc-500">Auto-paused: <span class="text-amber-700">4</span> listings (wallet &lt; ₹2). Next run in 12h 52m.</p>
+          </div>
+
+          <div class="mt-2 rounded-lg border border-zinc-200 bg-zinc-100 p-3">
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <p class="text-[12px] font-semibold text-zinc-900">Refund SLA sweeper</p>
+              <span class="ml-auto rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-700 mono">0 0 6 * * *</span>
+            </div>
+            <p class="mt-1 text-[11px] text-zinc-600">Escalates any complaint refund pending &gt; 5 days. Last: 0 escalations.</p>
+          </div>
+
+          <div class="mt-2 rounded-lg border border-zinc-200 bg-zinc-100 p-3">
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              <p class="text-[12px] font-semibold text-zinc-900">Polygon density check</p>
+              <span class="ml-auto rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-700 mono">0 0 4 * * 1</span>
+            </div>
+            <p class="mt-1 text-[11px] text-zinc-600">Flags sub-areas &gt; 30 listings for lane split. Weekly. Last: 2 flagged.</p>
+          </div>
+
+          <div class="mt-2 rounded-lg border border-zinc-200 bg-zinc-100 p-3">
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+              <p class="text-[12px] font-semibold text-zinc-900">WABA re-verify nudge</p>
+              <span class="ml-auto rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-700 mono">0 30 10 * * *</span>
+            </div>
+            <p class="mt-1 text-[11px] text-amber-700">Delivered 218 / 224 · 6 opt-outs.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+</div>
+
+</body>
+</html>

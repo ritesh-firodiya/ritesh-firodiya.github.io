@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Account</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Account</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Manage account profile and basic settings.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Profile information</li>
+        <li>Email and name management</li>
+        <li>Notification preferences</li>
+        <li>Account preferences</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone">
+  <div class="statusbar">
+    <span class="statusbar-time">9:41</span>
+    <span class="statusbar-icons text-xs">••• 5G ■</span>
+  </div>
+
+  <div class="appheader">
+    <button class="iconbtn"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+    <p class="text-[15px] font-black teal">Account</p>
+    <div style="width:40px"></div>
+  </div>
+
+  <div class="px-6 pb-24 space-y-4">
+    <!-- Profile -->
+    <div class="card flex items-center gap-3">
+      <div class="avatar avatar-p avatar-lg">P</div>
+      <div>
+        <p class="text-[15px] font-black">Priya Shah</p>
+        <p class="text-[12px] text-[color:var(--text-tertiary)]">+91 98••• ••••</p>
+      </div>
+    </div>
+
+    <!-- Sections -->
+    <div class="card p-0">
+      <a href="#" class="flex items-center gap-3 px-4 py-3 border-b border-[color:var(--border)]">
+        <i data-lucide="user" class="w-4 h-4 text-[color:var(--text-secondary)]"></i>
+        <span class="flex-1 text-[13px] font-bold">Profile</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      </a>
+      <a href="#" class="flex items-center gap-3 px-4 py-3 border-b border-[color:var(--border)]">
+        <i data-lucide="bell" class="w-4 h-4 text-[color:var(--text-secondary)]"></i>
+        <span class="flex-1 text-[13px] font-bold">Notifications</span>
+        <span class="text-[11px] text-[color:var(--text-tertiary)]">1 per day max</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      </a>
+      <a href="#" class="flex items-center gap-3 px-4 py-3 border-b border-[color:var(--border)]">
+        <i data-lucide="languages" class="w-4 h-4 text-[color:var(--text-secondary)]"></i>
+        <span class="flex-1 text-[13px] font-bold">Language</span>
+        <span class="text-[11px] text-[color:var(--text-tertiary)]">English</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      </a>
+      <a href="household.html" class="flex items-center gap-3 px-4 py-3">
+        <i data-lucide="users" class="w-4 h-4 text-[color:var(--text-secondary)]"></i>
+        <span class="flex-1 text-[13px] font-bold">Household settings</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      </a>
+    </div>
+
+    <div class="card p-0">
+      <a href="#" class="flex items-center gap-3 px-4 py-3 border-b border-[color:var(--border)]">
+        <i data-lucide="help-circle" class="w-4 h-4 text-[color:var(--text-secondary)]"></i>
+        <span class="flex-1 text-[13px] font-bold">Help</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      </a>
+      <a href="#" class="flex items-center gap-3 px-4 py-3">
+        <i data-lucide="log-out" class="w-4 h-4 danger"></i>
+        <span class="flex-1 text-[13px] font-bold danger">Sign out</span>
+      </a>
+    </div>
+
+    <p class="text-[10px] text-center text-[color:var(--text-tertiary)]">Pattaya v0.1 · plan doc build</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

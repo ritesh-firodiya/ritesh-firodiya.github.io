@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imposter — your own words</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <aside class="shrink-0 w-[288px] self-start my-5 bg-surface rounded-lg border border-line shadow p-[18px]">
+    <p class="text-base font-bold mb-3">Your words</p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p class="p-2.5 rounded bg-success-bg border border-success text-ink"><b>This pack is FREE, and that is the whole argument.</b> imposter.app ships custom words free; Zinance puts AI-generated decks behind Premium. The complaint driving the one-star reviews in this category is "the categories are locked" — giving away the one pack the player writes themselves defuses that without touching the seven we actually authored. Pro stays what is genuinely expensive to make: 749 hand-written hints.</p>
+      <p><b class="text-ink">A hint is optional, and the field says what a good one looks like.</b> The differentiator is that "Will Smith" gives "Slap", not "Actor". We cannot write hints for a player's inside jokes, but we can show them the standard. Leave it blank and the imposter simply gets no hint for that word — which is honest, and exactly what every competitor does for all of theirs.</p>
+      <p><b class="text-ink">Three pairs minimum, matching imposter.app.</b> Below that the pack cannot be selected and the CTA says why. Rule 4 — a control that cannot be operated is a sentence, not a greyed-out button.</p>
+      <p><b class="text-ink">The counter is live and honest.</b> Same rule as the ten shipped packs: the UI reads the real count, so nothing advertises a number the app cannot back. Note the footer counts words and hints separately, because they differ here.</p>
+      <p><b class="text-ink">Editing is a flat list, not a modal stack.</b> Add sits at the top, newest first, delete is a row action. Nobody opens this screen to admire it — they are mid-party with four people waiting.</p>
+      <p><b class="text-ink">It never leaves the phone.</b> No backend, no account, no sync — the same promise the rest of the app makes, and the reason this costs nothing to run.</p>
+      <p class="p-2.5 rounded bg-muted border border-line"><b class="text-ink">Open question for review:</b> one custom pack, or several named ones? One keeps the model flat and the packs grid at eleven tiles. Several is what a group with both "work in-jokes" and "family" would want. Drawn here as one.</p>
+    </div>
+  </aside>
+
+  <!-- ============================================ EMPTY -->
+  <div class="phone phone--flood phone--brand" id="empty">
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-3 px-4 pt-2 pb-1">
+      <a href="packs.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      </a>
+      <p class="flex-1 text-h2 font-black">Your words</p>
+      <span class="rounded-pill bg-sunken px-2.5 py-1 text-2xs font-black num">0</span>
+    </div>
+
+    <div class="relative flex-1 grid place-items-center px-6 text-center">
+      <div>
+        <div class="mx-auto w-16 h-16 rounded-2xl grid place-items-center bg-paper">
+          <i data-lucide="pencil-line" class="w-8 h-8 text-paperink"></i>
+        </div>
+        <p class="mt-5 text-h3 font-black leading-tight">The words only<br/>your table knows</p>
+        <p class="mt-3 text-sm leading-relaxed text-ink-2">Inside jokes, people you work with, the thing that happened in Goa. Add three and this pack is playable.</p>
+
+        <div class="mt-6 rounded-3xl bg-surface border border-line p-4 text-left">
+          <p class="text-2xs font-black uppercase tracking-label text-ink-3">What makes a good hint</p>
+          <div class="mt-2.5 flex items-center gap-2">
+            <span class="text-sm font-black">Will Smith</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-ink-3"></i>
+            <span class="rounded-pill bg-accent-300 px-2 py-0.5 text-2xs font-black text-onaccent">Slap</span>
+          </div>
+          <p class="mt-2 text-xs leading-relaxed text-ink-3">Not "Actor". A hint should let the imposter bluff, not hand them the answer — and never be a synonym.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-3 pb-5">
+      <a href="custom.html#adding" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        <i data-lucide="plus" class="w-5 h-5"></i>
+        Add your first word
+      </a>
+      <p class="mt-2.5 text-center text-xs text-ink-3">Free forever. Stays on this phone.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ ADDING -->
+  <div class="phone phone--flood phone--brand" id="adding">
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-3 px-4 pt-2 pb-1">
+      <a href="custom.html#filled" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </a>
+      <p class="flex-1 text-h2 font-black">New word</p>
+    </div>
+
+    <div class="relative flex-1 px-5 pt-4 space-y-4">
+      <div>
+        <p class="text-2xs font-black uppercase tracking-label text-ink-3">The secret word</p>
+        <div class="mt-2 rounded-3xl border border-accent-300 bg-surface px-3.5 py-3 flex items-center gap-2.5">
+          <i data-lucide="type" class="w-5 h-5 text-accent-300"></i>
+          <span class="flex-1 text-body font-black">Ravi's scooter</span>
+          <span class="w-0.5 h-5 bg-accent-300"></span>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-baseline gap-2">
+          <p class="text-2xs font-black uppercase tracking-label text-ink-3">The imposter's hint</p>
+          <span class="text-2xs font-bold text-ink-4">optional</span>
+        </div>
+        <div class="mt-2 rounded-3xl border border-line bg-surface px-3.5 py-3 flex items-center gap-2.5">
+          <i data-lucide="venetian-mask" class="w-5 h-5 text-ink-4"></i>
+          <span class="flex-1 text-body text-ink-4">One word. Not a synonym.</span>
+        </div>
+        <p class="mt-2 text-xs leading-relaxed text-ink-3">Leave it blank and the imposter gets nothing for this word — harder for them, which is fine.</p>
+      </div>
+
+      <div class="rounded-3xl bg-surface border border-line p-3.5">
+        <p class="text-2xs font-black uppercase tracking-label text-ink-3">Preview</p>
+        <div class="mt-2.5 flex gap-2.5">
+          <div class="flex-1 rounded-2xl bg-paper text-paperink p-3">
+            <p class="text-2xs font-black uppercase opacity-50">Civilian sees</p>
+            <p class="mt-1 text-sm font-black">Ravi's scooter</p>
+          </div>
+          <div class="flex-1 rounded-2xl bg-coal text-white p-3">
+            <p class="text-2xs font-black uppercase opacity-50">Imposter sees</p>
+            <p class="mt-1 text-sm font-black opacity-60">No hint</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-3 pb-5">
+      <a href="custom.html#filled" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        Add and keep going
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================ UNDER THE MINIMUM -->
+  <div class="phone phone--flood phone--brand" id="too-few">
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-3 px-4 pt-2 pb-1">
+      <a href="packs.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      </a>
+      <p class="flex-1 text-h2 font-black">Your words</p>
+      <span class="rounded-pill bg-sunken px-2.5 py-1 text-2xs font-black num">2</span>
+    </div>
+
+    <div class="relative flex-1 px-4 pt-3 space-y-2.5 overflow-hidden">
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">Ravi's scooter</p>
+          <p class="mt-0.5 text-xs text-ink-3">no hint</p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">The Goa trip</p>
+          <p class="mt-0.5 text-xs text-ink-3">hint · <span class="font-black text-ink-2">Receipts</span></p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+
+      <a href="custom.html#adding" class="flex items-center justify-center gap-2 rounded-2xl border border-dashed border-line-strong py-3.5 text-sm font-black text-ink-2">
+        <i data-lucide="plus" class="w-4 h-4"></i>
+        Add another
+      </a>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-3 pb-5">
+      <div class="w-full inline-flex items-center justify-center px-5 py-[18px] rounded-pill font-black text-lead text-ink-3 bg-sunken">
+        Add 1 more word to play
+      </div>
+      <p class="mt-2.5 text-center text-xs text-ink-3">Three is the minimum — below that the imposter can guess by elimination.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ USABLE -->
+  <div class="phone phone--flood phone--brand" id="filled">
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-3 px-4 pt-2 pb-1">
+      <a href="packs.html" class="w-11 h-11 grid place-items-center rounded-pill bg-sunken">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      </a>
+      <p class="flex-1 text-h2 font-black">Your words</p>
+      <span class="rounded-pill bg-paper px-2.5 py-1 text-2xs font-black num text-paperink">12</span>
+    </div>
+
+    <div class="relative flex-1 px-4 pt-3 space-y-2.5 overflow-hidden">
+      <a href="custom.html#adding" class="flex items-center justify-center gap-2 rounded-2xl border border-dashed border-line-strong py-3.5 text-sm font-black text-ink-2">
+        <i data-lucide="plus" class="w-4 h-4"></i>
+        Add a word
+      </a>
+
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">Ravi's scooter</p>
+          <p class="mt-0.5 text-xs text-ink-3">no hint</p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">The Goa trip</p>
+          <p class="mt-0.5 text-xs text-ink-3">hint · <span class="font-black text-ink-2">Receipts</span></p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">Monday standup</p>
+          <p class="mt-0.5 text-xs text-ink-3">hint · <span class="font-black text-ink-2">Mute</span></p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">Dad's playlist</p>
+          <p class="mt-0.5 text-xs text-ink-3">hint · <span class="font-black text-ink-2">Again</span></p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+      <div class="rounded-2xl bg-surface border border-line px-3.5 py-3 flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-body font-black">The balcony plant</p>
+          <p class="mt-0.5 text-xs text-ink-3">hint · <span class="font-black text-ink-2">Survivor</span></p>
+        </div>
+        <button class="w-8 h-8 grid place-items-center rounded-pill"><i data-lucide="x" class="w-4 h-4 text-ink-4"></i></button>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-5 pt-3 pb-5">
+      <a href="packs.html" class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        Use your words
+      </a>
+      <p class="mt-2.5 text-center text-xs text-ink-3 num">12 words · 9 hints in this pack</p>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

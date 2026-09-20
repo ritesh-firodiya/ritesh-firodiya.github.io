@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller · My listings — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 128px); box-shadow: 0 0 0 1px #18181b; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); }
+    .sidebar-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #a1a1aa; }
+    .sidebar-item:hover { background: #18181b; color: #f4f4f5; }
+    .sidebar-item-active { background: rgba(16,185,129,0.10); color: #6ee7b7; border-left: 3px solid #10b981; padding-left: 9px; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+<!-- Route ribbon -->
+
+
+<!-- Top app bar -->
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="home.html" class="rounded-md bg-emerald-500/15 px-3 py-1.5 font-semibold text-emerald-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="../../settings/notifications.html" class="grid h-8 w-8 place-items-center rounded-md border border-zinc-200 bg-white text-zinc-600 hover:border-blue-500/40">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/20 text-[10px] font-semibold text-emerald-700">SP</span>
+        <span>Sanjay</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] mx-auto max-w-[1440px]">
+<div class="grid grid-cols-[240px_minmax(0,1fr)]">
+
+  <!-- LEFT RAIL: counts -->
+  <aside class="border-r border-zinc-200 bg-zinc-100 p-4 min-h-[calc(100dvh-128px)]">
+    <p class="px-3 text-[10px] uppercase tracking-widest text-zinc-500">Filter</p>
+    <nav class="mt-2 space-y-1">
+      <a href="home.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 bg-blue-50 text-blue-700 border-blue-500">
+        <span class="inline-flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          All listings
+        </span>
+        <span class="mono text-[11px] text-zinc-700">4</span>
+      </a>
+      <a href="listing-live.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <span class="inline-flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
+          Active
+        </span>
+        <span class="mono text-[11px] text-emerald-700">1</span>
+      </a>
+      <a href="listing-pending.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <span class="inline-flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-amber-400"></span>
+          Pending review
+        </span>
+        <span class="mono text-[11px] text-amber-700">1</span>
+      </a>
+      <a href="listing-needs-changes.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <span class="inline-flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-amber-500"></span>
+          Needs changes
+        </span>
+        <span class="mono text-[11px] text-amber-700">1</span>
+      </a>
+      <a href="listing-paused.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <span class="inline-flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-zinc-400"></span>
+          Expired
+        </span>
+        <span class="mono text-[11px] text-zinc-600">1</span>
+      </a>
+      <a href="listing-sold.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <span class="inline-flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-zinc-600"></span>
+          Sold / rented
+        </span>
+        <span class="mono text-[11px] text-zinc-500">2</span>
+      </a>
+    </nav>
+
+    <div class="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/10 p-3">
+      <p class="text-[10px] uppercase tracking-widest text-amber-700">Wallet</p>
+      <p class="mt-1 mono text-lg font-semibold text-amber-700">₹42</p>
+      <p class="mt-0.5 text-[10.5px] text-zinc-600">Prepaid balance · use for publish (₹5 · 30 days), renew (₹5), or unlocks (₹5).</p>
+      <a href="../../wallet/recharge.html" class="mt-2 inline-flex w-full items-center justify-center gap-1 rounded-md border border-amber-500/50 bg-amber-500/15 px-2 py-1.5 text-[11px] font-semibold text-amber-700 hover:bg-amber-500/20">Recharge ₹10 / ₹50 / ₹100</a>
+    </div>
+
+    <div class="mt-4 rounded-xl border border-zinc-200 bg-zinc-100/75 p-3 text-[11px]">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Signed in as</p>
+      <p class="mt-0.5 font-semibold text-zinc-900">Sanjay Patil</p>
+      <p class="text-zinc-500">seller_owner · Pune</p>
+      <a href="../../auth/sign-in.html" class="mt-1 inline-block text-blue-700 hover:underline">Sign out</a>
+    </div>
+  </aside>
+
+  <!-- MAIN: cards grid -->
+  <main class="min-h-[calc(100dvh-128px)] p-6">
+
+    <div class="flex items-end justify-between">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">/seller</p>
+        <h1 class="mt-0.5 text-xl font-semibold">My listings</h1>
+        <p class="mt-0.5 text-[12px] text-zinc-600">4 properties · 1 live · publish/renew <span class="mono text-zinc-800">₹5 · 30 days</span></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="inline-flex gap-1 rounded-full border border-zinc-200 bg-zinc-100 p-0.5 text-[12px]">
+          <button class="rounded-full bg-zinc-100 px-3 py-1 font-semibold text-zinc-900">Grid</button>
+          <button class="rounded-full px-3 py-1 text-zinc-600">Table</button>
+        </div>
+        <a href="new-listing-basics.html" class="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          New listing
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-2 gap-4">
+
+      <!-- Card 1: LIVE -->
+      <a href="listing-live.html" class="group rounded-2xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-emerald-500/40">
+        <div class="flex gap-4">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative h-28 w-40 shrink-0 overflow-hidden rounded-xl">
+            <span class="absolute left-1.5 top-1.5 rounded bg-emerald-500 px-1.5 py-0.5 text-[9.5px] font-bold text-zinc-950">LIVE</span>
+            <span class="absolute bottom-1.5 right-1.5 rounded bg-zinc-900/80 px-1.5 py-0.5 text-[9px] text-zinc-700">6 photos</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-baseline justify-between gap-2">
+              <p class="truncate text-[14px] font-semibold text-zinc-900">Spacious 2 BHK in Baner Lane 7 · fully furnished · lift + parking</p>
+              <span class="mono shrink-0 text-[14px] font-semibold text-zinc-900">₹28k</span>
+            </div>
+            <p class="mt-0.5 text-[11px] text-zinc-500">📍 Baner Lane 7 · 780 sqft · Wing B · Flat B-704 · 7th floor</p>
+            <div class="mt-2 grid grid-cols-4 gap-2 text-[11px]">
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Live for</p>
+                <p class="mono font-semibold text-zinc-800">14 / 30 d</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Views</p>
+                <p class="mono font-semibold text-zinc-800">122</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Unlocks</p>
+                <p class="mono font-semibold text-emerald-700">4</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Expires in</p>
+                <p class="mono font-semibold text-amber-700">16 d</p>
+              </div>
+            </div>
+            <div class="mt-2 flex items-center gap-1.5">
+              <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">✓ Verified</span>
+              <span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-600">Rent</span>
+              <span class="ml-auto text-[10.5px] text-zinc-500 group-hover:text-blue-700">Manage →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: PENDING -->
+      <a href="listing-pending.html" class="group rounded-2xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-amber-500/40">
+        <div class="flex gap-4">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative h-28 w-40 shrink-0 overflow-hidden rounded-xl opacity-90">
+            <span class="absolute left-1.5 top-1.5 rounded bg-amber-500 px-1.5 py-0.5 text-[9.5px] font-bold text-zinc-950">IN REVIEW</span>
+            <div class="absolute inset-0 bg-zinc-100/75"></div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-baseline justify-between gap-2">
+              <p class="truncate text-[14px] font-semibold text-zinc-800">3 BHK · Wakad · Rent <span class="text-zinc-500 font-normal">(title pending)</span></p>
+              <span class="mono shrink-0 text-[14px] font-semibold text-zinc-900">₹32k</span>
+            </div>
+            <p class="mt-0.5 text-[11px] text-zinc-500">🏘 Sukhwani Sepia · 1,210 sqft · submitted 4 hrs ago</p>
+            <div class="mt-2 grid grid-cols-3 gap-2 text-[11px]">
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">SLA</p>
+                <p class="mono font-semibold text-amber-700">2–48 hr</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Photos</p>
+                <p class="mono font-semibold text-zinc-800">8</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Fee</p>
+                <p class="mono font-semibold text-zinc-500">₹0 while pending</p>
+              </div>
+            </div>
+            <div class="mt-2 flex items-center gap-1.5">
+              <span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700">In review</span>
+              <span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] text-zinc-600">Rent</span>
+              <span class="ml-auto text-[10.5px] text-zinc-500 group-hover:text-blue-700">View status →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: NEEDS CHANGES -->
+      <a href="listing-needs-changes.html" class="group rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4 hover:border-amber-500/70">
+        <div class="flex gap-4">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative h-28 w-40 shrink-0 overflow-hidden rounded-xl">
+            <span class="absolute left-1.5 top-1.5 rounded bg-amber-500 px-1.5 py-0.5 text-[9.5px] font-bold text-zinc-950">FIX 3</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-baseline justify-between gap-2">
+              <p class="truncate text-[14px] font-semibold text-zinc-900">3 BHK · Megapolis · Hinjewadi <span class="text-zinc-500 font-normal">(title pending)</span></p>
+              <span class="mono shrink-0 text-[14px] font-semibold text-zinc-900">₹36k</span>
+            </div>
+            <p class="mt-0.5 text-[11px] text-amber-700">↩ Verifier requested 3 fixes · replied 6 hrs ago</p>
+            <ul class="mt-1.5 space-y-0.5 text-[10.5px] text-zinc-600">
+              <li>· External photo blurry — re-upload</li>
+              <li>· Confirm parking spot number</li>
+              <li>· Tax receipt older than 12 months</li>
+            </ul>
+            <div class="mt-2 flex items-center gap-1.5">
+              <span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700">Needs changes</span>
+              <span class="ml-auto text-[10.5px] text-amber-700 group-hover:text-amber-700">Fix &amp; resubmit →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: EXPIRED (30-day period ended) -->
+      <a href="listing-paused.html" class="group rounded-2xl border border-rose-500/30 bg-rose-500/10 p-4 hover:border-rose-500/60">
+        <div class="flex gap-4">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative h-28 w-40 shrink-0 overflow-hidden rounded-xl opacity-60">
+            <span class="absolute left-1.5 top-1.5 rounded bg-rose-500 px-1.5 py-0.5 text-[9.5px] font-bold text-white">EXPIRED</span>
+            <div class="absolute inset-0 bg-zinc-100/85"></div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-baseline justify-between gap-2">
+              <p class="truncate text-[14px] font-semibold text-zinc-800">1 BHK unfurnished · Kothrud DSK Vishwa</p>
+              <span class="mono shrink-0 text-[14px] font-semibold text-zinc-700">₹14k</span>
+            </div>
+            <p class="mt-0.5 text-[11px] text-rose-700">30-day live period ended on 20 Jul · listing hidden</p>
+            <div class="mt-2 grid grid-cols-3 gap-2 text-[11px]">
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Was live</p>
+                <p class="mono font-semibold text-zinc-700">30 days</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Unlocks</p>
+                <p class="mono font-semibold text-zinc-700">2</p>
+              </div>
+              <div>
+                <p class="text-[9.5px] uppercase tracking-wider text-zinc-500">Restart</p>
+                <p class="mono font-semibold text-rose-700">Renew ₹5</p>
+              </div>
+            </div>
+            <div class="mt-2 flex items-center gap-1.5">
+              <span class="rounded bg-rose-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700">Expired · Renew for ₹5</span>
+              <span class="ml-auto text-[10.5px] text-rose-700 group-hover:text-rose-700">Renew →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Buyer interest strip -->
+    <a href="buyer-interest.html" class="mt-6 flex items-center justify-between rounded-2xl border border-blue-500/30 bg-blue-500/10 p-4 hover:border-blue-500/60">
+      <div class="flex items-center gap-3">
+        <span class="grid h-10 w-10 place-items-center rounded-lg bg-blue-500/15 text-blue-700">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </span>
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-blue-700">Buyer interest</p>
+          <p class="text-[13px] font-semibold text-zinc-900">4 buyers unlocked your Baner Lane 7 flat · 2 marked as contacted</p>
+        </div>
+      </div>
+      <span class="text-[12px] text-blue-700">Open buyer list →</span>
+    </a>
+
+    <!-- Historical (sold) row -->
+    <div class="mt-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Recently closed</p>
+      <div class="mt-2 divide-y divide-zinc-800 rounded-2xl border border-zinc-200 bg-zinc-100/60">
+        <a href="listing-sold.html" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900/60">
+          <span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[9.5px] font-semibold text-zinc-700">RENTED</span>
+          <p class="text-[13px] text-zinc-800">2 BHK · Baner Lane 7 · Rented via Dwarseva</p>
+          <span class="ml-auto text-[11px] text-zinc-500">Closed 12 Jun · 6 unlocks</span>
+        </a>
+        <a href="listing-sold.html" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900/60">
+          <span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[9.5px] font-semibold text-zinc-700">SOLD</span>
+          <p class="text-[13px] text-zinc-800">3 BHK sell-resale · Kothrud · Sold elsewhere</p>
+          <span class="ml-auto text-[11px] text-zinc-500">Closed 4 May · 11 unlocks</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+</div>
+
+</body>
+</html>

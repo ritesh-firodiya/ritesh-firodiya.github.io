@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Card detail</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .readbar { position:sticky; top:0; z-index:5; background:var(--surface); border-bottom:1px solid var(--border); }
+    .readbar-fill { height:3px; background:var(--coral-500); width:34%; }
+    .pullq { font-family:Georgia, serif; font-style:italic; font-size:16px; line-height:1.5; color:var(--teal-900); padding:14px 16px; border-left:3px solid var(--coral-500); background:var(--coral-50); border-radius:0 12px 12px 0; }
+    .kv { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--border); font-size:12.5px; }
+    .kv:last-child { border-bottom:none; }
+    .kv-k { color:var(--text-tertiary); font-weight:700; }
+    .kv-v { color:var(--text-primary); font-weight:700; }
+    .related { display:flex; gap:10px; overflow-x:auto; padding-bottom:4px; }
+    .related > * { flex:0 0 78%; }
+  </style>
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Card Detail</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Immersive reading experience for knowledge cards with audio and related content.</p>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Redesign:</strong> Read like an audiobook chapter. Sticky progress bar, audio player with India/Global toggle at top, pull-quotes, key takeaways, sources drawer, and related content strip.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Audio player with progress tracking</li>
+        <li>Pull-quotes and key takeaways</li>
+        <li>Related cards and up next strip</li>
+        <li>India/Global content toggle</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <!-- Sticky read progress + top actions -->
+  <div class="readbar">
+    <div class="appheader" style="padding:8px 16px">
+      <a href="feed.html" class="backbtn" aria-label="Back"><i data-lucide="chevron-left" class="w-5 h-5"></i></a>
+      <div class="flex gap-2">
+        <button class="iconbtn" aria-label="Text size"><i data-lucide="type" class="w-5 h-5"></i></button>
+        <button class="iconbtn" aria-label="Save"><i data-lucide="bookmark" class="w-5 h-5"></i></button>
+        <button class="iconbtn" aria-label="Share"><i data-lucide="share-2" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+    <div style="height:3px;background:var(--surface-sunken)"><div class="readbar-fill"></div></div>
+  </div>
+
+  <div class="px-5 pb-28">
+    <!-- Header -->
+    <div class="pt-4">
+      <div class="flex gap-1.5 mb-3 flex-wrap">
+        <span class="chip chip-teal">Trying</span>
+        <span class="chip chip-info">Nutrition</span>
+        <span class="chip chip-success"><i data-lucide="stethoscope" class="w-2.5 h-2.5"></i>Medically reviewed</span>
+      </div>
+      <h1 class="text-[24px] font-black tracking-tight teal leading-tight">Foods that support conception — dosha-aware</h1>
+      <p class="mt-2 text-[12.5px] text-[color:var(--text-tertiary)]">Est. 4 min read · 5 min listen · Updated Jul 15</p>
+    </div>
+
+    <!-- Audio player -->
+    <div class="mt-4 audio-player">
+      <div class="flex items-center gap-3">
+        <a href="audio-player.html" class="w-11 h-11 rounded-lg bg-white/15 flex items-center justify-center">
+          <i data-lucide="headphones" class="w-5 h-5"></i>
+        </a>
+        <div class="flex-1 min-w-0">
+          <p class="text-[10px] uppercase tracking-widest text-white/60">Listen · 5 min</p>
+          <p class="text-[13px] font-bold truncate">Narrated by Anisha</p>
+        </div>
+        <a href="audio-player.html" class="text-[10px] text-white/70 uppercase tracking-widest font-bold">Full player →</a>
+      </div>
+      <div class="audio-progress"><div class="audio-progress-fill" style="width:22%"></div></div>
+      <div class="audio-time"><span>1:04</span><span>5:12</span></div>
+      <div class="audio-controls">
+        <button class="audio-btn"><i data-lucide="rotate-ccw" class="w-4 h-4"></i></button>
+        <button class="audio-btn audio-btn--main"><i data-lucide="play" class="w-6 h-6" style="margin-left:2px"></i></button>
+        <button class="audio-btn"><i data-lucide="rotate-cw" class="w-4 h-4"></i></button>
+      </div>
+      <div class="mt-3 flex items-center justify-between text-[10px] text-white/70">
+        <span class="flex items-center gap-1"><i data-lucide="gauge" class="w-3 h-3"></i>1.0×</span>
+        <span class="flex items-center gap-1"><div class="avatar avatar-r" style="width:16px;height:16px;font-size:8px">R</div>Rahul finished yesterday</span>
+      </div>
+    </div>
+
+    <!-- Global / India toggle -->
+    <div class="mt-4 segmented" style="display:flex;width:100%">
+      <button class="flex-1">Global view</button>
+      <button class="is-active flex-1">Indian context</button>
+    </div>
+
+    <!-- Key takeaways -->
+    <div class="mt-4 card card--teal">
+      <p class="section-label teal-700">3 things to remember</p>
+      <ul class="mt-3 space-y-2 text-[13.5px] teal leading-snug">
+        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 teal-700 mt-0.5 flex-shrink-0"></i>Whole grains, ghee, dal, seasonal fruit beat any "superfood."</li>
+        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 teal-700 mt-0.5 flex-shrink-0"></i>Warming foods pre-ovulation, cooling foods after (Ayurveda's temperature lens).</li>
+        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 teal-700 mt-0.5 flex-shrink-0"></i>Cutting evening alcohol helps sperm quality within ~3 months.</li>
+      </ul>
+    </div>
+
+    <!-- Body -->
+    <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-[color:var(--text-primary)]">
+      <p>
+        Modern medicine's consensus is boring on purpose: a Mediterranean-style diet — whole grains, olive oil, nuts, fish, vegetables — modestly improves fertility outcomes. The Indian version doesn't require you to eat like an Italian.
+      </p>
+
+      <div class="pullq">
+        "You're not trying to biohack this. You're trying to give your body what it recognises."
+      </div>
+
+      <p>
+        <b>Ayurveda adds a temperature lens.</b> Foods are grouped as <i>ushna</i> (warming) or <i>sheeta</i> (cooling). During the follicular phase, warming foods — ghee, dry ginger, sesame, whole grains — are traditionally preferred. Post-ovulation, cooling foods — rice, cucumber, coconut water — are favoured.
+      </p>
+      <p>
+        <b>Practical for both of you.</b> Priya and Rahul both benefit from adequate protein (dals, eggs, paneer), folate (leafy greens, sprouts), and zinc (pumpkin seeds, whole grains). Alcohol reduces sperm quality — worth cutting for Rahul.
+      </p>
+
+      <!-- Key facts inline box -->
+      <div class="card card--sunken" style="padding:14px 16px">
+        <p class="section-label">Key facts at a glance</p>
+        <div class="mt-2">
+          <div class="kv"><span class="kv-k">Protein target</span><span class="kv-v">~1 g / kg / day</span></div>
+          <div class="kv"><span class="kv-k">Folate</span><span class="kv-v">400 mcg / day (3 mo pre-conception)</span></div>
+          <div class="kv"><span class="kv-k">Sperm-quality window</span><span class="kv-v">~74 days (one cycle)</span></div>
+          <div class="kv"><span class="kv-k">Alcohol impact</span><span class="kv-v">Reversible within 3 months</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ask AI CTA -->
+    <a href="ai-chat.html" class="mt-5 card card--interactive block" style="background:linear-gradient(135deg, var(--teal-50), var(--coral-50));border-color:var(--coral-100)">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center"><i data-lucide="sparkles" class="w-5 h-5 coral"></i></div>
+        <div class="flex-1">
+          <p class="text-[13px] font-black teal">Have a follow-up? Ask Pattaya.</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">Answers cite this card. Never dosage.</p>
+        </div>
+        <i data-lucide="chevron-right" class="w-5 h-5 coral"></i>
+      </div>
+    </a>
+
+    <!-- Sources drawer -->
+    <details class="mt-4 card" style="padding:0">
+      <summary style="list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:center;justify-content:space-between">
+        <span class="text-[13px] font-black">Sources & reviewers</span>
+        <i data-lucide="chevron-down" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      </summary>
+      <div style="padding:0 14px 14px" class="text-[12px] text-[color:var(--text-secondary)] space-y-1.5">
+        <p>· Fertility &amp; Sterility (2018) — Mediterranean diet meta-analysis <a href="#" class="teal-700 font-bold">↗</a></p>
+        <p>· Charaka Samhita — dosha and Ritucharya</p>
+        <p>· ICMR guidelines on preconception nutrition (2022) <a href="#" class="teal-700 font-bold">↗</a></p>
+        <p class="pt-2 border-t border-[color:var(--border)] mt-2">Medically reviewed by <b>Dr Anjali Mehta, MD OB-GYN</b> · Bengaluru</p>
+      </div>
+    </details>
+
+    <!-- Related -->
+    <div class="mt-5">
+      <p class="section-label mb-2">Up next in your path</p>
+      <div class="related no-scrollbar">
+        <a href="card-detail.html" class="card card--interactive block">
+          <span class="media-badge media-badge--audio"><i data-lucide="headphones" class="w-2.5 h-2.5"></i>6m</span>
+          <p class="text-[13px] font-bold leading-snug mt-2">Talking about "when" without pressure</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)] mt-1">Together, on Sunday</p>
+        </a>
+        <a href="card-detail.html" class="card card--interactive block">
+          <span class="media-badge media-badge--read"><i data-lucide="book-open" class="w-2.5 h-2.5"></i>3m</span>
+          <p class="text-[13px] font-bold leading-snug mt-2">Iron & folate in Indian diets</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)] mt-1">Practical list</p>
+        </a>
+        <a href="card-detail.html" class="card card--interactive block">
+          <span class="media-badge media-badge--video"><i data-lucide="play" class="w-2.5 h-2.5"></i>3m</span>
+          <p class="text-[13px] font-bold leading-snug mt-2">When your fertile window actually is</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)] mt-1">A doctor explains</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-5 space-y-2">
+      <button class="btn btn-primary"><i data-lucide="send" class="w-4 h-4"></i>Send to Rahul</button>
+      <button class="btn btn-secondary"><i data-lucide="notebook-pen" class="w-4 h-4"></i>Save to journal</button>
+    </div>
+
+    <p class="mt-4 text-[10px] text-center text-[color:var(--text-tertiary)]">Not medical advice. Talk to your doctor for anything specific to you.</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

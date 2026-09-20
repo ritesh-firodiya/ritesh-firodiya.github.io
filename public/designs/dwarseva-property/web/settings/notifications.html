@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notifications — Dwarseva web</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 60px); box-shadow: 0 0 0 1px #18181b; }
+    .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; border-left: 2px solid transparent; font-size: 13px; color: #a1a1aa; }
+    .sidebar-item:hover { background: rgba(63,63,70,0.35); color: #e4e4e7; }
+    .sidebar-item-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left-color: #3b82f6; }
+    .unread-dot { display:inline-block; width:6px; height:6px; border-radius:9999px; background:#3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../app/buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="../app/seller/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="notifications.html" class="relative grid h-8 w-8 place-items-center rounded-md border border-blue-500/40 bg-blue-500/10 text-blue-700">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+        <span class="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full bg-rose-500 px-1 text-[9px] font-bold text-white">3</span>
+      </a>
+      <a href="settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-blue-500/20 text-[10px] font-semibold text-blue-700">RS</span>
+        <span>Ritvi</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="mx-auto max-w-[1440px] bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+<div class="grid grid-cols-[260px_minmax(0,1fr)] gap-0" style="min-height: calc(100dvh - 60px);">
+
+  <aside class="bg-zinc-50 border-zinc-200 border-r border-zinc-200 bg-zinc-100/75 p-3">
+    <p class="px-2 pb-1.5 pt-1 text-[10px] uppercase tracking-widest text-zinc-500">Account</p>
+    <nav class="space-y-0.5">
+      <a href="profile-edit.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+        Profile
+      </a>
+      <a href="notifications.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 bg-blue-50 text-blue-700 border-blue-500">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+        Notifications
+        <span class="ml-auto rounded-full bg-rose-500 px-1.5 py-0.5 text-[9px] font-semibold text-white">3</span>
+      </a>
+      <a href="../wallet/wallet.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        Payments &amp; wallet
+      </a>
+      <a href="settings.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6z"/></svg>
+        Privacy
+      </a>
+    </nav>
+
+    <p class="mt-5 px-2 pb-1.5 pt-1 text-[10px] uppercase tracking-widest text-zinc-500">Filter</p>
+    <nav class="space-y-0.5 text-[12.5px]">
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Listings <span class="ml-auto text-zinc-500">6</span></a>
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Buyer unlocks <span class="ml-auto text-zinc-500">4</span></a>
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Wallet <span class="ml-auto text-zinc-500">2</span></a>
+      <a href="#" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Refunds &amp; scam <span class="ml-auto text-zinc-500">1</span></a>
+    </nav>
+
+    <div class="mt-6 rounded-xl border border-zinc-200 bg-zinc-100/75 p-3 text-[11.5px] text-zinc-600">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Delivery</p>
+      <ul class="mt-2 space-y-1">
+        <li class="flex items-center justify-between"><span>Email</span><span class="text-emerald-700">On</span></li>
+        <li class="flex items-center justify-between"><span>WhatsApp</span><span class="text-emerald-700">On</span></li>
+        <li class="flex items-center justify-between"><span>SMS</span><span class="text-emerald-700">Txn only</span></li>
+      </ul>
+      <a href="settings.html" class="mt-2 inline-block text-[11px] text-blue-700 underline">Manage in Privacy →</a>
+    </div>
+  </aside>
+
+  <main class="p-6">
+
+    <div class="flex items-start justify-between">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">/settings › notifications</p>
+        <h1 class="mt-1 text-2xl font-semibold tracking-tight">Notifications</h1>
+        <p class="mt-1 text-[13px] text-zinc-600">Listing status, buyer unlocks, wallet events. Newest first.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="inline-flex gap-1 rounded-full border border-zinc-200 bg-zinc-100 p-0.5 text-[12px]">
+          <button class="rounded-full bg-zinc-100 px-3 py-1 text-zinc-900">All <span class="ml-1 mono text-zinc-500">13</span></button>
+          <button class="rounded-full px-3 py-1 text-zinc-600">Unread <span class="ml-1 mono text-rose-700">3</span></button>
+        </div>
+        <button class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Mark all read</button>
+      </div>
+    </div>
+
+    <!-- Today -->
+    <p class="mt-6 text-[10px] uppercase tracking-widest text-zinc-500">Today</p>
+    <ul class="mt-2 space-y-2">
+
+      <li>
+        <a href="../app/seller/listing-live.html" class="flex gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 hover:border-emerald-400">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-500/20 text-emerald-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[13.5px] font-semibold text-zinc-900">Your Baner Lane 7 listing is now live</p>
+              <span class="unread-dot"></span>
+            </div>
+            <p class="mt-1 text-[12px] text-zinc-600">Verified by Priya · Ops. Listing is live for the next 30 days. Buyers can see photos + basics; contact is locked until they pay ₹5.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">Today · 09:12 · <span class="text-emerald-700">Listing</span></p>
+          </div>
+          <span class="self-center rounded-md bg-emerald-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">View →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../app/seller/buyer-interest.html" class="flex gap-3 rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 hover:border-blue-400">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-500/20 text-blue-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[13.5px] font-semibold text-zinc-900">Sneha Kulkarni unlocked your contact</p>
+              <span class="unread-dot"></span>
+            </div>
+            <p class="mt-1 text-[12px] text-zinc-600">Baner Lane 7 · 2 BHK. She's a verified buyer — expect a WhatsApp or call in the next few hours.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">Today · 07:44 · <span class="text-blue-700">Buyer unlock</span></p>
+          </div>
+          <span class="self-center rounded-md bg-blue-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">Open →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../wallet/wallet.html" class="flex gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 hover:border-amber-400">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-amber-500/20 text-amber-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[13.5px] font-semibold text-zinc-900">Wallet running low — ₹42 left</p>
+              <span class="unread-dot"></span>
+            </div>
+            <p class="mt-1 text-[12px] text-zinc-600">₹42 covers 8 unlocks or 8 publishes at ₹5 each. Top up to keep publishing/renewing without pause.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">Today · 00:00 · <span class="text-amber-700">Wallet</span></p>
+          </div>
+          <a href="../wallet/recharge.html" class="self-center rounded-md bg-amber-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">+ Recharge</a>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Yesterday -->
+    <p class="mt-8 text-[10px] uppercase tracking-widest text-zinc-500">Yesterday</p>
+    <ul class="mt-2 space-y-2">
+
+      <li>
+        <a href="#" class="flex gap-3 rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-blue-500/40">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-500/15 text-blue-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-16H3z"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <p class="text-[13.5px] font-semibold text-zinc-900">Would you review Aundh Gaon 2 BHK?</p>
+            <p class="mt-1 text-[12px] text-zinc-600">You unlocked this listing 3 days ago. A short review helps other buyers — anonymous.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">Yesterday · 18:02 · <span class="text-blue-700">Review request</span></p>
+          </div>
+          <button class="self-center rounded-md border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-800">Review</button>
+        </a>
+      </li>
+
+      <li>
+        <a href="../wallet/wallet.html" class="flex gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 hover:border-emerald-400">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-500/20 text-emerald-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M3.51 15A9 9 0 0 0 18.36 18.36L23 14"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <p class="text-[13.5px] font-semibold text-zinc-900">₹5 refunded to your wallet</p>
+            <p class="mt-1 text-[12px] text-zinc-600">Hadapsar 1 BHK was already rented — refund processed within our 7-day SLA. New balance: ₹42.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">Yesterday · 11:28 · <span class="text-emerald-700">Refund</span></p>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <!-- This week -->
+    <p class="mt-8 text-[10px] uppercase tracking-widest text-zinc-500">This week</p>
+    <ul class="mt-2 space-y-2">
+
+      <li>
+        <a href="../app/seller/listing-needs-changes.html" class="flex gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 hover:border-amber-400">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-amber-500/20 text-amber-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <p class="text-[13.5px] font-semibold text-zinc-900">Re-upload requested · Hinjewadi 3 BHK</p>
+            <p class="mt-1 text-[12px] text-zinc-600">Reviewer needs 3 fixes: kitchen photo, latest tax receipt, and confirmation call slot. No wallet charges until it's live.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">17 Jul · 14:02 · <span class="text-amber-700">Needs changes</span></p>
+          </div>
+          <span class="self-center rounded-md bg-amber-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">Fix →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../wallet/wallet.html" class="flex gap-3 rounded-xl border border-zinc-200 bg-zinc-100/75 p-4 hover:border-blue-500/40">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-500/15 text-blue-700">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <p class="text-[13.5px] font-semibold text-zinc-900">Wallet recharged · ₹50 via GPay</p>
+            <p class="mt-1 text-[12px] text-zinc-600">Razorpay txn <span class="mono text-zinc-700">pay_29XkLm0aT91</span>. GST invoice mailed to ritvi@example.com.</p>
+            <p class="mt-1.5 text-[11px] text-zinc-500">16 Jul · 10:02 · <span class="text-zinc-600">Wallet</span></p>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Empty state at bottom -->
+    <div class="mt-10 rounded-2xl border border-dashed border-zinc-200 bg-zinc-900/20 p-8 text-center">
+      <span class="mx-auto grid h-11 w-11 place-items-center rounded-full bg-zinc-100 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </span>
+      <p class="mt-3 text-[13px] font-semibold text-zinc-800">You're all caught up</p>
+      <p class="mt-1 text-[11.5px] text-zinc-500">No notifications older than 7 days. Older items auto-archive after 30 days.</p>
+    </div>
+  </main>
+</div>
+</div>
+
+</body>
+</html>

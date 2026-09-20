@@ -92,22 +92,22 @@
   --font-sans:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono:    var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --text-d1: clamp(2.75rem, 1.4rem + 5.6vw, 5.25rem);
-  --text-d1--line-height: 0.95;
+  --text-d1: clamp(2rem, 1.3rem + 2.2vw, 2.75rem);
+  --text-d1--line-height: 1.05;
   --text-d1--letter-spacing: -0.03em;
-  --text-d2: clamp(2rem, 1.3rem + 2.9vw, 3.25rem);
-  --text-d2--line-height: 1.04;
+  --text-d2: clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
+  --text-d2--line-height: 1.15;
   --text-d2--letter-spacing: -0.02em;
-  --text-h2: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-h2: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
   --text-h2--line-height: 1.12;
   --text-h2--letter-spacing: -0.02em;
   --text-h3: 1.1875rem;
   --text-h3--line-height: 1.25;
   --text-h3--letter-spacing: -0.01em;
-  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  --text-lead: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
   --text-lead--line-height: 1.6;
-  --text-body: 1.0625rem;
-  --text-body--line-height: 1.7;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
   --text-small: 0.9375rem;
   --text-small--line-height: 1.6;
   --text-xs2: 0.8125rem;
@@ -134,9 +134,14 @@
 }
 
 /* Section rhythm and page gutter. Outside @theme because they are only ever
-   used as padding, so a full utility scale would add nothing. */
+   used as padding, so a full utility scale would add nothing.
+
+   Halved in Sep 2026. The first version spent a full viewport on a three-line
+   headline and forty words, on a portfolio that announced 264 design screens
+   and then showed none of them. Density is not decoration here: the page has
+   to carry evidence, and evidence needs the room the headline was taking. */
 :root {
-  --sp-section: clamp(3.5rem, 2rem + 5vw, 7rem);
+  --sp-section: clamp(2rem, 1.4rem + 2vw, 3.5rem);
   --sp-gutter: clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem);
 }
 

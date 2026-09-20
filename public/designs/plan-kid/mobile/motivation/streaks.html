@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Streaks</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Streaks</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Track ritual consistency without judgment.</p>
+      <p class="mt-2"><strong>Philosophy:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>No harsh notifications</li>
+        <li>Soft failure messaging</li>
+        <li>Celebrate together</li>
+      </ul>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Why:</strong> Streaks are soft on purpose. No push notifications, no red "you'll lose your streak" language, never in main nav. If you break, we say life happens — not you failed. See [[motivation-is-ritual]].</p>
+    </div>
+  </div>
+
+<div class="phone phone--cream">
+  <div class="statusbar">
+    <span class="statusbar-time">9:41</span>
+    <span class="statusbar-icons text-xs">••• 5G ■</span>
+  </div>
+
+  <div class="appheader">
+    <button class="iconbtn"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+    <p class="text-[15px] font-black teal">Together this month</p>
+    <div style="width:40px"></div>
+  </div>
+
+  <div class="px-6 pb-24 space-y-4">
+    <!-- Ritual streak -->
+    <div class="card card--teal">
+      <p class="section-label teal-700">Weekly ritual</p>
+      <div class="mt-3 flex items-baseline gap-2">
+        <p class="text-5xl font-black teal">3</p>
+        <p class="text-[13px] teal">weeks in a row</p>
+      </div>
+      <div class="mt-4 flex gap-1">
+        <div class="flex-1 h-8 rounded bg-[color:var(--teal-500)] flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></div>
+        <div class="flex-1 h-8 rounded bg-[color:var(--teal-500)] flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></div>
+        <div class="flex-1 h-8 rounded bg-[color:var(--teal-500)] flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-white"></i></div>
+        <div class="flex-1 h-8 rounded bg-white/60 border-2 border-dashed border-[color:var(--teal-200)]"></div>
+      </div>
+      <p class="text-[11px] teal-700 mt-2 text-center">Saturday is coming — no pressure.</p>
+    </div>
+
+    <!-- Journal streak -->
+    <div class="card">
+      <p class="section-label">Shared journal entries</p>
+      <div class="mt-3 flex items-baseline gap-2">
+        <p class="text-4xl font-black">5</p>
+        <p class="text-[13px] text-[color:var(--text-secondary)]">this month</p>
+      </div>
+      <div class="mt-3 text-[11px] text-[color:var(--text-tertiary)]">Averaging 1.2 per week — that's a healthy rhythm.</p>
+    </div>
+
+    <!-- No badges -->
+    <div class="card card--muted flex items-start gap-3">
+      <i data-lucide="award" class="w-4 h-4 text-[color:var(--text-secondary)] mt-0.5"></i>
+      <p class="text-[11px] text-[color:var(--text-secondary)]">No badges here. No comparisons. Milestones live in a different place.</p>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic Tac Toe — how to play</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <aside class="note">
+    <p class="text-base font-bold mb-3">How to play — <span class="mono">src/app/how-to-play.tsx</span></p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p><b class="text-ink">Everyone knows the rules.</b> This screen exists for the two things they do not know: what the three difficulties actually do, and that Hard cannot be beaten. It is not a tutorial.</p>
+      <p><b class="text-ink">Hard is stated plainly.</b> "You can draw, not win" is the single most useful sentence here. Without it, a player who loses repeatedly concludes the app cheats — and says so in a review.</p>
+      <p><b class="text-ink">A worked diagram, not prose.</b> One small board showing a completed line does more than a paragraph describing one.</p>
+      <p><b class="text-ink">Reachable from everywhere.</b> The <span class="mono">circle-help</span> button sits in the header on both Home and Board, so the answer is never more than one tap away.</p>
+    </div>
+  </aside>
+
+  <div class="phone">
+    <div class="px-5 pt-14 pb-2 flex items-center gap-3">
+      <button class="w-9 h-9 rounded-pill grid place-items-center bg-surface border border-line shadow-sm">
+        <i data-lucide="arrow-left" class="w-[18px] h-[18px]" style="color:var(--icon)"></i>
+      </button>
+      <p class="text-h3 font-extrabold tracking-tight">How to play</p>
+    </div>
+
+    <div class="px-5 pt-4 space-y-4">
+      <div class="rounded-xl bg-surface border border-line shadow-sm p-4">
+        <p class="text-body font-bold mb-1">Get three in a row</p>
+        <p class="text-sm text-ink-3 mb-4">Across, down, or diagonally. X always goes first.</p>
+        <div class="board" style="max-width:200px">
+          <div class="cell cell--win" style="color:var(--mark-win);font-size:34px">X</div>
+          <div class="cell" style="color:var(--mark-o);font-size:34px">O</div>
+          <div class="cell" style="font-size:34px"></div>
+          <div class="cell" style="color:var(--mark-o);font-size:34px">O</div>
+          <div class="cell cell--win" style="color:var(--mark-win);font-size:34px">X</div>
+          <div class="cell" style="font-size:34px"></div>
+          <div class="cell" style="font-size:34px"></div>
+          <div class="cell" style="font-size:34px"></div>
+          <div class="cell cell--win" style="color:var(--mark-win);font-size:34px">X</div>
+        </div>
+      </div>
+
+      <p class="text-2xs font-bold tracking-label uppercase text-ink-3 pt-1">The three difficulties</p>
+
+      <div class="rounded-xl bg-surface border border-line shadow-sm divide-y" style="border-color:var(--border)">
+        <div class="p-4 flex items-start gap-3">
+          <span class="w-2.5 h-2.5 rounded-pill mt-1.5" style="background:var(--diff-easy)"></span>
+          <div><p class="text-body font-bold">Easy</p><p class="text-sm text-ink-3">Moves at random. Good for a five-year-old.</p></div>
+        </div>
+        <div class="p-4 flex items-start gap-3" style="border-top:1px solid var(--border)">
+          <span class="w-2.5 h-2.5 rounded-pill mt-1.5" style="background:var(--diff-medium)"></span>
+          <div><p class="text-body font-bold">Medium</p><p class="text-sm text-ink-3">Plays well most of the time, and slips often enough that you can win.</p></div>
+        </div>
+        <div class="p-4 flex items-start gap-3" style="border-top:1px solid var(--border)">
+          <span class="w-2.5 h-2.5 rounded-pill mt-1.5" style="background:var(--diff-hard)"></span>
+          <div><p class="text-body font-bold">Hard</p><p class="text-sm text-ink-3">Perfect play. <b class="text-ink">It cannot be beaten</b> — the best you can do is force a draw.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pin-bottom px-5 pb-8 pt-6">
+      <div class="h-[50px] rounded-lg border border-dashed border-line-strong grid place-items-center">
+        <p class="text-2xs tracking-label uppercase text-ink-3">AdMob banner · 320×50</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller · Listing paused — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 128px); box-shadow: 0 0 0 1px #18181b; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); }
+    .tab { padding: 10px 16px; border-bottom: 2px solid transparent; font-size: 12.5px; color: #a1a1aa; cursor: pointer; }
+    .tab-on { border-color: #f43f5e; color: #fda4af; font-weight: 600; }
+    .tab-on-zinc { border-color: #71717a; color: #e4e4e7; font-weight: 600; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="home.html" class="rounded-md bg-emerald-500/15 px-3 py-1.5 font-semibold text-emerald-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="../../settings/notifications.html" class="grid h-8 w-8 place-items-center rounded-md border border-zinc-200 bg-white text-zinc-600 hover:border-blue-500/40">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/20 text-[10px] font-semibold text-emerald-700">SP</span>
+        <span>Sanjay</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] mx-auto max-w-[1440px]">
+  <div class="mx-auto max-w-[1200px] px-8 py-8">
+
+    <div class="mb-4 flex items-end justify-between">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">/seller/listing · <span class="mono text-zinc-600">#LST-2026-06-0731</span></p>
+        <h1 class="mt-1 text-xl font-semibold">Expired</h1>
+        <p class="mt-0.5 text-[12px] text-zinc-600">1 BHK · Kothrud DSK Vishwa · Rent · ₹14,000/mo</p>
+      </div>
+      <a href="home.html" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">← All listings</a>
+    </div>
+
+    <!-- Tabs for two states -->
+    <div class="border-b border-zinc-200">
+      <div class="flex items-center gap-0">
+        <span class="tab tab-on">Expired at 30 days (listing_expired)</span>
+        <a href="#by-seller" class="tab">Paused by you (paused_by_seller)</a>
+        <a href="../../wallet/recharge.html" class="ml-auto rounded-lg bg-blue-500 px-3 py-1.5 text-[12px] font-semibold text-zinc-950 mb-1">Renew listing · ₹5</a>
+      </div>
+    </div>
+
+    <!-- Variant A: listing_expired -->
+    <section class="mt-6 rounded-2xl border border-rose-500/50 bg-rose-500/10 p-5">
+      <div class="flex items-start gap-4">
+        <div class="grid h-14 w-14 place-items-center rounded-full border-2 border-rose-500/60 bg-rose-500/10 text-rose-700">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <span class="rounded bg-rose-500 px-1.5 py-0.5 text-[10px] font-bold text-white">EXPIRED · 30-DAY PERIOD ENDED</span>
+            <p class="text-[10px] uppercase tracking-widest text-rose-700">Auto-hidden · 20 Jul · 12:01 am</p>
+          </div>
+          <p class="mt-1.5 text-[16px] font-semibold text-zinc-900">30-day live period ended on 20 July — renew for ₹5 to publish another 30 days</p>
+          <p class="mt-1 text-[12.5px] text-rose-700">
+            Every listing runs for a full 30 days, then auto-expires. Buyers can't see this listing right now. Renew for <span class="mono">₹5</span> to relist for another 30 days — no re-verification needed since nothing has changed.
+          </p>
+        </div>
+        <a href="../../wallet/recharge.html" class="shrink-0 rounded-lg bg-rose-500 px-4 py-2.5 text-[13px] font-semibold text-white hover:bg-rose-400">Renew listing · ₹5</a>
+      </div>
+    </section>
+
+    <div class="mt-6 grid grid-cols-[minmax(0,1.6fr)_minmax(320px,1fr)] gap-6">
+
+      <!-- Preview -->
+      <section class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+        <div class="flex items-center justify-between">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Listing preview <span class="text-zinc-500">· hidden from buyers</span></p>
+          <span class="rounded-full border border-rose-500/40 bg-rose-500/10 px-2 py-0.5 text-[10px] font-semibold text-rose-700">Not visible</span>
+        </div>
+
+        <div class="mt-4 grid grid-cols-4 gap-2 opacity-70">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">Living</span></div>
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">Kitchen</span></div>
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">Bedroom</span></div>
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">Facade</span></div>
+        </div>
+
+        <div class="mt-4 rounded-xl border border-zinc-200 bg-zinc-100 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Reviewer-crafted title</p>
+          <p class="mt-1 text-[14px] font-semibold text-zinc-700">Cosy 1 BHK unfurnished · DSK Vishwa Kothrud · 480 sqft</p>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-3 text-[12px]">
+          <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-3"><p class="text-[10px] uppercase tracking-widest text-zinc-500">Rent</p><p class="mono mt-0.5 font-semibold">₹14,000/mo</p></div>
+          <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-3"><p class="text-[10px] uppercase tracking-widest text-zinc-500">Was live</p><p class="mono mt-0.5 font-semibold">30 days</p></div>
+          <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-3"><p class="text-[10px] uppercase tracking-widest text-zinc-500">Total unlocks</p><p class="mono mt-0.5 font-semibold text-emerald-700">2</p></div>
+        </div>
+      </section>
+
+      <!-- Side actions -->
+      <aside class="space-y-4">
+        <div class="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-rose-700">Renew for another 30 days</p>
+          <div class="mt-3 space-y-2">
+            <a href="../../wallet/recharge.html" class="flex items-center justify-between rounded-lg border border-rose-500/50 bg-rose-500/10 px-3 py-2.5 text-rose-700 hover:bg-rose-500/20">
+              <span class="text-[13px] font-semibold">Renew listing · ₹5</span>
+              <span class="text-[10.5px]">30 more days</span>
+            </a>
+            <p class="text-[11px] text-zinc-500">Wallet balance ₹42 → ₹37 after renew.</p>
+            <a href="../../wallet/recharge.html" class="flex items-center justify-between rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-800 hover:border-blue-500/40">
+              <span class="text-[13px] font-semibold">Top up ₹50</span>
+              <span class="text-[10.5px] text-zinc-500">10 renews / unlocks</span>
+            </a>
+            <a href="../../wallet/recharge.html" class="flex items-center justify-between rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-zinc-800 hover:border-blue-500/40">
+              <span class="text-[13px] font-semibold">Top up ₹100</span>
+              <span class="text-[10.5px] text-zinc-500">20 renews / unlocks</span>
+            </a>
+          </div>
+          <p class="mt-3 text-[10.5px] text-zinc-600">Via UPI · Razorpay. Instant relist within minutes — same photos, same title.</p>
+        </div>
+
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Alternatives</p>
+          <div class="mt-3 space-y-2">
+            <a href="listing-sold.html" class="block rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-center text-[12px] font-semibold text-emerald-700 hover:bg-emerald-500/15">Mark as rented / sold</a>
+            <button class="block w-full rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2 text-center text-[12px] text-rose-700 hover:border-rose-500/40">Delete listing</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Variant B: paused_by_seller -->
+    <div class="mt-10 border-t border-zinc-200 pt-6">
+      <div class="mb-4 flex items-center gap-3">
+        <span class="rounded-full border border-zinc-300 bg-white px-2 py-0.5 text-[10px] font-semibold text-zinc-700">Variant · paused_by_seller</span>
+        <p class="text-[11px] text-zinc-500">Same page, different reason. Toggle above.</p>
+      </div>
+
+      <section id="by-seller" class="scroll-mt-20 rounded-2xl border border-zinc-300 bg-zinc-100/90 p-5">
+        <div class="flex items-start gap-4">
+          <div class="grid h-14 w-14 place-items-center rounded-full border-2 border-zinc-600 bg-white text-zinc-700">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="rounded bg-zinc-200 px-1.5 py-0.5 text-[10px] font-bold text-zinc-900">PAUSED · BY YOU</span>
+              <p class="text-[10px] uppercase tracking-widest text-zinc-600">Paused on 18 Jul · 3:12 pm</p>
+            </div>
+            <p class="mt-1.5 text-[16px] font-semibold text-zinc-900">Paused by you on 18 July — 30-day timer is frozen</p>
+            <p class="mt-1 text-[12.5px] text-zinc-600">
+              You manually paused this listing. Buyers can't see it. The 30-day live period is frozen — days remaining pick up where you left off when you resume. No new charge on resume.
+            </p>
+          </div>
+          <button class="shrink-0 rounded-lg bg-emerald-500 px-4 py-2.5 text-[13px] font-semibold text-zinc-950 hover:bg-emerald-400">Resume listing →</button>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-3"><p class="text-[10px] uppercase tracking-widest text-zinc-500">Paused for</p><p class="mono mt-0.5 text-[13px] font-semibold">3 days</p></div>
+          <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-3"><p class="text-[10px] uppercase tracking-widest text-zinc-500">Days remaining</p><p class="mono mt-0.5 text-[13px] font-semibold text-emerald-700">14 / 30</p></div>
+          <div class="rounded-lg border border-zinc-200 bg-zinc-100 p-3"><p class="text-[10px] uppercase tracking-widest text-zinc-500">Wallet</p><p class="mono mt-0.5 text-[13px] font-semibold">₹42 · retained</p></div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

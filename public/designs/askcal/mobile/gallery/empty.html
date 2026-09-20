@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — empty — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+
+<!--
+  Keeping photos is on; there are none yet.
+
+  Distinct from off.html, and the difference matters: this user has nothing to
+  fix, they just have not scanned anything. So this screen offers the camera
+  and says nothing about settings — an empty state that explains a setting the
+  user never changed reads as an accusation.
+
+  It also names the one thing that produces photos. Search and barcode are the
+  paths the app pushes hardest everywhere else, and neither makes a picture, so
+  "log a meal" would be advice that does not work.
+-->
+
+<div class="phone phone--page">
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="../history/trends.html" class="backbtn" aria-label="Back to trends">
+        <i data-lucide="arrow-left" style="width:19px;height:19px"></i>
+      </a>
+      <div>
+        <p class="text-2xs uppercase tracking-label text-ink-3 leading-none font-bold">No photos yet</p>
+        <p class="text-lg font-black leading-tight" style="color:var(--brand-900)">Food gallery</p>
+      </div>
+    </div>
+    <a href="../settings/index.html" class="iconbtn" aria-label="Photo settings">
+      <i data-lucide="settings" style="width:20px;height:20px"></i>
+    </a>
+  </div>
+
+  <div class="empty" style="padding-top:64px">
+    <div class="empty-illus"><i data-lucide="images" style="width:30px;height:30px"></i></div>
+    <p class="empty-title">No meal photos yet</p>
+    <p class="empty-sub">
+      Photos come from the camera. Scan a plate and it turns up here, with what it
+      came to &mdash; on this phone only.
+    </p>
+    <div class="mt-5 px-8 grid gap-2">
+      <a href="../scan/camera.html" class="btn btn-primary no-underline">
+        <i data-lucide="camera" style="width:17px;height:17px"></i>
+        <span>Scan a meal</span>
+      </a>
+    </div>
+  </div>
+
+  <div style="height:22px"></div>
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../home/today.html" class="tab"><i data-lucide="circle-gauge" class="tab-icon"></i><span>Today</span></a>
+      <a href="../history/trends.html" class="tab is-active"><i data-lucide="trending-up" class="tab-icon" stroke-width="2.5"></i><span>Trends</span></a>
+      <a href="../scan/camera.html" class="tab-fab"><span class="tab-fab-inner"><i data-lucide="camera" style="width:24px;height:24px"></i></span><span class="tab-fab-label">Scan</span></a>
+      <a href="../food/search.html" class="tab"><i data-lucide="search" class="tab-icon"></i><span>Add</span></a>
+      <a href="../settings/index.html" class="tab"><i data-lucide="user" class="tab-icon"></i><span>You</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

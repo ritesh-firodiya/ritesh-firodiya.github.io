@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scheduled maintenance — Dwarseva web</title>
+  <script src="../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .maint-bg {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,0.10), transparent 45%),
+        radial-gradient(circle at 80% 60%, rgba(245,158,11,0.10), transparent 45%);
+    }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-6">
+    <a href="landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <span class="rounded bg-blue-500/15 px-2 py-0.5 text-[10px] font-semibold text-blue-700">Scheduled downtime</span>
+    <a href="#" class="ml-auto text-[12px] text-blue-700 hover:underline">Follow @dwarseva for updates →</a>
+  </div>
+</header>
+
+<main class="maint-bg mx-auto flex min-h-[calc(100dvh-100px)] max-w-[1440px] items-center justify-center px-6 py-16">
+
+  <section class="mx-auto w-full max-w-3xl text-center">
+    <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-blue-500/15 text-blue-700">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </span>
+
+    <p class="mt-5 text-[11px] uppercase tracking-widest text-blue-700">Scheduled maintenance in progress</p>
+    <h1 class="mt-2 text-4xl font-semibold tracking-tight">We're tightening a few bolts.</h1>
+    <p class="mx-auto mt-3 max-w-xl text-[14px] text-zinc-600">
+      Dwarseva is briefly offline while we ship a wallet ledger improvement. Everything comes back automatically — no action needed from you.
+    </p>
+
+    <!-- Countdown / ETA -->
+    <div class="mx-auto mt-8 grid max-w-xl grid-cols-3 gap-3">
+      <div class="rounded-xl border border-zinc-200 bg-zinc-100/90 p-4">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Started</p>
+        <p class="mono mt-1 text-lg font-semibold text-zinc-900">02:00</p>
+        <p class="text-[10.5px] text-zinc-500">Today · IST</p>
+      </div>
+      <div class="rounded-xl border border-blue-500/40 bg-blue-500/10 p-4">
+        <p class="text-[10px] uppercase tracking-widest text-blue-700">Back by</p>
+        <p class="mono mt-1 text-lg font-semibold text-blue-800">02:45</p>
+        <p class="text-[10.5px] text-blue-700">Today · IST</p>
+      </div>
+      <div class="rounded-xl border border-zinc-200 bg-zinc-100/90 p-4">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Est. remaining</p>
+        <p class="mono mt-1 text-lg font-semibold text-zinc-900">~10 min</p>
+        <p class="text-[10.5px] text-zinc-500">next check in 30s</p>
+      </div>
+    </div>
+
+    <!-- Effects panel -->
+    <div class="mx-auto mt-8 max-w-xl rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5 text-left">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">What this affects</p>
+      <ul class="mt-3 space-y-2 text-[12.5px] text-zinc-700">
+        <li class="flex items-start gap-2">
+          <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded bg-amber-500/20 text-amber-700 text-[10px]">⏸</span>
+          <span>New listings can be drafted but not submitted for review.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded bg-amber-500/20 text-amber-700 text-[10px]">⏸</span>
+          <span>Owner-contact unlocks and wallet recharges are paused.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded bg-emerald-500/20 text-emerald-700 text-[10px]">✓</span>
+          <span>No wallet fees are deducted during downtime — the 30-day live-period timer stays frozen until we're back.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded bg-emerald-500/20 text-emerald-700 text-[10px]">✓</span>
+          <span>Contacts you've already unlocked stay visible on your phone / WhatsApp.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-6 flex flex-wrap justify-center gap-2">
+      <button class="rounded-lg bg-blue-500 px-5 py-2.5 text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">
+        ↻ Check again
+      </button>
+      <a href="#" class="rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-[13px] font-semibold text-zinc-900 hover:border-blue-500/40">
+        Follow @dwarseva
+      </a>
+      <a href="settings/settings.html" class="rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-[13px] font-semibold text-zinc-900 hover:border-blue-500/40">
+        Contact grievance officer
+      </a>
+    </div>
+
+    <p class="mt-6 text-[11px] text-zinc-500">
+      Maintenance window announced 48 h in advance via WhatsApp + email · <a href="#" class="text-blue-700 underline">view schedule</a>
+    </p>
+  </section>
+</main>
+
+<footer class="border-t border-zinc-200 bg-zinc-100 py-6">
+  <div class="mx-auto flex max-w-[1440px] flex-wrap items-center gap-4 px-6 text-[11px] text-zinc-500">
+    <span>© 2026 Dwarseva</span>
+    <span class="mono text-zinc-500">window: dws-maint-2026-07-21-02</span>
+    <span class="ml-auto">All India · human-verified</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recharge gate — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 60px); box-shadow: 0 0 0 1px #18181b; position: relative; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); background-size: 18px 18px; }
+    .blurred { filter: blur(6px); user-select: none; }
+    .scrim { background: rgba(9,9,11,0.75); backdrop-filter: blur(3px); }
+    .modal-shadow { box-shadow: 0 40px 80px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(244,63,94,0.35); }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+<!-- Route ribbon -->
+
+
+<!-- Top app bar -->
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="home.html" class="rounded-md bg-amber-500/15 px-3 py-1.5 font-semibold text-amber-700">Buy / Rent</a>
+      <a href="../seller/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-rose-500/40 bg-rose-500/10 px-2.5 py-1 text-[12px] text-rose-700">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono">₹0</span></span>
+      </a>
+      <a href="../../settings/notifications.html" class="grid h-8 w-8 place-items-center rounded-md border border-zinc-200 bg-white text-zinc-600">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-blue-500/20 text-[10px] font-semibold text-blue-700">RS</span>
+        <span>Ritvi</span>
+      </a>
+    </div>
+  </div>
+  <div class="mx-auto flex max-w-[1440px] items-center gap-2 px-5 pb-3">
+    <div class="flex flex-1 items-center gap-2 rounded-lg border border-zinc-300 bg-white px-3 py-2">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-500"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="Aundh, Baner, Kothrud…" class="flex-1 bg-transparent text-[13px] text-zinc-900 placeholder:text-zinc-500 focus:outline-none" />
+    </div>
+    <div class="inline-flex gap-1 rounded-full border border-zinc-200 bg-zinc-100 p-0.5 text-[12px]">
+      <button class="rounded-full bg-amber-500 px-3 py-1 font-semibold text-zinc-950">Rent</button>
+      <button class="rounded-full px-3 py-1 text-zinc-600">Buy</button>
+    </div>
+    <a href="filters.html" class="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-[12px] text-zinc-700">Filters</a>
+  </div>
+</header>
+
+<div class="mx-auto max-w-[1440px] bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] px-6 pt-5 pb-16">
+
+  <!-- Underlying page (property-detail locked, dimmed) -->
+  <div aria-hidden="true">
+    <nav class="flex items-center gap-1.5 text-[11.5px] text-zinc-600">
+      <span>Pune</span><span class="text-zinc-500">›</span>
+      <span>Baner</span><span class="text-zinc-500">›</span>
+      <span>Baner Lane 7</span><span class="text-zinc-500">›</span>
+      <span class="text-zinc-800">2 BHK · Baner Lane 7</span>
+      <span class="ml-auto mono text-[10px] text-zinc-500">#BNR-118</span>
+    </nav>
+
+    <div class="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <div>
+        <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[16/10] w-full rounded-xl">
+          <span class="absolute left-3 top-3 rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">✓ Verified</span>
+          <span class="absolute right-3 top-3 rounded bg-zinc-900/70 px-2 py-1 text-[11px] mono text-zinc-800">1 / 8</span>
+        </div>
+        <div class="mt-2 grid grid-cols-8 gap-1.5">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div><div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div><div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div><div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div>
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div><div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div><div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div><div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-square rounded"></div>
+        </div>
+        <div class="mt-6 flex items-start justify-between gap-4">
+          <div>
+            <h1 class="text-[22px] font-semibold tracking-tight">2 BHK · Semi-furnished · Baner Lane 7</h1>
+            <p class="mt-1 text-[12.5px] text-zinc-600">📍 Baner Lane 7, Baner, Pune · 780 sqft carpet</p>
+          </div>
+          <div class="text-right">
+            <p class="mono text-[22px] font-semibold text-zinc-900">₹28,000<span class="text-[11px] text-zinc-500">/mo</span></p>
+          </div>
+        </div>
+        <section class="mt-6 rounded-xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <h2 class="text-[14px] font-semibold text-zinc-900">Overview</h2>
+          <dl class="mt-4 grid grid-cols-3 gap-x-6 gap-y-3 text-[12.5px]">
+            <div class="flex justify-between border-b border-zinc-800/60 pb-2"><dt class="text-zinc-500">Type</dt><dd class="text-zinc-800">Apartment</dd></div>
+            <div class="flex justify-between border-b border-zinc-800/60 pb-2"><dt class="text-zinc-500">Carpet</dt><dd class="text-zinc-800">780 sqft</dd></div>
+            <div class="flex justify-between border-b border-zinc-800/60 pb-2"><dt class="text-zinc-500">Furnishing</dt><dd class="text-zinc-800">Semi</dd></div>
+          </dl>
+        </section>
+      </div>
+      <aside>
+        <div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-5">
+          <p class="text-[10.5px] uppercase tracking-widest text-amber-700">Contact locked</p>
+          <p class="mono mt-1 text-[24px] font-semibold text-zinc-900">₹28,000<span class="text-[12px] text-zinc-500">/mo</span></p>
+          <div class="mt-4 rounded-lg border border-zinc-200 bg-zinc-100 p-3">
+            <p class="blurred text-zinc-700">Sanjay Patil</p>
+            <p class="mono blurred text-[11px] text-zinc-600">+91 ████████12</p>
+          </div>
+          <button class="mt-4 w-full rounded-lg bg-amber-500 px-4 py-3 text-[14px] font-semibold text-zinc-950">🔓 Unlock · ₹5</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- SCRIM + RECHARGE MODAL -->
+  <div class="fixed inset-0 z-40 bg-[radial-gradient(circle_at_50%_30%,rgba(244,244,245,0.4),rgba(24,24,27,0.55))] flex items-center justify-center px-4">
+    <div class="w-full max-w-md rounded-2xl bg-white modal-shadow overflow-hidden">
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b border-rose-500/30 bg-rose-500/10 px-5 py-3">
+        <div class="flex items-center gap-2">
+          <span class="grid h-7 w-7 place-items-center rounded-md bg-rose-500/20 text-rose-700">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 12h20"/></svg>
+          </span>
+          <p class="text-[13.5px] font-semibold text-rose-700">Your wallet is empty</p>
+        </div>
+        <a href="property-detail.html" class="grid h-8 w-8 place-items-center rounded-md text-zinc-500 hover:bg-zinc-800 hover:text-zinc-700" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </a>
+      </div>
+
+      <div class="px-5 py-5">
+        <!-- Current balance callout -->
+        <section class="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-[10.5px] uppercase tracking-widest text-rose-700">Current balance</p>
+              <p class="mono mt-0.5 text-[26px] font-bold text-rose-700">₹0</p>
+            </div>
+            <div class="text-right">
+              <p class="text-[10.5px] uppercase tracking-widest text-zinc-500">You need</p>
+              <p class="mono mt-0.5 text-[16px] font-semibold text-zinc-900">₹5 to unlock this contact</p>
+            </div>
+          </div>
+        </section>
+
+        <p class="mt-4 text-[10.5px] uppercase tracking-widest text-zinc-500">Pick a top-up</p>
+        <div class="mt-2 grid grid-cols-3 gap-2">
+          <label class="cursor-pointer rounded-xl border border-zinc-200 bg-zinc-100 p-4 text-center hover:border-amber-500/40">
+            <p class="mono text-[18px] font-semibold text-zinc-900">₹10</p>
+            <p class="mt-1 text-[10.5px] text-zinc-500">2 unlocks</p>
+          </label>
+          <label class="relative cursor-pointer rounded-xl border-2 border-amber-500 bg-amber-500/10 p-4 text-center">
+            <span class="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-amber-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-zinc-950">Popular</span>
+            <p class="mono text-[18px] font-semibold text-amber-700">₹50</p>
+            <p class="mt-1 text-[10.5px] text-amber-700">10 unlocks</p>
+          </label>
+          <label class="cursor-pointer rounded-xl border border-zinc-200 bg-zinc-100 p-4 text-center hover:border-amber-500/40">
+            <p class="mono text-[18px] font-semibold text-zinc-900">₹100</p>
+            <p class="mt-1 text-[10.5px] text-zinc-500">20 unlocks</p>
+          </label>
+        </div>
+
+        <!-- After math -->
+        <section class="mt-4 rounded-xl border border-zinc-200 bg-zinc-100 p-4 text-[12.5px]">
+          <div class="flex items-center justify-between">
+            <span class="text-zinc-600">Top-up</span>
+            <span class="mono font-semibold text-emerald-700">+ ₹50</span>
+          </div>
+          <div class="mt-2 flex items-center justify-between">
+            <span class="text-zinc-600">Unlock now</span>
+            <span class="mono font-semibold text-rose-700">− ₹5</span>
+          </div>
+          <div class="my-3 h-px bg-zinc-100"></div>
+          <div class="flex items-center justify-between text-[13.5px]">
+            <span class="font-semibold text-zinc-900">Wallet after</span>
+            <span class="mono font-semibold text-emerald-700">₹45</span>
+          </div>
+        </section>
+
+        <!-- Pay method -->
+        <div class="mt-4 flex items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2.5">
+          <span class="flex items-center gap-2 text-[12px] font-semibold">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-amber-700"><path d="M3 12l4-4 4 4-4 4z"/><path d="M9 6l4-4 4 4-4 4z" opacity=".7"/><path d="M9 18l4-4 4 4-4 4z" opacity=".7"/></svg>
+            UPI · Razorpay
+          </span>
+          <span class="text-[10.5px] text-zinc-500">Change payment method</span>
+        </div>
+
+        <!-- CTA -->
+        <a href="property-detail-unlocked.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 px-4 py-3.5 text-[14px] font-semibold text-zinc-950 hover:bg-amber-400">
+          Recharge ₹50 & unlock →
+        </a>
+        <div class="mt-2 flex items-center justify-between text-[11px]">
+          <a href="property-detail.html" class="text-zinc-600 hover:text-zinc-700">Maybe later</a>
+          <a href="../../wallet/recharge.html" class="text-blue-700 hover:underline">More recharge options →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

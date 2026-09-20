@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Home (solo)</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Home (Solo)</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Support solo journey while encouraging pairing.</p>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Context:</strong> Solo is real — pairing takes days, partners hesitate, some users start alone forever. This variant stays warm and useful but always shows what unlocks with a partner, and makes the invite one-tap.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Warm solo features</li>
+        <li>Pairing benefits visible</li>
+        <li>One-tap invite</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone phone--cream">
+  <div class="statusbar">
+    <span class="statusbar-time">9:41</span>
+    <span class="statusbar-icons text-xs">••• 5G ■</span>
+  </div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <div class="avatar avatar-p">P</div>
+      <div>
+        <p class="text-[12px] text-[color:var(--text-tertiary)] leading-tight">Saturday</p>
+        <p class="text-[13px] font-black teal leading-tight">Good morning, Priya</p>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <a href="../notifications/center.html" class="iconbtn"><i data-lucide="bell" class="w-5 h-5"></i></a>
+      <a href="../settings/household.html" class="iconbtn"><i data-lucide="settings" class="w-5 h-5"></i></a>
+    </div>
+  </div>
+
+  <div class="px-6 pb-28 space-y-4">
+
+    <!-- Invite hero (soft, not punitive) -->
+    <div class="hero" style="padding:18px">
+      <div class="hero-orb" style="width:160px;height:160px;background:var(--coral-400);top:-40px;right:-30px"></div>
+      <div class="flex items-center gap-3">
+        <div class="flex -space-x-3">
+          <div class="avatar avatar-p" style="border:3px solid rgba(255,255,255,0.85)">P</div>
+          <div class="w-8 h-8 rounded-full bg-white/20 border-[3px] border-white/40 flex items-center justify-center">
+            <i data-lucide="plus" class="w-4 h-4 text-white"></i>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="hero-eyebrow">Bring your person in</p>
+          <p class="text-[15px] font-black leading-tight mt-1">Pattaya works best with two.</p>
+        </div>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <a href="../onboarding/pair-partner.html" class="chip chip-coral flex-1 justify-center py-2 font-black" style="background:white;color:var(--coral-600)">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>Send invite link
+        </a>
+        <button class="chip flex-1 justify-center py-2" style="background:rgba(255,255,255,0.18);color:white">
+          <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>QR code
+        </button>
+      </div>
+    </div>
+
+    <!-- Moment of the day (same warmth as shared home) -->
+    <div class="moment">
+      <p class="section-label" style="color:var(--coral-600)">Today for you</p>
+      <p class="moment-quote mt-2">"You are not waiting — you're preparing. That's a real thing."</p>
+      <div class="mt-3 flex items-center justify-between">
+        <p class="moment-attr">Week 3 · 3 min read</p>
+        <a href="../knowledge/card-detail.html" class="chip chip-coral">Open →</a>
+      </div>
+    </div>
+
+    <!-- Cycle summary tile (real, usable in solo) -->
+    <a href="../tracking/cycle.html" class="stat-tile card--interactive block card--teal">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="stat-tile-label teal-700">Cycle day 12 of 28</p>
+          <p class="stat-tile-value teal">Fertile in 2 days</p>
+          <p class="stat-tile-sub teal-700">Peak: Thursday · you're the only one tracking</p>
+        </div>
+        <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center">
+          <i data-lucide="calendar" class="w-5 h-5 teal-700"></i>
+        </div>
+      </div>
+      <div class="mt-4 flex gap-0.5 h-2 rounded-full overflow-hidden">
+        <div style="width:14.28%;background:var(--danger)"></div>
+        <div style="width:14.28%;background:var(--danger-bg)"></div>
+        <div style="width:14.28%;background:var(--surface-sunken)"></div>
+        <div style="width:14.28%;background:var(--surface-sunken)"></div>
+        <div style="width:14.28%;background:var(--teal-100)"></div>
+        <div style="width:14.28%;background:var(--teal-500)"></div>
+        <div style="width:14.28%;background:var(--teal-100)"></div>
+      </div>
+    </a>
+
+    <!-- Two focus tiles for solo — journal + a curated read -->
+    <div class="grid grid-cols-2 gap-3">
+      <a href="../journal/entry-new.html" class="stat-tile card--interactive block">
+        <div class="flex items-center justify-between">
+          <i data-lucide="notebook-pen" class="w-4 h-4 coral"></i>
+          <span class="chip chip-neutral" style="padding:2px 6px;font-size:9.5px"><i data-lucide="lock" class="w-2.5 h-2.5"></i>Private</span>
+        </div>
+        <p class="stat-tile-label mt-2">Solo journal</p>
+        <p class="mt-1 text-[13px] font-bold leading-snug">One line about today</p>
+      </a>
+      <a href="../knowledge/card-detail.html" class="stat-tile card--interactive block">
+        <div class="flex items-center justify-between">
+          <i data-lucide="book-open" class="w-4 h-4 teal-700"></i>
+          <span class="media-badge media-badge--audio"><i data-lucide="headphones" class="w-2.5 h-2.5"></i>4m</span>
+        </div>
+        <p class="stat-tile-label mt-2">Picked for you</p>
+        <p class="mt-1 text-[13px] font-bold leading-snug">Understanding your cycle</p>
+      </a>
+    </div>
+
+    <!-- What Rahul would see (preview — reframes invite as "give him this", not "you're incomplete") -->
+    <div class="card">
+      <div class="flex items-center justify-between mb-3">
+        <p class="section-label">What Rahul would see today</p>
+        <a href="../onboarding/pair-partner.html" class="text-[11px] font-bold coral">Invite him →</a>
+      </div>
+      <div class="relative rounded-xl overflow-hidden border border-[color:var(--border)]" style="background:var(--surface-muted)">
+        <div class="p-3 space-y-2" style="opacity:0.55">
+          <div class="flex items-center gap-2">
+            <div class="avatar avatar-r" style="width:22px;height:22px;font-size:10px">R</div>
+            <p class="text-[11px] font-bold">His briefing · Saturday</p>
+          </div>
+          <div class="rounded-lg p-2.5" style="background:var(--info-bg)">
+            <p class="text-[10px] uppercase tracking-widest font-black info" style="letter-spacing:0.15em">For Rahul</p>
+            <p class="text-[12px] font-bold mt-0.5">Priya is in her fertile window</p>
+            <p class="text-[10px] text-[color:var(--text-tertiary)] mt-0.5">Signal only. No details.</p>
+          </div>
+          <div class="rounded-lg p-2.5" style="background:var(--coral-50)">
+            <p class="text-[12px] font-bold coral">Sunday ritual · together</p>
+            <p class="text-[10px] text-[color:var(--coral-700)] mt-0.5">5 min · both of you</p>
+          </div>
+        </div>
+        <div class="absolute inset-0 flex items-end justify-center pb-2 pointer-events-none" style="background:linear-gradient(180deg, transparent 40%, var(--surface) 100%)">
+          <a href="../onboarding/pair-partner.html" class="btn btn-primary btn-sm pointer-events-auto" style="width:auto"><i data-lucide="send" class="w-3.5 h-3.5"></i>Unlock this for him</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- What's unlocked / what unlocks — collapsed into a two-column comparison -->
+    <div class="card card--muted">
+      <p class="section-label">Solo vs. together</p>
+      <div class="mt-3 grid grid-cols-2 gap-3 text-[12px]">
+        <div>
+          <p class="text-[10px] uppercase tracking-widest font-black teal-700 mb-1.5">You have now</p>
+          <ul class="space-y-1.5">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 success flex-shrink-0"></i>Knowledge library</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 success flex-shrink-0"></i>Cycle tracking</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 success flex-shrink-0"></i>Solo journal</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 success flex-shrink-0"></i>AI coach</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] uppercase tracking-widest font-black coral mb-1.5">With Rahul</p>
+          <ul class="space-y-1.5 text-[color:var(--text-secondary)]">
+            <li class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 flex-shrink-0"></i>Weekly ritual</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 flex-shrink-0"></i>Shared journal</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 flex-shrink-0"></i>Weekly couple report</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 flex-shrink-0"></i>Milestone keepsakes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tab bar with center Ask AI -->
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="home-solo.html" class="tab is-active"><i data-lucide="home" class="tab-icon"></i><span>Home</span></a>
+      <a href="../knowledge/feed.html" class="tab"><i data-lucide="book-open" class="tab-icon"></i><span>Knowledge</span></a>
+      <a href="../knowledge/ai-chat.html" class="tab-fab">
+        <div class="tab-fab-inner"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+        <span class="tab-fab-label">Ask AI</span>
+      </a>
+      <a href="../journal/list.html" class="tab"><i data-lucide="notebook-pen" class="tab-icon"></i><span>Journal</span></a>
+      <a href="../tracking/cycle.html" class="tab"><i data-lucide="calendar" class="tab-icon"></i><span>Track</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

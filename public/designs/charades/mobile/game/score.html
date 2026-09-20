@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Score — Charades mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="phone" style="padding-bottom: 24px">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="px-5 pt-6 text-center">
+    <div class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1">
+      <i data-lucide="trophy" class="text-emerald-600" style="width:12px;height:12px"></i>
+      <p class="text-[10px] uppercase tracking-widest text-emerald-700 font-black">Great round!</p>
+    </div>
+    <p class="mt-4 text-7xl font-black navy leading-none">7</p>
+    <p class="text-sm text-zinc-500 mt-1.5">out of <span class="font-bold text-zinc-700">9</span> cards</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="mx-5 mt-5 grid grid-cols-3 gap-2">
+    <div class="rounded-2xl bg-emerald-50 p-3 text-center">
+      <i data-lucide="check-circle-2" class="text-emerald-600 mx-auto" style="width:18px;height:18px"></i>
+      <p class="mono text-xl font-black text-emerald-700 mt-1 leading-none">7</p>
+      <p class="text-[9px] uppercase tracking-widest text-emerald-700 font-black mt-1">Correct</p>
+    </div>
+    <div class="rounded-2xl bg-orange-50 p-3 text-center">
+      <i data-lucide="x-circle" class="text-orange-600 mx-auto" style="width:18px;height:18px"></i>
+      <p class="mono text-xl font-black text-orange-700 mt-1 leading-none">2</p>
+      <p class="text-[9px] uppercase tracking-widest text-orange-700 font-black mt-1">Skipped</p>
+    </div>
+    <div class="rounded-2xl bg-navy-50 p-3 text-center">
+      <i data-lucide="timer" class="navy mx-auto" style="width:18px;height:18px"></i>
+      <p class="mono text-xl font-black navy mt-1 leading-none">1:03</p>
+      <p class="text-[9px] uppercase tracking-widest navy font-black mt-1">Time</p>
+    </div>
+  </div>
+
+  <!-- Cards list -->
+  <div class="mx-5 mt-5">
+    <div class="flex items-center justify-between mb-2">
+      <p class="section-label">Cards this round</p>
+      <a href="../history/detail.html" class="text-[11px] font-black gold flex items-center gap-1">
+        <span>See all</span>
+        <i data-lucide="chevron-right" style="width:12px;height:12px"></i>
+      </a>
+    </div>
+    <div class="space-y-1.5">
+      <div class="flex items-center gap-2.5 rounded-xl bg-emerald-50 px-3 py-2">
+        <i data-lucide="check" class="text-emerald-600" style="width:14px;height:14px" stroke-width="3"></i>
+        <span class="text-[12px] font-bold text-zinc-800 flex-1">Jurassic Park</span>
+        <i data-lucide="film" class="text-zinc-400" style="width:12px;height:12px"></i>
+      </div>
+      <div class="flex items-center gap-2.5 rounded-xl bg-emerald-50 px-3 py-2">
+        <i data-lucide="check" class="text-emerald-600" style="width:14px;height:14px" stroke-width="3"></i>
+        <span class="text-[12px] font-bold text-zinc-800 flex-1">Elephant</span>
+        <i data-lucide="paw-print" class="text-zinc-400" style="width:12px;height:12px"></i>
+      </div>
+      <div class="flex items-center gap-2.5 rounded-xl bg-orange-50 px-3 py-2">
+        <i data-lucide="x" class="text-orange-600" style="width:14px;height:14px" stroke-width="3"></i>
+        <span class="text-[12px] font-bold text-zinc-800 flex-1">The Godfather</span>
+        <i data-lucide="film" class="text-zinc-400" style="width:12px;height:12px"></i>
+      </div>
+      <div class="flex items-center gap-2.5 rounded-xl bg-emerald-50 px-3 py-2">
+        <i data-lucide="check" class="text-emerald-600" style="width:14px;height:14px" stroke-width="3"></i>
+        <span class="text-[12px] font-bold text-zinc-800 flex-1">Kangaroo</span>
+        <i data-lucide="paw-print" class="text-zinc-400" style="width:12px;height:12px"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ad slot placeholder -->
+  <div class="mx-5 mt-5 rounded-2xl border-2 border-dashed border-zinc-300 bg-zinc-50 p-4 text-center">
+    <div class="flex items-center justify-center gap-1.5">
+      <i data-lucide="megaphone" class="text-zinc-400" style="width:14px;height:14px"></i>
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-black">Interstitial ad slot</p>
+    </div>
+    <p class="text-[11px] text-zinc-500 mt-1">Shown between rounds · <b class="gold">removed on any pack purchase</b></p>
+  </div>
+
+  <!-- Actions -->
+  <div class="mx-5 mt-5 space-y-2">
+    <a href="active.html" class="btn btn-primary no-underline">
+      <i data-lucide="play" fill="currentColor" style="width:18px;height:18px"></i>
+      <span>Play again</span>
+    </a>
+    <a href="../home.html" class="btn btn-secondary no-underline">
+      <i data-lucide="home" style="width:16px;height:16px"></i>
+      <span>Back to home</span>
+    </a>
+  </div>
+
+</div>
+
+<script src="../../../_vendor/lucide.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

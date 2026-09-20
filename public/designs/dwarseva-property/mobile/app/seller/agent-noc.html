@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent NoC — Dwarseva mobile</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+    .h { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #71717a; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-700">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <div class="flex h-12 items-center justify-between px-4">
+    <a href="new-listing-basics.html" aria-label="Back" class="inline-flex h-10 w-10 items-center justify-center text-zinc-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="text-sm font-semibold">Agent verification</h1>
+    <span class="w-10"></span>
+  </div>
+
+  <main class="px-5 pb-10 pt-4 space-y-5">
+
+    <div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-[11.5px] text-amber-700">
+      <p class="font-semibold">You picked "Agent" earlier.</p>
+      <p class="mt-1 text-amber-700">We need a signed No-Objection Certificate from the owner before this listing can go live, plus your RERA agent number.</p>
+    </div>
+
+    <section>
+      <p class="h">Owner NoC <span class="text-rose-600">*</span></p>
+      <p class="mt-1 text-[10.5px] text-zinc-500">Signed PDF or scanned image. Must include owner's name, property address, your name as authorised agent, and a signature within 30 days.</p>
+      <button class="mt-2 w-full rounded-md border border-amber-500/50 bg-amber-500/10 px-3 py-2.5 text-[11px] font-semibold text-amber-700">+ Upload NoC</button>
+      <a href="#" class="mt-2 inline-block text-[10.5px] text-blue-700 underline">Download NoC template (PDF) →</a>
+    </section>
+
+    <section>
+      <p class="h">RERA agent number <span class="text-rose-600">*</span></p>
+      <input type="text" placeholder="A123456789012345" class="mono mt-2 block w-full rounded-md border border-zinc-200 bg-white px-3 py-3 text-sm uppercase tracking-wider text-zinc-900 placeholder:text-zinc-600 focus:border-blue-500 focus:outline-none" />
+      <p class="mt-1 text-[10.5px] text-zinc-500">Required by RERA. We verify against the state portal before publishing.</p>
+    </section>
+
+    <section>
+      <p class="h">Optional</p>
+      <div class="mt-2 space-y-1.5 text-[11px] text-zinc-600">
+        <div class="flex items-center justify-between">
+          <span>Agent ID card</span>
+          <button class="text-blue-700 underline">+ Upload</button>
+        </div>
+        <div class="flex items-center justify-between">
+          <span>Brokerage agreement with owner</span>
+          <button class="text-blue-700 underline">+ Upload</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-2 gap-2">
+      <a href="new-listing-basics.html" class="rounded-xl border border-zinc-300 bg-white px-3 py-3 text-center text-sm text-zinc-800">Back</a>
+      <a href="new-listing-photos.html" class="rounded-xl bg-blue-500 px-3 py-3 text-center text-sm font-semibold text-zinc-950">Next · Photos →</a>
+    </div>
+
+  </main>
+
+  <div class="flex items-center justify-center pb-2 pt-1">
+    <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scan result — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<!--
+  Components, never a single number. Cal AI shows one confident figure and is
+  wrong a lot; showing the parts is what makes the follow-up question feel
+  reasonable instead of nagging. The low-confidence rows are the argument for
+  tapping "Improve this".
+-->
+
+<div class="phone phone--page">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="subheader">
+    <a href="camera.html" class="backbtn" aria-label="Retake">
+      <i data-lucide="x" style="width:22px;height:22px"></i>
+    </a>
+    <div><p class="subheader-title">What's on the plate</p></div>
+    <button class="backbtn" aria-label="Retake photo">
+      <i data-lucide="rotate-ccw" style="width:19px;height:19px"></i>
+    </button>
+  </div>
+
+  <!-- Photo + headline estimate -->
+  <div class="px-5">
+    <div class="card" style="padding:14px">
+      <div class="flex items-center gap-3.5">
+        <div class="meal-thumb" style="width:64px;height:64px;background:#f0e4d4">
+          <i data-lucide="utensils" style="width:24px;height:24px;color:#a1785a"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <input class="w-full bg-transparent border-none outline-none font-black text-[17px] leading-tight p-0"
+                 value="Chicken biryani" aria-label="Dish name" />
+          <p class="text-[11px] text-ink-3 mt-1">Tap to rename</p>
+        </div>
+      </div>
+
+      <div class="mt-3.5 pt-3.5" style="border-top:1px solid var(--line)">
+        <div class="flex items-end justify-between">
+          <div>
+            <p class="section-label">Estimated</p>
+            <p class="num mt-0.5" style="font-size:32px;font-weight:900;line-height:1;letter-spacing:-0.02em">
+              649<span class="text-[14px] font-extrabold text-ink-3 ml-1">kcal</span>
+            </p>
+          </div>
+          <!-- Honest range, not false precision -->
+          <div class="text-right">
+            <p class="text-[10.5px] text-ink-3 font-semibold">could be</p>
+            <p class="num text-[13px] font-extrabold text-ink-2">520 – 780</p>
+          </div>
+        </div>
+
+        <!-- Macro split -->
+        <div class="mt-3 flex h-2 rounded-full overflow-hidden">
+          <div style="width:22%;background:var(--protein)"></div>
+          <div style="width:38%;background:var(--carbs)"></div>
+          <div style="width:40%;background:var(--fat)"></div>
+        </div>
+        <div class="mt-2 flex items-center gap-4 text-[11px]">
+          <span class="flex items-center gap-1.5"><span class="macro-dot m-protein"></span><span class="text-ink-2 font-semibold">Protein</span> <span class="num font-extrabold">35g</span></span>
+          <span class="flex items-center gap-1.5"><span class="macro-dot m-carbs"></span><span class="text-ink-2 font-semibold">Carbs</span> <span class="num font-extrabold">62g</span></span>
+          <span class="flex items-center gap-1.5"><span class="macro-dot m-fat"></span><span class="text-ink-2 font-semibold">Fat</span> <span class="num font-extrabold">29g</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The ask. Amber, and it justifies itself with a number. -->
+  <a href="clarify.html" class="block px-5 mt-3 no-underline">
+    <div class="card card--ask flex items-center gap-3" style="padding:14px">
+      <div class="comp-puck" style="background:var(--ask-200);color:var(--ask-700)">
+        <i data-lucide="sparkles" style="width:19px;height:19px"></i>
+      </div>
+      <div class="flex-1">
+        <p class="font-extrabold text-[14px]" style="color:var(--ask-700)">Two questions, much better number</p>
+        <p class="text-[11.5px] mt-0.5" style="color:var(--ask-700);opacity:0.8">Cooking fat and portion — the camera can't see either</p>
+      </div>
+      <i data-lucide="chevron-right" style="width:20px;height:20px;color:var(--ask-700)"></i>
+    </div>
+  </a>
+
+  <!-- Components -->
+  <div class="px-5 mt-5 flex items-baseline justify-between">
+    <p class="section-label">What we found</p>
+    <button class="text-[11.5px] font-extrabold" style="color:var(--brand-700);padding:10px 4px;margin:-10px -4px">+ Add item</button>
+  </div>
+
+  <div class="px-5 mt-2.5 grid gap-2">
+
+    <div class="comp">
+      <div class="comp-puck" style="background:var(--carbs-bg);color:#b57d0a">
+        <i data-lucide="wheat" style="width:18px;height:18px"></i>
+      </div>
+      <div class="comp-body">
+        <p class="comp-name">Basmati rice</p>
+        <p class="comp-sub"><span class="num">210g</span> · cooked</p>
+      </div>
+      <div class="text-right">
+        <p class="comp-kcal num">270</p>
+        <span class="conf conf-high mt-1"><span class="conf-dot conf-dot--high"></span>Seen</span>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="comp-puck" style="background:var(--protein-bg);color:var(--protein)">
+        <i data-lucide="drumstick" style="width:18px;height:18px"></i>
+      </div>
+      <div class="comp-body">
+        <p class="comp-name">Chicken thigh</p>
+        <p class="comp-sub"><span class="num">2</span> pieces · bone-in</p>
+      </div>
+      <div class="text-right">
+        <p class="comp-kcal num">212</p>
+        <span class="conf conf-med mt-1"><span class="conf-dot conf-dot--med"></span>Guessed</span>
+      </div>
+    </div>
+
+    <!-- The invisible one. Bordered red because this is the whole thesis. -->
+    <div class="comp comp--low">
+      <div class="comp-puck" style="background:var(--conf-low-bg);color:var(--conf-low)">
+        <i data-lucide="droplet" style="width:18px;height:18px"></i>
+      </div>
+      <div class="comp-body">
+        <p class="comp-name">Cooking fat</p>
+        <p class="comp-sub" style="color:var(--conf-low)">Not visible in the photo</p>
+      </div>
+      <div class="text-right">
+        <p class="comp-kcal num" style="color:var(--conf-low)">≈126</p>
+        <span class="conf conf-low mt-1"><span class="conf-dot conf-dot--low"></span>Unknown</span>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="comp-puck" style="background:var(--conf-high-bg);color:var(--conf-high)">
+        <i data-lucide="salad" style="width:18px;height:18px"></i>
+      </div>
+      <div class="comp-body">
+        <p class="comp-name">Raita</p>
+        <p class="comp-sub"><span class="num">60g</span> · yoghurt, cucumber</p>
+      </div>
+      <div class="text-right">
+        <p class="comp-kcal num">41</p>
+        <span class="conf conf-high mt-1"><span class="conf-dot conf-dot--high"></span>Seen</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="px-5 mt-3 text-[11px] text-ink-3 leading-relaxed">
+    Tap any item to change the portion or swap what it matched to.
+    Totals come from <span class="font-bold text-ink-2">USDA FoodData Central</span>, not a guess.
+  </p>
+
+  <div class="sticky-bottom">
+    <div class="flex gap-2.5">
+      <a href="../home/today.html" class="btn btn-secondary" style="flex:0 0 38%">
+        <span>Log as is</span>
+      </a>
+      <a href="clarify.html" class="btn btn-ask" style="flex:1">
+        <i data-lucide="sparkles" style="width:17px;height:17px"></i>
+        <span>Improve it</span>
+      </a>
+    </div>
+    <div class="quota mt-2.5">
+      <span>Scans left</span>
+      <div class="quota-track"><div class="quota-fill" style="width:72%"></div></div>
+      <span class="num">72 / 100</span>
+    </div>
+  </div>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

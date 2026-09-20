@@ -112,3 +112,17 @@ export const modelCounts = products.reduce<Record<string, number>>((acc, p) => {
   acc[p.model] = (acc[p.model] ?? 0) + 1;
   return acc;
 }, {});
+
+/* ── Real design screens ──────────────────────────────────────────────────
+   Synced from the app repos by scripts/sync-designs.mjs. These are the actual
+   wireframes every app was built from — plain HTML, rendered live in an iframe
+   rather than screenshotted, because a screenshot goes stale the moment a
+   design changes and nothing tells you. */
+import designsRaw from "@/data/designs.json";
+
+export type Screen = { path: string; title: string; surface: string; area: string | null };
+const designSets = designsRaw.sets as Record<string, Screen[]>;
+
+export const screensFor = (slug: string): Screen[] => designSets[slug] ?? [];
+export const designsGeneratedOn: string = designsRaw.generatedOn;
+export const totalScreens = Object.values(designSets).reduce((n, s) => n + s.length, 0);

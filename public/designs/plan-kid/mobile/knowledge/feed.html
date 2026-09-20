@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Knowledge feed</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .path-step { position:relative; display:flex; gap:12px; padding-bottom:16px; }
+    .path-step:last-child { padding-bottom:0; }
+    .path-step::before {
+      content:""; position:absolute; left:15px; top:32px; bottom:0;
+      width:2px; background:var(--border-strong);
+    }
+    .path-step:last-child::before { display:none; }
+    .path-dot {
+      width:32px; height:32px; border-radius:999px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; font-weight:900; background:var(--surface); border:2px solid var(--border-strong); color:var(--text-tertiary);
+    }
+    .path-dot.is-done { background:var(--success); border-color:var(--success); color:white; }
+    .path-dot.is-current { background:var(--coral-500); border-color:var(--coral-500); color:white; box-shadow:0 0 0 4px var(--coral-100); }
+    .cat-tile {
+      display:flex; flex-direction:column; gap:6px; padding:14px; border-radius:16px;
+      background:var(--surface); border:1px solid var(--border); text-decoration:none;
+    }
+    .cat-tile-ic { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+  </style>
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Knowledge Feed</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Feed is fully driven by the couple's current stage and the topics they opted into. No global vs India toggle — everything is contextual.</p>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Redesign:</strong> Stage banner up top makes the frame obvious. User picks topics from a chip row (Yoga, Motivational Quotes, Process, Knowledge, Diet, Mood, …). Feed reshuffles instantly. "Manage topics" opens the full picker sheet.</p>
+      <p class="mt-2"><strong>Features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Stage-bound content only</li>
+        <li>User-selected topic filters</li>
+        <li>Weekly path scoped to stage</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone phone--cream">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <h1 class="text-xl font-black teal">Knowledge</h1>
+    </div>
+    <div class="flex gap-2">
+      <a href="search.html" class="iconbtn" aria-label="Search"><i data-lucide="search" class="w-5 h-5"></i></a>
+      <button class="iconbtn" aria-label="Saved"><i data-lucide="bookmark" class="w-5 h-5"></i></button>
+    </div>
+  </div>
+
+  <div class="px-5 pb-28 space-y-5">
+
+    <!-- Stage banner -->
+    <a href="../onboarding/stage-picker.html" class="card card--teal flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0"><i data-lucide="clover" class="w-5 h-5 teal-700"></i></div>
+      <div class="flex-1">
+        <p class="text-[11px] font-bold teal-700 uppercase tracking-wide">Your stage</p>
+        <p class="text-[14px] font-black teal">Want to Conceive · week 3 of trying</p>
+      </div>
+      <span class="text-[11px] font-bold teal-700">Change</span>
+    </a>
+
+    <!-- Topic chips (user-picked) -->
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <p class="section-label">Your topics</p>
+        <button class="text-[11px] font-bold teal-700">Manage →</button>
+      </div>
+      <div class="flex gap-1.5 overflow-x-auto no-scrollbar -mx-1 px-1">
+        <span class="chip chip-teal flex-shrink-0"><i data-lucide="flower" class="w-3 h-3"></i>Yoga</span>
+        <span class="chip chip-teal flex-shrink-0"><i data-lucide="quote" class="w-3 h-3"></i>Motivational quotes</span>
+        <span class="chip chip-teal flex-shrink-0"><i data-lucide="list-checks" class="w-3 h-3"></i>Process</span>
+        <span class="chip chip-teal flex-shrink-0"><i data-lucide="book-open" class="w-3 h-3"></i>Knowledge</span>
+        <span class="chip chip-teal flex-shrink-0"><i data-lucide="salad" class="w-3 h-3"></i>Diet</span>
+        <span class="chip chip-teal flex-shrink-0"><i data-lucide="smile" class="w-3 h-3"></i>Mood</span>
+        <span class="chip chip-neutral flex-shrink-0">+ Add</span>
+      </div>
+    </div>
+
+    <!-- Hero pick -->
+    <a href="card-detail.html" class="block hero" style="padding:20px">
+      <div class="hero-orb" style="width:180px;height:180px;background:var(--coral-400);top:-50px;right:-40px"></div>
+      <p class="hero-eyebrow">Today's pick · 5 min listen</p>
+      <p class="hero-title mt-2" style="font-size:20px">Foods that support conception — dosha-aware</p>
+      <p class="hero-sub mt-2">Narrated by Anisha, Bangalore · Rahul finished this yesterday.</p>
+      <div class="mt-4 flex gap-2">
+        <span class="chip" style="background:rgba(255,255,255,0.2);color:white"><i data-lucide="play" class="w-3 h-3"></i>Play</span>
+        <span class="chip" style="background:rgba(255,255,255,0.15);color:white">Nutrition</span>
+        <span class="chip" style="background:rgba(255,255,255,0.15);color:white">Trying</span>
+      </div>
+    </a>
+
+    <!-- Your curriculum this week -->
+    <div class="card">
+      <div class="flex items-center justify-between">
+        <p class="section-label">Your week 3 of trying · 4-part path</p>
+        <span class="chip chip-teal">3 / 4</span>
+      </div>
+      <div class="mt-4">
+        <div class="path-step">
+          <div class="path-dot is-done"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+          <div class="flex-1 pt-1">
+            <p class="text-[13px] font-bold">Cycle basics — what actually matters</p>
+            <p class="text-[11px] text-[color:var(--text-tertiary)] mt-0.5">3 min read · both of you finished</p>
+          </div>
+        </div>
+        <div class="path-step">
+          <div class="path-dot is-done"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+          <div class="flex-1 pt-1">
+            <p class="text-[13px] font-bold">The fertile window, plainly</p>
+            <p class="text-[11px] text-[color:var(--text-tertiary)] mt-0.5">4 min listen · you finished</p>
+          </div>
+        </div>
+        <a href="card-detail.html" class="path-step">
+          <div class="path-dot is-current">3</div>
+          <div class="flex-1 pt-1">
+            <p class="text-[13px] font-bold">Foods that support conception</p>
+            <p class="text-[11px] coral mt-0.5">5 min listen · playing next</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)] self-center"></i>
+        </a>
+        <div class="path-step">
+          <div class="path-dot">4</div>
+          <div class="flex-1 pt-1">
+            <p class="text-[13px] font-bold text-[color:var(--text-secondary)]">Talking about "when" without pressure</p>
+            <p class="text-[11px] text-[color:var(--text-tertiary)] mt-0.5">6 min listen · together</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Format chips (now filters below curriculum) -->
+    <div class="flex gap-1.5 overflow-x-auto no-scrollbar -mx-1 px-1">
+      <span class="chip chip-teal flex-shrink-0">All</span>
+      <span class="chip chip-neutral flex-shrink-0"><i data-lucide="book-open" class="w-3 h-3"></i>Read</span>
+      <span class="chip chip-neutral flex-shrink-0"><i data-lucide="headphones" class="w-3 h-3"></i>Listen</span>
+      <span class="chip chip-neutral flex-shrink-0"><i data-lucide="play" class="w-3 h-3"></i>Watch</span>
+      <span class="chip chip-neutral flex-shrink-0">≤ 5 min</span>
+      <span class="chip chip-neutral flex-shrink-0">Medically reviewed</span>
+    </div>
+
+    <!-- Browse by topic -->
+    <div>
+      <p class="section-label mb-2">Browse your topics</p>
+      <div class="grid grid-cols-2 gap-2">
+        <a class="cat-tile" href="card-detail.html">
+          <div class="cat-tile-ic" style="background:var(--teal-50)"><i data-lucide="flower" class="w-4 h-4 teal-700"></i></div>
+          <p class="text-[13px] font-black">Yoga</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">12 sessions for trying</p>
+        </a>
+        <a class="cat-tile" href="card-detail.html">
+          <div class="cat-tile-ic" style="background:var(--coral-100)"><i data-lucide="quote" class="w-4 h-4 coral"></i></div>
+          <p class="text-[13px] font-black">Motivational quotes</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">Daily · your stage</p>
+        </a>
+        <a class="cat-tile" href="card-detail.html">
+          <div class="cat-tile-ic" style="background:var(--info-bg)"><i data-lucide="list-checks" class="w-4 h-4 info"></i></div>
+          <p class="text-[13px] font-black">Process</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">What to expect week by week</p>
+        </a>
+        <a class="cat-tile" href="card-detail.html">
+          <div class="cat-tile-ic" style="background:var(--warning-bg)"><i data-lucide="book-open" class="w-4 h-4" style="color:var(--warning-fg)"></i></div>
+          <p class="text-[13px] font-black">Knowledge</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">Medically reviewed reads</p>
+        </a>
+        <a class="cat-tile" href="card-detail.html">
+          <div class="cat-tile-ic" style="background:var(--teal-50)"><i data-lucide="salad" class="w-4 h-4 teal-700"></i></div>
+          <p class="text-[13px] font-black">Diet</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">Foods for conception</p>
+        </a>
+        <a class="cat-tile" href="card-detail.html">
+          <div class="cat-tile-ic" style="background:var(--coral-100)"><i data-lucide="smile" class="w-4 h-4 coral"></i></div>
+          <p class="text-[13px] font-black">Mood</p>
+          <p class="text-[11px] text-[color:var(--text-tertiary)]">Stress + emotional load</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- For Rahul -->
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <p class="section-label">For Rahul this week</p>
+        <a href="../home/partner-activity.html" class="text-[11px] font-bold teal-700">His activity →</a>
+      </div>
+      <a href="audio-player.html" class="card card--interactive block">
+        <div class="flex items-start gap-3">
+          <div class="w-11 h-11 rounded-lg bg-info-bg flex items-center justify-center flex-shrink-0"><i data-lucide="user" class="w-5 h-5 info"></i></div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+              <span class="media-badge media-badge--audio"><i data-lucide="headphones" class="w-2.5 h-2.5"></i>Audio · 4m</span>
+              <span class="chip chip-success"><i data-lucide="check" class="w-2.5 h-2.5"></i>Finished</span>
+            </div>
+            <p class="text-[14px] font-bold leading-snug">Sperm health basics — what actually helps</p>
+            <p class="text-[11px] text-[color:var(--text-tertiary)] mt-1">Nudge him gently — his highlight: "cutting evening drinks."</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- For you two -->
+    <div>
+      <p class="section-label mb-2">For you two</p>
+      <div class="space-y-2">
+        <a href="card-detail.html" class="card card--interactive block">
+          <div class="flex items-start gap-3">
+            <div class="w-11 h-11 rounded-lg bg-coral-50 flex items-center justify-center flex-shrink-0"><i data-lucide="heart-handshake" class="w-5 h-5 coral"></i></div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5 mb-1">
+                <span class="media-badge media-badge--audio"><i data-lucide="headphones" class="w-2.5 h-2.5"></i>Audio · 6m</span>
+                <span class="chip chip-coral">Emotional</span>
+              </div>
+              <p class="text-[14px] font-bold leading-snug">When the pressure of trying starts to hurt</p>
+              <p class="text-[11px] text-[color:var(--text-tertiary)] mt-1">Listen together on Sunday's ritual.</p>
+            </div>
+          </div>
+        </a>
+        <a href="card-detail.html" class="card card--interactive block">
+          <div class="flex items-start gap-3">
+            <div class="video-thumb" style="width:88px;aspect-ratio:1;flex-shrink:0;border-radius:12px">
+              <div class="video-thumb-play" style="width:32px;height:32px"><i data-lucide="play" class="w-4 h-4" style="margin-left:1px"></i></div>
+              <span class="video-thumb-duration">3:24</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5 mb-1">
+                <span class="media-badge media-badge--video"><i data-lucide="play" class="w-2.5 h-2.5"></i>Video</span>
+              </div>
+              <p class="text-[14px] font-bold leading-snug">When your fertile window actually is</p>
+              <p class="text-[11px] text-[color:var(--text-tertiary)] mt-1">A doctor explains, with an animated calendar.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Saved / recent history footer -->
+    <div class="card card--sunken flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center"><i data-lucide="bookmark" class="w-4 h-4 teal-700"></i></div>
+      <div class="flex-1">
+        <p class="text-[13px] font-bold">6 cards saved for later</p>
+        <p class="text-[11px] text-[color:var(--text-tertiary)]">Last saved: "Iron in pregnancy" · 2 days ago</p>
+      </div>
+      <i data-lucide="chevron-right" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+    </div>
+
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../home/home-shared.html" class="tab"><i data-lucide="home" class="tab-icon"></i><span>Home</span></a>
+      <a href="feed.html" class="tab is-active"><i data-lucide="book-open" class="tab-icon"></i><span>Knowledge</span></a>
+      <a href="ai-chat.html" class="tab-fab">
+        <div class="tab-fab-inner"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+        <span class="tab-fab-label">Ask AI</span>
+      </a>
+      <a href="../journal/list.html" class="tab"><i data-lucide="notebook-pen" class="tab-icon"></i><span>Journal</span></a>
+      <a href="../tracking/cycle.html" class="tab"><i data-lucide="calendar" class="tab-icon"></i><span>Track</span></a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

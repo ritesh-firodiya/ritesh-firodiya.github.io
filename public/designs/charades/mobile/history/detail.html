@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>History detail — Charades mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="phone">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="list.html" class="iconbtn" aria-label="Back">
+        <i data-lucide="chevron-left" style="width:22px;height:22px" stroke-width="2.5"></i>
+      </a>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold leading-none">Today · 3:12 pm</p>
+        <h1 class="text-lg font-black navy leading-tight">Hollywood + Animals</h1>
+      </div>
+    </div>
+    <button class="iconbtn" aria-label="Share">
+      <i data-lucide="share" style="width:18px;height:18px"></i>
+    </button>
+  </div>
+
+  <!-- Summary card -->
+  <div class="mx-5 mt-2 rounded-2xl bg-navy p-4 flex items-center justify-around">
+    <div class="text-center">
+      <i data-lucide="trophy" class="text-white mx-auto" style="width:16px;height:16px"></i>
+      <p class="mono text-2xl font-black text-white leading-none mt-1.5">7</p>
+      <p class="text-[9px] uppercase tracking-widest text-blue-200 font-black mt-1">Score</p>
+    </div>
+    <div class="w-px h-10 bg-white/20"></div>
+    <div class="text-center">
+      <i data-lucide="x-circle" class="text-orange-300 mx-auto" style="width:16px;height:16px"></i>
+      <p class="mono text-2xl font-black text-white leading-none mt-1.5">2</p>
+      <p class="text-[9px] uppercase tracking-widest text-blue-200 font-black mt-1">Skipped</p>
+    </div>
+    <div class="w-px h-10 bg-white/20"></div>
+    <div class="text-center">
+      <i data-lucide="timer" class="text-blue-200 mx-auto" style="width:16px;height:16px"></i>
+      <p class="mono text-2xl font-black text-white leading-none mt-1.5">1:03</p>
+      <p class="text-[9px] uppercase tracking-widest text-blue-200 font-black mt-1">Time</p>
+    </div>
+  </div>
+
+  <p class="px-5 pt-6 pb-2 section-label">Card by card</p>
+
+  <div class="px-5 space-y-1.5 pb-8">
+    <div class="flex items-center gap-3 rounded-xl bg-emerald-50 px-3 py-2.5">
+      <i data-lucide="check-circle-2" class="text-emerald-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">Jurassic Park</span>
+      <span class="chip chip-neutral" style="font-size:9px">No hint</span>
+    </div>
+    <div class="flex items-center gap-3 rounded-xl bg-emerald-50 px-3 py-2.5">
+      <i data-lucide="check-circle-2" class="text-emerald-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">Elephant</span>
+      <i data-lucide="paw-print" class="text-zinc-400" style="width:13px;height:13px"></i>
+    </div>
+    <div class="flex items-center gap-3 rounded-xl bg-orange-50 px-3 py-2.5">
+      <i data-lucide="x-circle" class="text-orange-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">The Godfather</span>
+      <span class="chip chip-gold" style="font-size:9px">Hint L1</span>
+    </div>
+    <div class="flex items-center gap-3 rounded-xl bg-emerald-50 px-3 py-2.5">
+      <i data-lucide="check-circle-2" class="text-emerald-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">Kangaroo</span>
+      <i data-lucide="paw-print" class="text-zinc-400" style="width:13px;height:13px"></i>
+    </div>
+    <div class="flex items-center gap-3 rounded-xl bg-emerald-50 px-3 py-2.5">
+      <i data-lucide="check-circle-2" class="text-emerald-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">Titanic</span>
+      <span class="chip chip-gold" style="font-size:9px">Hint L1</span>
+    </div>
+    <div class="flex items-center gap-3 rounded-xl bg-orange-50 px-3 py-2.5">
+      <i data-lucide="x-circle" class="text-orange-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">Inception</span>
+      <span class="chip chip-neutral" style="font-size:9px">No hint</span>
+    </div>
+    <div class="flex items-center gap-3 rounded-xl bg-emerald-50 px-3 py-2.5">
+      <i data-lucide="check-circle-2" class="text-emerald-600" style="width:16px;height:16px"></i>
+      <span class="text-[13px] font-bold text-zinc-800 flex-1">Penguin</span>
+      <i data-lucide="paw-print" class="text-zinc-400" style="width:13px;height:13px"></i>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../../_vendor/lucide.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — AI chat history</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Chat History</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> View and manage your private conversations with Pattaya AI.</p>
+      <p class="mt-3 text-sm italic text-[color:var(--text-secondary)]"><strong>Privacy:</strong> Chat history respects privacy. Grouped by day. Each thread shows what was asked, when, and outcomes (cards read, entries saved, doctor referrals). "Delete all" is one tap. Never shared with partner.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Chat threads grouped by day</li>
+        <li>Search chat history</li>
+        <li>View related cards and referrals</li>
+        <li>Delete individual or all chats</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone phone--cream">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="ai-chat.html" class="backbtn"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Your chats</h2>
+    <button class="text-[11px] font-bold coral">Delete all</button>
+  </div>
+
+  <div class="px-4 pb-28 space-y-4">
+
+    <!-- Search this history -->
+    <div class="flex items-center gap-2 bg-white rounded-full pl-3 pr-1 py-1 border border-[color:var(--border)]">
+      <i data-lucide="search" class="w-4 h-4 text-[color:var(--text-tertiary)]"></i>
+      <input class="flex-1 bg-transparent text-[13px] outline-none py-1.5" placeholder="Search your chats…" />
+    </div>
+
+    <!-- Today -->
+    <div>
+      <p class="section-label mb-2">Today</p>
+      <div class="space-y-2">
+        <a href="ai-chat.html" class="card card--interactive block">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-6 h-6 rounded-full bg-coral-100 flex items-center justify-center"><i data-lucide="sparkles" class="w-3 h-3 coral"></i></div>
+            <p class="text-[12px] font-black flex-1">Folic acid — when to start</p>
+            <span class="text-[10px] text-[color:var(--text-tertiary)]">9:32 am</span>
+          </div>
+          <p class="text-[12.5px] leading-snug text-[color:var(--text-secondary)] line-clamp-2">Start now. Most guidelines recommend 400 mcg of folic acid daily for at least 3 months before conception…</p>
+          <div class="mt-2 flex gap-1.5">
+            <span class="chip chip-teal"><i data-lucide="book-open" class="w-2.5 h-2.5"></i>2 sources</span>
+            <span class="chip chip-neutral"><i data-lucide="notebook-pen" class="w-2.5 h-2.5"></i>Saved</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- This week -->
+    <div>
+      <p class="section-label mb-2">This week</p>
+      <div class="space-y-2">
+        <a href="ai-chat-refusal.html" class="card card--interactive block">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-6 h-6 rounded-full bg-coral-100 flex items-center justify-center"><i data-lucide="shield" class="w-3 h-3 coral"></i></div>
+            <p class="text-[12px] font-black flex-1">Paracetamol dose — 2nd trimester</p>
+            <span class="text-[10px] text-[color:var(--text-tertiary)]">Tue</span>
+          </div>
+          <p class="text-[12.5px] leading-snug text-[color:var(--text-secondary)] line-clamp-2">I won't guess on this one — dosage is one thing I refuse to answer. Here are three ways I can help…</p>
+          <div class="mt-2 flex gap-1.5">
+            <span class="chip chip-warning"><i data-lucide="shield" class="w-2.5 h-2.5"></i>Refused · dosage</span>
+            <span class="chip chip-info"><i data-lucide="calendar" class="w-2.5 h-2.5"></i>Saved for Aug 3 visit</span>
+          </div>
+        </a>
+        <a href="ai-chat.html" class="card card--interactive block">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-6 h-6 rounded-full bg-coral-100 flex items-center justify-center"><i data-lucide="sparkles" class="w-3 h-3 coral"></i></div>
+            <p class="text-[12px] font-black flex-1">Ovulation kit — accuracy in irregular cycles</p>
+            <span class="text-[10px] text-[color:var(--text-tertiary)]">Mon</span>
+          </div>
+          <p class="text-[12.5px] leading-snug text-[color:var(--text-secondary)] line-clamp-2">In irregular cycles, LH strips still work but the timing window is wider. Watch for two consecutive days of…</p>
+          <div class="mt-2 flex gap-1.5">
+            <span class="chip chip-teal"><i data-lucide="book-open" class="w-2.5 h-2.5"></i>3 sources</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Older -->
+    <div>
+      <p class="section-label mb-2">Earlier · July</p>
+      <div class="space-y-2">
+        <a href="ai-chat.html" class="card card--interactive block">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-6 h-6 rounded-full bg-coral-100 flex items-center justify-center"><i data-lucide="sparkles" class="w-3 h-3 coral"></i></div>
+            <p class="text-[12px] font-black flex-1">Should Rahul take anything?</p>
+            <span class="text-[10px] text-[color:var(--text-tertiary)]">Jul 12</span>
+          </div>
+          <p class="text-[12.5px] leading-snug text-[color:var(--text-secondary)] line-clamp-2">Zinc, CoQ10, and cutting evening alcohol are the three things with the clearest evidence for sperm quality…</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="card card--sunken">
+      <div class="flex items-start gap-2">
+        <i data-lucide="shield-check" class="w-4 h-4 teal-700 flex-shrink-0 mt-0.5"></i>
+        <p class="text-[12px] text-[color:var(--text-secondary)]">These chats are yours alone — Rahul never sees them. <a href="../settings/data-export.html" class="teal-700 font-bold">Export or delete</a>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

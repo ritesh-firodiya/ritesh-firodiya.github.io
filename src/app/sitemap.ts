@@ -5,7 +5,6 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 import { products } from "@/lib/products";
-import { published } from "@/lib/notes";
 import { CASE_STUDIES } from "@/lib/case-studies";
 
 const BASE = "https://ritesh-firodiya.github.io";
@@ -23,14 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: "", priority: 1.0, freq: "monthly" as const },
     { path: "/products", priority: 0.9, freq: "weekly" as const },
-    { path: "/design", priority: 0.8, freq: "monthly" as const },
-    { path: "/design/system", priority: 0.7, freq: "monthly" as const },
-    { path: "/design/gallery", priority: 0.7, freq: "monthly" as const },
-    { path: "/design/drift", priority: 0.7, freq: "monthly" as const },
-    { path: "/process", priority: 0.8, freq: "monthly" as const },
-    { path: "/process/build", priority: 0.7, freq: "monthly" as const },
-    { path: "/process/pipeline", priority: 0.7, freq: "monthly" as const },
-    { path: "/notes", priority: 0.7, freq: "weekly" as const },
     { path: "/work", priority: 0.6, freq: "monthly" as const },
     { path: "/hire", priority: 0.8, freq: "monthly" as const },
     { path: "/resume", priority: 0.8, freq: "monthly" as const },
@@ -58,12 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.7,
-    })),
-    ...published.map((n) => ({
-      url: `${BASE}/notes/${n.slug}/`,
-      lastModified: new Date(n.date),
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
     })),
   ];
 }

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aakalan — Group settings</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Group settings</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Everything about the group that isn't an expense. Reached from the gear on group detail, and rarely visited by design.</p>
+
+      <p class="mt-3"><strong>The invite link lives here</strong>, as a row, and as a share sheet from group creation. A link and four share targets do not need a screen of their own.</p>
+
+      <p class="mt-3"><strong>Leaving with an open balance is blocked, and says why.</strong> Silently allowing it makes a debt vanish from one side and persist on the other — the single worst bug this class of app can have. The button is disabled with the reason on it, not hidden.</p>
+
+      <p class="mt-3"><strong>Currency is per group</strong>, because a trip abroad and a flat in Bangalore are different currencies for the same person. Free is INR-only; changing it is the multi-currency Pro feature, and it is gated <em>before</em> any expense is entered so nobody loses work to a paywall.</p>
+
+      <p class="mt-3"><strong>Deleting a group is destructive and permanent</strong>, so it is last, rose, and asks. Everything above it is reversible.</p>
+    </div>
+  </div>
+
+<div class="phone phone--page">
+  <div class="statusbar"><span class="statusbar-time">9:41</span><span class="statusbar-icons text-xs">••• 5G ■</span></div>
+
+  <div class="subheader">
+    <a href="index.html" class="backbtn"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+    <h2 class="flex-1">Group settings</h2>
+  </div>
+
+  <div class="px-4 pb-8 space-y-4">
+
+    <div class="flex items-center gap-3">
+      <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 bg-[image:var(--group-mark)] text-white">
+        <i data-lucide="tree-palm" class="w-6 h-6"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-lg font-black truncate">Goa Trip '26</p>
+        <p class="text-xs text-ink-3">Created 2 Sep by you · ₹32,400 in 12 expenses</p>
+      </div>
+      <button class="iconbtn"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+    </div>
+
+    <div>
+      <p class="section-label mb-2">People · 5</p>
+      <div class="card card-flat">
+        <div class="row">
+          <div class="avatar av-riya">R</div>
+          <div class="row-body"><p class="row-title">You</p><p class="row-sub amt amt-pos">Owed ₹3,780</p></div>
+          <span class="chip chip-neutral">Admin</span>
+        </div>
+        <div class="row">
+          <div class="avatar av-arjun">A</div>
+          <div class="row-body"><p class="row-title">Arjun Nair</p><p class="row-sub amt amt-neg">Owes ₹2,400</p></div>
+          <button class="iconbtn w-[32px] h-[32px]"><i data-lucide="ellipsis" class="w-4 h-4"></i></button>
+        </div>
+        <div class="row">
+          <div class="avatar av-meera">M</div>
+          <div class="row-body"><p class="row-title">Meera Iyer</p><p class="row-sub">Square</p></div>
+          <button class="iconbtn w-[32px] h-[32px]"><i data-lucide="ellipsis" class="w-4 h-4"></i></button>
+        </div>
+        <div class="row">
+          <div class="avatar av-kabir">K</div>
+          <div class="row-body"><p class="row-title">Kabir Shah</p><p class="row-sub amt amt-neg">Owes ₹2,500</p></div>
+          <button class="iconbtn w-[32px] h-[32px]"><i data-lucide="ellipsis" class="w-4 h-4"></i></button>
+        </div>
+        <div class="row">
+          <div class="avatar av-sana">S</div>
+          <div class="row-body"><p class="row-title">Sana Qureshi</p><p class="row-sub amt amt-pos">Owed ₹1,120</p></div>
+          <button class="iconbtn w-[32px] h-[32px]"><i data-lucide="ellipsis" class="w-4 h-4"></i></button>
+        </div>
+        <button class="row">
+          <div class="row-icon bg-brand-50"><i data-lucide="user-plus" class="w-4 h-4 text-brand-500"></i></div>
+          <div class="row-body"><p class="row-title text-brand-700">Add someone</p></div>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-label mb-2">Settings</p>
+      <div class="card card-flat">
+        <button class="row">
+          <div class="row-icon bg-sunken"><i data-lucide="link" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body"><p class="row-title">Invite link</p><p class="row-sub mono">aakalan.app/j/g7Kq2m · 5 days left</p></div>
+          <i data-lucide="share-2" class="w-4 h-4 text-ink-4"></i>
+        </button>
+        <div class="row">
+          <div class="row-icon bg-sunken"><i data-lucide="git-merge" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body">
+            <p class="row-title">Simplify debts by default</p>
+            <p class="row-sub">Show the fewest transfers instead of every pair</p>
+          </div>
+          <span class="toggle is-on"></span>
+        </div>
+        <button class="row">
+          <div class="row-icon bg-sunken"><i data-lucide="indian-rupee" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body"><p class="row-title">Currency</p><p class="row-sub">Indian Rupee · ₹</p></div>
+          <span class="chip chip-warning">Pro</span>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <div class="card card-flat">
+        <!-- Blocked, with the reason on the row. Never silently allowed. -->
+        <div class="row opacity-50">
+          <div class="row-icon bg-sunken"><i data-lucide="log-out" class="w-4 h-4 text-ink-2"></i></div>
+          <div class="row-body">
+            <p class="row-title">Leave group</p>
+            <p class="row-sub">Settle your ₹3,780 first — leaving would erase it for you and leave it owed by everyone else.</p>
+          </div>
+        </div>
+        <button class="row">
+          <div class="row-icon bg-danger-bg"><i data-lucide="trash" class="w-4 h-4 text-danger-fg"></i></div>
+          <div class="row-body">
+            <p class="row-title text-danger-fg">Delete group</p>
+            <p class="row-sub">Permanently removes 12 expenses for all 5 people</p>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

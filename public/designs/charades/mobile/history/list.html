@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>History — Charades mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="phone" style="padding-bottom: 80px">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="appheader">
+    <div class="appheader-left">
+      <a href="../home.html" class="iconbtn" aria-label="Back">
+        <i data-lucide="chevron-left" style="width:22px;height:22px" stroke-width="2.5"></i>
+      </a>
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold leading-none">Charades</p>
+        <h1 class="text-lg font-black navy leading-tight">History</h1>
+      </div>
+    </div>
+    <button class="iconbtn" aria-label="Filter">
+      <i data-lucide="sliders-horizontal" style="width:18px;height:18px"></i>
+    </button>
+  </div>
+
+  <!-- Stats card -->
+  <div class="mx-5 mt-2 rounded-2xl bg-navy p-4 flex items-center justify-around">
+    <div class="text-center">
+      <p class="text-[9px] uppercase tracking-widest text-blue-200 font-black">Rounds</p>
+      <p class="mono text-xl font-black text-white leading-none mt-1">12</p>
+    </div>
+    <div class="w-px h-8 bg-white/20"></div>
+    <div class="text-center">
+      <p class="text-[9px] uppercase tracking-widest text-blue-200 font-black">Best</p>
+      <p class="mono text-xl font-black text-white leading-none mt-1">18</p>
+    </div>
+    <div class="w-px h-8 bg-white/20"></div>
+    <div class="text-center">
+      <p class="text-[9px] uppercase tracking-widest text-blue-200 font-black">Avg</p>
+      <p class="mono text-xl font-black text-white leading-none mt-1">9.4</p>
+    </div>
+  </div>
+
+  <p class="px-5 pt-6 pb-2 section-label">Recent rounds</p>
+
+  <div class="px-5 space-y-2">
+    <a href="detail.html" class="block rounded-2xl border border-zinc-200 bg-white p-4 no-underline">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl tint-hollywood flex items-center justify-center flex-shrink-0">
+          <i data-lucide="film" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-black navy leading-tight">Hollywood + Animals</p>
+          <div class="mt-1 flex items-center gap-2 text-[11px] text-zinc-500">
+            <span>Today · 3:12 pm</span>
+            <span>·</span>
+            <span>1:03</span>
+          </div>
+        </div>
+        <span class="chip chip-success">7/9</span>
+      </div>
+    </a>
+
+    <a href="detail.html" class="block rounded-2xl border border-zinc-200 bg-white p-4 no-underline">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl tint-countries flex items-center justify-center flex-shrink-0">
+          <i data-lucide="globe" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-black navy leading-tight">Family: Countries</p>
+          <div class="mt-1 flex items-center gap-2 text-[11px] text-zinc-500">
+            <span>Yesterday · 8:04 pm</span>
+            <span>·</span>
+            <span>1:42</span>
+          </div>
+        </div>
+        <span class="chip chip-success">12/15</span>
+      </div>
+    </a>
+
+    <a href="detail.html" class="block rounded-2xl border border-zinc-200 bg-white p-4 no-underline">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl tint-hollywood flex items-center justify-center flex-shrink-0">
+          <i data-lucide="film" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-black navy leading-tight">Hollywood Starter</p>
+          <div class="mt-1 flex items-center gap-2 text-[11px] text-zinc-500">
+            <span>Jul 16 · 9:47 pm</span>
+            <span>·</span>
+            <span>2:00</span>
+          </div>
+        </div>
+        <span class="chip chip-skip">3/12</span>
+      </div>
+    </a>
+
+    <a href="detail.html" class="block rounded-2xl border border-zinc-200 bg-white p-4 no-underline">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl tint-family flex items-center justify-center flex-shrink-0">
+          <i data-lucide="paw-print" style="width:20px;height:20px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-black navy leading-tight">Family: Animals</p>
+          <div class="mt-1 flex items-center gap-2 text-[11px] text-zinc-500">
+            <span>Jul 14 · 6:20 pm</span>
+            <span>·</span>
+            <span>2:30</span>
+          </div>
+        </div>
+        <span class="chip chip-success">18/22</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="px-5 mt-6 flex items-center justify-center gap-1.5 text-[11px] text-zinc-500">
+    <i data-lucide="smartphone" style="width:12px;height:12px"></i>
+    <span>Stored on this device · last 50 rounds</span>
+  </div>
+
+  <nav class="tabbar">
+    <div class="tabbar-row">
+      <a href="../home.html" class="tab">
+        <i data-lucide="home" class="tab-icon"></i>
+        <span>Play</span>
+      </a>
+      <a href="../packs/store.html" class="tab">
+        <i data-lucide="package" class="tab-icon"></i>
+        <span>Packs</span>
+      </a>
+      <a href="list.html" class="tab is-active">
+        <i data-lucide="clock" class="tab-icon" stroke-width="2.5"></i>
+        <span>History</span>
+      </a>
+      <a href="../settings/settings.html" class="tab">
+        <i data-lucide="user" class="tab-icon"></i>
+        <span>You</span>
+      </a>
+    </div>
+    <div class="tabbar-handle"><div class="tabbar-handle-bar"></div></div>
+  </nav>
+
+</div>
+
+<script src="../../../_vendor/lucide.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

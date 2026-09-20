@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Repeat a meal — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="phone phone--page">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <div class="subheader">
+    <a href="../home/day-nav.html" class="backbtn" aria-label="Back"><i data-lucide="arrow-left" style="width:19px;height:19px"></i></a>
+    <div class="flex-1 text-center">
+      <p class="subheader-title">Add to lunch</p>
+      <p class="subheader-sub">Thursday, 19 Sep</p>
+    </div>
+    <div style="width:38px"></div>
+  </div>
+
+  <!--
+    Repeats before search, and search before the camera.
+
+    Most days are not new food. The camera is the product's headline, but it is
+    the slowest way to log something you have already eaten four times — and
+    every scan spends a real model call and a real allowance. Putting repeats
+    first makes the common case free and instant, and leaves the camera for
+    what it is actually good at.
+  -->
+  <div class="px-5 mt-3">
+    <div class="search">
+      <i data-lucide="search" style="width:17px;height:17px;color:var(--ink-3)"></i>
+      <span class="text-[13px] text-ink-3">Search foods…</span>
+    </div>
+  </div>
+
+  <div class="px-5 mt-4 flex items-baseline justify-between">
+    <p class="section-label">You eat these often</p>
+    <span class="text-[11px] font-extrabold text-ink-3">Free</span>
+  </div>
+
+  <div class="px-5 mt-2">
+    <a href="confirm.html" class="card card--interactive flex items-center gap-3 no-underline" style="padding:11px 12px">
+      <div class="meal-thumb" style="width:42px;height:42px;background:#f5ecdc;flex:none">
+        <i data-lucide="egg-fried" style="width:19px;height:19px;color:#b08442"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-extrabold text-[13px] text-ink">Poha with peanuts</p>
+        <p class="text-[11px] text-ink-3 mt-0.5">310 kcal · logged 12 times</p>
+      </div>
+      <span class="chip chip-brand" style="flex:none">Add</span>
+    </a>
+
+    <div style="height:8px"></div>
+
+    <a href="confirm.html" class="card card--interactive flex items-center gap-3 no-underline" style="padding:11px 12px">
+      <div class="meal-thumb" style="width:42px;height:42px;background:#f0e4d4;flex:none">
+        <i data-lucide="utensils" style="width:19px;height:19px;color:#a1785a"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-extrabold text-[13px] text-ink">Chicken biryani</p>
+        <p class="text-[11px] text-ink-3 mt-0.5">712 kcal · logged 4 times</p>
+      </div>
+      <span class="chip chip-brand" style="flex:none">Add</span>
+    </a>
+
+    <div style="height:8px"></div>
+
+    <a href="confirm.html" class="card card--interactive flex items-center gap-3 no-underline" style="padding:11px 12px">
+      <div class="meal-thumb" style="width:42px;height:42px;background:#e8eee9;flex:none">
+        <i data-lucide="coffee" style="width:19px;height:19px;color:#5c7a68"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="font-extrabold text-[13px] text-ink">Chai with sugar</p>
+        <p class="text-[11px] text-ink-3 mt-0.5">90 kcal · logged 26 times</p>
+      </div>
+      <span class="chip chip-brand" style="flex:none">Add</span>
+    </a>
+  </div>
+
+  <!--
+    Yesterday, copyable whole.
+
+    "I ate the same as yesterday" is a real and common sentence, and re-logging
+    four meals one at a time is the friction that ends tracking habits.
+  -->
+  <div class="px-5 mt-5">
+    <p class="section-label">From yesterday</p>
+  </div>
+  <div class="px-5 mt-2">
+    <div class="card" style="padding:13px 14px">
+      <div class="flex items-center gap-3">
+        <div class="comp-puck" style="background:var(--sunken);color:var(--ink-2);width:34px;height:34px">
+          <i data-lucide="copy" style="width:17px;height:17px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-extrabold text-[13px] text-ink">Copy Wednesday's lunch</p>
+          <p class="text-[11px] text-ink-3 mt-0.5">Rajma chawal · 640 kcal</p>
+        </div>
+        <span class="chip chip-neutral" style="flex:none">Copy</span>
+      </div>
+      <div class="divider" style="margin:10px 0"></div>
+      <div class="flex items-center gap-3">
+        <div class="comp-puck" style="background:var(--sunken);color:var(--ink-2);width:34px;height:34px">
+          <i data-lucide="calendar-check" style="width:17px;height:17px"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-extrabold text-[13px] text-ink">Copy the whole day</p>
+          <p class="text-[11px] text-ink-3 mt-0.5">4 meals · 2,048 kcal</p>
+        </div>
+        <span class="chip chip-neutral" style="flex:none">Copy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- The camera stays available, just not first. -->
+  <div class="px-5 mt-5">
+    <p class="section-label">Something new</p>
+  </div>
+  <div class="px-5 mt-2 grid grid-cols-2 gap-2">
+    <a href="../scan/camera.html" class="card card--interactive no-underline" style="padding:15px 14px">
+      <div class="comp-puck" style="background:var(--brand-100);color:var(--brand-700);width:34px;height:34px">
+        <i data-lucide="camera" style="width:17px;height:17px"></i>
+      </div>
+      <p class="font-extrabold text-[13px] text-ink mt-2.5">Scan a photo</p>
+      <p class="text-[11px] text-ink-3 mt-0.5">Uses 1 of 7 left</p>
+    </a>
+    <a href="../food/barcode.html" class="card card--interactive no-underline" style="padding:15px 14px">
+      <div class="comp-puck" style="background:var(--sunken);color:var(--ink-2);width:34px;height:34px">
+        <i data-lucide="scan-barcode" style="width:17px;height:17px"></i>
+      </div>
+      <p class="font-extrabold text-[13px] text-ink mt-2.5">Barcode</p>
+      <p class="text-[11px] text-ink-3 mt-0.5">Free · label-exact</p>
+    </a>
+  </div>
+
+  <div style="height:40px"></div>
+
+</div>
+
+<script>lucide.createIcons()</script>
+</body>
+</html>

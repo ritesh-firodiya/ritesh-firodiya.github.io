@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
-import { products, bySlug, mediaFor, MODEL, type Product, type Platform } from "@/lib/products";
+import { products, bySlug, mediaFor, screensFor, designsGeneratedOn, MODEL, type Product, type Platform } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 
 export function generateStaticParams() {
@@ -155,6 +155,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const others = products.filter((o) => o.slug !== p.slug).slice(0, 4);
   const m = mediaFor(p.slug);
   const study = studyBySlug(p.slug);
+  const screens = screensFor(p.slug);
 
   return (
     <>
@@ -311,6 +312,49 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   crops the ad out is a small lie.
                 </p>
               )}
+            </div>
+          </section>
+        )}
+
+        {screens.length > 0 && (
+          <section className="border-t border-line">
+            <div className="mx-auto max-w-page px-gutter py-section">
+              <div className="flex flex-wrap items-baseline justify-between gap-3">
+                <h2 className="font-display text-h2 font-semibold">
+                  The design set · {screens.length} screens
+                </h2>
+                <p className="font-mono text-xs2 text-ink-3">
+                  live HTML, not screenshots · synced {designsGeneratedOn}
+                </p>
+              </div>
+              <p className="mt-2 max-w-prose text-small text-ink-2">
+                Every screen was drawn in HTML before the app existed. These are those files,
+                rendering for real — scroll one, or open it full size.
+              </p>
+              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {screens.map((s) => (
+                  <figure key={s.path} className="min-w-0">
+                    <div className="overflow-hidden rounded-card border border-line bg-surface">
+                      <iframe
+                        src={s.path}
+                        title={s.title}
+                        loading="lazy"
+                        className="h-[420px] w-full border-0"
+                      />
+                    </div>
+                    <figcaption className="mt-2 flex items-baseline gap-2">
+                      <a href={s.path} className="link-u truncate text-small font-medium hover:text-accent">
+                        {s.title}
+                      </a>
+                      {s.area && (
+                        <span className="shrink-0 font-mono text-[10px] uppercase tracking-label text-ink-3">
+                          {s.area}
+                        </span>
+                      )}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </section>
         )}

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — Dwarseva mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-700">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <main class="px-6 pb-10 pt-10 text-center">
+
+    <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-zinc-950 shadow-2xl shadow-blue-500/20">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg>
+    </div>
+    <h1 class="mt-4 text-2xl font-semibold tracking-tight">Dwarseva</h1>
+    <p class="mt-1 text-[12.5px] text-zinc-600">Find your dream home. Every listing verified by a human.</p>
+
+    <form class="mt-8 space-y-4 text-left">
+
+      <label class="block">
+        <span class="text-[11px] text-zinc-600">Full name</span>
+        <input type="text" placeholder="Aniket Patil" class="mt-1 block w-full rounded-md border border-zinc-200 bg-white px-3 py-3 text-sm text-zinc-900 placeholder:text-zinc-600 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/40" />
+      </label>
+
+      <label class="block">
+        <span class="text-[11px] text-zinc-600">Mobile number</span>
+        <div class="mt-1 flex items-center rounded-md border border-zinc-200 bg-white focus-within:border-blue-500">
+          <span class="mono px-3 py-3 text-sm text-zinc-600 border-r border-zinc-200">+91</span>
+          <input type="tel" inputmode="numeric" placeholder="98220 14455" class="block w-full bg-transparent px-3 py-3 text-sm text-zinc-900 placeholder:text-zinc-600 focus:outline-none" />
+        </div>
+      </label>
+
+      <label class="flex items-start gap-2 text-[11px] text-zinc-600">
+        <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-zinc-300 bg-white accent-blue-500" checked />
+        <span>I agree to the <a href="#" class="text-blue-700 underline">T&amp;C</a> and <a href="#" class="text-blue-700 underline">Privacy Notice</a>.</span>
+      </label>
+
+      <a href="otp.html" class="block w-full rounded-xl bg-blue-500 px-4 py-3.5 text-center text-sm font-semibold text-zinc-950 hover:bg-blue-400">
+        Send OTP →
+      </a>
+
+    </form>
+
+    <p class="mt-6 text-center text-[10px] text-zinc-500">
+      Trouble receiving OTP? <a href="#" class="text-blue-700 underline">Try WhatsApp</a>
+    </p>
+
+  </main>
+
+  <div class="flex items-center justify-center pb-2 pt-1">
+    <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

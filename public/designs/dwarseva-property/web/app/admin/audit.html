@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Audit log — Dwarseva admin</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 40px); box-shadow: 0 0 0 1px #18181b; }
+    .field { background: #18181b; border: 1px solid #27272a; }
+    .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #a1a1aa; }
+    .sidebar-item:hover { background: #18181b; color: #f4f4f5; }
+    .sidebar-item-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left: 3px solid #3b82f6; padding-left: 9px; }
+    .chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; border: 1px solid #27272a; background: #18181b; color: #a1a1aa; font-size: 11.5px; }
+    .chip-on { border-color: #3b82f6; background: rgba(59,130,246,0.15); color: #93c5fd; }
+    tr.row:hover { background: rgba(24,24,27,0.6); }
+    tr.recent { background: rgba(59,130,246,0.06); }
+    tr.recent:hover { background: rgba(59,130,246,0.10); }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] w-full">
+<div class="grid grid-cols-[220px_minmax(0,1fr)]">
+
+  <aside class="bg-zinc-50 border-zinc-200 border-r border-zinc-200 bg-zinc-100 min-h-[calc(100dvh-40px)] p-3">
+    <div class="mb-4 flex items-center gap-2 px-2 py-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-rose-500 text-[13px] font-bold text-zinc-950">A</span>
+      <div>
+        <p class="text-[13px] font-semibold leading-tight">Dwarseva</p>
+        <p class="text-[10px] uppercase tracking-widest text-rose-700">Admin ops</p>
+      </div>
+    </div>
+    <p class="mt-2 px-3 text-[9px] uppercase tracking-widest text-zinc-500">Queues</p>
+    <nav class="mt-1 space-y-0.5">
+      <a href="home.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2 4 4 8-8 4 4"/></svg>Dashboard</a>
+      <a href="verification-queue.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Verification <span class="ml-auto rounded bg-amber-500 px-1.5 py-0 text-[10px] font-bold text-zinc-950">18</span></a>
+      <a href="complaints-queue.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>Complaints <span class="ml-auto rounded bg-rose-500 px-1.5 py-0 text-[10px] font-bold text-white">3</span></a>
+    </nav>
+    <p class="mt-4 px-3 text-[9px] uppercase tracking-widest text-zinc-500">Manage</p>
+    <nav class="mt-1 space-y-0.5">
+      <a href="users.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Users</a>
+      <a href="polygons.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6l-8-4z"/></svg>Polygons &amp; areas</a>
+      <a href="audit.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 bg-blue-50 text-blue-700 border-blue-500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>Audit log</a>
+    </nav>
+    <div class="mt-6 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-[11px]">
+      <p class="text-zinc-500">Signed in as</p>
+      <p class="mt-0.5 font-semibold text-zinc-900">Priya S · verifier</p>
+      <a href="../../auth/sign-in.html" class="mt-1 inline-block text-blue-700 hover:underline">Sign out</a>
+    </div>
+  </aside>
+
+  <main class="min-h-[calc(100dvh-40px)] overflow-y-auto">
+
+    <div class="sticky top-0 z-20 border-b border-zinc-200 bg-white/95 backdrop-blur">
+      <div class="flex items-center gap-3 px-6 py-3">
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Manage › Audit log</p>
+          <h1 class="text-[15px] font-semibold text-zinc-900">Audit log <span class="ml-2 rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-700">reverse-chronological · immutable</span></h1>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <button class="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Refresh</button>
+          <button class="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5 text-[12px] font-semibold text-emerald-700 hover:bg-emerald-500/20">Export CSV</button>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 border-t border-zinc-200 px-6 py-2.5">
+        <span class="text-[11px] text-zinc-500">Date:</span>
+        <input type="date" value="2026-07-14" class="border bg-white border-zinc-200 rounded-md px-2 py-1 text-[11.5px] text-zinc-900"/>
+        <span class="text-zinc-500">→</span>
+        <input type="date" value="2026-07-21" class="border bg-white border-zinc-200 rounded-md px-2 py-1 text-[11.5px] text-zinc-900"/>
+        <span class="mx-2 h-4 w-px bg-zinc-100"></span>
+        <span class="text-[11px] text-zinc-500">Actor:</span>
+        <select class="border bg-white border-zinc-200 rounded-md px-2 py-1 text-[11.5px] text-zinc-900"><option>All actors</option><option>Priya S (verifier)</option><option>Rohan K (admin)</option><option>System (cron)</option></select>
+        <span class="text-[11px] text-zinc-500">Action:</span>
+        <select class="border bg-white border-zinc-200 rounded-md px-2 py-1 text-[11.5px] text-zinc-900">
+          <option>All actions</option><option>approved_listing</option><option>requested_changes</option><option>rejected_listing</option><option>removed_listing</option><option>refunded_buyer</option><option>banned_user</option><option>strike_seller</option><option>created_polygon</option><option>updated_polygon</option><option>cron_ran</option>
+        </select>
+        <span class="mx-2 h-4 w-px bg-zinc-100"></span>
+        <button class="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">Highlight last hour</button>
+        <div class="ml-auto">
+          <input type="text" placeholder="Search target ID or IP…" class="border bg-white border-zinc-200 w-56 rounded-md px-2 py-1 text-[11.5px] text-zinc-900"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-6">
+
+      <div class="overflow-hidden rounded-xl border border-zinc-200">
+        <table class="w-full text-[12px]">
+          <thead class="bg-zinc-100/92 text-[10.5px] uppercase tracking-wider text-zinc-500">
+            <tr class="text-left">
+              <th class="px-3 py-2.5 w-40">Timestamp</th>
+              <th class="px-3 py-2.5">Actor</th>
+              <th class="px-3 py-2.5">Action</th>
+              <th class="px-3 py-2.5">Target</th>
+              <th class="px-3 py-2.5">Detail</th>
+              <th class="px-3 py-2.5 w-32">IP</th>
+              <th class="px-3 py-2.5 w-24">Result</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-800 text-zinc-800">
+
+            <tr class="row recent">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-700">21 Jul 11:02:41</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-emerald-700">approved_listing</span></td>
+              <td class="px-3 py-2.5"><a href="verification-detail.html" class="mono text-blue-700 hover:underline">LST-2026-07-1139</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">2 BHK · Baner-Pashan Link · seller Sanjay P · polygon "Baner-Pashan Link"</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row recent">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-700">21 Jul 10:58:02</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">viewed_complaint</span></td>
+              <td class="px-3 py-2.5"><a href="complaint-detail.html" class="mono text-blue-700 hover:underline">CMP-2026-084</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Called seller Sanjay P — VM logged in complaint notes</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row recent">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-700">21 Jul 10:41:12</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-emerald-700">approved_listing</span></td>
+              <td class="px-3 py-2.5"><a href="verification-detail.html" class="mono text-blue-700 hover:underline">LST-2026-07-1138</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">1 BHK · Balewadi Phata · polygon "Balewadi Phata"</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row recent">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-700">21 Jul 10:22:07</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">assigned_complaint</span></td>
+              <td class="px-3 py-2.5"><a href="complaint-detail.html" class="mono text-blue-700 hover:underline">CMP-2026-084</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Self-assigned from unassigned queue</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row recent">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-700">21 Jul 10:14:33</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">updated_polygon</span></td>
+              <td class="px-3 py-2.5"><a href="polygons.html" class="mono text-blue-700 hover:underline">POL-2026-014</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">"Baner Lane 7" — vertices adjusted (2 moved)</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">21 Jul 09:33:20</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">requested_changes</span></td>
+              <td class="px-3 py-2.5"><a href="verification-detail.html" class="mono text-blue-700 hover:underline">LST-2026-07-1136</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Photos 3, 5 blurry — re-upload template sent (WABA)</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">21 Jul 09:14:02</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">System · WABA</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">sent_message</span></td>
+              <td class="px-3 py-2.5"><a href="complaint-detail.html" class="mono text-blue-700 hover:underline">CMP-2026-084</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Auto-ack template <span class="mono">cmp_received</span> → Ritvi F</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">—</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">delivered</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">21 Jul 09:11:44</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10.5px] text-emerald-700">Ritvi F · buyer</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-rose-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-rose-700">filed_complaint</span></td>
+              <td class="px-3 py-2.5"><a href="complaint-detail.html" class="mono text-blue-700 hover:underline">CMP-2026-084</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Against LST-2026-06-0812 · category "Scam · money advance"</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">106.212.44.19</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">201</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 23:55:04</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">System · cron</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">cron_ran</span></td>
+              <td class="px-3 py-2.5 mono text-zinc-600">expire_listings</td>
+              <td class="px-3 py-2.5 text-zinc-600">4 listings auto-expired at day 30 · 2 renewed within grace window (+₹10)</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">—</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">success</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 22:12:11</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10.5px] text-rose-700">Rohan K · admin</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-rose-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-rose-700">banned_user</span></td>
+              <td class="px-3 py-2.5"><a href="user-detail.html" class="mono text-blue-700 hover:underline">USR-2025-08812</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Vikas Kadam — 2nd strike hit · reason: repeated fake listings</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.101</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 20:44:57</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10.5px] text-rose-700">Rohan K · admin</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-emerald-700">refunded_buyer</span></td>
+              <td class="px-3 py-2.5"><a href="complaint-detail.html" class="mono text-blue-700 hover:underline">CMP-2026-080</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">₹5 → Payal Shah wallet · listing LST-2026-05-0691 removed</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.101</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 18:03:41</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-rose-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-rose-700">rejected_listing</span></td>
+              <td class="px-3 py-2.5"><a href="verification-detail.html" class="mono text-blue-700 hover:underline">LST-2026-07-1135</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">1RK · Aundh ITI · reason: reverse-image match (stock)</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 15:22:08</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-blue-500/20 px-1.5 py-0.5 text-[10.5px] text-blue-700">Priya S · verifier</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">created_polygon</span></td>
+              <td class="px-3 py-2.5"><a href="polygons.html" class="mono text-blue-700 hover:underline">POL-2026-028</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">"Wakad Bridge" · cluster · zoom sub_area · parent Wakad</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.118</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">201</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 14:11:02</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">System · cron</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">cron_ran</span></td>
+              <td class="px-3 py-2.5 mono text-zinc-600">refund_sla_sweeper</td>
+              <td class="px-3 py-2.5 text-zinc-600">0 complaints escalated (all within 5-day threshold)</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">—</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">success</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">20 Jul 11:04:15</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10.5px] text-rose-700">Rohan K · admin</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">strike_seller</span></td>
+              <td class="px-3 py-2.5"><a href="user-detail.html" class="mono text-blue-700 hover:underline">USR-2026-00412</a></td>
+              <td class="px-3 py-2.5 text-zinc-600">Sanjay Patil · 1st strike · reason: wrong-price on LST-0698</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">10.4.2.101</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">200</span></td>
+            </tr>
+
+            <tr class="row">
+              <td class="px-3 py-2.5 mono text-[11px] text-zinc-600">19 Jul 23:55:03</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">System · cron</span></td>
+              <td class="px-3 py-2.5"><span class="rounded bg-zinc-100 px-1.5 py-0.5 text-[10.5px] text-zinc-700">cron_ran</span></td>
+              <td class="px-3 py-2.5 mono text-zinc-600">expire_listings</td>
+              <td class="px-3 py-2.5 text-zinc-600">3 listings auto-expired at day 30 · 1 renewed instantly (+₹5)</td>
+              <td class="px-3 py-2.5 mono text-[10.5px] text-zinc-500">—</td>
+              <td class="px-3 py-2.5"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10.5px] text-emerald-700">success</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between text-[12px] text-zinc-600">
+        <p>Showing <span class="text-zinc-800">1–16</span> of <span class="text-zinc-800">1,842</span> events (last 7 days) · <span class="text-blue-700">5 in last hour highlighted</span></p>
+        <div class="flex items-center gap-1">
+          <button class="rounded-md border border-zinc-200 bg-white px-2 py-1 text-zinc-500" disabled>‹ Prev</button>
+          <button class="rounded-md border border-blue-500/40 bg-blue-500/15 px-2.5 py-1 font-semibold text-blue-700">1</button>
+          <button class="rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-zinc-700 hover:border-blue-500/40">2</button>
+          <button class="rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-zinc-700 hover:border-blue-500/40">3</button>
+          <span class="px-1 text-zinc-500">…</span>
+          <button class="rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-zinc-700 hover:border-blue-500/40">116</button>
+          <button class="rounded-md border border-zinc-200 bg-white px-2 py-1 text-zinc-700 hover:border-blue-500/40">Next ›</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+</div>
+
+</body>
+</html>

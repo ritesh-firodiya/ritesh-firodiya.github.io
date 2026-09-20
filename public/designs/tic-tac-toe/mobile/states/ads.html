@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic Tac Toe — ad states</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <aside class="note">
+    <p class="text-base font-bold mb-3">Ad states — <span class="mono">src/lib/ads.ts</span></p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p><b class="text-ink">This is the app's only revenue.</b> No IAP, no subscription, no RevenueCat. AdMob banner plus interstitial, and that is the whole model — which is why the states it can be in are part of the spec rather than an implementation detail.</p>
+      <p><b class="text-ink">The banner reserves its height whether or not it fills.</b> A banner that appears late pushes the board down mid-game and costs a misplaced tap. The slot is 320×50 and it is always there.</p>
+      <p><b class="text-ink">Ads off is a real state.</b> <span class="mono">EXPO_PUBLIC_SHOW_ADS</span> gates the banner, and <span class="mono">ads.web.ts</span> is a no-op shim so the web export carries no ad code at all. Both have to look right.</p>
+      <p><b class="text-ink">Never between the winning move and the winning line.</b> An interstitial belongs after the result sheet is dismissed. Showing one before the player sees <i>how</i> they won is the single most punished thing in this category's reviews.</p>
+      <p><b class="text-ink">The listings must say ads are present.</b> <span class="mono">app-summary.mdx</span> once claimed "No Ads" while the production profile shipped both formats.</p>
+    </div>
+  </aside>
+
+  <!-- ============================== BANNER FILLED -->
+  <div class="phone">
+    <div class="px-5 pt-14 pb-2 text-center">
+      <p class="text-2xs font-bold tracking-label uppercase text-ink-3">Banner · filled</p>
+    </div>
+    <div class="px-5 pt-4"></div>
+    <div class="board">
+      <div class="cell" style="color:var(--mark-x)">X</div><div class="cell"></div><div class="cell" style="color:var(--mark-o)">O</div>
+      <div class="cell"></div><div class="cell" style="color:var(--mark-x)">X</div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell" style="color:var(--mark-o)">O</div>
+    </div>
+    <div class="pin-bottom px-5 pb-8 pt-6">
+      <div class="h-[50px] rounded-lg grid place-items-center" style="background:var(--surface-sunken);border:1px solid var(--border)">
+        <p class="text-sm text-ink-3">Ad content · 320×50</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================== BANNER EMPTY (no fill) -->
+  <div class="phone">
+    <div class="px-5 pt-14 pb-2 text-center">
+      <p class="text-2xs font-bold tracking-label uppercase text-ink-3">Banner · no fill</p>
+    </div>
+    <div class="px-5 pt-4"></div>
+    <div class="board">
+      <div class="cell" style="color:var(--mark-x)">X</div><div class="cell"></div><div class="cell" style="color:var(--mark-o)">O</div>
+      <div class="cell"></div><div class="cell" style="color:var(--mark-x)">X</div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell" style="color:var(--mark-o)">O</div>
+    </div>
+    <div class="pin-bottom px-5 pb-8 pt-6">
+      <div class="h-[50px]"></div>
+      <p class="text-2xs text-center text-ink-3 mt-1">Height still reserved — nothing reflows</p>
+    </div>
+  </div>
+
+  <!-- ============================== ADS OFF -->
+  <div class="phone phone--dark">
+    <div class="px-5 pt-14 pb-2 text-center">
+      <p class="text-2xs font-bold tracking-label uppercase text-ink-3">Ads off · web export</p>
+    </div>
+    <div class="px-5 pt-4"></div>
+    <div class="board">
+      <div class="cell" style="color:var(--mark-x)">X</div><div class="cell"></div><div class="cell" style="color:var(--mark-o)">O</div>
+      <div class="cell"></div><div class="cell" style="color:var(--mark-x)">X</div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell" style="color:var(--mark-o)">O</div>
+    </div>
+    <div class="pin-bottom px-5 pb-8 pt-6">
+      <p class="text-2xs text-center text-ink-3">No slot at all — the layout closes up</p>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

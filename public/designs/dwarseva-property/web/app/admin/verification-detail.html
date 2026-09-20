@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verification detail — Dwarseva admin</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 40px); box-shadow: 0 0 0 1px #18181b; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); }
+    .field { background: #18181b; border: 1px solid #27272a; }
+    .toggle { position: relative; display: inline-block; width: 30px; height: 16px; border-radius: 999px; background: #3f3f46; transition: background 0.15s; cursor: pointer; }
+    .toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 999px; background: #ffffff; transition: transform 0.15s; }
+    .toggle-on { background: #10b981; }
+    .toggle-on::after { transform: translateX(14px); }
+    .sidebar-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #a1a1aa; }
+    .sidebar-item:hover { background: #18181b; color: #f4f4f5; }
+    .sidebar-item-active { background: rgba(59,130,246,0.10); color: #93c5fd; border-left: 3px solid #3b82f6; padding-left: 9px; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] w-full">
+<div class="grid grid-cols-[220px_minmax(0,1fr)]">
+
+  <!-- SIDEBAR -->
+  <aside class="bg-zinc-50 border-zinc-200 border-r border-zinc-200 bg-zinc-100 min-h-[calc(100dvh-40px)] p-3">
+    <div class="mb-4 flex items-center gap-2 px-2 py-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-rose-500 text-[13px] font-bold text-zinc-950">A</span>
+      <div>
+        <p class="text-[13px] font-semibold leading-tight">Dwarseva</p>
+        <p class="text-[10px] uppercase tracking-widest text-rose-700">Admin ops</p>
+      </div>
+    </div>
+
+    <p class="mt-2 px-3 text-[9px] uppercase tracking-widest text-zinc-500">Queues</p>
+    <nav class="mt-1 space-y-0.5">
+      <a href="home.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2 4 4 8-8 4 4"/></svg>Dashboard</a>
+      <a href="verification-queue.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 bg-blue-50 text-blue-700 border-blue-500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Verification <span class="ml-auto rounded bg-amber-500 px-1.5 py-0 text-[10px] font-bold text-zinc-950">18</span></a>
+      <a href="complaints-queue.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>Complaints <span class="ml-auto rounded bg-rose-500 px-1.5 py-0 text-[10px] font-bold text-white">3</span></a>
+    </nav>
+
+    <p class="mt-4 px-3 text-[9px] uppercase tracking-widest text-zinc-500">Manage</p>
+    <nav class="mt-1 space-y-0.5">
+      <a href="users.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Users</a>
+      <a href="polygons.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3 9 8 10 5-1 8-5 8-10V6l-8-4z"/></svg>Polygons &amp; areas</a>
+      <a href="audit.html" class="text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>Audit log</a>
+    </nav>
+
+    <div class="mt-6 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-[11px]">
+      <p class="text-zinc-500">Signed in as</p>
+      <p class="mt-0.5 font-semibold text-zinc-900">Priya S · verifier</p>
+      <a href="../../auth/sign-in.html" class="mt-1 inline-block text-blue-700 hover:underline">Sign out</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="min-h-[calc(100dvh-40px)] overflow-y-auto">
+
+    <div class="sticky top-0 z-20 border-b border-zinc-200 bg-white/95 backdrop-blur">
+      <div class="flex items-center gap-3 px-6 py-3">
+        <a href="verification-queue.html" class="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">← Queue</a>
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Listing <span class="mono text-zinc-700">LST-2026-07-1148</span> · submitted 2h ago</p>
+          <h1 class="text-[15px] font-semibold text-zinc-900">Under review — action required</h1>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <button class="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">← Prev (17)</button>
+          <button class="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">Next (17) →</button>
+          <span class="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold text-amber-700">In review</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-[minmax(0,1.6fr)_minmax(360px,1fr)] gap-0">
+
+      <!-- LEFT: photos + fields -->
+      <div class="border-r border-zinc-200 p-6">
+
+        <!-- Reviewer-crafted title -->
+        <section class="mb-6 rounded-xl border border-blue-500/30 bg-blue-500/10 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-blue-700">Reviewer-crafted title <span class="text-zinc-500">· seller does not enter this</span></p>
+          <input type="text" value="Spacious 2 BHK in Baner Lane 7 · fully furnished · lift + parking" class="border bg-white border-zinc-200 mt-2 w-full rounded-md px-3 py-2 text-[14px] font-semibold text-zinc-900" />
+          <p class="mt-1 text-[10.5px] text-zinc-500">Show as-is to buyers. Max 80 chars. No hype words, no all-caps.</p>
+        </section>
+
+        <!-- Photo grid -->
+        <section class="mb-6">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Photos · 8 uploaded</p>
+            <div class="flex items-center gap-1 text-[11px] text-zinc-600">
+              <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-700">internal_clear · 5</span>
+              <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-700">external_clear · 2</span>
+              <span class="rounded bg-rose-500/15 px-1.5 py-0.5 text-rose-700">poor · 1</span>
+            </div>
+          </div>
+          <div class="mt-2 grid grid-cols-4 gap-2">
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-emerald-700">✓ internal</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-emerald-700">✓ internal</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-emerald-700">✓ internal</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-emerald-700">✓ internal</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-emerald-700">✓ internal</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-amber-700">external</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg"><span class="absolute left-1 top-1 rounded bg-zinc-900/80 px-1 py-0.5 text-[9px] font-semibold text-amber-700">external</span></div>
+            <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] relative aspect-[4/3] rounded-lg opacity-60"><span class="absolute left-1 top-1 rounded bg-rose-500 px-1 py-0.5 text-[9px] font-semibold text-white">poor · ask re-upload</span></div>
+          </div>
+          <div class="mt-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-[11px] text-emerald-700">
+            <span class="font-semibold">Reverse-image-search:</span> no matches on stock sites or competitor portals. Safe to proceed.
+          </div>
+        </section>
+
+        <!-- Field grid -->
+        <section class="mb-6">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Structured fields · from seller</p>
+          <div class="mt-2 grid grid-cols-2 gap-3">
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Type / BHK</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">Apartment · 2 BHK · Rent</p>
+            </div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Price</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900 mono">₹28,000 / mo <span class="text-zinc-500 text-[10px]">· dep 2 mo · negotiable</span></p>
+            </div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Carpet / built-up</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">780 / 940 sqft</p>
+            </div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Furnishing / age</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">Fully furnished · 5–10 yrs</p>
+            </div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Floor / total</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">7 / 11</p>
+            </div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Wing / flat / parking</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">B · B-704 · Covered B2-17</p>
+            </div>
+            <div class="col-span-2 rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Utilities &amp; society</p>
+              <p class="mt-0.5 text-[13px] text-zinc-800">Lift · Power backup · Water 24×7 · MNGL Gas · Gym · Clubhouse · Security 24×7 · CCTV · Intercom · Servant room</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Owner & document -->
+        <section class="mb-6">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Owner &amp; document</p>
+          <div class="mt-2 grid grid-cols-2 gap-3">
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Seller</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">Sanjay Patil · seller_owner</p>
+              <p class="mt-0.5 text-[11px] text-zinc-600">📞 +91 98••••7712 · call to confirm</p>
+              <p class="text-[11px] text-zinc-500">Registered 4 days ago · 1 listing</p>
+            </div>
+            <div class="rounded-lg border border-zinc-200 bg-zinc-100/75 p-3">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Tax receipt</p>
+              <p class="mt-0.5 text-[13px] font-semibold text-zinc-900">tax-receipt-2025.pdf · 428 KB</p>
+              <div class="mt-1 flex gap-2 text-[11px]"><a href="#" class="text-blue-700 hover:underline">Open</a><a href="#" class="text-zinc-500 hover:underline">Download</a></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: reviewer actions -->
+      <div class="p-6 bg-zinc-100">
+
+        <!-- Polygon assignment -->
+        <section class="mb-6 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-700">Assign polygon</p>
+          <div class="mt-2 flex gap-2">
+            <button class="border-blue-500 bg-blue-500/10 text-blue-700 flex-1 rounded-lg border border-amber-500 bg-amber-500/15 px-3 py-2 text-[12px] font-semibold text-amber-700">📍 Lane / cluster</button>
+            <button class="flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-[12px] text-zinc-700 hover:border-blue-500/40">🏘 Society</button>
+          </div>
+          <input type="text" value="Baner Lane 7" class="border bg-white border-zinc-200 mt-2 w-full rounded-md px-3 py-2 text-[13px] text-zinc-900" />
+          <p class="mt-1 text-[10.5px] text-zinc-500">Buyer will see <span class="mono text-zinc-700">📍 Baner Lane 7</span> pin (amber). Zoom level: <span class="text-zinc-700">sub_area</span>.</p>
+        </section>
+
+        <!-- Visibility toggles -->
+        <section class="mb-6 rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Reveal before unlock <span class="text-zinc-500">· default hidden</span></p>
+          <div class="mt-3 space-y-2">
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Floor &amp; total floors</span>
+              <span class="toggle" aria-label="Hidden"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Wing + Flat number</span>
+              <span class="toggle" aria-label="Hidden"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Parking spot</span>
+              <span class="toggle" aria-label="Hidden"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Exterior photos (façade, gate)</span>
+              <span class="toggle toggle-on" aria-label="Visible"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Exact lat/lng pin</span>
+              <span class="toggle" aria-label="Hidden"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Owner name</span>
+              <span class="toggle" aria-label="Hidden"></span>
+            </label>
+            <label class="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-zinc-800/50">
+              <span class="text-[13px] text-zinc-800">Owner mobile / WhatsApp</span>
+              <span class="toggle" aria-label="Hidden"></span>
+            </label>
+          </div>
+          <p class="mt-3 text-[10.5px] text-zinc-500">Reveal toggles you flip on will show <em>before</em> unlock. Anything left off requires the buyer to pay ₹5.</p>
+        </section>
+
+        <!-- Verifier notes -->
+        <section class="mb-6 rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Verifier notes</p>
+          <textarea rows="3" placeholder="Optional. Only shown to admin / other verifiers." class="border bg-white border-zinc-200 mt-2 w-full rounded-md px-3 py-2 text-[13px] text-zinc-900">Called owner at 10:42 — confirmed ownership + rent price. Photos match building on Google Street View. Tax receipt matches wing/flat.</textarea>
+        </section>
+
+        <!-- Decision -->
+        <section class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Decision</p>
+          <div class="mt-2 space-y-2">
+            <button class="w-full rounded-lg bg-emerald-500 px-4 py-2.5 text-[13.5px] font-semibold text-zinc-950 hover:bg-emerald-400">✓ Approve &amp; publish (go live)</button>
+            <button class="w-full rounded-lg border border-amber-500/50 bg-amber-500/10 px-4 py-2.5 text-[13px] font-semibold text-amber-700 hover:bg-amber-500/20">↩ Request changes</button>
+            <button class="w-full rounded-lg border border-rose-500/50 bg-rose-500/10 px-4 py-2.5 text-[13px] font-semibold text-rose-700 hover:bg-rose-500/20">✕ Reject &amp; remove</button>
+          </div>
+          <p class="mt-3 text-[10.5px] text-zinc-500">Approve → seller notified via WABA (<span class="mono">listing_live</span>). ₹5 publish fee charged from wallet · 30-day live period begins.</p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+</div>
+
+</body>
+</html>

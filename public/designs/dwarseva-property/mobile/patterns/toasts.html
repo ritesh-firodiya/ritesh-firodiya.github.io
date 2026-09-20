@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toasts — Dwarseva mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-700">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <div class="flex h-12 items-center justify-between px-4">
+    <a href="../index.html" aria-label="Back" class="inline-flex h-10 w-10 items-center justify-center text-zinc-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 class="text-sm font-semibold">Toast patterns</h1>
+    <span class="w-10"></span>
+  </div>
+
+  <main class="px-4 pb-10 pt-3 space-y-3">
+
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Success</p>
+    <div class="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-3 flex items-start gap-3">
+      <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-zinc-950">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </span>
+      <div class="flex-1">
+        <p class="text-[13px] font-semibold">Wallet recharged · ₹50 added</p>
+        <p class="text-[10.5px] text-zinc-600">razorpay #pay_29Xk… · wallet</p>
+      </div>
+      <button class="text-zinc-500 text-[14px]">×</button>
+    </div>
+
+    <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Info</p>
+    <div class="rounded-xl border border-blue-500/40 bg-blue-500/10 p-3 flex items-start gap-3">
+      <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-500 text-zinc-950">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </span>
+      <div class="flex-1">
+        <p class="text-[13px] font-semibold">Listing submitted for review</p>
+        <p class="text-[10.5px] text-zinc-600">Typical SLA · 2–48 hrs</p>
+      </div>
+      <button class="text-zinc-500 text-[14px]">×</button>
+    </div>
+
+    <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Warning</p>
+    <div class="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 flex items-start gap-3">
+      <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-500 text-zinc-950">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </span>
+      <div class="flex-1">
+        <p class="text-[13px] font-semibold">Wallet runs out in 2 days</p>
+        <p class="text-[10.5px] text-zinc-600">Recharge to keep Aundh 2BHK live.</p>
+      </div>
+      <a class="text-[11px] font-semibold text-amber-700 underline">Recharge</a>
+    </div>
+
+    <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Error / Refund</p>
+    <div class="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3 flex items-start gap-3">
+      <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-rose-500 text-zinc-950">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </span>
+      <div class="flex-1">
+        <p class="text-[13px] font-semibold">Payment failed</p>
+        <p class="text-[10.5px] text-zinc-600">UPI timed out. Try again in a moment.</p>
+      </div>
+      <a class="text-[11px] font-semibold text-rose-700 underline">Retry</a>
+    </div>
+
+    <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Persistent banner (status)</p>
+    <div class="rounded-xl border border-zinc-300 bg-white p-3 flex items-center gap-3">
+      <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/20 text-amber-700 text-[9px] font-bold">!</span>
+      <p class="flex-1 text-[12px] text-zinc-700">Hinjewadi listing needs 3 fixes.</p>
+      <a class="text-[11px] font-semibold text-amber-700">Fix →</a>
+    </div>
+
+    <p class="mt-6 text-[10px] text-zinc-500">All toasts auto-dismiss in 4 sec unless they have a CTA. Bottom-center placement above the home indicator.</p>
+
+  </main>
+
+  <div class="flex items-center justify-center pb-2 pt-1">
+    <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

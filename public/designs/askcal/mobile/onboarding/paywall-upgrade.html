@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upgrade — AskCal mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <link rel="stylesheet" href="onboarding.css" />
+</head>
+<body class="onb">
+
+
+
+<!--
+  The same paywall, reached from inside the app instead of from onboarding.
+
+  ONE paywall, two frames. The offer, the prices, the renewal sentence and the
+  Terms/Privacy links are word-for-word what paywall.html shows — deliberately,
+  because this is the screen Apple pulled Cal AI over in April 2026, and a
+  second copy of it is a second thing to get wrong. Only the frame differs, in
+  three places:
+
+    1. The onboarding step bar (4/5) becomes a close button. Mid-app this is a
+       screen you opened, so it needs a way out, not a progress indicator.
+    2. The header gains a title. Onboarding gave it context; here it arrives
+       with none.
+    3. "Not now — start free" becomes "Back to today". The free tier already
+       started — offering to start it again would be nonsense, and worse, it
+       would read as a second purchase button.
+
+  What deliberately does NOT change: the quiet exit is still a full-width
+  button the same size as the buy button, never grey-on-grey, and the price is
+  still visible without tapping anything.
+-->
+
+<div class="phone">
+
+  <div class="statusbar">
+    <span class="statusbar-time mono">9:41</span>
+    <div class="statusbar-icons">
+      <i data-lucide="signal" style="width:15px;height:15px"></i>
+      <i data-lucide="wifi" style="width:15px;height:15px"></i>
+      <i data-lucide="battery-full" style="width:24px;height:14px"></i>
+    </div>
+  </div>
+
+  <!-- Frame change 1 and 2: close button and a title, in place of the step bar. -->
+  <div class="o-nav">
+    <a href="../home/out-of-scans.html" class="o-back" aria-label="Close">
+      <i data-lucide="x" style="width:21px;height:21px"></i>
+    </a>
+    <p style="flex:1;text-align:center;font-size:15px;font-weight:800;color:var(--inkp)">AskCal Plus</p>
+    <span style="width:38px"></span>
+  </div>
+
+  <div class="o-pad" style="padding-top:20px">
+    <h1 class="o-h1">Most of AskCal is free.<br/>Photo scans aren’t.</h1>
+    <p class="o-sub">
+      Each photo scan costs us real money to run, so it’s the one metered thing.
+      Barcode and search are unlimited and always will be.
+    </p>
+  </div>
+
+  <div class="o-pad grid gap-2.5" style="margin-top:18px">
+
+    <!--
+      The free card stays, and it stays first.
+
+      It is tempting to drop it here — the user has already had the free tier
+      and just ran out of it. But removing it turns an honest comparison into a
+      one-sided pitch, and its middle line is the whole reason they can afford
+      to say no. The spent-allowance row replaces the "No card needed" pill,
+      which is no longer news.
+    -->
+    <div class="o-card">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:15px;font-weight:850">Free — your plan now</span>
+        <span class="o-pill o-pill--quiet">Scans spent</span>
+      </div>
+      <div class="grid gap-2" style="margin-top:12px">
+        <p class="o-feat"><i data-lucide="check" style="width:15px;height:15px"></i><span><strong style="font-weight:750">Unlimited</strong> barcode scans and food search</span></p>
+        <p class="o-feat"><i data-lucide="check" style="width:15px;height:15px"></i><span>Full daily log, targets and trends</span></p>
+        <p class="o-feat" style="opacity:0.55"><i data-lucide="x" style="width:15px;height:15px"></i><span><strong class="o-num" style="font-weight:750">0</strong> photo scans left of 10</span></p>
+      </div>
+    </div>
+
+    <div class="o-card o-card--accent" style="border-color:var(--accent-300)">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:15px;font-weight:850;color:var(--accent-900)">AskCal Plus</span>
+        <span class="o-pill o-pill--accent">Best value</span>
+      </div>
+
+      <div style="display:flex;align-items:baseline;gap:8px;margin-top:12px">
+        <span class="o-num" style="font-size:30px;font-weight:860;line-height:1;letter-spacing:-0.035em;color:var(--accent-900)">$39.99</span>
+        <span style="font-size:13px;font-weight:700;color:var(--ink-2)">a year</span>
+        <span class="o-num" style="margin-left:auto;font-size:11.5px;font-weight:650;color:var(--ink-3)">$3.33 / month</span>
+      </div>
+
+      <div class="grid gap-2" style="margin-top:13px">
+        <p class="o-feat"><i data-lucide="check" style="width:15px;height:15px"></i><span><strong class="o-num" style="font-weight:750">100</strong> photo scans a month</span></p>
+        <p class="o-feat"><i data-lucide="check" style="width:15px;height:15px"></i><span>Clarifying questions on every scan</span></p>
+        <p class="o-feat"><i data-lucide="check" style="width:15px;height:15px"></i><span>Export your data whenever you like</span></p>
+      </div>
+
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--accent-100)">
+        <p style="font-size:11.5px;line-height:1.6;color:var(--accent-700);margin:0">
+          Billed once, <span class="o-num" style="font-weight:750">$39.99</span> today and again on
+          <span style="font-weight:750">11 Sep 2027</span>. Cancel in two taps from Settings.
+          No trial that charges you by surprise.
+        </p>
+      </div>
+    </div>
+
+    <a href="#" class="o-card o-card--tap" style="padding:13px 16px">
+      <span style="display:flex;align-items:center;justify-content:space-between">
+        <span>
+          <span style="display:block;font-size:13.5px;font-weight:780">Monthly instead</span>
+          <span style="display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px">Same scans, cancel any time</span>
+        </span>
+        <span class="o-num" style="font-size:15px;font-weight:850">$4.99</span>
+      </span>
+    </a>
+
+  </div>
+
+  <p class="o-note o-pad" style="margin-top:16px;text-align:center">
+    Prices shown before you tap anything — on the store listing too.
+  </p>
+  <div style="display:flex;justify-content:center;margin-top:2px">
+    <button class="o-btn o-btn--plain o-btn--sm">Restore purchases</button>
+  </div>
+
+  <!-- App Store Review Guideline 3.1.2 requires both of these to be present
+       and functional at the point of purchase, inside the binary. They are
+       required on THIS screen too, not only on the onboarding copy — it is a
+       point of purchase in its own right. -->
+  <div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:12px;padding-bottom:8px">
+    <a href="#" style="font-size:11.5px;font-weight:600;color:var(--ink-2);text-decoration:underline">Terms of Use</a>
+    <span style="font-size:11.5px;color:var(--ink-3)">·</span>
+    <a href="#" style="font-size:11.5px;font-weight:600;color:var(--ink-2);text-decoration:underline">Privacy Policy</a>
+  </div>
+
+  <!-- Frame change 3: the quiet exit goes home, and says so. -->
+  <div class="o-foot">
+    <a href="../home/today.html" class="o-btn o-btn--primary">
+      <span>Get AskCal Plus — <span class="o-num">$39.99</span>/yr</span>
+    </a>
+    <a href="../home/out-of-scans.html" class="o-btn o-btn--quiet" style="margin-top:8px">
+      <span>Back to today</span>
+    </a>
+  </div>
+
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buyer home (map · zoomed in) — Dwarseva mobile</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; overflow: hidden; box-shadow: 0 0 0 1px #18181b; padding-bottom: 76px; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); } }
+    .tabbar { position: absolute; inset-inline: 0; bottom: 0; }
+    .map-iframe { filter: invert(0.92) hue-rotate(180deg) brightness(0.95) saturate(0.85); }
+    .pill { display: inline-flex; align-items: center; gap: 3px; padding: 2px 5px; border-radius: 6px; background: rgba(9,9,11,0.95); box-shadow: 0 1px 4px rgba(0,0,0,0.45); font-size: 9px; line-height: 1.15; }
+    .dot-amber { background: #f59e0b; color: #18181b; }
+    .dot-blue { background: #3b82f6; color: #18181b; }
+    .badge { padding: 1px 4px; border-radius: 3px; font-weight: 700; font-size: 8.5px; line-height: 1; }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<div class="phone bg-white shadow-[0_0_0_1px_#e4e4e7] sm:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)]">
+
+  <iframe
+    src="https://www.openstreetmap.org/export/embed.html?bbox=73.7700%2C18.5450%2C73.8260%2C18.5780&amp;layer=mapnik"
+    class="absolute inset-0 h-full w-full"
+    style="border:0;"
+    loading="lazy"
+  ></iframe>
+
+  <svg viewBox="0 0 390 768" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 h-full w-full pointer-events-none">
+
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 12,162 L 96,156 L 102,232 L 18,238 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 96,156 L 196,160 L 192,230 L 102,232 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 196,160 L 288,158 L 290,232 L 192,230 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 288,158 L 378,162 L 376,234 L 290,232 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 18,238 L 102,232 L 100,330 L 14,332 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 102,232 L 192,230 L 196,330 L 100,330 Z" fill="rgba(59,130,246,0.16)" stroke="rgba(59,130,246,0.8)" stroke-width="1.3" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 192,230 L 290,232 L 292,328 L 196,330 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 290,232 L 376,234 L 374,332 L 292,328 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 14,332 L 100,330 L 96,428 L 12,432 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 100,330 L 196,330 L 200,428 L 96,428 Z" fill="rgba(59,130,246,0.16)" stroke="rgba(59,130,246,0.8)" stroke-width="1.3" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 196,330 L 292,328 L 288,428 L 200,428 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 292,328 L 374,332 L 376,432 L 288,428 Z" fill="rgba(59,130,246,0.16)" stroke="rgba(59,130,246,0.8)" stroke-width="1.3" stroke-linejoin="round"/></a>
+
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 12,432 L 96,428 L 130,538 L 14,540 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 96,428 L 200,428 L 256,540 L 130,538 Z" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.7)" stroke-width="1.2" stroke-linejoin="round"/></a>
+    <a xlink:href="area-list-section.html" class="pointer-events-auto"><path d="M 200,428 L 376,432 L 378,544 L 256,540 Z" fill="rgba(59,130,246,0.16)" stroke="rgba(59,130,246,0.8)" stroke-width="1.3" stroke-linejoin="round"/></a>
+
+  </svg>
+
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:14%; top:25.7%;"><span class="pill"><span class="badge dot-amber">3</span><span class="text-zinc-900">Veerbhadra</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:38%; top:25.3%;"><span class="pill"><span class="badge dot-amber">5</span><span class="text-zinc-900">Patil Nagar</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:62%; top:25.5%;"><span class="pill"><span class="badge dot-amber">4</span><span class="text-zinc-900">Aundh Gaon</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:86%; top:25.8%;"><span class="pill"><span class="badge dot-amber">2</span><span class="text-zinc-900">Aundh ITI</span></span></a>
+
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:14%; top:37.2%;"><span class="pill"><span class="badge dot-amber">6</span><span class="text-zinc-900">Ram Indu</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:38%; top:37%;"><span class="pill"><span class="badge dot-blue">12</span><span class="text-zinc-900">Sukhwani Sepia</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:62%; top:36.8%;"><span class="pill"><span class="badge dot-amber">7</span><span class="text-zinc-900">Anand Park</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:86%; top:37.1%;"><span class="pill"><span class="badge dot-amber">4</span><span class="text-zinc-900">Vidya Valley</span></span></a>
+
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:14%; top:49.6%;"><span class="pill"><span class="badge dot-amber">8</span><span class="text-zinc-900">Baner L7</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:38%; top:49.5%;"><span class="pill"><span class="badge dot-blue">9</span><span class="text-zinc-900">Rohan Mithila</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:62%; top:49.4%;"><span class="pill"><span class="badge dot-amber">3</span><span class="text-zinc-900">Vanaz</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:86%; top:49.8%;"><span class="pill"><span class="badge dot-blue">6</span><span class="text-zinc-900">DSK Vishwa</span></span></a>
+
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:18%; top:63.5%;"><span class="pill"><span class="badge dot-amber">4</span><span class="text-zinc-900">Balewadi Phata</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:50%; top:63.3%;"><span class="pill"><span class="badge dot-amber">6</span><span class="text-zinc-900">B–P Link</span></span></a>
+  <a href="area-list-section.html" class="absolute z-10 -translate-x-1/2 -translate-y-1/2" style="left:82%; top:63.7%;"><span class="pill"><span class="badge dot-blue">7</span><span class="text-zinc-900">Kalpataru</span></span></a>
+
+  <div class="absolute inset-x-0 top-0 pointer-events-none">
+
+    <div class="pointer-events-auto px-3 pt-3 pb-1 text-[11px] text-zinc-700 flex items-center justify-between">
+      <span class="mono">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4" rx="0.5"/><rect x="3.5" y="4" width="2" height="6" rx="0.5"/><rect x="7" y="2" width="2" height="8" rx="0.5"/><rect x="10.5" y="0" width="2" height="10" rx="0.5"/></svg>
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+        <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <div class="pointer-events-auto mx-3 mt-2">
+      <div class="flex items-center gap-2 rounded-2xl border border-zinc-300 bg-white/95 px-3 py-2.5 shadow-lg backdrop-blur">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-zinc-500"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Aundh, Baner, Kothrud…" class="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-500 focus:outline-none" />
+      </div>
+      <div class="mt-2 flex items-center gap-1.5">
+        <div class="inline-flex gap-1 rounded-full border border-zinc-200 bg-zinc-900/90 p-0.5 text-[11px]">
+          <button class="rounded-full bg-amber-500 px-2.5 py-0.5 font-semibold text-zinc-950">Rent</button>
+          <button class="rounded-full px-2.5 py-0.5 text-zinc-600">Buy</button>
+        </div>
+        <span class="rounded-full border border-zinc-300 bg-zinc-900/90 px-2.5 py-1 text-[10px] text-zinc-700">
+          <span class="text-zinc-500">Pune <span class="mono text-zinc-600">642</span> ›</span>
+          <span class="text-zinc-700">Baner <span class="mono text-zinc-800">86</span> ›</span>
+          <span class="font-semibold text-amber-700">15 sub-areas</span>
+        </span>
+        <a href="filters.html" class="ml-auto rounded-full border border-zinc-300 bg-zinc-900/90 px-3 py-1 text-[11px] text-zinc-700">
+          Filters · 3
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="absolute right-3 top-44 z-20 flex flex-col items-stretch rounded-xl border border-zinc-300 bg-zinc-900/90 px-2 py-2 text-[9px] text-zinc-600 shadow backdrop-blur">
+    <div class="flex items-center justify-between gap-2 py-0.5">
+      <span class="text-zinc-500">city</span>
+      <span class="mono text-zinc-700">642</span>
+    </div>
+    <div class="flex items-center justify-between gap-2 py-0.5">
+      <span class="text-zinc-700">Baner</span>
+      <span class="mono text-zinc-800">86</span>
+    </div>
+    <div class="-mx-1 my-0.5 flex items-center justify-between gap-2 rounded-md bg-amber-500 px-2 py-0.5 text-zinc-950">
+      <span class="font-bold">sub</span>
+      <span class="mono font-bold">86</span>
+    </div>
+    <div class="flex items-center justify-between gap-2 py-0.5">
+      <span class="text-zinc-500">lane</span>
+      <span class="mono text-zinc-500">—</span>
+    </div>
+  </div>
+
+  <div class="absolute z-20 left-1/2 -translate-x-1/2 bottom-24 rounded-full border border-zinc-300 bg-zinc-900/90 px-3 py-1 text-[10px] text-zinc-700 shadow backdrop-blur">
+    ☝ Long-press to switch · pinch to zoom out
+  </div>
+
+  <nav class="tabbar border-t border-zinc-200 bg-white/95 backdrop-blur">
+    <div class="flex">
+      <a href="home.html" class="flex flex-1 flex-col items-center gap-0.5 py-3 text-amber-700">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="text-[10px] font-semibold">Find</span>
+      </a>
+      <a href="favorites.html" class="flex flex-1 flex-col items-center gap-0.5 py-3 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="text-[10px] font-medium">Favorites</span>
+      </a>
+      <a href="../../wallet/wallet.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span class="text-[10px] font-medium">Wallet</span>
+      </a>
+      <a href="../../settings/settings.html" class="flex flex-1 flex-col items-center gap-0.5 py-3 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20a6 6 0 0 1 12 0"/></svg>
+        <span class="text-[10px] font-medium">You</span>
+      </a>
+    </div>
+    <div class="flex items-center justify-center pb-2 pt-1">
+      <div class="h-1 w-32 rounded-full bg-zinc-200"></div>
+    </div>
+  </nav>
+
+</div>
+
+</body>
+</html>

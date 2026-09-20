@@ -173,7 +173,7 @@ export default function ProductsPage() {
                     <li>The date below is when a human last checked every row by hand.</li>
                   </ul>
                   <p className="mt-6 border-t border-line pt-5 font-mono text-xs2 text-ink-3">
-                    Last verified <span className="text-ink-2">{verifiedOn}</span> · <Link href="/process" className="link-u text-accent">how the pipeline works</Link>
+                    Last verified <span className="text-ink-2">{verifiedOn}</span>
                   </p>
                 </div>
               </aside>

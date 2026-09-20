@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seller · Listing sold / rented — Dwarseva web</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+<style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f4f5; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .appwin { background: #09090b; min-height: calc(100dvh - 128px); box-shadow: 0 0 0 1px #18181b; }
+    .photo { background: linear-gradient(135deg,#3f3f46 25%,#27272a 25%,#27272a 50%,#3f3f46 50%,#3f3f46 75%,#27272a 75%); }
+  </style>
+</head>
+<body class="text-zinc-900">
+
+
+
+<header class="topbar sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-4 px-5">
+    <a href="../../landing.html" class="flex items-center gap-2">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-amber-500 text-[13px] font-bold text-zinc-950">द</span>
+      <span class="text-[15px] font-semibold tracking-tight">Dwarseva</span>
+    </a>
+    <nav class="ml-4 flex items-center gap-1 text-[13px]">
+      <a href="../buyer/home.html" class="rounded-md px-3 py-1.5 text-zinc-600 hover:text-zinc-700">Buy / Rent</a>
+      <a href="home.html" class="rounded-md bg-emerald-500/15 px-3 py-1.5 font-semibold text-emerald-700">Sell</a>
+    </nav>
+    <button class="ml-2 flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Pune <span class="text-zinc-500">▾</span>
+    </button>
+    <div class="ml-auto flex items-center gap-2">
+      <a href="../../wallet/wallet.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M16 12h2"/></svg>
+        <span>Wallet · <span class="mono text-emerald-700">₹42</span></span>
+      </a>
+      <a href="../../settings/notifications.html" class="grid h-8 w-8 place-items-center rounded-md border border-zinc-200 bg-white text-zinc-600 hover:border-blue-500/40">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+      </a>
+      <a href="../../settings/settings.html" class="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-white pl-1.5 pr-2 py-1 text-[12px] text-zinc-700 hover:border-blue-500/40">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/20 text-[10px] font-semibold text-emerald-700">SP</span>
+        <span>Sanjay</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white shadow-[0_0_0_1px_#e4e4e7] lg:shadow-[0_0_0_1px_#d4d4d8,0_30px_60px_-20px_rgba(24,24,27,0.18)] mx-auto max-w-[1440px]">
+  <div class="mx-auto max-w-[1200px] px-8 py-8">
+
+    <div class="mb-4 flex items-end justify-between">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">/seller/listing · <span class="mono text-zinc-600">#LST-2026-05-0442</span></p>
+        <h1 class="mt-1 text-xl font-semibold">Closed — rented via Dwarseva</h1>
+        <p class="mt-0.5 text-[12px] text-zinc-600">2 BHK · Baner Lane 7 · Sukhwani Sepia</p>
+      </div>
+      <a href="home.html" class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-[12px] text-zinc-700 hover:border-blue-500/40">← All listings</a>
+    </div>
+
+    <!-- Confirmation banner -->
+    <div class="rounded-2xl border border-zinc-300 bg-zinc-100/90 p-5">
+      <div class="flex items-start gap-4">
+        <div class="grid h-14 w-14 place-items-center rounded-full bg-emerald-500/15 text-emerald-700">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <span class="rounded bg-zinc-200 px-1.5 py-0.5 text-[10px] font-bold text-zinc-900">RENTED</span>
+            <span class="rounded border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">via Dwarseva</span>
+            <p class="text-[10px] uppercase tracking-widest text-zinc-600">Closed 12 Jun 2026 · 6:14 pm</p>
+          </div>
+          <p class="mt-1.5 text-[16px] font-semibold text-zinc-900">Congratulations — your property found a tenant</p>
+          <p class="mt-1 text-[12.5px] text-zinc-600">
+            Listing is offline. Marked closed 12 Jun · no further charges. Historical stats preserved below. Priya S will call in 7 days for a quick "how did it go?" follow-up.
+          </p>
+        </div>
+        <a href="new-listing-basics.html" class="shrink-0 rounded-lg bg-blue-500 px-4 py-2.5 text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">+ List another property</a>
+      </div>
+    </div>
+
+    <!-- Stats retained -->
+    <div class="mt-6">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Final stats · preserved</p>
+      <div class="mt-2 grid grid-cols-6 gap-3">
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Days live</p>
+          <p class="mono mt-1 text-xl font-semibold text-zinc-900">36</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Views</p>
+          <p class="mono mt-1 text-xl font-semibold text-zinc-900">248</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Saves</p>
+          <p class="mono mt-1 text-xl font-semibold text-zinc-900">31</p>
+        </div>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-700">Unlocks</p>
+          <p class="mono mt-1 text-xl font-semibold text-emerald-700">6</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Total fee paid</p>
+          <p class="mono mt-1 text-xl font-semibold text-zinc-900">₹72</p>
+          <p class="text-[10px] text-zinc-500">36 × ₹2</p>
+        </div>
+        <div class="rounded-xl border border-zinc-200 bg-zinc-100/75 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Cost per unlock</p>
+          <p class="mono mt-1 text-xl font-semibold text-zinc-900">₹12</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-[minmax(0,1.6fr)_minmax(320px,1fr)] gap-6">
+
+      <!-- Left: summary card -->
+      <section class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Property that closed</p>
+
+        <div class="mt-3 grid grid-cols-3 gap-2 opacity-70">
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">1 · Living</span></div>
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">2 · Kitchen</span></div>
+          <div class="bg-[linear-gradient(135deg,#e4e4e7_25%,#d4d4d8_25%,#d4d4d8_50%,#e4e4e7_50%,#e4e4e7_75%,#d4d4d8_75%)] aspect-[4/3] rounded-lg"><span class="block p-1 text-[9px] text-zinc-700">3 · Bedroom</span></div>
+        </div>
+
+        <p class="mt-4 text-[15px] font-semibold text-zinc-900">Bright 2 BHK in Sukhwani Sepia · semi-furnished · lift + parking</p>
+        <p class="mt-1 text-[11.5px] text-zinc-500">Baner Lane 7 · Wing A · Flat A-302 · 3rd floor · 820 sqft</p>
+
+        <dl class="mt-4 grid grid-cols-2 gap-y-2 text-[12px]">
+          <dt class="text-zinc-500">Variant</dt><dd class="text-zinc-800">Rent · Apartment · 2 BHK</dd>
+          <dt class="text-zinc-500">Rent (final)</dt><dd class="mono text-zinc-800">₹26,000/mo · dep 2 mo</dd>
+          <dt class="text-zinc-500">Went live</dt><dd class="text-zinc-800">7 May 2026</dd>
+          <dt class="text-zinc-500">Closed</dt><dd class="text-zinc-800">12 Jun 2026 · 6:14 pm</dd>
+          <dt class="text-zinc-500">Outcome</dt><dd class="text-emerald-700">Rented via Dwarseva</dd>
+          <dt class="text-zinc-500">Tenant</dt><dd class="text-zinc-800">Sneha Joshi (unlocked 4 Jun)</dd>
+        </dl>
+      </section>
+
+      <!-- Right: outcome + wallet -->
+      <aside class="space-y-4">
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Outcome</p>
+          <div class="mt-3 space-y-2 text-[12px]">
+            <label class="flex items-center gap-2 rounded-lg border border-emerald-500 bg-emerald-500/10 px-3 py-2 text-emerald-700">
+              <input type="radio" name="outcome" class="h-3.5 w-3.5 accent-emerald-500" checked />
+              <span class="font-semibold">Rented via Dwarseva</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-zinc-700">
+              <input type="radio" name="outcome" class="h-3.5 w-3.5 accent-emerald-500" />
+              <span>Rented elsewhere</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-zinc-700">
+              <input type="radio" name="outcome" class="h-3.5 w-3.5 accent-emerald-500" />
+              <span>Sold via Dwarseva</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-zinc-700">
+              <input type="radio" name="outcome" class="h-3.5 w-3.5 accent-emerald-500" />
+              <span>Sold elsewhere</span>
+            </label>
+            <label class="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-zinc-700">
+              <input type="radio" name="outcome" class="h-3.5 w-3.5 accent-emerald-500" />
+              <span>Withdrawn / no longer available</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-700">Wallet balance retained</p>
+          <p class="mt-1 mono text-xl font-semibold text-emerald-700">₹42</p>
+          <p class="mt-1 text-[11.5px] text-zinc-600">Unused balance stays in your wallet. Reuse it for your next listing or unlock a property you want to rent.</p>
+          <a href="new-listing-basics.html" class="mt-3 block rounded-md bg-blue-500 px-3 py-2 text-center text-[12px] font-semibold text-zinc-950 hover:bg-blue-400">+ List another property</a>
+        </div>
+
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-100/75 p-5 text-[11.5px] text-zinc-600">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Follow-up call</p>
+          <p class="mt-1">Priya S · <span class="mono">V-047</span> · scheduled 19 Jun</p>
+          <p class="mt-2 text-[10.5px]">If your tenant scammed you, <a href="#" class="text-rose-700 underline">report within 7 days</a> for a refund review.</p>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattaya — Reflection ritual</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .ritual-progress { display:flex; gap:4px; }
+    .ritual-progress span { flex:1; height:4px; border-radius:999px; background:rgba(255,255,255,0.18); }
+    .ritual-progress span.is-done { background:rgba(255,255,255,0.85); }
+    .ritual-progress span.is-current { background:var(--coral-500); }
+    .writebox { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:16px; }
+    .writebox:focus-within { border-color:var(--coral-400); background:rgba(255,255,255,0.12); }
+    .partner-line { display:flex; align-items:center; gap:8px; padding:8px 12px; background:rgba(255,255,255,0.08); border-radius:999px; font-size:12px; color:rgba(255,255,255,0.85); }
+    .prompt-tag { background:rgba(255,255,255,0.12); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:800; color:white; }
+  </style>
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <div class="screen-card">
+    <div class="screen-card-title">Reflection Ritual</div>
+    <div class="screen-card-content">
+      <p><strong>Purpose:</strong> Guided couple's reflection ritual with prompts and shared experience.</p>
+      <p class="mt-2"><strong>Key features:</strong></p>
+      <ul class="list-disc list-inside mt-1 space-y-1">
+        <li>Full-screen focus mode</li>
+        <li>Rotating reflection prompts</li>
+        <li>Live "both here" indicator</li>
+        <li>Progress tracking across prompts</li>
+        <li>Voice and text input options</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="phone phone--teal text-white" style="background:radial-gradient(120% 80% at 100% 0%, rgba(255,111,76,0.5) 0%, transparent 55%), linear-gradient(160deg, var(--teal-900) 0%, var(--teal-700) 100%);">
+  <div class="statusbar statusbar--on-teal">
+    <span class="statusbar-time">9:41</span>
+    <span class="statusbar-icons text-xs">••• 5G ■</span>
+  </div>
+
+  <div class="appheader">
+    <button class="iconbtn iconbtn--on-dark" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="text-center">
+      <p class="text-[10px] uppercase tracking-widest text-white/60">Sunday ritual · 2 of 4</p>
+    </div>
+    <div class="flex items-center gap-1">
+      <div class="avatar avatar-p" style="width:26px;height:26px;font-size:11px;border:2px solid rgba(255,255,255,0.4)">P</div>
+      <div class="avatar avatar-r" style="width:26px;height:26px;font-size:11px;border:2px solid rgba(255,255,255,0.4);margin-left:-8px">R</div>
+    </div>
+  </div>
+
+  <div class="px-5">
+    <!-- Progress -->
+    <div class="ritual-progress">
+      <span class="is-done"></span>
+      <span class="is-current"></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Both here indicator -->
+    <div class="mt-4 partner-line">
+      <span class="w-2 h-2 rounded-full bg-emerald-400" style="box-shadow:0 0 0 4px rgba(52,211,153,0.25)"></span>
+      <span><b>Both here</b> — Rahul joined 42 seconds ago</span>
+    </div>
+  </div>
+
+  <div class="px-5 pt-6 pb-44">
+    <!-- Prompt -->
+    <div class="text-center">
+      <div class="inline-flex items-center gap-2 mb-3">
+        <span class="prompt-tag">Prompt 2</span>
+        <span class="prompt-tag" style="background:rgba(255,111,76,0.25)">Emotional</span>
+      </div>
+      <h2 class="text-[26px] font-black leading-tight tracking-tight">One thing you carried this week that you didn't say out loud.</h2>
+      <p class="mt-3 text-[13px] text-white/60">You each write privately. Both answers reveal together on the next screen.</p>
+    </div>
+
+    <!-- Input -->
+    <div class="writebox mt-6">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="avatar avatar-p" style="width:22px;height:22px;font-size:10px">P</div>
+        <p class="text-[10px] uppercase tracking-widest text-white/60">Your answer · private until reveal</p>
+      </div>
+      <textarea class="w-full bg-transparent text-[16px] leading-relaxed outline-none text-white placeholder-white/40 resize-none" rows="4" placeholder="Just say the thing…">The IVF cost calculator I opened three times this week and closed without telling you.</textarea>
+      <div class="mt-2 flex items-center justify-between text-[11px] text-white/60">
+        <button class="flex items-center gap-1"><i data-lucide="mic" class="w-4 h-4"></i>Or speak · Hindi + English</button>
+        <span>42 words</span>
+      </div>
+    </div>
+
+    <!-- Partner status -->
+    <div class="mt-6 flex items-center justify-center gap-2 text-[12px] text-white/70">
+      <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+      <span>Rahul is still writing…</span>
+    </div>
+  </div>
+
+  <div class="sticky-bottom p-5 pb-8" style="background:linear-gradient(to top, var(--teal-900) 50%, transparent 100%)">
+    <a href="reflection-ritual-reveal.html" class="btn btn-primary">I'm ready · reveal when Rahul is too</a>
+    <p class="text-center text-[11px] text-white/50 mt-2">Nothing sends until you both tap ready.</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

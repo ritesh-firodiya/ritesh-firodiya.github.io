@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imposter — players</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="../../../_vendor/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body>
+
+
+
+<div class="screen-layout">
+  <aside class="shrink-0 w-[288px] self-start my-5 bg-surface rounded-lg border border-line shadow p-[18px]">
+    <p class="text-base font-bold mb-3">Players</p>
+    <div class="text-sm leading-relaxed text-ink-2 space-y-2">
+      <p class="p-2.5 rounded bg-success-bg border border-success text-ink"><b>v5 — this is a sheet, not a step.</b> It used to be step 1 of 3 with "Next: roles" at the bottom. It is reached from a row on Setup now and returns there, so the only forward motion in the app is the one button that deals the cards.</p>
+      <p><b class="text-ink">Names are remembered between games.</b> The second round is the one that actually gets played, and re-typing five names at a table is exactly where a group gives up and puts the phone down.</p>
+      <p>The field stays focused and the keyboard stays up — type, Enter, type, Enter. Tapping a name edits it in place; the × removes.</p>
+      <p><b class="text-ink">Minimum three.</b> With two there is nobody to suspect. The CTA states the number missing rather than sitting greyed out with no reason — a disabled control with no explanation is a dead end.</p>
+      <p><b class="text-ink">Avatars are lucide icons on a neutral plate, never emoji.</b> The first build shipped emoji here and every one rendered as a tofu box on the simulator: five identical grey discs, in the one place the game has to tell people apart. Emoji are a font lookup and degrade silently; lucide draws through SVG and cannot.</p>
+      <p><b class="text-ink">Removing a player re-seats the wheel.</b> Two players three icons apart after a deletion is a visible accident.</p>
+      <p class="text-2xs"><b class="text-ink">Second frame:</b> empty. One illustration, one sentence, and the same field already focused.</p>
+    </div>
+  </aside>
+
+  <!-- ============================================ FIVE PLAYERS -->
+  <div class="phone phone--flood phone--brand">
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-3 px-4 pt-2 pb-2.5">
+      <a href="index.html" class="w-11 h-11 shrink-0 rounded-pill grid place-items-center bg-sunken"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+      <h2 class="flex-1 text-h2 font-black">Who's playing?</h2>
+      <span class="px-2.5 py-1 rounded-pill text-2xs font-extrabold bg-sunken text-ink-2 num">5 of 20</span>
+    </div>
+
+    <div class="relative px-[18px]">
+      <div class="flex items-center gap-2.5 px-3.5 py-3 rounded-3xl border border-accent-300 bg-surface shadow-[0_0_0_3px_rgba(134,239,172,0.28)]">
+        <i data-lucide="user-plus" class="w-[18px] h-[18px] shrink-0 text-accent-300"></i>
+        <input class="flex-1 bg-transparent text-body outline-none placeholder:text-ink-4" placeholder="Add a name…" value="" />
+        <span class="px-2 py-1 rounded text-2xs font-extrabold bg-sunken text-accent-300">Enter</span>
+      </div>
+    </div>
+
+    <div class="relative mt-3 mx-[18px] rounded-3xl overflow-hidden border border-line">
+      <div class="flex items-center gap-3 w-full px-3 py-2.5 bg-surface border-b border-line">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="cat" class="w-[22px] h-[22px]"></i></div>
+        <div class="flex-1 min-w-0"><p class="text-body font-black">Arjun</p></div>
+        <button class="w-8 h-8 rounded-pill grid place-items-center text-ink-4"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="flex items-center gap-3 w-full px-3 py-2.5 bg-surface border-b border-line">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="dog" class="w-[22px] h-[22px]"></i></div>
+        <div class="flex-1 min-w-0"><p class="text-body font-black">Riya</p></div>
+        <button class="w-8 h-8 rounded-pill grid place-items-center text-ink-4"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="flex items-center gap-3 w-full px-3 py-2.5 bg-surface border-b border-line">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="bird" class="w-[22px] h-[22px]"></i></div>
+        <div class="flex-1 min-w-0"><p class="text-body font-black">Sam</p></div>
+        <button class="w-8 h-8 rounded-pill grid place-items-center text-ink-4"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="flex items-center gap-3 w-full px-3 py-2.5 bg-surface border-b border-line">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="rabbit" class="w-[22px] h-[22px]"></i></div>
+        <div class="flex-1 min-w-0"><p class="text-body font-black">Ana</p></div>
+        <button class="w-8 h-8 rounded-pill grid place-items-center text-ink-4"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="flex items-center gap-3 w-full px-3 py-2.5 bg-surface">
+        <div class="w-11 h-11 rounded-pill grid place-items-center bg-sunken"><i data-lucide="fish" class="w-[22px] h-[22px]"></i></div>
+        <div class="flex-1 min-w-0"><p class="text-body font-black">Dev</p></div>
+        <button class="w-8 h-8 rounded-pill grid place-items-center text-ink-4"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+    </div>
+
+    <p class="relative mt-2.5 px-[18px] text-xs text-ink-3">Tap a name to edit it. We'll remember this group for next time.</p>
+
+    <div class="relative pin-bottom px-[18px] pt-2.5 pb-5">
+      <a href="index.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-[18px] rounded-pill font-black text-lead text-onaccent bg-accent-300 shadow-press active:translate-y-[3px]">
+        Done <i data-lucide="check" class="w-[18px] h-[18px]"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================ EMPTY -->
+  <div class="phone phone--flood phone--brand" id="empty">
+    <div class="relative flex items-center justify-between px-5 pt-3 pb-0.5 text-[13px]">
+      <span class="font-semibold num">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-full" class="w-[18px] h-[18px]"></i>
+      </div>
+    </div>
+
+    <div class="relative flex items-center gap-3 px-4 pt-2 pb-2.5">
+      <a href="index.html" class="w-11 h-11 shrink-0 rounded-pill grid place-items-center bg-sunken"><i data-lucide="arrow-left" class="w-5 h-5"></i></a>
+      <h2 class="flex-1 text-h2 font-black">Who's playing?</h2>
+      <span class="px-2.5 py-1 rounded-pill text-2xs font-extrabold bg-sunken text-ink-2 num">0 of 20</span>
+    </div>
+
+    <div class="relative px-[18px]">
+      <div class="flex items-center gap-2.5 px-3.5 py-3 rounded-3xl border border-accent-300 bg-surface shadow-[0_0_0_3px_rgba(134,239,172,0.28)]">
+        <i data-lucide="user-plus" class="w-[18px] h-[18px] shrink-0 text-accent-300"></i>
+        <input class="flex-1 bg-transparent text-body outline-none placeholder:text-ink-4" placeholder="Add a name…" />
+        <span class="px-2 py-1 rounded text-2xs font-extrabold bg-sunken text-accent-300">Enter</span>
+      </div>
+
+      <div class="mt-3 text-center px-[18px] py-8 rounded-3xl border border-dashed border-line-strong bg-muted">
+        <div class="w-[72px] h-[72px] mx-auto mb-3 rounded-pill grid place-items-center bg-sunken">
+          <i data-lucide="user-round-plus" class="w-8 h-8"></i>
+        </div>
+        <p class="text-body font-black">Nobody yet</p>
+        <p class="mt-1 text-sm leading-relaxed text-ink-2">Type the first name and hit Enter. You need at least three people to play.</p>
+      </div>
+    </div>
+
+    <div class="relative pin-bottom px-[18px] pt-2.5 pb-5">
+      <!-- Rule 9 again: it says what is missing, and it is not a dead grey box. -->
+      <button class="w-full inline-flex items-center justify-center gap-2 px-5 py-[18px] rounded-pill font-black text-lead bg-surface border border-line-strong text-ink-3">
+        Add 3 more players
+      </button>
+      <p class="mt-2.5 text-center text-xs text-ink-3">Three is the minimum — with two, there is nobody to suspect.</p>
+    </div>
+  </div>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

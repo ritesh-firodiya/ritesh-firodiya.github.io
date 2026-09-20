@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get AskCal</title>
+  <meta name="description" content="AskCal — photograph a meal, get an honest calorie estimate.">
+
+  <!-- What a shared post shows before anyone taps it. -->
+  <meta property="og:title" content="AskCal — AI Calorie Counter">
+  <meta property="og:description" content="Photograph a meal, get an honest estimate, and answer at most two questions the camera could not answer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ritesh-firodiya.github.io/legal/askcal/get.html">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #16201c; line-height: 1.7; max-width: 520px; margin: 0 auto; padding: 48px 20px; text-align: center; }
+    h1 { font-size: 28px; margin-bottom: 8px; color: #0a3a27; }
+    .subtitle { color: #7d8b85; font-size: 15px; margin-bottom: 32px; }
+    .store { display: block; padding: 15px 20px; border-radius: 12px; background: #1f8b5c; color: #fff; text-decoration: none; font-weight: 700; font-size: 16px; margin-bottom: 10px; }
+    .store.alt { background: #fff; color: #16201c; border: 1.5px solid #d9e0dc; }
+    .note { color: #7d8b85; font-size: 13px; margin-top: 24px; }
+    a.plain { color: #1f8b5c; }
+  </style>
+</head>
+<body>
+
+<!--
+  One link for a shared post, two stores behind it.
+
+  AskCal is two different listings — Play froze com.riteshf.askcal at first
+  publish and iOS started clean on its own bundle — so no single store URL
+  serves both. The app used to put the Play link on every shared post, which
+  sent every iPhone user who tapped a friend's meal to a page they could not
+  install from. The audience for a shared meal is not the person who shared it,
+  and half of them are on the other platform.
+
+  This page reads the visitor's own device and forwards.
+
+  BOTH LINKS ARE IN THE MARKUP AND VISIBLE BY DEFAULT. The redirect is layered
+  on top, not the page itself. A visitor with JavaScript off, a crawler
+  building a link preview, a desktop browser, or a device this script guesses
+  wrong about all still land on something that works. A redirect page that is
+  blank without JS is a broken link for everyone it cannot identify.
+-->
+
+<h1>Get AskCal</h1>
+<p class="subtitle">
+  Photograph a meal, get an honest estimate — and answer at most two questions
+  the camera couldn’t answer.
+</p>
+
+<a class="store" id="ios" href="https://apps.apple.com/app/id6811875320">Download on the App Store</a>
+<a class="store alt" id="android" href="https://play.google.com/store/apps/details?id=com.riteshf.askcal">Get it on Google Play</a>
+
+<p class="note" id="note">Choose your store — or <a class="plain" href="privacy-policy.html">read the privacy policy</a> first.</p>
+
+<script>
+  (function () {
+    var ua = navigator.userAgent || "";
+
+    // iPadOS 13+ reports itself as a Mac and is only distinguishable by the
+    // touch points. Without this branch every iPad is sent to Google Play.
+    var isIpadOS = /Macintosh/.test(ua) && typeof document.ontouchend !== "undefined";
+    var isIOS = /iPhone|iPad|iPod/.test(ua) || isIpadOS;
+    var isAndroid = /Android/.test(ua);
+
+    // Desktop, or anything unrecognised, stays on the page with both buttons.
+    // Guessing a store for a machine that can install neither is worse than
+    // asking, and the page already reads as a choice.
+    if (!isIOS && !isAndroid) return;
+
+    var target = document.getElementById(isIOS ? "ios" : "android");
+
+    // Reorder rather than hide: if the guess is wrong — a shared device, an
+    // odd in-app browser, a spoofed agent — the other store is still one tap
+    // away instead of gone.
+    target.parentNode.insertBefore(target, document.querySelector(".store"));
+    document.getElementById("note").textContent = "Opening your store…";
+
+    // replace(), not assign(): the store must not enter history, or Back from
+    // the App Store lands here and bounces the visitor straight out again. The
+    // short delay lets the page paint first — a redirect that fires before
+    // anything renders looks like a broken link on a slow connection.
+    setTimeout(function () { location.replace(target.href); }, 400);
+  })();
+</script>
+
+</body>
+</html>

@@ -67,9 +67,11 @@ export default function LegalPage() {
             <div className="rounded-card border border-line bg-surface p-7">
               <Label>Old links still work</Label>
               <p className="mt-4 text-small text-ink-2">
-                These documents used to be served from a separate domain, and those URLs are
-                hardcoded inside shipped app builds that will never update. Every old URL still
-                resolves and redirects here. That shim is permanent infrastructure, not a transition.
+                These documents used to live on ritvi-apps.github.io, and those URLs are hardcoded
+                inside shipped app builds that will never update — an install from a year ago still
+                asks for the old address. So every old URL still resolves and redirects here, and
+                that redirect is permanent infrastructure rather than a transition step. Deleting it
+                would 404 a privacy policy that two live store listings point at.
               </p>
             </div>
           </div>

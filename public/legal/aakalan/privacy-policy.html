@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aakalan — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #16182b; line-height: 1.7; max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+    h1 { font-size: 28px; margin-bottom: 8px; color: #3a37a8; }
+    h2 { font-size: 20px; margin-top: 32px; margin-bottom: 12px; color: #5b5bd6; }
+    p, li { font-size: 15px; margin-bottom: 12px; }
+    ul { padding-left: 20px; }
+    a { color: #5b5bd6; }
+    .subtitle { color: #878ba6; font-size: 14px; margin-bottom: 32px; }
+    .highlight { background: #fff7e0; padding: 16px; border-radius: 8px; margin: 16px 0; border-left: 4px solid #f5a524; }
+    .highlight p:last-child { margin-bottom: 0; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e6e8f0; vertical-align: top; }
+    th { color: #565a75; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="subtitle">Aakalan (आकलन) — expense tracking and splitting<br>Last updated: September 2026</p>
+
+<div class="highlight">
+  <p><strong>Aakalan never uploads your contacts, never sees a UPI PIN or any card or bank credential, and never sells or shares your expense data.</strong> Expenses you record for yourself alone are visible to you alone. Everything else is visible only to the people in the group you put it in.</p>
+</div>
+
+<h2>Who we are</h2>
+<p>Aakalan is published by Ritesh Firodiya. Contact: <strong>firodiya.ritesh@gmail.com</strong>.</p>
+
+<h2>Information we collect</h2>
+<p>Aakalan has an account and a backend, because splitting a bill means two people have to see the same number. We collect only what that requires.</p>
+
+<table>
+  <tr><th>What</th><th>Why</th></tr>
+  <tr><td>Your mobile number</td><td>It is how you sign in, and how friends find you to split with. Verified by SMS one-time code.</td></tr>
+  <tr><td>Your display name</td><td>So the people you split with can tell whose row is whose.</td></tr>
+  <tr><td>Your UPI ID, if you enter one</td><td>So people who owe you can pay you. Optional — leave it blank and the app still works. It is shown to people in your groups.</td></tr>
+  <tr><td>Your expenses and settlements</td><td>The ledger. Amount, description, category, date, who paid and how it was split.</td></tr>
+  <tr><td>Your groups and their members</td><td>So the right people see the right ledger.</td></tr>
+  <tr><td>Your preferred currency</td><td>Display only.</td></tr>
+</table>
+
+<p>We do <strong>not</strong> collect your email address, your precise location, your address book, your photos beyond any receipt you deliberately attach, or your payment credentials. Aakalan contains no advertising SDK and no third-party analytics SDK.</p>
+
+<h2>Contacts</h2>
+<p>If you grant contacts permission, matching happens <strong>on your device</strong>. Your address book is not uploaded, not stored on our servers, and not shared. Declining the permission costs you nothing — you can add anyone by mobile number instead.</p>
+
+<h2>Where your data lives</h2>
+<p>Your account and ledger are stored in Google Firebase (Cloud Firestore and Firebase Authentication), in the <strong>asia-south1 region — Mumbai, India</strong>. Google processes this data on our behalf as our infrastructure provider; see <a href="https://firebase.google.com/support/privacy">Firebase's privacy documentation</a>.</p>
+<p>Access is enforced at the database, not just in the app. The rules are the same ones this policy describes: a group's expenses are readable only by that group's members, and an expense you record for yourself alone is readable only by you.</p>
+
+<h2>Who can see what</h2>
+<ul>
+  <li><strong>A personal ("just me") expense</strong> — you, and nobody else.</li>
+  <li><strong>An expense in a group</strong> — the members of that group. They see its amount, description, category, date, who paid, and how it was split.</li>
+  <li><strong>Your name and UPI ID</strong> — people in your groups.</li>
+  <li><strong>Your mobile number</strong> — used to find you and to sign you in. It is not published in the app to people you have not shared with.</li>
+</ul>
+
+<h2>Payments</h2>
+<p>Settling up over UPI is a hand-off. Aakalan builds a UPI payment request and opens <em>your</em> UPI app — PhonePe, Google Pay, Paytm, or whichever you use — where you authorise the payment yourself.</p>
+<p><strong>Aakalan never asks for, receives, or stores a UPI PIN, card number, CVV, or bank credential.</strong> There is no card form in the app, by design. Money never passes through us.</p>
+<p>Because neither iOS nor Android reports the result of that hand-off reliably, Aakalan records the payment as <em>unconfirmed</em> until the person who received it confirms. What we store is your own record that a payment was made — the amount, the method, and an optional reference you type in — not a bank transaction.</p>
+
+<h2>Subscriptions</h2>
+<p>Aakalan Pro is an optional subscription. Adding expenses, splitting, settling up and exporting your own data are free without limit and are never gated.</p>
+<p><strong>The App Store or Google Play</strong> processes the payment. We never see or handle your card or billing details.</p>
+<p><strong>RevenueCat</strong> manages purchase and entitlement state so your subscription follows your account rather than one device. RevenueCat receives an app-user identifier and the store receipt. It does not receive your name, mobile number, expenses or payment details from us. See <a href="https://www.revenuecat.com/privacy">RevenueCat's Privacy Policy</a>.</p>
+
+<h2>Sharing</h2>
+<p>We do not sell, rent or share your personal information. There is no advertising network and no analytics provider in this app, so there is nothing to share with one. Data is disclosed to third parties only in these cases:</p>
+<ul>
+  <li>Google Firebase, as the infrastructure that stores it (above).</li>
+  <li>RevenueCat and the app stores, for subscriptions (above).</li>
+  <li>Where we are legally required to, such as a valid order from a competent authority.</li>
+</ul>
+
+<h2>Retention, edits and deletion</h2>
+<p>A shared ledger is only trustworthy if it cannot be quietly rewritten. So:</p>
+<ul>
+  <li>You can <strong>edit or remove an expense</strong> at any time. The record that you did stays, visible to the group, permanently. You can delete an expense; you cannot delete the fact that you deleted it.</li>
+  <li><strong>Export</strong> — every expense and settlement, as CSV, free and with no waiting period — is not built yet. Until it ships, ask us by email and we will send you your data. It will never be a paid feature.</li>
+  <li>You can <strong>delete your account</strong> from Account &gt; Delete account, or by <a href="./delete-account.html">emailing us</a>. Your profile and your personal ("just me") expenses are deleted. <strong>Expenses in shared groups remain</strong>, because removing them would silently change what other people are owed — your name is replaced with "Removed user" on them instead. The app tells you all of this before you confirm.</li>
+</ul>
+<p>We keep your data for as long as your account exists. Deleted account data is removed from live systems promptly and from backups within 90 days.</p>
+
+<h2>Your rights</h2>
+<p>Under India's Digital Personal Data Protection Act, 2023, and comparable laws elsewhere, you may ask us to access, correct, or erase your personal data, and you may withdraw consent. You can edit your profile in the app. For access, export, erasure or anything else, write to <strong>firodiya.ritesh@gmail.com</strong> and we will respond within 30 days.</p>
+
+<h2>Security</h2>
+<p>Data is encrypted in transit (TLS) and at rest by Firebase. Sign-in is by SMS one-time code; we never store the code and there is no password to leak. Authorization is enforced by server-side rules, so a modified client cannot read a group it does not belong to.</p>
+<p>No system is perfectly secure. If you find a vulnerability, please report it privately to <strong>firodiya.ritesh@gmail.com</strong> rather than posting it publicly.</p>
+
+<h2>Children's privacy</h2>
+<p>Aakalan is not directed at children. It requires a verified mobile number and is intended for users aged 18 and over. We do not knowingly collect personal information from children under 13.</p>
+
+<h2>Changes to this policy</h2>
+<p>We may update this policy from time to time. The date at the top changes when we do, and the latest version is always available in the app under Account &gt; Privacy.</p>
+
+<h2>Contact</h2>
+<p>Questions about this privacy policy: <strong>firodiya.ritesh@gmail.com</strong></p>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AskCal — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #16201c; line-height: 1.7; max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+    h1 { font-size: 28px; margin-bottom: 8px; color: #0a3a27; }
+    h2 { font-size: 20px; margin-top: 32px; margin-bottom: 12px; color: #136141; }
+    h3 { font-size: 16px; margin-top: 20px; margin-bottom: 8px; color: #16201c; }
+    p, li { font-size: 15px; margin-bottom: 12px; }
+    ul { padding-left: 20px; }
+    a { color: #1f8b5c; }
+    .subtitle { color: #7d8b85; font-size: 14px; margin-bottom: 32px; }
+    .highlight { background: #fff8e8; padding: 16px; border-radius: 8px; margin: 16px 0; border-left: 4px solid #e89c0d; }
+    .highlight p:last-child { margin-bottom: 0; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e0e5e2; vertical-align: top; }
+    th { color: #4d5b55; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<h1>AskCal — Privacy Policy</h1>
+<p class="subtitle">Last updated 12 September 2026</p>
+
+<div class="highlight">
+  <p>AskCal has no accounts and no ads. Your food log is stored on your phone, not
+  on our servers. One thing does leave your device: a meal photo, sent once so it
+  can be turned into an estimate. This page explains exactly what happens to it.</p>
+</div>
+
+<h2>What stays on your device</h2>
+<p>Everything you log is held in local storage on your phone:</p>
+<ul>
+  <li>Your meals, their components, calories and macros</li>
+  <li>Your height, weight, age, activity level and goal, and the targets derived from them</li>
+  <li>Meal photos, if you have left “Keep meal photos” switched on in Settings</li>
+  <li>Your saved foods and history</li>
+</ul>
+<p>None of this is uploaded, backed up to us, or readable by us. Uninstalling the
+app deletes it. You can also erase it at any time from
+<strong>Settings → Delete account and data</strong>, and export it first from
+<strong>Settings → Export everything as CSV</strong>.</p>
+
+<h2>What leaves your device, and why</h2>
+
+<h3>Meal photos</h3>
+<p>When you scan a meal, the photo is resized on your phone and sent to our
+service, which forwards it to <strong>Google’s Gemini API</strong> to produce the
+estimate. We do not keep the photo — it is held in memory for the length of the
+request and never written to storage.</p>
+<p>We do cache the <em>result</em> — the dish name, components and numbers — for
+seven days, so re-scanning the identical photo costs you neither a scan nor
+another model call. That cache is keyed by a cryptographic hash of the image
+combined with a hash of your app identifier, so that one person’s cached result
+is never served to anybody else. It contains no image data, and the hash cannot
+be turned back into your identifier.</p>
+<p>Google’s handling of data sent to the Gemini API is governed by
+<a href="https://ai.google.dev/gemini-api/terms">Google’s API terms</a>.</p>
+<p>The “Keep meal photos” switch controls whether the photo is kept
+<em>on your phone</em> after the estimate. It does not stop the photo being sent
+once to produce the estimate, because that is the feature itself.</p>
+
+<h3>Barcodes</h3>
+<p>When you scan a barcode, the number is sent to
+<a href="https://world.openfoodfacts.org/">OpenFoodFacts</a>, a public food
+database, to look the product up. Nothing else is sent with it.</p>
+
+<h3>Food searches</h3>
+<p>Text you type into food search is sent to our service, which queries the
+<a href="https://fdc.nal.usda.gov/">USDA FoodData Central</a> database. The
+search term is not stored.</p>
+
+<h3>Subscription and scan quota</h3>
+<p>AskCal uses <a href="https://www.revenuecat.com/privacy">RevenueCat</a> to
+manage subscriptions. RevenueCat issues an anonymous app user ID. That ID is the
+only identifier we hold, and it is used for two things: checking whether you have
+an active subscription, and counting how many photo scans you have used so the
+allowance can be enforced.</p>
+
+<h2>What we store on our servers</h2>
+<table>
+  <tr><th>What</th><th>Keyed by</th><th>Kept for</th></tr>
+  <tr><td>Number of scans used</td><td>Anonymous RevenueCat ID</td><td>Until you delete your data</td></tr>
+  <tr><td>Whether a subscription is active</td><td>Hash of the anonymous ID</td><td>24 hours</td></tr>
+  <tr><td>Scan results (no images)</td><td>Hash of the image</td><td>7 days</td></tr>
+</table>
+<p>That is the complete list. There is no name, no email address, no phone
+number, no location and no food log on our servers.</p>
+
+<h2>What we do not do</h2>
+<ul>
+  <li>No advertising, and no advertising identifiers</li>
+  <li>No analytics or tracking SDKs</li>
+  <li>No selling or sharing of personal information</li>
+  <li>No accounts, so there are no credentials to be breached</li>
+</ul>
+
+<h2>Children</h2>
+<p>AskCal is not directed at children under 13, and we do not knowingly collect
+information from them.</p>
+
+<h2>Your choices</h2>
+<ul>
+  <li><strong>Never send a photo:</strong> use barcode scanning, food search and
+  manual logging, none of which send an image. All three are free and unlimited.</li>
+  <li><strong>Stop storing photos on your phone:</strong> Settings → Keep meal photos.</li>
+  <li><strong>Stop being asked questions:</strong> Settings → Ask clarifying questions.</li>
+  <li><strong>Take your data:</strong> Settings → Export everything as CSV.</li>
+  <li><strong>Erase everything:</strong> see <a href="./delete-account.html">Delete your data</a>.</li>
+</ul>
+
+<h2>Changes</h2>
+<p>If this policy changes in a way that affects what leaves your device, the date
+at the top changes and the new version is published here before the change ships.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy:
+<a href="mailto:firodiya.ritesh@gmail.com">firodiya.ritesh@gmail.com</a></p>
+
+</body>
+</html>

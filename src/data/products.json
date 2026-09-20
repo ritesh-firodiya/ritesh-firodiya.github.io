@@ -78,7 +78,7 @@
         "Round result"
       ],
       "legal": {
-        "privacy": "https://ritvi-apps.github.io/legal/charades/privacy-policy.html",
+        "privacy": "/legal/charades/privacy-policy.html",
         "delete": null
       }
     },
@@ -170,7 +170,7 @@
         "Win state"
       ],
       "legal": {
-        "privacy": "https://ritvi-apps.github.io/legal/tictactoe/privacy-policy.html",
+        "privacy": "/legal/tictactoe/privacy-policy.html",
         "delete": null
       }
     },
@@ -266,8 +266,8 @@
         "Paywall, both prices visible"
       ],
       "legal": {
-        "privacy": "https://ritvi-apps.github.io/legal/aakalan/privacy-policy.html",
-        "delete": "https://ritvi-apps.github.io/legal/aakalan/delete-account.html"
+        "privacy": "/legal/aakalan/privacy-policy.html",
+        "delete": "/legal/aakalan/delete-account.html"
       }
     },
     {
@@ -337,7 +337,7 @@
         "Pack picker"
       ],
       "legal": {
-        "privacy": "https://ritvi-apps.github.io/legal/imposter/privacy-policy.html",
+        "privacy": "/legal/imposter/privacy-policy.html",
         "delete": null
       }
     },
@@ -430,8 +430,8 @@
         "Day view"
       ],
       "legal": {
-        "privacy": "https://ritvi-apps.github.io/legal/askcal/privacy-policy.html",
-        "delete": "https://ritvi-apps.github.io/legal/askcal/delete-account.html"
+        "privacy": "/legal/askcal/privacy-policy.html",
+        "delete": "/legal/askcal/delete-account.html"
       }
     },
     {
@@ -531,7 +531,7 @@
       "screens": [],
       "legal": {
         "privacy": "https://chitragupt.ai/legal/privacy",
-        "delete": "https://ritvi-apps.github.io/legal/chitragupt/delete-account.html",
+        "delete": "/legal/chitragupt/delete-account.html",
         "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
       }
     },

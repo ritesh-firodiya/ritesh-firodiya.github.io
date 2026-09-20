@@ -23,7 +23,6 @@ export const CASE_STUDIES: CaseStudy[] = [
       { k: "Role", v: "Everything — product, design, build, deploy" },
       { k: "Surface", v: "Web app, responsive, no native build" },
       { k: "Backend", v: "~189 Firebase Functions behind Cloud Run" },
-      { k: "Price", v: "₹249 / ₹499 / ₹799 per assessment year" },
     ],
     sections: [
       { h: "The problem", p: [

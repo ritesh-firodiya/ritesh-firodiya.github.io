@@ -45,6 +45,16 @@ So:
    scoped to the apps it is true of, or cut.
 2. **The model is stated above the install button.** Never below, never in a
    footnote, never softened into "unlock".
+2b. **Prices are not published on this site** (decided Sep 2026). No figure,
+   no tier card, no "You pay" column, anywhere in `src/app` — the *model*
+   (one-time / subscription / free+ads), the ad surfaces and the analytics
+   stay, because those are disclosure rather than pricing. `price`,
+   `priceNote` and `tiers` remain in `products.json` as the verified record
+   and are deliberately rendered nowhere; do not "fix" them by putting them
+   back on a page. The store listing is where a price belongs.
+   The design HTML under `.context/designs/` and the synced sets under
+   `public/designs/` are exempt — those are historical artifacts, not the
+   site's own claims.
 3. **An unavailable platform renders disabled with the reason**, never hidden and
    never linked to a track most people cannot open.
 4. **Facts live in `src/data/products.json`, never in a page.** If you find

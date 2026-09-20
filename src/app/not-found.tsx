@@ -7,7 +7,7 @@ import { Label } from "@/components/pills";
    three readers. */
 const DOORS = [
   { href: "/resume", title: "Résumé", body: "The full history, on the web or as a PDF." },
-  { href: "/products", title: "Products", body: "Eight apps, and what each one costs." },
+  { href: "/products", title: "Products", body: "Every app, and how each one is paid for." },
   { href: "/hire", title: "Work with me", body: "What I take on, and how an engagement runs." },
 ];
 

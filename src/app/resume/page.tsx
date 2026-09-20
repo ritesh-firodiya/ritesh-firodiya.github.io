@@ -28,15 +28,29 @@ export default function ResumePage() {
           for a candidate whose differentiator is shipped products, burying them
           under eight jobs throws away the whole case. */}
       <main id="main" className="mx-auto my-10 max-w-[52rem] bg-surface px-10 py-12 shadow-frame print:my-0 print:shadow-none sm:px-14">
-        <header className="border-b-2 border-ink pb-7">
-          <h1 className="font-display text-d2 font-semibold">{profile.name}</h1>
-          <p className="mt-1.5 font-display text-lead italic text-ink-2">Full-stack engineer &amp; tech lead · ~9 years</p>
-          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-1.5 font-mono text-xs2 text-ink-2">
-            <span>{profile.location}</span>
-            <a href={`mailto:${profile.email}`} className="link-u">{profile.email}</a>
-            <a href={`https://github.com/${profile.github}`} className="link-u">github.com/{profile.github}</a>
-            <a href={`https://linkedin.com/in/${profile.linkedin}`} className="link-u">linkedin.com/in/{profile.linkedin}</a>
+        {/* Photo sits with the contact block, not above the name: on the
+            printed sheet the name has to stay the first thing read, and a
+            portrait that pushes it down costs a résumé its opening line.
+            print-exact keeps it from dropping out of the PDF. */}
+        <header className="flex flex-wrap items-start gap-6 border-b-2 border-ink pb-7 sm:flex-nowrap">
+          <div className="min-w-0 flex-1">
+            <h1 className="font-display text-d2 font-semibold">{profile.name}</h1>
+            <p className="mt-1.5 font-display text-lead italic text-ink-2">Full-stack engineer &amp; tech lead · ~9 years</p>
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-1.5 font-mono text-xs2 text-ink-2">
+              <span>{profile.location}</span>
+              <a href={`mailto:${profile.email}`} className="link-u">{profile.email}</a>
+              <a href={`https://github.com/${profile.github}`} className="link-u">github.com/{profile.github}</a>
+              <a href={`https://linkedin.com/in/${profile.linkedin}`} className="link-u">linkedin.com/in/{profile.linkedin}</a>
+            </div>
           </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/me.webp"
+            alt={profile.name}
+            width={104}
+            height={104}
+            className="h-24 w-24 shrink-0 rounded-card border border-line object-cover print:[print-color-adjust:exact]"
+          />
         </header>
 
         <section className="pt-8">
@@ -53,13 +67,13 @@ export default function ResumePage() {
                   <span className="text-ink-2">— {p.blurb}</span>
                 </div>
                 <span className="font-mono text-xs2 uppercase tracking-label text-ink-3 sm:text-right">
-                  {MODEL[p.model].label}{p.price ? ` · ${p.price}` : ""}
+                  {MODEL[p.model].label}
                 </span>
               </li>
             ))}
             <li className="text-ink-2">
               …and {profile.projects.length - 5} more —{" "}
-              <Link href="/products" className="link-u font-medium text-accent">the full list with prices</Link>.
+              <Link href="/products" className="link-u font-medium text-accent">the full list</Link>.
             </li>
           </ul>
         </section>

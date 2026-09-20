@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Every product, its real monetization model and its real price — apps, platforms and tools, ordered by what you can actually use today.",
+    "Every product with how it is paid for, what it shows you and what it measures — apps, platforms and tools, ordered by what you can actually use today.",
 };
 
 const dash = <span className="text-ink-3">—</span>;
@@ -79,10 +79,6 @@ function Row({ p }: { p: Product }) {
       <td className="px-4 py-3">
         <ModelPill model={p.model} />
       </td>
-      <td className="nums px-4 py-3 font-medium">
-        {p.price ?? dash}
-        {p.priceNote && <span className="block text-xs2 font-normal text-ink-3">{p.priceNote}</span>}
-      </td>
       <td className={`px-4 py-3 ${p.model === "free-ads" ? "font-medium text-m-ads" : "text-ink-2"}`}>
         {p.ads ?? dash}
       </td>
@@ -100,7 +96,7 @@ function Row({ p }: { p: Product }) {
   );
 }
 
-const HEADERS = ["Product", "Model", "You pay", "Ads", "Analytics", "Get it"];
+const HEADERS = ["Product", "Model", "Ads", "Analytics", "Get it"];
 
 export default function ProductsPage() {
   const sorted = [...products].sort(byRank);
@@ -119,8 +115,8 @@ export default function ProductsPage() {
           <Label>
             {products.length} products · {available} you can use today
           </Label>
-          <h1 className="mt-3 max-w-[20ch] font-display text-d1 font-semibold">
-            What each one costs, before you install it.
+          <h1 className="mt-3 max-w-[24ch] font-display text-d1 font-semibold">
+            How each one is paid for, and what it knows about you.
           </h1>
         </section>
 
@@ -129,7 +125,7 @@ export default function ProductsPage() {
             <div className="tbl-scroll">
               <table className="w-full border-collapse text-left">
                 <caption className="sr-only">
-                  Every product with its monetization model, price, ad surfaces, analytics and
+                  Every product with how it is paid for, its ad surfaces, its analytics and its
                   availability, ordered by what is usable today
                 </caption>
                 <thead>

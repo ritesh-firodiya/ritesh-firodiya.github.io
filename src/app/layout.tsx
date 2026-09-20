@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s — Ritesh Firodiya",
   },
   description:
-    "Full-stack engineer and lead, ~9 years. Thirteen products for India — eight of them apps, two live on the Play Store. Every app's real price, stated plainly.",
+    "Full-stack engineer and lead, ~9 years. Thirteen products for India — eight of them apps, two live on the Play Store. How each app is paid for, stated plainly.",
   openGraph: {
     type: "website",
     siteName: "Ritesh Firodiya",
@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: "/apple-icon.png",

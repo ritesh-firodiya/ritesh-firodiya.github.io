@@ -39,7 +39,7 @@ export default async function Image() {
             Engineer who ships.
           </div>
           <div style={{ fontSize: 34, color: INK2, marginTop: 28, maxWidth: 900, lineHeight: 1.4 }}>
-            Thirteen products for India. Every app&rsquo;s real price, stated before you install it.
+            Thirteen products for India. How each one is paid for, stated before you install it.
           </div>
         </div>
 

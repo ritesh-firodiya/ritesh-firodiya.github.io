@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!p) return {};
   return {
     title: p.name,
-    description: `${p.tagline} ${MODEL[p.model].label}${p.price ? `, ${p.price}` : ""}. ${p.blurb}`.trim(),
+    description: `${p.tagline} ${MODEL[p.model].label}. ${p.blurb}`.trim(),
   };
 }
 
@@ -98,7 +98,6 @@ function ProductLinks({ p, galleries }: { p: Product; galleries: Gallery[] }) {
 function Facts({ p }: { p: Product }) {
   const rows = [
     { k: "Model", v: MODEL[p.model].label },
-    { k: "You pay", v: p.price ?? "—", note: p.priceNote },
     {
       k: "Ads",
       v: p.ads ?? "—",
@@ -161,7 +160,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <h1 className="font-display text-d2 font-semibold">{p.name}</h1>
                 <ModelPill model={p.model} />
-                {p.price && <span className="nums text-small font-medium">{p.price}</span>}
                 {live && <StatePill state="live">Live</StatePill>}
               </div>
               <p className="mt-1.5 max-w-measure font-display text-lead italic text-ink-2">{p.tagline}</p>
@@ -203,26 +201,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        {/* 3 · what each tier actually charges */}
-        {p.tiers && p.tiers.length > 0 && (
-          <section className="mx-auto max-w-page px-gutter py-7">
-            <Label>What you get for what</Label>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {p.tiers.map((t) => (
-                <div key={t.label} className="rounded-card border border-line bg-surface p-3.5">
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="nums font-display text-h3 font-semibold">{t.amount}</span>
-                    <span className="font-mono text-xs2 text-ink-3">{t.unit}</span>
-                  </div>
-                  <div className="mt-0.5 text-small font-medium">{t.label}</div>
-                  <p className="mt-1.5 text-xs2 text-ink-2">{t.note}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* 4 · tech */}
+        {/* 3 · tech */}
         {p.stack.length > 0 && (
           <section className="border-y border-line">
             <div className="mx-auto flex max-w-page flex-wrap items-baseline gap-x-6 gap-y-2 px-gutter py-4">
@@ -238,7 +217,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {/* 5 · screenshots */}
+        {/* 4 · screenshots */}
         {m.shots.length > 0 && (
           <section className="mx-auto max-w-page px-gutter py-7">
             <div className="flex items-baseline justify-between gap-4">
@@ -270,7 +249,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {/* 5b · the screens, named, when there is no picture of them. A product
+        {/* 4b · the screens, named, when there is no picture of them. A product
                with nothing shipped still has a shape worth stating. */}
         {m.shots.length === 0 && p.screens.length > 0 && (
           <section className="mx-auto max-w-page px-gutter py-7">
@@ -286,7 +265,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {/* 6 · designs — the app repo's own gallery, at its own URL */}
+        {/* 5 · designs — the app repo's own gallery, at its own URL */}
         {galleries.length > 0 && (
           <section className="border-y border-line bg-paper-2">
             <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-gutter py-5">
@@ -310,7 +289,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {/* 7 · what it does */}
+        {/* 6 · what it does */}
         {p.features.length > 0 && (
           <section className="mx-auto max-w-page px-gutter py-7">
             <h2 className="font-display text-h2 font-semibold">What it does</h2>
@@ -325,7 +304,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {/* 8 · the quieter facts */}
+        {/* 7 · the quieter facts */}
         {(p.permissions.length > 0 || study) && (
           <section className="border-t border-line">
             <div className="mx-auto grid max-w-page gap-8 px-gutter py-7 lg:grid-cols-[2fr_1fr] lg:gap-14">

@@ -38,6 +38,12 @@ jobs:
       # lint are different problems and the log should say which one failed.
       - run: pnpm lint
       - run: pnpm exec tsc --noEmit
+      # The token files are generated. A hand edit to one is how a design
+      # system grows a twelfth source of truth, so regenerate and diff.
+      # This does NOT run the design lint: that reads ten private app repos
+      # which are not present here. Its output is committed as
+      # src/data/design-audit.json and regenerated locally by `pnpm design:lint`.
+      - run: pnpm tokens:check
 
       - run: pnpm build
 

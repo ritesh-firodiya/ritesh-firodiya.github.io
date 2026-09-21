@@ -1,0 +1,222 @@
+{
+  "_": [
+    "How a design set is ORGANISED. Not how it looks.",
+    "",
+    "Colour, type and tokens are per product and live in palettes/*.json. This",
+    "file is the other half: where files sit, what they are called, what order",
+    "they come in, and what a gallery page has to contain. A game and a legal",
+    "app may look nothing alike and must still be navigable the same way.",
+    "",
+    "Every rule here was written against what the nine sets actually do. Where",
+    "they disagreed, the note says who won and why.",
+    "",
+    "scripts/lint-designs.mjs checks these; /design/drift publishes the result."
+  ],
+  "surfaces": {
+    "_": [
+      "A set has one folder per surface it is drawn for, and only these names.",
+      "chitragupt called its web surface `website`; property-app shipped empty",
+      "`shared/` and `reviews/` folders that were never built. Both are drift a",
+      "reader has to decode before they can find anything.",
+      "",
+      "`brand/` is assets, not a surface - it holds icon SVGs and is exempt."
+    ],
+    "allowed": [
+      "mobile",
+      "web"
+    ],
+    "rename": {
+      "website": "web"
+    },
+    "assetFolders": [
+      "brand"
+    ],
+    "frame": {
+      "mobile": {
+        "width": "390px",
+        "height": "844px"
+      },
+      "web": {
+        "width": "fluid"
+      }
+    },
+    "required": {
+      "_": "Emitted by build-tokens.mjs, except index.html which is authored.",
+      "files": [
+        "index.html",
+        "shared.css",
+        "core.css",
+        "tokens.css",
+        "tailwind.config.js"
+      ],
+      "optional": [
+        "local.css"
+      ]
+    }
+  },
+  "flows": {
+    "_": [
+      "One folder per flow, lowercase kebab-case, singular.",
+      "",
+      "Six names recur across the sets and mean the same thing every time, so",
+      "they are fixed and always sort to the same place. Everything else is the",
+      "product's own domain and sorts alphabetically in the * slot. The order is",
+      "the journey: how you get in, what you do, how you change it, what you pay",
+      "for, and what it looks like when it breaks."
+    ],
+    "order": [
+      "auth",
+      "onboarding",
+      "home",
+      "*",
+      "settings",
+      "store",
+      "states",
+      "patterns"
+    ],
+    "reserved": {
+      "auth": "sign-in, verify, profile - getting an identity",
+      "onboarding": "first-run only. A screen shown again later is not onboarding",
+      "home": "the first screen after entry",
+      "settings": "changing the thing, including how-to-play and about",
+      "store": "paywall, packs, upgrade - anything asking for money",
+      "states": "app-wide states: offline, maintenance, 404, 500",
+      "patterns": "reusable pieces shown in isolation: toasts, sheets, components"
+    }
+  },
+  "screens": {
+    "_": [
+      "`<screen>.html`, lowercase kebab-case, named for what the screen IS.",
+      "",
+      "NO index.html inside a flow. At surface root index.html is the gallery;",
+      "one level down the same name meaning 'the main screen of this flow' is",
+      "ambiguous, and it breaks the variant rule - index-empty.html reads as",
+      "nonsense. aakalan used it for 8 of 9 flows and imposter for 2; they get",
+      "renamed to the thing the screen actually is (balances/index.html ->",
+      "balances/list.html)."
+    ],
+    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.html$",
+    "forbidden": [
+      "index.html"
+    ],
+    "titlePattern": "<Product> - <screen>[ \u00b7 <state>]"
+  },
+  "variants": {
+    "_": [
+      "ONE FILE PER VARIANT: `<screen>-<state>.html`.",
+      "",
+      "This keeps the rule already written in ~/git/apps/CLAUDE.md - a screen",
+      "with no HTML file does not ship, and that includes its states. Every",
+      "state then has its own URL and its own row in the gallery.",
+      "",
+      "The estate was split: charades and askcal put one state per file, while",
+      "imposter (9 of 14 files) and aakalan (4 of 10) drew variants side by side",
+      "as frames in one file. Side-by-side reviews better; one-per-file",
+      "enumerates better, and enumerable is what a gallery and a lint need.",
+      "Those multi-frame files get split.",
+      "",
+      "The five states are not a wish list. Each is a real screen a person will",
+      "see, and the reason they are enumerated is that the ones nobody draws are",
+      "the ones that ship as a grey box."
+    ],
+    "states": [
+      "empty",
+      "loading",
+      "error",
+      "offline",
+      "locked"
+    ],
+    "pattern": "^[a-z0-9-]+-(empty|loading|error|offline|locked)\\.html$",
+    "aliases": {
+      "_": "Names already in use that mean one of the five.",
+      "failed": "error",
+      "paywalled": "locked",
+      "paywall": "locked",
+      "skeleton": "loading",
+      "empty-states": "empty"
+    },
+    "exempt": {
+      "_": [
+        "Not every screen has every state. A static rules page has no empty and",
+        "no loading. The lint REPORTS coverage rather than demanding five files",
+        "per screen - a rule that forces a loading state onto an about page is a",
+        "rule people learn to ignore."
+      ],
+      "flows": [
+        "patterns",
+        "states"
+      ]
+    }
+  },
+  "index": {
+    "_": [
+      "The gallery. A fixed skeleton first, then whatever the product needs.",
+      "",
+      "All six indexes today open with an eyebrow, an h1 and a meta line, then",
+      "diverge completely: 'The product', 'The one idea', 'Why this redesign',",
+      "'Why this app', 'Routes'. The narrative sections are the part worth",
+      "keeping - aakalan's simplification notes and imposter's market read are",
+      "why those files are worth reading. So the head and the route table are",
+      "fixed and the prose is free."
+    ],
+    "required": [
+      {
+        "id": "eyebrow",
+        "shape": "<Product> \u00b7 <surface> \u00b7 <n> screens"
+      },
+      {
+        "id": "h1",
+        "shape": "one line, what the product is"
+      },
+      {
+        "id": "meta",
+        "shape": "<frame> \u00b7 <version> \u00b7 updated <date>"
+      },
+      {
+        "id": "routes",
+        "shape": "table: flow | screen | states drawn | link"
+      },
+      {
+        "id": "states",
+        "shape": "which of the five exist, and which do not"
+      }
+    ],
+    "thenFree": true,
+    "breadcrumb": "every screen file carries the breadcrumb strip; it is the one thing all six sets already agree on"
+  },
+  "ordering": {
+    "_": "The same order everywhere, so a reader learns it once. Order is a property of the index route table, not of the filesystem - folders on disk are always alphabetical.",
+    "flows": "flows.order - reserved names pinned, domain flows alphabetical in the * slot",
+    "screens": "alphabetical within a flow, the default before its own variants",
+    "states": "variants.states order, never alphabetical"
+  },
+  "repo": {
+    "_": [
+      "Where a product keeps its design material, inside its OWN repo.",
+      "",
+      "Designs do NOT move to the site repo. They are the spec for the code they",
+      "sit beside - 'when a page and its wireframe disagree, the wireframe wins'",
+      "only works while both are reviewed in the same commit. The site already",
+      "SYNCS them (scripts/sync-designs.mjs) and publishes them under",
+      "/products/<slug>/designs/, so they are centrally readable without being",
+      "centrally owned. One owner, many readers.",
+      "",
+      "Two folders, two jobs, and they are not interchangeable:",
+      "  .context/  the app's own context - designs, documents, store artwork",
+      "  .trunk/    the Trunk control plane - product.md, map.yml, lifecycle,",
+      "             deltas. Only in repos that dogfood Trunk.",
+      "",
+      "property-app already draws this line correctly. chitragupt does not: its",
+      "own CLAUDE.md names .trunk/designs/ as authoritative in three places,",
+      "which contradicts ~/git/apps/CLAUDE.md. That is a conflict between two",
+      "written rules and needs a decision, not a silent move."
+    ],
+    "designs": ".context/designs",
+    "storeAssets": ".context/documents/store",
+    "brandAssets": ".context/designs/brand",
+    "controlPlane": ".trunk",
+    "exempt": {
+      "ventures/trunk": ".trunk/ux - Trunk is the product that DEFINES the control plane; its own prototypes live inside it by design, and its CLAUDE.md explicitly overrides the house rules."
+    }
+  }
+}

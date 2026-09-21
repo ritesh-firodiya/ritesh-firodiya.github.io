@@ -1,0 +1,68 @@
+{
+  "name": "ritesh-firodiya",
+  "product": "ritesh-firodiya.github.io",
+  "surfaces": ["web"],
+  "_": [
+    "The site that publishes this system. It is included as a palette rather",
+    "than exempted, because a design system whose own host is the one surface",
+    "not measured by it is a brochure.",
+    "",
+    "Renames applied: paper -> page, paper-2 -> muted, paper-3 -> sunken,",
+    "ink-inv -> ink-inverse, line-2 -> line-strong, accent -> brand-*.",
+    "Values are unchanged; this is a rename, not a redesign.",
+    "",
+    "accent-2 (#a9452f) is LIGHTER than accent (#8a3324), so it maps to",
+    "brand-400 and not brand-600 — the ramp slot has to mean the same thing",
+    "here as it does in every other palette or the whole naming rule leaks.",
+    "",
+    "No success/warn/danger/info: those four are not required, and this site",
+    "genuinely has no UI status axis. What looks like one is the release-state",
+    "scale, which is reserved below and means something else."
+  ],
+  "shadowTint": "20 19 15",
+  "shadowAlpha": { "light": { "a1": "0.04", "a2": "0.06", "a3": "0.18" } },
+  "themes": {
+    "light": {
+      "brand-50": "#f7ebe6", "brand-400": "#a9452f", "brand-500": "#8a3324",
+
+      "ink": "#14130f", "ink-2": "#45423a", "ink-3": "#78736a",
+      "ink-inverse": "#fbf9f4",
+
+      "page": "#fbf9f4", "surface": "#ffffff",
+      "muted": "#f4f0e6", "sunken": "#ebe5d6",
+
+      "line": "#e4dfd2", "line-strong": "#cfc8b6"
+    }
+  },
+  "reserved": {
+    "_": [
+      "TWO INDEPENDENT AXES THAT MUST NOT BE CONFLATED, per the site's own",
+      "CLAUDE.md: m-* is the monetization model, live/beta/build/design is the",
+      "release state. A product can be free AND live, or subscription AND in",
+      "build. Collapsing them into one scale would make the products table lie.",
+      "",
+      "The five model colours carry EQUAL weight on purpose. None of them may",
+      "read as a warning — 'this one costs money' is not a caution state, and",
+      "the moment ads or sub borrows the amber from warn, the table editorialises.",
+      "",
+      "This is the same discipline as aakalan's pos/neg sitting beside",
+      "success/danger: money and correctness are different questions."
+    ],
+    "m-free": { "light": "#5a5750" }, "m-free-wash": { "light": "#efece3" },
+    "m-ads": { "light": "#8a5a0b" }, "m-ads-wash": { "light": "#f7eeda" },
+    "m-once": { "light": "#2c6e49" }, "m-once-wash": { "light": "#e6f1ea" },
+    "m-sub": { "light": "#34508c" }, "m-sub-wash": { "light": "#e7ecf5" },
+    "m-year": { "light": "#6b3a7a" }, "m-year-wash": { "light": "#f1e9f4" },
+
+    "live": { "light": "#2c6e49" }, "live-wash": { "light": "#e6f1ea" },
+    "beta": { "light": "#8a6114" }, "beta-wash": { "light": "#f7eeda" },
+    "build": { "light": "#38587a" }, "build-wash": { "light": "#e8eef5" },
+    "design": { "light": "#6b6357" }, "design-wash": { "light": "#efebe1" }
+  },
+  "fonts": {
+    "_": "The one surface that loads webfonts, via next/font. The core fallback stacks sit behind each.",
+    "display": "var(--font-fraunces), Georgia, \"Times New Roman\", serif",
+    "sans": "var(--font-inter), ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "mono": "var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "name": "imposter",
+  "product": "Imposter",
+  "surfaces": [
+    "mobile"
+  ],
+  "_": [
+    "One hue by design, so there is no accent ramp \u2014 `accent` is optional and",
+    "imposter declares only `brand`. The green that was called accent-* IS the",
+    "brand; coal was never a brand ramp, it is the stage ladder and moves to",
+    "reserved.",
+    "",
+    "imposter is dark-first. Its light theme is the paper scope (the card face",
+    "a player holds up) and `dark` is the flood scope the rest of the game runs",
+    "in. That is the correct way round for this product and the generator does",
+    "not care which one carries the lighter values.",
+    "",
+    "No red anywhere, on purpose: a red warning in a social-deduction game",
+    "reads as an accusation. warn/danger/info are deliberately translucent",
+    "white. This is a product rule, not an oversight \u2014 do not 'fix' it.",
+    "",
+    "Mr White was removed from the game in the v5 design pass, and src/lib/",
+    "round.ts no longer implements him, but role-mrwhite tokens still ship in",
+    "both runtime theme blocks. They are absent here, which deletes them."
+  ],
+  "shadowTint": "0 0 0",
+  "shadows": {
+    "_": "card is the player card a person holds up; press is the 3D edge under a primary button. Both are this game's feel, not a shared scale.",
+    "card": "0 24px 48px -12px rgb(var(--shadow-tint) / 0.55), 0 2px 0 0 rgba(255,255,255,0.12) inset",
+    "press": "0 5px 0 0 var(--brand-700)"
+  },
+  "shadowAlpha": {
+    "light": {
+      "a1": "0.3",
+      "a2": "0.35",
+      "a3": "0.6"
+    },
+    "dark": {
+      "a1": "0.3",
+      "a2": "0.35",
+      "a3": "0.6"
+    }
+  },
+  "themes": {
+    "light": {
+      "brand-50": "#f2fdf5",
+      "brand-100": "#dcfce7",
+      "brand-200": "#bbf7d0",
+      "brand-300": "#86efac",
+      "brand-400": "#4ade80",
+      "brand-500": "#22c55e",
+      "brand-600": "#16a34a",
+      "brand-700": "#15803d",
+      "brand-900": "#052e16",
+      "ink": "#18181b",
+      "ink-2": "#52525b",
+      "ink-3": "#71717a",
+      "ink-4": "#a1a1aa",
+      "ink-inverse": "#ffffff",
+      "page": "#ffffff",
+      "frame": "#ffffff",
+      "surface": "#ffffff",
+      "muted": "#fafafa",
+      "sunken": "#f4f4f5",
+      "line": "#e4e4e7",
+      "line-strong": "#d4d4d8",
+      "success": "#86efac",
+      "success-bg": "rgba(134,239,172,0.14)",
+      "success-fg": "#86efac",
+      "warn": "rgba(255,255,255,0.5)",
+      "warn-bg": "rgba(255,255,255,0.12)",
+      "warn-fg": "#ffffff",
+      "danger": "rgba(255,255,255,0.5)",
+      "danger-bg": "rgba(255,255,255,0.12)",
+      "danger-fg": "#ffffff",
+      "info": "rgba(255,255,255,0.5)",
+      "info-bg": "rgba(255,255,255,0.12)",
+      "info-fg": "#ffffff"
+    },
+    "dark": {
+      "brand-50": "#f2fdf5",
+      "brand-100": "#dcfce7",
+      "brand-200": "#bbf7d0",
+      "brand-300": "#86efac",
+      "brand-400": "#4ade80",
+      "brand-500": "#22c55e",
+      "brand-600": "#16a34a",
+      "brand-700": "#15803d",
+      "brand-900": "#052e16",
+      "ink": "#ffffff",
+      "ink-2": "rgba(255,255,255,0.82)",
+      "ink-3": "rgba(255,255,255,0.64)",
+      "ink-4": "rgba(255,255,255,0.44)",
+      "ink-inverse": "#052e16",
+      "page": "#000000",
+      "frame": "#000000",
+      "surface": "rgba(255,255,255,0.12)",
+      "muted": "rgba(255,255,255,0.08)",
+      "sunken": "rgba(255,255,255,0.18)",
+      "line": "rgba(255,255,255,0.18)",
+      "line-strong": "rgba(255,255,255,0.32)",
+      "success": "#86efac",
+      "success-bg": "rgba(134,239,172,0.14)",
+      "success-fg": "#86efac",
+      "warn": "rgba(255,255,255,0.5)",
+      "warn-bg": "rgba(255,255,255,0.12)",
+      "warn-fg": "#ffffff",
+      "danger": "rgba(255,255,255,0.5)",
+      "danger-bg": "rgba(255,255,255,0.12)",
+      "danger-fg": "#ffffff",
+      "info": "rgba(255,255,255,0.5)",
+      "info-bg": "rgba(255,255,255,0.12)",
+      "info-fg": "#ffffff"
+    }
+  },
+  "reserved": {
+    "_": [
+      "Rule 01, the strictest instance of it in the tree: green means Civilian",
+      "and black means Imposter. No category plate, no status chip and no pack",
+      "tile may be green. The single colour carrying the whole game carries",
+      "nothing if anything else can be green too.",
+      "",
+      "role-imposter-fg is #3f3f46 here. The runtime had drifted to #0a0a0a."
+    ],
+    "role-civilian": {
+      "light": "#86efac",
+      "dark": "#86efac"
+    },
+    "role-civilian-bg": {
+      "light": "#052e16",
+      "dark": "#052e16"
+    },
+    "role-civilian-fg": {
+      "light": "#15803d",
+      "dark": "#15803d"
+    },
+    "role-imposter": {
+      "light": "#0a0a0a",
+      "dark": "#0a0a0a"
+    },
+    "role-imposter-bg": {
+      "light": "#ffffff",
+      "dark": "#ffffff"
+    },
+    "role-imposter-fg": {
+      "light": "#3f3f46",
+      "dark": "#3f3f46"
+    },
+    "coal-300": {
+      "light": "#52525b",
+      "dark": "#52525b"
+    },
+    "coal-400": {
+      "light": "#3f3f46",
+      "dark": "#3f3f46"
+    },
+    "coal-500": {
+      "light": "#2b2b2b",
+      "dark": "#2b2b2b"
+    },
+    "coal-600": {
+      "light": "#1f1f1f",
+      "dark": "#1f1f1f"
+    },
+    "coal-700": {
+      "light": "#141414",
+      "dark": "#141414"
+    },
+    "coal-800": {
+      "light": "#0a0a0a",
+      "dark": "#0a0a0a"
+    },
+    "coal-900": {
+      "light": "#000000",
+      "dark": "#000000"
+    },
+    "paper": {
+      "light": "#ffffff",
+      "dark": "#ffffff"
+    },
+    "paper-ink": {
+      "light": "#0a0a0a",
+      "dark": "#0a0a0a"
+    },
+    "on-accent": {
+      "light": "#052e16",
+      "dark": "#052e16"
+    }
+  },
+  "gradients": {
+    "stage-brand": "radial-gradient(130% 80% at 80% -10%, rgba(34,197,94,0.55) 0%, transparent 55%), linear-gradient(165deg, #2b2b2b 0%, #141414 55%, #000000 100%)",
+    "stage-night": "linear-gradient(165deg, #1f1f1f 0%, #0a0a0a 55%, #000000 100%)",
+    "stage-civilian": "radial-gradient(130% 80% at 80% -10%, rgba(134,239,172,0.45) 0%, transparent 55%), linear-gradient(165deg, #15803d 0%, #08351b 55%, #000000 100%)",
+    "stage-imposter": "radial-gradient(130% 80% at 80% -10%, rgba(255,255,255,0.35) 0%, transparent 55%), linear-gradient(165deg, #3f3f46 0%, #141414 55%, #000000 100%)",
+    "mark": "linear-gradient(140deg, var(--brand-300), var(--brand-900))",
+    "card-back": "linear-gradient(150deg, var(--coal-500) 0%, var(--coal-800) 100%)",
+    "glow-corner": "radial-gradient(60% 45% at 82% 4%, rgba(255,255,255,0.13) 0%, transparent 70%)"
+  }
+}

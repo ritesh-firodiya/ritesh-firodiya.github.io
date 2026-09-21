@@ -1,0 +1,114 @@
+{
+  "name": "askcal",
+  "product": "AskCal",
+  "surfaces": [
+    "mobile"
+  ],
+  "_": [
+    "askcal was already consistent with the mechanical naming rule (--ink,",
+    "--line, --page), which is why its naming won and the other five sets were",
+    "renamed to match it rather than the other way round.",
+    "",
+    "Renames applied: ask-* -> accent-*. brand-* was already correct.",
+    "",
+    "success did not exist. It is derived from the brand ramp rather than",
+    "invented: conf-high already WAS brand-500 on a brand-50 ground, so the",
+    "status trio is the same three values that were already painting",
+    "high-confidence rows."
+  ],
+  "shadowTint": "22 32 28",
+  "shadows": {
+    "_": "The scan FAB, tinted with the brand rather than a literal so a repalette carries it.",
+    "fab": "0 8px 20px -4px color-mix(in srgb, var(--brand-500) 50%, transparent)"
+  },
+  "pending": [
+    "onboarding/onboarding.css is a second, parallel design system inside this",
+    "one folder \u2014 its own paper/well/edge surfaces, its own accent ramp, and",
+    "--protein/--carbs/--fat that DISAGREE with shared.css for the same token",
+    "names. Phase 5 merges it away. Its tokens are held in reserved.onboarding",
+    "below so nothing is lost in the meantime.",
+    "",
+    "Runtime renamed macro-* to bare protein/carbs/fat, so a class copied from",
+    "a wireframe resolves to nothing. The canonical names below are macro-*."
+  ],
+  "themes": {
+    "light": {
+      "brand-50": "#e9f7f0",
+      "brand-100": "#cdedde",
+      "brand-200": "#9adcbe",
+      "brand-400": "#3faa79",
+      "brand-500": "#1f8b5c",
+      "brand-700": "#136141",
+      "brand-900": "#0a3a27",
+      "accent-50": "#fff8e8",
+      "accent-100": "#ffefc6",
+      "accent-200": "#ffdd8c",
+      "accent-400": "#f7b731",
+      "accent-500": "#e89c0d",
+      "accent-700": "#9c650a",
+      "ink": "#16201c",
+      "ink-2": "#4d5b55",
+      "ink-3": "#7d8b85",
+      "ink-4": "#adb8b3",
+      "ink-inverse": "#ffffff",
+      "page": "#f4f6f5",
+      "frame": "#ffffff",
+      "surface": "#ffffff",
+      "muted": "#fafbfa",
+      "sunken": "#eceff0",
+      "line": "#e4e8e6",
+      "line-strong": "#d0d6d3",
+      "success": "#1f8b5c",
+      "success-bg": "#e9f7f0",
+      "success-fg": "#136141",
+      "warn": "#e89c0d",
+      "warn-bg": "#fff8e8",
+      "warn-fg": "#9c650a",
+      "danger": "#e5484d",
+      "danger-bg": "#ffefef",
+      "danger-fg": "#c62a2f",
+      "info": "#0091ff",
+      "info-bg": "#e6f4ff",
+      "info-fg": "#006adc"
+    }
+  },
+  "reserved": {
+    "_": "Confidence is the product's core claim and macros are its output; neither may borrow a status colour.",
+    "conf-high": {
+      "light": "#1f8b5c"
+    },
+    "conf-high-bg": {
+      "light": "#e9f7f0"
+    },
+    "conf-med": {
+      "light": "#e89c0d"
+    },
+    "conf-med-bg": {
+      "light": "#fff8e8"
+    },
+    "conf-low": {
+      "light": "#e5484d"
+    },
+    "conf-low-bg": {
+      "light": "#ffefef"
+    },
+    "macro-protein": {
+      "light": "#7c5cf0"
+    },
+    "macro-protein-bg": {
+      "light": "#f1edff"
+    },
+    "macro-carbs": {
+      "light": "#f7b731"
+    },
+    "macro-carbs-bg": {
+      "light": "#fff8e8"
+    },
+    "macro-fat": {
+      "light": "#e5757a"
+    },
+    "macro-fat-bg": {
+      "light": "#ffeff0"
+    }
+  }
+}

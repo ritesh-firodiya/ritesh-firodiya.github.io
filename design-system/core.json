@@ -1,0 +1,184 @@
+{
+  "_": [
+    "Layer 1 of the design system: everything that is NOT a colour.",
+    "",
+    "Hand-edit this file. Everything downstream — core.css, each set's",
+    "tailwind.config.js, each app's global.css, each app's theme/tokens.ts — is",
+    "emitted from it by scripts/build-tokens.mjs and must never be edited",
+    "directly. Lint check 11 regenerates and diffs, so a hand edit is caught.",
+    "",
+    "TWO SURFACES, ONE SYSTEM.",
+    "A 390px phone frame and a 1120px web page do not want the same type scale:",
+    "the phone wants fixed px steps, the page wants fluid rem clamps. Forcing",
+    "one on the other would be a worse system, not a more unified one. So the",
+    "metric scales are per surface and everything that actually causes drift is",
+    "shared — the naming rule, the colour key set, the role semantics, the",
+    "reserved-block discipline, and the lint that checks all of it.",
+    "",
+    "Provenance is recorded per block. Where sets disagreed, the note says who",
+    "won and why, so the next person does not re-litigate it from scratch."
+  ],
+
+  "shared": {
+    "font": {
+      "_": "All six token-driven mobile sets declared this identical pair. No mobile app loads a webfont; three declare expo-font and never import it. The web surface adds display/sans/mono via next/font on top of these fallbacks.",
+      "sans": ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+      "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"]
+    },
+    "shadowGeometry": {
+      "_": [
+        "Geometry is shared across surfaces; tint and strength are per product.",
+        "",
+        "Two geometry families existed on mobile — 14px/34px -10px (aakalan,",
+        "askcal, imposter) and 12px/30px -8px (charades, plan-kid) — with",
+        "tic-tac-toe on a third. The first wins on count.",
+        "",
+        "A product supplies --shadow-tint as an `r g b` triple and may override",
+        "--shadow-a1/a2/a3. A dark product needs a far heavier alpha to read at",
+        "all, which is why strength is a variable rather than baked in."
+      ],
+      "alphaDefaults": { "a1": "0.05", "a2": "0.07", "a3": "0.18" },
+      "sm": "0 1px 2px rgb(var(--shadow-tint) / var(--shadow-a1))",
+      "DEFAULT": "0 4px 14px rgb(var(--shadow-tint) / var(--shadow-a2))",
+      "lg": "0 14px 34px -10px rgb(var(--shadow-tint) / var(--shadow-a3))"
+    },
+    "cdn": {
+      "_": [
+        "Pinned. Every one of the 572 Tailwind loads and 159 lucide loads in",
+        "the tree was unpinned — bare cdn.tailwindcss.com and lucide@latest — so",
+        "no design set rendered reproducibly and a CDN release could silently",
+        "restyle 452 screens. Lint check 9 enforces these exact URLs."
+      ],
+      "tailwind": "https://cdn.tailwindcss.com/3.4.17",
+      "lucide": "https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"
+    },
+    "colorKeys": {
+      "_": [
+        "The canonical colour key set. A palette declaring a key outside this",
+        "list, or a ramp stop outside `rampStops`, fails lint check 3.",
+        "",
+        "Only brand-500 is required. Seven-stop ramps are the norm and the",
+        "drift page reports completeness, but forcing ten stops would mean",
+        "inventing hexes nobody designed — tic-tac-toe genuinely has one."
+      ],
+      "rampStops": ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      "ramps": ["brand", "accent"],
+      "required": ["brand-500", "ink", "ink-2", "ink-3", "ink-inverse", "page", "surface", "line", "line-strong"],
+      "flat": [
+        "ink", "ink-2", "ink-3", "ink-4", "ink-inverse",
+        "page", "frame", "surface", "muted", "sunken",
+        "line", "line-strong",
+        "success", "success-bg", "success-fg",
+        "warn", "warn-bg", "warn-fg",
+        "danger", "danger-bg", "danger-fg",
+        "info", "info-bg", "info-fg"
+      ],
+      "renamed": {
+        "_": "Old name -> canonical name. The lint reports any survivor so a missed rename is visible rather than silently painting nothing.",
+        "indigo-*": "brand-*", "navy-*": "brand-*", "teal-*": "brand-*", "coal-*": "reserved",
+        "saffron-*": "accent-*", "ask-*": "accent-*", "gold-*": "accent-*", "coral-*": "accent-*",
+        "--text-primary": "--ink", "--text-secondary": "--ink-2",
+        "--text-tertiary": "--ink-3", "--text-quaternary": "--ink-4",
+        "--text-inverse": "--ink-inverse",
+        "--border": "--line", "--border-strong": "--line-strong",
+        "--page-bg": "--page", "--phone-bg": "--frame",
+        "--surface-muted": "--muted", "--surface-sunken": "--sunken",
+        "--warning": "--warn", "crimson-*": "danger-*", "royal-*": "info-*"
+      }
+    }
+  },
+
+  "mobile": {
+    "_": "The 390x844 phone frame the wireframes are drawn in, and the Expo apps behind them.",
+    "type": {
+      "_": [
+        "The four wireframe steps were byte-identical in all six token-driven",
+        "sets — the strongest shared convention in the tree. The product scale",
+        "is imposter's, the only app that had one.",
+        "",
+        "Emitting this into every runtime global.css is what makes `text-2xs`",
+        "live: it is used 186 times across aakalan, askcal and charades and was",
+        "declared in none of them.",
+        "",
+        "tic-tac-toe's h1 was 34px and moves to 36px — two apps had a product",
+        "scale and they disagreed on exactly one step."
+      ],
+      "2xs":     { "size": "10px",   "leading": "1.3" },
+      "xs":      { "size": "11.5px", "leading": "1.4" },
+      "sm":      { "size": "13px",   "leading": "1.45" },
+      "base":    { "size": "14px",   "leading": "1.5" },
+      "body":    { "size": "16px",   "leading": "1.5" },
+      "lead":    { "size": "18px",   "leading": "1.45" },
+      "h3":      { "size": "22px",   "leading": "1.25", "tracking": "-0.01em" },
+      "h2":      { "size": "28px",   "leading": "1.15", "tracking": "-0.02em" },
+      "h1":      { "size": "36px",   "leading": "1.08", "tracking": "-0.02em" },
+      "display": { "size": "46px",   "leading": "1.02", "tracking": "-0.03em" },
+      "hero":    { "size": "60px",   "leading": "0.98", "tracking": "-0.04em" }
+    },
+    "tracking": {
+      "_": "0.18em, from aakalan / askcal / imposter / tic-tac-toe. charades and plan-kid declared 0.15em in config while hard-coding 0.18em in their own .section-label, so they already contradicted themselves and lose nothing. `role` is imposter's and stays reserved to it.",
+      "label": "0.18em",
+      "role": "0.22em"
+    },
+    "radius": {
+      "_": [
+        "Unanimous except tic-tac-toe's 2xl, which was 28px where every sibling",
+        "had 24px — so `rounded-2xl` rendered differently in exactly one app.",
+        "",
+        "`phone` was a token in askcal / charades / plan-kid and a hard-coded",
+        "40px inside a media query in aakalan / imposter. Now a token",
+        "everywhere. chitragupt and property-app used 32px and move to 40px."
+      ],
+      "sm": "8px", "DEFAULT": "12px", "lg": "16px", "xl": "20px",
+      "2xl": "24px", "3xl": "28px", "card": "34px", "pill": "999px", "phone": "40px"
+    },
+    "shadow": {
+      "_": "Inherits shared.shadowGeometry and adds the desktop frame, which only exists on a wireframe page.",
+      "phone": "0 0 0 1px var(--line-strong), 0 30px 60px -20px rgb(var(--shadow-tint) / var(--shadow-a3))"
+    },
+    "frame": {
+      "_": "390x844 is already the house rule in apps/CLAUDE.md. The desktop breakpoint is where the frame gains its rounded body and drop shadow.",
+      "width": "390px",
+      "height": "844px",
+      "desktopBreakpoint": "640px"
+    }
+  },
+
+  "web": {
+    "_": [
+      "ritesh-firodiya.github.io and the other web surfaces. Fluid rem clamps,",
+      "not the phone's fixed px — a heading that is 36px on a 390px frame and",
+      "36px on a 1440px page is wrong on one of them.",
+      "",
+      "These are the live values already shipping in src/app/globals.css. They",
+      "are lifted here unchanged so the site stops being a twelfth system and",
+      "becomes the one the others are measured against."
+    ],
+    "type": {
+      "d1":    { "size": "clamp(2rem, 1.3rem + 2.2vw, 2.75rem)",      "leading": "1.05", "tracking": "-0.03em" },
+      "d2":    { "size": "clamp(1.5rem, 1.2rem + 1.1vw, 2rem)",       "leading": "1.15", "tracking": "-0.02em" },
+      "h2":    { "size": "clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem)",    "leading": "1.12", "tracking": "-0.02em" },
+      "h3":    { "size": "1.1875rem",                                  "leading": "1.25", "tracking": "-0.01em" },
+      "lead":  { "size": "clamp(1rem, 0.95rem + 0.25vw, 1.0625rem)",  "leading": "1.6" },
+      "body":  { "size": "1rem",                                       "leading": "1.6" },
+      "small": { "size": "0.9375rem",                                  "leading": "1.6" },
+      "xs2":   { "size": "0.8125rem",                                  "leading": "1.5" },
+      "label": { "size": "0.6875rem",                                  "leading": "1.4", "tracking": "0.14em" }
+    },
+    "tracking": {
+      "_": "0.14em, not the phone's 0.18em. A label set in a 70rem column needs less air than the same label in a 390px frame.",
+      "label": "0.14em"
+    },
+    "radius": { "card": "14px", "pill": "999px" },
+    "spacing": {
+      "_": "Only ever used as padding. Halved in Sep 2026; the utilities .px-gutter / .py-section wrap them.",
+      "section": "clamp(2rem, 1.4rem + 2vw, 3.5rem)",
+      "gutter": "clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem)"
+    },
+    "maxWidth": { "page": "70rem", "prose": "68ch", "measure": "58ch" },
+    "shadow": {
+      "lift": "0 1px 2px rgb(var(--shadow-tint) / 0.04), 0 8px 24px -12px rgb(var(--shadow-tint) / 0.18)",
+      "frame": "0 2px 6px rgb(var(--shadow-tint) / 0.06), 0 24px 56px -24px rgb(var(--shadow-tint) / 0.34)"
+    }
+  }
+}

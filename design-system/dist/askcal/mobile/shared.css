@@ -1,0 +1,7 @@
+/* design-system 1.0.0 — see design-system/README.md
+
+   This file is the stable entry point every screen links to. The tokens live
+   in the two files it imports, both generated. Do not add rules here: a rule
+   in this file is a rule in exactly one set, which is where drift starts. */
+@import "./core.css";
+@import "./tokens.css";

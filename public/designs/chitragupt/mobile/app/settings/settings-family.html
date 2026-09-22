@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Family — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="none" data-chrome-title="Family" data-chrome-section="/settings" data-chrome-routes="Main|settings.html;Profile|settings-profile.html;Family|settings-family.html|1;Family invite|settings-family-invite.html;Family pending|settings-family-pending.html;Family member|settings-family-members.html;Family leave|settings-family-leave.html;Billing|settings-billing.html;Invoice|settings-invoice-detail.html;Email setup|settings-email-forward-setup.html;Email verify|settings-email-forward-verify.html;Email log|settings-email-forward-received.html;Notifications|settings-notifications.html;Privacy|settings-privacy-data.html;Audit|settings-audit-log.html;Sharing|settings-sharing.html;Support|settings-support.html;Delete|settings-account-deletion.html" data-chrome-top="level2" data-chrome-back="settings.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <section class="rounded-2xl border border-blue-500/30 bg-blue-500/5 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-blue-300">Sharma household · Pro</p>
+    <p class="mt-1 text-[13px] text-zinc-200">3 of 6 PANs · admin: Aarav</p>
+    <p class="mt-0.5 text-[11px] text-zinc-500">AY 2026-27 paid · renews never (one-time)</p>
+  </section>
+
+  <p class="mt-5 px-2 text-[10px] uppercase tracking-widest text-zinc-500">Members</p>
+  <ul class="mt-1.5 divide-y divide-zinc-900 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 text-[12.5px]">
+    <li class="flex items-center gap-3 px-3 py-3"><span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-200 text-[11px] font-semibold">AS</span><div class="flex-1"><p class="text-zinc-100">Aarav Sharma <span class="text-[10px] text-emerald-300">· admin · you</span></p><p class="text-[10px] text-zinc-500">aarav@example.com · joined Mar 2024</p></div></li>
+    <li class="flex items-center gap-3 px-3 py-3"><span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-500/20 text-blue-200 text-[11px] font-semibold">SS</span><div class="flex-1"><p class="text-zinc-100">Sneha Sharma <span class="text-[10px] text-zinc-500">· spouse</span></p><p class="text-[10px] text-zinc-500">sneha@example.com · joined Mar 2024</p></div><a href="settings-family-members.html" class="text-[11px] text-emerald-300 underline">Manage</a></li>
+    <li class="flex items-center gap-3 px-3 py-3"><span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-purple-500/20 text-purple-200 text-[11px] font-semibold">RS</span><div class="flex-1"><p class="text-zinc-100">Ravi Sharma <span class="text-[10px] text-zinc-500">· father · senior</span></p><p class="text-[10px] text-zinc-500">ravi.sharma@yahoo.com · joined Apr 2024</p></div><a href="settings-family-members.html" class="text-[11px] text-emerald-300 underline">Manage</a></li>
+    <li class="flex items-center gap-3 px-3 py-3 bg-amber-500/5"><span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dashed border-amber-500/40 bg-zinc-900 text-amber-300 text-[11px]">?</span><div class="flex-1"><p class="text-zinc-100">Pending · Mira Sharma <span class="text-[10px] text-amber-300">· daughter</span></p><p class="text-[10px] text-amber-300">Invited 3 days ago · awaiting accept</p></div><a href="settings-family-pending.html" class="text-[11px] text-amber-300 underline">View</a></li>
+  </ul>
+
+  <a href="settings-family-invite.html" class="mt-3 block rounded-xl border border-emerald-500/30 bg-emerald-500/5 px-4 py-3 text-center text-[13px] font-semibold text-emerald-200">+ Invite a member</a>
+
+  <p class="mt-5 px-2 text-[10px] uppercase tracking-widest text-zinc-500">Visibility rules</p>
+  <ul class="mt-1.5 divide-y divide-zinc-900 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 text-[12px]">
+    <li class="flex items-center justify-between px-3 py-3"><div><p class="text-zinc-200">Admin sees aggregates</p><p class="text-[10px] text-zinc-500">NAV, burn, tax position by member · not raw docs</p></div><span class="text-[10px] text-emerald-300">On</span></li>
+    <li class="flex items-center justify-between px-3 py-3"><div><p class="text-zinc-200">Members see only their own docs</p><p class="text-[10px] text-zinc-500">DPDP default · cannot be turned off</p></div><span class="text-[10px] text-zinc-500">Locked</span></li>
+    <li class="flex items-center justify-between px-3 py-3"><div><p class="text-zinc-200">CA links scoped per member</p><p class="text-[10px] text-zinc-500">Each member's hire-CA only sees their docs</p></div><span class="text-[10px] text-emerald-300">On</span></li>
+  </ul>
+
+  <a href="settings-family-leave.html" class="mt-6 block text-center text-[11px] text-rose-300 underline">Leave or dissolve household</a>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

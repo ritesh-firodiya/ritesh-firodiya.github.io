@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ — Chitragupt</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>
+      body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+      details > summary { list-style: none; cursor: pointer; }
+      details > summary::-webkit-details-marker { display: none; }
+      details[open] .chev { transform: rotate(90deg); }
+      .chev { transition: transform 120ms ease; }
+      .scroll-mt { scroll-margin-top: 5rem; }
+    </style>
+  </head>
+  <body id="top" class="bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/</span> ›</span>
+      <a href="landing.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Landing</a>
+      <a href="landing-user.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Landing · user</a>
+      <a href="landing-ca.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Landing · CA</a>
+      <a href="landing-admin.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Landing · admin</a>
+      <a href="pricing.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Pricing</a>
+      <a href="faq.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">FAQ</a>
+      <a href="privacy.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Privacy</a>
+      <a href="terms.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Terms</a>
+      <a href="refund.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refund</a>
+      <a href="grievance.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Grievance</a>
+      <a href="waitlist-thanks.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Waitlist thanks</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <a href="landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+    <nav class="hidden gap-6 text-xs md:flex">
+      <a href="landing.html" class="text-zinc-400 hover:text-zinc-100">Home</a>
+      <a href="pricing.html" class="text-zinc-400 hover:text-zinc-100">Pricing</a>
+      <a href="#" class="text-zinc-100">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="../auth/sign-in.html" class="text-xs text-zinc-300 hover:text-zinc-100">Sign in</a>
+      <a href="../auth/sign-up.html" class="rounded bg-emerald-500 px-3 py-1.5 text-xs font-semibold text-zinc-950 hover:bg-emerald-400">Start free</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero + search + category chips -->
+<section class="border-b border-zinc-900">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">FAQ</p>
+    <h1 class="mt-1 text-3xl font-semibold tracking-tight">Frequently asked questions</h1>
+    <p class="mt-2 text-sm text-zinc-400">Plain answers about Indian tax filing. Search a keyword or jump to a category.</p>
+
+    <!-- Search -->
+    <label class="mt-6 flex items-center gap-2 rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2.5 focus-within:border-emerald-500/40">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0 text-zinc-500"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" placeholder="Search 20 answers · try &ldquo;refund&rdquo;, &ldquo;ITR-2&rdquo;, &ldquo;Pro Family&rdquo;" class="w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none" />
+      <kbd class="hidden rounded border border-zinc-700 bg-zinc-950 px-1.5 py-0.5 text-[10px] text-zinc-500 md:inline">/</kbd>
+    </label>
+
+    <!-- Category chips -->
+    <div class="mt-5 flex flex-wrap gap-2">
+      <a href="#product" class="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">About the product <span class="text-zinc-500">· 6</span></a>
+      <a href="#pricing" class="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Pricing <span class="text-zinc-500">· 5</span></a>
+      <a href="#privacy" class="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Privacy + security <span class="text-zinc-500">· 4</span></a>
+      <a href="#family" class="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Sharing + family <span class="text-zinc-500">· 3</span></a>
+      <a href="#compare" class="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">vs ClearTax / TaxBuddy <span class="text-zinc-500">· 2</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Main: sticky TOC + Q&A column -->
+<main class="mx-auto grid max-w-6xl gap-10 px-5 py-10 md:grid-cols-[200px_1fr]">
+
+  <!-- Sticky TOC (desktop only) -->
+  <aside class="hidden md:block">
+    <nav class="sticky top-20 space-y-1 text-xs">
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-500">Categories</p>
+      <a href="#product" class="block rounded px-2 py-1.5 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100">About the product</a>
+      <a href="#pricing" class="block rounded px-2 py-1.5 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100">Pricing</a>
+      <a href="#privacy" class="block rounded px-2 py-1.5 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100">Privacy + security</a>
+      <a href="#family" class="block rounded px-2 py-1.5 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100">Sharing + family</a>
+      <a href="#compare" class="block rounded px-2 py-1.5 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100">vs ClearTax / TaxBuddy</a>
+      <div class="mt-4 border-t border-zinc-900 pt-3">
+        <a href="#stuck" class="block rounded px-2 py-1.5 text-emerald-300 hover:bg-zinc-900">Still stuck? →</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Q&A column -->
+  <div class="space-y-10">
+
+    <!-- About the product -->
+    <section id="product" class="scroll-mt">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-zinc-300">About the product</h2>
+        <a href="#top" class="text-[11px] text-zinc-500 hover:text-zinc-300">↑ Top</a>
+      </div>
+      <div class="mt-4 divide-y divide-zinc-900 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+
+        <details id="q-do-you-file" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <div class="flex items-start gap-2.5">
+              <span class="mt-0.5 shrink-0 rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">Most asked</span>
+              <span class="text-sm font-semibold text-zinc-100">Do you file my ITR for me?</span>
+            </div>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">No. Chitragupt is not a filing portal. We show you what your return looks like (right ITR form, both regimes compared, refund or balance due). To get it filed, hire a CA from our marketplace (they set their own price; we take a 10% platform fee) or invite your own CA to view your Tax Review for free.</p>
+        </details>
+
+        <details id="q-itr-forms" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Which ITR forms do you support?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400"><strong class="text-zinc-200">Today:</strong> ITR-1 (salaried, one house property) and ITR-2 (capital gains, more than one house property, foreign income). Tax Review picks the right form for you based on what's in your documents. <strong class="text-zinc-200">Not yet:</strong> ITR-3 / ITR-4 (full business or professional income). If you fall in that bucket, hire a CA from our marketplace — they handle it end-to-end. Non-individual filers (firms, LLPs, companies, trusts) aren't in scope.</p>
+        </details>
+
+        <details id="q-form-choice" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">How do you decide which ITR form I need?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">We read your documents and decide. Salary only + one house + small interest → ITR-1. Add capital gains, more than one house, or foreign income → ITR-2. Add business or freelance income → ITR-3 / ITR-4 (those need a CA from the marketplace today). The Tax Review tells you the form and why — you don't pick.</p>
+        </details>
+
+        <details id="q-regime" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">How do you decide old regime vs new regime?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">India has two tax systems — old (with deductions for HRA, 80C, 80D, home loan interest) and new (lower rates, almost no deductions). We compute your tax under both, side by side, and tell you which costs you less, with the rupee difference (e.g. &ldquo;new regime saves ₹14,200&rdquo;). You can switch in Settings — both answers stay on screen.</p>
+        </details>
+
+        <details id="q-wrong" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">What if the engine is wrong?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Every number on your Tax Review cites the document it came from (your Form 16, your bank statement). Every tax rule references the section of the Income Tax Act. Edge cases the engine can't handle (mixed regime years, NRI returns) get flagged with &ldquo;hire a CA&rdquo; — we don't bluff.</p>
+        </details>
+
+        <details id="q-form-16" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Why does Form 16 alone get to a number?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">For most salaried filers, Form 16 already carries gross salary, employee PF, professional tax, 80C investments, 80D health insurance, HRA, and TDS — almost everything the engine needs. We tell you where Form 26AS or AIS would add more (interest from banks, dividends, capital gains) so you know what else to upload.</p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="scroll-mt">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-zinc-300">Pricing</h2>
+        <a href="#top" class="text-[11px] text-zinc-500 hover:text-zinc-300">↑ Top</a>
+      </div>
+      <div class="mt-4 divide-y divide-zinc-900 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+
+        <details id="q-trial" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <div class="flex items-start gap-2.5">
+              <span class="mt-0.5 shrink-0 rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">Most asked</span>
+              <span class="text-sm font-semibold text-zinc-100">Is ₹249 a trial?</span>
+            </div>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">No. One-time unlock for AY 2026-27 (Assessment Year 2026-27 = the return you file for income earned 1 April 2025 to 31 March 2026). Full refund within 14 days of unlock.</p>
+        </details>
+
+        <details id="q-subscription" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Is this a subscription?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">No. You pay once per Assessment Year. Next year's AY (2027-28) is a separate payment when the time comes. No auto-renewal, no card on file — we charge once and stop.</p>
+        </details>
+
+        <details id="q-refund" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">What's the refund policy?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Refundable for 14 days from unlock. Click &ldquo;Request refund&rdquo; in Settings · Billing. Money is back to your card or UPI within 5–7 working days.</p>
+        </details>
+
+        <details id="q-family-bundle" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">What does the family bundle cover?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Pro Family at ₹799 covers up to 6 PANs in one household for one AY — you, your spouse, parents, kids. One payment unlocks Tax / Expense / Portfolio Review for everyone. Each person's documents stay private to them unless they choose to share. Already on Self? Top up ₹550. On AI Self? Top up ₹300.</p>
+        </details>
+
+        <details id="q-ai-advisor" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">What does the AI Q&amp;A do, and which plan has it?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Ask a question in plain English — &ldquo;how much HRA did I claim?&rdquo;, &ldquo;which mutual funds did I sell this year?&rdquo;, &ldquo;why is my refund only ₹18,000?&rdquo; — and get an answer that cites the document. AI Q&amp;A is on <strong class="text-purple-200">AI Self (₹499)</strong> and <strong class="text-blue-200">Pro Family (₹799)</strong>. 5 questions per day, resets at midnight IST. On Pro Family the 5/day quota is shared across the whole household. AI Q&amp;A only answers from your confirmed documents — it does not give general tax advice; for that, hire a CA.</p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Privacy + security -->
+    <section id="privacy" class="scroll-mt">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-zinc-300">Privacy + security</h2>
+        <a href="#top" class="text-[11px] text-zinc-500 hover:text-zinc-300">↑ Top</a>
+      </div>
+      <div class="mt-4 divide-y divide-zinc-900 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+
+        <details id="q-hosting" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Where is my data hosted?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">In India — Mumbai region. All logins, documents, and parsed numbers stay on servers inside India. Your data never leaves the country.</p>
+        </details>
+
+        <details id="q-aadhaar" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Do you store my Aadhaar?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">No. We never extract or store your Aadhaar number. If you upload a scan of your Aadhaar card to keep documents in one place, it sits in your private vault — only you (and people you choose to share with) can see it.</p>
+        </details>
+
+        <details id="q-delete" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Can I delete my account?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Yes. Settings → Privacy → Delete account. 24-hour grace period in case you change your mind. After that, every document and every parsed number is permanently wiped. We email you a deletion confirmation.</p>
+        </details>
+
+        <details id="q-data-rights" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">How do I file a data-rights request?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Settings → Support → category &ldquo;Data rights / grievance (DPDP)&rdquo;. Routes to our Grievance Officer. Statutory 30-day deadline under DPDP Act 2023 §13.</p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Sharing + family -->
+    <section id="family" class="scroll-mt">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-zinc-300">Sharing + family</h2>
+        <a href="#top" class="text-[11px] text-zinc-500 hover:text-zinc-300">↑ Top</a>
+      </div>
+      <div class="mt-4 divide-y divide-zinc-900 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+
+        <details id="q-share-ca" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Can I share my Tax Review with my own CA?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Yes — free, on every tier. Settings → Sharing → Invite a CA. They get an invite link to sign up and see a read-only view of your Tax Review and the documents you choose. You pick which Assessment Years they can see, and you can revoke access any time.</p>
+        </details>
+
+        <details id="q-spouse-sees" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">What does my spouse see in the family workspace?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">Only what they choose to share. By default a household view shows combined Expense and Portfolio (so you can see total spending and total investments at a glance). Their personal Tax Review and their Inbox documents stay private — visible only to them — unless they explicitly share back.</p>
+        </details>
+
+        <details id="q-joint" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Can my family file joint returns?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">India doesn't allow joint returns — every PAN files its own ITR. The household view is a planning lens: it spots things like &ldquo;you can claim your father's health insurance premium under your own 80D&rdquo; that you'd miss filing alone.</p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Comparisons -->
+    <section id="compare" class="scroll-mt">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-zinc-300">vs ClearTax / TaxBuddy / Quicko</h2>
+        <a href="#top" class="text-[11px] text-zinc-500 hover:text-zinc-300">↑ Top</a>
+      </div>
+      <div class="mt-4 divide-y divide-zinc-900 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+
+        <details id="q-cleartax-free" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Is ClearTax not free?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">ClearTax has a limited free ITR-1 path, but the paywall kicks in the moment you have capital gains, more than one house, or anything beyond a basic salary. We're upfront: upload is always free (200 MB), ₹249 once for the full Tax / Expense / Portfolio Review. Past-AY reviews are free for everyone.</p>
+        </details>
+
+        <details id="q-ai" class="group">
+          <summary class="flex items-start justify-between gap-4 p-5">
+            <span class="text-sm font-semibold text-zinc-100">Do you have an &ldquo;AI&rdquo; engine?</span>
+            <span class="chev mt-0.5 text-base leading-none text-zinc-500">›</span>
+          </summary>
+          <p class="px-5 pb-5 text-xs text-zinc-400">The tax math is plain rules from the Income Tax Act — no AI guessing, no black box. AI only shows up in the optional AI Q&amp;A (AI Self / Pro Family), and even there it answers only from your own confirmed documents and cites the source. It does not invent numbers or give general tax advice.</p>
+        </details>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Still stuck CTA -->
+<section id="stuck" class="border-t border-zinc-900 bg-zinc-900/30 scroll-mt">
+  <div class="mx-auto max-w-6xl px-5 py-12">
+    <h2 class="text-lg font-semibold tracking-tight">Didn't find your answer?</h2>
+    <p class="mt-2 text-xs text-zinc-400">Two paths, depending on what you need.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+
+      <div class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-amber-500/20 text-amber-300">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </span>
+          <p class="text-[10px] uppercase tracking-widest text-amber-300">Tax question</p>
+        </div>
+        <h3 class="mt-3 text-sm font-semibold text-zinc-100">Hire a verified CA</h3>
+        <p class="mt-1 text-xs text-zinc-400">Browse CAs by service — Consultation, ITR Filing, or Notice &amp; Defence. Each CA sets their own price; you pay them through Chitragupt and we keep 10% as the platform fee.</p>
+        <a href="../hire-ca/index.html" class="mt-4 inline-block rounded-md border border-amber-500/40 bg-amber-500/15 px-3 py-1.5 text-[11px] font-semibold text-amber-300 hover:bg-amber-500/25">Browse CAs →</a>
+      </div>
+
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-emerald-500/20 text-emerald-300">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Product question</p>
+        </div>
+        <h3 class="mt-3 text-sm font-semibold text-zinc-100">Raise a support ticket</h3>
+        <p class="mt-1 text-xs text-zinc-400">Bugs, account issues, billing, refunds, data-rights requests. We reply within 7 working days.</p>
+        <a href="../app/settings/settings-support.html" class="mt-4 inline-block rounded-md border border-emerald-500/40 bg-emerald-500/15 px-3 py-1.5 text-[11px] font-semibold text-emerald-300 hover:bg-emerald-500/25">Raise a ticket →</a>
+      </div>
+
+    </div>
+
+    <p class="mt-6 text-[11px] text-zinc-500">Looking for the policies? <a href="privacy.html" class="underline hover:text-zinc-300">Privacy</a> · <a href="terms.html" class="underline hover:text-zinc-300">Terms</a> · <a href="refund.html" class="underline hover:text-zinc-300">Refund</a> · <a href="grievance.html" class="underline hover:text-zinc-300">Grievance</a></p>
+  </div>
+</section>
+
+  </body>
+</html>

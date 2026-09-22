@@ -35,7 +35,7 @@
   <div class="phone">
     <div class="px-5 pt-14 pb-2 flex items-center gap-3">
       <button class="w-9 h-9 rounded-pill grid place-items-center bg-surface border border-line shadow-sm">
-        <i data-lucide="arrow-left" class="w-[18px] h-[18px]" style="color:var(--icon)"></i>
+        <i data-lucide="arrow-left" class="w-[18px] h-[18px] text-icon"></i>
       </button>
       <p class="text-h3 font-extrabold tracking-tight">How to play</p>
     </div>
@@ -44,32 +44,32 @@
       <div class="rounded-xl bg-surface border border-line shadow-sm p-4">
         <p class="text-body font-bold mb-1">Get three in a row</p>
         <p class="text-sm text-ink-3 mb-4">Across, down, or diagonally. X always goes first.</p>
-        <div class="board" style="max-width:200px">
-          <div class="cell cell--win" style="color:var(--mark-win);font-size:34px">X</div>
-          <div class="cell" style="color:var(--mark-o);font-size:34px">O</div>
-          <div class="cell" style="font-size:34px"></div>
-          <div class="cell" style="color:var(--mark-o);font-size:34px">O</div>
-          <div class="cell cell--win" style="color:var(--mark-win);font-size:34px">X</div>
-          <div class="cell" style="font-size:34px"></div>
-          <div class="cell" style="font-size:34px"></div>
-          <div class="cell" style="font-size:34px"></div>
-          <div class="cell cell--win" style="color:var(--mark-win);font-size:34px">X</div>
+        <div class="board max-w-[200px]">
+          <div class="cell cell--win text-mark-win text-h1">X</div>
+          <div class="cell text-mark-o text-h1">O</div>
+          <div class="cell text-h1"></div>
+          <div class="cell text-mark-o text-h1">O</div>
+          <div class="cell cell--win text-mark-win text-h1">X</div>
+          <div class="cell text-h1"></div>
+          <div class="cell text-h1"></div>
+          <div class="cell text-h1"></div>
+          <div class="cell cell--win text-mark-win text-h1">X</div>
         </div>
       </div>
 
       <p class="text-2xs font-bold tracking-label uppercase text-ink-3 pt-1">The three difficulties</p>
 
-      <div class="rounded-xl bg-surface border border-line shadow-sm divide-y" style="border-color:var(--border)">
+      <div class="rounded-xl bg-surface border border-line shadow-sm divide-y border-line">
         <div class="p-4 flex items-start gap-3">
-          <span class="w-2.5 h-2.5 rounded-pill mt-1.5" style="background:var(--diff-easy)"></span>
+          <span class="w-2.5 h-2.5 rounded-pill mt-1.5 bg-diff-easy"></span>
           <div><p class="text-body font-bold">Easy</p><p class="text-sm text-ink-3">Moves at random. Good for a five-year-old.</p></div>
         </div>
-        <div class="p-4 flex items-start gap-3" style="border-top:1px solid var(--border)">
-          <span class="w-2.5 h-2.5 rounded-pill mt-1.5" style="background:var(--diff-medium)"></span>
+        <div class="p-4 flex items-start gap-3 border-t border-line">
+          <span class="w-2.5 h-2.5 rounded-pill mt-1.5 bg-diff-medium"></span>
           <div><p class="text-body font-bold">Medium</p><p class="text-sm text-ink-3">Plays well most of the time, and slips often enough that you can win.</p></div>
         </div>
-        <div class="p-4 flex items-start gap-3" style="border-top:1px solid var(--border)">
-          <span class="w-2.5 h-2.5 rounded-pill mt-1.5" style="background:var(--diff-hard)"></span>
+        <div class="p-4 flex items-start gap-3 border-t border-line">
+          <span class="w-2.5 h-2.5 rounded-pill mt-1.5 bg-diff-hard"></span>
           <div><p class="text-body font-bold">Hard</p><p class="text-sm text-ink-3">Perfect play. <b class="text-ink">It cannot be beaten</b> — the best you can do is force a draw.</p></div>
         </div>
       </div>

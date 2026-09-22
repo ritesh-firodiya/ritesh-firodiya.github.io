@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Offline — Chitragupt mobile</title><script src="../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2"><div class="mx-auto flex max-w-4xl flex-wrap items-center gap-1.5 text-[11px]"><span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Mobile · /errors ›</span><a href="404.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">404</a><a href="500.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">500</a><a href="offline.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 font-semibold text-emerald-200">Offline</a><a href="maintenance.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Maintenance</a><a href="index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">← All</a></div></div>
+
+<div class="phone">
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-300"><span class="mono">9:41</span><div class="flex items-center gap-1.5"><span class="text-rose-300">No signal</span><svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg></div></div>
+
+  <main class="flex flex-col items-center px-8 pt-16 text-center">
+    <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-amber-500/15 text-amber-300"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l22 22"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+    <h1 class="mt-4 text-xl font-semibold tracking-tight">You're offline</h1>
+    <p class="mt-2 text-[13px] text-zinc-400">Tax engine needs network. Inbox uploads queue locally and sync when you're back.</p>
+
+    <section class="mt-6 w-full rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 text-left">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Available offline</p>
+      <ul class="mt-2 space-y-1.5 text-[12px] text-zinc-300">
+        <li class="flex items-start gap-2"><span class="text-emerald-300">✓</span>Browse cached Inbox docs (last view)</li>
+        <li class="flex items-start gap-2"><span class="text-emerald-300">✓</span>Read Tax Review (cached)</li>
+        <li class="flex items-start gap-2"><span class="text-emerald-300">✓</span>View settings &amp; audit log (cached)</li>
+        <li class="flex items-start gap-2"><span class="text-rose-300">×</span>Upload · Pay · Hire CA · Export</li>
+      </ul>
+    </section>
+
+    <button class="mt-5 inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-6 py-3 text-sm font-medium text-zinc-200"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Retry</button>
+
+    <p class="mt-4 text-[10.5px] text-zinc-500">2 uploads queued · will sync automatically</p>
+  </main>
+
+  <div class="absolute inset-x-0 bottom-2 flex items-center justify-center"><div class="h-1 w-32 rounded-full bg-zinc-700"></div></div>
+</div>
+
+</body></html>

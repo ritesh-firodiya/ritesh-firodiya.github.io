@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inbox · Free — Chitragupt mobile</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #0a0a0a; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; padding-bottom: 100px; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); overflow: hidden; } }
+    .tabbar { position: absolute; inset-inline: 0; bottom: 0; }
+  </style>
+</head>
+<body class="text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-4xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Mobile · <span class="text-zinc-300">/inbox</span> ›</span>
+    <a href="inbox.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Inbox</a>
+    <a href="inbox-flat.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Flat</a>
+    <a href="inbox-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Empty</a>
+    <a href="inbox-uploading.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Uploading</a>
+    <a href="../review/document.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Document</a>
+    <a href="../review/document-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Locked</a>
+    <a href="../review/document-failed.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Failed</a>
+    <a href="inbox-free.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Free</a>
+    <a href="../review/confirm-ais.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Confirm AIS</a>
+    <a href="../review/document-owner-mismatch.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Owner mismatch</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+<div class="phone">
+
+  <!-- Status bar -->
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-300">
+    <span class="mono">9:41</span>
+    <div class="flex items-center gap-1.5">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4"/><rect x="3.5" y="4" width="2" height="6"/><rect x="7" y="2" width="2" height="8"/><rect x="10.5" y="0" width="2" height="10"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+      <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <!-- App header -->
+  <div class="flex h-12 items-center justify-between px-3">
+    <a href="../drawer-open.html" aria-label="Menu" class="inline-flex h-10 w-10 items-center justify-center">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200">AS</span>
+    </a>
+    <div class="flex items-center gap-1.5">
+      <h1 class="text-base font-semibold">Inbox</h1>
+      <span class="rounded-full border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-widest text-zinc-400">Free</span>
+    </div>
+    <a href="../../patterns/upload-modal.html" aria-label="Upload" class="inline-flex h-10 w-10 items-center justify-center text-zinc-400">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    </a>
+  </div>
+
+  <main class="px-4 pt-2">
+
+    <!-- Status chips -->
+    <div class="-mx-4 overflow-x-auto px-4">
+      <div class="flex items-center gap-1.5 whitespace-nowrap">
+        <button class="rounded-full border border-emerald-500/50 bg-emerald-500/15 px-2.5 py-1 text-[11px] font-medium text-emerald-200">All <span class="text-emerald-300/70">3</span></button>
+        <button class="rounded-full border border-amber-500/40 bg-amber-500/5 px-2.5 py-1 text-[11px] text-amber-200">Needs parsing <span class="text-amber-300">3</span></button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-300">Uploaded <span class="text-zinc-400">3</span></button>
+      </div>
+    </div>
+
+    <!-- Upgrade banner -->
+    <section class="mt-3 rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 via-zinc-900/40 to-zinc-900/40 p-4">
+      <div class="flex items-start gap-2.5">
+        <span class="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <div class="min-w-0 flex-1">
+          <p class="text-[13px] font-semibold text-emerald-100">Parsing is one tap away</p>
+          <p class="mt-1 text-[12px] leading-snug text-emerald-100/75">Upload free, parsed on upgrade. 200 MB storage. Past-AY reviews always free.</p>
+        </div>
+      </div>
+      <div class="mt-3 space-y-2">
+        <a href="../../payment/upgrade.html" class="block w-full rounded-xl bg-emerald-500 px-3 py-2.5 text-center text-[13px] font-semibold text-zinc-950 hover:bg-emerald-400">
+          Unlock for ₹249 →
+        </a>
+        <a href="../../payment/upgrade.html" class="block w-full rounded-xl border border-purple-500/40 bg-purple-500/10 px-3 py-2.5 text-center text-[13px] font-medium text-purple-200 hover:bg-purple-500/20">
+          Or unlock AI Q&amp;A too — ₹499 →
+        </a>
+        <p class="text-center text-[10.5px] text-zinc-500">One-time per AY · refundable 14 days</p>
+      </div>
+    </section>
+
+    <!-- Document list -->
+    <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden">
+      <div class="border-b border-zinc-800 px-4 py-2.5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">3 documents · parses on upgrade</p>
+      </div>
+      <ul class="divide-y divide-zinc-900">
+
+        <!-- Form 16 -->
+        <li>
+          <a href="#" class="flex items-center gap-3 px-4 py-3">
+            <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-[10px] font-semibold text-zinc-400">F16</span>
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-[12.5px] font-medium text-zinc-100">Form 16</p>
+              <p class="truncate text-[10.5px] text-zinc-500">Manifest Technologies · 2026</p>
+            </div>
+            <span class="shrink-0 inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[9px] text-amber-300">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Parses on upgrade
+            </span>
+          </a>
+        </li>
+
+        <!-- 26AS -->
+        <li>
+          <a href="#" class="flex items-center gap-3 px-4 py-3">
+            <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-[10px] font-semibold text-zinc-400">26AS</span>
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-[12.5px] font-medium text-zinc-100">Form 26AS</p>
+              <p class="truncate text-[10.5px] text-zinc-500">IT Dept · AY 2026-27</p>
+            </div>
+            <span class="shrink-0 inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[9px] text-amber-300">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Parses on upgrade
+            </span>
+          </a>
+        </li>
+
+        <!-- Bank statement -->
+        <li>
+          <a href="#" class="flex items-center gap-3 px-4 py-3">
+            <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-[10px] font-semibold text-zinc-400">$</span>
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-[12.5px] font-medium text-zinc-100">Bank Statement</p>
+              <p class="truncate text-[10.5px] text-zinc-500">HDFC · Jan–Mar 2026</p>
+            </div>
+            <span class="shrink-0 inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[9px] text-amber-300">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Parses on upgrade
+            </span>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Storage meter -->
+    <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <div class="flex items-baseline justify-between text-[11px]">
+        <span class="text-zinc-400">Storage used</span>
+        <span class="mono text-zinc-200">42 MB <span class="text-zinc-500">/ 200 MB</span></span>
+      </div>
+      <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+        <div class="h-full rounded-full bg-emerald-500/60" style="width: 21%"></div>
+      </div>
+      <p class="mt-1.5 text-[10px] text-zinc-500">Upgrade to Self ₹249 for 5 GB and parsing.</p>
+    </section>
+
+    <!-- Inbox is free strip -->
+    <section class="mt-3 mb-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-emerald-300">Inbox is free — forever</p>
+      <p class="mt-1.5 text-[12.5px] text-zinc-200">Upload free, parsed on upgrade. 200 MB storage. Past-AY reviews always free.</p>
+    </section>
+
+  </main>
+
+  <!-- Upload FAB -->
+  <a href="../../patterns/upload-modal.html" data-upload-modal class="absolute right-4 z-30 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-zinc-950 shadow-lg shadow-emerald-500/30" style="bottom: 92px" aria-label="Upload">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+  </a>
+
+  <!-- Tab bar -->
+  <nav class="tabbar border-t border-zinc-800 bg-zinc-950/95 backdrop-blur">
+    <div class="flex items-end">
+      <a href="inbox.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-emerald-300">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span class="text-[10px] font-medium">Inbox</span>
+      </a>
+      <a href="../tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+        <span class="text-[10px] font-medium">Tax</span>
+      </a>
+      <a href="../dashboard.html" class="flex flex-1 flex-col items-center pb-1.5">
+        <span class="-mt-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-zinc-950 shadow-lg shadow-emerald-500/40 ring-4 ring-zinc-950">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        <span class="mt-1 text-[10px] font-semibold text-emerald-300">Home</span>
+      </a>
+      <a href="../expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg>
+        <span class="text-[10px] font-medium">Expense</span>
+      </a>
+      <a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span class="text-[10px] font-medium">Portfolio</span>
+      </a>
+    </div>
+    <div class="flex items-center justify-center pb-2 pt-1">
+      <div class="h-1 w-32 rounded-full bg-zinc-700"></div>
+    </div>
+  </nav>
+
+</div>
+
+</body>
+</html>

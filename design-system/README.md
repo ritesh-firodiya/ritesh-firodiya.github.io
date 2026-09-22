@@ -7,7 +7,7 @@ failure. Published at [/design](https://ritesh-firodiya.github.io/design/).
 
 There were eleven independent token systems in `~/git`, all built to the same
 convention and sharing zero code. The convention was already written down in
-`~/git/apps/CLAUDE.md` — role-named colours, a `var(--token)`-only Tailwind
+`~/git/products/CLAUDE.md` — role-named colours, a `var(--token)`-only Tailwind
 config, `shared.css` holding the values, one HTML file per screen — and nothing
 enforced it, so four of the nine app sets drifted and two never had a token
 layer at all.

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Expense · empty — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace;font-variant-numeric:tabular-nums}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}.tabbar{position:absolute;inset-inline:0;bottom:0}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="expense" data-chrome-title="Expense" data-chrome-section="/expense" data-chrome-routes="Empty|expense-empty.html|1;Locked|expense.html;Unlocked|expense-review.html;Transactions|expense-transactions.html;Family|expense-family.html;Family locked|expense-family-locked.html;Categorise|expense-categorise-modal.html;" data-chrome-notif-badge="3">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 space-y-3">
+
+  <!-- Range selector -->
+  <div class="flex items-center justify-between">
+    <span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[9px] uppercase tracking-widest text-emerald-200">Paid · empty</span>
+  </div>
+
+  <!-- Status banner -->
+  <div class="flex items-start gap-2 rounded-md border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-[11px] text-zinc-400">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Unlocked · drop a statement to fill the dashboard.</span>
+  </div>
+
+  <!-- Drop-zone CTA -->
+  <section class="rounded-2xl border-2 border-dashed border-emerald-500/40 bg-emerald-500/5 p-5 text-center">
+    <div class="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+    <h2 class="mt-3 text-base font-semibold text-zinc-100">Drop a bank statement</h2>
+    <p class="mt-1 text-[11.5px] text-zinc-400">PDF / CSV / XLSX · 5+ banks supported · 12 months recommended</p>
+    <a href="../../patterns/upload-modal.html" data-upload-modal class="mt-4 block rounded-xl bg-emerald-500 px-4 py-2.5 text-[13px] font-semibold text-zinc-950">Choose a file</a>
+    <a href="../inbox/inbox.html" class="mt-2 block text-[11px] text-emerald-300 underline">Or open Inbox →</a>
+  </section>
+
+  <!-- Empty KPI strip · 2×2 -->
+  <section class="grid grid-cols-2 gap-2">
+    <div class="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-zinc-500">Income</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-zinc-700">—</p>
+    </div>
+    <div class="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-zinc-500">Expense</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-zinc-700">—</p>
+    </div>
+    <div class="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-zinc-500">Invested</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-zinc-700">—</p>
+    </div>
+    <div class="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-zinc-500">Saving</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-zinc-700">—</p>
+    </div>
+  </section>
+
+  <!-- Empty cashflow chart -->
+  <section class="rounded-2xl border border-dashed border-zinc-800 bg-zinc-900/30 p-3">
+    <div class="flex items-baseline justify-between">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Cashflow · 12m</p>
+      <p class="text-[10px] text-zinc-600">No statements yet</p>
+    </div>
+    <svg viewBox="0 0 360 160" class="mt-2 w-full">
+      <g stroke="#27272a" stroke-width="1">
+        <line x1="0" y1="30" x2="360" y2="30"/>
+        <line x1="0" y1="75" x2="360" y2="75"/>
+        <line x1="0" y1="120" x2="360" y2="120"/>
+        <line x1="0" y1="140" x2="360" y2="140"/>
+      </g>
+      <text x="180" y="80" text-anchor="middle" fill="#52525b" font-size="10">Awaiting first statement</text>
+      <g fill="#52525b" font-size="7">
+        <text x="11"  y="155">A</text><text x="39"  y="155">M</text><text x="67"  y="155">J</text>
+        <text x="95"  y="155">J</text><text x="123" y="155">A</text><text x="151" y="155">S</text>
+        <text x="179" y="155">O</text><text x="207" y="155">N</text><text x="235" y="155">D</text>
+        <text x="263" y="155">J</text><text x="291" y="155">F</text><text x="319" y="155">M</text>
+      </g>
+    </svg>
+    <p class="mt-1 text-[10px] text-zinc-500">12 months recommended · 3 minimum.</p>
+  </section>
+
+  <!-- What unlocks here -->
+  <section class="mb-4 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">What you'll see · after first statement</p>
+    <ul class="mt-2 space-y-1.5 text-[12px] text-zinc-300">
+      <li class="flex items-start gap-2"><span class="text-emerald-300">·</span>Income / Expense / Invested / Saving KPIs</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-300">·</span>12-month cashflow + drew-from-balance markers (big-invest months)</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-300">·</span>Where money went donut · category breakdown</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-300">·</span>Largest single outflows</li>
+      <li class="flex items-start gap-2"><span class="text-emerald-300">·</span>Methodology + per-account coverage</li>
+    </ul>
+  </section>
+
+</main>
+
+<div data-chrome-slot="tab"></div>
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

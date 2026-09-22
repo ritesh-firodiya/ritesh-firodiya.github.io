@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CA · my profile</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/ca</span> ›</span>
+      <a href="portal-clients.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Clients (portal)</a>
+      <a href="client-drill-in.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Client drill-in</a>
+      <a href="client-drill-in-closed.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Client drill-in (closed)</a>
+      <a href="profile.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">CA profile</a>
+      <a href="settings-pricing.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Pricing settings</a>
+      <a href="earnings.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Earnings</a>
+      <a href="disputes.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Disputes</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+      <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+        <div class="flex items-center gap-6">
+          <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+          <nav class="hidden gap-5 text-xs md:flex">
+            <a href="portal-clients.html" class="text-zinc-400 hover:text-zinc-100">My clients</a>
+            
+            <a href="profile.html" class="text-zinc-100">My profile</a>
+            <a href="settings-pricing.html" class="text-zinc-400 hover:text-zinc-100">Pricing &amp; availability</a>
+            <a href="earnings.html" class="text-zinc-400 hover:text-zinc-100">Earnings</a>
+            <a href="disputes.html" class="text-zinc-400 hover:text-zinc-100">Disputes</a>
+            <a href="../app/inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox (mine)</a>
+            <a href="../app/tax/tax-locked.html" class="text-zinc-400 hover:text-zinc-100">Tax (mine)</a>
+          </nav>
+        </div>
+        <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-amber-300">Anil Sahu · CA</strong></p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-5 py-8">
+
+      <p class="text-[10px] uppercase tracking-widest text-amber-300">CA portal · my profile</p>
+      <div class="mt-1 flex flex-wrap items-baseline justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight">Your public profile</h1>
+          <p class="text-xs text-zinc-500">This is exactly what clients see in the tier picker. Edit on the left · preview on the right.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="rounded-md border border-zinc-800 px-3 py-1.5 text-[12px] text-zinc-400 hover:text-zinc-100">Discard</button>
+          <button class="rounded-md bg-amber-500 px-4 py-1.5 text-[12px] font-semibold text-zinc-950 hover:bg-amber-400">Save changes</button>
+        </div>
+      </div>
+
+      <div class="mt-7 grid gap-6 md:grid-cols-[1.1fr_1fr]">
+
+        <!-- editor -->
+        <section class="space-y-5">
+
+          <!-- photo + display name -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Photo &amp; display name</p>
+            <div class="mt-3 flex items-center gap-4">
+              <div class="relative">
+                <span class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-amber-500/20 text-2xl font-semibold text-amber-300">AS</span>
+                <button class="absolute -bottom-1 -right-1 rounded-full border border-zinc-800 bg-zinc-950 px-2 py-0.5 text-[10px] text-amber-300">Change</button>
+              </div>
+              <div class="flex-1 space-y-3">
+                <label class="block">
+                  <span class="text-[11px] uppercase tracking-widest text-zinc-500">Display name</span>
+                  <input type="text" value="Anil Sahu, CA · 12+ years" class="mt-1 w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-amber-500 focus:outline-none" />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- bio -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <div class="flex items-center justify-between">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Short bio</p>
+              <span class="mono text-[10px] text-zinc-500">118 / 140</span>
+            </div>
+            <textarea rows="2" maxlength="140" class="mt-2 w-full resize-none rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-amber-500 focus:outline-none">12 years filing salaried + capital-gains returns for Mumbai professionals. Specialist in §143(2) audit defence.</textarea>
+            <p class="mt-1 text-[10px] text-zinc-500">Lead with your strongest specialisation — it influences match routing.</p>
+          </div>
+
+          <!-- languages -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Languages</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="rounded-full border border-amber-500 bg-amber-500/15 px-3 py-1 text-[11px] text-amber-300">English ✓</span>
+              <span class="rounded-full border border-amber-500 bg-amber-500/15 px-3 py-1 text-[11px] text-amber-300">Hindi ✓</span>
+              <span class="rounded-full border border-amber-500 bg-amber-500/15 px-3 py-1 text-[11px] text-amber-300">Marathi ✓</span>
+              <button class="rounded-full border border-zinc-800 px-3 py-1 text-[11px] text-zinc-400 hover:text-zinc-100">＋ Gujarati</button>
+              <button class="rounded-full border border-zinc-800 px-3 py-1 text-[11px] text-zinc-400 hover:text-zinc-100">＋ Tamil</button>
+              <button class="rounded-full border border-zinc-800 px-3 py-1 text-[11px] text-zinc-400 hover:text-zinc-100">＋ Kannada</button>
+            </div>
+          </div>
+
+          <!-- specializations -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Specialisations</p>
+            <p class="mt-1 text-[11px] text-zinc-500">Chips below are locked to what you declared during KYC. To change, contact CA support.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="rounded-full bg-amber-500/15 px-3 py-1 text-[11px] text-amber-300">Salaried</span>
+              <span class="rounded-full bg-amber-500/15 px-3 py-1 text-[11px] text-amber-300">Capital gains</span>
+              <span class="rounded-full bg-amber-500/15 px-3 py-1 text-[11px] text-amber-300">Notice &amp; Defence</span>
+            </div>
+          </div>
+
+          <!-- credentials -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <div class="flex items-center justify-between">
+              <p class="text-[10px] uppercase tracking-widest text-zinc-500">Credentials gallery</p>
+              <button class="rounded-md border border-zinc-800 px-2.5 py-1 text-[11px] text-amber-300">＋ Add credential</button>
+            </div>
+            <div class="mt-3 grid gap-3 md:grid-cols-3">
+              <div class="rounded-md border border-emerald-500/30 bg-zinc-950 p-3">
+                <p class="text-[10px] uppercase tracking-widest text-emerald-300">ICAI verified</p>
+                <p class="mt-1 text-[12px] text-zinc-100">Certificate of Practice</p>
+                <p class="mono text-[10px] text-zinc-500">COP 087412 · since 2014</p>
+              </div>
+              <div class="rounded-md border border-zinc-800 bg-zinc-950 p-3">
+                <p class="text-[10px] uppercase tracking-widest text-zinc-500">Firm</p>
+                <p class="mt-1 text-[12px] text-zinc-100">Sahu &amp; Associates</p>
+                <p class="text-[10px] text-zinc-500">Founding partner · Mumbai</p>
+              </div>
+              <div class="rounded-md border border-zinc-800 bg-zinc-950 p-3">
+                <p class="text-[10px] uppercase tracking-widest text-zinc-500">Award</p>
+                <p class="mt-1 text-[12px] text-zinc-100">Western India CA of the Year</p>
+                <p class="text-[10px] text-zinc-500">WIRC, 2022</p>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- live preview -->
+        <aside class="md:sticky md:top-20 md:self-start">
+          <p class="text-[10px] uppercase tracking-widest text-amber-300">Live preview</p>
+          <p class="mt-1 text-xs text-zinc-500">How users see you in <span class="mono text-zinc-400">/hire-ca/</span> &amp; <span class="mono text-zinc-400">/hire-ca/anil-sahu-a82f</span></p>
+
+          <div class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-amber-500/20 text-base font-semibold text-amber-300">AS</span>
+              <div class="flex-1">
+                <div class="flex items-center gap-2">
+                  <p class="text-sm font-semibold text-zinc-100">Anil Sahu, CA</p>
+                  <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] text-emerald-300">ICAI verified</span>
+                </div>
+                <p class="text-[11px] text-zinc-500">12+ years · Mumbai</p>
+                <div class="mt-1 flex items-center gap-1 text-[11px]">
+                  <span class="text-amber-300">★ 4.9</span>
+                  <span class="text-zinc-500">· 247 engagements</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-4 text-[12px] text-zinc-300">12 years filing salaried + capital-gains returns for Mumbai professionals. Specialist in §143(2) audit defence.</p>
+
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              <span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">Salaried</span>
+              <span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">Capital gains</span>
+              <span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">Notice &amp; Defence</span>
+            </div>
+
+            <div class="mt-4 grid gap-1.5 text-[11px] text-zinc-400">
+              <p>EN · HI · MR</p>
+              <p>Responds within priority routing band</p>
+            </div>
+
+            <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Pricing by ITR form &middot; <a href="settings-pricing.html" class="text-amber-300 underline">edit matrix →</a></p>
+            <div class="mt-2 space-y-1.5 text-[10px]">
+              <div class="flex items-center justify-between rounded-md border border-emerald-500/20 bg-emerald-500/5 px-2 py-1.5">
+                <span class="font-semibold text-emerald-300">ITR-1</span>
+                <span class="mono text-zinc-300">₹249 / <strong class="text-amber-300">₹599</strong> / ₹1,499</span>
+              </div>
+              <div class="flex items-center justify-between rounded-md border border-zinc-800 bg-zinc-950 px-2 py-1.5">
+                <span class="font-semibold text-zinc-200">ITR-2</span>
+                <span class="mono text-zinc-300">₹299 / <strong class="text-amber-300">₹999</strong> / ₹1,999</span>
+              </div>
+              <div class="flex items-center justify-between rounded-md border border-zinc-800 bg-zinc-950 px-2 py-1.5">
+                <span class="font-semibold text-zinc-200">ITR-4</span>
+                <span class="mono text-zinc-300">₹399 / <strong class="text-amber-300">₹1,499</strong> / ₹2,999</span>
+              </div>
+              <p class="mt-1.5 text-[9px] text-zinc-500">Consult / <strong class="text-amber-300">File</strong> / Notice &amp; Defence · ITR-3 off · ITR-5/6/7 not yet on Chitragupt</p>
+            </div>
+
+            <button class="mt-4 w-full rounded-md bg-amber-500 px-3 py-2 text-[12px] font-semibold text-zinc-950">Choose Anil</button>
+          </div>
+
+          <p class="mt-3 text-[10px] text-zinc-500">Preview reflects unsaved edits.</p>
+        </aside>
+
+      </div>
+
+    </main>
+  </body>
+</html>

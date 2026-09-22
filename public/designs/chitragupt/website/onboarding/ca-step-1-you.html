@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CA onboarding — step 1 · You</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/onboarding</span> ›</span>
+      <a href="step-1-consent.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">User · 1 Account</a>
+      <a href="step-2-plan.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">User · 2 Plan</a>
+      <a href="ca-dpdp-consent.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · 1 Consent</a>
+      <a href="ca-step-1-you.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">CA · 2 You</a>
+      <a href="ca-step-2-business.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · 3 Business</a>
+      <a href="ca-pending.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · Pending</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-amber-500 text-zinc-950">₹</span>Chitragupt · CA panel</a>
+    <p class="text-[11px] text-zinc-500">Step <strong class="text-zinc-200">1</strong> of 3</p>
+  </div>
+</header>
+
+<main class="mx-auto max-w-3xl px-5 py-8">
+  <h1 class="text-2xl font-semibold tracking-tight">Tell us who you are</h1>
+  <p class="mt-2 max-w-2xl text-sm text-zinc-400">
+    Name, phone, government IDs, and your ICAI Certificate of Practice. We verify ICAI membership against the public register before manual review.
+  </p>
+
+  <!-- Step strip -->
+  <div class="mt-6 flex items-center gap-2 text-[11px] text-zinc-500">
+    <span class="rounded-full bg-amber-500/20 px-2 py-0.5 text-amber-300">1 · You</span>
+    <span class="h-px flex-1 bg-zinc-800"></span>
+    <span class="rounded-full bg-zinc-900 px-2 py-0.5">2 · Business</span>
+    <span class="h-px flex-1 bg-zinc-800"></span>
+    <span class="rounded-full bg-zinc-900 px-2 py-0.5">3 · Pricing</span>
+  </div>
+
+  <!-- Identity -->
+  <section class="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
+    <p class="text-[10px] uppercase tracking-widest text-amber-300">Identity · pre-filled from your application</p>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">Full name (as on ICAI register) <span class="text-red-300">*</span></span>
+        <input type="text" value="Anil Sahu" class="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-amber-500 focus:outline-none"/>
+      </label>
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">Work email <span class="text-zinc-600">· locked</span></span>
+        <input type="email" value="anil@sahuandassociates.in" disabled class="rounded border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-zinc-500"/>
+      </label>
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">Phone (WhatsApp-enabled)</span>
+        <input type="tel" value="+91 98xxxxxxxx" class="mono rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-amber-500 focus:outline-none"/>
+      </label>
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">ICAI Membership Number <span class="text-red-300">*</span></span>
+        <input type="text" value="123456" maxlength="6" class="mono rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-amber-500 focus:outline-none"/>
+        <span class="text-[10px] text-zinc-500">Verified against the public ICAI register.</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- KYC uploads -->
+  <section class="mt-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
+    <p class="text-[10px] uppercase tracking-widest text-amber-300">KYC documents <span class="text-red-300">*</span></p>
+    <p class="mt-1 text-[11px] text-zinc-500">Our OCR extracts the details — you confirm before submit. Encrypted at rest, never shared with clients.</p>
+
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+
+      <!-- PAN -->
+      <div class="rounded-xl border border-emerald-500/40 bg-zinc-900/40 p-4">
+        <div class="flex items-center justify-between">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">PAN card</p>
+          <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] text-emerald-300">verified</span>
+        </div>
+        <div class="mt-3 flex h-24 items-center justify-center rounded-md border border-dashed border-zinc-800 bg-zinc-950">
+          <span class="mono text-[10px] text-zinc-500">pan_anil_sahu.jpg · 412 KB</span>
+        </div>
+        <p class="mt-2 mono text-[10px] text-zinc-400">AABPS1234C · ANIL SAHU</p>
+        <div class="mt-2 flex gap-2">
+          <button class="flex-1 rounded bg-emerald-500/15 px-2 py-1 text-[10px] text-emerald-300">Confirm</button>
+          <button class="rounded border border-zinc-800 px-2 py-1 text-[10px] text-zinc-400">Redo</button>
+        </div>
+      </div>
+
+      <!-- Aadhaar -->
+      <div class="rounded-xl border border-amber-500/40 bg-zinc-900/40 p-4">
+        <div class="flex items-center justify-between">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Aadhaar</p>
+          <span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">extracting</span>
+        </div>
+        <div class="mt-3 flex h-24 items-center justify-center rounded-md border border-dashed border-amber-500/40 bg-zinc-950">
+          <span class="mono text-[10px] text-amber-300">aadhaar.pdf · uploaded</span>
+        </div>
+        <p class="mt-2 mono text-[10px] text-zinc-400">xxxx-xxxx-2945</p>
+        <p class="mt-1 text-[10px] text-zinc-500">Last-4 stored. Used for identity match only.</p>
+      </div>
+
+      <!-- ICAI COP -->
+      <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+        <div class="flex items-center justify-between">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">ICAI Certificate of Practice</p>
+          <span class="rounded bg-zinc-800 px-2 py-0.5 text-[10px] text-zinc-400">required</span>
+        </div>
+        <label class="mt-3 flex h-24 cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-zinc-800 bg-zinc-950 text-[10px] text-zinc-500 hover:border-amber-500 hover:text-amber-300">
+          <span class="text-xl leading-none">＋</span>
+          <span class="mt-1">Drop COP scan</span>
+        </label>
+        <p class="mt-1 text-[10px] text-zinc-500">PDF / JPG · COP number cross-checked with ICAI.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <p class="mt-5 text-[11px] text-zinc-500">All documents are encrypted at rest. KYC scans are never shared with clients — only the verification status is shown on your public profile.</p>
+
+  <div class="mt-8 flex items-center justify-between">
+    <a href="ca-dpdp-consent.html" class="text-sm text-zinc-400 hover:text-zinc-200">← Back to consent</a>
+    <a href="ca-step-2-business.html" class="rounded-md bg-amber-500 px-5 py-2 text-sm font-semibold text-zinc-950 hover:bg-amber-400">Next · business →</a>
+  </div>
+</main>
+  </body>
+</html>

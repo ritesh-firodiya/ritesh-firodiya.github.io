@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment received · finalizing your unlock</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>
+      body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+      @keyframes spin-slow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+      .spin-slow{animation:spin-slow 1.8s linear infinite}
+    </style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/payment</span> ›</span>
+      <a href="upgrade.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Upgrade</a>
+      <a href="paywall-modal.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Paywall (modal)</a>
+      <a href="razorpay-checkout.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Razorpay checkout</a>
+      <a href="payment-success.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Success</a>
+      <a href="payment-failed.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Failed</a>
+      <a href="payment-stuck.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Stuck</a>
+      <a href="upgrade-success.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Upgrade success</a>
+      <a href="refund-request.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refund request</a>
+      <a href="refund-success.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refund success</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+      <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+        <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+        <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-2xl px-5 py-16 text-center">
+      <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-amber-500/20">
+        <svg class="spin-slow text-amber-300" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12a9 9 0 1 1-3.51-7.13"/>
+          <polyline points="21 4 21 10 15 10"/>
+        </svg>
+      </div>
+      <h1 class="mt-6 text-3xl font-semibold tracking-tight">Payment received · finalizing your unlock</h1>
+      <p class="mt-3 text-sm text-zinc-400">
+        Razorpay confirmed your payment of <strong class="text-zinc-100">₹249</strong>. We're waiting for the confirmation to reach Chitragupt servers — this page refreshes itself.
+      </p>
+
+      <!-- Status line -->
+      <div class="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3 text-left text-xs">
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">Status</p>
+        <p class="mt-1 text-zinc-200">Payment id <span class="mono text-zinc-100">pay_N7gFqL3qQ9sHrs</span> confirmed at <strong class="text-zinc-100">HDFC</strong> · webhook delivery to Chitragupt pending.</p>
+      </div>
+
+      <!-- Timeline -->
+      <ol class="mt-6 space-y-3 text-left text-sm">
+        <li class="flex items-center gap-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 px-4 py-3">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-[11px] font-bold text-zinc-950">✓</span>
+          <span class="flex-1 text-zinc-200">Razorpay charged ₹249</span>
+          <span class="mono text-[10px] text-zinc-500">21:18:42</span>
+        </li>
+        <li class="flex items-center gap-3 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-[11px] font-bold text-zinc-950">…</span>
+          <div class="flex-1">
+            <p class="text-zinc-100">Waiting for confirmation from Chitragupt servers</p>
+            <p class="text-[10px] text-amber-300">Webhook handler will retry automatically</p>
+          </div>
+          <span class="mono text-[10px] text-amber-300">in progress</span>
+        </li>
+        <li class="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 opacity-60">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full border border-zinc-700 text-[11px] text-zinc-500">🔒</span>
+          <span class="flex-1 text-zinc-400">Tax Review will unlock as soon as we hear back</span>
+        </li>
+      </ol>
+
+      <!-- Reassurances -->
+      <section class="mt-6 grid gap-3 sm:grid-cols-3 text-left">
+        <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Money is safe</p>
+          <p class="mt-1.5 text-[11px] text-zinc-300">Razorpay holds escrow until the unlock is confirmed.</p>
+        </div>
+        <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Ops notified</p>
+          <p class="mt-1.5 text-[11px] text-zinc-300">Our team can reconcile manually if the retry fails.</p>
+        </div>
+        <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Full refund · if it fails</p>
+          <p class="mt-1.5 text-[11px] text-zinc-300">If we can't unlock, the full ₹249 goes back to your source.</p>
+        </div>
+      </section>
+
+      <!-- While you wait -->
+      <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 text-left">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">While you wait</p>
+        <ul class="mt-2 space-y-1.5 text-[11px] text-zinc-300">
+          <li>→ <a href="../app/inbox/inbox-populated.html" class="text-emerald-300 underline hover:text-emerald-200">Go back to Inbox</a> — upload anything else you'd like analyzed</li>
+          <li>→ <a href="mailto:support@chitragupt.ai" class="text-emerald-300 underline hover:text-emerald-200">Email support</a> if this hangs longer than expected</li>
+          <li>→ <a href="#" class="text-emerald-300 underline hover:text-emerald-200">Check our status page</a> for current incidents</li>
+        </ul>
+      </section>
+
+      <p class="mt-6 text-[11px] text-zinc-500">This page refreshes itself. You can also safely close it — we'll email you the moment your Tax Review is unlocked.</p>
+
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <a href="../app/inbox/inbox-populated.html" class="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-zinc-100 hover:bg-zinc-800">Back to Inbox</a>
+        <a href="mailto:support@chitragupt.ai" class="rounded-md border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-200 hover:bg-amber-500/20">Contact support</a>
+      </div>
+    </main>
+
+    <button type="button" class="fixed bottom-6 right-6 z-30 flex items-center gap-2 rounded-full bg-amber-500 px-4 py-2.5 text-sm font-semibold text-zinc-950 shadow-lg shadow-amber-500/40 hover:bg-amber-400">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Ask CA
+    </button>
+  </body>
+</html>

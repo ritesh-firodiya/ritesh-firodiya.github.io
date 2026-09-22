@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin · Parser failures</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/admin</span> ›</span>
+    <a href="dashboard.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Overview</a>
+    <a href="users.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Users</a>
+    <a href="ca-applications.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA applications</a>
+    <a href="parser-failures.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Parser failures</a>
+    <a href="payment-reconciliation.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payment recon</a>
+    <a href="refunds.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refunds</a>
+    <a href="disputes.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Disputes</a>
+    <a href="grievances.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Grievances</a>
+    <a href="payouts.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payouts</a>
+    <a href="support-tickets.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Support</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="parser-failures.html" class="text-zinc-100">Parser</a>
+        <a href="payment-reconciliation.html" class="text-zinc-400 hover:text-zinc-100">Payments</a>
+        <a href="ca-applications.html" class="text-zinc-400 hover:text-zinc-100">CA apps</a>
+        <a href="disputes.html" class="text-zinc-400 hover:text-zinc-100">Disputes</a>
+        <a href="support-tickets.html" class="text-zinc-400 hover:text-zinc-100">Tickets</a>
+      </nav>
+    </div>
+    <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-rose-300">Ritesh · admin</strong></p>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-5 py-8">
+
+  <a href="dashboard.html" class="text-xs text-zinc-500 hover:text-zinc-300">← Dashboard</a>
+
+  <div class="mt-2 flex flex-wrap items-baseline justify-between gap-3">
+    <div>
+      <p class="text-[10px] uppercase tracking-widest text-amber-300">Parser triage</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Documents that failed to parse</h1>
+    </div>
+    <div class="flex items-center gap-2 text-[11px]">
+      <span class="rounded bg-amber-500/20 px-2 py-0.5 text-amber-200">14 awaiting triage</span>
+      <span class="rounded bg-rose-500/20 px-2 py-0.5 text-rose-200">3 blocking Tax Review</span>
+    </div>
+  </div>
+
+  <section class="mt-6 grid gap-3 md:grid-cols-4">
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Auto-parse success · 7d</p>
+      <p class="mono mt-2 text-2xl font-semibold text-emerald-300">94.2%</p>
+      <p class="mt-1 text-[11px] text-zinc-500">target 96% · -1.8pp WoW</p>
+    </div>
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Avg OCR confidence</p>
+      <p class="mono mt-2 text-2xl font-semibold text-zinc-100">0.81</p>
+      <p class="mt-1 text-[11px] text-zinc-500">threshold 0.60 · 24 below</p>
+    </div>
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Manual-parse cost · 7d</p>
+      <p class="mono mt-2 text-2xl font-semibold text-zinc-100">₹2,840</p>
+      <p class="mt-1 text-[11px] text-zinc-500">19 docs × ~₹150 ops time</p>
+    </div>
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Top failure type</p>
+      <p class="mt-2 text-sm font-semibold text-zinc-100">Locked PDF (password)</p>
+      <p class="mt-1 text-[11px] text-zinc-500">9 / 14 · most are 26AS / AIS</p>
+    </div>
+  </section>
+
+  <div class="mt-7 flex flex-wrap items-center gap-2 border-b border-zinc-900 pb-3 text-[11px]">
+    <button class="rounded bg-zinc-900 px-3 py-1.5 text-zinc-100">All (14)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Blocking Tax Review (3)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Locked PDF (9)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Low OCR confidence (4)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Schema mismatch (1)</button>
+    <span class="ml-auto text-zinc-500">Sort: oldest first</span>
+  </div>
+
+  <section class="mt-3 overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-zinc-800 text-[11px] text-zinc-500">
+          <th class="px-3 py-2"><input type="checkbox" class="h-4 w-4 accent-amber-500"/></th>
+          <th class="px-4 py-2 text-left font-normal">Document</th>
+          <th class="px-4 py-2 text-left font-normal">User · context</th>
+          <th class="px-4 py-2 text-left font-normal">Error</th>
+          <th class="px-4 py-2 text-left font-normal">OCR</th>
+          <th class="px-4 py-2 text-left font-normal">Age</th>
+          <th class="px-4 py-2 text-left font-normal">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-zinc-900 text-[12px]">
+
+        <tr class="bg-rose-500/5">
+          <td class="px-3 py-3"><input type="checkbox" class="h-4 w-4 accent-amber-500"/></td>
+          <td class="px-4 py-3">
+            <p class="font-medium text-zinc-100">26as-ay2627.pdf</p>
+            <p class="text-[10px] text-zinc-500">Form 26AS · 3.2 MB · OS-detected: scanned PDF</p>
+          </td>
+          <td class="px-4 py-3">
+            <p class="text-zinc-200">Priya Iyer</p>
+            <p class="text-[10px] text-zinc-500">paid · blocks Tax Review · AY 26-27</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10px] text-rose-200">Locked PDF · password required</span>
+            <p class="mt-1 text-[10px] text-zinc-500">User uploaded portal-encrypted PDF</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-300">—</span></td>
+          <td class="px-4 py-3 text-zinc-400">3d 4h</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Ask user for PAN+DOB</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Manual unlock</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="bg-rose-500/5">
+          <td class="px-3 py-3"><input type="checkbox" class="h-4 w-4 accent-amber-500"/></td>
+          <td class="px-4 py-3">
+            <p class="font-medium text-zinc-100">scan-26as-blurry.pdf</p>
+            <p class="text-[10px] text-zinc-500">26AS scan · 1.1 MB · 1 page</p>
+          </td>
+          <td class="px-4 py-3">
+            <p class="text-zinc-200">Aarav Sharma</p>
+            <p class="text-[10px] text-zinc-500">paid · blocks Tax Review · AY 26-27</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10px] text-rose-200">OCR &lt; 0.60</span>
+            <p class="mt-1 text-[10px] text-zinc-500">numeric columns unreadable</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-rose-200">0.42</span></td>
+          <td class="px-4 py-3 text-zinc-400">2d 1h</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Re-OCR · sharper preset</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Manual parse</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Ask user re-upload</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="bg-rose-500/5">
+          <td class="px-3 py-3"><input type="checkbox" class="h-4 w-4 accent-amber-500"/></td>
+          <td class="px-4 py-3">
+            <p class="font-medium text-zinc-100">groww-cg-fy2526.xlsx</p>
+            <p class="text-[10px] text-zinc-500">Broker CG · 412 KB · Groww v2 layout</p>
+          </td>
+          <td class="px-4 py-3">
+            <p class="text-zinc-200">Karthik Iyer</p>
+            <p class="text-[10px] text-zinc-500">paid · blocks Tax Review · AY 26-27</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] text-amber-200">Schema mismatch</span>
+            <p class="mt-1 text-[10px] text-zinc-500">Groww added "Buyback gain" column 2026-04-12 · not in parser</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-300">n/a</span></td>
+          <td class="px-4 py-3 text-zinc-400">6h</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Patch schema · ship</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Manual parse</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="px-3 py-3"><input type="checkbox" class="h-4 w-4 accent-amber-500"/></td>
+          <td class="px-4 py-3">
+            <p class="font-medium text-zinc-100">hdfc-bank-stmt-mar26.pdf</p>
+            <p class="text-[10px] text-zinc-500">Bank · 2.4 MB · 18 pages · scanned + native mix</p>
+          </td>
+          <td class="px-4 py-3">
+            <p class="text-zinc-200">Devanshi Jain</p>
+            <p class="text-[10px] text-zinc-500">free · Inbox only · AY 26-27</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] text-amber-200">Partial OCR</span>
+            <p class="mt-1 text-[10px] text-zinc-500">Pages 11-13 only · interest rows missing</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-amber-300">0.58</span></td>
+          <td class="px-4 py-3 text-zinc-400">1d</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Re-OCR · pages 11-13 only</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Ignore · low priority</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="px-3 py-3"><input type="checkbox" class="h-4 w-4 accent-amber-500"/></td>
+          <td class="px-4 py-3">
+            <p class="font-medium text-zinc-100">ais-ay2627-pwd.pdf</p>
+            <p class="text-[10px] text-zinc-500">AIS · 1.8 MB · password-locked</p>
+          </td>
+          <td class="px-4 py-3">
+            <p class="text-zinc-200">Rohit Verma</p>
+            <p class="text-[10px] text-zinc-500">paid · partial Tax Review · AY 26-27</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10px] text-rose-200">Locked PDF</span>
+            <p class="mt-1 text-[10px] text-zinc-500">User has not responded to in-app PAN+DOB prompt (2 days)</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-300">—</span></td>
+          <td class="px-4 py-3 text-zinc-400">2d 18h</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Send reminder push + email</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Escalate to support</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="text-zinc-500">
+          <td colspan="7" class="px-4 py-3 text-center text-[11px]">… 9 more failures · most are locked-PDF retry candidates</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Failure-type trend · 14 days</p>
+    <div class="mt-3 grid gap-3 md:grid-cols-3 text-[12px]">
+      <div>
+        <div class="flex items-baseline justify-between"><span class="text-zinc-300">Locked PDF</span><span class="mono text-zinc-200">62%</span></div>
+        <div class="mt-1 h-2 w-full rounded-full bg-zinc-900"><div class="h-full w-[62%] rounded-full bg-rose-500"></div></div>
+        <p class="mt-1 text-[10px] text-amber-300">↑ proposed: auto-prompt PAN+DOB inline at upload</p>
+      </div>
+      <div>
+        <div class="flex items-baseline justify-between"><span class="text-zinc-300">Low OCR confidence</span><span class="mono text-zinc-200">22%</span></div>
+        <div class="mt-1 h-2 w-full rounded-full bg-zinc-900"><div class="h-full w-[22%] rounded-full bg-amber-500"></div></div>
+        <p class="mt-1 text-[10px] text-zinc-500">stable</p>
+      </div>
+      <div>
+        <div class="flex items-baseline justify-between"><span class="text-zinc-300">Schema mismatch</span><span class="mono text-zinc-200">16%</span></div>
+        <div class="mt-1 h-2 w-full rounded-full bg-zinc-900"><div class="h-full w-[16%] rounded-full bg-emerald-500"></div></div>
+        <p class="mt-1 text-[10px] text-amber-300">↑ Groww v2 + ICICI Direct format changes</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

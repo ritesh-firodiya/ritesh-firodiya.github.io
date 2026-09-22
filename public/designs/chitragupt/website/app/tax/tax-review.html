@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tax Review — Chitragupt</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+  <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/tax</span> ›</span>
+      <a href="tax-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Locked</a>
+      <a href="tax-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="tax-review.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Review</a>
+      <a href="tax-ca-invited.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA invited</a>
+      <a href="tax-with-ca.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">With CA</a>
+      <a href="tax-filed.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Filed</a>
+      <a href="tax-past-ay.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Past AY</a>
+      <a href="tax-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family</a>
+      <a href="tax-family-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family locked</a>
+      <a href="invite-ca.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Invite CA (modal)</a>
+      <a href="concern.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Concern (modal)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="flex h-14 items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-locked.html" class="text-zinc-100">Tax</a>
+        <a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="../ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      <a href="../notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+<div class="px-5 py-6">
+  <div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_380px]">
+    <main class="min-w-0 space-y-4">
+
+      <!-- 1+2 · Two AY-driven charts side by side · What you claimed | Old vs new regime -->
+      <section class="grid gap-3 lg:grid-cols-2">
+
+        <!-- 1. What you claimed -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">What you claimed</p>
+          <div class="mt-3 flex items-center gap-3">
+            <div class="relative h-28 w-28 shrink-0">
+              <svg viewBox="0 0 100 100" class="-rotate-90">
+                <circle r="42" cx="50" cy="50" fill="transparent" stroke="#27272a" stroke-width="14"/>
+                <circle r="42" cx="50" cy="50" fill="transparent" stroke="#10b981" stroke-width="14" stroke-dasharray="135.4 128.5"/>
+                <circle r="42" cx="50" cy="50" fill="transparent" stroke="#3b82f6" stroke-width="14" stroke-dasharray="84.7 179.2" stroke-dashoffset="-135.4"/>
+                <circle r="42" cx="50" cy="50" fill="transparent" stroke="#a855f7" stroke-width="14" stroke-dasharray="28.2 235.7" stroke-dashoffset="-220.1"/>
+                <circle r="42" cx="50" cy="50" fill="transparent" stroke="#f59e0b" stroke-width="14" stroke-dasharray="14.1 249.8" stroke-dashoffset="-248.3"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center"><p class="text-[9px] uppercase tracking-widest text-zinc-500">Claimed</p><p class="mono text-[11px] font-semibold text-zinc-100">₹4.67L</p></div>
+            </div>
+            <ul class="flex-1 space-y-1 text-[10px]">
+              <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-emerald-500"></span><span class="text-zinc-400">HRA</span></span><span class="mono text-zinc-200">₹2.40L</span></li>
+              <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-blue-500"></span><span class="text-zinc-400">§80C</span></span><span class="mono text-zinc-200">₹1.50L</span></li>
+              <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-purple-500"></span><span class="text-zinc-400">Std ded</span></span><span class="mono text-zinc-200">₹50k</span></li>
+              <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-amber-500"></span><span class="text-zinc-400">§80D</span></span><span class="mono text-zinc-200">₹25k</span></li>
+            </ul>
+          </div>
+          <p class="mt-3 text-[10px] text-zinc-500">You claimed ₹4.67L of ₹5.17L available · ₹50k NPS (80CCD-1B) still unused</p>
+        </div>
+
+        <!-- 2. Regime · New wins -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Old vs new regime · new saves more</p>
+          <div class="mt-5 space-y-4">
+            <div>
+              <div class="flex items-baseline justify-between"><p class="text-xs text-zinc-400">Old regime</p><p class="mono text-sm text-zinc-200">₹98,000 · 11.7%</p></div>
+              <div class="mt-1.5 h-4 w-full overflow-hidden rounded-full bg-zinc-900"><div class="h-full rounded-full bg-zinc-700" style="width: 100%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between"><p class="text-xs font-semibold text-emerald-300">New regime ✓ (chosen)</p><p class="mono text-sm text-emerald-200">₹84,000 · 10.0%</p></div>
+              <div class="mt-1.5 h-4 w-full overflow-hidden rounded-full bg-zinc-900"><div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style="width: 86%"></div></div>
+            </div>
+          </div>
+          <p class="mt-5 text-xs text-zinc-400">New regime: flat ₹75,000 standard deduction · lower slab rates · no separate claims for 80C, 80D, HRA. Saves you ₹14,000 this year vs old regime.</p>
+        </div>
+
+      </section>
+
+
+    <!-- 4+5 · Deductions (left) + Quick Check (right) side-by-side -->
+    <section class="grid gap-3 lg:grid-cols-2">
+
+      <!-- 4. Income to refund breakdown -->
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">From your salary to your refund · old regime</p>
+        <ul class="mt-3 divide-y divide-zinc-900 text-xs">
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400">Gross salary</span><span class="mono text-zinc-100">₹19,60,000</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400 pl-3">− HRA exemption</span><span class="mono text-emerald-300">−₹2,40,000</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400 pl-3">− Standard deduction</span><span class="mono text-emerald-300">−₹50,000</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400 pl-3">− Professional tax</span><span class="mono text-emerald-300">−₹2,500</span></li>
+          <li class="flex items-baseline justify-between py-2 border-t border-zinc-800 mt-2 pt-3"><span class="text-zinc-300">Net taxable salary</span><span class="mono text-zinc-100">₹16,67,500</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400 pl-3">− §80C (ELSS + EPF)</span><span class="mono text-emerald-300">−₹1,50,000</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400 pl-3">− §80D (Health insurance)</span><span class="mono text-emerald-300">−₹25,000</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400 pl-3">− §80CCD(1B) NPS (<a href="../../patterns/upload-modal.html" data-upload-modal class="text-amber-300 underline">upload</a>)</span><span class="mono text-zinc-500">−₹0 / ₹50k</span></li>
+          <li class="flex items-baseline justify-between py-2 border-t border-zinc-800 mt-2 pt-3"><span class="text-zinc-300">Taxable income</span><span class="mono text-zinc-100">₹14,92,500</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400">Tax (slab)</span><span class="mono text-zinc-100">₹2,72,750</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400">+ 4% Health &amp; Edu cess</span><span class="mono text-zinc-100">₹10,910</span></li>
+          <li class="flex items-baseline justify-between py-2 border-t border-zinc-800 mt-2 pt-3"><span class="text-zinc-200 font-medium">Total tax liability</span><span class="mono text-zinc-100 font-semibold">₹2,83,660</span></li>
+          <li class="flex items-baseline justify-between py-2"><span class="text-zinc-400">− TDS deposited</span><span class="mono text-emerald-300">−₹3,01,660</span></li>
+          <li class="flex items-baseline justify-between py-2 border-t border-emerald-500/30 mt-2 pt-3"><span class="text-emerald-200 font-semibold">Refund due</span><span class="mono text-emerald-300 font-semibold">+ ₹18,000</span></li>
+        </ul>
+      </div>
+
+      <!-- 5. Quick Check · 15 questions -->
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40">
+        <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-zinc-800 px-5 py-3">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Return checklist · 15 questions</p>
+          <div class="flex items-center gap-2">
+            <p class="text-[11px] text-emerald-300"><span class="mono font-semibold">8 / 15</span></p>
+            <div class="h-1.5 w-20 overflow-hidden rounded-full bg-zinc-900"><div class="h-full w-[53%] rounded-full bg-emerald-400"></div></div>
+          </div>
+        </div>
+
+        <ul class="divide-y divide-zinc-900">
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Salaried employee?</p>
+            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">Yes</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">HRA claim?</p>
+            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">₹2.4L</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Tax-saving investments — PPF, ELSS, EPF (80C)?</p>
+            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">₹1.5L</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Health insurance premium (80D)?</p>
+            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">₹25k</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Home-loan interest paid (Sec 24)?</p>
+            <span class="rounded bg-zinc-800 px-2 py-0.5 text-[10px] font-semibold text-zinc-400">No</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Extra ₹50k under NPS (80CCD-1B)?</p>
+            <span class="rounded bg-zinc-800 px-2 py-0.5 text-[10px] font-semibold text-zinc-400">No</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Charitable donations (80G)?</p>
+            <span class="rounded bg-zinc-800 px-2 py-0.5 text-[10px] font-semibold text-zinc-400">No</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <p class="flex-1 text-zinc-300">Education loan interest (80E)?</p>
+            <span class="rounded bg-zinc-800 px-2 py-0.5 text-[10px] font-semibold text-zinc-400">No</span>
+          </li>
+
+          <!-- CURRENT — needs upload -->
+          <li class="bg-amber-500/5 px-5 py-3 text-xs border-l-2 border-amber-500/60">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-semibold">9</span>
+              <p class="flex-1 text-sm text-zinc-100">Any <strong>capital gains</strong> this AY?</p>
+            </div>
+            <div class="mt-2 ml-9 flex flex-wrap items-center gap-2">
+              <button class="rounded-md bg-emerald-500 px-3 py-1.5 text-[11px] font-semibold text-zinc-950 hover:bg-emerald-400">Yes</button>
+              <button class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-[11px] text-zinc-200 hover:bg-zinc-800">No</button>
+              <a href="../../patterns/upload-modal.html" data-upload-modal class="inline-flex items-center gap-1.5 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1.5 text-[11px] font-semibold text-emerald-200 hover:bg-emerald-500/20"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Upload P&amp;L</a>
+            </div>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-800 text-[10px] text-zinc-500">10</span>
+            <p class="flex-1 text-zinc-400">Rental income?</p>
+            <span class="text-[10px] text-zinc-600">Pending</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-800 text-[10px] text-zinc-500">11</span>
+            <p class="flex-1 text-zinc-400">Foreign income?</p>
+            <span class="text-[10px] text-zinc-600">Pending</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-800 text-[10px] text-zinc-500">12</span>
+            <p class="flex-1 text-zinc-400">Crypto / virtual assets?</p>
+            <span class="text-[10px] text-zinc-600">Pending</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-800 text-[10px] text-zinc-500">13</span>
+            <p class="flex-1 text-zinc-400">Dividend income?</p>
+            <span class="text-[10px] text-zinc-600">Pending</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-800 text-[10px] text-zinc-500">14</span>
+            <p class="flex-1 text-zinc-400">EPF / PPF withdrawal?</p>
+            <span class="text-[10px] text-zinc-600">Pending</span>
+          </li>
+
+          <li class="flex items-center gap-3 px-5 py-2.5 text-xs">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-800 text-[10px] text-zinc-500">15</span>
+            <p class="flex-1 text-zinc-400">Side / freelance income?</p>
+            <span class="text-[10px] text-zinc-600">Pending</span>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- 6. What you missed this year (AY-driven · belongs in main) -->
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+      <div class="flex items-baseline justify-between">
+        <p class="text-[10px] uppercase tracking-widest text-emerald-300">What you missed this year</p>
+        <p class="text-[10px] text-zinc-500">From your documents</p>
+      </div>
+      <h3 class="mt-1 text-sm font-semibold text-zinc-100">Deductions you didn't claim</h3>
+
+      <ul class="mt-3 grid gap-2 text-[11.5px] md:grid-cols-2">
+        <li class="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+          <div class="flex items-baseline justify-between">
+            <p class="font-medium text-zinc-100">Extra ₹50,000 under NPS (80CCD-1B)</p>
+            <p class="mono text-emerald-300">~₹15k tax</p>
+          </div>
+          <p class="mt-1 text-[10.5px] text-zinc-400">Upload your NPS statement if you contributed — this is over and above the 80C ₹1.5L cap, so it doesn't double-count.</p>
+        </li>
+        <li class="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+          <div class="flex items-baseline justify-between">
+            <p class="font-medium text-zinc-100">Why new regime saved you ₹14,000</p>
+            <p class="mono text-emerald-300">already applied</p>
+          </div>
+          <p class="mt-1 text-[10.5px] text-zinc-400">₹75,000 standard deduction + lower slab rates beat old regime until your 80C + HRA + 80D claims add up to ~₹3.5L.</p>
+        </li>
+      </ul>
+      <p class="mt-3 text-[10px] text-zinc-500">Want forward-looking tax planning? <a href="../../hire-ca/browse-consultation.html" class="text-emerald-300 underline">Hire a CA for a consultation</a>.</p>
+    </section>
+    </main>
+
+    <aside class="lg:sticky lg:top-20 lg:self-start">
+      <div class="space-y-3">
+                  <div class="flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-950/40 p-1 text-[11px]"><span class="px-1.5 py-1 text-[9px] uppercase tracking-widest text-zinc-500">AY</span><a href="#" class="flex items-center gap-1.5 rounded bg-zinc-800 px-2 py-1 font-semibold text-zinc-100"><span class="mono">26-27</span></a><a href="tax-past-ay.html" class="flex items-center gap-1.5 rounded px-2 py-1 text-zinc-300 hover:bg-zinc-800"><span class="mono">25-26</span></a><a href="tax-past-ay.html" class="flex items-center gap-1.5 rounded px-2 py-1 text-zinc-300 hover:bg-zinc-800"><span class="mono">24-25</span></a><a href="tax-past-ay.html" class="flex items-center gap-1.5 rounded px-2 py-1 text-zinc-300 hover:bg-zinc-800"><span class="mono">23-24</span></a></div>
+
+
+        <!-- Your tax journey · 5-AY absolute history (not range-driven · belongs in aside) -->
+        <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <div class="flex items-baseline justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Your tax journey</p>
+            <div class="flex items-center gap-2 text-[9px] text-zinc-400">
+              <span class="inline-flex items-center gap-1"><span class="inline-block h-0.5 w-3 bg-emerald-400"></span>Income</span>
+              <span class="inline-flex items-center gap-1"><span class="inline-block h-0.5 w-3 bg-rose-400"></span>Tax</span>
+            </div>
+          </div>
+          <svg viewBox="0 0 320 160" class="mt-2 w-full mono">
+            <g stroke="#27272a" stroke-width="1"><line x1="22" y1="20" x2="310" y2="20"/><line x1="22" y1="60" x2="310" y2="60"/><line x1="22" y1="100" x2="310" y2="100"/><line x1="22" y1="130" x2="310" y2="130"/></g>
+            <g fill="#52525b" font-size="7"><text x="2" y="24">₹20L</text><text x="2" y="64">₹15L</text><text x="2" y="104">₹10L</text><text x="2" y="133">₹5L</text></g>
+            <path d="M50,100 L114,90 L178,76 L242,55 L306,30" stroke="#34d399" stroke-width="2" fill="none"/>
+            <g fill="#34d399"><circle cx="50" cy="100" r="2.5"/><circle cx="114" cy="90" r="2.5"/><circle cx="178" cy="76" r="2.5"/><circle cx="242" cy="55" r="2.5"/><circle cx="306" cy="30" r="3.5" fill="#10b981" stroke="#34d399" stroke-width="1.5"/></g>
+            <path d="M50,124 L114,121 L178,120 L242,118 L306,113" stroke="#fb7185" stroke-width="2" fill="none"/>
+            <g fill="#fb7185"><circle cx="50" cy="124" r="2.5"/><circle cx="114" cy="121" r="2.5"/><circle cx="178" cy="120" r="2.5"/><circle cx="242" cy="118" r="2.5"/><circle cx="306" cy="113" r="3.5" fill="#e11d48" stroke="#fb7185" stroke-width="1.5"/></g>
+            <g fill="#71717a" font-size="7" text-anchor="middle"><text x="50" y="148">22-23</text><text x="114" y="148">23-24</text><text x="178" y="148">24-25</text><text x="242" y="148">25-26</text><text x="306" y="148" fill="#34d399" font-weight="600">26-27</text></g>
+          </svg>
+          <p class="mt-2 text-[10px] text-zinc-500">Income +96% · tax +115% · effective rate ~14%</p>
+        </section>
+
+        <!-- 7. Pick your CA path (absolute · belongs in aside) -->
+        <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Pick your path</p>
+          <h3 class="mt-1 text-base font-semibold text-zinc-100">How would you like to file?</h3>
+
+          <div class="mt-3 space-y-2">
+            <a href="invite-ca.html" class="flex items-start gap-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3 hover:border-emerald-500/60">
+              <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-500/20"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></span>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-baseline gap-x-2">
+                  <p class="text-xs font-semibold text-zinc-100">Invite your own CA</p>
+                  <span class="text-[10px] text-emerald-300">Free</span>
+                </div>
+                <p class="mt-0.5 text-[10.5px] text-zinc-400">Pay them directly · share by email link</p>
+              </div>
+            </a>
+
+            <a href="../../hire-ca/index.html" class="flex items-start gap-3 rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 hover:border-amber-500/60">
+              <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-amber-500/20"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-baseline gap-x-2">
+                  <p class="text-xs font-semibold text-zinc-100">Hire a CA</p>
+                  <span class="text-[10px] text-amber-300">From ₹599</span>
+                </div>
+                <p class="mt-0.5 text-[10.5px] text-zinc-400">Priced by ITR form · ICAI-verified panel</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+</div>
+
+<nav class="fixed bottom-0 inset-x-0 z-20 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-md items-stretch">
+    <a href="../inbox/inbox-populated.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a>
+    <a href="../tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-emerald-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a>
+    <a href="../expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a>
+    <a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a>
+  </div>
+</nav>
+
+</body>
+</html>

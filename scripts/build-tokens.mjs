@@ -41,7 +41,7 @@ import { emitGlobalCss, emitTokensTs } from "../design-system/lib/emit-runtime.m
 const ROOT = process.cwd();
 const DS = join(ROOT, "design-system");
 const DIST = join(DS, "dist");
-const APPS = join(homedir(), "git", "apps");
+const APPS = join(homedir(), "git", "products");
 
 /**
  * Where each palette's files land in the real tree under --push.
@@ -146,7 +146,7 @@ async function push(name, files, version) {
   }
 
   /* Ask git, never guess: deriving the root by stripping path segments matched
-     the "apps" in ~/git/apps/<name> and resolved to ~/git itself. */
+     the folder segment in ~/git/products/<name> and resolved to ~/git itself. */
   const anchor = target.design ?? target.runtime;
   const repoRoot = execSync(`git -C ${anchor} rev-parse --show-toplevel`, { encoding: "utf8" }).trim();
   const dirty = execSync(`git -C ${repoRoot} status --porcelain`, { encoding: "utf8" }).trim();

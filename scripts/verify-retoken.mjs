@@ -19,7 +19,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
-const APPS = join(homedir(), "git", "apps");
+const APPS = join(homedir(), "git", "products");
 const DIST = join(process.cwd(), "design-system", "dist");
 
 /** canonical key -> the name(s) the sets used before the rename. */

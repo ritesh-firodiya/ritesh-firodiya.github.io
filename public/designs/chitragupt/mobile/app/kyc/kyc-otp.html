@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Aadhaar OTP — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="none" data-chrome-title="Aadhaar OTP" data-chrome-section="/kyc" data-chrome-routes="Start|kyc-start.html;PAN + Aadhaar|kyc-verify.html;Aadhaar OTP|kyc-otp.html|1;Status|kyc-status.html" data-chrome-top="level2" data-chrome-back="kyc-verify.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-5 pt-2 pb-6">
+
+  <div class="flex items-center justify-between text-[11px] text-zinc-500">
+    <span>Step <strong class="text-zinc-200">3</strong> of 3</span>
+    <div class="flex items-center gap-1">
+      <span class="h-1 w-6 rounded-full bg-emerald-500"></span>
+      <span class="h-1 w-6 rounded-full bg-emerald-500"></span>
+      <span class="h-1 w-6 rounded-full bg-emerald-500"></span>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center">
+    <div class="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </div>
+    <h1 class="mt-4 text-[22px] font-semibold tracking-tight">Enter the OTP from UIDAI</h1>
+    <p class="mt-2 text-[13px] text-zinc-400">A 6-digit code was sent to the phone linked to Aadhaar ending <span class="mono text-zinc-200">·· 9012</span>.</p>
+  </div>
+
+  <div class="mt-7 flex justify-center gap-2">
+    <input type="text" maxlength="1" inputmode="numeric" class="mono h-12 w-10 rounded border border-zinc-700 bg-zinc-950 text-center text-lg text-zinc-100 focus:border-emerald-500 focus:outline-none"/>
+    <input type="text" maxlength="1" inputmode="numeric" class="mono h-12 w-10 rounded border border-zinc-700 bg-zinc-950 text-center text-lg text-zinc-100 focus:border-emerald-500 focus:outline-none"/>
+    <input type="text" maxlength="1" inputmode="numeric" class="mono h-12 w-10 rounded border border-zinc-700 bg-zinc-950 text-center text-lg text-zinc-100 focus:border-emerald-500 focus:outline-none"/>
+    <input type="text" maxlength="1" inputmode="numeric" class="mono h-12 w-10 rounded border border-zinc-700 bg-zinc-950 text-center text-lg text-zinc-100 focus:border-emerald-500 focus:outline-none"/>
+    <input type="text" maxlength="1" inputmode="numeric" class="mono h-12 w-10 rounded border border-zinc-700 bg-zinc-950 text-center text-lg text-zinc-100 focus:border-emerald-500 focus:outline-none"/>
+    <input type="text" maxlength="1" inputmode="numeric" class="mono h-12 w-10 rounded border border-zinc-700 bg-zinc-950 text-center text-lg text-zinc-100 focus:border-emerald-500 focus:outline-none"/>
+  </div>
+
+  <a href="kyc-status.html#pending" class="mt-6 block w-full rounded-xl bg-emerald-500 px-4 py-3.5 text-center text-sm font-semibold text-zinc-950">Verify →</a>
+
+  <div class="mt-4 flex items-center justify-between text-[11px] text-zinc-500">
+    <span>Code expires in <span class="mono text-zinc-300">04:42</span></span>
+    <button class="underline">Resend OTP</button>
+  </div>
+
+  <p class="mt-8 text-center text-[11px] text-zinc-500">Wrong phone? <a href="https://uidai.gov.in" class="underline">Update your Aadhaar phone at uidai.gov.in</a>, then start over.</p>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

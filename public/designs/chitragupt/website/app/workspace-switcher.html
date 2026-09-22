@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Workspace switcher</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+    <!-- ─── HEADER · open state (avatar clicked) ─── -->
+    <header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="dashboard.html" class="text-zinc-100">Dashboard</a>
+        <a href="inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="tax/tax-locked.html" class="text-zinc-400 hover:text-zinc-100">Tax</a>
+        <a href="expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      <a href="notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+      <a href="dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+    <!-- ─── PAGE EXPLAINER (this wireframe is documentation) ─── -->
+    <main class="mx-auto max-w-3xl px-5 py-10">
+      <p class="text-[10px] uppercase tracking-widest text-emerald-300">Wireframe · interaction documentation</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Workspace switcher</h1>
+      <p class="mt-2 max-w-2xl text-sm text-zinc-400">
+        How a user moves between their own ledger, the combined family view, and per-member views. The dropdown above shows the open state of the top-right avatar.
+      </p>
+
+      <section class="mt-7 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Three ways to switch</p>
+        <ul class="mt-3 space-y-3 text-sm">
+          <li class="flex items-start gap-3">
+            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-500/15 text-[11px] font-semibold text-emerald-300">1</span>
+            <div>
+              <p class="text-zinc-100">Click the avatar (top-right)</p>
+              <p class="mt-0.5 text-[11px] text-zinc-500">Fastest. Always-on, available on every authed page. The dropdown above is what opens.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-500/15 text-[11px] font-semibold text-emerald-300">2</span>
+            <div>
+              <p class="text-zinc-100">From Settings → Workspaces</p>
+              <p class="mt-0.5 text-[11px] text-zinc-500">A larger panel with more context per workspace (scope, permissions, last activity). <a href="settings/settings.html" class="text-emerald-300 underline">Open Settings →</a></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-500/15 text-[11px] font-semibold text-emerald-300">3</span>
+            <div>
+              <p class="text-zinc-100">From the Family dashboard</p>
+              <p class="mt-0.5 text-[11px] text-zinc-500">Each per-member tax card links into that member's view. <a href="dashboard-family.html" class="text-emerald-300 underline">Open dashboard →</a></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">What changes when you switch</p>
+        <ul class="mt-3 space-y-2 text-xs text-zinc-300">
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>The URL rescopes: <span class="mono text-zinc-400">/tax</span> → <span class="mono text-zinc-400">/family/<member>/tax</span> or <span class="mono text-zinc-400">/family/tax</span> (combined)</li>
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>The persistent "Viewing as <em>name</em>" indicator (top-right) updates to make whose ledger is on screen unmistakable</li>
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Data hooks (<span class="mono text-zinc-400">useAnalyze</span>, <span class="mono text-zinc-400">useDocuments</span>) read from the new uid · scoped Firestore rules enforce server-side</li>
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>The Ask CA pill scope updates — questions asked here go against the active workspace's data</li>
+        </ul>
+      </section>
+
+      <section class="mt-5 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">Key rules</p>
+        <ul class="mt-3 space-y-2 text-xs text-zinc-300">
+          <li>Combined views (Expense + Portfolio) are <strong>computed live</strong> from each member's data — never duplicated</li>
+          <li>Tax filings stay <strong>per-PAN</strong> · the "combined" view stacks per-member positions, it doesn't merge them</li>
+          <li>Read-only members can be viewed but not modified · their data stays in their account</li>
+          <li>The CA role appears in the switcher only when the user has accepted a CA invite or is themselves a verified CA</li>
+        </ul>
+      </section>
+
+      <p class="mt-8 text-[11px] text-zinc-500">
+        See related: <a href="settings/settings-family-invite.html" class="underline">how members are added</a> · <a href="settings/settings-sharing.html" class="underline">manage sharing</a>
+      </p>
+    </main>
+
+    
+
+    <nav class="fixed bottom-0 inset-x-0 z-20 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-md items-stretch">
+    <a href="inbox/inbox-populated.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a>
+    <a href="tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a>
+    <a href="expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a>
+    <a href="portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a>
+  </div>
+</nav>
+  
+</body>
+</html>

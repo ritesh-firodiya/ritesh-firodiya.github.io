@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Email forward — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="none" data-chrome-title="Email forward" data-chrome-section="/settings" data-chrome-routes="Main|settings.html;Profile|settings-profile.html;Family|settings-family.html;Family invite|settings-family-invite.html;Family pending|settings-family-pending.html;Family member|settings-family-members.html;Family leave|settings-family-leave.html;Billing|settings-billing.html;Invoice|settings-invoice-detail.html;Email setup|settings-email-forward-setup.html|1;Email verify|settings-email-forward-verify.html;Email log|settings-email-forward-received.html;Notifications|settings-notifications.html;Privacy|settings-privacy-data.html;Audit|settings-audit-log.html;Sharing|settings-sharing.html;Support|settings-support.html;Delete|settings-account-deletion.html" data-chrome-top="level2" data-chrome-back="settings.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <section class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-emerald-300">Your private inbox address</p>
+    <div class="mt-2 flex items-center gap-2">
+      <code class="mono flex-1 truncate rounded-md border border-zinc-800 bg-zinc-950 px-2.5 py-2 text-[12px] text-emerald-300">u-a82f@inbox.chitragupt.ai</code>
+      <button class="rounded-md border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-2 text-[11px] text-emerald-200">Copy</button>
+    </div>
+    <p class="mt-2 text-[10.5px] text-zinc-500">Anything sent here lands in your Inbox folder. Token rotates if you reset it.</p>
+  </section>
+
+  <p class="mt-5 px-2 text-[10px] uppercase tracking-widest text-zinc-500">Set it up · 3 ways</p>
+  <ul class="mt-1.5 space-y-2">
+    <li class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3.5">
+      <p class="text-[13px] font-medium text-zinc-100">Forward rule in your email</p>
+      <p class="mt-0.5 text-[11px] text-zinc-400">Best for senders you trust: Gmail/Outlook → filter "from bank/AIS" → forward to address.</p>
+      <a href="#" class="mt-2 inline-block text-[11px] text-emerald-300 underline">Gmail setup guide →</a>
+    </li>
+    <li class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3.5">
+      <p class="text-[13px] font-medium text-zinc-100">Update statements email</p>
+      <p class="mt-0.5 text-[11px] text-zinc-400">In HDFC NetBanking → e-statement registration → set this as the email address.</p>
+    </li>
+    <li class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3.5">
+      <p class="text-[13px] font-medium text-zinc-100">Share to it from any app</p>
+      <p class="mt-0.5 text-[11px] text-zinc-400">Use Gmail/Apple Mail share sheet to send a single PDF.</p>
+    </li>
+  </ul>
+
+  <section class="mt-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Verified senders</p>
+    <p class="mt-1 text-[11.5px] text-zinc-400">Only auto-accept from these. Anything else lands in a quarantine folder.</p>
+    <ul class="mt-2 space-y-1 text-[12px]">
+      <li class="flex items-center justify-between"><span class="text-zinc-200">@hdfcbank.net</span><span class="text-[10px] text-emerald-300">Verified</span></li>
+      <li class="flex items-center justify-between"><span class="text-zinc-200">@cpc-tds.com</span><span class="text-[10px] text-emerald-300">Verified</span></li>
+      <li class="flex items-center justify-between"><span class="text-zinc-200">@incometax.gov.in</span><span class="text-[10px] text-emerald-300">Verified</span></li>
+      <li class="flex items-center justify-between"><span class="text-zinc-300">@axisbank.com</span><a href="settings-email-forward-verify.html" class="text-[11px] text-amber-300 underline">Verify</a></li>
+    </ul>
+  </section>
+
+  <a href="settings-email-forward-received.html" class="mt-3 mb-4 block text-center text-[11px] text-emerald-300 underline">See what landed via email →</a>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

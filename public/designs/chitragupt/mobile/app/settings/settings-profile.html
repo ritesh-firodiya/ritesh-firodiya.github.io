@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Profile — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}.tabbar{position:absolute;inset-inline:0;bottom:0}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="none" data-chrome-title="Profile" data-chrome-section="/settings" data-chrome-routes="Main|settings.html;Profile|settings-profile.html|1;Family|settings-family.html;Family invite|settings-family-invite.html;Family pending|settings-family-pending.html;Family member|settings-family-members.html;Family leave|settings-family-leave.html;Billing|settings-billing.html;Invoice|settings-invoice-detail.html;Email setup|settings-email-forward-setup.html;Email verify|settings-email-forward-verify.html;Email log|settings-email-forward-received.html;Notifications|settings-notifications.html;Privacy|settings-privacy-data.html;Audit|settings-audit-log.html;Sharing|settings-sharing.html;Support|settings-support.html;Delete|settings-account-deletion.html" data-chrome-top="level2" data-chrome-back="settings.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <div class="flex items-center gap-3">
+    <div class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-xl font-semibold text-emerald-200">AS</div>
+    <div class="flex-1">
+      <p class="text-[14px] font-medium text-zinc-100">Aarav Sharma</p>
+      <p class="text-[11px] text-zinc-500">aarav@example.com</p>
+    </div>
+    <button class="rounded-md border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-300">Change avatar</button>
+  </div>
+
+  <form class="mt-5 space-y-3.5">
+    <label class="block"><span class="text-[11px] text-zinc-400">Full name</span><input type="text" value="Aarav Sharma" class="mt-1 block w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-3 text-sm focus:border-emerald-500 focus:outline-none"/></label>
+    <label class="block"><span class="text-[11px] text-zinc-400">PAN</span><input type="text" value="ABCDE1234F" maxlength="10" class="mono mt-1 block w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-3 text-sm uppercase tracking-wider focus:border-emerald-500 focus:outline-none"/><p class="mt-1 text-[10px] text-zinc-500">Used for filing · cannot be edited after first filing</p></label>
+    <label class="block"><span class="text-[11px] text-zinc-400">Date of birth</span><input type="date" value="1992-08-14" class="mt-1 block w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-3 text-sm focus:border-emerald-500 focus:outline-none"/></label>
+    <label class="block"><span class="text-[11px] text-zinc-400">Residential status</span><select class="mt-1 block w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-3 text-sm focus:border-emerald-500 focus:outline-none"><option>Resident</option><option>Non-resident (NRI)</option><option>Resident-but-not-ordinarily-resident</option></select></label>
+    <label class="block"><span class="text-[11px] text-zinc-400">Email</span><input type="email" value="aarav@example.com" class="mt-1 block w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-3 text-sm focus:border-emerald-500 focus:outline-none"/></label>
+    <label class="block"><span class="text-[11px] text-zinc-400">Mobile</span><input type="tel" value="+91 98765 43210" class="mt-1 block w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-3 text-sm focus:border-emerald-500 focus:outline-none"/></label>
+    <button class="block w-full rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-zinc-950">Save changes</button>
+  </form>
+
+  <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Sign-in methods</p>
+    <ul class="mt-2 space-y-2 text-[12px]">
+      <li class="flex items-center justify-between"><span class="text-zinc-200">Google · aarav@gmail.com</span><span class="text-[10px] text-emerald-300">Active</span></li>
+      <li class="flex items-center justify-between"><span class="text-zinc-200">Password</span><button class="text-[11px] text-emerald-300 underline">Change</button></li>
+      <li class="flex items-center justify-between"><span class="text-zinc-200">Email · 6-digit code</span><span class="text-[10px] text-emerald-300">Enabled</span></li>
+    </ul>
+  </section>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

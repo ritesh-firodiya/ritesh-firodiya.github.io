@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pattern · destructive confirm modal</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/patterns</span> ›</span>
+      <a href="toasts.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Toasts</a>
+      <a href="confirm-destructive.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Confirm destructive</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+      <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+        <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+        <p class="text-[11px] text-zinc-500">Pattern · destructive confirm</p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-5 py-8">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">UI pattern sheet</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Destructive confirm modal · one pattern, three intensities</h1>
+      <p class="mt-2 max-w-2xl text-sm text-zinc-400">Use the same modal shape everywhere a user is about to do something destructive. The intensity (amber → rose → "type to confirm") scales with how hard the action is to undo.</p>
+
+      <!-- Anatomy -->
+      <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Anatomy</p>
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+          <div>
+            <ul class="space-y-2 text-sm text-zinc-300">
+              <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><strong class="text-zinc-100">Title</strong> · names the thing being destroyed, in the user's words</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><strong class="text-zinc-100">What stays · what goes</strong> · two columns, never a wall of text</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><strong class="text-zinc-100">Reversibility line</strong> · "you can restore for 7 days" or "this cannot be undone"</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><strong class="text-zinc-100">Friction</strong> · type-to-confirm only at level 3</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><strong class="text-zinc-100">Cancel is on the left, destructive on the right</strong> · always</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><strong class="text-zinc-100">Esc closes</strong> · click outside closes · enter does not confirm</span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">When to use which</p>
+            <table class="mt-2 w-full text-xs">
+              <tbody class="divide-y divide-zinc-800">
+                <tr><td class="py-2 pr-2"><span class="inline-flex items-center gap-1 rounded bg-amber-500/15 px-2 py-0.5 text-[10px] uppercase tracking-widest text-amber-300">L1 · soft</span></td><td class="py-2 text-zinc-300">Delete document · remove approved sender · cancel pending invite</td></tr>
+                <tr><td class="py-2 pr-2"><span class="inline-flex items-center gap-1 rounded bg-rose-500/15 px-2 py-0.5 text-[10px] uppercase tracking-widest text-rose-300">L2 · hard</span></td><td class="py-2 text-zinc-300">Leave household · cancel subscription · revoke CA share</td></tr>
+                <tr><td class="py-2 pr-2"><span class="inline-flex items-center gap-1 rounded bg-rose-500/15 px-2 py-0.5 text-[10px] uppercase tracking-widest text-rose-300">L3 · permanent</span></td><td class="py-2 text-zinc-300">Dissolve household · delete account · purge all data</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- L1 soft modal -->
+      <section class="mt-8">
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">Level 1 · soft (delete document)</p>
+        <h2 class="mt-1 text-sm font-semibold text-zinc-100">One button to confirm · undoable from Trash for 30 days</h2>
+
+        <div class="mt-3 relative rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 md:p-8">
+          <p class="absolute -top-2 left-4 rounded bg-zinc-900 px-2 text-[10px] uppercase tracking-widest text-zinc-500">Demo · underlying screen</p>
+
+          <!-- Backdrop -->
+          <div class="relative h-72 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950">
+            <!-- Dimmed page hint -->
+            <div class="absolute inset-0 opacity-30 bg-gradient-to-br from-zinc-800 to-zinc-950"></div>
+            <div class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm"></div>
+
+            <!-- Modal -->
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <div class="w-full max-w-md rounded-xl border border-amber-500/50 bg-zinc-900 shadow-2xl">
+                <div class="border-b border-zinc-800 px-5 py-3 flex items-center justify-between">
+                  <p class="text-[10px] uppercase tracking-widest text-amber-300">Delete document</p>
+                  <button class="text-zinc-500 hover:text-zinc-200"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                </div>
+                <div class="px-5 py-4">
+                  <p class="text-sm text-zinc-100">Delete <strong>Form_16_FY2024-25_Manifest_Infotech.pdf</strong>?</p>
+                  <p class="mt-2 text-xs text-zinc-400">Removes the file and all data we extracted from it. We'll keep it in <a href="#" class="underline">Trash</a> for 30 days · restore any time.</p>
+                </div>
+                <div class="flex items-center justify-end gap-2 border-t border-zinc-800 px-5 py-3">
+                  <button class="rounded border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800">Cancel</button>
+                  <button class="rounded bg-amber-500 px-4 py-1.5 text-xs font-semibold text-zinc-950 hover:bg-amber-400">Delete document</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- L2 hard modal -->
+      <section class="mt-8">
+        <p class="text-[10px] uppercase tracking-widest text-rose-300">Level 2 · hard (cancel subscription)</p>
+        <h2 class="mt-1 text-sm font-semibold text-zinc-100">Two columns · explicit "this is what changes" · single confirm</h2>
+
+        <div class="mt-3 relative rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 md:p-8">
+          <p class="absolute -top-2 left-4 rounded bg-zinc-900 px-2 text-[10px] uppercase tracking-widest text-zinc-500">Demo · underlying screen</p>
+          <div class="relative h-[420px] overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950">
+            <div class="absolute inset-0 opacity-30 bg-gradient-to-br from-zinc-800 to-zinc-950"></div>
+            <div class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm"></div>
+
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <div class="w-full max-w-lg rounded-xl border border-rose-500/60 bg-zinc-900 shadow-2xl">
+                <div class="border-b border-zinc-800 px-5 py-3 flex items-center justify-between">
+                  <p class="text-[10px] uppercase tracking-widest text-rose-300">Cancel Pro subscription</p>
+                  <button class="text-zinc-500 hover:text-zinc-200"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                </div>
+                <div class="px-5 py-4">
+                  <p class="text-sm text-zinc-100">Cancel Pro at end of billing period?</p>
+                  <p class="mt-1 text-[11px] text-zinc-400">You stay on Pro until <strong class="text-zinc-200">28 Feb 2027</strong>, then revert to Free.</p>
+                  <div class="mt-4 grid gap-2 md:grid-cols-2 text-xs">
+                    <div class="rounded border border-zinc-800 bg-zinc-950 p-3">
+                      <p class="text-[10px] uppercase tracking-widest text-emerald-300">You keep</p>
+                      <ul class="mt-1 space-y-1 text-zinc-300"><li>· All your Inbox docs forever</li><li>· Past AY Tax Reviews you bought</li><li>· Your invoices and audit log</li></ul>
+                    </div>
+                    <div class="rounded border border-zinc-800 bg-zinc-950 p-3">
+                      <p class="text-[10px] uppercase tracking-widest text-rose-300">You lose at end of period</p>
+                      <ul class="mt-1 space-y-1 text-zinc-300"><li>· Auto-refresh of Tax Review for new AY</li><li>· Priority CA matching</li><li>· Family combined views</li></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-end gap-2 border-t border-zinc-800 px-5 py-3">
+                  <button class="rounded border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800">Keep Pro</button>
+                  <button class="rounded bg-rose-500 px-4 py-1.5 text-xs font-semibold text-zinc-950 hover:bg-rose-400">Cancel at period end</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- L3 permanent -->
+      <section class="mt-8">
+        <p class="text-[10px] uppercase tracking-widest text-rose-300">Level 3 · permanent (delete account)</p>
+        <h2 class="mt-1 text-sm font-semibold text-zinc-100">Type the literal word to confirm · no Esc-to-confirm path</h2>
+
+        <div class="mt-3 relative rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 md:p-8">
+          <p class="absolute -top-2 left-4 rounded bg-zinc-900 px-2 text-[10px] uppercase tracking-widest text-zinc-500">Demo · underlying screen</p>
+          <div class="relative h-[460px] overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950">
+            <div class="absolute inset-0 opacity-30 bg-gradient-to-br from-zinc-800 to-zinc-950"></div>
+            <div class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm"></div>
+
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <div class="w-full max-w-lg rounded-xl border-2 border-rose-500 bg-zinc-900 shadow-2xl">
+                <div class="border-b border-zinc-800 px-5 py-3 flex items-center justify-between">
+                  <p class="text-[10px] uppercase tracking-widest text-rose-300">Permanently delete account</p>
+                  <button class="text-zinc-500 hover:text-zinc-200"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                </div>
+                <div class="px-5 py-4 space-y-3">
+                  <p class="text-sm text-zinc-100">Delete the account for <strong>aarav.sharma@gmail.com</strong>?</p>
+                  <p class="text-[11px] text-zinc-400">All documents, extracted data, family links, and CA shares are removed within 30 days. Tax records retained for 7 years per Income-Tax Act, then wiped. <strong class="text-rose-300">This cannot be undone after the 30-day grace window.</strong></p>
+                  <div class="rounded border border-rose-500/40 bg-zinc-950 p-3">
+                    <p class="text-[10px] uppercase tracking-widest text-rose-300">Type "DELETE MY ACCOUNT" to confirm</p>
+                    <input class="mt-2 w-full rounded border border-zinc-700 bg-zinc-950 px-3 py-2 mono text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500" placeholder="DELETE MY ACCOUNT" />
+                  </div>
+                  <label class="flex items-start gap-2 text-[11px] text-zinc-400">
+                    <input type="checkbox" class="mt-1 h-3.5 w-3.5 rounded border-zinc-700 bg-zinc-900 accent-rose-500" />
+                    <span>I understand the 30-day grace window and that my data will be permanently removed after.</span>
+                  </label>
+                </div>
+                <div class="flex flex-wrap items-center justify-end gap-2 border-t border-zinc-800 px-5 py-3">
+                  <button class="rounded border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800">Cancel</button>
+                  <button class="rounded bg-rose-500 px-4 py-1.5 text-xs font-semibold text-zinc-950 hover:bg-rose-400 disabled:opacity-50">Delete my account →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Where this is used -->
+      <section class="mt-10 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Used by these flows</p>
+        <ul class="mt-3 grid gap-2 md:grid-cols-2 text-xs">
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span><a href="../app/review/document-parsed.html" class="underline hover:text-zinc-100">Inbox · delete document</a> (L1)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span> (L1)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span><a href="../app/settings/settings-family-pending.html" class="underline hover:text-zinc-100">Family · cancel pending invite</a> (L1)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-rose-400"></span><a href="../app/settings/settings-family-leave.html" class="underline hover:text-zinc-100">Family · leave household</a> (L2)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-rose-400"></span><a href="../app/settings/settings-billing.html" class="underline hover:text-zinc-100">Settings · cancel subscription</a> (L2)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-rose-400"></span><a href="../app/settings/settings-sharing.html" class="underline hover:text-zinc-100">Settings · revoke CA share</a> (L2)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-rose-400"></span><a href="../app/settings/settings-family-leave.html" class="underline hover:text-zinc-100">Family · dissolve household</a> (L3)</li>
+          <li class="flex items-start gap-2 text-zinc-300"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-rose-400"></span><a href="../app/settings/settings-account-deletion.html" class="underline hover:text-zinc-100">Settings · delete account</a> (L3)</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

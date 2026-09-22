@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio · household view-only — Chitragupt</title>
+    <script src="../../../../_vendor/tailwind.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/portfolio</span> ›</span>
+      <a href="portfolio-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Locked</a>
+      <a href="portfolio-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="portfolio-review.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Review</a>
+      <a href="portfolio-review-cg-booked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CG booked</a>
+      <a href="portfolio-holdings.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Holdings</a>
+      <a href="portfolio-family-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family locked</a>
+      <a href="portfolio-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family combined</a>
+      <a href="portfolio-view-only.html" class="rounded border border-purple-500/50 bg-purple-500/15 px-2 py-0.5 text-[11px] font-semibold text-purple-200">View-only (member)</a>
+    <span class="text-[10px] text-zinc-600">·</span>
+      <a href="portfolio-map-goal-modal.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Map goal (modal)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="flex h-14 items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+      <nav class="hidden gap-5 text-xs md:flex"><a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a><a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a><a href="../tax/tax-locked.html" class="text-zinc-400 hover:text-zinc-100">Tax</a><a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a><a href="../portfolio/portfolio-locked.html" class="text-zinc-100">Portfolio</a><a href="../ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a></nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-purple-300">Priya · view-only</strong></p>
+      <a href="../notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></a>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-purple-500/30 bg-purple-500/10 text-[11px] font-semibold text-purple-300 hover:bg-purple-500/15" aria-label="Account">PS</a>
+    </div>
+  </div>
+</header>
+
+<div class="grid gap-5 px-5 py-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+
+  <main class="min-w-0 space-y-5">
+
+
+
+    <section class="flex flex-wrap items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 opacity-90">
+      <span class="text-[9px] uppercase tracking-widest text-zinc-500">Scope</span>
+      <span class="rounded-full bg-zinc-100 px-2.5 py-0.5 text-[11px] font-semibold text-zinc-950">All household</span>
+      <span class="flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900/60 px-2.5 py-0.5 text-[11px] text-zinc-400"><span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400/60"></span>Aarav</span>
+      <span class="flex items-center gap-1 rounded-full border border-purple-500/40 bg-purple-500/10 px-2.5 py-0.5 text-[11px] text-purple-200"><span class="inline-block h-1.5 w-1.5 rounded-full bg-purple-400"></span>Priya · you</span>
+      <span class="flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900/60 px-2.5 py-0.5 text-[11px] text-zinc-400"><span class="inline-block h-1.5 w-1.5 rounded-full bg-blue-400/60"></span>Ravi</span>
+      <span class="ml-auto text-[10px] text-zinc-500">Scope is admin-controlled · locked for view-only members.</span>
+    </section>
+
+    <section class="flex flex-wrap items-center gap-2 rounded-md border border-purple-500/30 bg-purple-500/5 px-3 py-2 text-[11.5px] text-purple-100">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.4" class="shrink-0"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span><strong class="text-zinc-100">You're viewing the household as a member.</strong> Admin <strong class="text-emerald-300">Aarav</strong> sees the same data with edit rights. Chitragupt never executes trades for anyone — every section is informational.</span>
+    </section>
+
+    <section class="grid gap-3 lg:grid-cols-3">
+
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 lg:col-span-1">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Household NAV · per member</p>
+        <div class="mt-3 flex items-center gap-3">
+          <div class="relative h-28 w-28 shrink-0">
+            <svg viewBox="0 0 100 100" class="-rotate-90">
+              <circle r="42" cx="50" cy="50" fill="transparent" stroke="#27272a" stroke-width="14"/>
+              <circle r="42" cx="50" cy="50" fill="transparent" stroke="#10b981" stroke-width="14" stroke-dasharray="119.5 144.4"/>
+              <circle r="42" cx="50" cy="50" fill="transparent" stroke="#a855f7" stroke-width="14" stroke-dasharray="92.4 171.5" stroke-dashoffset="-119.5"/>
+              <circle r="42" cx="50" cy="50" fill="transparent" stroke="#3b82f6" stroke-width="14" stroke-dasharray="52.0 211.9" stroke-dashoffset="-211.9"/>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center"><p class="text-[8px] uppercase tracking-widest text-zinc-500">Combined</p><p class="mono text-[13px] font-semibold text-zinc-100">₹4.82Cr</p></div>
+          </div>
+          <ul class="flex-1 space-y-1 text-[10px]">
+            <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-emerald-500"></span><span class="text-zinc-400">Aarav</span></span><span class="mono text-zinc-200">₹2.18Cr</span></li>
+            <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-purple-500"></span><span class="text-zinc-400">Priya · you</span></span><span class="mono text-purple-200">₹1.68Cr</span></li>
+            <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-blue-500"></span><span class="text-zinc-400">Ravi</span></span><span class="mono text-zinc-200">₹96L</span></li>
+          </ul>
+        </div>
+        <p class="mt-3 text-[10px] text-zinc-500">68 holdings · <a href="portfolio-holdings.html" class="text-emerald-300 hover:underline">See all →</a></p>
+      </div>
+
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 py-6 lg:col-span-2">
+        <div class="px-6 flex flex-wrap items-baseline justify-between gap-2">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Household value vs Nifty 50 · <span id="pf-range-label" class="text-zinc-300">FY 20-21 → FY 25-26</span></p>
+        </div>
+        <div class="px-6 mt-1 flex flex-wrap items-center gap-3 text-[10px] text-zinc-400">
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2 w-3 rounded-sm bg-blue-500/55"></span>₹ invested</span>
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2 w-3 rounded-sm bg-emerald-500/55"></span>Realised gain</span>
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2 w-3 rounded-sm bg-emerald-400"></span>Household value</span>
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-0.5 w-3 bg-zinc-500"></span>Nifty 50 hypo</span>
+        </div>
+        <div class="mt-3 px-3" style="height: 220px;"><canvas id="pf-history-chart"></canvas></div>
+        <p id="pf-history-callout" class="mx-6 mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[11px] text-emerald-200"></p>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Capital gains booked · household</p>
+      <p class="mt-1 text-[11px] text-zinc-400">3× ₹1.25L §112A cross-PAN headroom · <span class="mono text-emerald-300">₹3.75L</span> available this AY.</p>
+      <div class="mt-4 overflow-x-auto">
+        <svg viewBox="0 0 720 180" class="h-44 w-full">
+          <line x1="40" y1="130" x2="700" y2="130" stroke="#3f3f46" stroke-width="1"/>
+          <g><text x="100" y="148" fill="#52525b" font-size="10" font-family="ui-monospace,monospace" text-anchor="middle">AY 23-24</text><circle cx="100" cy="130" r="4" fill="#27272a" stroke="#52525b" stroke-width="1"/></g>
+          <g><rect x="218" y="92" width="64" height="38" rx="3" fill="#10b981" fill-opacity="0.35" stroke="#10b981" stroke-width="1"/><text x="250" y="84" fill="#a7f3d0" font-size="10" font-family="ui-monospace,monospace" text-anchor="middle">₹1.7L</text><text x="250" y="148" fill="#52525b" font-size="10" font-family="ui-monospace,monospace" text-anchor="middle">AY 24-25</text><circle cx="250" cy="130" r="4" fill="#10b981"/></g>
+          <g><rect x="368" y="42" width="64" height="88" rx="3" fill="#10b981" fill-opacity="0.5" stroke="#10b981" stroke-width="1"/><text x="400" y="34" fill="#a7f3d0" font-size="10" font-family="ui-monospace,monospace" text-anchor="middle">₹4.8L</text><text x="400" y="148" fill="#52525b" font-size="10" font-family="ui-monospace,monospace" text-anchor="middle">AY 25-26</text><circle cx="400" cy="130" r="4" fill="#10b981"/></g>
+          <g><rect x="518" y="118" width="64" height="12" rx="3" fill="#52525b" fill-opacity="0.4" stroke="#71717a" stroke-width="1" stroke-dasharray="3 3"/><text x="550" y="112" fill="#a1a1aa" font-size="10" font-family="ui-monospace,monospace" text-anchor="middle">₹0 · so far</text><text x="550" y="148" fill="#10b981" font-size="10" font-weight="600" font-family="ui-monospace,monospace" text-anchor="middle">AY 26-27</text><text x="550" y="162" fill="#f59e0b" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">₹3.75L headroom</text><circle cx="550" cy="130" r="5" fill="#10b981" stroke="#0a0a0a" stroke-width="2"/></g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+      <div class="flex items-baseline justify-between">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Joint goals · who's funding</p>
+        <span class="rounded bg-blue-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-blue-300">Pro Family</span>
+      </div>
+      <ul class="mt-3 grid gap-3 text-xs md:grid-cols-3">
+        <li>
+          <div class="flex items-baseline justify-between"><span class="text-zinc-100">House (2028)</span><span class="mono text-emerald-300">91%</span></div>
+          <div class="mt-1 h-2.5 w-full overflow-hidden rounded-full bg-zinc-900"><div class="h-full rounded-full bg-emerald-500" style="width: 91%"></div></div>
+          <p class="mt-1 text-[10px] text-zinc-500">Aarav 60% · Priya 30% · Ravi 10%</p>
+        </li>
+        <li>
+          <div class="flex items-baseline justify-between"><span class="text-zinc-100">Kid · UG (2031)</span><span class="mono text-zinc-200">52%</span></div>
+          <div class="mt-1 h-2.5 w-full overflow-hidden rounded-full bg-zinc-900"><div class="h-full rounded-full bg-blue-500" style="width: 52%"></div></div>
+          <p class="mt-1 text-[10px] text-zinc-500">Aarav 50% · Priya 40% · Ravi 10%</p>
+        </li>
+        <li>
+          <div class="flex items-baseline justify-between"><span class="text-zinc-100">Ravi's health corpus</span><span class="mono text-amber-300">38%</span></div>
+          <div class="mt-1 h-2.5 w-full overflow-hidden rounded-full bg-zinc-900"><div class="h-full rounded-full bg-amber-500" style="width: 38%"></div></div>
+        </li>
+      </ul>
+
+      <div class="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60 px-3 py-2 text-[11.5px] text-zinc-400">
+        <strong class="text-zinc-200">Read-only:</strong> mapping unmapped holdings to goals is admin-only. <a href="portfolio-review.html" class="text-purple-300 hover:underline">Open your Personal portfolio</a> to manage your own holdings + goals.
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="lg:sticky lg:top-20 lg:self-start space-y-3">
+
+          <div class="flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-950/40 p-1 text-[11px]" id="pf-period-switcher">
+        <span class="px-1.5 py-1 text-[9px] uppercase tracking-widest text-zinc-500">Range</span>
+        <button data-period="1M" class="pf-period-btn flex items-center gap-1 rounded px-2 py-1 text-zinc-500 hover:text-zinc-200"><span class="mono">1M</span></button>
+        <button data-period="3M" class="pf-period-btn flex items-center gap-1 rounded px-2 py-1 text-zinc-500 hover:text-zinc-200"><span class="mono">3M</span></button>
+        <button data-period="6M" class="pf-period-btn flex items-center gap-1 rounded px-2 py-1 text-zinc-500 hover:text-zinc-200"><span class="mono">6M</span></button>
+        <button data-period="1Y" class="pf-period-btn flex items-center gap-1 rounded bg-zinc-800 px-2 py-1 font-semibold text-zinc-100"><span class="mono">1Y</span></button>
+        <button data-period="Custom" class="pf-period-btn flex items-center gap-1 rounded px-2 py-1 text-zinc-500 hover:text-zinc-200"><span class="mono">Custom</span></button>
+      </div>
+
+
+    <section class="rounded-2xl border border-rose-500/30 bg-rose-500/5 p-4">
+      <div class="flex items-baseline justify-between"><p class="text-[10px] uppercase tracking-widest text-rose-300">What lost the household money</p><span class="rounded-full bg-rose-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-rose-300">8</span></div>
+      <ul class="mt-2 space-y-2 text-[11.5px]">
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">Aarav · Intraday + F&amp;O trades</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Net <span class="mono text-rose-300">−₹10.7L</span> across two brokers over 5 years.</p></li>
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">Aarav · Micro-cap and penny stocks</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">5 holdings down 50%+ · low trading volume made exits hard.</p></li>
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">Priya · Single-fund concentration</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">62% of your equity is in one large-cap MF.</p></li>
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">Ravi · Overlapping debt exposure</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Already 38% in EPF · hybrid MF holding adds more debt on top.</p></li>
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">All · Trade-to-trade segment</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Multiple holdings in this restricted segment.</p></li>
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">All · ELSS on new regime</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">80C unavailable under new regime · fresh contributions don't reduce tax for these members.</p></li>
+        <li class="border-b border-rose-500/15 pb-2"><p class="font-medium text-zinc-100">Long-held losers</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">2 stocks significantly down across the household · still held.</p></li>
+        <li><p class="font-medium text-zinc-100">Commodity futures</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Aarav's broker: losses across 3 FYs.</p></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+      <div class="flex items-baseline justify-between"><p class="text-[10px] uppercase tracking-widest text-emerald-300">What made the household money</p><span class="rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-300">6</span></div>
+      <ul class="mt-2 space-y-2 text-[11.5px]">
+        <li class="border-b border-emerald-500/15 pb-2"><p class="font-medium text-zinc-100">LTCG exemption across PANs</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400"><span class="mono text-emerald-300">₹3.75L</span> of tax-free LTCG exemption unused across 3 PANs.</p></li>
+        <li class="border-b border-emerald-500/15 pb-2"><p class="font-medium text-zinc-100">Joint flexi-cap MF SIPs</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Best risk-adjusted return in the household.</p></li>
+        <li class="border-b border-emerald-500/15 pb-2"><p class="font-medium text-zinc-100">Joint broad-market ETF</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Low expense ratio · steady contributor.</p></li>
+        <li class="border-b border-emerald-500/15 pb-2"><p class="font-medium text-zinc-100">Aarav's banking-sector picks</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Combined <span class="mono text-emerald-300">+21% CAGR</span> over 5 years.</p></li>
+        <li class="border-b border-emerald-500/15 pb-2"><p class="font-medium text-zinc-100">Ravi's premium claimable by Aarav</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Senior-citizen health insurance premium can be claimed under Aarav's own 80D.</p></li>
+        <li><p class="font-medium text-zinc-100">Household trading cadence</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">42 exits this year vs 167 last year · returns up.</p></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-blue-500/30 bg-blue-500/5 p-4">
+      <div class="flex items-baseline justify-between"><p class="text-[10px] uppercase tracking-widest text-blue-300">Gaps in the household safety net</p><span class="rounded-full bg-blue-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-blue-300">6</span></div>
+      <ul class="mt-2 space-y-2 text-[11.5px]">
+        <li class="border-b border-blue-500/15 pb-2"><p class="font-medium text-zinc-100">Aarav + Priya · no personal term life</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">Only employer cover detected.</p></li>
+        <li class="border-b border-blue-500/15 pb-2"><p class="font-medium text-zinc-100">No household health floater</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">No single policy covering all 4 members detected.</p></li>
+        <li class="border-b border-blue-500/15 pb-2"><p class="font-medium text-zinc-100">Ravi · no debt outside EPF</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">No bond fund or G-Sec exposure detected.</p></li>
+        <li class="border-b border-blue-500/15 pb-2"><p class="font-medium text-zinc-100">Aarav · no international equity</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">No USD-denominated holdings detected.</p></li>
+        <li class="border-b border-blue-500/15 pb-2"><p class="font-medium text-zinc-100">Ravi · no labelled emergency fund</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">SBI ₹3L sitting idle · could be tagged in Settings.</p></li>
+        <li><p class="font-medium text-zinc-100">Priya · NPS extra deduction unused</p><p class="mt-0.5 text-[10.5px] leading-snug text-zinc-400">She's on the old regime · the ₹50k 80CCD(1B) deduction is available if she has NPS contributions.</p></li>
+      </ul>
+    </section>
+
+    <p class="text-center text-[10px] text-zinc-500">Read-only view · patterns refresh nightly. Chitragupt does not give investment advice. For investment decisions, speak with a SEBI-registered advisor.</p>
+  </aside>
+</div>
+
+
+<nav class="fixed bottom-0 inset-x-0 z-20 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-md items-stretch">
+    <a href="../inbox/inbox-populated.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a>
+    <a href="../tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a>
+    <a href="../expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a>
+    <a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-emerald-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a>
+  </div>
+</nav>
+
+<script>
+const PF_HISTORY = [
+  { label: "FY 20-21", invested: 1800000, realised:   45000, value:  1900000, niftyClose: 14691 },
+  { label: "FY 21-22", invested: 2400000, realised:  185000, value:  4700000, niftyClose: 17464 },
+  { label: "FY 22-23", invested: 3200000, realised:  320000, value:  9200000, niftyClose: 17359 },
+  { label: "FY 23-24", invested: 4100000, realised:  450000, value: 15800000, niftyClose: 22326 },
+  { label: "FY 24-25", invested: 5400000, realised:  480000, value: 30500000, niftyClose: 23519 },
+  { label: "FY 25-26", invested: 6300000, realised:       0, value: 48200000, niftyClose: 24650 },
+];
+const PF_NIFTY_BASE = 12968;
+const PF_PERIOD_N = { "1Y": 1, "3Y": 3, "5Y": 5, "MAX": PF_HISTORY.length };
+const pfFmtL = v => { const abs = Math.abs(v); if (abs >= 1e7) return `${v<0?"-":""}₹${(abs/1e7).toFixed(2)}Cr`; if (abs >= 1e5) return `${v<0?"-":""}₹${(abs/1e5).toFixed(1)}L`; if (abs >= 1e3) return `${v<0?"-":""}₹${(abs/1e3).toFixed(0)}k`; return `${v<0?"-":""}₹${abs.toFixed(0)}`; };
+
+let pfHistoryChart = null;
+function pfRenderHistory(period) {
+  const n = PF_PERIOD_N[period] || PF_HISTORY.length;
+  const slice = PF_HISTORY.slice(-n);
+  const niftyStart = slice.length === PF_HISTORY.length ? PF_NIFTY_BASE : (PF_HISTORY[PF_HISTORY.length - n - 1]?.niftyClose ?? PF_NIFTY_BASE);
+  const labels = slice.map(r => r.label);
+  const investedBars = slice.map(r => r.invested);
+  const gainBars = slice.map(r => r.realised > 0 ? r.realised : 0);
+  const yourValueLine = slice.map(r => r.value);
+  let cumInv = 0;
+  const niftyHypoLine = slice.map(r => { cumInv += r.invested; return cumInv * (r.niftyClose / niftyStart); });
+  const periodInv = slice.reduce((a,r) => a + r.invested, 0);
+  const endValue = slice[slice.length-1].value;
+  const endNiftyHyp = niftyHypoLine[niftyHypoLine.length-1];
+  const gapINR = endValue - endNiftyHyp;
+  const myPct = ((endValue - periodInv) / periodInv) * 100;
+  const niftyPct = ((slice[slice.length-1].niftyClose / niftyStart) - 1) * 100;
+  const gapPP = myPct - niftyPct;
+  const periodLabel = period === "MAX" ? `${PF_HISTORY[0].label} → ${PF_HISTORY[PF_HISTORY.length-1].label}` : `last ${period}`;
+  document.getElementById("pf-range-label").textContent = periodLabel;
+  document.getElementById("pf-history-callout").innerHTML =
+    `Household at <span class="mono text-emerald-300">${myPct>=0?"+":""}${myPct.toFixed(1)}%</span> vs Nifty <span class="mono">${niftyPct>=0?"+":""}${niftyPct.toFixed(1)}%</span> over ${periodLabel} → gap <span class="mono font-semibold text-emerald-200">+${gapPP.toFixed(1)}pp (${pfFmtL(gapINR)} ahead)</span>.`;
+  if (pfHistoryChart) pfHistoryChart.destroy();
+  const ctx = document.getElementById("pf-history-chart").getContext("2d");
+  pfHistoryChart = new Chart(ctx, {
+    data: { labels, datasets: [
+      { type: "bar",  label: "Invested",      data: investedBars,  backgroundColor: "rgba(59,130,246,0.55)", borderColor: "rgba(59,130,246,0.85)", borderWidth: 1, stack: "cap", order: 3, yAxisID: "yBar" },
+      { type: "bar",  label: "Realised gain", data: gainBars,      backgroundColor: "rgba(16,185,129,0.55)", borderColor: "rgba(16,185,129,0.85)", borderWidth: 1, stack: "cap", order: 3, yAxisID: "yBar" },
+      { type: "line", label: "Household value", data: yourValueLine, borderColor: "#34d399", backgroundColor: "rgba(52,211,153,0.15)", borderWidth: 2.4, fill: false, tension: 0.35, pointRadius: 3, pointBackgroundColor: "#34d399", order: 1, yAxisID: "yLine" },
+      { type: "line", label: "Nifty 50 hypo", data: niftyHypoLine, borderColor: "#a1a1aa", backgroundColor: "transparent", borderWidth: 1.6, borderDash: [5,4], fill: false, tension: 0.3, pointRadius: 0, order: 2, yAxisID: "yLine" },
+    ] },
+    options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: "#18181b", borderColor: "#27272a", borderWidth: 1, titleColor: "#e4e4e7", bodyColor: "#a1a1aa", callbacks: { label: ctx => { const v = ctx.parsed.y; if (ctx.dataset.label === "Realised gain" && v === 0) return null; return `${ctx.dataset.label}: ${pfFmtL(v)}`; } } } },
+      scales: { x: { stacked: true, grid: { color: "rgba(63,63,70,0.4)" }, ticks: { color: "#71717a", font: { size: 10 } } }, yBar: { stacked: true, position: "left", grid: { display: false }, ticks: { color: "#52525b", font: { size: 9 }, callback: v => pfFmtL(v) }, beginAtZero: true }, yLine: { position: "right", grid: { color: "rgba(63,63,70,0.4)" }, ticks: { color: "#52525b", font: { size: 9 }, callback: v => pfFmtL(v) }, beginAtZero: true } },
+    },
+  });
+}
+document.querySelectorAll("#pf-period-switcher .pf-period-btn").forEach(btn => {
+  btn.addEventListener("click", () => { document.querySelectorAll("#pf-period-switcher .pf-period-btn").forEach(b => { b.className = "pf-period-btn flex items-center gap-1 rounded px-2 py-1 text-zinc-500 hover:text-zinc-200"; }); btn.className = "pf-period-btn flex items-center gap-1 rounded bg-zinc-800 px-2 py-1 font-semibold text-zinc-100"; pfRenderHistory(btn.dataset.period); });
+});
+pfRenderHistory("1Y");
+</script>
+
+</body>
+</html>

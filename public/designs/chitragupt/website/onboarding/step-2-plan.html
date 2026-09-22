@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Onboarding — step 2 · Select plan and pay</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/onboarding</span> ›</span>
+      <a href="step-1-consent.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">User · 1 Account</a>
+      <a href="step-2-plan.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">User · 2 Plan</a>
+      <a href="step-3-connect-broker.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">User · Connect a broker (optional)</a>
+      <a href="ca-dpdp-consent.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · 1 Consent</a>
+      <a href="ca-step-1-you.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · 2 You</a>
+      <a href="ca-step-2-business.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · 3 Business</a>
+      <a href="ca-pending.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA · Pending</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+    <p class="text-[11px] text-zinc-500">Step <strong class="text-zinc-200">2</strong> of 2 · Select plan and pay</p>
+  </div>
+</header>
+
+<main class="mx-auto max-w-5xl px-5 py-8 pb-32">
+  <h1 class="text-2xl font-semibold tracking-tight">Pick a plan — or skip and use Inbox for free</h1>
+  <p class="mt-2 text-sm text-zinc-400">Inbox is free forever. Tax, Expense, and Portfolio reviews unlock for a one-time payment per AY. No subscriptions, no auto-renewals.</p>
+
+  <!-- Plan cards -->
+  <div class="mt-8 grid gap-4 md:grid-cols-3 md:items-stretch">
+
+    <!-- Self -->
+    <label class="flex cursor-pointer flex-col rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 hover:border-emerald-500/40">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <input type="radio" name="plan" class="h-4 w-4 accent-emerald-500"/>
+          <p class="text-[10px] font-semibold uppercase tracking-widest text-emerald-300">Self</p>
+        </div>
+        <span class="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">Tax · Expense · Portfolio</span>
+      </div>
+      <p class="mt-3 flex items-baseline gap-1.5">
+        <span class="text-3xl font-semibold text-emerald-200">₹249</span>
+        <span class="text-[11px] text-zinc-400">per AY · one-time</span>
+      </p>
+      <p class="mt-3 text-xs text-zinc-300">Get the answers. All three reviews unlocked for the current year.</p>
+      <ul class="mt-3 space-y-1 text-[11px] text-zinc-300">
+        <li>· Everything in Free</li>
+        <li>· All documents parsed automatically</li>
+        <li>· Tax + Expense + Portfolio reviews</li>
+        <li>· Share your Tax Review with your CA</li>
+        <li>· 5 GB storage</li>
+      </ul>
+    </label>
+
+    <!-- AI Self · featured -->
+    <label class="relative flex cursor-pointer flex-col rounded-2xl border-2 border-purple-500 bg-gradient-to-br from-purple-500/15 via-purple-500/5 to-transparent p-5 shadow-xl shadow-purple-500/20 ring-1 ring-purple-500/30 md:-mt-3 md:-mb-3">
+      <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-purple-500 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-zinc-950">Most popular</span>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <input type="radio" name="plan" class="h-4 w-4 accent-purple-500" checked/>
+          <p class="text-[10px] font-semibold uppercase tracking-widest text-purple-300">AI Self</p>
+        </div>
+        <span class="rounded-full bg-purple-500/20 px-2 py-0.5 text-[9px] uppercase tracking-widest text-purple-300">+ AI Q&amp;A</span>
+      </div>
+      <p class="mt-3 flex items-baseline gap-1.5">
+        <span class="text-3xl font-semibold text-purple-200">₹499</span>
+        <span class="text-[11px] text-zinc-400">per AY · one-time</span>
+      </p>
+      <p class="mt-1 text-[11px] text-purple-300/80">On Self? Top up ₹250.</p>
+      <p class="mt-3 text-xs text-zinc-200">Ask anything. Get a real number from your own documents.</p>
+      <ul class="mt-3 space-y-1 text-[11px] text-zinc-200">
+        <li>· Everything in Self</li>
+        <li>· 5 AI questions per day on your documents</li>
+        <li>· Every answer cited to the source document</li>
+        <li>· Quota resets midnight IST</li>
+      </ul>
+    </label>
+
+    <!-- Pro Family -->
+    <label class="flex cursor-pointer flex-col rounded-2xl border border-blue-500/40 bg-gradient-to-br from-blue-500/10 to-zinc-950 p-5 hover:border-blue-500/60">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <input type="radio" name="plan" class="h-4 w-4 accent-blue-500"/>
+          <p class="text-[10px] font-semibold uppercase tracking-widest text-blue-300">Pro Family</p>
+        </div>
+        <span class="rounded-full bg-blue-500/20 px-2 py-0.5 text-[9px] uppercase tracking-widest text-blue-300">6 PANs</span>
+      </div>
+      <p class="mt-3 flex items-baseline gap-1.5">
+        <span class="text-3xl font-semibold text-blue-200">₹799</span>
+        <span class="text-[11px] text-zinc-400">per AY · whole family</span>
+      </p>
+      <p class="mt-1 text-[11px] text-blue-300/80">On AI Self? Top up ₹300.</p>
+      <p class="mt-3 text-xs text-zinc-200">Cover everyone. One unlock, six PANs, shared workspace.</p>
+      <ul class="mt-3 space-y-1 text-[11px] text-zinc-200">
+        <li>· Everything in AI Self</li>
+        <li>· Up to 6 family PANs in one workspace</li>
+        <li>· Household stacked tax + cashflow</li>
+        <li>· AI quota shared across family</li>
+        <li>· 5 GB storage per PAN</li>
+      </ul>
+    </label>
+  </div>
+
+  <!-- Why one-time explainer -->
+  <section class="mt-6 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-zinc-500">Why one-time, not subscription</p>
+    <p class="mt-2 text-[12px] text-zinc-400">Indian filers don't think monthly. Pay only when you want the answer. No recurring charges, no auto-renew traps.</p>
+  </section>
+</main>
+
+<div class="fixed inset-x-0 bottom-0 z-30 border-t border-zinc-800/80 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-5 py-3">
+    <a href="step-1-consent.html" class="text-sm text-zinc-400 hover:text-zinc-200">← Back</a>
+    <div class="flex items-center gap-2">
+      <a href="step-3-connect-broker.html" class="rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-800">Skip for now</a>
+      <a href="../payment/razorpay-checkout.html" class="rounded-md bg-emerald-500 px-5 py-2 text-sm font-semibold text-zinc-950 hover:bg-emerald-400">Pay and unlock</a>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

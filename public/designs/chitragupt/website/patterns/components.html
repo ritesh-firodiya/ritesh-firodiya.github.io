@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Components reference — Chitragupt</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .swatch { display: block; }
+    .code { font-family: ui-monospace, monospace; font-size: 11px; color: #a1a1aa; background: #18181b; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<header class="border-b border-zinc-900">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
+    <div>
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Chitragupt · web design system</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Component reference</h1>
+      <p class="mt-1 text-[11px] text-zinc-500">Canonical visual primitives. Every new wireframe must use these exact class strings — no improvising.</p>
+    </div>
+    <a href="../index.html" class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl space-y-12 px-5 py-10">
+
+  <!-- ═══════════════ BUTTONS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Buttons</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Three sizes. Three intents (primary / secondary / destructive). All `rounded-md` with `font-semibold` text.</p>
+
+    <div class="mt-5 grid gap-6 md:grid-cols-3">
+      <!-- Primary -->
+      <div>
+        <p class="mb-3 text-[10px] uppercase tracking-widest text-emerald-300">Primary</p>
+        <div class="space-y-2">
+          <button class="block rounded-md bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-emerald-400">Hero · large</button>
+          <button class="block rounded-md bg-emerald-500 px-4 py-2 text-xs font-semibold text-zinc-950 hover:bg-emerald-400">Default · medium</button>
+          <button class="block rounded-md bg-emerald-500 px-3 py-1.5 text-[11px] font-semibold text-zinc-950 hover:bg-emerald-400">Compact · small</button>
+        </div>
+        <pre class="mt-3 overflow-x-auto rounded bg-zinc-900 p-3 text-[10.5px] text-zinc-300">Hero:    rounded-md bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-zinc-950
+Default: rounded-md bg-emerald-500 px-4 py-2 text-xs font-semibold text-zinc-950
+Compact: rounded-md bg-emerald-500 px-3 py-1.5 text-[11px] font-semibold text-zinc-950</pre>
+      </div>
+
+      <!-- Secondary -->
+      <div>
+        <p class="mb-3 text-[10px] uppercase tracking-widest text-zinc-400">Secondary (bordered)</p>
+        <div class="space-y-2">
+          <button class="block rounded-md border border-zinc-700 bg-zinc-900 px-5 py-2.5 text-sm font-medium text-zinc-200 hover:bg-zinc-800">Hero · large</button>
+          <button class="block rounded-md border border-zinc-700 bg-zinc-900 px-4 py-2 text-xs font-medium text-zinc-200 hover:bg-zinc-800">Default · medium</button>
+          <button class="block rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-[11px] font-medium text-zinc-200 hover:bg-zinc-800">Compact · small</button>
+        </div>
+        <pre class="mt-3 overflow-x-auto rounded bg-zinc-900 p-3 text-[10.5px] text-zinc-300">rounded-md border border-zinc-700 bg-zinc-900 px-{3,4,5} py-{1.5,2,2.5} text-{[11px],xs,sm} font-medium text-zinc-200</pre>
+      </div>
+
+      <!-- Destructive -->
+      <div>
+        <p class="mb-3 text-[10px] uppercase tracking-widest text-rose-300">Destructive</p>
+        <div class="space-y-2">
+          <button class="block rounded-md border border-rose-500/30 bg-rose-500/10 px-5 py-2.5 text-sm font-semibold text-rose-300 hover:bg-rose-500/20">Delete account</button>
+          <button class="block rounded-md border border-rose-500/30 bg-rose-500/10 px-4 py-2 text-xs font-semibold text-rose-300 hover:bg-rose-500/20">Delete</button>
+        </div>
+        <pre class="mt-3 overflow-x-auto rounded bg-zinc-900 p-3 text-[10.5px] text-zinc-300">rounded-md border border-rose-500/30 bg-rose-500/10 px-{4,5} py-{2,2.5} text-{xs,sm} font-semibold text-rose-300</pre>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-md border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-[11px] text-amber-200">
+      <strong>Rule:</strong> never use `rounded-lg` or `rounded-xl` on buttons. CTA padding scales with text size — don't mix (e.g. `px-5` with `text-xs`).
+    </div>
+  </section>
+
+  <!-- ═══════════════ STATUS PILLS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Status pills / badges</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Always `rounded-full px-2 py-0.5 text-[10px]`. Color = semantic (see Color semantics).</p>
+    <div class="mt-5 flex flex-wrap gap-2">
+      <span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium text-emerald-300">Confirmed</span>
+      <span class="rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-medium text-amber-300">Pending</span>
+      <span class="rounded-full bg-rose-500/15 px-2 py-0.5 text-[10px] font-medium text-rose-300">Failed</span>
+      <span class="rounded-full bg-blue-500/15 px-2 py-0.5 text-[10px] font-medium text-blue-300">Family</span>
+      <span class="rounded-full bg-purple-500/15 px-2 py-0.5 text-[10px] font-medium text-purple-300">AI Self</span>
+      <span class="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] font-medium text-zinc-400">Neutral</span>
+      <span class="rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[10px] font-medium text-zinc-300">Outlined</span>
+    </div>
+    <p class="mt-3 text-[10.5px] text-zinc-500">For all-caps eyebrow labels INSIDE a pill, add <span class="code">uppercase tracking-widest</span>.</p>
+  </section>
+
+  <!-- ═══════════════ SECTION CARDS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Section cards</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Always `rounded-2xl border bg-zinc-900/40 p-5`. Border color = neutral (zinc-800) or semantic.</p>
+
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Default · neutral</p>
+        <p class="mt-3 text-sm text-zinc-300">For most informational panels.</p>
+      </div>
+      <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-emerald-300">Positive · highlighted</p>
+        <p class="mt-3 text-sm text-zinc-200">For success state or primary CTA region.</p>
+      </div>
+      <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-emerald-300">Required · double-border</p>
+        <p class="mt-3 text-sm text-zinc-200">For consent / required fields.</p>
+      </div>
+      <div class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">Warning</p>
+        <p class="mt-3 text-sm text-zinc-200">For unresolved states / soft alerts.</p>
+      </div>
+      <div class="rounded-2xl border border-rose-500/40 bg-rose-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-rose-300">Danger / lost</p>
+        <p class="mt-3 text-sm text-zinc-200">For failed / negative information.</p>
+      </div>
+      <div class="rounded-2xl border border-blue-500/40 bg-blue-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-blue-300">Family</p>
+        <p class="mt-3 text-sm text-zinc-200">For Pro Family / household context.</p>
+      </div>
+    </div>
+    <p class="mt-3 text-[10.5px] text-zinc-500"><strong>Never</strong> use `rounded-xl` or `rounded-md` for full cards (only for nested sub-cards), and never use `p-6` (only modal headers).</p>
+  </section>
+
+  <!-- ═══════════════ EYEBROW LABELS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Eyebrow labels</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Always `text-[10px] uppercase tracking-widest`. Color = neutral or semantic.</p>
+    <div class="mt-5 space-y-2">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Default (neutral) — describing a region</p>
+      <p class="text-[10px] uppercase tracking-widest text-emerald-300">Positive — highlighted region</p>
+      <p class="text-[10px] uppercase tracking-widest text-amber-300">Warning / pending</p>
+      <p class="text-[10px] uppercase tracking-widest text-rose-300">Danger</p>
+      <p class="text-[10px] uppercase tracking-widest text-blue-300">Family / Pro Family</p>
+      <p class="text-[10px] uppercase tracking-widest text-purple-300">AI Self</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ INFO BANNERS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Info banners (single-line alerts)</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Always `rounded-md border bg-{color}/5 px-3 py-2 text-[11px]`. Sits inside a card, above or below content.</p>
+    <div class="mt-5 space-y-3">
+      <div class="rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[11px] text-emerald-200">
+        <strong>Info:</strong> A non-blocking confirmation or reassurance.
+      </div>
+      <div class="rounded-md border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-[11px] text-amber-200">
+        <strong>Warning:</strong> Something the user should know but can proceed past.
+      </div>
+      <div class="rounded-md border border-rose-500/30 bg-rose-500/5 px-3 py-2 text-[11px] text-rose-200">
+        <strong>Danger:</strong> A failure or irreversible action.
+      </div>
+      <div class="rounded-md border border-blue-500/30 bg-blue-500/5 px-3 py-2 text-[11px] text-blue-200">
+        <strong>Family:</strong> Context-specific to Pro Family / household.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FORM INPUTS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Form inputs</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Always `rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none`.</p>
+    <div class="mt-5 grid gap-4 md:grid-cols-2">
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">Text input <span class="text-red-300">*</span></span>
+        <input type="text" placeholder="Aarav Sharma" class="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-emerald-500 focus:outline-none"/>
+        <span class="text-[11px] text-zinc-500">Helper text below — `text-[11px] text-zinc-500`</span>
+      </label>
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">Select</span>
+        <select class="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 focus:border-emerald-500 focus:outline-none">
+          <option>Resident</option><option>Non-resident (NRI)</option>
+        </select>
+      </label>
+      <label class="flex flex-col gap-1">
+        <span class="text-xs text-zinc-400">Mono input (PAN, codes)</span>
+        <input type="text" placeholder="ABCDE1234F" maxlength="10" class="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm uppercase text-zinc-100 placeholder:text-zinc-600 focus:border-emerald-500 focus:outline-none"/>
+      </label>
+      <label class="flex items-start gap-3">
+        <input type="checkbox" class="mt-1 h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-emerald-500"/>
+        <span class="text-sm text-zinc-200">Checkbox — `h-4 w-4 accent-emerald-500`</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TAB PILLS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Tab pills (segmented control)</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Always `rounded-full px-3 py-1 text-[12px]`. Active = emerald tint; inactive = zinc-900.</p>
+    <nav class="mt-5 flex gap-2 text-[12px]">
+      <button class="rounded-full bg-emerald-500/15 px-3 py-1 font-medium text-emerald-200">Active <span class="ml-1.5 rounded-full bg-emerald-500/30 px-1.5 text-[10px]">3</span></button>
+      <button class="rounded-full bg-zinc-900 px-3 py-1 text-zinc-400 hover:text-zinc-200">Inactive</button>
+      <button class="rounded-full bg-zinc-900 px-3 py-1 text-zinc-400 hover:text-zinc-200">Inactive <span class="ml-1.5 text-zinc-500">14</span></button>
+    </nav>
+  </section>
+
+  <!-- ═══════════════ LIST ROWS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">List rows (divided)</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Wrap in `divide-y divide-zinc-900` on the parent. Each row: `flex items-center justify-between py-2 text-sm`.</p>
+    <div class="mt-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Recent</p>
+      <ul class="mt-3 divide-y divide-zinc-900 text-sm">
+        <li class="flex items-center justify-between py-2"><span class="text-zinc-200">Form 16 · TechServe</span><span class="text-[10px] text-zinc-500">14 May</span></li>
+        <li class="flex items-center justify-between py-2"><span class="text-zinc-200">26AS · AY 2026-27</span><span class="text-[10px] text-zinc-500">12 May</span></li>
+        <li class="flex items-center justify-between py-2"><span class="text-zinc-200">AIS · TIS data</span><span class="text-[10px] text-zinc-500">10 May</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EYEBROW + NUMBER STAT ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Stat blocks</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Eyebrow label + `mono text-2xl font-semibold` number. Inside a section card.</p>
+    <div class="mt-5 grid gap-3 md:grid-cols-3">
+      <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-emerald-300">Refund</p>
+        <p class="mono mt-2 text-2xl font-semibold text-emerald-300">+ ₹18,000</p>
+        <p class="mt-1 text-[11px] text-zinc-500">ITR-1 · new regime</p>
+      </div>
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Documents</p>
+        <p class="mono mt-2 text-2xl font-semibold text-zinc-100">14</p>
+        <p class="mt-1 text-[11px] text-zinc-500">2 pending</p>
+      </div>
+      <div class="rounded-2xl border border-rose-500/40 bg-rose-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-rose-300">Owed</p>
+        <p class="mono mt-2 text-2xl font-semibold text-rose-300">− ₹4,200</p>
+        <p class="mt-1 text-[11px] text-zinc-500">Pay by 31 Jul</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COLOR SEMANTICS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Color semantics</h2>
+    <p class="mt-1 text-[12px] text-zinc-500">Color = meaning. Never decorate.</p>
+    <div class="mt-5 grid gap-3 md:grid-cols-3">
+      <div class="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-3 text-[12px]"><strong class="text-emerald-300">emerald</strong> — primary brand, confirmed, refund, you (current user)</div>
+      <div class="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-[12px]"><strong class="text-amber-300">amber</strong> — pending, warning, CA engagement state</div>
+      <div class="rounded-md border border-rose-500/40 bg-rose-500/10 p-3 text-[12px]"><strong class="text-rose-300">rose</strong> — failed, owed, danger, lost money</div>
+      <div class="rounded-md border border-blue-500/40 bg-blue-500/10 p-3 text-[12px]"><strong class="text-blue-300">blue</strong> — Pro Family / household</div>
+      <div class="rounded-md border border-purple-500/40 bg-purple-500/10 p-3 text-[12px]"><strong class="text-purple-300">purple</strong> — AI Self / AI Q&amp;A</div>
+      <div class="rounded-md border border-zinc-700 bg-zinc-900 p-3 text-[12px]"><strong class="text-zinc-300">zinc</strong> — neutral, metadata, helper text</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TYPOGRAPHY ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Typography scale</h2>
+    <div class="mt-5 space-y-2.5">
+      <p class="text-3xl font-semibold tracking-tight">Hero · text-3xl font-semibold tracking-tight</p>
+      <p class="text-2xl font-semibold tracking-tight">Page H1 · text-2xl font-semibold tracking-tight</p>
+      <p class="text-xl font-semibold tracking-tight">Section H2 · text-xl font-semibold</p>
+      <p class="text-lg font-semibold">Sub-section H3 · text-lg font-semibold</p>
+      <p class="text-sm">Body · text-sm</p>
+      <p class="text-xs text-zinc-400">Metadata · text-xs text-zinc-400</p>
+      <p class="text-[11px] text-zinc-500">Helper text · text-[11px] text-zinc-500</p>
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Eyebrow · text-[10px] uppercase tracking-widest</p>
+      <p class="mono text-2xl font-semibold text-emerald-300">₹1,82,400</p>
+      <p class="text-[11px] text-zinc-500">Money values use the `mono` class. Format as Indian-grouped: ₹1,82,400 (not ₹182400, not ₹1.82L unless space-constrained).</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DON'TS ═══════════════ -->
+  <section>
+    <h2 class="text-lg font-semibold">Anti-patterns — don't do these</h2>
+    <ul class="mt-3 space-y-2 text-sm">
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't use `rounded-lg` or `rounded-xl` on buttons — always `rounded-md`.</span></li>
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't use `text-[8px]` or `text-[9px]` on status pills — always `text-[10px]`.</span></li>
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't use `p-6` on regular section cards — only modal headers. Body = `p-5`.</span></li>
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't put primary CTAs in `font-medium` — always `font-semibold`.</span></li>
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't use color for decoration. Emerald = primary/confirmed. Amber = pending. Rose = danger. Blue = family. Purple = AI Self. Zinc = neutral.</span></li>
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't write `₹120000` — write `₹1,20,000` or `₹1.2 lakh`.</span></li>
+      <li class="flex items-start gap-2"><span class="text-rose-300">✕</span><span>Don't write `2026-06-27` on a surface — write `27 Jun 2026`. ISO is for code only.</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="border-t border-zinc-900 px-5 py-6 text-center text-[11px] text-zinc-500">
+  See <a href="../emails/index.html" class="underline hover:text-zinc-300">email templates</a> for the email chrome variant. Mobile uses the same primitives — see <a href="../../mobile/patterns/components.html" class="underline hover:text-zinc-300">mobile components reference</a>.
+</footer>
+
+</body>
+</html>

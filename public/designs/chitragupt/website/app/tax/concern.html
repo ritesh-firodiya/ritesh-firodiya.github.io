@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raise a concern · Anil Sahu — Chitragupt</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+  <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/tax</span> ›</span>
+      <a href="tax-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Locked</a>
+      <a href="tax-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="tax-review.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Review</a>
+      <a href="tax-ca-invited.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA invited</a>
+      <a href="tax-with-ca.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">With CA</a>
+      <a href="tax-filed.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Filed</a>
+      <a href="tax-past-ay.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Past AY</a>
+      <a href="tax-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family</a>
+      <a href="tax-family-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family locked</a>
+      <a href="invite-ca.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Invite CA (modal)</a>
+      <a href="concern.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Concern (modal)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="flex h-14 items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-locked.html" class="text-zinc-100">Tax</a>
+        <a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="../ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      <a href="../notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+<!-- Dimmed tax page behind modal -->
+<main class="px-5 py-6 opacity-30 pointer-events-none select-none">
+  <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-10 text-center text-xs text-zinc-500">
+    Tax · With CA page sits behind the modal · grayed out for context
+  </div>
+</main>
+
+<!-- ─── MODAL OVERLAY ─── -->
+<div class="fixed inset-0 z-40 flex items-center justify-center bg-zinc-950/80 backdrop-blur-sm px-5 py-8 overflow-y-auto">
+  <div role="dialog" aria-modal="true" aria-labelledby="concern-title" class="my-auto w-full max-w-lg rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl">
+
+    <div class="flex items-start justify-between gap-3 border-b border-zinc-800 px-5 py-4">
+      <div class="min-w-0">
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">CA conduct review</p>
+        <h2 id="concern-title" class="mt-0.5 text-base font-semibold text-zinc-100">Raise a concern about Anil Sahu</h2>
+      </div>
+      <a href="tax-with-ca.html" aria-label="Close" class="-mr-1 -mt-1 rounded p-1 text-zinc-500 hover:bg-zinc-900 hover:text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </a>
+    </div>
+
+    <div class="px-5 py-5 space-y-4">
+      <p class="text-xs text-zinc-400">Concerns go directly to the Chitragupt admin team. Anil does not see this submission. Admin reviews within 2 business days.</p>
+
+      <div class="rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-2.5 text-[11px] text-zinc-400">
+        <p>Reference engagement · <strong class="text-zinc-200">ENG-2026-A82F1K</strong> · ITR-1 File · AY 2026-27 · started 23 May 2026</p>
+      </div>
+
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">What's the concern about?</p>
+        <div class="mt-2 space-y-1.5">
+          <label class="flex items-start gap-3 rounded-md border border-zinc-800 bg-zinc-900 p-2.5 hover:border-amber-500/40 cursor-pointer">
+            <input type="radio" name="kind" class="mt-0.5 accent-amber-500" />
+            <div class="text-xs"><p class="text-zinc-100">Unprofessional language or tone</p></div>
+          </label>
+          <label class="flex items-start gap-3 rounded-md border border-zinc-800 bg-zinc-900 p-2.5 hover:border-amber-500/40 cursor-pointer">
+            <input type="radio" name="kind" class="mt-0.5 accent-amber-500" />
+            <div class="text-xs"><p class="text-zinc-100">Discriminatory or biased remarks</p></div>
+          </label>
+          <label class="flex items-start gap-3 rounded-md border border-zinc-800 bg-zinc-900 p-2.5 hover:border-amber-500/40 cursor-pointer">
+            <input type="radio" name="kind" class="mt-0.5 accent-amber-500" />
+            <div class="text-xs"><p class="text-zinc-100">Asked for off-platform payment</p></div>
+          </label>
+          <label class="flex items-start gap-3 rounded-md border border-zinc-800 bg-zinc-900 p-2.5 hover:border-amber-500/40 cursor-pointer">
+            <input type="radio" name="kind" class="mt-0.5 accent-amber-500" />
+            <div class="text-xs"><p class="text-zinc-100">Misleading or incorrect tax advice</p></div>
+          </label>
+          <label class="flex items-start gap-3 rounded-md border border-zinc-800 bg-zinc-900 p-2.5 hover:border-amber-500/40 cursor-pointer">
+            <input type="radio" name="kind" class="mt-0.5 accent-amber-500" />
+            <div class="text-xs"><p class="text-zinc-100">Slow / no response · ghosting</p></div>
+          </label>
+          <label class="flex items-start gap-3 rounded-md border border-zinc-800 bg-zinc-900 p-2.5 hover:border-amber-500/40 cursor-pointer">
+            <input type="radio" name="kind" class="mt-0.5 accent-amber-500" />
+            <div class="text-xs"><p class="text-zinc-100">Other (describe below)</p></div>
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Tell us what happened</p>
+        <textarea rows="3" placeholder="Dates / times if possible. Admin will read the full chat thread alongside your submission." class="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"></textarea>
+      </div>
+
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">What outcome are you looking for?</p>
+        <div class="mt-2 flex flex-wrap gap-1.5 text-[11px]">
+          <label class="cursor-pointer rounded-full border border-zinc-800 bg-zinc-900 px-2.5 py-1 has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-500/10 has-[:checked]:text-emerald-200"><input type="checkbox" class="hidden" /> Mediation</label>
+          <label class="cursor-pointer rounded-full border border-zinc-800 bg-zinc-900 px-2.5 py-1 has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-500/10 has-[:checked]:text-emerald-200"><input type="checkbox" class="hidden" /> Reassign to a different CA</label>
+          <label class="cursor-pointer rounded-full border border-zinc-800 bg-zinc-900 px-2.5 py-1 has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-500/10 has-[:checked]:text-emerald-200"><input type="checkbox" class="hidden" /> Full refund + close</label>
+          <label class="cursor-pointer rounded-full border border-zinc-800 bg-zinc-900 px-2.5 py-1 has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-500/10 has-[:checked]:text-emerald-200"><input type="checkbox" class="hidden" /> Reporting only</label>
+        </div>
+      </div>
+
+      <div class="rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[11px] text-emerald-200">
+        Submission is reviewed by 2 admin staff within 2 business days. Anil sees nothing unless mediation is requested.
+      </div>
+    </div>
+
+    <div class="flex items-center justify-end gap-2 border-t border-zinc-800 bg-zinc-900/40 px-5 py-3">
+      <a href="tax-with-ca.html" class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800">Cancel</a>
+      <button class="rounded-md bg-amber-500 px-4 py-1.5 text-xs font-semibold text-zinc-950 hover:bg-amber-400">Submit concern →</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

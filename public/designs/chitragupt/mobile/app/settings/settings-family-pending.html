@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Pending invites — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="none" data-chrome-title="Pending invites" data-chrome-section="/settings" data-chrome-routes="Main|settings.html;Profile|settings-profile.html;Family|settings-family.html;Family invite|settings-family-invite.html;Family pending|settings-family-pending.html|1;Family member|settings-family-members.html;Family leave|settings-family-leave.html;Billing|settings-billing.html;Invoice|settings-invoice-detail.html;Email setup|settings-email-forward-setup.html;Email verify|settings-email-forward-verify.html;Email log|settings-email-forward-received.html;Notifications|settings-notifications.html;Privacy|settings-privacy-data.html;Audit|settings-audit-log.html;Sharing|settings-sharing.html;Support|settings-support.html;Delete|settings-account-deletion.html" data-chrome-top="level2" data-chrome-back="settings-family.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <ul class="space-y-2.5">
+    <li class="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-3.5">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">M</span>
+        <div class="flex-1">
+          <p class="text-[13px] font-medium text-zinc-100">Mira Sharma · daughter (minor)</p>
+          <p class="mt-0.5 text-[11px] text-amber-300">mira@example.com · invited 21 May 2026</p>
+          <p class="mt-0.5 text-[10px] text-zinc-500">Auto-expires in 4 days</p>
+        </div>
+      </div>
+      <div class="mt-3 flex gap-2">
+        <button class="rounded-md border border-zinc-700 bg-zinc-900 px-2.5 py-1.5 text-[11px] text-zinc-300">Resend</button>
+        <button class="rounded-md border border-rose-500/30 bg-rose-500/5 px-2.5 py-1.5 text-[11px] text-rose-300">Cancel</button>
+      </div>
+    </li>
+    <li class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3.5">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800 text-zinc-400 text-[10px] font-bold">D</span>
+        <div class="flex-1">
+          <p class="text-[13px] text-zinc-300">Devansh Sharma · brother</p>
+          <p class="mt-0.5 text-[11px] text-rose-300">Declined · 18 May</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <a href="settings-family-invite.html" class="mt-4 block rounded-xl border border-emerald-500/30 bg-emerald-500/5 px-4 py-3 text-center text-[13px] font-semibold text-emerald-200">+ New invite</a>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

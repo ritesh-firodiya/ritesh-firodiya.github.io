@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Map to goal · modal — Chitragupt</title>
+    <script src="../../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/portfolio</span> ›</span>
+      <a href="portfolio-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Locked</a>
+      <a href="portfolio-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="portfolio-review.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Review</a>
+      <a href="portfolio-review-cg-booked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CG booked</a>
+      <a href="portfolio-holdings.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Holdings</a>
+      <a href="portfolio-family-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family locked</a>
+      <a href="portfolio-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family combined</a>
+      <a href="portfolio-view-only.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">View-only</a>
+      <span class="text-[10px] text-zinc-600">·</span>
+      <a href="portfolio-map-goal-modal.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Map goal (modal)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+
+<div class="pointer-events-none opacity-30 select-none">
+  <header class="border-b border-zinc-900 bg-zinc-950/85">
+    <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</div>
+        <nav class="hidden gap-5 text-xs md:flex text-zinc-500"><span>Dashboard</span><span>Inbox</span><span>Tax</span><span>Expense</span><span class="text-zinc-200">Portfolio</span><span>Ask</span></nav>
+      </div>
+    </div>
+  </header>
+  <div class="px-5 py-6"><div class="mx-auto max-w-6xl space-y-4">
+    <div class="h-8 w-64 rounded bg-zinc-900"></div>
+    <div class="h-10 w-full rounded bg-zinc-900"></div>
+    <div class="grid gap-3 lg:grid-cols-3"><div class="h-48 rounded-2xl bg-zinc-900"></div><div class="h-48 rounded-2xl bg-zinc-900 lg:col-span-2"></div></div>
+  </div></div>
+</div>
+
+<div class="fixed inset-0 z-40 flex items-center justify-center bg-zinc-950/80 backdrop-blur-sm px-4 py-8 overflow-y-auto">
+  <div class="w-full max-w-2xl rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl">
+
+    <div class="flex items-center justify-between border-b border-zinc-800 px-5 py-4">
+      <div>
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">Map to a goal</p>
+        <h2 class="mt-1 text-base font-semibold text-zinc-100">Tag this holding · so projections + funding-pace track right</h2>
+      </div>
+      <a href="portfolio-review.html" class="inline-flex h-8 w-8 items-center justify-center rounded border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-200" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </a>
+    </div>
+
+    <!-- Holding context -->
+    <div class="border-b border-zinc-800 bg-zinc-900/40 px-5 py-3">
+      <div class="flex items-baseline justify-between gap-2">
+        <div>
+          <p class="text-sm text-zinc-100">SBI Magnum Gilt</p>
+          <p class="text-[10px] text-zinc-500 mt-0.5">Debt MF · Groww · acquired Feb 2024 · 4 years to maturity sensitivity · imported from <a href="../review/document-parsed.html" class="text-emerald-300 underline">groww-pnl-FY26.pdf</a></p>
+        </div>
+        <span class="mono text-lg font-semibold text-zinc-100">₹4.20L</span>
+      </div>
+      <div class="mt-2 flex flex-wrap items-center gap-2 text-[10px] text-zinc-500">
+        <span class="rounded bg-zinc-800 px-1.5 py-0.5">Asset class: Debt MF</span>
+        <span class="rounded bg-zinc-800 px-1.5 py-0.5">XIRR: 6.2%</span>
+        <span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">No goal yet</span>
+      </div>
+    </div>
+
+    <!-- Suggested goals -->
+    <div class="px-5 py-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">AI suggestions <span class="text-zinc-600">(based on asset class + timeline)</span></p>
+      <div class="mt-2 grid gap-2 md:grid-cols-3">
+        <button class="group rounded-lg border-2 border-emerald-500/50 bg-emerald-500/10 p-3 text-left hover:border-emerald-500 hover:bg-emerald-500/15">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500/20 text-[11px]">🏠</span>
+            <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-widest text-emerald-300">78%</span>
+          </div>
+          <p class="mt-2 text-xs font-semibold text-zinc-100">House (2028)</p>
+          <p class="mt-0.5 text-[10px] text-zinc-400">Debt fund matches 3-4yr horizon</p>
+        </button>
+        <button class="group rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-left hover:border-zinc-500">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-zinc-800 text-[11px]">💧</span>
+            <span class="text-[9px] text-zinc-500">15%</span>
+          </div>
+          <p class="mt-2 text-xs font-semibold text-zinc-100">Liquidity buffer</p>
+          <p class="mt-0.5 text-[10px] text-zinc-400">Safer than equity, 1-2 day exit</p>
+        </button>
+        <button class="group rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-left hover:border-zinc-500">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-zinc-800 text-[11px]">🎯</span>
+            <span class="text-[9px] text-zinc-500">7%</span>
+          </div>
+          <p class="mt-2 text-xs font-semibold text-zinc-100">Retirement</p>
+          <p class="mt-0.5 text-[10px] text-zinc-400">Possible but long-horizon equity better</p>
+        </button>
+      </div>
+
+      <p class="mt-5 text-[10px] uppercase tracking-widest text-zinc-500">All goals</p>
+      <div class="mt-2 flex flex-wrap gap-1.5">
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Retirement (age 55)</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">House (2028)</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Kid · UG (2031)</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Liquidity</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Income</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Health corpus</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Hedge</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Tactical · trim</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Core</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-200 hover:border-zinc-500">Unassigned</button>
+        <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-[11px] text-zinc-300 hover:border-zinc-500">+ New goal</button>
+      </div>
+
+      <!-- Allocation toggle -->
+      <div class="mt-5 rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2.5">
+        <label class="flex items-start gap-2.5 cursor-pointer">
+          <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-emerald-500"/>
+          <div class="flex-1">
+            <p class="text-xs text-zinc-100">Split across multiple goals</p>
+            <p class="mt-0.5 text-[10px] text-zinc-500">Allocate by % (e.g., 60% House · 40% Liquidity). Useful for hybrid + debt funds.</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- Future rule -->
+      <div class="mt-3 rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2.5">
+        <label class="flex items-start gap-2.5 cursor-pointer">
+          <input type="checkbox" checked class="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 text-emerald-500 focus:ring-emerald-500"/>
+          <div class="flex-1">
+            <p class="text-xs text-zinc-100">Apply to future units of <span class="mono">SBI Magnum Gilt</span></p>
+            <p class="mt-0.5 text-[10px] text-zinc-500">Adds a holding rule · future SIPs / buys land in this goal automatically.</p>
+          </div>
+        </label>
+      </div>
+
+      <p class="mt-3 text-[10px] text-zinc-500">Tip: edit goal mappings any time via <a href="#" class="text-emerald-300 underline">Settings · Holdings &amp; goals</a>.</p>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-zinc-800 px-5 py-3">
+      <p class="text-[10px] text-zinc-500"><span class="mono">1 / 4</span> unmapped</p>
+      <div class="flex items-center gap-2">
+        <a href="portfolio-review.html" class="rounded border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800">Cancel</a>
+        <button class="rounded border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800">Skip · keep unmapped</button>
+        <button class="rounded bg-emerald-500 px-4 py-1.5 text-xs font-semibold text-zinc-950 hover:bg-emerald-400">Map to House · next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

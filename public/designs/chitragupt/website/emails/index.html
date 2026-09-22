@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Email templates — Chitragupt</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .chip { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 11px; line-height: 1.4; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+
+<header class="border-b border-zinc-900">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
+    <div>
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Chitragupt · transactional emails</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Email templates</h1>
+      <p class="mt-1 text-[11px] text-zinc-500">21 emails. Plain HTML + plain text. No marketing chrome. Spec: <a href="README.md" class="underline">README.md</a>.</p>
+    </div>
+    <a href="../index.html" class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-5 py-8">
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-zinc-800 text-[10px] uppercase tracking-widest text-zinc-500">
+        <th class="px-3 py-2 text-left font-normal w-12">#</th>
+        <th class="px-3 py-2 text-left font-normal">Email</th>
+        <th class="px-3 py-2 text-left font-normal">Trigger</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-zinc-900">
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">1</td><td class="px-3 py-2.5"><a href="email-auth-otp.html" class="text-emerald-300 hover:underline">Sign-in OTP code</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Email entered on sign-in / sign-up</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">2</td><td class="px-3 py-2.5"><a href="email-onboarding-welcome.html" class="text-emerald-300 hover:underline">Welcome after DPDP consent</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">User completes onboarding step 1</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">3</td><td class="px-3 py-2.5"><a href="email-inbox-doc-parsed.html" class="text-emerald-300 hover:underline">Document parsed</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Parser routes a doc</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">4</td><td class="px-3 py-2.5"><a href="email-inbox-parse-failed.html" class="text-emerald-300 hover:underline">Parse failed</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Parser pipeline fails</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">5</td><td class="px-3 py-2.5"><a href="email-inbox-password-required.html" class="text-emerald-300 hover:underline">Password required (encrypted doc)</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Encrypted doc waiting for password</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">6</td><td class="px-3 py-2.5"><a href="email-forward-verification.html" class="text-emerald-300 hover:underline">Email-forward verification</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">User sets up email forwarding</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">7</td><td class="px-3 py-2.5"><a href="email-forward-received.html" class="text-emerald-300 hover:underline">First forward receipt</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Inbound email lands on private address</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">8</td><td class="px-3 py-2.5"><a href="email-tax-action-needed.html" class="text-emerald-300 hover:underline">Tax action needed</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Regime decision / TDS mismatch / notice</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">9</td><td class="px-3 py-2.5"><a href="email-tax-filing-window.html" class="text-emerald-300 hover:underline">Filing window reminder</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">60 / 30 / 7 days before due date</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">10</td><td class="px-3 py-2.5"><a href="email-ca-matched-replied.html" class="text-emerald-300 hover:underline">CA matched / replied</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">CA matched or posts a message</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">11</td><td class="px-3 py-2.5"><a href="email-payment-success.html" class="text-emerald-300 hover:underline">Payment success + GST invoice</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Razorpay capture</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">12</td><td class="px-3 py-2.5"><a href="email-payment-failure.html" class="text-emerald-300 hover:underline">Payment failure</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Razorpay failure / webhook miss</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">13</td><td class="px-3 py-2.5"><a href="email-refund-processed.html" class="text-emerald-300 hover:underline">Refund processed + credit note</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Refund initiated</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">14</td><td class="px-3 py-2.5"><a href="email-billing-renewal.html" class="text-emerald-300 hover:underline">Billing · renewal coming up</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">7 days before auto-renewal</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">15</td><td class="px-3 py-2.5"><a href="email-billing-pre-debit.html" class="text-emerald-300 hover:underline">Billing · pre-debit (RBI)</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">24h before any recurring debit</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">16</td><td class="px-3 py-2.5"><a href="email-family-events.html" class="text-emerald-300 hover:underline">Family · invite / accept / role change</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Any family-membership event</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">17</td><td class="px-3 py-2.5"><a href="email-family-dissolution.html" class="text-emerald-300 hover:underline">Family dissolution (7-day grace)</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Dissolution triggered</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">18</td><td class="px-3 py-2.5"><a href="email-sharing-ca-grant.html" class="text-emerald-300 hover:underline">CA share granted / revoked</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">User grants or revokes a CA share</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">19</td><td class="px-3 py-2.5"><a href="email-account-deletion.html" class="text-emerald-300 hover:underline">Account deletion scheduled</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">User requests deletion (30-day grace)</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">20</td><td class="px-3 py-2.5"><a href="email-dpdp-data-export.html" class="text-emerald-300 hover:underline">DPDP data export ready</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">User requests full data export</td></tr>
+      <tr><td class="px-3 py-2.5 text-zinc-500 mono">21</td><td class="px-3 py-2.5"><a href="email-app-update-breaking.html" class="text-emerald-300 hover:underline">App update · breaking</a></td><td class="px-3 py-2.5 text-[11.5px] text-zinc-400">Server forces breaking client refresh</td></tr>
+    </tbody>
+  </table>
+
+  <p class="mt-8 text-[11px] text-zinc-500">All emails share the chrome shown in each preview: <span class="mono">From: Chitragupt &lt;hello@chitragupt.ai&gt;</span>, <span class="mono">Reply-To: support@chitragupt.ai</span>, plus the legal footer (company, GSTIN, CIN, registered address, grievance officer email, unsub link).</p>
+</main>
+</body>
+</html>

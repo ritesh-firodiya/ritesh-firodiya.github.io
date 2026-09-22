@@ -30,7 +30,7 @@ import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } 
 import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 
-const APPS = join(homedir(), "git", "apps");
+const APPS = join(homedir(), "git", "products");
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
 const DATA = join(process.cwd(), "src", "data", "designs.json");
@@ -49,6 +49,7 @@ const SETS = {
   "tic-tac-toe": "tic-tac-toe",
   "plan-kid": "plan-kid",
   "dwarseva-property": "property-app",
+  chitragupt: "chitragupt",
 };
 
 // index.html is KEPT: it is the design set's own gallery, written in the app
@@ -150,14 +151,24 @@ for (const [slug, dir] of Object.entries(SETS)) {
     for (const re of CHROME) h = stripElement(h, re);
 
     const up = relative(dirname(dest), VENDOR).split(sep).join("/") || ".";
+    /* The version suffix is optional: most sets load the bare CDN root, six
+       tic-tac-toe files pin `/3.4.17`. The first version of this regex matched
+       only the bare form, so those six shipped a live cdn.tailwindcss.com tag
+       — the exact third-party dependency the vendoring exists to remove. The
+       assertion below is what would have caught it. */
     h = h.replace(
-      /<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/g,
+      /<script src="https:\/\/cdn\.tailwindcss\.com[^"]*"><\/script>/g,
       `<script src="${up}/tailwind.js"></script>`,
     );
     h = h.replace(
       /<script src="https:\/\/unpkg\.com\/lucide@[^"]*"><\/script>/g,
       `<script src="${up}/lucide.js"></script>`,
     );
+
+    /* Fail loudly rather than publish a page that still calls a CDN. A silent
+       miss here is invisible until someone reads the network tab. */
+    const leaked = h.match(/https:\/\/(cdn\.tailwindcss\.com|unpkg\.com)[^"']*/g);
+    if (leaked) throw new Error(`${rel}: un-vendored CDN reference ${leaked[0]}`);
 
     await writeFile(dest, h);
     bytes += Buffer.byteLength(h);

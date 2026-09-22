@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin · Disputes</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/admin</span> ›</span>
+      <a href="dashboard.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Overview</a>
+      <a href="users.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Users</a>
+      <a href="ca-applications.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA applications</a>
+      <a href="refunds.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refunds</a>
+      <a href="disputes.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Disputes</a>
+      <a href="grievances.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Grievances</a>
+      <a href="payouts.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payouts</a>
+      <a href="support-tickets.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Support tickets</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+      <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
+        <div class="flex items-center gap-6">
+          <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+          <nav class="hidden gap-5 text-xs md:flex">
+            <a href="dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+            <a href="ca-applications.html" class="text-zinc-400 hover:text-zinc-100">CA apps</a>
+            <a href="disputes.html" class="text-zinc-100">Disputes</a>
+            <a href="support-tickets.html" class="text-zinc-400 hover:text-zinc-100">Tickets</a>
+            <a href="refunds.html" class="text-zinc-400 hover:text-zinc-100">Refunds</a>
+            <a href="grievances.html" class="text-zinc-400 hover:text-zinc-100">Grievances</a>
+            <a href="payouts.html" class="text-zinc-400 hover:text-zinc-100">Payouts</a>
+            <a href="users.html" class="text-zinc-400 hover:text-zinc-100">Users</a>
+          </nav>
+        </div>
+        <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-rose-300">Ritesh · admin</strong></p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-5 py-8">
+      <nav class="flex items-center gap-2 text-[11px] text-zinc-500">
+        <a href="dashboard.html" class="hover:text-zinc-200">Dashboard</a><span>›</span>
+        <span class="text-zinc-200">Disputes</span>
+      </nav>
+      <div class="mt-3 flex flex-wrap items-baseline justify-between gap-3">
+        <h1 class="text-2xl font-semibold tracking-tight">Disputes</h1>
+        <p class="text-xs text-zinc-500">7 open · ₹47,800 funds held in escrow · resolved 18 this AY · avg time-to-close 2.4 days</p>
+      </div>
+
+      <section class="mt-5 grid gap-3 md:grid-cols-4">
+        <div class="rounded-xl border border-rose-500/30 bg-rose-500/5 p-4"><p class="text-[10px] uppercase tracking-widest text-rose-300">Open</p><p class="mono mt-1 text-2xl font-semibold text-rose-200">7</p></div>
+        <div class="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4"><p class="text-[10px] uppercase tracking-widest text-amber-300">Awaiting CA response</p><p class="mono mt-1 text-2xl font-semibold text-amber-200">3</p></div>
+        <div class="rounded-xl border border-purple-500/30 bg-purple-500/5 p-4"><p class="text-[10px] uppercase tracking-widest text-purple-300">Under review</p><p class="mono mt-1 text-2xl font-semibold text-purple-200">2</p></div>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4"><p class="text-[10px] uppercase tracking-widest text-emerald-300">Closed · 30d</p><p class="mono mt-1 text-2xl font-semibold text-emerald-200">11</p></div>
+      </section>
+
+      <section class="mt-6 flex flex-wrap items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+        <span class="text-[11px] text-zinc-500">Filter:</span>
+        <button class="rounded bg-zinc-800 px-3 py-1 text-[11px] text-zinc-100">Open · 7</button>
+        <button class="rounded border border-zinc-700 px-3 py-1 text-[11px] text-zinc-300">Awaiting CA · 3</button>
+        <button class="rounded border border-zinc-700 px-3 py-1 text-[11px] text-zinc-300">Under review · 2</button>
+        <button class="rounded border border-zinc-700 px-3 py-1 text-[11px] text-zinc-300">Closed · 47</button>
+        <input type="search" placeholder="Search engagement ID / name" class="ml-auto w-64 rounded border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600" />
+      </section>
+
+      <div class="mt-5 grid gap-5 lg:grid-cols-[1.2fr_1fr]">
+        <!-- queue table -->
+        <section class="overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-900/40">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-zinc-800 text-[11px] text-zinc-500">
+                <th class="px-4 py-2 text-left font-normal">Engagement</th>
+                <th class="px-4 py-2 text-left font-normal">Claim</th>
+                <th class="px-4 py-2 text-left font-normal">Amount</th>
+                <th class="px-4 py-2 text-left font-normal">Opened</th>
+                <th class="px-4 py-2 text-left font-normal">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-900 text-[12px]">
+              <tr class="bg-rose-500/5">
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-4421</p><p class="text-[10px] text-zinc-500">Vikram Kumar vs Anil Sahu</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">Wrong ITR-2 instead of ITR-3</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹1,999</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-24 11:18</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] text-rose-300">open · NEW</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-4198</p><p class="text-[10px] text-zinc-500">Priya Iyer vs Anil Sahu</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">No-show on scheduled consult</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹299</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-22 16:04</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">awaiting CA</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-4084</p><p class="text-[10px] text-zinc-500">Karthik Iyer vs Rakhi Pandey</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">CA didn't file by deadline (15 Sep)</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹999</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-21 09:32</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-purple-500/15 px-2 py-0.5 text-[10px] text-purple-300">under review</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-3987</p><p class="text-[10px] text-zinc-500">Sneha Kapoor vs Rakhi Pandey</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">Wrong calculation · ₹38k missed deduction</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹1,999</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-20 14:00</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">awaiting CA</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-3902</p><p class="text-[10px] text-zinc-500">Aanya Reddy vs Dinesh Murthy</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">CA didn't respond for 7 days post-payment</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹299</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-18 19:42</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-purple-500/15 px-2 py-0.5 text-[10px] text-purple-300">under review</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-3801</p><p class="text-[10px] text-zinc-500">Rohit Verma vs Anil Sahu</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">Filed under wrong PAN · had to revise</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹999</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-17 11:10</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">awaiting CA</span></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5"><p class="mono text-zinc-200">IRN-3744</p><p class="text-[10px] text-zinc-500">Ananya Bose vs Sudipta Ghosh</p></td>
+                <td class="px-4 py-2.5 text-zinc-200">Refused to file ITR after payment captured</td>
+                <td class="px-4 py-2.5 mono text-zinc-200">₹999</td>
+                <td class="px-4 py-2.5 mono text-zinc-400">2026-05-16 08:05</td>
+                <td class="px-4 py-2.5"><span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] text-rose-300">open</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- detail panel: IRN-4421 -->
+        <aside class="rounded-2xl border border-rose-500/30 bg-zinc-900/40 p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-rose-300">Reviewing</p>
+              <h2 class="mt-1 mono text-lg font-semibold">IRN-4421</h2>
+              <p class="text-[11px] text-zinc-500">Vikram Kumar (client) vs Anil Sahu (CA · ICAI 322145) · ITR Filing · ₹1,999 · escrow held</p>
+            </div>
+            <span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] text-rose-300">open · 3h old</span>
+          </div>
+
+          <!-- claim summary -->
+          <div class="mt-4 rounded border border-rose-500/30 bg-rose-500/5 p-3 text-[12px] text-rose-100">
+            <strong class="text-rose-300">Client claim:</strong> "CA filed ITR-2 but I had F&amp;O business income, should have been ITR-3. Notice received from AO. Wants full refund + cost of revising."
+          </div>
+
+          <!-- timeline -->
+          <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Timeline</p>
+          <ol class="mt-2 space-y-2 text-[12px]">
+            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><div><p class="text-zinc-200">Engagement accepted · ₹1,999 to escrow</p><p class="mono text-[10px] text-zinc-500">2026-05-08 14:22</p></div></li>
+            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span><div><p class="text-zinc-200">CA marked filed · uploaded ITR-V</p><p class="mono text-[10px] text-zinc-500">2026-05-12 19:08</p></div></li>
+            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span><div><p class="text-zinc-200">Client flagged form-type mismatch in chat</p><p class="mono text-[10px] text-zinc-500">2026-05-23 17:40</p></div></li>
+            <li class="flex items-start gap-3"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-rose-400"></span><div><p class="text-zinc-200">Dispute opened by client</p><p class="mono text-[10px] text-zinc-500">2026-05-24 11:18</p></div></li>
+          </ol>
+
+          <!-- evidence -->
+          <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Evidence</p>
+          <ul class="mt-2 space-y-1.5 text-[12px]">
+            <li class="flex items-center justify-between rounded border border-zinc-800 bg-zinc-950/60 px-3 py-2"><span class="text-zinc-200">Chat transcript · 47 messages</span><a href="#" class="text-[11px] text-emerald-300 underline">View →</a></li>
+            <li class="flex items-center justify-between rounded border border-zinc-800 bg-zinc-950/60 px-3 py-2"><span class="text-zinc-200">CA's deliverable · ITR-2 XML + PDF</span><a href="#" class="text-[11px] text-emerald-300 underline">Download →</a></li>
+            <li class="flex items-center justify-between rounded border border-zinc-800 bg-zinc-950/60 px-3 py-2"><span class="text-zinc-200">Tax Review snapshot at engagement start</span><a href="#" class="text-[11px] text-emerald-300 underline">View →</a></li>
+            <li class="flex items-center justify-between rounded border border-zinc-800 bg-zinc-950/60 px-3 py-2"><span class="text-zinc-200">Client's AO notice · u/s 139(9)</span><a href="#" class="text-[11px] text-emerald-300 underline">View →</a></li>
+          </ul>
+
+          <!-- both parties' positions -->
+          <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Both positions</p>
+          <div class="mt-2 grid gap-2">
+            <div class="rounded border border-rose-500/30 bg-rose-500/5 p-3">
+              <p class="text-[11px] text-rose-300">Vikram (client)</p>
+              <p class="mt-1 text-[12px] text-zinc-100">"My F&amp;O trades were declared in the chat on 9 May. CA still filed ITR-2. Full refund + ₹2,000 revision cost."</p>
+            </div>
+            <div class="rounded border border-amber-500/30 bg-amber-500/5 p-3">
+              <p class="text-[11px] text-amber-300">Anil (CA) · responded 1h ago</p>
+              <p class="mt-1 text-[12px] text-zinc-100">"F&amp;O turnover was below ₹2 Cr · client said no audit needed. ITR-2 acceptable per 44AD presumption. Will revise free of cost."</p>
+            </div>
+          </div>
+
+          <!-- decision -->
+          <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">Decision</p>
+          <label class="mt-2 block text-[11px] text-zinc-400">Resolution notes (visible to both parties)</label>
+          <textarea rows="2" class="mt-1 w-full rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-[12px] text-zinc-200" placeholder="Brief reasoning · plain English · ≤300 chars"></textarea>
+
+          <div class="mt-3 grid grid-cols-2 gap-2 text-[12px]">
+            <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-emerald-200 hover:bg-emerald-500/20">Refund client · ₹1,999</button>
+            <button class="rounded border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-amber-200 hover:bg-amber-500/20">Pay CA · ₹1,499 net</button>
+            <button class="rounded border border-purple-500/40 bg-purple-500/10 px-3 py-2 text-purple-200 hover:bg-purple-500/20">Split · 50/50</button>
+            <button class="rounded border border-zinc-700 px-3 py-2 text-zinc-300 hover:bg-zinc-900">Dismiss</button>
+          </div>
+
+          <p class="mt-3 text-[10px] text-zinc-500">Decision is final · creates audit-log entry · both parties notified · funds settle within 7 working days.</p>
+        </aside>
+      </div>
+
+      <p class="mt-8 text-[11px] text-zinc-500">Disputes follow the Engagement Terms (clause 7) · founder's call is final · escalation to consumer forum permitted per DPDP §13.</p>
+    </main>
+  </body>
+</html>

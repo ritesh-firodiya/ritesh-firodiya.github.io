@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Inbox · Transfers — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="inbox" data-chrome-title="Transfers" data-chrome-section="/inbox" data-chrome-routes="Folders|inbox.html;Flat|inbox-flat.html;Empty|inbox-empty.html;Uploading|inbox-uploading.html;ZIP expanding|inbox-zip-expanding.html;Free (list)|inbox-free.html;Transfers|inbox-transfers.html|1" data-chrome-top="level2" data-chrome-back="inbox.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <nav class="flex items-center gap-1.5 text-[10.5px] text-zinc-500">
+    <a href="inbox.html" class="hover:text-zinc-300">Inbox</a><span>/</span>
+    <span class="text-zinc-300">Transfers</span>
+  </nav>
+
+  <div class="mt-3 flex items-center gap-2">
+    <h1 class="text-[18px] font-semibold tracking-tight">Document transfers</h1>
+    <span class="inline-flex items-center rounded-full bg-blue-500/15 px-2 py-0.5 text-[9px] font-medium uppercase tracking-widest text-blue-300">Pro Family</span>
+  </div>
+  <p class="mt-1 text-[11px] text-zinc-500">Documents other members uploaded for you · documents you sent</p>
+
+  <!-- Tabs -->
+  <nav class="mt-4 flex gap-1.5 text-[11.5px]">
+    <button class="rounded-full bg-emerald-500/15 px-3 py-1 font-medium text-emerald-200">Incoming <span class="ml-1 rounded-full bg-emerald-500/30 px-1.5 text-[10px]">2</span></button>
+    <button class="rounded-full bg-zinc-900 px-3 py-1 text-zinc-400">Sent <span class="ml-1 text-zinc-500">1</span></button>
+    <button class="rounded-full bg-zinc-900 px-3 py-1 text-zinc-400">History <span class="ml-1 text-zinc-500">14</span></button>
+  </nav>
+
+  <!-- Incoming queue -->
+  <section class="mt-4 space-y-3">
+
+    <article class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/15 text-amber-200"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg></span>
+        <p class="text-[12.5px] font-semibold text-amber-100">Aarav sent you a Form 16</p>
+      </div>
+      <p class="text-[10px] text-zinc-500 mt-0.5 ml-8">14 May · 2h ago</p>
+      <dl class="mt-3 grid grid-cols-[100px_minmax(0,1fr)] gap-y-1 text-[11px]">
+        <dt class="text-zinc-500">File</dt>
+        <dd class="mono text-zinc-200 truncate">form-16-techserve-2025-26.pdf</dd>
+        <dt class="text-zinc-500">Form type</dt>
+        <dd class="text-zinc-200">Form 16 · Part A + B</dd>
+        <dt class="text-zinc-500">PAN match</dt>
+        <dd><span class="mono text-emerald-300">ABCDS5678P</span> ✓</dd>
+        <dt class="text-zinc-500">Confidence</dt>
+        <dd><span class="inline-flex items-center rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium text-emerald-300">High · 0.93</span></dd>
+        <dt class="text-zinc-500">Routes to</dt>
+        <dd class="text-zinc-300">Your Tax · AY 2026-27</dd>
+      </dl>
+      <div class="mt-3 space-y-1.5">
+        <button class="w-full rounded-lg bg-emerald-500 px-3 py-2 text-[13px] font-semibold text-zinc-950">Accept transfer →</button>
+        <div class="flex gap-1.5">
+          <button class="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-[12px] text-zinc-200">Preview</button>
+          <button class="flex-1 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-[12px] text-rose-300">Decline</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/15 text-amber-200"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg></span>
+        <p class="text-[12.5px] font-semibold text-amber-100">Suresh (parent) sent an LIC receipt</p>
+      </div>
+      <p class="text-[10px] text-zinc-500 mt-0.5 ml-8">13 May · 1d ago</p>
+      <dl class="mt-3 grid grid-cols-[100px_minmax(0,1fr)] gap-y-1 text-[11px]">
+        <dt class="text-zinc-500">File</dt>
+        <dd class="mono text-zinc-200 truncate">lic-policy-priya-2026.pdf</dd>
+        <dt class="text-zinc-500">Sub-type</dt>
+        <dd class="text-zinc-200">Insurance · Life</dd>
+        <dt class="text-zinc-500">Confidence</dt>
+        <dd><span class="inline-flex items-center rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium text-emerald-300">High · 0.97</span></dd>
+        <dt class="text-zinc-500">Routes to</dt>
+        <dd class="text-zinc-300">Tax · §80C · ₹38,400</dd>
+      </dl>
+      <div class="mt-3 space-y-1.5">
+        <button class="w-full rounded-lg bg-emerald-500 px-3 py-2 text-[13px] font-semibold text-zinc-950">Accept transfer →</button>
+        <div class="flex gap-1.5">
+          <button class="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-[12px] text-zinc-200">Preview</button>
+          <button class="flex-1 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-[12px] text-rose-300">Decline</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-dashed border-zinc-800 p-4 text-center">
+      <p class="text-[11px] text-zinc-500">All caught up · transfers older than 30 days move to History</p>
+    </article>
+
+  </section>
+
+  <!-- Family roster strip -->
+  <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <div class="flex items-center justify-between">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Family · 4 of 6 PANs</p>
+      <a href="../settings/settings-family.html" class="text-[10.5px] text-emerald-300">Manage →</a>
+    </div>
+    <div class="mt-2 flex flex-wrap gap-1.5 text-[10.5px]">
+      <span class="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">PS · Priya (you)</span>
+      <span class="inline-flex items-center rounded-full border border-zinc-700 bg-zinc-900 px-2 py-1 text-zinc-300">AS · Aarav</span>
+      <span class="inline-flex items-center rounded-full border border-zinc-700 bg-zinc-900 px-2 py-1 text-zinc-300">SS · Suresh</span>
+      <span class="inline-flex items-center rounded-full border border-zinc-700 bg-zinc-900 px-2 py-1 text-zinc-300">RS · Rohan</span>
+      <span class="inline-flex items-center rounded-full border border-dashed border-zinc-700 px-2 py-1 text-zinc-500">+ Invite</span>
+    </div>
+  </section>
+
+  <p class="mt-4 text-center text-[10px] text-zinc-600">AI quota · 5/day · shared across the household</p>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

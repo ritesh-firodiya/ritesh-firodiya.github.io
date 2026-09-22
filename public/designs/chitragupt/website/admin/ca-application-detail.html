@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin · CA application · CA Pooja Mehta</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/admin</span> ›</span>
+    <a href="dashboard.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Overview</a>
+    <a href="ca-applications.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA applications</a>
+    <a href="ca-application-detail.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">CA app · detail</a>
+    <a href="parser-failures.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Parser failures</a>
+    <a href="payment-reconciliation.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payment recon</a>
+    <a href="disputes.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Disputes</a>
+    <a href="grievances.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Grievances</a>
+    <a href="support-tickets.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Support</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="ca-applications.html" class="text-zinc-100">CA apps</a>
+        <a href="disputes.html" class="text-zinc-400 hover:text-zinc-100">Disputes</a>
+        <a href="support-tickets.html" class="text-zinc-400 hover:text-zinc-100">Tickets</a>
+        <a href="users.html" class="text-zinc-400 hover:text-zinc-100">Users</a>
+      </nav>
+    </div>
+    <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-rose-300">Ritesh · admin</strong></p>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-5 py-8">
+
+  <a href="ca-applications.html" class="text-xs text-zinc-500 hover:text-zinc-300">← All CA applications (14)</a>
+
+  <div class="mt-3 flex flex-wrap items-start justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-base font-semibold text-emerald-200">PM</span>
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">CA Pooja Mehta</h1>
+        <p class="text-[11px] text-zinc-500">Applied 4 days ago · Indore, MP · pooja@gmail.com · <span class="mono">+91-98xxxx3421</span></p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="rounded-full bg-amber-500/20 px-2.5 py-1 text-[10px] uppercase tracking-widest text-amber-300">Pending review</span>
+      <span class="rounded-full bg-rose-500/20 px-2.5 py-1 text-[10px] uppercase tracking-widest text-rose-300">⚠ AI risk 0.74</span>
+    </div>
+  </div>
+
+  <div class="mt-5 flex flex-wrap items-center gap-3 rounded-md border border-rose-500/30 bg-rose-500/5 px-4 py-3 text-xs">
+    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-rose-500 text-[11px] font-bold text-zinc-950">!</span>
+    <p class="flex-1 text-rose-100"><strong>AI flagged:</strong> 6 of 8 listed past clients have identical phrasing in their reviews. Profile photo reverse-image-matched to a Shutterstock stock. <strong>Investigate before approving.</strong></p>
+  </div>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-3">
+
+    <!-- LEFT 2/3 -->
+    <div class="lg:col-span-2 space-y-5">
+
+      <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Credentials</p>
+        <ul class="mt-3 space-y-2 text-[12.5px]">
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">ICAI membership number</span><span class="mono text-zinc-100">M.No. 587412</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">ICAI verification status</span><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">✓ verified live</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">Year qualified</span><span class="text-zinc-200">2017 · 9 yrs PQE</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">PAN</span><span class="mono text-zinc-100">AKxxx4321P · verified</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">GSTIN</span><span class="mono text-zinc-100">23AKxxx4321P1ZB · verified</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">CA certificate</span><a href="#" class="text-emerald-300 underline">View PDF →</a></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">Govt photo ID (Aadhaar masked)</span><a href="#" class="text-emerald-300 underline">View PDF →</a></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">Selfie liveness</span><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">✓ matched ID · 0.94 score</span></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Bank account · for payouts</p>
+        <ul class="mt-3 space-y-2 text-[12.5px]">
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">Bank</span><span class="text-zinc-200">HDFC Bank · current</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">Account no.</span><span class="mono text-zinc-100">xxxx-xxxx-7842</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">IFSC</span><span class="mono text-zinc-100">HDFC0001234 · Indore Vijay Nagar</span></li>
+          <li class="flex items-baseline justify-between"><span class="text-zinc-400">Penny-drop verification</span><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">✓ name matches PAN</span></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-rose-500/30 bg-rose-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-rose-300">AI risk signals</p>
+        <ul class="mt-3 space-y-2 text-[12px]">
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400"></span><div><p class="text-zinc-100">Profile photo flagged · reverse image search</p><p class="text-[10.5px] text-zinc-400">96% match to <a href="#" class="underline">shutterstock.com/image-photo/portrait-..</a> — request fresh selfie.</p></div></li>
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400"></span><div><p class="text-zinc-100">Suspiciously similar review wording</p><p class="text-[10.5px] text-zinc-400">"saved me ₹X" appears in 6/8 listed references. Likely seeded.</p></div></li>
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"></span><div><p class="text-zinc-100">Phone is on a VOIP allotment range</p><p class="text-[10.5px] text-zinc-400">Not a deal-breaker — many small CAs use cloud telephony, but worth a 5-min KYC call.</p></div></li>
+          <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400"></span><div><p class="text-zinc-100">ICAI + PAN + GST + bank · all real, all match</p><p class="text-[10.5px] text-zinc-400">Identity is genuine. Reviews may be embellished but credentials are not.</p></div></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Proposed services &amp; pricing</p>
+        <table class="mt-3 w-full text-[12px]">
+          <thead>
+            <tr class="border-b border-zinc-800 text-[10px] text-zinc-500">
+              <th class="px-2 py-2 text-left font-normal">Service</th>
+              <th class="px-2 py-2 text-left font-normal">Form</th>
+              <th class="px-2 py-2 text-left font-normal">Price</th>
+              <th class="px-2 py-2 text-left font-normal">Floor</th>
+              <th class="px-2 py-2 text-left font-normal">SLA</th>
+              <th class="px-2 py-2 text-left font-normal">Policy</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-900">
+            <tr><td class="px-2 py-2">Consult</td><td class="px-2 py-2">any</td><td class="px-2 py-2 mono">₹249</td><td class="px-2 py-2 text-zinc-500 mono">₹149</td><td class="px-2 py-2">first reply &lt; 1h</td><td class="px-2 py-2"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">OK</span></td></tr>
+            <tr><td class="px-2 py-2">File</td><td class="px-2 py-2">ITR-1/2</td><td class="px-2 py-2 mono">₹499</td><td class="px-2 py-2 text-zinc-500 mono">₹499</td><td class="px-2 py-2">file in 3 days</td><td class="px-2 py-2"><span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] text-amber-300">At floor · OK</span></td></tr>
+            <tr><td class="px-2 py-2">Notice reply</td><td class="px-2 py-2">§143(1)</td><td class="px-2 py-2 mono">₹799</td><td class="px-2 py-2 text-zinc-500 mono">₹999</td><td class="px-2 py-2">reply in 5 days</td><td class="px-2 py-2"><span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10px] text-rose-300">⚠ Below floor</span></td></tr>
+          </tbody>
+        </table>
+        <p class="mt-2 text-[10.5px] text-zinc-500">Notice-reply pricing below floor — usually a signal of low-effort templates. Ask CA to bring price up or scope down.</p>
+      </section>
+
+      <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Self-declared references (8)</p>
+        <ul class="mt-3 space-y-2 text-[11.5px]">
+          <li class="rounded-md bg-zinc-950/60 p-3"><p class="font-medium text-zinc-100">Anjali · ★ 5</p><p class="mt-0.5 text-zinc-400">"Pooja saved me ₹37k. Very responsive."</p><p class="mt-0.5 text-[9.5px] text-rose-300">⚠ same phrasing as 5 other references</p></li>
+          <li class="rounded-md bg-zinc-950/60 p-3"><p class="font-medium text-zinc-100">Vikram · ★ 5</p><p class="mt-0.5 text-zinc-400">"Pooja saved me ₹42k. Very responsive."</p><p class="mt-0.5 text-[9.5px] text-rose-300">⚠ same phrasing</p></li>
+          <li class="rounded-md bg-zinc-950/60 p-3"><p class="font-medium text-zinc-100">Devanshi · ★ 4</p><p class="mt-0.5 text-zinc-400">"Filed in 2 days. Asked for one extra doc but okay."</p><p class="mt-0.5 text-[9.5px] text-emerald-300">✓ looks authentic</p></li>
+          <li class="text-center text-[10px] text-zinc-500"><a href="#" class="underline">… 5 more references</a></li>
+        </ul>
+      </section>
+
+      <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">DPDP &amp; compliance attestations</p>
+        <ul class="mt-3 space-y-1.5 text-[12px]">
+          <li class="flex items-center gap-2"><input type="checkbox" checked disabled class="h-4 w-4 accent-emerald-500"/><span class="text-zinc-200">Will treat client data as personal data under DPDP Act 2023 · maintain confidentiality.</span></li>
+          <li class="flex items-center gap-2"><input type="checkbox" checked disabled class="h-4 w-4 accent-emerald-500"/><span class="text-zinc-200">Will not retain client docs after engagement closes unless legally required.</span></li>
+          <li class="flex items-center gap-2"><input type="checkbox" checked disabled class="h-4 w-4 accent-emerald-500"/><span class="text-zinc-200">Will not solicit clients off-platform within 12 months.</span></li>
+          <li class="flex items-center gap-2"><input type="checkbox" checked disabled class="h-4 w-4 accent-emerald-500"/><span class="text-zinc-200">Will comply with Chitragupt SLAs · accept platform-set refund triggers.</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- RIGHT 1/3 · DECISION PANEL -->
+    <aside class="space-y-4">
+      <div class="sticky top-20 space-y-4">
+        <section class="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-amber-300">Decision</p>
+
+          <div class="mt-3 space-y-2 text-[12px]">
+            <label class="flex cursor-pointer items-start gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5">
+              <input type="radio" name="dec" class="mt-0.5 accent-emerald-500"/>
+              <div class="flex-1">
+                <p class="font-semibold text-emerald-200">Approve · list publicly</p>
+                <p class="text-[10.5px] text-zinc-400">Profile goes live on marketplace · payouts enabled.</p>
+              </div>
+            </label>
+            <label class="flex cursor-pointer items-start gap-2 rounded-md border border-amber-500/40 bg-amber-500/10 p-2.5">
+              <input type="radio" name="dec" checked class="mt-0.5 accent-amber-500"/>
+              <div class="flex-1">
+                <p class="font-semibold text-amber-200">Request clarification</p>
+                <p class="text-[10.5px] text-zinc-400">CA stays in queue · auto-email asks for specific items.</p>
+              </div>
+            </label>
+            <label class="flex cursor-pointer items-start gap-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+              <input type="radio" name="dec" class="mt-0.5 accent-rose-500"/>
+              <div class="flex-1">
+                <p class="font-semibold text-rose-200">Reject</p>
+                <p class="text-[10.5px] text-zinc-400">Profile archived · 90-day reapply cooldown.</p>
+              </div>
+            </label>
+          </div>
+
+          <p class="mt-4 text-[10px] uppercase tracking-widest text-zinc-500">If requesting clarification · ask for</p>
+          <div class="mt-2 space-y-1.5 text-[11.5px]">
+            <label class="flex items-start gap-2"><input type="checkbox" checked class="mt-0.5 h-3.5 w-3.5 accent-amber-500"/><span class="text-zinc-300">Fresh selfie holding ICAI cert + today's date</span></label>
+            <label class="flex items-start gap-2"><input type="checkbox" checked class="mt-0.5 h-3.5 w-3.5 accent-amber-500"/><span class="text-zinc-300">5 client contact numbers we can verify directly</span></label>
+            <label class="flex items-start gap-2"><input type="checkbox" class="mt-0.5 h-3.5 w-3.5 accent-amber-500"/><span class="text-zinc-300">Raise §143(1) notice price to floor (₹999)</span></label>
+            <label class="flex items-start gap-2"><input type="checkbox" class="mt-0.5 h-3.5 w-3.5 accent-amber-500"/><span class="text-zinc-300">2-min KYC video call with admin</span></label>
+          </div>
+
+          <textarea rows="3" placeholder="Optional admin note (not sent to CA) — e.g. 'Photo flagged; clarify with KYC call.'" class="mt-3 block w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-[12px] text-zinc-100 placeholder:text-zinc-500"></textarea>
+
+          <button class="mt-4 block w-full rounded-md bg-amber-500 px-4 py-2.5 text-center text-sm font-semibold text-zinc-950 hover:bg-amber-400">Send clarification email</button>
+          <p class="mt-2 text-center text-[10px] text-zinc-500">Logs in CA's onboarding history · counts toward time-to-decision SLA.</p>
+        </section>
+
+        <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 text-[11px] text-zinc-400">
+          <p class="font-semibold text-zinc-200">Application timeline</p>
+          <ul class="mt-2 space-y-1.5">
+            <li>20 May · CA submitted application</li>
+            <li>20 May · ICAI live-verify ✓</li>
+            <li>20 May · Bank penny-drop ✓</li>
+            <li>21 May · AI risk-score run · 0.74</li>
+            <li>23 May · review assigned to Ritesh</li>
+            <li>24 May · viewing now</li>
+          </ul>
+          <p class="mt-3 text-[10px] text-zinc-500">Median decision time: 2.4 days · target &lt; 5 days.</p>
+        </section>
+      </div>
+    </aside>
+
+  </div>
+
+</main>
+
+</body>
+</html>

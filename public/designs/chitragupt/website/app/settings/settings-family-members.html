@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Family · member roles</title>
+    <script src="../../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/settings</span> › <span class="text-zinc-400">Family</span> ›</span>
+
+    <a href="settings-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Overview</a>
+    <a href="settings-family-invite.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Invite</a>
+    <a href="settings-family-members.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Members</a>
+    <a href="settings-family-pending.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Pending</a>
+    <a href="settings-family-leave.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Leave</a>
+    <a href="settings-sharing.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Sharing</a>
+
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-locked.html" class="text-zinc-400 hover:text-zinc-100">Tax</a>
+        <a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="../ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      <a href="../notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+    <main class="px-5 py-8">
+  <div class="grid gap-6 lg:grid-cols-[240px_1fr]">
+    <aside class="lg:sticky lg:top-20 lg:self-start">
+      <nav aria-label="Settings sections" class="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40">
+        <a href="settings.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Account</p><p class="text-[11px] text-zinc-500">Profile · security · notifications</p></span>
+        </a>
+        <a href="settings-family.html" aria-current="page" class="flex items-start gap-3 border-l-2 border-emerald-500 bg-emerald-500/10 px-4 py-3">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-emerald-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="min-w-0"><p class="text-sm font-medium text-zinc-100">Family</p><p class="text-[11px] text-zinc-500">Members · invites · sharing</p></span>
+        </a>
+                <a href="settings-linked-brokers.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Linked brokers</p><p class="text-[11px] text-zinc-500">Automatic Portfolio sync</p></span>
+        </a>
+<a href="settings-billing.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Billing</p><p class="text-[11px] text-zinc-500">Plan · payments · invoices</p></span>
+        </a>
+        <a href="settings-privacy-data.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Privacy &amp; data</p><p class="text-[11px] text-zinc-500">Export · audit · delete</p></span>
+        </a>
+        <a href="settings-support.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Support</p><p class="text-[11px] text-zinc-500">Tickets · grievance · FAQ</p></span>
+        </a>
+      </nav>
+      <p class="mt-4 px-2 text-[10px] leading-relaxed text-zinc-500">Hosted in Mumbai · DPDP-compliant · grievance officer <a href="mailto:grievance@chitragupt.ai" class="underline hover:text-zinc-300">grievance@chitragupt.ai</a></p>
+    </aside>
+
+    <section class="min-w-0 space-y-5">
+      <!-- Role definitions -->
+      <section class="mt-6 grid gap-3 md:grid-cols-2">
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Viewer</p>
+          <p class="mt-1.5 text-xs text-zinc-300">Read-only. Sees the combined household view + whatever you've shared with them. Cannot upload, invite, or change billing.</p>
+        </div>
+        <div class="rounded-xl border border-blue-500/30 bg-blue-500/5 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-blue-300">Editor</p>
+          <p class="mt-1.5 text-xs text-zinc-300">Co-manager. Can upload on behalf of any member, invite new members, manage CA grants. Cannot delete another member's personal data.</p>
+        </div>
+      </section>
+
+      <!-- Member list -->
+      <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+        <div class="flex items-center justify-between border-b border-zinc-900 px-5 py-3">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Members · 3 · 1 pending</p>
+          <a href="settings-family-invite.html" class="text-[11px] text-emerald-300 hover:text-emerald-200">+ Invite</a>
+        </div>
+        <ul class="divide-y divide-zinc-900">
+          <!-- You -->
+          <li class="grid grid-cols-12 items-center gap-3 px-5 py-4">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-zinc-950 text-xs font-bold">AS</span>
+              <div>
+                <p class="text-sm text-zinc-100">Aarav Sharma <span class="ml-1 text-[10px] uppercase tracking-widest text-zinc-500">You</span></p>
+                <p class="text-[11px] text-zinc-500 mono">aarav@example.com · PAN · ABCDS****A</p>
+              </div>
+            </div>
+            <div class="col-span-7 md:col-span-3">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] text-emerald-200"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>Household owner</span>
+            </div>
+            <div class="col-span-5 md:col-span-3 text-right text-[11px] text-zinc-500">Joined · 19 Apr 2026</div>
+          </li>
+
+          <!-- Spouse — editor -->
+          <li class="grid grid-cols-12 items-center gap-3 px-5 py-4">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-500/20 text-blue-200 text-xs font-bold">PS</span>
+              <div>
+                <p class="text-sm text-zinc-100">Priya Sharma <span class="ml-1 text-[10px] uppercase tracking-widest text-zinc-500">spouse</span></p>
+                <p class="text-[11px] text-zinc-500 mono">priya.sharma@gmail.com · PAN · BCDEF****G</p>
+              </div>
+            </div>
+            <div class="col-span-7 md:col-span-3">
+              <select class="w-full rounded border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs text-zinc-100 focus:border-emerald-500 focus:outline-none">
+                <option>Viewer</option>
+                <option selected>Editor</option>
+              </select>
+            </div>
+            <div class="col-span-5 md:col-span-3 text-right">
+              <a href="../dashboard-family-member.html" class="text-[11px] text-zinc-400 hover:text-zinc-200">Open profile →</a>
+            </div>
+          </li>
+
+          <!-- Father — viewer -->
+          <li class="grid grid-cols-12 items-center gap-3 px-5 py-4">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800 text-zinc-300 text-xs font-bold">RS</span>
+              <div>
+                <p class="text-sm text-zinc-100">Ravi Sharma <span class="ml-1 text-[10px] uppercase tracking-widest text-zinc-500">father</span></p>
+                <p class="text-[11px] text-zinc-500 mono">ravi.sharma@yahoo.com · PAN · CDEFG****H</p>
+              </div>
+            </div>
+            <div class="col-span-7 md:col-span-3">
+              <select class="w-full rounded border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs text-zinc-100 focus:border-emerald-500 focus:outline-none">
+                <option selected>Viewer</option>
+                <option>Editor</option>
+              </select>
+            </div>
+            <div class="col-span-5 md:col-span-3 text-right">
+              <a href="../dashboard-family-member.html" class="text-[11px] text-zinc-400 hover:text-zinc-200">Open profile →</a>
+            </div>
+          </li>
+
+          <!-- Pending invite -->
+          <li class="grid grid-cols-12 items-center gap-3 px-5 py-4 opacity-80">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dashed border-zinc-700 text-zinc-500 text-xs">?</span>
+              <div>
+                <p class="text-sm text-zinc-200">Ankit Sharma <span class="ml-1 text-[10px] uppercase tracking-widest text-amber-300">Pending</span></p>
+                <p class="text-[11px] text-zinc-500">Invited 2 days ago · invite valid 5 more days</p>
+              </div>
+            </div>
+            <div class="col-span-7 md:col-span-3">
+              <select disabled class="w-full rounded border border-zinc-800 bg-zinc-950 px-3 py-1.5 text-xs text-zinc-400">
+                <option>Viewer · on accept</option>
+              </select>
+            </div>
+            <div class="col-span-5 md:col-span-3 text-right">
+              <a href="settings-family-pending.html" class="text-[11px] text-zinc-400 hover:text-zinc-200">Open invite →</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Role permissions table -->
+      <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40">
+        <div class="flex items-center justify-between border-b border-zinc-900 px-5 py-3">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">What each role can do</p>
+        </div>
+        <table class="w-full text-xs">
+          <thead class="text-[10px] uppercase tracking-widest text-zinc-500">
+            <tr class="border-b border-zinc-900">
+              <th class="text-left px-5 py-2 font-medium">Action</th>
+              <th class="text-center px-3 py-2 font-medium">Viewer</th>
+              <th class="text-center px-3 py-2 font-medium">Editor</th>
+              <th class="text-center px-3 py-2 font-medium">Owner</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-900 text-zinc-300">
+            <tr><td class="px-5 py-2.5">See combined household view</td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">See documents shared with them</td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Upload to their own Inbox</td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Upload on behalf of another member</td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Invite / remove members</td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Manage CA share grants (household-level)</td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Change household name / settings</td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Manage billing / subscription</td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-emerald-300">✓</span></td></tr>
+            <tr><td class="px-5 py-2.5">Delete another member's personal data</td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-zinc-600">—</span></td><td class="text-center"><span class="text-zinc-600">—</span></td></tr>
+          </tbody>
+        </table>
+        <p class="px-5 py-3 text-[11px] text-zinc-500">No role can read or delete another member's <strong>personal</strong> data — that always stays per-PAN, owned by the member. "Editor" means co-managing the <strong>household</strong>, not impersonating another member.</p>
+      </section>
+
+      <p class="mt-6 text-[11px] text-zinc-500">Role changes are logged to your <a href="settings-audit-log.html" class="underline">DPDP audit trail</a> with timestamp and the actor who made the change.</p>
+    </section>
+  </div>
+</main>
+
+    <nav class="fixed bottom-0 inset-x-0 z-20 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-md items-stretch">
+    <a href="../inbox/inbox-populated.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a>
+    <a href="../tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a>
+    <a href="../expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a>
+    <a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a>
+  </div>
+</nav>
+  
+</body>
+</html>

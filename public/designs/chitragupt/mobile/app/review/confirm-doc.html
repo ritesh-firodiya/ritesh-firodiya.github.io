@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Confirm document — Chitragupt mobile</title>
+<script src="../../../../_vendor/tailwind.js"></script>
+<style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}.tabbar{position:absolute;inset-inline:0;bottom:0}</style>
+</head>
+<body class="text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2"><div class="mx-auto flex max-w-4xl flex-wrap items-center gap-1.5 text-[11px]"><span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Mobile · /review ›</span><a href="../inbox/inbox.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Folders</a><a href="../inbox/inbox-flat.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Flat</a><a href="../inbox/inbox-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Empty</a><a href="../inbox/inbox-uploading.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Uploading</a><a href="document.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Document</a><a href="document-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Locked</a><a href="document-failed.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Failed</a><a href="confirm-ais.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">Confirm AIS</a><a href="confirm-doc.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 font-semibold text-emerald-200">Confirm doc</a><a href="../inbox/inbox-zip-expanding.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">ZIP expanding</a><a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300">← All</a></div></div>
+
+<div class="phone">
+  <div class="flex items-center justify-between px-6 pt-3 pb-1 text-[11px] text-zinc-300"><span class="mono">9:41</span><div class="flex items-center gap-1.5"><svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg></div></div>
+  <div class="flex h-12 items-center justify-between px-3"><a href="document.html" class="inline-flex h-10 w-10 items-center justify-center text-zinc-400"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></a><span class="text-sm font-semibold">Confirm Form 16</span><span class="text-[10px] text-zinc-500">93%</span></div>
+
+  <main class="px-4 pt-2">
+
+    <p class="text-[10px] uppercase tracking-widest text-amber-300">Mandatory review · before this doc feeds Tax Review</p>
+
+    <div class="mt-2 rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-[11px] text-amber-200">
+      14 fields parsed · 11 high-confidence ✓ · 2 uncertain ? · 1 conflict !. Override anything wrong — your edit becomes the truth.
+    </div>
+
+    <!-- Progress bar -->
+    <div class="mt-3 flex h-1.5 w-full overflow-hidden rounded-full bg-zinc-900">
+      <div class="bg-emerald-500" style="width:78.5%"></div>
+      <div class="bg-amber-500" style="width:14.3%"></div>
+      <div class="bg-rose-500" style="width:7.2%"></div>
+    </div>
+    <div class="mt-1.5 flex flex-wrap gap-3 text-[10px]">
+      <span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-emerald-500"></span><span class="text-zinc-400">11 confirmed</span></span>
+      <span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-amber-500"></span><span class="text-zinc-400">2 need review</span></span>
+      <span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-rose-500"></span><span class="text-zinc-400">1 conflict with 26AS</span></span>
+    </div>
+
+    <!-- High-confidence bulk -->
+    <section class="mt-4">
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-3 text-[11px]">
+        <div class="flex items-baseline justify-between"><p class="text-[10px] uppercase tracking-widest text-emerald-300">11 confirmed · 95–99% confidence</p><button class="text-[11px] text-emerald-300">Expand</button></div>
+        <p class="mt-1 text-zinc-400">Gross salary · HRA · standard deduction · pro tax · §80C · §80D · EPF · employer name · employer TAN · employee PAN · period</p>
+      </div>
+    </section>
+
+    <!-- Sample high-confidence field -->
+    <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-950 p-4">
+      <div class="flex items-baseline justify-between"><p class="text-[12px] font-semibold text-zinc-100">Gross salary</p><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">99%</span></div>
+      <div class="mt-2 flex items-center gap-2">
+        <span class="mono text-zinc-100 text-sm">₹</span>
+        <input class="flex-1 rounded border border-zinc-700 bg-zinc-900 px-2 py-1.5 mono text-[13px] text-zinc-100" value="18,40,000" readonly />
+        <button class="rounded border border-zinc-700 px-2 py-1.5 text-[11px] text-zinc-300">Edit</button>
+      </div>
+      <p class="mt-1 text-[10px] text-zinc-500">Form 16 · Part B · row 1 · page 1</p>
+    </section>
+
+    <!-- Uncertain field -->
+    <section class="mt-3 rounded-2xl border border-amber-500/40 bg-amber-500/5 p-4">
+      <div class="flex items-baseline justify-between"><p class="text-[12px] font-semibold text-amber-200">Professional tax</p><span class="rounded bg-amber-500/20 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-amber-300">71% · check this</span></div>
+      <div class="mt-2 flex items-center gap-2">
+        <span class="mono text-zinc-100 text-sm">₹</span>
+        <input class="flex-1 rounded border border-amber-500/40 bg-zinc-900 px-2 py-1.5 mono text-[13px] text-zinc-100 focus:outline-none focus:ring-1 focus:ring-amber-500" value="2,500" />
+      </div>
+      <p class="mt-1 text-[10px] text-amber-200/80">Read as ₹2,500/yr but form shows ₹208/m × 12 = ₹2,496. Fix or confirm.</p>
+      <div class="mt-3 flex gap-2">
+        <button class="rounded bg-emerald-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">Looks right</button>
+        <button class="rounded border border-zinc-700 px-2.5 py-1 text-[11px] text-zinc-200">Use ₹2,496</button>
+      </div>
+    </section>
+
+    <!-- Conflict card -->
+    <section class="mt-3 rounded-2xl border border-rose-500/40 bg-rose-500/5 p-4">
+      <div class="flex items-baseline justify-between"><p class="text-[12px] font-semibold text-rose-200">TDS deposited</p><span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-rose-300">conflict</span></div>
+      <div class="mt-3 space-y-2 text-[12px]">
+        <div class="flex items-baseline justify-between rounded border border-zinc-800 bg-zinc-950/60 px-3 py-2"><span class="text-zinc-300">Form 16 says</span><span class="mono text-zinc-100">₹2,12,000</span></div>
+        <div class="flex items-baseline justify-between rounded border border-zinc-800 bg-zinc-950/60 px-3 py-2"><span class="text-zinc-300">26AS Part-I says</span><span class="mono text-zinc-100">₹1,99,600</span></div>
+        <div class="flex items-baseline justify-between rounded border border-rose-500/30 bg-rose-500/10 px-3 py-2"><span class="text-rose-200">Gap</span><span class="mono text-rose-200">−₹12,400</span></div>
+      </div>
+      <p class="mt-3 text-[10.5px] text-rose-200/90">Tax Review will use whichever you pick. Filing with the wrong number triggers a §143 demand. Recommended: chase your employer to revise 26AS first.</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button class="rounded bg-emerald-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">Use 26AS (₹1,99,600)</button>
+        <button class="rounded bg-amber-500 px-2.5 py-1 text-[11px] font-semibold text-zinc-950">Use Form 16 (₹2,12,000)</button>
+        <button class="rounded border border-zinc-700 px-2.5 py-1 text-[11px] text-zinc-200">Resolve later</button>
+      </div>
+    </section>
+
+    <!-- CTAs -->
+    <a href="../tax/tax-review.html" class="mt-5 block rounded-xl bg-emerald-500 px-4 py-3.5 text-center text-[13px] font-semibold text-zinc-950">Confirm all + analyze →</a>
+    <a href="../tax/tax-review.html" class="mt-3 block text-center text-[11px] text-zinc-500 underline">Save &amp; continue later →</a>
+
+  </main>
+
+  <nav class="tabbar border-t border-zinc-800 bg-zinc-950/95 backdrop-blur"><div class="flex items-end"><a href="../inbox/inbox.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-emerald-300"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a><a href="../tax/tax-review.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a><a href="../dashboard.html" class="flex flex-1 flex-col items-center pb-1.5"><span class="-mt-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-zinc-950 shadow-lg shadow-emerald-500/40 ring-4 ring-zinc-950"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="mt-1 text-[10px] font-semibold text-emerald-300">Home</span></a><a href="../expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a><a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a></div><div class="flex items-center justify-center pb-2 pt-1"><div class="h-1 w-32 rounded-full bg-zinc-700"></div></div></nav>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drawer — Chitragupt mobile</title>
+  <script src="../../../_vendor/tailwind.js"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #0a0a0a; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .phone { max-width: 390px; margin: 0 auto; background: #09090b; min-height: 100dvh; position: relative; overflow: hidden; box-shadow: 0 0 0 1px #18181b; }
+    @media (min-width: 640px) { .phone { min-height: 844px; margin-top: 16px; margin-bottom: 16px; border-radius: 32px; box-shadow: 0 0 0 1px #27272a, 0 30px 60px -20px rgba(0,0,0,0.7); } }
+    .row { display: flex; align-items: center; gap: 12px; padding: 11px 16px; }
+  </style>
+</head>
+<body class="text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-4xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Mobile · /dashboard ›</span>
+    <a href="dashboard.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Populated</a>
+    <a href="dashboard-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Empty</a>
+    <a href="dashboard-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Family combined</a>
+    <a href="dashboard-family-member.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Family · member</a>
+    <a href="drawer-open.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Drawer open</a>
+    <a href="notifications.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">Notifications</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300">← All routes</a>
+  </div>
+</div>
+
+<div class="phone">
+
+  <!-- Blurred backdrop · simulates underlying dashboard -->
+  <div class="pointer-events-none absolute inset-0 select-none opacity-30 blur-sm">
+    <div class="px-4 pt-10">
+      <p class="mt-1 text-2xl font-semibold">Hi Aarav 👋</p>
+      <div class="mt-4 h-12 rounded-xl bg-emerald-500"></div>
+      <div class="mt-3 grid grid-cols-2 gap-2">
+        <div class="h-24 rounded-2xl border border-zinc-800 bg-zinc-900/40"></div>
+        <div class="h-24 rounded-2xl border border-zinc-800 bg-zinc-900/40"></div>
+        <div class="h-24 rounded-2xl border border-zinc-800 bg-zinc-900/40"></div>
+        <div class="h-24 rounded-2xl border border-zinc-800 bg-zinc-900/40"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dimmer -->
+  <a href="dashboard.html" class="absolute inset-0 bg-black/55" aria-label="Close drawer"></a>
+
+  <!-- Drawer (left-slide, ~84% width) -->
+  <aside class="absolute inset-y-0 left-0 z-10 flex w-[84%] flex-col border-r border-zinc-800 bg-zinc-950 shadow-2xl">
+
+    <!-- Status bar -->
+    <div class="flex items-center justify-between px-5 pt-3 pb-1 text-[11px] text-zinc-300">
+      <span class="mono">9:41</span>
+      <div class="flex items-center gap-1.5">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect x="0" y="6" width="2" height="4"/><rect x="3.5" y="4" width="2" height="6"/><rect x="7" y="2" width="2" height="8"/><rect x="10.5" y="0" width="2" height="10"/></svg>
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 4a8 8 0 0 1 12 0M3 6a5 5 0 0 1 8 0M6 8.5l1 1 1-1"/></svg>
+        <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="18" height="10" rx="2"/><rect x="19.5" y="3.5" width="2" height="4" rx="0.5" fill="currentColor"/><rect x="2" y="2" width="13" height="7" rx="1" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <!-- Header: user + close -->
+    <div class="flex items-start justify-between gap-3 px-4 pt-3 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/20 text-base font-semibold text-emerald-200">AS</div>
+        <div class="min-w-0">
+          <p class="truncate text-[14px] font-semibold text-zinc-100">Aarav Sharma</p>
+          <p class="truncate text-[11px] text-zinc-500">aarav@example.com</p>
+        </div>
+      </div>
+      <a href="dashboard.html" aria-label="Close" class="inline-flex h-9 w-9 items-center justify-center rounded-full text-zinc-400">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </a>
+    </div>
+
+    <!-- Workspace switcher -->
+    <div class="mx-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-1">
+      <button class="flex w-full items-center justify-between rounded-md bg-zinc-800 px-3 py-2 text-left">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-5 w-5 items-center justify-center rounded bg-emerald-500/20 text-[9px] font-semibold text-emerald-300">A</span>
+          <span class="text-[12.5px] font-medium text-zinc-100">Personal</span>
+        </div>
+        <span class="rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">Paid</span>
+      </button>
+      <button class="mt-1 flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-zinc-400">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-5 w-5 items-center justify-center rounded bg-blue-500/20 text-[9px] font-semibold text-blue-300">S</span>
+          <span class="text-[12.5px]">Sharma household</span>
+        </div>
+        <span class="rounded-full bg-blue-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-blue-300">Pro</span>
+      </button>
+      <a href="settings/settings-family-invite.html" class="mt-1 flex w-full items-center gap-2 rounded-md px-3 py-2 text-[12.5px] text-zinc-500">
+        <span class="inline-flex h-5 w-5 items-center justify-center rounded border border-dashed border-zinc-700">+</span>
+        Add workspace
+      </a>
+    </div>
+
+    <!-- AY context -->
+    <div class="mt-4 px-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Assessment year</p>
+      <div class="mt-1.5 flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-900/40 p-1 text-[11px]">
+        <span class="rounded bg-zinc-800 px-2 py-1 font-semibold text-zinc-100">26-27</span>
+        <span class="px-2 py-1 text-zinc-400">25-26</span>
+        <span class="px-2 py-1 text-zinc-400">24-25</span>
+      </div>
+    </div>
+
+    <!-- Nav items -->
+    <nav class="mt-4 flex-1 overflow-y-auto">
+
+      <p class="px-5 pb-1 text-[10px] uppercase tracking-widest text-zinc-500">Account</p>
+      <a href="settings/settings-profile.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profile &amp; PAN
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <a href="settings/settings-family.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Family · 3 members
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <a href="settings/settings-email-forward-setup.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email forward
+        <span class="ml-auto rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">Active</span>
+      </a>
+      <a href="notifications.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Notifications
+        <span class="ml-auto rounded-full bg-emerald-500 px-1.5 py-0.5 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+
+      <p class="mt-3 px-5 pb-1 text-[10px] uppercase tracking-widest text-zinc-500">Money</p>
+      <a href="settings/settings-billing.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Billing &amp; invoices
+        <span class="ml-auto text-[10px] text-zinc-500">3 unlocks</span>
+      </a>
+      <a href="../payment/refund-request.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><polyline points="3 4 3 12 11 12"/></svg>
+        Refund request
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <a href="../hire-ca/index.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a7 7 0 0 1 18 0v2"/></svg>
+        Hire a CA
+        <span class="ml-auto rounded-full bg-amber-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-amber-300">New</span>
+      </a>
+
+      <p class="mt-3 px-5 pb-1 text-[10px] uppercase tracking-widest text-zinc-500">Privacy &amp; data (DPDP)</p>
+      <a href="settings/settings-privacy-data.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s-8-4-8-12V5l8-3 8 3v5c0 8-8 12-8 12z"/></svg>
+        Privacy &amp; data
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <a href="settings/settings-audit-log.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+        Audit log
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <a href="settings/settings-sharing.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Sharing &amp; CA links
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+
+      <p class="mt-3 px-5 pb-1 text-[10px] uppercase tracking-widest text-zinc-500">Help</p>
+      <a href="settings/settings-support.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Support · 1-day SLA
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <a href="../../website/marketing/landing.html" class="row text-[13px] text-zinc-200">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        About &amp; legal
+        <span class="ml-auto text-zinc-600">›</span>
+      </a>
+      <button class="row w-full text-left text-[13px] text-rose-300">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign out
+      </button>
+
+    </nav>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-900 px-4 py-3">
+      <div class="flex items-center justify-between">
+        <p class="text-[10px] text-zinc-500">Chitragupt v1.0.0 · India</p>
+        <div class="flex items-center gap-1 rounded-md border border-zinc-800 bg-zinc-900 p-0.5 text-[9px]">
+          <span class="rounded bg-zinc-800 px-1.5 py-0.5 text-zinc-100">Dark</span>
+          <span class="px-1.5 py-0.5 text-zinc-500">Light</span>
+          <span class="px-1.5 py-0.5 text-zinc-500">Auto</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center pb-2 pt-1">
+      <div class="h-1 w-32 rounded-full bg-zinc-700"></div>
+    </div>
+
+  </aside>
+
+</div>
+
+</body>
+</html>

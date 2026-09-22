@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Portfolio · outperforming — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="portfolio" data-chrome-title="Portfolio" data-chrome-section="/portfolio" data-chrome-routes="Review|portfolio-review.html|1;Review · CG booked|portfolio-review-cg-booked.html;Locked|portfolio-locked.html;Empty|portfolio-empty.html;Family|portfolio-family.html;Family locked|portfolio-family-locked.html;View only|portfolio-view-only.html;Holdings|portfolio-holdings.html;Map to goal|portfolio-map-goal-modal.html" data-chrome-top="level1">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <div class="flex items-center gap-2">
+    <h1 class="text-[20px] font-semibold tracking-tight">Portfolio</h1>
+    <span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[9px] font-medium uppercase tracking-widest text-emerald-200">outperforming</span>
+  </div>
+  <p class="mt-1 text-[11px] text-zinc-500">AY 2026-27 · 12-month rolling window</p>
+
+  <!-- Alpha banner -->
+  <section class="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[11.5px] text-emerald-100">
+    <strong>Alpha +5.1%</strong> vs Nifty 50 · your <span class="mono">₹2.18 Cr</span> grew 14.2% YTD while Nifty grew 9.1%.
+  </section>
+
+  <!-- NAV + allocation -->
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Asset allocation</p>
+    <div class="mt-3 flex items-center gap-4">
+      <div class="relative h-24 w-24 shrink-0">
+        <svg viewBox="0 0 100 100" class="-rotate-90">
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#27272a" stroke-width="14"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#10b981" stroke-width="14" stroke-dasharray="150 264"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#3b82f6" stroke-width="14" stroke-dasharray="75 264" stroke-dashoffset="-150"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#a855f7" stroke-width="14" stroke-dasharray="40 264" stroke-dashoffset="-225"/>
+        </svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center"><p class="text-[8px] uppercase tracking-widest text-zinc-500">NAV</p><p class="mono text-[12px] font-semibold text-zinc-100">₹2.18 Cr</p></div>
+      </div>
+      <ul class="flex-1 space-y-1 text-[11px]">
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-emerald-500"></span><span class="text-zinc-400">Equity</span></span><span class="mono text-zinc-200">₹1.24 Cr · 57%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-blue-500"></span><span class="text-zinc-400">Debt / NPS</span></span><span class="mono text-zinc-200">₹62 L · 28%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-purple-500"></span><span class="text-zinc-400">MF · hybrid</span></span><span class="mono text-zinc-200">₹32 L · 15%</span></li>
+      </ul>
+    </div>
+    <p class="mt-3 text-[10.5px] text-zinc-500">vs balanced ideal (60/30/10) — over-weight equity by 3%, under-weight MF by 5%.</p>
+  </section>
+
+  <!-- Portfolio vs Nifty (chart placeholder) -->
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Portfolio value vs Nifty 50</p>
+    <p class="mt-1 text-[10.5px] text-zinc-500">FY 20-21 → FY 25-26</p>
+    <div class="mt-3 flex h-28 items-end justify-between gap-1">
+      <div class="flex flex-col items-center gap-1"><div class="w-3 rounded-t bg-emerald-500/70" style="height:36%"></div><span class="text-[8.5px] text-zinc-500">20-21</span></div>
+      <div class="flex flex-col items-center gap-1"><div class="w-3 rounded-t bg-emerald-500/70" style="height:46%"></div><span class="text-[8.5px] text-zinc-500">21-22</span></div>
+      <div class="flex flex-col items-center gap-1"><div class="w-3 rounded-t bg-emerald-500/70" style="height:58%"></div><span class="text-[8.5px] text-zinc-500">22-23</span></div>
+      <div class="flex flex-col items-center gap-1"><div class="w-3 rounded-t bg-emerald-500/70" style="height:72%"></div><span class="text-[8.5px] text-zinc-500">23-24</span></div>
+      <div class="flex flex-col items-center gap-1"><div class="w-3 rounded-t bg-emerald-500/70" style="height:88%"></div><span class="text-[8.5px] text-zinc-500">24-25</span></div>
+      <div class="flex flex-col items-center gap-1"><div class="w-3 rounded-t bg-emerald-500" style="height:100%"></div><span class="text-[8.5px] text-zinc-500">25-26</span></div>
+    </div>
+    <p class="mt-2 text-[10.5px] text-zinc-500">Annualised return 12.4% · vs Nifty 9.1%</p>
+  </section>
+
+  <!-- Capital gains booked -->
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Capital gains booked · per AY</p>
+    <dl class="mt-3 grid grid-cols-[100px_minmax(0,1fr)] gap-y-1.5 text-[11.5px]">
+      <dt class="text-zinc-500">STCG (15%)</dt>
+      <dd class="mono text-zinc-200">₹48,200</dd>
+      <dt class="text-zinc-500">LTCG (10%)</dt>
+      <dd class="mono text-zinc-200">₹1,12,000 <span class="text-zinc-500">(over ₹1 L threshold by ₹12 k)</span></dd>
+      <dt class="text-zinc-500">Tax impact</dt>
+      <dd class="mono text-rose-300">+₹8,430</dd>
+    </dl>
+    <a href="portfolio-review-cg-booked.html" class="mt-3 block w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-center text-[11.5px] text-zinc-300">View CG-booked detail →</a>
+  </section>
+
+  <!-- Goals -->
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Goals · funding pace</p>
+    <ul class="mt-3 space-y-3 text-[11.5px]">
+      <li>
+        <div class="flex items-baseline justify-between"><span class="text-zinc-200">Retirement · 2042</span><span class="mono text-emerald-300">68%</span></div>
+        <div class="mt-1 h-2 w-full rounded-full bg-zinc-900"><div class="h-full rounded-full bg-emerald-500" style="width: 68%"></div></div>
+      </li>
+      <li>
+        <div class="flex items-baseline justify-between"><span class="text-zinc-200">Kids · 2030</span><span class="mono text-amber-300">42%</span></div>
+        <div class="mt-1 h-2 w-full rounded-full bg-zinc-900"><div class="h-full rounded-full bg-amber-500" style="width: 42%"></div></div>
+      </li>
+      <li>
+        <div class="flex items-baseline justify-between"><span class="text-zinc-200">Emergency fund · 6mo</span><span class="mono text-emerald-300">100%</span></div>
+        <div class="mt-1 h-2 w-full rounded-full bg-zinc-900"><div class="h-full rounded-full bg-emerald-500" style="width: 100%"></div></div>
+      </li>
+    </ul>
+    <a href="portfolio-map-goal-modal.html" class="mt-3 block text-center text-[11px] text-emerald-300 underline">Map a holding to a goal →</a>
+  </section>
+
+  <!-- What lost / made you money -->
+  <section class="mt-3 rounded-2xl border border-rose-500/30 bg-rose-500/5 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-rose-300">What lost you money</p>
+    <ul class="mt-3 space-y-1.5 text-[11.5px]">
+      <li class="flex justify-between"><span class="text-zinc-200">PAYTM · sold @ ₹540</span><span class="mono text-rose-300">−₹18,400</span></li>
+      <li class="flex justify-between"><span class="text-zinc-200">ABFRL · still holding</span><span class="mono text-rose-300">−₹12,300 (paper)</span></li>
+    </ul>
+  </section>
+
+  <section class="mt-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-emerald-300">What made you money</p>
+    <ul class="mt-3 space-y-1.5 text-[11.5px]">
+      <li class="flex justify-between"><span class="text-zinc-200">HDFC Bank · held since 2022</span><span class="mono text-emerald-300">+₹2,40,000</span></li>
+      <li class="flex justify-between"><span class="text-zinc-200">ICICIPRUOPP MF · 4-year SIP</span><span class="mono text-emerald-300">+₹1,82,500</span></li>
+      <li class="flex justify-between"><span class="text-zinc-200">NIFTY ETF · core holding</span><span class="mono text-emerald-300">+₹98,600</span></li>
+    </ul>
+  </section>
+
+  <section class="mt-3 rounded-2xl border border-blue-500/30 bg-blue-500/5 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-blue-300">Gaps in your safety net</p>
+    <ul class="mt-3 space-y-1.5 text-[11.5px] text-zinc-200">
+      <li>· No term-life insurance · recommended cover ₹1.5 Cr</li>
+      <li>· Health cover ₹5 L only · recommended ₹10 L family floater</li>
+      <li>· Zero exposure to sovereign gold bonds · 5-10% allocation suggested</li>
+    </ul>
+  </section>
+
+  <a href="portfolio-holdings.html" class="mt-4 block w-full rounded-xl bg-emerald-500 px-4 py-3 text-center text-[13px] font-semibold text-zinc-950">See all 47 holdings →</a>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

@@ -105,7 +105,7 @@
     "_": [
       "ONE FILE PER VARIANT: `<screen>-<state>.html`.",
       "",
-      "This keeps the rule already written in ~/git/apps/CLAUDE.md - a screen",
+      "This keeps the rule already written in ~/git/products/CLAUDE.md - a screen",
       "with no HTML file does not ship, and that includes its states. Every",
       "state then has its own URL and its own row in the gallery.",
       "",
@@ -208,7 +208,7 @@
       "",
       "property-app already draws this line correctly. chitragupt does not: its",
       "own CLAUDE.md names .trunk/designs/ as authoritative in three places,",
-      "which contradicts ~/git/apps/CLAUDE.md. That is a conflict between two",
+      "which contradicts ~/git/products/CLAUDE.md. That is a conflict between two",
       "written rules and needs a decision, not a silent move."
     ],
     "designs": ".context/designs",

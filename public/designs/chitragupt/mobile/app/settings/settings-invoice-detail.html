@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Invoice — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="none" data-chrome-title="INV-2026-0142" data-chrome-section="/settings" data-chrome-routes="Main|settings.html;Profile|settings-profile.html;Family|settings-family.html;Family invite|settings-family-invite.html;Family pending|settings-family-pending.html;Family member|settings-family-members.html;Family leave|settings-family-leave.html;Billing|settings-billing.html;Invoice|settings-invoice-detail.html|1;Email setup|settings-email-forward-setup.html;Email verify|settings-email-forward-verify.html;Email log|settings-email-forward-received.html;Notifications|settings-notifications.html;Privacy|settings-privacy-data.html;Audit|settings-audit-log.html;Sharing|settings-sharing.html;Support|settings-support.html;Delete|settings-account-deletion.html" data-chrome-top="level2" data-chrome-back="settings-billing.html">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 pb-6">
+
+  <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <div class="flex items-center justify-between">
+      <p class="text-[10px] uppercase tracking-widest text-emerald-300">Tax invoice</p>
+      <span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[9px] uppercase tracking-widest text-emerald-300">Paid</span>
+    </div>
+    <p class="mt-2 text-[12px] text-zinc-400">From <span class="text-zinc-100">Chitragupt Technologies Pvt Ltd</span><br/>Indore, MP · GSTIN 23ABCFR1234X1ZP</p>
+    <p class="mt-3 text-[12px] text-zinc-400">To <span class="text-zinc-100">Aarav Sharma</span><br/>aarav@example.com · PAN ABCDE1234F</p>
+  </section>
+
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Items</p>
+    <ul class="mt-2 divide-y divide-zinc-900 text-[12px]">
+      <li class="flex items-center justify-between py-2"><div><p class="text-zinc-200">Tax Review unlock · AY 2026-27</p><p class="text-[10px] text-zinc-500">HSN 998314 · one-time per AY</p></div><p class="mono text-zinc-100">₹168.64</p></li>
+      <li class="flex items-center justify-between py-2"><span class="text-zinc-400">CGST 9%</span><p class="mono text-zinc-200">₹15.18</p></li>
+      <li class="flex items-center justify-between py-2"><span class="text-zinc-400">SGST 9%</span><p class="mono text-zinc-200">₹15.18</p></li>
+      <li class="mt-1 border-t border-zinc-800 pt-2 flex items-center justify-between"><span class="text-[12px] font-semibold text-zinc-100">Total</span><p class="mono text-[14px] font-semibold text-zinc-100">₹249.00</p></li>
+    </ul>
+  </section>
+
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 text-[12px] text-zinc-300">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Payment</p>
+    <ul class="mt-2 space-y-1">
+      <li class="flex justify-between"><span class="text-zinc-400">Method</span><span>UPI · aarav@oksbi</span></li>
+      <li class="flex justify-between"><span class="text-zinc-400">Razorpay ref</span><span class="mono">pay_OvJ4yhRzL3PZmK</span></li>
+      <li class="flex justify-between"><span class="text-zinc-400">Date</span><span>14 May 2026 · 9:14 AM</span></li>
+    </ul>
+  </section>
+
+  <div class="mt-4 grid grid-cols-2 gap-2">
+    <a href="#" class="rounded-xl border border-zinc-800 bg-zinc-900/40 py-2.5 text-center text-[12px] text-zinc-200">Download PDF</a>
+    <a href="#" class="rounded-xl border border-zinc-800 bg-zinc-900/40 py-2.5 text-center text-[12px] text-zinc-200">Email me</a>
+  </div>
+
+</main>
+
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

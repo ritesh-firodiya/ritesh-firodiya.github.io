@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ask · Locked — Chitragupt (Self / Free)</title>
+    <script src="../../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/ask</span> ›</span>
+      <a href="ask.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Default</a>
+      <a href="ask-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="ask-quota-exhausted.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Quota exhausted</a>
+      <a href="ask-locked.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Locked (Free / Self)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-review.html" class="text-zinc-400 hover:text-zinc-100">Tax</a>
+        <a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="ask.html" class="text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · Self</strong></p>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-4xl px-5 py-12 pb-32 md:pb-24">
+
+  <section class="rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-500/10 via-zinc-900/40 to-zinc-900/40 p-8 text-center">
+    <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/15 text-purple-200">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    </span>
+    <h1 class="mt-4 text-2xl font-semibold tracking-tight">Ask Chitragupt is on the AI tiers</h1>
+    <p class="mt-2 text-[13.5px] leading-relaxed text-zinc-300">Ask runs on top of your already-parsed documents. Skip the spreadsheet gymnastics — get plain-English answers about your TDS, §80C, capital gains, regime delta, and more, all grounded in your own files with citations.</p>
+
+    <div class="mt-7 grid gap-3 sm:grid-cols-2">
+      <article class="rounded-2xl border border-purple-500/30 bg-purple-500/5 p-5 text-left">
+        <p class="text-[10px] uppercase tracking-widest text-purple-300">AI Self</p>
+        <p class="mt-2 text-3xl font-semibold">₹499<span class="ml-1 text-sm font-normal text-zinc-500">/AY</span></p>
+        <p class="mt-1 text-[11.5px] text-zinc-400">Everything in Self · plus AI Q&A · 5 questions/day · midnight IST reset</p>
+        <a href="../../payment/paywall-modal.html" class="mt-4 block rounded-lg bg-purple-500 px-3 py-2 text-center text-[13px] font-semibold text-zinc-950 hover:bg-purple-400">Upgrade to AI Self →</a>
+        <p class="mt-2 text-[10.5px] text-zinc-500">Already on Self? Pay just <strong class="text-zinc-200">₹250</strong> top-up.</p>
+      </article>
+      <article class="rounded-2xl border border-blue-500/30 bg-blue-500/5 p-5 text-left">
+        <p class="text-[10px] uppercase tracking-widest text-blue-300">Pro Family</p>
+        <p class="mt-2 text-3xl font-semibold">₹799<span class="ml-1 text-sm font-normal text-zinc-500">/AY</span></p>
+        <p class="mt-1 text-[11.5px] text-zinc-400">AI Self for up to 6 PANs · AI quota shared across the family</p>
+        <a href="../../payment/paywall-modal.html" class="mt-4 block rounded-lg bg-blue-500 px-3 py-2 text-center text-[13px] font-semibold text-zinc-950 hover:bg-blue-400">Upgrade to Pro Family →</a>
+        <p class="mt-2 text-[10.5px] text-zinc-500">Already on Self? Pay just <strong class="text-zinc-200">₹550</strong> top-up.</p>
+      </article>
+    </div>
+
+    <p class="mt-5 text-[10.5px] text-zinc-500">No subscription · one-time per AY · refundable for 14 days</p>
+  </section>
+
+  <!-- Locked preview -->
+  <section class="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Preview · what AI Q&A answers</p>
+    <div class="mt-4 space-y-3">
+      <div class="flex gap-3 rounded-xl bg-zinc-950/50 p-4">
+        <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-[10px] font-semibold text-zinc-300">Q</span>
+        <p class="text-[12.5px] text-zinc-300 blur-[0.4px]">How much TDS did I pay across all employers this AY?</p>
+      </div>
+      <div class="flex gap-3 rounded-xl bg-purple-500/5 p-4">
+        <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-purple-500/15 text-[10px] font-semibold text-purple-200">A</span>
+        <div class="space-y-1.5">
+          <p class="text-[12.5px] text-zinc-200 blur-[0.4px]">Across AY 2026-27 you have ₹1,42,310 of TDS on file from 2 deductors…</p>
+          <p class="text-[12.5px] text-zinc-200 blur-[0.4px]">Form 26AS shows the same total — they reconcile cleanly.</p>
+          <p class="text-[11.5px] text-zinc-500">→ form-16 Manifest · → form-16 Confluxsys · → form-26as</p>
+        </div>
+      </div>
+    </div>
+    <p class="mt-4 text-center text-[11px] text-zinc-500">Unlock to see real answers from <em>your</em> documents.</p>
+  </section>
+
+</main>
+
+  </body>
+</html>

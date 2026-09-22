@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expense · unlocked — Chitragupt</title>
+    <script src="../../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/expense</span> ›</span>
+      <a href="expense-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Locked</a>
+      <a href="expense-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="expense-review.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Review</a>
+      <a href="expense-transactions.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Transactions</a>
+      <a href="expense-family-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family locked</a>
+      <a href="expense-family.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Family combined</a>
+    <span class="text-[10px] text-zinc-600">·</span>
+      <a href="expense-categorise-modal.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Categorise (modal)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-locked.html" class="text-zinc-400 hover:text-zinc-100">Tax</a>
+        <a href="../expense/expense-review.html" class="text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="../ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      <a href="../notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+<!-- 2-col layout · LEFT main = Range-driven values · RIGHT aside = absolute info -->
+<div class="grid gap-5 px-5 py-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+
+  <main class="min-w-0 space-y-5">
+
+
+  <!-- Status banner — data-driven. Variants: healthy (emerald), overspent (rose), creep (amber). -->
+  <div class="flex flex-wrap items-center gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[11px] text-emerald-100">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>You saved <span class="mono font-semibold">21%</span> of your income this year. Every month, you spent less than you earned. <span class="mono text-blue-300">One month</span> (Feb) you invested more than usual and dipped into your savings to do it.</span>
+  </div>
+
+  <!-- KPI strip — 4 independent metrics, no forced equation -->
+  <section class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-emerald-300/70">Income</p>
+      <p class="mt-1 text-2xl font-semibold mono text-emerald-300">₹38.20L</p>
+      <p class="mt-0.5 text-[10px] text-zinc-500">Salary · refunds · interest</p>
+    </div>
+    <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-rose-300/70">Expense</p>
+      <p class="mt-1 text-2xl font-semibold mono text-rose-300">₹21.62L</p>
+      <p class="mt-0.5 text-[10px] text-zinc-500">Rent · groceries · loans · tax</p>
+    </div>
+    <div class="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-blue-300/70">Invested</p>
+      <p class="mt-1 text-2xl font-semibold mono text-blue-300">₹8.32L</p>
+      <p class="mt-0.5 text-[10px] text-zinc-500">SIPs, ELSS, broker top-ups — money put into investments</p>
+    </div>
+    <div class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-amber-300/70">Saving</p>
+      <p class="mt-1 text-2xl font-semibold mono text-amber-300">₹8.06L</p>
+      <p class="mt-0.5 text-[10px] text-zinc-500">Saved every month · Feb drew ₹1.96L from balance to invest more</p>
+    </div>
+  </section>
+
+  <!-- Row · Cashflow stacked bars (2/3) + Where money went donut (1/3) -->
+  <section class="grid gap-3 lg:grid-cols-3">
+
+    <!-- Cashflow chart -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 py-6 lg:col-span-2">
+      <div class="px-6 flex flex-wrap items-baseline justify-between gap-2">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Where your money went each month vs what you earned</p>
+        <div class="flex items-center gap-3 text-[10px] text-zinc-400">
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2 w-3 rounded-sm bg-rose-400/75"></span>Expense</span>
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2 w-3 rounded-sm bg-blue-400/75"></span>Invested</span>
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2 w-3 rounded-sm bg-amber-400/75"></span>Saving</span>
+          <span class="inline-flex items-center gap-1.5"><span class="inline-block h-0.5 w-3 bg-emerald-400"></span>Income</span>
+          <span class="inline-flex items-center gap-1.5 text-blue-300">▲ drew from balance to invest</span>
+        </div>
+      </div>
+      <div class="mt-4 overflow-hidden rounded-md">
+        <svg viewBox="0 0 720 260" class="h-60 w-full">
+          <g stroke="#27272a" stroke-width="1">
+            <line x1="40" y1="40" x2="700" y2="40"/>
+            <line x1="40" y1="90" x2="700" y2="90"/>
+            <line x1="40" y1="140" x2="700" y2="140"/>
+            <line x1="40" y1="190" x2="700" y2="190"/>
+            <line x1="40" y1="220" x2="700" y2="220"/>
+          </g>
+          <g fill="#52525b" font-size="9" font-family="ui-monospace,monospace">
+            <text x="6" y="44">₹6L</text>
+            <text x="6" y="94">₹4.5L</text>
+            <text x="6" y="144">₹3L</text>
+            <text x="6" y="194">₹1.5L</text>
+            <text x="6" y="223">₹0</text>
+          </g>
+
+          <!-- Apr · in 335 · exp 227 · inv 40 · sav 68 -->
+          <g><rect x="48"  y="152" width="36" height="68" fill="#fb7185" opacity="0.75" rx="2"/><rect x="48"  y="140" width="36" height="12" fill="#60a5fa" opacity="0.75"/><rect x="48"  y="120" width="36" height="20" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- May · in 332 · exp 176 · inv 50 · sav 105 -->
+          <g><rect x="103" y="167" width="36" height="53" fill="#fb7185" opacity="0.75" rx="2"/><rect x="103" y="152" width="36" height="15" fill="#60a5fa" opacity="0.75"/><rect x="103" y="121" width="36" height="31" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Jun · in 319 · exp 151 · inv 70 · sav 98 -->
+          <g><rect x="158" y="175" width="36" height="45" fill="#fb7185" opacity="0.75" rx="2"/><rect x="158" y="154" width="36" height="21" fill="#60a5fa" opacity="0.75"/><rect x="158" y="125" width="36" height="29" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Jul · in 334 · exp 62 · inv 90 · sav 182 -->
+          <g><rect x="213" y="201" width="36" height="19" fill="#fb7185" opacity="0.75" rx="2"/><rect x="213" y="174" width="36" height="27" fill="#60a5fa" opacity="0.75"/><rect x="213" y="120" width="36" height="54" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Aug · in 312 · exp 184 · inv 50 · sav 78 -->
+          <g><rect x="268" y="165" width="36" height="55" fill="#fb7185" opacity="0.75" rx="2"/><rect x="268" y="150" width="36" height="15" fill="#60a5fa" opacity="0.75"/><rect x="268" y="127" width="36" height="23" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Sep · in 344 · exp 157 · inv 50 · sav 138 -->
+          <g><rect x="323" y="173" width="36" height="47" fill="#fb7185" opacity="0.75" rx="2"/><rect x="323" y="158" width="36" height="15" fill="#60a5fa" opacity="0.75"/><rect x="323" y="117" width="36" height="41" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Oct · in 312 · exp 202 · inv 60 · sav 50 -->
+          <g><rect x="378" y="160" width="36" height="60" fill="#fb7185" opacity="0.75" rx="2"/><rect x="378" y="142" width="36" height="18" fill="#60a5fa" opacity="0.75"/><rect x="378" y="127" width="36" height="15" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Nov · in 320 · exp 136 · inv 80 · sav 104 -->
+          <g><rect x="433" y="179" width="36" height="41" fill="#fb7185" opacity="0.75" rx="2"/><rect x="433" y="155" width="36" height="24" fill="#60a5fa" opacity="0.75"/><rect x="433" y="124" width="36" height="31" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Dec · in 320 · exp 240 · inv 50 · sav 30 -->
+          <g><rect x="488" y="148" width="36" height="72" fill="#fb7185" opacity="0.75" rx="2"/><rect x="488" y="133" width="36" height="15" fill="#60a5fa" opacity="0.75"/><rect x="488" y="124" width="36" height="9" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Jan · in 320 · exp 224 · inv 60 · sav 36 -->
+          <g><rect x="543" y="153" width="36" height="67" fill="#fb7185" opacity="0.75" rx="2"/><rect x="543" y="135" width="36" height="18" fill="#60a5fa" opacity="0.75"/><rect x="543" y="124" width="36" height="11" fill="#fbbf24" opacity="0.75"/></g>
+          <!-- Feb · in 320 · exp 234 · inv 282 · big-invest month: ₹86k from income + ₹1.96L from balance -->
+          <g><rect x="598" y="150" width="36" height="70" fill="#fb7185" opacity="0.75" rx="2"/><rect x="598" y="124" width="36" height="26" fill="#60a5fa" opacity="0.75"/><rect x="598" y="65" width="36" height="59" fill="#60a5fa" opacity="0.45" stroke="#60a5fa" stroke-width="1" stroke-dasharray="3 2"/></g>
+          <polygon points="616,52 622,62 610,62" fill="#60a5fa" stroke="#0a0a0a" stroke-width="1"/>
+          <!-- Mar · in 320 · exp 90 · inv 0 · sav 230 -->
+          <g><rect x="653" y="193" width="36" height="27" fill="#fb7185" rx="2" stroke="#0a0a0a" stroke-width="1.5"/><rect x="653" y="124" width="36" height="69" fill="#fbbf24" stroke="#0a0a0a" stroke-width="1.5"/></g>
+
+          <!-- Income line -->
+          <path d="M66,120 L121,121 L176,124 L231,120 L286,127 L341,117 L396,127 L451,124 L506,124 L561,124 L616,124 L671,124"
+                stroke="#34d399" stroke-width="2.2" fill="none"/>
+          <g fill="#34d399" stroke="#0a0a0a" stroke-width="1">
+            <circle cx="66" cy="120" r="3"/><circle cx="121" cy="121" r="3"/><circle cx="176" cy="124" r="3"/>
+            <circle cx="231" cy="120" r="3"/><circle cx="286" cy="127" r="3"/><circle cx="341" cy="117" r="3"/>
+            <circle cx="396" cy="127" r="3"/><circle cx="451" cy="124" r="3"/><circle cx="506" cy="124" r="3"/>
+            <circle cx="561" cy="124" r="3"/><circle cx="616" cy="124" r="3"/><circle cx="671" cy="124" r="3.5"/>
+          </g>
+
+          <g fill="#52525b" font-size="9">
+            <text x="56" y="240">Apr</text><text x="111" y="240">May</text><text x="166" y="240">Jun</text>
+            <text x="221" y="240">Jul</text><text x="276" y="240">Aug</text><text x="331" y="240">Sep</text>
+            <text x="386" y="240">Oct</text><text x="441" y="240">Nov</text><text x="496" y="240">Dec</text>
+            <text x="551" y="240">Jan</text><text x="606" y="240">Feb</text><text x="661" y="240">Mar</text>
+          </g>
+        </svg>
+      </div>
+      <p class="mx-6 mt-3 rounded-md border border-blue-500/30 bg-blue-500/5 px-3 py-2 text-[11px] text-blue-200">Feb · big-invest month. Income <span class="mono">₹3.20L</span> still covered <span class="mono">₹2.34L</span> of expenses (no deficit). You then chose to invest <span class="mono">₹2.82L</span> — <span class="mono">₹86k</span> from this month's surplus + <span class="mono">₹1.96L</span> drawn from your saved balance.</p>
+    </div>
+
+    <!-- Where money went donut + legend -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Where money went</p>
+      <div class="mt-3 flex items-center justify-center">
+        <div class="relative h-36 w-36 shrink-0">
+          <svg viewBox="0 0 100 100" class="-rotate-90">
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#27272a" stroke-width="14"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#10b981" stroke-width="14" stroke-dasharray="79.3 184.6"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#3b82f6" stroke-width="14" stroke-dasharray="39.1 224.8" stroke-dashoffset="-79.3"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#a855f7" stroke-width="14" stroke-dasharray="36.6 227.3" stroke-dashoffset="-118.4"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#ef4444" stroke-width="14" stroke-dasharray="18.3 245.6" stroke-dashoffset="-155.0"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#8b5cf6" stroke-width="14" stroke-dasharray="9.8 254.1" stroke-dashoffset="-173.3"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#f59e0b" stroke-width="14" stroke-dasharray="9.5 254.4" stroke-dashoffset="-183.1"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#ec4899" stroke-width="14" stroke-dasharray="7.3 256.6" stroke-dashoffset="-192.6"/>
+            <circle r="42" cx="50" cy="50" fill="transparent" stroke="#71717a" stroke-width="14" stroke-dasharray="63.9 200.0" stroke-dashoffset="-199.9"/>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center"><p class="text-[8px] uppercase tracking-widest text-zinc-500">Total</p><p class="mono text-[12px] font-semibold text-zinc-100">₹21.62L</p></div>
+        </div>
+      </div>
+      <ul class="mt-4 space-y-1.5 text-[11px]">
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-emerald-500"></span><span class="text-zinc-400">Housing</span></span><span class="mono text-zinc-300">₹6.50L · 30%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-blue-500"></span><span class="text-zinc-400">Food &amp; groceries</span></span><span class="mono text-zinc-300">₹3.20L · 15%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-purple-500"></span><span class="text-zinc-400">Loan EMI</span></span><span class="mono text-zinc-300">₹3.00L · 14%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-rose-500"></span><span class="text-zinc-400">Transport</span></span><span class="mono text-zinc-300">₹1.50L · 7%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-violet-500"></span><span class="text-zinc-400">Tax</span></span><span class="mono text-zinc-300">₹80.0k · 4%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-amber-500"></span><span class="text-zinc-400">Subscriptions</span></span><span class="mono text-zinc-300">₹78.0k · 4%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-pink-500"></span><span class="text-zinc-400">Health</span></span><span class="mono text-zinc-300">₹60.0k · 3%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1.5"><span class="inline-block h-2 w-2 rounded-sm bg-zinc-500"></span><span class="text-zinc-400">Other</span></span><span class="mono text-zinc-300">₹5.24L · 24%</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Largest single outflows · Range-driven · full-width in main -->
+  <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+      <div class="flex items-baseline justify-between">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">10 largest single outflows · this AY (≥ ₹25,000)</p>
+        <p class="text-[10px] text-zinc-500">excludes investments &amp; family transfers</p>
+      </div>
+      <div class="mt-3 overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead class="text-zinc-500">
+            <tr class="border-b border-zinc-800">
+              <th class="px-2 py-2 text-left font-medium">Date</th>
+              <th class="px-2 py-2 text-left font-medium">Merchant</th>
+              <th class="px-2 py-2 text-right font-medium">Category</th>
+              <th class="px-2 py-2 text-right font-medium">Amount</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-900">
+            <tr><td class="px-2 py-2 mono text-zinc-400">12 Feb</td><td class="px-2 py-2 text-zinc-100">Advance tax · CBDT</td><td class="px-2 py-2 text-right"><span class="rounded bg-violet-500/15 px-1.5 py-0.5 text-[10px] text-violet-300">Tax</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹2.34L</td></tr>
+            <tr><td class="px-2 py-2 mono text-zinc-400">30 May</td><td class="px-2 py-2 text-zinc-100">Rent · Renu Joshi</td><td class="px-2 py-2 text-right"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">Housing</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹52,000</td></tr>
+            <tr><td class="px-2 py-2 mono text-zinc-400">28 Apr</td><td class="px-2 py-2 text-zinc-100">Home loan EMI · HDFC</td><td class="px-2 py-2 text-right"><span class="rounded bg-purple-500/15 px-1.5 py-0.5 text-[10px] text-purple-300">Loan</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹48,500</td></tr>
+            <tr><td class="px-2 py-2 mono text-zinc-400">18 May</td><td class="px-2 py-2 text-zinc-100">HDFC Mediclaim premium</td><td class="px-2 py-2 text-right"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">§80D</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹38,000</td></tr>
+            <tr class="bg-rose-500/5"><td class="px-2 py-2 mono text-zinc-400">22 May</td><td class="px-2 py-2 text-amber-200">IMPS · K M MEHTA</td><td class="px-2 py-2 text-right"><span class="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] text-amber-300">Uncategorised</span></td><td class="mono px-2 py-2 text-right text-rose-300">₹84,000</td></tr>
+            <tr><td class="px-2 py-2 mono text-zinc-400">15 Jan</td><td class="px-2 py-2 text-zinc-100">School fee · Vidya Niketan</td><td class="px-2 py-2 text-right"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">§80C · Edu</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹38,400</td></tr>
+            <tr><td class="px-2 py-2 mono text-zinc-400">04 May</td><td class="px-2 py-2 text-zinc-100">NEFT · LIC of India</td><td class="px-2 py-2 text-right"><span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-300">§80C</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹28,800</td></tr>
+            <tr><td class="px-2 py-2 mono text-zinc-400">09 Dec</td><td class="px-2 py-2 text-zinc-100">DMart Ready · grocery</td><td class="px-2 py-2 text-right"><span class="rounded bg-blue-500/15 px-1.5 py-0.5 text-[10px] text-blue-300">Food</span></td><td class="mono px-2 py-2 text-right text-zinc-100">₹26,200</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-[10px] text-zinc-500"><a href="expense-transactions.html" class="text-emerald-300 underline">See all 412 transactions →</a></p>
+  </section>
+
+  </main>
+
+  <!-- ═══ ASIDE · absolute info (action items, methodology, accounts) ═══ -->
+  <aside class="lg:sticky lg:top-20 lg:self-start space-y-3">
+
+          <div class="flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-950/40 p-1 text-[11px]">
+        <span class="px-1.5 py-1 text-[9px] uppercase tracking-widest text-zinc-500">Range</span>
+        <button class="rounded px-2 py-1 mono text-zinc-400 hover:text-zinc-100">1M</button>
+        <button class="rounded px-2 py-1 mono text-zinc-400 hover:text-zinc-100">3M</button>
+        <button class="rounded px-2 py-1 mono text-zinc-400 hover:text-zinc-100">6M</button>
+        <button class="rounded bg-zinc-800 px-2 py-1 mono font-semibold text-zinc-100">1Y</button>
+        <button class="rounded px-2 py-1 text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-100">Custom</button>
+      </div>
+
+
+    <!-- Action items · observations from your data (not range-bound CTAs) -->
+    <section class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-amber-400">Action items</p>
+      <ul class="mt-2 space-y-1.5 text-[11px] text-amber-100 leading-snug">
+        <li>· <span class="mono">₹84,000</span> IMPS to K M MEHTA · verify the category</li>
+        <li>· Loan EMI <span class="mono">₹3.00L</span> · verify 80C / §24(b) split in <a href="../tax/tax-review.html" class="text-amber-200 underline">Tax</a></li>
+        <li>· <span class="mono">12 txns</span> in 'Other' · <a href="expense-transactions.html?filter=other" class="text-amber-200 underline">tag</a> to teach the engine</li>
+      </ul>
+    </section>
+
+    <!-- Per-account coverage -->
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Accounts</p>
+      <ul class="mt-2 divide-y divide-zinc-900 text-[11px]">
+        <li class="flex items-baseline justify-between py-1.5"><span class="text-zinc-300">HDFC ****0819</span><span class="text-emerald-300 text-[10px]">synced 06 Jun</span></li>
+        <li class="flex items-baseline justify-between py-1.5"><span class="text-zinc-300">ICICI ****8841</span><span class="text-emerald-300 text-[10px]">synced 06 Jun</span></li>
+        <li class="flex items-baseline justify-between py-1.5"><span class="text-zinc-300">Amex ****1003</span><span class="text-emerald-300 text-[10px]">synced 06 Jun</span></li>
+      </ul>
+    </section>
+
+    <!-- Reading this data · methodology -->
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Reading this data</p>
+      <ul class="mt-2 space-y-1 text-[10.5px] text-zinc-400 leading-snug">
+        <li>· <span class="text-zinc-200">Income</span> · salary + refunds + interest</li>
+        <li>· <span class="text-zinc-200">Expense</span> · consumption + EMI + tax + rent</li>
+        <li>· <span class="text-zinc-200">Invested</span> · money moved into MFs / stocks / FDs</li>
+        <li>· <span class="text-zinc-200">Saving</span> · income − expense</li>
+        <li>· <span class="text-blue-300">▲</span> drew from balance · invested more than saved this month</li>
+        <li>· <span class="text-rose-300">▼</span> overspent · expense &gt; income</li>
+      </ul>
+    </section>
+  </aside>
+
+</div>
+
+
+<nav class="fixed bottom-0 inset-x-0 z-20 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-md items-stretch">
+    <a href="../inbox/inbox-populated.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a>
+    <a href="../tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a>
+    <a href="../expense/expense-review.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-emerald-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a>
+    <a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a>
+  </div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Billing · Settings — Chitragupt</title>
+  <script src="../../../../_vendor/tailwind.js"></script>
+  <style>
+    body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  </style>
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/settings</span> › <span class="text-zinc-400">Billing</span> ›</span>
+
+    <a href="settings-billing.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Overview</a>
+    <a href="settings-invoice-detail.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Invoice</a>
+
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-locked.html" class="text-zinc-400 hover:text-zinc-100">Tax</a>
+        <a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="../ask/ask.html" class="text-zinc-400 hover:text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-emerald-300">Aarav · personal</strong></p>
+      <a href="../notifications.html" class="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800" aria-label="Notifications">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-500 px-1 text-[9px] font-semibold text-zinc-950">3</span>
+      </a>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+<main class="px-5 py-8">
+  <div class="grid gap-6 lg:grid-cols-[240px_1fr]">
+    <aside class="lg:sticky lg:top-20 lg:self-start">
+      <nav aria-label="Settings sections" class="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40">
+        <a href="settings.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Account</p><p class="text-[11px] text-zinc-500">Profile · security · notifications</p></span>
+        </a>
+        <a href="settings-family.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Family</p><p class="text-[11px] text-zinc-500">Members · invites · sharing</p></span>
+        </a>
+                <a href="settings-linked-brokers.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Linked brokers</p><p class="text-[11px] text-zinc-500">Automatic Portfolio sync</p></span>
+        </a>
+<a href="settings-billing.html" aria-current="page" class="flex items-start gap-3 border-l-2 border-emerald-500 bg-emerald-500/10 px-4 py-3">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-emerald-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+          <span class="min-w-0"><p class="text-sm font-medium text-zinc-100">Billing</p><p class="text-[11px] text-zinc-500">Plan · payments · invoices</p></span>
+        </a>
+        <a href="settings-privacy-data.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Privacy &amp; data</p><p class="text-[11px] text-zinc-500">Export · audit · delete</p></span>
+        </a>
+        <a href="settings-support.html" class="flex items-start gap-3 border-l-2 border-transparent px-4 py-3 hover:bg-zinc-900/60">
+          <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center text-zinc-500"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+          <span class="min-w-0"><p class="text-sm text-zinc-200">Support</p><p class="text-[11px] text-zinc-500">Tickets · grievance · FAQ</p></span>
+        </a>
+      </nav>
+      <p class="mt-4 px-2 text-[10px] leading-relaxed text-zinc-500">Hosted in Mumbai · DPDP-compliant · grievance officer <a href="mailto:grievance@chitragupt.ai" class="underline hover:text-zinc-300">grievance@chitragupt.ai</a></p>
+    </aside>
+
+    <!-- ─── RIGHT CONTENT — Billing ─── -->
+    <section class="min-w-0 space-y-5">
+
+      <!-- Current plan -->
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-3">
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-emerald-300">Current plan</p>
+            <h3 class="mt-1 text-base font-semibold text-zinc-100">Self · AY 2026-27</h3>
+            <p class="mt-1 text-[11px] text-zinc-400">Paid 22 May 2026 · ₹249 · active until AY rollover (31 Mar 2027)</p>
+          </div>
+          <span class="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-emerald-300">Active</span>
+        </div>
+      </div>
+
+      <!-- Upgrade to Pro Family -->
+      <div class="rounded-2xl border-2 border-blue-500 bg-gradient-to-br from-blue-500/15 via-blue-500/5 to-transparent p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-3">
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-blue-300">Upgrade · pay only the delta</p>
+            <h3 class="mt-1 text-base font-semibold text-zinc-100">Upgrade to Pro Family · pay only ₹550</h3>
+          </div>
+          <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-blue-200">Eligible</span>
+        </div>
+        <div class="mt-4 grid gap-4 md:grid-cols-[1fr_auto]">
+          <div class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4">
+            <div class="space-y-1 text-xs">
+              <div class="flex justify-between"><span class="text-zinc-400">Pro Family</span><span class="mono text-zinc-100">₹799</span></div>
+              <div class="flex justify-between"><span class="text-zinc-400">Already paid (Self)</span><span class="mono text-zinc-400">− ₹249</span></div>
+              <div class="my-1.5 border-t border-zinc-800"></div>
+              <div class="flex items-baseline justify-between"><span class="font-semibold text-blue-200">You pay today</span><span class="mono text-2xl font-semibold text-blue-200">₹550</span></div>
+            </div>
+          </div>
+          <div class="flex flex-col items-stretch justify-center gap-3">
+            <a href="../../payment/upgrade.html" class="inline-flex items-center justify-center gap-2 rounded-md bg-blue-500 px-5 py-3 text-sm font-semibold text-zinc-950 hover:bg-blue-400">Upgrade for ₹550 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <p class="text-center text-[10px] text-zinc-500">Fresh 14-day refund window on the top-up</p>
+          </div>
+        </div>
+        <p class="mt-4 text-[11px] text-zinc-300">Unlocks household lens (up to 6 PANs), multi-AY history, Expense Review, Portfolio Review, and AI Q&amp;A shared across the family (5/day · cite-to-doc).</p>
+
+        <!-- Alternative path · AI Self -->
+        <div class="mt-4 rounded-xl border border-purple-500/30 bg-purple-500/5 p-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-purple-300">Or · just want AI Q&amp;A?</p>
+              <p class="mt-1 text-sm text-zinc-100">Top up to <strong class="text-purple-200">AI Self · ₹499</strong> instead — same personal scope as today, plus 5 AI questions a day on your own documents, cited to the source.</p>
+            </div>
+            <a href="../../payment/upgrade.html?to=ai_self" class="inline-flex items-center gap-1.5 rounded-md border border-purple-500/40 bg-purple-500/15 px-3 py-2 text-xs font-semibold text-purple-200 hover:bg-purple-500/25">Top up ₹250 → AI Self</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GST invoice notice -->
+      <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-emerald-500/15 text-emerald-300"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></span>
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-emerald-300">GST tax invoices · auto-generated</p>
+              <p class="mt-1 text-sm text-zinc-100">Every payment produces a GST-compliant tax invoice within seconds.</p>
+              <p class="mt-1 text-[11px] text-zinc-400">Auto-emailed to <span class="mono text-zinc-300">aarav@example.com</span> · and to your linked CA when shared · downloadable any time.</p>
+              <p class="mt-1 text-[11px] text-zinc-500">Chitragupt Technologies Pvt Ltd · GSTIN <span class="mono text-zinc-300">29ABCDE1234F1Z5</span> · invoice series <span class="mono text-zinc-300">INV-YYYYMM-NNNN</span></p>
+            </div>
+          </div>
+          <a href="settings-invoice-detail.html" class="rounded border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-200 hover:bg-emerald-500/20">View latest invoice</a>
+        </div>
+      </div>
+
+      <!-- Billing history -->
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Billing history · per payment</p>
+          <p class="text-[10px] text-zinc-500">Every payment carries its own fresh 14-day refund window.</p>
+        </div>
+        <div class="mt-3 overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 text-[10px] uppercase tracking-widest text-zinc-500">
+                <th class="py-2 pr-3 font-medium">Date</th>
+                <th class="py-2 pr-3 font-medium">Payment</th>
+                <th class="py-2 pr-3 font-medium">Amount</th>
+                <th class="py-2 pr-3 font-medium">Refund window</th>
+                <th class="py-2 pr-3 font-medium">Invoice</th>
+                <th class="py-2 font-medium text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-900">
+              <tr>
+                <td class="py-3 pr-3 text-zinc-400">23 May 2026 · 11:24 IST</td>
+                <td class="py-3 pr-3"><p class="font-medium text-zinc-100">Ask CA · ITR Filing tier top-up</p><p class="text-[10px] text-zinc-500">Anil Sahu · AY 2026-27</p></td>
+                <td class="py-3 pr-3"><span class="mono text-zinc-100">₹999.00</span></td>
+                <td class="py-3 pr-3"><span class="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] text-emerald-300">● 13 days left</span></td>
+                <td class="py-3 pr-3"><a href="settings-invoice-detail.html" class="text-emerald-300 hover:underline">Invoice ↗</a></td>
+                <td class="py-3 text-right"><a href="../../payment/refund-request.html" class="rounded border border-rose-500/40 bg-rose-500/10 px-2.5 py-1 text-[11px] text-rose-200 hover:bg-rose-500/20">Refund</a></td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-3 text-zinc-400">23 May 2026 · 11:18 IST</td>
+                <td class="py-3 pr-3"><p class="font-medium text-zinc-100">Ask CA · Consult</p><p class="text-[10px] text-zinc-500">Anil Sahu · AY 2026-27</p></td>
+                <td class="py-3 pr-3"><span class="mono text-zinc-100">₹299.00</span></td>
+                <td class="py-3 pr-3"><span class="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[10px] text-zinc-400">non-refundable</span></td>
+                <td class="py-3 pr-3"><a href="settings-invoice-detail.html" class="text-emerald-300 hover:underline">Invoice ↗</a></td>
+                <td class="py-3 text-right text-[11px] text-zinc-600">—</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-3 text-zinc-400">22 May 2026 · 08:11 IST</td>
+                <td class="py-3 pr-3"><p class="font-medium text-zinc-100">Self · Tax Review unlock</p><p class="text-[10px] text-zinc-500">UPI · AY 2026-27</p></td>
+                <td class="py-3 pr-3"><span class="mono text-zinc-100">₹249.00</span></td>
+                <td class="py-3 pr-3"><span class="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[10px] text-zinc-400">closed · PDF exported</span></td>
+                <td class="py-3 pr-3"><a href="settings-invoice-detail.html" class="text-emerald-300 hover:underline">Invoice ↗</a></td>
+                <td class="py-3 text-right text-[11px] text-zinc-600">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-[10px] text-zinc-500">Refund eligibility computed independently per payment · see the <a href="../../marketing/refund.html" class="underline hover:text-zinc-300">refund policy</a>.</p>
+      </div>
+
+      <!-- Refund principle -->
+      <div class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-amber-300">Refund principle</p>
+        <p class="mt-2 text-xs text-zinc-300"><strong class="text-zinc-100">Fresh 14-day refund window on every payment</strong> — Self (₹249), Pro Family top-up (₹550), full Pro Family (₹799), every hire-a-CA top-up all carry their own independent 14-day refund window from the day of payment.</p>
+        <a href="../../payment/refund-request.html" class="mt-3 inline-flex items-center rounded border border-rose-500/40 bg-rose-500/10 px-3 py-1.5 text-xs text-rose-200 hover:bg-rose-500/20">Request a refund</a>
+      </div>
+
+      <!-- Payment method -->
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Payment method</p>
+        <p class="mt-2 text-xs text-zinc-400">Razorpay handles every transaction. We don't store your card or UPI VPA.</p>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<nav class="fixed bottom-0 inset-x-0 z-20 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur md:hidden">
+  <div class="mx-auto flex max-w-md items-stretch">
+    <a href="../inbox/inbox-populated.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span class="text-[10px] font-medium">Inbox</span></a>
+    <a href="../tax/tax-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg><span class="text-[10px] font-medium">Tax</span></a>
+    <a href="../expense/expense-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg><span class="text-[10px] font-medium">Expense</span></a>
+    <a href="../portfolio/portfolio-locked.html" class="flex flex-1 flex-col items-center gap-0.5 py-2.5 text-zinc-500 hover:text-zinc-300"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="text-[10px] font-medium">Portfolio</span></a>
+  </div>
+</nav>
+
+</body>
+</html>

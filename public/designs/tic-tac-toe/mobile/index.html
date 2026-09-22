@@ -20,12 +20,12 @@
     is the default and a wireframe that drew only one would be drawing half the product.
   </p>
 
-  <div class="rounded-xl border p-4 mb-8" style="background:#fffbeb;border-color:#fde68a">
-    <p class="text-sm font-bold mb-1" style="color:#92400e">Backfilled 2026-09-19, after the app shipped</p>
-    <p class="text-sm" style="color:#92400e">
+  <div class="rounded-xl border p-4 mb-8 bg-diff-medium/10 border-diff-medium/30">
+    <p class="text-sm font-bold mb-1 text-mark-win">Backfilled 2026-09-19, after the app shipped</p>
+    <p class="text-sm text-mark-win">
       The house rule is that a screen with no HTML file does not ship. This app shipped to
       Play without any, so these were drawn from the source afterwards rather than before —
-      the one case in <span class="mono">~/git/apps</span> where the designs follow the code.
+      the one case in <span class="mono">~/git/products</span> where the designs follow the code.
       Where a wireframe and the app disagree, <b>the wireframe is the spec</b> from here on;
       fix the screen, or change the wireframe first and say so.
     </p>
@@ -35,28 +35,28 @@
   <div class="grid grid-cols-2 gap-3 mb-10">
     <a href="home/index.html" class="rounded-xl bg-surface border border-line shadow-sm p-4 no-underline">
       <div class="flex items-center gap-2.5 mb-1">
-        <i data-lucide="layout-grid" class="w-[18px] h-[18px]" style="color:var(--accent)"></i>
+        <i data-lucide="layout-grid" class="w-[18px] h-[18px] text-brand-500"></i>
         <p class="text-body font-bold text-ink">Home</p>
       </div>
       <p class="text-sm text-ink-3"><span class="mono">src/app/index.tsx</span> — mode and difficulty in one tap. Light + dark.</p>
     </a>
     <a href="game/board.html" class="rounded-xl bg-surface border border-line shadow-sm p-4 no-underline">
       <div class="flex items-center gap-2.5 mb-1">
-        <i data-lucide="grid-3x3" class="w-[18px] h-[18px]" style="color:var(--accent)"></i>
+        <i data-lucide="grid-3x3" class="w-[18px] h-[18px] text-brand-500"></i>
         <p class="text-body font-bold text-ink">Board</p>
       </div>
       <p class="text-sm text-ink-3"><span class="mono">src/app/game.tsx</span> — play in progress, and the computer-thinking state.</p>
     </a>
     <a href="game/result.html" class="rounded-xl bg-surface border border-line shadow-sm p-4 no-underline">
       <div class="flex items-center gap-2.5 mb-1">
-        <i data-lucide="trophy" class="w-[18px] h-[18px]" style="color:var(--accent)"></i>
+        <i data-lucide="trophy" class="w-[18px] h-[18px] text-brand-500"></i>
         <p class="text-body font-bold text-ink">Result</p>
       </div>
       <p class="text-sm text-ink-3"><span class="mono">GameOverModal.tsx</span> — a win with its amber line, and a draw.</p>
     </a>
     <a href="settings/how-to-play.html" class="rounded-xl bg-surface border border-line shadow-sm p-4 no-underline">
       <div class="flex items-center gap-2.5 mb-1">
-        <i data-lucide="circle-help" class="w-[18px] h-[18px]" style="color:var(--accent)"></i>
+        <i data-lucide="circle-help" class="w-[18px] h-[18px] text-brand-500"></i>
         <p class="text-body font-bold text-ink">How to play</p>
       </div>
       <p class="text-sm text-ink-3"><span class="mono">src/app/how-to-play.tsx</span> — what the difficulties do, and that Hard cannot be beaten.</p>
@@ -67,7 +67,7 @@
   <div class="grid grid-cols-2 gap-3 mb-10">
     <a href="states/ads.html" class="rounded-xl bg-surface border border-line shadow-sm p-4 no-underline">
       <div class="flex items-center gap-2.5 mb-1">
-        <i data-lucide="rectangle-horizontal" class="w-[18px] h-[18px]" style="color:var(--accent)"></i>
+        <i data-lucide="rectangle-horizontal" class="w-[18px] h-[18px] text-brand-500"></i>
         <p class="text-body font-bold text-ink">Ads</p>
       </div>
       <p class="text-sm text-ink-3">Banner filled, banner unfilled, and ads off. The app's only revenue, so its states are spec.</p>

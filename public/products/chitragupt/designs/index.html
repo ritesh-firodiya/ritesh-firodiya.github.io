@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<base href="/designs/chitragupt/mobile/">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chitragupt — mobile wireframe routes</title>
+  <script src="../../_vendor/tailwind.js"></script>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .chip { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 10.5px; line-height: 1.4; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+
+<header class="border-b border-zinc-900">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
+    <div>
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Chitragupt · mobile wireframes</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Routes &amp; variations · mobile</h1>
+      <p class="mt-1 text-[11px] text-zinc-500">Phone frame 390 × 844. Centered-home tab bar · avatar opens left drawer · navbar consistent across in-app pages.</p>
+    </div>
+    <a href="../website/index.html" class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← Website routes</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-5 py-8">
+
+  <section class="mb-6 rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Quick links</p>
+    <div class="mt-2 flex flex-wrap gap-1.5">
+      <a href="app/dashboard.html" class="chip bg-emerald-500/15 text-emerald-200">Home</a>
+      <a href="app/drawer-open.html" class="chip bg-emerald-500/15 text-emerald-200">Drawer open</a>
+      <a href="app/inbox/inbox.html" class="chip bg-emerald-500/15 text-emerald-200">Inbox · folders</a>
+      <a href="app/inbox/inbox-flat.html" class="chip bg-emerald-500/15 text-emerald-200">Inbox · flat</a>
+      <a href="app/tax/tax-review.html" class="chip bg-emerald-500/15 text-emerald-200">Tax review</a>
+      <a href="app/ask/ask.html" class="chip bg-emerald-500/15 text-emerald-200">Ask · AI Self</a>
+      <a href="app/expense/expense-review.html" class="chip bg-emerald-500/15 text-emerald-200">Expense · unlocked</a>
+      <a href="app/portfolio/portfolio-locked.html" class="chip bg-emerald-500/15 text-emerald-200">Portfolio</a>
+      <a href="payment/paywall-modal.html" class="chip bg-emerald-500/15 text-emerald-200">Paywall sheet</a>
+      <a href="hire-ca/index.html" class="chip bg-emerald-500/15 text-emerald-200">Hire CA</a>
+    </div>
+  </section>
+
+  <section class="mb-6 rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">System &amp; utility states</p>
+    <div class="mt-2 flex flex-wrap gap-1.5">
+      <a href="404.html" class="chip bg-zinc-800 text-zinc-300">404</a>
+      <a href="500.html" class="chip bg-zinc-800 text-zinc-300">500</a>
+      <a href="maintenance.html" class="chip bg-zinc-800 text-zinc-300">Maintenance</a>
+      <a href="offline.html" class="chip bg-zinc-800 text-zinc-300">Offline</a>
+      <a href="patterns/toasts.html" class="chip bg-zinc-800 text-zinc-300">Toasts</a>
+      <a href="patterns/confirm-destructive.html" class="chip bg-zinc-800 text-zinc-300">Confirm-destructive sheet</a>
+      <a href="patterns/components.html" class="chip bg-emerald-500/15 text-emerald-200">Components reference</a>
+    </div>
+  </section>
+
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-zinc-800 text-[10px] uppercase tracking-widest text-zinc-500">
+        <th class="px-3 py-2 text-left font-normal w-1/4">Route</th>
+        <th class="px-3 py-2 text-left font-normal">Variations</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="auth/sign-in.html" class="mono text-emerald-300 hover:underline">/auth</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="auth/sign-in.html" class="chip bg-zinc-800 text-zinc-300">Sign in</a>
+            <a href="auth/sign-up.html" class="chip bg-zinc-800 text-zinc-300">Sign up</a>
+            <a href="auth/verify-email.html" class="chip bg-zinc-800 text-zinc-300">Verify email</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="onboarding/step-1-consent.html" class="mono text-emerald-300 hover:underline">/onboarding</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="onboarding/step-1-consent.html" class="chip bg-zinc-800 text-zinc-300">1 · Consent</a>
+            <a href="onboarding/step-2-plan.html" class="chip bg-zinc-800 text-zinc-300">2 · Plan</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/dashboard.html" class="mono text-emerald-300 hover:underline">/dashboard</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/dashboard.html" class="chip bg-zinc-800 text-zinc-300">Populated</a>
+            <a href="app/dashboard-empty.html" class="chip bg-zinc-800 text-zinc-300">Empty</a>
+            <a href="app/dashboard-family.html" class="chip bg-blue-500/15 text-blue-200">Family combined</a>
+            <a href="app/dashboard-family-member.html" class="chip bg-blue-500/15 text-blue-200">Family · member</a>
+            <a href="app/drawer-open.html" class="chip bg-zinc-800 text-zinc-300">Drawer open</a>
+            <a href="app/notifications.html" class="chip bg-zinc-800 text-zinc-300">Notifications</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/inbox/inbox.html" class="mono text-emerald-300 hover:underline">/inbox</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/inbox/inbox.html" class="chip bg-zinc-800 text-zinc-300">Folders (default)</a>
+            <a href="app/inbox/inbox-flat.html" class="chip bg-zinc-800 text-zinc-300">Flat</a>
+            <a href="app/inbox/inbox-empty.html" class="chip bg-zinc-800 text-zinc-300">Empty</a>
+            <a href="app/inbox/inbox-uploading.html" class="chip bg-zinc-800 text-zinc-300">Uploading</a>
+            <a href="app/review/document.html" class="chip bg-zinc-800 text-zinc-300">Document</a>
+            <a href="app/review/document-locked.html" class="chip bg-zinc-800 text-zinc-300">Locked PDF</a>
+            <a href="app/review/document-failed.html" class="chip bg-zinc-800 text-zinc-300">Failed parse</a>
+            <a href="app/review/confirm-ais.html" class="chip bg-zinc-800 text-zinc-300">AIS confirm</a>
+            <a href="app/inbox/inbox-zip-expanding.html" class="chip bg-zinc-800 text-zinc-300">ZIP expanding</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/tax/tax-review.html" class="mono text-emerald-300 hover:underline">/tax</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/tax/tax-review.html" class="chip bg-zinc-800 text-zinc-300">Review</a>
+            <a href="app/tax/capital-gains.html" class="chip bg-emerald-500/15 text-emerald-200">Capital gains (new)</a>
+            <a href="app/tax/tax-locked.html" class="chip bg-zinc-800 text-zinc-300">Locked</a>
+            <a href="app/tax/tax-empty.html" class="chip bg-zinc-800 text-zinc-300">Empty</a>
+            <a href="app/tax/tax-filed.html" class="chip bg-zinc-800 text-zinc-300">Filed</a>
+            <a href="app/tax/tax-with-ca.html" class="chip bg-zinc-800 text-zinc-300">With CA</a>
+            <a href="app/tax/tax-with-ca-chat.html" class="chip bg-zinc-800 text-zinc-300">With CA · chat</a>
+            <a href="app/tax/tax-ca-invited.html" class="chip bg-zinc-800 text-zinc-300">CA invited</a>
+            <a href="app/tax/tax-family-locked.html" class="chip bg-blue-500/15 text-blue-200">Family locked</a>
+            <a href="app/tax/tax-family.html" class="chip bg-blue-500/15 text-blue-200">Family stacked</a>
+            <a href="app/tax/tax-past-ay.html" class="chip bg-zinc-800 text-zinc-300">Past AY</a>
+            <a href="app/tax/invite-ca.html" class="chip bg-zinc-800 text-zinc-300">Invite CA</a>
+            <a href="app/tax/concern.html" class="chip bg-zinc-800 text-zinc-300">Raise concern</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/ask/ask.html" class="mono text-emerald-300 hover:underline">/ask</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/ask/ask.html" class="chip bg-zinc-800 text-zinc-300">Default</a>
+            <a href="app/ask/ask-empty.html" class="chip bg-zinc-800 text-zinc-300">Empty</a>
+            <a href="app/ask/ask-quota-exhausted.html" class="chip bg-zinc-800 text-zinc-300">Quota exhausted</a>
+            <a href="app/ask/ask-locked.html" class="chip bg-zinc-800 text-zinc-300">Locked</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/expense/expense-locked.html" class="mono text-emerald-300 hover:underline">/expense</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/expense/expense-empty.html" class="chip bg-zinc-800 text-zinc-300">Empty</a>
+            <a href="app/expense/expense-locked.html" class="chip bg-zinc-800 text-zinc-300">Locked teaser</a>
+            <a href="app/expense/expense-review.html" class="chip bg-emerald-500/15 text-emerald-200">Unlocked</a>
+            <a href="app/expense/expense-transactions.html" class="chip bg-zinc-800 text-zinc-300">Transactions</a>
+            <a href="app/expense/expense-categorise-modal.html" class="chip bg-zinc-800 text-zinc-300">Categorise sheet</a>
+            <a href="app/expense/expense-family-locked.html" class="chip bg-blue-500/15 text-blue-200">Family locked</a>
+            <a href="app/expense/expense-family.html" class="chip bg-blue-500/15 text-blue-200">Family</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/portfolio/portfolio-locked.html" class="mono text-emerald-300 hover:underline">/portfolio</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/portfolio/portfolio-locked.html" class="chip bg-zinc-800 text-zinc-300">Strong</a>
+            <a href="app/portfolio/portfolio-empty.html" class="chip bg-zinc-800 text-zinc-300">Empty</a>
+            <a href="app/portfolio/portfolio-holdings.html" class="chip bg-zinc-800 text-zinc-300">Holdings</a>
+            <a href="app/portfolio/portfolio-view-only.html" class="chip bg-zinc-800 text-zinc-300">View-only (free)</a>
+            <a href="app/portfolio/portfolio-review-cg-booked.html" class="chip bg-zinc-800 text-zinc-300">CG booked</a>
+            <a href="app/portfolio/portfolio-map-goal-modal.html" class="chip bg-zinc-800 text-zinc-300">Map to goal</a>
+            <a href="app/portfolio/portfolio-family.html" class="chip bg-blue-500/15 text-blue-200">Family</a>
+            <a href="app/portfolio/portfolio-family-locked.html" class="chip bg-blue-500/15 text-blue-200">Family locked</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="app/settings/settings.html" class="mono text-emerald-300 hover:underline">/settings</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="app/settings/settings.html" class="chip bg-zinc-800 text-zinc-300">Main</a>
+            <a href="app/settings/settings-profile.html" class="chip bg-zinc-800 text-zinc-300">Profile</a>
+            <a href="app/settings/settings-family.html" class="chip bg-blue-500/15 text-blue-200">Family</a>
+            <a href="app/settings/settings-family-invite.html" class="chip bg-blue-500/15 text-blue-200">Family · invite</a>
+            <a href="app/settings/settings-family-pending.html" class="chip bg-blue-500/15 text-blue-200">Family · pending</a>
+            <a href="app/settings/settings-family-members.html" class="chip bg-blue-500/15 text-blue-200">Family · member</a>
+            <a href="app/settings/settings-family-leave.html" class="chip bg-blue-500/15 text-blue-200">Family · leave</a>
+            <a href="app/settings/settings-billing.html" class="chip bg-zinc-800 text-zinc-300">Billing</a>
+            <a href="app/settings/settings-invoice-detail.html" class="chip bg-zinc-800 text-zinc-300">Invoice</a>
+            <a href="app/settings/settings-email-forward-setup.html" class="chip bg-zinc-800 text-zinc-300">Email · setup</a>
+            <a href="app/settings/settings-email-forward-verify.html" class="chip bg-zinc-800 text-zinc-300">Email · verify</a>
+            <a href="app/settings/settings-email-forward-received.html" class="chip bg-zinc-800 text-zinc-300">Email · log</a>
+            <a href="app/settings/settings-notifications.html" class="chip bg-zinc-800 text-zinc-300">Notifications</a>
+            <a href="app/settings/settings-privacy-data.html" class="chip bg-zinc-800 text-zinc-300">Privacy &amp; data</a>
+            <a href="app/settings/settings-audit-log.html" class="chip bg-zinc-800 text-zinc-300">Audit log</a>
+            <a href="app/settings/settings-sharing.html" class="chip bg-zinc-800 text-zinc-300">Sharing</a>
+            <a href="app/settings/settings-support.html" class="chip bg-zinc-800 text-zinc-300">Support</a>
+            <a href="app/settings/settings-account-deletion.html" class="chip bg-zinc-800 text-zinc-300">Delete account</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="payment/paywall-modal.html" class="mono text-emerald-300 hover:underline">/payment</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="payment/paywall-modal.html" class="chip bg-zinc-800 text-zinc-300">Paywall sheet</a>
+            <a href="payment/razorpay-checkout.html" class="chip bg-zinc-800 text-zinc-300">Razorpay checkout</a>
+            <a href="payment/payment-success.html" class="chip bg-zinc-800 text-zinc-300">Success</a>
+            <a href="payment/payment-failed.html" class="chip bg-zinc-800 text-zinc-300">Failed</a>
+            <a href="payment/payment-stuck.html" class="chip bg-zinc-800 text-zinc-300">Stuck/processing</a>
+            <a href="payment/upgrade.html" class="chip bg-blue-500/15 text-blue-200">Upgrade</a>
+            <a href="payment/upgrade-success.html" class="chip bg-blue-500/15 text-blue-200">Upgrade success</a>
+            <a href="payment/refund-request.html" class="chip bg-zinc-800 text-zinc-300">Refund request</a>
+            <a href="payment/refund-success.html" class="chip bg-zinc-800 text-zinc-300">Refund success</a>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="border-b border-zinc-900">
+        <td class="px-3 py-3 align-top"><a href="hire-ca/index.html" class="mono text-emerald-300 hover:underline">/hire-ca</a></td>
+        <td class="px-3 py-3 align-top">
+          <div class="flex flex-wrap gap-1">
+            <a href="hire-ca/index.html" class="chip bg-zinc-800 text-zinc-300">Browse</a>
+            <a href="hire-ca/browse-past-itr.html" class="chip bg-zinc-800 text-zinc-300">ITR filing</a>
+            <a href="hire-ca/browse-consultation.html" class="chip bg-zinc-800 text-zinc-300">Consultation</a>
+            <a href="hire-ca/browse-notice.html" class="chip bg-zinc-800 text-zinc-300">Notice reply</a>
+            <a href="hire-ca/anil-sahu-a82f.html" class="chip bg-zinc-800 text-zinc-300">CA profile</a>
+            <a href="hire-ca/hire-confirm.html" class="chip bg-zinc-800 text-zinc-300">Hire confirm</a>
+            <a href="hire-ca/refund-ticket.html" class="chip bg-zinc-800 text-zinc-300">Refund ticket</a>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <section class="mt-8 rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Design conventions</p>
+    <ul class="mt-2 space-y-1 text-[12px] text-zinc-300">
+      <li>· Phone frame · 390 × 844 · centered on desktop with rounded corners + shadow</li>
+      <li>· Top bar: avatar (left → opens left drawer) · title · notifications (right). Detail pages swap avatar for back-arrow.</li>
+      <li>· Bottom tab bar: <span class="mono">Inbox · Tax · <strong class="text-emerald-300">Home (elevated, centered)</strong> · Expense · Portfolio</span></li>
+      <li>· Inbox default = folder tree (Tax / Bank / Investments / Health). Toggle to flat list. Search across all docs.</li>
+      <li>· Bottom sheets for modals (Razorpay paywall · categorise · budget · harvest · rebalance · confirm trade · map goal · destructive confirm).</li>
+      <li>· Family workspace tinted blue · Pro Family upgrade gates via <span class="mono">payment/upgrade.html</span>.</li>
+      <li>· Most variants use shared chrome via <span class="mono">_chrome.js</span> — older anchors keep inline chrome for portability.</li>
+    </ul>
+  </section>
+
+  <section class="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Excluded from mobile</p>
+    <p class="mt-1 text-[12px] text-zinc-400">Marketing pages (landing/pricing/FAQ/legal), admin console, and CA portal — those stay web-only. Transactional email bodies live on the website wireframe set too.</p>
+  </section>
+
+</main>
+
+</body>
+</html>

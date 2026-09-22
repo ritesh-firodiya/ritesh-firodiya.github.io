@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ask · AI Q&A — Chitragupt AI Self</title>
+    <script src="../../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 pb-16 md:pb-0">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/ask</span> ›</span>
+      <a href="ask.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Default</a>
+      <a href="ask-empty.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Empty</a>
+      <a href="ask-quota-exhausted.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Quota exhausted</a>
+      <a href="ask-locked.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Locked (Free / Self)</a>
+    <a href="../../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold">
+        <span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>
+        Chitragupt
+      </a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="../dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="../inbox/inbox-populated.html" class="text-zinc-400 hover:text-zinc-100">Inbox</a>
+        <a href="../tax/tax-review.html" class="text-zinc-400 hover:text-zinc-100">Tax</a>
+        <a href="../expense/expense-locked.html" class="text-zinc-400 hover:text-zinc-100">Expense</a>
+        <a href="../portfolio/portfolio-locked.html" class="text-zinc-400 hover:text-zinc-100">Portfolio</a>
+        <a href="ask.html" class="text-zinc-100">Ask</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-purple-300">Aarav · AI Self</strong></p>
+      <a href="../dashboard-avatar-open.html" class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-[11px] font-semibold text-zinc-200 hover:bg-zinc-800" aria-label="Account">AS</a>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto grid max-w-6xl gap-5 px-5 py-6 pb-32 md:pb-24 lg:grid-cols-[1fr_300px]">
+
+  <!-- ─── Chat column ─── -->
+  <section class="min-w-0">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">Ask Chitragupt</h1>
+        <p class="mt-1 text-xs text-zinc-500">Answers grounded in your confirmed documents · AY 2026-27 · always cites source docs</p>
+      </div>
+      <div class="flex items-center gap-2 text-[11px]">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-emerald-300">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          3 of 5 left today
+        </span>
+        <span class="rounded-full bg-zinc-900 px-2 py-1 text-zinc-500">resets midnight IST</span>
+      </div>
+    </div>
+
+    <!-- Chat transcript -->
+    <ol class="mt-5 space-y-4">
+
+      <!-- Q1 -->
+      <li class="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-4">
+        <p class="text-[10.5px] uppercase tracking-widest text-zinc-500">You</p>
+        <p class="mt-1.5 text-[13.5px] text-zinc-100">How much TDS did I pay across all employers this AY?</p>
+      </li>
+      <li class="rounded-2xl border border-purple-500/30 bg-purple-500/5 p-4">
+        <div class="flex items-center justify-between">
+          <p class="text-[10.5px] uppercase tracking-widest text-purple-300">Chitragupt</p>
+          <span class="text-[10px] text-zinc-500">Haiku 4.5 · cached</span>
+        </div>
+        <p class="mt-1.5 text-[13.5px] leading-relaxed text-zinc-100">Across AY 2026-27 you have <strong>₹1,42,310</strong> of TDS on file from 2 deductors:</p>
+        <ul class="mt-2 space-y-0.5 text-[12.5px] text-zinc-200">
+          <li>· <strong>Manifest Inc.</strong> · ₹1,28,400 — Form 16 (TAN MUMM12345A)</li>
+          <li>· <strong>Confluxsys Pvt Ltd</strong> · ₹13,910 — Form 16 (TAN BLRC67890B)</li>
+        </ul>
+        <p class="mt-2 text-[12.5px] text-zinc-200">Form 26AS shows the same total (₹1,42,310) — they reconcile cleanly.</p>
+        <div class="mt-2 flex flex-wrap gap-1.5 text-[10px]">
+          <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-emerald-300">Confidence · high</span>
+          <span class="rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-400">3 source docs</span>
+        </div>
+        <div class="mt-3 flex flex-wrap gap-1.5">
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ form-16 · Manifest</a>
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ form-16 · Confluxsys</a>
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ form-26as</a>
+        </div>
+        <div class="mt-2 flex flex-wrap gap-1.5 text-[10.5px]">
+          <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-zinc-400 hover:border-emerald-500/40 hover:text-emerald-200">Ask follow-up</button>
+          <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-zinc-400 hover:border-emerald-500/40 hover:text-emerald-200">Copy answer</button>
+        </div>
+      </li>
+
+      <!-- Q2 -->
+      <li class="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-4">
+        <p class="text-[10.5px] uppercase tracking-widest text-zinc-500">You</p>
+        <p class="mt-1.5 text-[13.5px] text-zinc-100">What's my §80C claim so far and am I close to ₹1.5L?</p>
+      </li>
+      <li class="rounded-2xl border border-purple-500/30 bg-purple-500/5 p-4">
+        <div class="flex items-center justify-between">
+          <p class="text-[10.5px] uppercase tracking-widest text-purple-300">Chitragupt</p>
+          <span class="text-[10px] text-zinc-500">Haiku 4.5</span>
+        </div>
+        <p class="mt-1.5 text-[13.5px] leading-relaxed text-zinc-100">You're at <strong>₹1,17,500 of ₹1,50,000</strong> in §80C deductions. The remaining ₹32,500 of headroom is available — note that §80C caps total claims, not per-instrument.</p>
+        <ul class="mt-2 space-y-0.5 text-[12.5px] text-zinc-200">
+          <li>· EPF (employee) ········· ₹62,400 — EPF passbook</li>
+          <li>· PPF ······················ ₹30,000 — SBI PPF passbook</li>
+          <li>· LIC premium ··········· ₹25,100 — LIC Term policy 122334</li>
+        </ul>
+        <p class="mt-2 text-[12.5px] text-zinc-200">Plus you have an additional <strong>₹50,000 §80CCD(1B)</strong> from your NPS Tier-1 — that's separate from the §80C ceiling.</p>
+        <div class="mt-2 flex flex-wrap gap-1.5 text-[10px]">
+          <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-emerald-300">Confidence · medium-high</span>
+          <span class="rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-400">4 source docs</span>
+        </div>
+        <div class="mt-3 flex flex-wrap gap-1.5">
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ epf passbook</a>
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ ppf passbook</a>
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ lic premium</a>
+          <a href="../review/document-parsed.html" class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-[10.5px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">→ nps statement</a>
+        </div>
+        <div class="mt-2 flex flex-wrap gap-1.5 text-[10.5px]">
+          <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-zinc-400 hover:border-emerald-500/40 hover:text-emerald-200">Show only confirmed docs</button>
+          <button class="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-0.5 text-zinc-400 hover:border-emerald-500/40 hover:text-emerald-200">Open in Tax Review</button>
+        </div>
+        <div class="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-[11.5px] text-amber-100/90">
+          <strong>Filing tip:</strong> If you're planning extra ELSS or PPF contributions to hit the ₹1.5L cap, do it before <strong>31 March 2026</strong> — and ask a CA before locking in if you're unsure between old and new regime.
+        </div>
+      </li>
+
+    </ol>
+
+    <!-- Composer -->
+    <div class="mt-5 sticky bottom-4 z-10">
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-950/85 p-3 shadow-xl shadow-black/40 backdrop-blur">
+        <form class="flex items-end gap-2">
+          <textarea rows="2" placeholder="Ask about your tax, expenses, or portfolio — grounded in your confirmed documents…" class="min-w-0 flex-1 resize-none rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-[13px] text-zinc-100 placeholder:text-zinc-500 focus:border-emerald-500/40 focus:outline-none"></textarea>
+          <button type="button" class="shrink-0 rounded-lg bg-emerald-500 px-4 py-2 text-[13px] font-semibold text-zinc-950 hover:bg-emerald-400">Ask →</button>
+        </form>
+        <div class="mt-2 flex flex-wrap items-center gap-1.5 text-[10.5px] text-zinc-500">
+          <span class="rounded-full bg-zinc-900 px-2 py-0.5">↩ to send</span>
+          <span class="rounded-full bg-zinc-900 px-2 py-0.5">Shift+↩ for newline</span>
+          <span class="ml-auto">Repeat questions are free · we cache answers for 24h</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── Right rail ─── -->
+  <aside class="lg:sticky lg:top-20 lg:self-start space-y-4">
+
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Try asking</p>
+      <ul class="mt-2.5 space-y-1.5 text-[12px]">
+        <li><button class="block w-full text-left text-zinc-200 hover:text-emerald-200">"How much HRA exemption am I claiming and how does it compare to my actual rent?"</button></li>
+        <li><button class="block w-full text-left text-zinc-200 hover:text-emerald-200">"Did any TDS in 26AS not show up in Form 16?"</button></li>
+        <li><button class="block w-full text-left text-zinc-200 hover:text-emerald-200">"What's the difference between my Form 16 gross salary and my 12 payslips?"</button></li>
+        <li><button class="block w-full text-left text-zinc-200 hover:text-emerald-200">"Show my STCG and LTCG totals booked this AY across Zerodha + MF CAS."</button></li>
+        <li><button class="block w-full text-left text-zinc-200 hover:text-emerald-200">"Which §80D options do I still have room for?"</button></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Scope · always cites</p>
+      <ul class="mt-2.5 space-y-1.5 text-[11.5px] text-zinc-400">
+        <li class="flex gap-2"><span class="text-emerald-300">✓</span><span>Answers from your <strong class="text-zinc-200">confirmed</strong> parsed documents</span></li>
+        <li class="flex gap-2"><span class="text-emerald-300">✓</span><span>Cross-document reconciliation (Form 16 vs 26AS vs AIS)</span></li>
+        <li class="flex gap-2"><span class="text-emerald-300">✓</span><span>Current AY (2026-27) and past AYs you've unlocked</span></li>
+        <li class="flex gap-2"><span class="text-rose-300">✕</span><span>Open-ended planning, regime selection, hypotheticals — that's the CA's call</span></li>
+        <li class="flex gap-2"><span class="text-rose-300">✕</span><span>Asking about documents that aren't yet confirmed</span></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Need more questions?</p>
+      <p class="mt-2 text-[12.5px] leading-snug text-zinc-300">Pro Family shares a 5/day quota across 6 PANs.</p>
+      <a href="../../payment/paywall-modal.html" class="mt-2 block rounded-lg border border-blue-500/40 bg-blue-500/10 px-3 py-2 text-center text-[12px] font-medium text-blue-200 hover:bg-blue-500/20">Upgrade to Pro Family →</a>
+    </section>
+
+  </aside>
+</main>
+
+  </body>
+</html>

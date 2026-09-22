@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toasts + banners · pattern sheet</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/patterns</span> ›</span>
+      <a href="toasts.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Toasts</a>
+      <a href="confirm-destructive.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Confirm destructive</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="border-b border-zinc-900">
+      <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-5">
+        <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+        <p class="text-[11px] text-zinc-500">Patterns · toasts + banners</p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-4xl px-5 py-10">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Component sheet</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Toasts + banners</h1>
+      <p class="mt-2 text-sm text-zinc-400">Toast = ephemeral · bottom-right · auto-dismiss 4s. Banner = persistent · top of page · user dismisses. System banner = top of entire app · maintenance / outage.</p>
+
+      <!-- TOASTS -->
+      <section class="mt-7">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Toasts · auto-dismiss</p>
+        <div class="mt-3 space-y-3">
+          <div class="flex items-start gap-3 rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-3 shadow-lg shadow-emerald-500/10 max-w-md">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.4" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="flex-1 text-xs"><p class="font-semibold text-emerald-100">Form 16 confirmed.</p><p class="mt-0.5 text-zinc-300">14 fields ready to feed Tax Review.</p></div>
+            <button class="text-zinc-500 hover:text-zinc-200">✕</button>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-3 shadow-lg shadow-rose-500/10 max-w-md">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.4" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="flex-1 text-xs"><p class="font-semibold text-rose-100">Upload failed · file too large.</p><p class="mt-0.5 text-zinc-300">Max 25 MB. Compress and try again.</p></div>
+            <button class="text-zinc-500 hover:text-zinc-200">✕</button>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 shadow-lg shadow-amber-500/10 max-w-md">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.4" class="mt-0.5 shrink-0"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div class="flex-1 text-xs"><p class="font-semibold text-amber-100">Storage almost full · 4.7 of 5 GB.</p><p class="mt-0.5 text-zinc-300">Delete old AY documents to free space.</p></div>
+            <button class="text-zinc-500 hover:text-zinc-200">✕</button>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl border border-blue-500/40 bg-blue-500/10 p-3 shadow-lg shadow-blue-500/10 max-w-md">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.4" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div class="flex-1 text-xs"><p class="font-semibold text-blue-100">AY 2026-27 tax table updated.</p><p class="mt-0.5 text-zinc-300">Re-running your analysis · ~10s.</p></div>
+            <button class="text-zinc-500 hover:text-zinc-200">✕</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- BANNERS -->
+      <section class="mt-10">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Banners · persistent · in-page</p>
+        <div class="mt-3 space-y-3">
+          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/5 px-4 py-3 text-xs text-emerald-200">
+            <p><strong class="text-emerald-100">✓ Saved.</strong> Profile updated · 2 fields changed.</p>
+          </div>
+          <div class="rounded-md border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-xs text-rose-200">
+            <p><strong class="text-rose-100">! TDS mismatch ·</strong> Form 16 (₹2,12,000) ≠ 26AS (₹1,99,600). Exports paused until resolved. <a href="../app/review/document-parsed.html" class="underline">Reconcile →</a></p>
+          </div>
+          <div class="rounded-md border border-amber-500/30 bg-amber-500/5 px-4 py-3 text-xs text-amber-200">
+            <p><strong class="text-amber-100">⚠ Account in 24h deletion grace.</strong> 18h 24m left. <a href="../app/settings/settings-account-deletion.html" class="underline">Cancel now →</a></p>
+          </div>
+          <div class="rounded-md border border-blue-500/30 bg-blue-500/5 px-4 py-3 text-xs text-blue-200">
+            <p><strong class="text-blue-100">→ Past AYs are free.</strong> Only the current AY (2026-27) needs the ₹249 unlock.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SYSTEM BANNER (above header) -->
+      <section class="mt-10">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">System banner · top of app · maintenance / outage</p>
+        <div class="mt-3 overflow-hidden rounded-lg border border-zinc-800">
+          <div class="bg-amber-500 px-4 py-2 text-center text-xs font-medium text-zinc-950">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="-mt-0.5 mr-1 inline-block"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <strong>Scheduled maintenance ·</strong> tax-table refresh tonight 21:00-21:15 IST. Tax Review will pause briefly. <a href="../maintenance.html" class="underline">Details</a>
+          </div>
+          <div class="bg-zinc-900 p-4 text-[11px] text-zinc-500">↑ This sits above the sticky header during the window.</div>
+        </div>
+        <div class="mt-3 overflow-hidden rounded-lg border border-zinc-800">
+          <div class="bg-rose-500 px-4 py-2 text-center text-xs font-medium text-zinc-950">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="-mt-0.5 mr-1 inline-block"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <strong>Razorpay outage ·</strong> Unable to process new payments. Existing access unaffected. <a href="#" class="underline">Status</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- INLINE EMPTY-STATE PATTERN -->
+      <section class="mt-10">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Inline empty state · small section</p>
+        <div class="mt-3 rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-center text-xs">
+          <div class="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2"><path d="M21 8H3"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+          <p class="mt-3 text-sm text-zinc-200">No transactions in this period</p>
+          <p class="mt-1 text-zinc-500">Adjust date range or upload a new statement.</p>
+          <a href="../app/inbox/inbox-populated.html" class="mt-3 inline-block text-blue-300 hover:underline">Go to Inbox →</a>
+        </div>
+      </section>
+
+      <!-- LOADING SKELETON PATTERN -->
+      <section class="mt-10">
+        <p class="text-[10px] uppercase tracking-widest text-zinc-500">Loading skeleton · while data loads</p>
+        <div class="mt-3 grid gap-3 md:grid-cols-3">
+          <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4"><div class="h-3 w-16 animate-pulse rounded bg-zinc-800"></div><div class="mt-3 h-6 w-24 animate-pulse rounded bg-zinc-800"></div><div class="mt-2 h-2 w-32 animate-pulse rounded bg-zinc-800"></div></div>
+          <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4"><div class="h-3 w-20 animate-pulse rounded bg-zinc-800"></div><div class="mt-3 h-6 w-28 animate-pulse rounded bg-zinc-800"></div><div class="mt-2 h-2 w-24 animate-pulse rounded bg-zinc-800"></div></div>
+          <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4"><div class="h-3 w-12 animate-pulse rounded bg-zinc-800"></div><div class="mt-3 h-6 w-20 animate-pulse rounded bg-zinc-800"></div><div class="mt-2 h-2 w-28 animate-pulse rounded bg-zinc-800"></div></div>
+        </div>
+      </section>
+
+      <p class="mt-10 text-[10px] text-zinc-600">Use this sheet as the canonical pattern for every status feedback across the app. Same colour rules: emerald=success · rose=error · amber=warn · blue=info.</p>
+    </main>
+  </body>
+</html>

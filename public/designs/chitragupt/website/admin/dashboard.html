@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin · Dashboard</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<!-- ─── WIREFRAME DEMO SUPER-HEADER (not part of the real product) ─── -->
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/admin</span> ›</span>
+      <a href="dashboard.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Overview</a>
+      <a href="users.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Users</a>
+      <a href="ca-applications.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA applications</a>
+      <a href="ca-application-detail.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA app · detail</a>
+      <a href="parser-failures.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Parser failures</a>
+      <a href="payment-reconciliation.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payment recon</a>
+      <a href="refunds.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refunds</a>
+      <a href="disputes.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Disputes</a>
+      <a href="grievances.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Grievances</a>
+      <a href="payouts.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payouts</a>
+      <a href="support-tickets.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Support tickets</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+<!-- ─── END DEMO SUPER-HEADER ─── -->
+
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/70">
+      <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
+        <div class="flex items-center gap-6">
+          <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+          <nav class="hidden gap-5 text-xs md:flex">
+            <a href="dashboard.html" class="text-zinc-100">Dashboard</a>
+            <a href="ca-applications.html" class="text-zinc-400 hover:text-zinc-100">CA apps</a>
+            <a href="parser-failures.html" class="text-zinc-400 hover:text-zinc-100">Parser</a>
+            <a href="payment-reconciliation.html" class="text-zinc-400 hover:text-zinc-100">Payments</a>
+            <a href="disputes.html" class="text-zinc-400 hover:text-zinc-100">Disputes</a>
+            <a href="support-tickets.html" class="text-zinc-400 hover:text-zinc-100">Tickets</a>
+            <a href="refunds.html" class="text-zinc-400 hover:text-zinc-100">Refunds</a>
+            <a href="grievances.html" class="text-zinc-400 hover:text-zinc-100">Grievances</a>
+            <a href="payouts.html" class="text-zinc-400 hover:text-zinc-100">Payouts</a>
+            <a href="users.html" class="text-zinc-400 hover:text-zinc-100">Users</a>
+          </nav>
+        </div>
+        <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-rose-300">Ritesh · admin</strong></p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-5 py-8">
+      <p class="text-[10px] uppercase tracking-widest text-rose-300">Admin · operations</p>
+      <div class="mt-1 flex flex-wrap items-baseline justify-between gap-3">
+        <h1 class="text-2xl font-semibold tracking-tight">Dashboard</h1>
+        <p class="text-xs text-zinc-500">2026-05-24 · 14:32 IST · founder-only access · session expires in 28 min</p>
+      </div>
+
+      <!-- KPI grid -->
+      <section class="mt-6 grid gap-3 md:grid-cols-3 lg:grid-cols-5">
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Active users · 30d</p>
+          <p class="mono mt-2 text-2xl font-semibold text-zinc-100">12,847</p>
+          <p class="mt-1 text-[11px] text-emerald-300">+18.4% vs prior month</p>
+        </div>
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Paid unlocks · this week</p>
+          <p class="mono mt-2 text-2xl font-semibold text-emerald-300">428</p>
+          <p class="mt-1 text-[11px] text-zinc-500">₹85,172 gross · ₹249 ARPU</p>
+        </div>
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Pro households</p>
+          <p class="mono mt-2 text-2xl font-semibold text-zinc-100">617</p>
+          <p class="mt-1 text-[11px] text-zinc-500">avg 3.2 members · ₹1,499/yr</p>
+        </div>
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">MRR proxy</p>
+          <p class="mono mt-2 text-2xl font-semibold text-emerald-300">₹6,84,200</p>
+          <p class="mt-1 text-[11px] text-zinc-500">unlocks + Pro + CA platform fee</p>
+        </div>
+        <div class="rounded-2xl border border-rose-500/30 bg-rose-500/5 p-5">
+          <p class="text-[10px] uppercase tracking-widest text-rose-300">Open disputes</p>
+          <p class="mono mt-2 text-2xl font-semibold text-rose-200">7</p>
+          <p class="mt-1 text-[11px] text-rose-300">3 awaiting CA · 2 under review · 2 new</p>
+        </div>
+      </section>
+
+      <!-- Action queues -->
+      <h2 class="mt-10 text-sm font-semibold uppercase tracking-widest text-zinc-400">Action queues</h2>
+      <section class="mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+
+        <a href="ca-applications.html" class="block rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5 hover:bg-amber-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-amber-300">CA applications</p>
+            <span class="rounded bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-200">14 pending</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-amber-200">14</p>
+          <p class="mt-1 text-[11px] text-zinc-400">Oldest waiting 4 days · 2 flagged by AI risk score &gt; 0.7</p>
+          <p class="mt-3 text-[11px] text-amber-300">Review queue →</p>
+        </a>
+
+        <a href="disputes.html" class="block rounded-2xl border border-rose-500/30 bg-rose-500/5 p-5 hover:bg-rose-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-rose-300">Disputes</p>
+            <span class="rounded bg-rose-500/20 px-2 py-0.5 text-[10px] text-rose-200">7 open</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-rose-200">7</p>
+          <p class="mt-1 text-[11px] text-zinc-400">₹47,800 funds held in escrow · SLA: 5 working days</p>
+          <p class="mt-3 text-[11px] text-rose-300">Open queue →</p>
+        </a>
+
+        <a href="support-tickets.html" class="block rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5 hover:bg-amber-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-amber-300">Support tickets</p>
+            <span class="rounded bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-200">23 unread</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-amber-200">23</p>
+          <p class="mt-1 text-[11px] text-zinc-400">4 breached 7-day SLA · 11 billing · 6 parsing · 6 other</p>
+          <p class="mt-3 text-[11px] text-amber-300">Triage queue →</p>
+        </a>
+
+        <a href="refunds.html" class="block rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 hover:bg-zinc-900">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Refund queue</p>
+            <span class="rounded bg-zinc-700/30 px-2 py-0.5 text-[10px] text-zinc-300">9 awaiting</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-zinc-100">9</p>
+          <p class="mt-1 text-[11px] text-zinc-400">₹1,791 total · 4 outside 14-day auto-window</p>
+          <p class="mt-3 text-[11px] text-emerald-300">Review queue →</p>
+        </a>
+
+        <a href="grievances.html" class="block rounded-2xl border border-rose-500/30 bg-rose-500/5 p-5 hover:bg-rose-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-rose-300">DPDP grievances</p>
+            <span class="rounded bg-rose-500/20 px-2 py-0.5 text-[10px] text-rose-200">3 open</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-rose-200">3</p>
+          <p class="mt-1 text-[11px] text-zinc-400">Oldest: 12 days · statutory deadline 30 days · 1 erasure</p>
+          <p class="mt-3 text-[11px] text-rose-300">Grievance officer desk →</p>
+        </a>
+
+        <a href="payouts.html" class="block rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5 hover:bg-emerald-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-emerald-300">Payouts due Sunday</p>
+            <span class="rounded bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-200">31 CAs</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-emerald-200">₹4,72,500</p>
+          <p class="mt-1 text-[11px] text-zinc-400">Net after 10% platform fee · 10% §194J TDS · 0 holds</p>
+          <p class="mt-3 text-[11px] text-emerald-300">Run weekly batch →</p>
+        </a>
+
+        <a href="parser-failures.html" class="block rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5 hover:bg-amber-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-amber-300">Parser failures</p>
+            <span class="rounded bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-200">14 awaiting</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-amber-200">14</p>
+          <p class="mt-1 text-[11px] text-zinc-400">3 blocking Tax Review · 9 locked PDF · 2 schema mismatch</p>
+          <p class="mt-3 text-[11px] text-amber-300">Triage queue →</p>
+        </a>
+
+        <a href="payment-reconciliation.html" class="block rounded-2xl border border-rose-500/30 bg-rose-500/5 p-5 hover:bg-rose-500/10">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] uppercase tracking-widest text-rose-300">Payment reconciliation</p>
+            <span class="rounded bg-rose-500/20 px-2 py-0.5 text-[10px] text-rose-200">5 discrepancies</span>
+          </div>
+          <p class="mono mt-2 text-3xl font-semibold text-rose-200">₹995</p>
+          <p class="mt-1 text-[11px] text-zinc-400">2 user-charged-no-access · 3 webhook drops · oldest 18h</p>
+          <p class="mt-3 text-[11px] text-rose-300">Resolve queue →</p>
+        </a>
+
+      </section>
+
+      <h2 class="mt-10 text-sm font-semibold uppercase tracking-widest text-zinc-400">Support SLA &amp; escalation rules</h2>
+      <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
+        <div class="grid gap-4 md:grid-cols-2">
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Auto-routing</p>
+            <ul class="mt-2 space-y-1.5 text-[12px] text-zinc-300">
+              <li>· Tag <span class="mono text-amber-300">[parsing]</span> · &gt; 2h unresolved → ping #dev-ops Slack</li>
+              <li>· Tag <span class="mono text-amber-300">[payment]</span> · &gt; 4h unresolved → ping #finance</li>
+              <li>· Tag <span class="mono text-amber-300">[ca-complaint]</span> · &gt; 6h unresolved → ping CA-ops</li>
+              <li>· Tag <span class="mono text-amber-300">[dpdp]</span> · any · auto-create grievance case</li>
+              <li>· Tag <span class="mono text-amber-300">[bug]</span> · auto-attach Sentry trace if available</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-zinc-500">Live SLA status</p>
+            <ul class="mt-2 space-y-1.5 text-[12px]">
+              <li class="flex items-center justify-between"><span class="text-zinc-300">Tickets within SLA</span><span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] text-emerald-300">19 / 23 · 82%</span></li>
+              <li class="flex items-center justify-between"><span class="text-zinc-300">Breached &gt; 24h</span><span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] text-rose-300">4 · auto-escalated</span></li>
+              <li class="flex items-center justify-between"><span class="text-zinc-300">First-response median</span><span class="mono text-zinc-200">42 min</span></li>
+              <li class="flex items-center justify-between"><span class="text-zinc-300">Resolution median</span><span class="mono text-zinc-200">5h 18m</span></li>
+            </ul>
+            <a href="support-tickets.html" class="mt-3 inline-block text-[11px] text-emerald-300 underline">Open ticket queue · view escalations →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent activity strip -->
+      <h2 class="mt-10 text-sm font-semibold uppercase tracking-widest text-zinc-400">Recent platform events</h2>
+      <section class="mt-3 overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-900/40">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-zinc-800 text-[11px] text-zinc-500">
+              <th class="px-4 py-2 text-left font-normal">When</th>
+              <th class="px-4 py-2 text-left font-normal">Event</th>
+              <th class="px-4 py-2 text-left font-normal">Actor</th>
+              <th class="px-4 py-2 text-left font-normal">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-900 text-[12px]">
+            <tr>
+              <td class="px-4 py-2.5 mono text-zinc-400">2026-05-24 14:31 IST</td>
+              <td class="px-4 py-2.5 text-zinc-100">Dispute opened · IRN-4421 · "wrong ITR-2 instead of ITR-3"</td>
+              <td class="px-4 py-2.5 text-zinc-400">Vikram Kumar → Anil Sahu</td>
+              <td class="px-4 py-2.5"><span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] text-rose-300">open</span></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 mono text-zinc-400">2026-05-24 13:58 IST</td>
+              <td class="px-4 py-2.5 text-zinc-100">CA application submitted · ICAI 422178</td>
+              <td class="px-4 py-2.5 text-zinc-400">Megha Joshi · Pune</td>
+              <td class="px-4 py-2.5"><span class="rounded bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-300">awaiting review</span></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 mono text-zinc-400">2026-05-24 12:14 IST</td>
+              <td class="px-4 py-2.5 text-zinc-100">Refund auto-approved · within 14-day window</td>
+              <td class="px-4 py-2.5 text-zinc-400">aanya.r@example.com · pay_N7gFqL2zXk</td>
+              <td class="px-4 py-2.5"><span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] text-emerald-300">auto · ₹249</span></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 mono text-zinc-400">2026-05-24 11:02 IST</td>
+              <td class="px-4 py-2.5 text-zinc-100">DPDP erasure request · identity verified</td>
+              <td class="px-4 py-2.5 text-zinc-400">data-subject grv-2026-018</td>
+              <td class="px-4 py-2.5"><span class="rounded bg-rose-500/15 px-2 py-0.5 text-[10px] text-rose-300">deadline 23 Jun</span></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 mono text-zinc-400">2026-05-24 09:47 IST</td>
+              <td class="px-4 py-2.5 text-zinc-100">CA approved · KYC passed · onboarded</td>
+              <td class="px-4 py-2.5 text-zinc-400">Sreelekha Nair · ICAI 418802</td>
+              <td class="px-4 py-2.5"><span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] text-emerald-300">live</span></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 mono text-zinc-400">2026-05-23 21:18 IST</td>
+              <td class="px-4 py-2.5 text-zinc-100">Pro household upgraded · 4 members</td>
+              <td class="px-4 py-2.5 text-zinc-400">household_h8KqR · ₹1,499/yr</td>
+              <td class="px-4 py-2.5"><span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] text-emerald-300">paid</span></td>
+            </tr>
+            <tr class="text-zinc-500">
+              <td class="px-4 py-2.5 text-[11px]">… 287 more events today</td>
+              <td colspan="3"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- System health strip -->
+      <h2 class="mt-10 text-sm font-semibold uppercase tracking-widest text-zinc-400">System health</h2>
+      <section class="mt-3 grid gap-3 md:grid-cols-4">
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">API uptime · 7d</p>
+          <p class="mono mt-1 text-xl font-semibold text-emerald-200">99.97%</p>
+          <p class="text-[11px] text-zinc-500">no incidents</p>
+        </div>
+        <div class="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-emerald-300">Parser success</p>
+          <p class="mono mt-1 text-xl font-semibold text-emerald-200">94.2%</p>
+          <p class="text-[11px] text-zinc-500">target 90%</p>
+        </div>
+        <div class="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-amber-300">TDS reconciliation</p>
+          <p class="mono mt-1 text-xl font-semibold text-amber-200">81.4%</p>
+          <p class="text-[11px] text-zinc-500">match rate · trending up</p>
+        </div>
+        <div class="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <p class="text-[10px] uppercase tracking-widest text-zinc-500">Storage · GCS</p>
+          <p class="mono mt-1 text-xl font-semibold text-zinc-100">412 GB</p>
+          <p class="text-[11px] text-zinc-500">+18 GB this week</p>
+        </div>
+      </section>
+
+      <p class="mt-8 text-[11px] text-zinc-500">Every admin action is written to an indelible audit log · retained 7 years per DPDP · session re-auth required every 30 minutes.</p>
+    </main>
+  </body>
+</html>

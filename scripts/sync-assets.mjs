@@ -32,7 +32,7 @@ import { join, basename, extname } from "node:path";
 import { homedir } from "node:os";
 
 const run = promisify(execFile);
-const APPS = join(homedir(), "git", "apps");
+const APPS = join(homedir(), "git", "products");
 const OUT = join(process.cwd(), "public", "media");
 const DATA = join(process.cwd(), "src", "data", "media.json");
 

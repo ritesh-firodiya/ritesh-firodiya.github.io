@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Expense · unlocked — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace;font-variant-numeric:tabular-nums}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}.tabbar{position:absolute;inset-inline:0;bottom:0}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="expense" data-chrome-title="Expense" data-chrome-section="/expense" data-chrome-routes="Empty|expense-empty.html;Locked|expense.html;Unlocked|expense-review.html|1;Transactions|expense-transactions.html;Family|expense-family.html;Family locked|expense-family-locked.html;Categorise|expense-categorise-modal.html;" data-chrome-notif-badge="3">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2 space-y-3">
+
+  <!-- Range pills -->
+  <div class="flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-900/40 p-1 text-[10px] w-fit">
+    <span class="px-1 py-0.5 text-[8px] uppercase tracking-widest text-zinc-500">Range</span>
+    <span class="px-1 py-0.5 mono text-zinc-400">1M</span>
+    <span class="px-1 py-0.5 mono text-zinc-400">3M</span>
+    <span class="px-1 py-0.5 mono text-zinc-400">6M</span>
+    <span class="rounded bg-zinc-800 px-1.5 py-0.5 mono font-semibold text-zinc-100">1Y</span>
+    <span class="px-1 py-0.5 text-[8px] uppercase tracking-widest text-zinc-400">Custom</span>
+  </div>
+
+  <!-- Status banner — data-driven (healthy / overspent / creep) -->
+  <div class="flex items-start gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[11px] text-emerald-100">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Saved <span class="mono font-semibold">21%</span> · earned more than spent every month · <span class="mono text-blue-300">Feb big-invest</span> drew ₹1.96L from balance.</span>
+  </div>
+
+  <!-- KPI strip · 2×2 -->
+  <section class="grid grid-cols-2 gap-2">
+    <div class="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-emerald-300/70">Income</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-emerald-300">₹38.20L</p>
+    </div>
+    <div class="rounded-xl border border-rose-500/20 bg-rose-500/5 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-rose-300/70">Expense</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-rose-300">₹21.62L</p>
+    </div>
+    <div class="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-blue-300/70">Invested</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-blue-300">₹8.32L</p>
+    </div>
+    <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
+      <p class="text-[9px] uppercase tracking-widest text-amber-300/70">Saving</p>
+      <p class="mono mt-0.5 text-lg font-semibold text-amber-300">₹8.06L</p>
+    </div>
+  </section>
+
+  <!-- Cashflow chart -->
+  <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3">
+    <div class="flex items-baseline justify-between">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Cashflow · 12m</p>
+      <div class="flex items-center gap-1.5 text-[9px] text-zinc-400">
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-1.5 w-2 rounded-sm bg-rose-400/75"></span>Exp</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-1.5 w-2 rounded-sm bg-blue-400/75"></span>Inv</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-1.5 w-2 rounded-sm bg-amber-400/75"></span>Sav</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-0.5 w-2 bg-emerald-400"></span>In</span>
+      </div>
+    </div>
+    <svg viewBox="0 0 360 200" class="mt-2 w-full">
+      <g stroke="#27272a" stroke-width="1">
+        <line x1="0" y1="30" x2="360" y2="30"/>
+        <line x1="0" y1="75" x2="360" y2="75"/>
+        <line x1="0" y1="120" x2="360" y2="120"/>
+        <line x1="0" y1="165" x2="360" y2="165"/>
+      </g>
+      <!-- 12 months · each ~28px wide, bar ~20px, gap ~8px, start x=6 -->
+      <!-- bar baseline y=165, scale: ~30px per ₹1L (rough) -->
+
+      <!-- Apr · exp 227 · inv 40 · sav 68 -->
+      <g><rect x="6"   y="113" width="20" height="52" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="6"   y="104" width="20" height="9"  fill="#60a5fa" opacity="0.75"/><rect x="6"   y="90"  width="20" height="14" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- May · exp 176 · inv 50 · sav 105 -->
+      <g><rect x="34"  y="124" width="20" height="41" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="34"  y="113" width="20" height="11" fill="#60a5fa" opacity="0.75"/><rect x="34"  y="91"  width="20" height="22" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Jun · exp 151 · inv 70 · sav 98 -->
+      <g><rect x="62"  y="130" width="20" height="35" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="62"  y="114" width="20" height="16" fill="#60a5fa" opacity="0.75"/><rect x="62"  y="92"  width="20" height="22" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Jul · exp 62 · inv 90 · sav 182 -->
+      <g><rect x="90"  y="151" width="20" height="14" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="90"  y="131" width="20" height="20" fill="#60a5fa" opacity="0.75"/><rect x="90"  y="90"  width="20" height="41" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Aug · exp 184 · inv 50 · sav 78 -->
+      <g><rect x="118" y="123" width="20" height="42" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="118" y="112" width="20" height="11" fill="#60a5fa" opacity="0.75"/><rect x="118" y="94"  width="20" height="18" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Sep · exp 157 · inv 50 · sav 138 -->
+      <g><rect x="146" y="129" width="20" height="36" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="146" y="117" width="20" height="12" fill="#60a5fa" opacity="0.75"/><rect x="146" y="86"  width="20" height="31" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Oct · exp 202 · inv 60 · sav 50 -->
+      <g><rect x="174" y="119" width="20" height="46" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="174" y="105" width="20" height="14" fill="#60a5fa" opacity="0.75"/><rect x="174" y="94"  width="20" height="11" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Nov · exp 136 · inv 80 · sav 104 -->
+      <g><rect x="202" y="134" width="20" height="31" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="202" y="116" width="20" height="18" fill="#60a5fa" opacity="0.75"/><rect x="202" y="93"  width="20" height="23" fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Dec · exp 240 · inv 50 · sav 30 -->
+      <g><rect x="230" y="110" width="20" height="55" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="230" y="99"  width="20" height="11" fill="#60a5fa" opacity="0.75"/><rect x="230" y="92"  width="20" height="7"  fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Jan · exp 224 · inv 60 · sav 36 -->
+      <g><rect x="258" y="114" width="20" height="51" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="258" y="101" width="20" height="13" fill="#60a5fa" opacity="0.75"/><rect x="258" y="92"  width="20" height="9"  fill="#fbbf24" opacity="0.75"/></g>
+      <!-- Feb · exp 234 · inv 282 · big-invest: ₹86k from income + ₹1.96L from balance -->
+      <g><rect x="286" y="112" width="20" height="53" fill="#fb7185" opacity="0.75" rx="1.5"/><rect x="286" y="94"  width="20" height="18" fill="#60a5fa" opacity="0.75"/><rect x="286" y="48"  width="20" height="46" fill="#60a5fa" opacity="0.4" stroke="#60a5fa" stroke-width="0.8" stroke-dasharray="2 2"/></g>
+      <polygon points="296,38 300,46 292,46" fill="#60a5fa" stroke="#0a0a0a" stroke-width="0.8"/>
+      <!-- Mar · exp 90 · sav 230 (current month) -->
+      <g><rect x="314" y="145" width="20" height="20" fill="#fb7185" rx="1.5" stroke="#0a0a0a" stroke-width="1"/><rect x="314" y="93"  width="20" height="52" fill="#fbbf24" stroke="#0a0a0a" stroke-width="1"/></g>
+
+      <!-- Income line · centers above bars (x = bar.x + 10) -->
+      <path d="M16,92 L44,93 L72,94 L100,92 L128,96 L156,90 L184,96 L212,94 L240,94 L268,94 L296,94 L324,94"
+            stroke="#34d399" stroke-width="1.8" fill="none"/>
+      <g fill="#34d399" stroke="#0a0a0a" stroke-width="0.8">
+        <circle cx="16"  cy="92" r="2"/><circle cx="44"  cy="93" r="2"/><circle cx="72"  cy="94" r="2"/>
+        <circle cx="100" cy="92" r="2"/><circle cx="128" cy="96" r="2"/><circle cx="156" cy="90" r="2"/>
+        <circle cx="184" cy="96" r="2"/><circle cx="212" cy="94" r="2"/><circle cx="240" cy="94" r="2"/>
+        <circle cx="268" cy="94" r="2"/><circle cx="296" cy="94" r="2"/><circle cx="324" cy="94" r="2.5"/>
+      </g>
+
+      <g fill="#52525b" font-size="7">
+        <text x="11"  y="180">A</text><text x="39"  y="180">M</text><text x="67"  y="180">J</text>
+        <text x="95"  y="180">J</text><text x="123" y="180">A</text><text x="151" y="180">S</text>
+        <text x="179" y="180">O</text><text x="207" y="180">N</text><text x="235" y="180">D</text>
+        <text x="263" y="180">J</text><text x="291" y="180">F</text><text x="319" y="180">M</text>
+      </g>
+    </svg>
+    <p class="mt-2 rounded-md border border-blue-500/30 bg-blue-500/5 px-2.5 py-1.5 text-[10.5px] text-blue-200">Feb · big-invest month. Income covered expenses. <span class="mono">₹1.96L</span> drawn from saved balance to invest more (not a deficit).</p>
+  </section>
+
+  <!-- Where money went · donut + list -->
+  <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Where money went</p>
+    <div class="mt-3 flex items-center gap-3">
+      <div class="relative h-24 w-24 shrink-0">
+        <svg viewBox="0 0 100 100" class="-rotate-90">
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#27272a" stroke-width="14"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#10b981" stroke-width="14" stroke-dasharray="79.3 184.6"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#3b82f6" stroke-width="14" stroke-dasharray="39.1 224.8" stroke-dashoffset="-79.3"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#a855f7" stroke-width="14" stroke-dasharray="36.6 227.3" stroke-dashoffset="-118.4"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#ef4444" stroke-width="14" stroke-dasharray="18.3 245.6" stroke-dashoffset="-155.0"/>
+          <circle r="42" cx="50" cy="50" fill="transparent" stroke="#71717a" stroke-width="14" stroke-dasharray="90.6 173.3" stroke-dashoffset="-173.3"/>
+        </svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center"><p class="text-[7px] uppercase tracking-widest text-zinc-500">Total</p><p class="mono text-[11px] font-semibold text-zinc-100">₹21.6L</p></div>
+      </div>
+      <ul class="flex-1 space-y-1 text-[10.5px]">
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-emerald-500"></span><span class="text-zinc-400">Housing</span></span><span class="mono text-zinc-300">30%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-blue-500"></span><span class="text-zinc-400">Food</span></span><span class="mono text-zinc-300">15%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-purple-500"></span><span class="text-zinc-400">Loan EMI</span></span><span class="mono text-zinc-300">14%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-rose-500"></span><span class="text-zinc-400">Transport</span></span><span class="mono text-zinc-300">7%</span></li>
+        <li class="flex items-center justify-between"><span class="flex items-center gap-1"><span class="inline-block h-1.5 w-1.5 rounded-sm bg-zinc-500"></span><span class="text-zinc-400">Other</span></span><span class="mono text-zinc-300">34%</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Largest single outflows · compact list -->
+  <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <div class="flex items-baseline justify-between">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Largest outflows · ≥ ₹25k</p>
+      <p class="text-[10px] text-zinc-500">excl. invest</p>
+    </div>
+    <ul class="mt-3 divide-y divide-zinc-900 text-[11.5px]">
+      <li class="flex items-center justify-between py-2"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">12 Feb · </span><span class="text-zinc-100">Advance tax · CBDT</span></span><span class="mono ml-2 text-zinc-100">₹2.34L</span></li>
+      <li class="flex items-center justify-between py-2"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">30 May · </span><span class="text-zinc-100">Rent · Renu Joshi</span></span><span class="mono ml-2 text-zinc-100">₹52k</span></li>
+      <li class="flex items-center justify-between py-2"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">28 Apr · </span><span class="text-zinc-100">Home loan EMI</span></span><span class="mono ml-2 text-zinc-100">₹48.5k</span></li>
+      <li class="flex items-center justify-between py-2"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">18 May · </span><span class="text-zinc-100">HDFC Mediclaim</span></span><span class="mono ml-2 text-zinc-100">₹38k</span></li>
+      <li class="flex items-center justify-between py-2 bg-rose-500/5 -mx-4 px-4"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">22 May · </span><span class="text-amber-200">IMPS · K M MEHTA</span></span><span class="mono ml-2 text-rose-300 underline">₹84k</span></li>
+      <li class="flex items-center justify-between py-2"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">15 Jan · </span><span class="text-zinc-100">School fee</span></span><span class="mono ml-2 text-zinc-100">₹38.4k</span></li>
+      <li class="flex items-center justify-between py-2"><span class="min-w-0 flex-1 truncate"><span class="mono text-zinc-500">04 May · </span><span class="text-zinc-100">LIC · §80C</span></span><span class="mono ml-2 text-zinc-100">₹28.8k</span></li>
+    </ul>
+    <a href="expense-transactions.html" class="mt-2 inline-block text-[11px] text-emerald-300 underline">See all 412 transactions →</a>
+  </section>
+
+  <!-- Action items -->
+  <section class="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-amber-400">Action items</p>
+    <ul class="mt-2 space-y-1.5 text-[11.5px] text-amber-100 leading-relaxed">
+      <li>· <span class="mono">₹84k</span> IMPS to K M MEHTA (22 May) — verify the category.</li>
+      <li>· Feb · drew <span class="mono">₹1.96L</span> from balance to fund extra invest + advance tax. Not a deficit — income covered expenses. Smoother advance tax across Q3 next AY would reduce balance dips.</li>
+      <li>· Loan EMI <span class="mono">₹3.00L</span> — verify §80C / §24(b) split in <a href="../tax/tax-review.html" class="text-amber-200 underline">Tax Review</a>.</li>
+      <li>· <span class="mono">12 txns</span> in 'Other' — <a href="expense-transactions.html?filter=other" class="text-amber-200 underline">tag</a> to teach categoriser.</li>
+    </ul>
+  </section>
+
+  <!-- Methodology -->
+  <section class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Reading this data</p>
+    <ul class="mt-2 space-y-1 text-[11px] text-zinc-400 leading-relaxed">
+      <li>· <span class="text-zinc-200">Income</span> — salary, refunds, bank interest.</li>
+      <li>· <span class="text-zinc-200">Expense</span> — consumption, loan, tax, rent (excl. invest + family).</li>
+      <li>· <span class="text-zinc-200">Saving</span> — what's left after Expense + Invested.</li>
+      <li>· <span class="text-rose-300">▼ Deficit</span> — outflows &gt; income; gap funded by redemptions / balance.</li>
+    </ul>
+  </section>
+
+
+</main>
+
+<div data-chrome-slot="tab"></div>
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

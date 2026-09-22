@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin · Payment reconciliation</title>
+    <script src="../../../_vendor/tailwind.js"></script>
+    <style>body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}</style>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100">
+
+<div class="border-b border-dashed border-zinc-800 bg-zinc-900/30 px-5 py-2">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-1.5 text-[11px]">
+    <span class="mr-1 text-[10px] uppercase tracking-widest text-zinc-500">Demo · <span class="text-zinc-300">/admin</span> ›</span>
+    <a href="dashboard.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Overview</a>
+    <a href="users.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Users</a>
+    <a href="ca-applications.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">CA applications</a>
+    <a href="parser-failures.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Parser failures</a>
+    <a href="payment-reconciliation.html" class="rounded border border-emerald-500/50 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">Payment recon</a>
+    <a href="refunds.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Refunds</a>
+    <a href="disputes.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Disputes</a>
+    <a href="grievances.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Grievances</a>
+    <a href="payouts.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Payouts</a>
+    <a href="support-tickets.html" class="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-200">Support</a>
+    <a href="../index.html" class="ml-auto rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300 hover:border-emerald-500/40">← All routes</a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-30 border-b border-zinc-900 bg-zinc-950/85 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-5">
+    <div class="flex items-center gap-6">
+      <a href="../marketing/landing.html" class="flex items-center gap-2 text-sm font-semibold"><span class="inline-flex h-6 w-6 items-center justify-center rounded bg-emerald-500 text-zinc-950">₹</span>Chitragupt</a>
+      <nav class="hidden gap-5 text-xs md:flex">
+        <a href="dashboard.html" class="text-zinc-400 hover:text-zinc-100">Dashboard</a>
+        <a href="parser-failures.html" class="text-zinc-400 hover:text-zinc-100">Parser</a>
+        <a href="payment-reconciliation.html" class="text-zinc-100">Payments</a>
+        <a href="ca-applications.html" class="text-zinc-400 hover:text-zinc-100">CA apps</a>
+        <a href="refunds.html" class="text-zinc-400 hover:text-zinc-100">Refunds</a>
+        <a href="payouts.html" class="text-zinc-400 hover:text-zinc-100">Payouts</a>
+      </nav>
+    </div>
+    <p class="hidden text-[11px] text-zinc-500 md:block">Viewing as <strong class="text-rose-300">Ritesh · admin</strong></p>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-5 py-8">
+
+  <a href="dashboard.html" class="text-xs text-zinc-500 hover:text-zinc-300">← Dashboard</a>
+
+  <div class="mt-2 flex flex-wrap items-baseline justify-between gap-3">
+    <div>
+      <p class="text-[10px] uppercase tracking-widest text-rose-300">Money in</p>
+      <h1 class="mt-1 text-2xl font-semibold tracking-tight">Payment reconciliation</h1>
+      <p class="mt-1 text-[11.5px] text-zinc-500">Razorpay txns where Chitragupt ledger disagrees with payment-gateway status. Resolve before payouts run.</p>
+    </div>
+    <div class="flex items-center gap-2 text-[11px]">
+      <span class="rounded bg-rose-500/20 px-2 py-0.5 text-rose-200">5 discrepancies</span>
+      <span class="rounded bg-amber-500/20 px-2 py-0.5 text-amber-200">2 timeout · 3 webhook drop</span>
+    </div>
+  </div>
+
+  <section class="mt-6 grid gap-3 md:grid-cols-4">
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Captured · today</p>
+      <p class="mono mt-2 text-2xl font-semibold text-emerald-300">₹68,234</p>
+      <p class="mt-1 text-[11px] text-zinc-500">342 successful · 99.0%</p>
+    </div>
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Stuck · last 24h</p>
+      <p class="mono mt-2 text-2xl font-semibold text-amber-300">₹995</p>
+      <p class="mt-1 text-[11px] text-zinc-500">5 txns · oldest 18h</p>
+    </div>
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Failed</p>
+      <p class="mono mt-2 text-2xl font-semibold text-zinc-100">23</p>
+      <p class="mt-1 text-[11px] text-zinc-500">user retried · 19 succeeded</p>
+    </div>
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-500">Webhook health</p>
+      <p class="mono mt-2 text-2xl font-semibold text-emerald-300">99.4%</p>
+      <p class="mt-1 text-[11px] text-zinc-500">3 dropped overnight · retry queued</p>
+    </div>
+  </section>
+
+  <div class="mt-7 flex flex-wrap items-center gap-2 border-b border-zinc-900 pb-3 text-[11px]">
+    <button class="rounded bg-zinc-900 px-3 py-1.5 text-zinc-100">All discrepancies (5)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Timeout (2)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Webhook drop (3)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Duplicate capture (0)</button>
+    <button class="text-zinc-500 hover:text-zinc-300">Refund stuck (0)</button>
+    <span class="ml-auto text-zinc-500">Sort: oldest first · auto-refresh 60s</span>
+  </div>
+
+  <section class="mt-3 overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/40">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-zinc-800 text-[11px] text-zinc-500">
+          <th class="px-4 py-2 text-left font-normal">User</th>
+          <th class="px-4 py-2 text-left font-normal">Amount</th>
+          <th class="px-4 py-2 text-left font-normal">Chitragupt</th>
+          <th class="px-4 py-2 text-left font-normal">Razorpay</th>
+          <th class="px-4 py-2 text-left font-normal">Discrepancy</th>
+          <th class="px-4 py-2 text-left font-normal">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-zinc-900 text-[12px]">
+
+        <tr class="bg-rose-500/5">
+          <td class="px-4 py-3">
+            <p class="text-zinc-100">Priya Iyer</p>
+            <p class="text-[10px] text-zinc-500">priya@example.com · AY 26-27 unlock</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-100">₹249</span></td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] text-amber-200">awaiting webhook</span>
+            <p class="mt-1 text-[10px] text-zinc-500">pay_OvJ4xY · 18h ago</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-300">captured</span>
+            <p class="mt-1 text-[10px] text-zinc-500">UPI · settled</p>
+          </td>
+          <td class="px-4 py-3 text-[11px] text-rose-200">User charged · access not granted</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Force unlock · grant access</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Verify with Razorpay API</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="bg-rose-500/5">
+          <td class="px-4 py-3">
+            <p class="text-zinc-100">Vikram Kumar</p>
+            <p class="text-[10px] text-zinc-500">vikram@example.com · Pro Family upgrade</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-100">₹499</span></td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-zinc-700/30 px-1.5 py-0.5 text-[10px] text-zinc-300">pending</span>
+            <p class="mt-1 text-[10px] text-zinc-500">pay_OvK7zZ · 12h ago</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10px] text-rose-300">failed · NPCI timeout</span>
+            <p class="mt-1 text-[10px] text-zinc-500">UPI mandate · not debited</p>
+          </td>
+          <td class="px-4 py-3 text-[11px] text-amber-200">App shows "processing" · user retried 2×</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Mark failed · refund retries</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Apologize · email template</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="bg-amber-500/5">
+          <td class="px-4 py-3">
+            <p class="text-zinc-100">Sneha Kapoor</p>
+            <p class="text-[10px] text-zinc-500">sneha@example.com · ITR-1 ITR Filing tier (CA Anil)</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-100">₹599</span></td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-300">paid</span>
+            <p class="mt-1 text-[10px] text-zinc-500">pay_OvL9aB · 6h ago</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] text-amber-300">webhook lost</span>
+            <p class="mt-1 text-[10px] text-zinc-500">3 retry attempts dropped</p>
+          </td>
+          <td class="px-4 py-3 text-[11px] text-amber-200">CA earnings record not created · ₹404 unallocated</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Replay webhook</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Manually allocate to Anil</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="bg-amber-500/5">
+          <td class="px-4 py-3">
+            <p class="text-zinc-100">Rohit Verma</p>
+            <p class="text-[10px] text-zinc-500">rohit@example.com · AY 26-27 unlock</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-100">₹249</span></td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-300">paid</span>
+            <p class="mt-1 text-[10px] text-zinc-500">pay_OvN2cD · 4h ago</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] text-amber-300">webhook lost</span>
+            <p class="mt-1 text-[10px] text-zinc-500">order_id missing in payload</p>
+          </td>
+          <td class="px-4 py-3 text-[11px] text-amber-200">User has access via local reconcile · invoice not emailed</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-emerald-200">Regenerate invoice + email</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Mark resolved</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="bg-amber-500/5">
+          <td class="px-4 py-3">
+            <p class="text-zinc-100">Karthik Iyer</p>
+            <p class="text-[10px] text-zinc-500">karthik@example.com · ITR-2 ITR Filing tier</p>
+          </td>
+          <td class="px-4 py-3"><span class="mono text-zinc-100">₹999</span></td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-zinc-700/30 px-1.5 py-0.5 text-[10px] text-zinc-300">pending</span>
+            <p class="mt-1 text-[10px] text-zinc-500">pay_OvO5eF · 2h ago</p>
+          </td>
+          <td class="px-4 py-3">
+            <span class="rounded bg-zinc-700/30 px-1.5 py-0.5 text-[10px] text-zinc-300">in progress</span>
+            <p class="mt-1 text-[10px] text-zinc-500">UPI bank server slow</p>
+          </td>
+          <td class="px-4 py-3 text-[11px] text-zinc-400">Wait 4h auto-resolve · watching</td>
+          <td class="px-4 py-3 text-[11px]">
+            <div class="flex flex-col gap-1">
+              <button class="rounded border border-zinc-700 bg-zinc-900 px-2 py-1 text-zinc-300">Snooze 4h</button>
+              <button class="text-zinc-400 hover:text-zinc-200 underline text-left">Force check now</button>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
+
+  <section class="mt-6 rounded-md border border-zinc-800 bg-zinc-900/40 p-4 text-[11px] text-zinc-400">
+    <p class="font-semibold text-zinc-200">Auto-rules</p>
+    <ul class="mt-1.5 list-disc space-y-0.5 pl-5">
+      <li>Webhook missing &gt; 30 min · auto-poll Razorpay payment-status API · auto-resolve if captured.</li>
+      <li>UPI mandate timeout · auto-mark failed after 2h · refund retries automatically.</li>
+      <li>Duplicate capture detected · auto-refund duplicate · alert in #ops Slack.</li>
+      <li>Stuck &gt; 24h · auto-create support ticket assigned to founder.</li>
+    </ul>
+  </section>
+
+</main>
+
+</body>
+</html>

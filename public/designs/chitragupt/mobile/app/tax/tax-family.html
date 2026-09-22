@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Tax · family stacked — Chitragupt mobile</title><script src="../../../../_vendor/tailwind.js"></script><style>body{font-family:ui-sans-serif,system-ui,sans-serif;background:#0a0a0a}.mono{font-family:ui-monospace,monospace}.phone{max-width:390px;margin:0 auto;background:#09090b;min-height:100dvh;position:relative;padding-bottom:100px;box-shadow:0 0 0 1px #18181b}@media (min-width:640px){.phone{min-height:844px;margin:16px auto;border-radius:32px;overflow:hidden;box-shadow:0 0 0 1px #27272a,0 30px 60px -20px rgba(0,0,0,.7)}}.tabbar{position:absolute;inset-inline:0;bottom:0}</style></head>
+<body class="text-zinc-100" data-chrome data-chrome-rel="../" data-chrome-tab="tax" data-chrome-title="Tax · household" data-chrome-section="/tax" data-chrome-routes="Review|tax-review.html;Locked|tax-locked.html;Empty|tax-empty.html;Filed|tax-filed.html;With CA|tax-with-ca.html;CA invited|tax-ca-invited.html;Family locked|tax-family-locked.html;Family stacked|tax-family.html|1;Past AY|tax-past-ay.html;Invite CA|invite-ca.html;Concern|concern.html" data-chrome-initials="SS" data-chrome-initials-tint="blue" data-chrome-notif-badge="3">
+
+<div data-chrome-slot="super"></div>
+
+<div class="phone">
+<div data-chrome-slot="status"></div>
+<div data-chrome-slot="top"></div>
+
+<main class="px-4 pt-2">
+
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-900/40 p-1 text-[11px]"><span class="px-1.5 py-0.5 text-[9px] uppercase tracking-widest text-zinc-500">AY</span><span class="rounded bg-zinc-800 px-2 py-1 font-semibold text-zinc-100">26-27</span></div>
+    <span class="rounded-full bg-blue-500/15 px-2 py-0.5 text-[9px] uppercase tracking-widest text-blue-200">Pro · 3 PANs</span>
+  </div>
+
+  <section class="mt-3 rounded-2xl border border-blue-500/40 bg-blue-500/5 p-5 text-center">
+    <p class="text-[10px] uppercase tracking-widest text-blue-300">Household tax position</p>
+    <p class="mono mt-2 text-3xl font-semibold text-emerald-300">+ ₹42,800</p>
+    <p class="mt-1 text-[12px] text-zinc-300">Net refund across 3 members</p>
+  </section>
+
+  <section class="mt-3 space-y-2">
+    <article class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-3.5">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-200 text-sm font-semibold">AS</span>
+        <div class="flex-1">
+          <p class="text-[13px] font-semibold text-zinc-100">Aarav · self</p>
+          <p class="text-[10.5px] text-emerald-300">ITR-1 · filed 14 May</p>
+        </div>
+        <p class="mono text-[15px] font-semibold text-emerald-300">+ ₹18,000</p>
+      </div>
+    </article>
+    <article class="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-3.5">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 text-blue-200 text-sm font-semibold">SS</span>
+        <div class="flex-1">
+          <p class="text-[13px] font-semibold text-zinc-100">Sneha · spouse</p>
+          <p class="text-[10.5px] text-amber-300">ITR-2 · CG pending · review needed</p>
+        </div>
+        <p class="mono text-[15px] font-semibold text-emerald-300">+ ₹22,400</p>
+      </div>
+      <a href="tax-review.html" class="mt-2 block rounded-md border border-amber-500/40 bg-amber-500/10 px-2.5 py-1.5 text-center text-[11px] font-semibold text-amber-200">Open Sneha's return →</a>
+    </article>
+    <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3.5">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/20 text-purple-200 text-sm font-semibold">RS</span>
+        <div class="flex-1">
+          <p class="text-[13px] font-semibold text-zinc-100">Ravi · father (senior)</p>
+          <p class="text-[10.5px] text-zinc-500">ITR-1 · pension · 90% done</p>
+        </div>
+        <p class="mono text-[15px] font-semibold text-emerald-300">+ ₹2,400</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+    <p class="text-[10px] uppercase tracking-widest text-zinc-500">Cross-PAN optimisations</p>
+    <ul class="mt-2 space-y-1.5 text-[12px] text-zinc-300">
+      <li class="flex items-start gap-2"><span class="text-emerald-300">↗</span>Shift FDs to Ravi (senior · ₹3L exemption + §80TTB) — saves <span class="mono text-emerald-300">₹14k/yr</span></li>
+      <li class="flex items-start gap-2"><span class="text-emerald-300">↗</span>Sneha's MF SIP qualifies §80C — already maxed for Aarav</li>
+      <li class="flex items-start gap-2"><span class="text-amber-300">!</span>Clubbing rule applies on minor's investment income</li>
+    </ul>
+  </section>
+
+  <a href="../dashboard-family.html" class="mt-4 mb-4 block text-center text-[11px] text-blue-300 underline">← Back to household home</a>
+
+</main>
+
+<div data-chrome-slot="tab"></div>
+</div>
+
+<script src="../../_chrome.js"></script>
+</body></html>

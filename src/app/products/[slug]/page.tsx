@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-const SURFACE_LABEL: Record<string, string> = { mobile: "Phone", web: "Web" };
+const SURFACE_LABEL: Record<string, string> = { mobile: "Phone", web: "Web", website: "Web" };
 const TERMS = "/legal/terms.html";
 
 /* Row one: the places this product actually exists. Only what is real — a

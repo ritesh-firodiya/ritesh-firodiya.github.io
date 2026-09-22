@@ -2,9 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { Label } from "@/components/pills";
-import { Verdict } from "@/components/design-bits";
 import designsRaw from "@/data/designs.json";
-import { sets, audit } from "@/lib/design";
 import { bySlug, mediaMissing } from "@/lib/products";
 
 export const metadata: Metadata = {
@@ -26,20 +24,15 @@ const designs = designsRaw as unknown as {
  * served unaltered — not a second grid invented here. A grid written on this
  * side is a different document, and it drifts the moment a screen is added.
  */
-const slugToSet: Record<string, string> = {
-  "dwarseva-property": "property-app",
-};
-
 export default function GalleryPage() {
   const entries = Object.entries(designs.sets);
 
   return (
     <>
-      <SiteHeader active="/design" />
+      <SiteHeader active="/design/gallery" />
       <main>
         <section className="px-gutter pt-section">
           <div className="mx-auto max-w-page">
-            <Link href="/design" className="link-u text-small text-ink-2">← Design</Link>
             <Label>The screens · synced {designs.generatedOn}</Label>
             <h1 className="mt-3 max-w-measure font-display text-d1 font-semibold">
               The real wireframes, not screenshots of them.
@@ -56,7 +49,6 @@ export default function GalleryPage() {
           <div className="mx-auto max-w-page space-y-8">
             {entries.map(([slug, set]) => {
               const product = bySlug(slug);
-              const auditSet = sets.find((s) => s.name === (slugToSet[slug] ?? slug));
               const areas = [...new Set(set.screens.map((s) => s.area).filter(Boolean))] as string[];
               const surfaces = [...new Set(set.indexes.map((i) => i.surface))];
               const isRoot = (path: string) => path.split("/").length === 5;
@@ -67,15 +59,13 @@ export default function GalleryPage() {
                 <article key={slug} className="rounded-card border border-line bg-surface p-6 shadow-lift">
                   <div className="flex flex-wrap items-baseline justify-between gap-3">
                     <h2 className="font-display text-h2 font-semibold">
-                      {product?.name ?? auditSet?.product ?? slug}
+                      {product?.name ?? slug}
                     </h2>
-                    {auditSet && <Verdict verdict={auditSet.verdict} />}
                   </div>
 
                   <p className="mt-2 font-mono text-label uppercase tracking-label text-ink-3">
-                    {auditSet ? `${auditSet.screens} screens` : `${set.screens.length} screens`}
+                    {set.screens.length} screens
                     {surfaces.length > 0 && ` · ${surfaces.join(", ")}`}
-                    {auditSet?.hasConfig ? " · tokenised" : " · no token layer"}
                   </p>
 
                   {areas.length > 0 && (
@@ -153,13 +143,6 @@ export default function GalleryPage() {
           </section>
         )}
 
-        <section className="px-gutter pb-section">
-          <div className="mx-auto max-w-page text-small text-ink-3">
-            Compliance for every set, including the ones not shown above, is on{" "}
-            <Link href="/design/drift" className="link-u">the drift page</Link> — audited{" "}
-            {audit.generatedAt}.
-          </div>
-        </section>
       </main>
       <SiteFooter />
     </>

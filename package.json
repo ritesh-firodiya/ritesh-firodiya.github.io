@@ -8,12 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "pnpm lint && pnpm typecheck && pnpm tokens:check && pnpm build",
-    "postbuild": "node scripts/postbuild.mjs",
-    "tokens": "node scripts/build-tokens.mjs",
-    "tokens:check": "node scripts/build-tokens.mjs --check",
-    "design:lint": "node scripts/lint-designs.mjs",
-    "design:verify": "node scripts/verify-retoken.mjs"
+    "check": "pnpm lint && pnpm typecheck && pnpm build",
+    "postbuild": "node scripts/postbuild.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",

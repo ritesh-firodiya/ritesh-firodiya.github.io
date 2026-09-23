@@ -642,6 +642,14 @@ select:focus-visible {
   --danger:     #9b2c2c;  --danger-bg:  #f7e6e6;  --danger-fg:  #6b1f1f;
   --info:       #38587a;  --info-bg:    #e8eef5;  --info-fg:    #264057;
 
+  /* An inverted band — the contact block and the footer. Not `ink` +
+     `ink-inverse`: those flip with the theme, so a dark palette turned the
+     footer into a bright cream slab. Inverted means "the opposite of the
+     page", and the opposite of near-black is a lifted panel, not near-white. */
+  --band:     #14130f;
+  --band-ink: #fbf9f4;
+  --band-2:   #8e887c;
+
   --shadow-tint: 20 19 15;
 
   /* ---- RESERVED · monetization model ---- */
@@ -694,6 +702,10 @@ select:focus-visible {
   --warn:       #d4a44a;  --warn-bg:    #2a2113;  --warn-fg:    #e8c884;
   --danger:     #e08585;  --danger-bg:  #2b1818;  --danger-fg:  #f0aeae;
   --info:       #7fa8d4;  --info-bg:    #17212b;  --info-fg:    #aac8e6;
+
+  --band:     #1c1a17;
+  --band-ink: #f3f0e9;
+  --band-2:   #c4bdb0;
 
   --shadow-tint: 0 0 0;
 

@@ -17,4 +17,12 @@ export {
   ArrowLeft as IconBack,
   ArrowRight as IconNext,
   ExternalLink as IconExternal,
+  Mail as IconMail,
+  // No LinkedIn mark in lucide v1 either. A briefcase is the closest thing
+  // that reads as "professional profile" without pretending to be the logo.
+  Briefcase as IconLinkedin,
+  MapPin as IconLocation,
+  Download as IconDownload,
+  Check as IconCheck,
+  X as IconNo,
 } from "lucide-react";

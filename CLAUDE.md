@@ -87,8 +87,23 @@ public/          app-ads.txt, resume.pdf, favicon, logo
 .context/designs/  the approved HTML+Tailwind design set this site was built from
 ```
 
+Routes, and the goal each serves:
+
+| Route | Serves |
+|---|---|
+| `/` | all six goals, in one scroll — work first, contact last |
+| `/work`, `/work/[slug]` | showcase the work |
+| `/about`, `/resume` | showcase the experience |
+| `/products`, `/products/[slug]`, `/legal`, `/support` | the brand and legal site for every product |
+| `/hire` | work together |
+| `/contact` | get in touch |
+| `/go/[slug]` | QR and bio redirect targets, `noindex` |
+
 Dynamic route families: `/products/[slug]`, `/work/[slug]`, `/go/[slug]`. Each
 has `generateStaticParams`; a new one without it will not be exported.
+
+**`/work` exists because the case study was orphaned** — it was linked from the
+bottom of one product page, with no index and no nav entry.
 
 ## The style guide
 
@@ -110,7 +125,13 @@ What the guide asks of this repo:
   a `dark:` prefix. Tailwind v4's `--color-` namespace prefix is the only
   unavoidable difference from a set's `shared.css`.
 - **§1–§7 for `.context/designs/`** — the site's own design set follows the
-  same layout, manifest, navbar and flow chart as any product's.
+  same layout, manifest, navbar and flow chart as any product's. The app
+  implements it; when a page and its wireframe disagree, the wireframe wins.
+- **One vocabulary.** `globals.css` and the set's `shared.css` declare the same
+  role names with the same values, asserted by eye at review and by
+  `pnpm contrast` for the ratios. `--band` is the one token the set needed that
+  §8 does not name: an inverted band cannot be `ink` + `ink-inverse`, because
+  those flip with the theme and turn a dark page's footer into a bright slab.
 - **§3's spirit in the app** — lucide only, pinned versions, no class that
   resolves to nothing.
 

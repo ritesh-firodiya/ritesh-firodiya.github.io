@@ -21,7 +21,10 @@ const BASE = "https://ritesh-firodiya.github.io";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: "", priority: 1.0, freq: "monthly" as const },
+    { path: "/work", priority: 0.9, freq: "monthly" as const },
     { path: "/products", priority: 0.9, freq: "weekly" as const },
+    { path: "/about", priority: 0.8, freq: "monthly" as const },
+    { path: "/contact", priority: 0.7, freq: "yearly" as const },
     { path: "/hire", priority: 0.8, freq: "monthly" as const },
     { path: "/resume", priority: 0.8, freq: "monthly" as const },
     { path: "/legal", priority: 0.3, freq: "yearly" as const },

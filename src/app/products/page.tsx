@@ -64,7 +64,7 @@ function Row({ p }: { p: Product }) {
               className="mt-0.5 h-[30px] w-[30px] shrink-0 rounded-lg border border-line"
             />
           ) : (
-            <span className="shot-ph mt-0.5 h-[30px] w-[30px] shrink-0 rounded-lg" aria-hidden="true" />
+            <span className="slot mt-0.5 h-[30px] w-[30px] shrink-0 rounded-lg" aria-hidden="true" />
           )}
           <span className="min-w-0">
             <Link href={`/products/${p.slug}/`} className="link-u hover:text-brand-500">

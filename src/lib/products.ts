@@ -123,19 +123,19 @@ export const byRank = (a: Product, b: Product) => rank(a) - rank(b) || a.name.lo
 /** Model → the token pair. Deliberately no "good"/"bad" ordering: a
  *  subscription is not a warning and ad-supported is not a confession. */
 export const MODEL: Record<Model, { label: string; fg: string; bg: string }> = {
-  free: { label: "Free", fg: "text-m-free", bg: "bg-m-free-wash" },
-  "free-ads": { label: "Free · ads", fg: "text-m-ads", bg: "bg-m-ads-wash" },
-  "one-time": { label: "One-time", fg: "text-m-once", bg: "bg-m-once-wash" },
-  subscription: { label: "Subscription", fg: "text-m-sub", bg: "bg-m-sub-wash" },
-  "per-period": { label: "Per tax year", fg: "text-m-year", bg: "bg-m-year-wash" },
+  free: { label: "Free", fg: "text-m-free", bg: "bg-m-free-bg" },
+  "free-ads": { label: "Free · ads", fg: "text-m-ads", bg: "bg-m-ads-bg" },
+  "one-time": { label: "One-time", fg: "text-m-once", bg: "bg-m-once-bg" },
+  subscription: { label: "Subscription", fg: "text-m-sub", bg: "bg-m-sub-bg" },
+  "per-period": { label: "Per tax year", fg: "text-m-year", bg: "bg-m-year-bg" },
   undecided: { label: "Undecided", fg: "text-ink-3", bg: "bg-muted" },
 };
 
 export const STATE: Record<PlatformState, { fg: string; bg: string }> = {
-  live: { fg: "text-live", bg: "bg-live-wash" },
-  beta: { fg: "text-beta", bg: "bg-beta-wash" },
-  closed: { fg: "text-design", bg: "bg-design-wash" },
-  none: { fg: "text-design", bg: "bg-design-wash" },
+  live: { fg: "text-live", bg: "bg-live-bg" },
+  beta: { fg: "text-beta", bg: "bg-beta-bg" },
+  closed: { fg: "text-idea", bg: "bg-idea-bg" },
+  none: { fg: "text-idea", bg: "bg-idea-bg" },
 };
 
 /** Counts for the filter row. Derived, never typed into a page — a hardcoded

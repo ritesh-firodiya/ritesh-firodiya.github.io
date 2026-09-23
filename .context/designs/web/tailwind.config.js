@@ -26,6 +26,9 @@ tailwind.config = {
         muted:   "var(--muted)",
         sunken:  "var(--sunken)",
         line:    { DEFAULT: "var(--line)", strong: "var(--line-strong)" },
+        /* An inverted band. See the note in shared.css — this is deliberately
+           NOT ink + ink-inverse, which flip with the theme. */
+        band:    { DEFAULT: "var(--band)", ink: "var(--band-ink)", 2: "var(--band-2)" },
         brand:   {
           50: "var(--brand-50)", 100: "var(--brand-100)", 200: "var(--brand-200)",
           400: "var(--brand-400)", 500: "var(--brand-500)",

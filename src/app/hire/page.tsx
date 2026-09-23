@@ -35,7 +35,7 @@ export default function HirePage() {
       <main id="main">
         <section className="grain relative overflow-hidden">
           <div className="mx-auto max-w-page px-gutter pb-14 pt-section">
-            <p className="inline-flex items-center gap-2 rounded-pill border border-live/25 bg-live-wash px-3 py-1 font-mono text-label uppercase tracking-label text-live">
+            <p className="inline-flex items-center gap-2 rounded-pill border border-live/25 bg-live-bg px-3 py-1 font-mono text-label uppercase tracking-label text-live">
               <span className="h-1.5 w-1.5 rounded-pill bg-live" /> Taking on work from Oct 2026
             </p>
             <h1 className="mt-7 max-w-[17ch] font-display text-d1 font-semibold">I build the first version, and the team that keeps it.</h1>
@@ -101,9 +101,9 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section id="start" className="scroll-mt-20 bg-ink text-ink-inverse">
+        <section id="start" className="scroll-mt-20 bg-band text-band-ink">
           <div className="mx-auto max-w-page px-gutter py-section">
-            <p className="font-mono text-label uppercase tracking-label text-ink-inverse/55">Start</p>
+            <p className="font-mono text-label uppercase tracking-label text-band-ink/55">Start</p>
             <h2 className="mt-4 max-w-[16ch] font-display text-d2 font-semibold">Tell me what you are building.</h2>
             <p className="mt-5 max-w-measure text-lead text-ink-inverse/70">
               Four lines is plenty: what it is, who it is for, when you need it, and what is already
@@ -112,12 +112,12 @@ export default function HirePage() {
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="mailto:firodiya.ritesh@gmail.com?subject=Project%20brief&body=What%20it%20is%3A%0AWho%20it%20is%20for%3A%0AWhen%20you%20need%20it%3A%0AWhat%20is%20already%20built%3A%0A"
-                className="inline-flex items-center gap-2 rounded-pill bg-page px-5 py-3 text-body font-medium text-ink transition hover:bg-brand-500 hover:text-ink-inverse"
+                className="inline-flex items-center gap-2 rounded-pill bg-page px-5 py-3 text-body font-medium text-ink transition hover:bg-brand-500 hover:text-band-ink"
               >
                 Email me the brief
               </a>
             </div>
-            <p className="mt-6 max-w-measure font-mono text-xs2 text-ink-inverse/45">
+            <p className="mt-6 max-w-measure font-mono text-xs2 text-band-ink/45">
               The button prefills the subject and the four questions. No form, no CRM, no drip
               sequence — this site is static and stores nothing.
             </p>

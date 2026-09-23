@@ -90,6 +90,23 @@
   --color-info-bg:    #e8eef5;
   --color-info-fg:    #264057;
 
+
+  /* ── Inverted band ────────────────────────────────────────────────────────
+     A band that reverses out of the page: the contact block, the footer.
+
+     It cannot be `bg-ink` + `text-ink-inverse`. Those two flip with the theme
+     — which is correct for them and wrong here — so on a dark page the footer
+     came out as a bright cream slab, the single loudest thing on the screen.
+     "Inverted" has to mean "the opposite of the page", and in a dark palette
+     the opposite of near-black is not near-white; it is a panel lifted a
+     little off the page. */
+  --color-band:     #14130f;
+  --color-band-ink: #fbf9f4;
+  /* Lightened, not ink-2. The quiet tone on an inverted band has to move
+     AWAY from the band, and ink-2 on near-black is 1.85:1 — the contrast
+     check caught it before it shipped. */
+  --color-band-2:   #8e887c;
+
   /* r g b, so a shadow can be rgb(var(--shadow-tint) / 0.18) and follow the
      theme. §8 requires the triple form. */
   --shadow-tint: 20 19 15;
@@ -110,27 +127,27 @@
      of claim. A per-app fact is the right one, and it needs its own scale —
      which is exactly why these may not be reused for anything else. */
   --color-m-free:      #5a5750;
-  --color-m-free-wash: #efece3;
+  --color-m-free-bg: #efece3;
   --color-m-ads:       #8a5a0b;
-  --color-m-ads-wash:  #f7eeda;
+  --color-m-ads-bg:  #f7eeda;
   --color-m-once:      #2c6e49;
-  --color-m-once-wash: #e6f1ea;
+  --color-m-once-bg: #e6f1ea;
   --color-m-sub:       #34508c;
-  --color-m-sub-wash:  #e7ecf5;
+  --color-m-sub-bg:  #e7ecf5;
   --color-m-year:      #6b3a7a;
-  --color-m-year-wash: #f1e9f4;
+  --color-m-year-bg: #f1e9f4;
 
   /* ── RESERVED · release state ─────────────────────────────────────────────
      Independent of model. A product has a price AND a release state, and
      conflating them is how "coming soon" ends up meaning four things. */
   --color-live:        #2c6e49;
-  --color-live-wash:   #e6f1ea;
+  --color-live-bg:   #e6f1ea;
   --color-beta:        #8a6114;
-  --color-beta-wash:   #f7eeda;
+  --color-beta-bg:   #f7eeda;
   --color-build:       #38587a;
-  --color-build-wash:  #e8eef5;
-  --color-design:      #6b6357;
-  --color-design-wash: #efebe1;
+  --color-build-bg:  #e8eef5;
+  --color-idea:      #6b6357;
+  --color-idea-bg: #efebe1;
 
   /* ── Type ─────────────────────────────────────────────────────────────────
      Fraunces for display only — a variable optical-size serif, warm, editorial,
@@ -242,20 +259,24 @@
     --color-info-bg:    #17212b;
     --color-info-fg:    #aac8e6;
 
+    --color-band:     #1c1a17;
+    --color-band-ink: #f3f0e9;
+    --color-band-2:   #c4bdb0;
+
     --shadow-tint: 0 0 0;
 
     /* The reserved scales follow too, or a model pill keeps a light wash
        behind dark text and becomes the only unreadable thing on the page. */
-    --color-m-free: #a9a396; --color-m-free-wash: #201e1a;
-    --color-m-ads:  #d4a44a; --color-m-ads-wash:  #2a2113;
-    --color-m-once: #6fbf8f; --color-m-once-wash: #17281f;
-    --color-m-sub:  #86a8e0; --color-m-sub-wash:  #171d2a;
-    --color-m-year: #bf92cc; --color-m-year-wash: #241a28;
+    --color-m-free: #a9a396; --color-m-free-bg: #201e1a;
+    --color-m-ads:  #d4a44a; --color-m-ads-bg:  #2a2113;
+    --color-m-once: #6fbf8f; --color-m-once-bg: #17281f;
+    --color-m-sub:  #86a8e0; --color-m-sub-bg:  #171d2a;
+    --color-m-year: #bf92cc; --color-m-year-bg: #241a28;
 
-    --color-live:   #6fbf8f; --color-live-wash:   #17281f;
-    --color-beta:   #d4a44a; --color-beta-wash:   #2a2113;
-    --color-build:  #7fa8d4; --color-build-wash:  #17212b;
-    --color-design: #a9a396; --color-design-wash: #201e1a;
+    --color-live:   #6fbf8f; --color-live-bg:   #17281f;
+    --color-beta:   #d4a44a; --color-beta-bg:   #2a2113;
+    --color-build:  #7fa8d4; --color-build-bg:  #17212b;
+    --color-idea: #a9a396; --color-idea-bg: #201e1a;
   }
 }
 
@@ -296,20 +317,24 @@
     --color-info-bg:    #17212b;
     --color-info-fg:    #aac8e6;
 
+    --color-band:     #1c1a17;
+    --color-band-ink: #f3f0e9;
+    --color-band-2:   #c4bdb0;
+
     --shadow-tint: 0 0 0;
 
     /* The reserved scales follow too, or a model pill keeps a light wash
        behind dark text and becomes the only unreadable thing on the page. */
-    --color-m-free: #a9a396; --color-m-free-wash: #201e1a;
-    --color-m-ads:  #d4a44a; --color-m-ads-wash:  #2a2113;
-    --color-m-once: #6fbf8f; --color-m-once-wash: #17281f;
-    --color-m-sub:  #86a8e0; --color-m-sub-wash:  #171d2a;
-    --color-m-year: #bf92cc; --color-m-year-wash: #241a28;
+    --color-m-free: #a9a396; --color-m-free-bg: #201e1a;
+    --color-m-ads:  #d4a44a; --color-m-ads-bg:  #2a2113;
+    --color-m-once: #6fbf8f; --color-m-once-bg: #17281f;
+    --color-m-sub:  #86a8e0; --color-m-sub-bg:  #171d2a;
+    --color-m-year: #bf92cc; --color-m-year-bg: #241a28;
 
-    --color-live:   #6fbf8f; --color-live-wash:   #17281f;
-    --color-beta:   #d4a44a; --color-beta-wash:   #2a2113;
-    --color-build:  #7fa8d4; --color-build-wash:  #17212b;
-    --color-design: #a9a396; --color-design-wash: #201e1a;
+    --color-live:   #6fbf8f; --color-live-bg:   #17281f;
+    --color-beta:   #d4a44a; --color-beta-bg:   #2a2113;
+    --color-build:  #7fa8d4; --color-build-bg:  #17212b;
+    --color-idea: #a9a396; --color-idea-bg: #201e1a;
 }
 
 /* Section rhythm and page gutter. Outside @theme because they are only ever
@@ -422,10 +447,19 @@
 
 /* Every image slot is a labelled placeholder, so an asset that never arrived is
    obvious at review instead of shipping as a grey box. */
-.shot-ph {
+/* A deliberately empty slot. The rule is that a missing asset is visibly
+   missing; a plain grey box reads as a surface that happens to be blank, and
+   hatching does not. Named `slot` to match the class in the design set —
+   one vocabulary across both, which is the whole point of §8.
+
+   The hatch reads --shadow-tint rather than a literal. It was rgb(20 19 15),
+   the light ink, which on the dark palette drew near-black lines on a dark
+   ground and made the slot look like a rendering fault. */
+.slot {
   background:
-    repeating-linear-gradient(135deg, transparent 0 11px, rgb(20 19 15 / 0.045) 11px 12px),
+    repeating-linear-gradient(135deg, transparent 0 11px, rgb(var(--shadow-tint) / 0.06) 11px 12px),
     linear-gradient(160deg, var(--color-muted), var(--color-sunken));
+  border: 1px dashed var(--color-line-strong);
   display: flex;
   align-items: center;
   justify-content: center;

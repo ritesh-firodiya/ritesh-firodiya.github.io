@@ -1,37 +1,41 @@
 import Link from "next/link";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { Label } from "@/components/pills";
 
-/* A 404 that routes rather than apologises. The three destinations are the same
-   three doors as the home page, because a lost visitor is still one of the same
-   three readers. */
-const DOORS = [
-  { href: "/resume", title: "Résumé", body: "The full history, on the web or as a PDF." },
-  { href: "/products", title: "Products", body: "Every app, and how each one is paid for." },
-  { href: "/hire", title: "Work with me", body: "What I take on, and how an engagement runs." },
+/* The three ways out are not the nav repeated. Legal is first-class here
+   because the most likely way to reach a 404 on this site is a stale policy
+   URL from a store listing — six shipped app builds hardcode those paths and
+   installed builds never update. That reader wants a document, not a home
+   page. */
+const OUT = [
+  { href: "/legal", label: "Legal documents", body: "Privacy, terms and deletion, for every product." },
+  { href: "/products", label: "Products", body: "Every product, and how each one is paid for." },
+  { href: "/work", label: "Work", body: "What I built, and what it took." },
 ];
 
 export default function NotFound() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="grain relative mx-auto flex min-h-[70vh] max-w-page flex-col justify-center px-gutter py-section">
-        <Label>404</Label>
-        <h1 className="mt-5 max-w-[16ch] font-display text-d1 font-semibold">That page moved, or never existed.</h1>
-        <p className="mt-6 max-w-measure text-lead text-ink-2">
-          Both are plausible — this site was rebuilt from scratch. Here is where you were probably going.
-        </p>
-        <div className="mt-11 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
-          {DOORS.map((d) => (
-            <Link key={d.href} href={d.href} className="group bg-surface p-6 transition hover:bg-muted">
-              <h2 className="font-display text-h3 font-semibold group-hover:text-brand-500">{d.title}</h2>
-              <p className="mt-1.5 text-small text-ink-2">{d.body}</p>
-            </Link>
-          ))}
+      <main id="main" className="grid flex-1 place-items-center px-gutter py-20 text-center">
+        <div className="max-w-[46ch]">
+          <p className="text-d1 font-bold tabular-nums text-line-strong">404</p>
+          <h1 className="mt-4 text-d2 font-semibold">That page is not here.</h1>
+          <p className="mt-4 text-lead text-ink-2">
+            It may have moved. The legal documents never move — if you came from a store listing
+            looking for a policy, it is one link away.
+          </p>
+          <div className="mt-9 grid gap-px overflow-hidden rounded-card border border-line bg-line text-left sm:grid-cols-3">
+            {OUT.map((o) => (
+              <Link key={o.href} href={o.href} className="group bg-surface p-5 transition hover:bg-muted">
+                <p className="text-small font-semibold transition group-hover:text-brand-500">{o.label}</p>
+                <p className="mt-1 text-xs2 text-ink-3">{o.body}</p>
+              </Link>
+            ))}
+          </div>
+          <Link href="/" className="mt-7 inline-block text-small font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">
+            ← Back to the start
+          </Link>
         </div>
-        <Link href="/" className="link-u mt-10 inline-flex items-center gap-2 self-start text-small font-medium text-brand-500">
-          ← Back to the start
-        </Link>
       </main>
       <SiteFooter />
     </>

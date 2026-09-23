@@ -20,8 +20,8 @@ export const profile = raw as unknown as {
 
 export const STATUS_TOKEN = (s: string) => {
   const v = s.toLowerCase();
-  if (v.startsWith("live")) return { fg: "text-live", bg: "bg-live-wash" };
-  if (v.includes("testing") || v.includes("review") || v.includes("beta")) return { fg: "text-beta", bg: "bg-beta-wash" };
-  if (v.includes("build")) return { fg: "text-build", bg: "bg-build-wash" };
-  return { fg: "text-design", bg: "bg-design-wash" };
+  if (v.startsWith("live")) return { fg: "text-live", bg: "bg-live-bg" };
+  if (v.includes("testing") || v.includes("review") || v.includes("beta")) return { fg: "text-beta", bg: "bg-beta-bg" };
+  if (v.includes("build")) return { fg: "text-build", bg: "bg-build-bg" };
+  return { fg: "text-idea", bg: "bg-idea-bg" };
 };

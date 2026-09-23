@@ -36,7 +36,7 @@ export default async function GoPage({ params }: { params: Promise<{ slug: strin
   return (
     <main id="main" className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-gutter py-section">
       <div className="rounded-card border border-line bg-surface p-8 text-center shadow-frame">
-        <span className="shot-ph mx-auto block h-[88px] w-[88px] rounded-card font-mono text-xs2 text-ink-3">Icon</span>
+        <span className="slot mx-auto block h-[88px] w-[88px] rounded-card font-mono text-xs2 text-ink-3">Icon</span>
         <h1 className="mt-6 font-display text-h2 font-semibold">{p.name}</h1>
         <p className="mt-2 text-small text-ink-2">{p.tagline}</p>
 

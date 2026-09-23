@@ -18,7 +18,7 @@ export default function LegalPage() {
       <main id="main">
         <section className="mx-auto max-w-page px-gutter pb-10 pt-section">
           <Label>Legal</Label>
-          <h1 className="mt-4 max-w-[20ch] font-display text-d1 font-semibold">One copy of each document, in one place.</h1>
+          <h1 className="mt-4 max-w-[20ch] font-display text-d1 font-semibold">Every policy, for every product, at a URL that will not move.</h1>
           <p className="mt-7 max-w-measure text-lead text-ink-2">
             Both stores require a privacy policy at a URL they can fetch, and an account-deletion
             page a reviewer can open without signing in. These are those pages.

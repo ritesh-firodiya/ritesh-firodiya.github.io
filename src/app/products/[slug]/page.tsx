@@ -144,7 +144,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <img src={m.icon} alt={`${p.name} icon`} width={64} height={64}
                    className="h-16 w-16 shrink-0 rounded-card border border-line" />
             ) : (
-              <span className="shot-ph h-16 w-16 shrink-0 rounded-card font-mono text-xs2 text-ink-3">—</span>
+              <span className="slot h-16 w-16 shrink-0 rounded-card font-mono text-xs2 text-ink-3">—</span>
             )}
 
             <div className="min-w-0 flex-1">

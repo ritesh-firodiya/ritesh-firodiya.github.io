@@ -1,5 +1,4 @@
 Stage: live
 Updated: 2026-09-23
-Next: pick a direction in .context/explore/index.html — then designs/web is
-      rebuilt in it, approved, and only then does the Next.js code change
-Note: the live site is unchanged and stays that way until that approval
+Next: approve .context/designs/web — then, and only then, the Next.js build
+Note: the live site still implements the previous design and is untouched

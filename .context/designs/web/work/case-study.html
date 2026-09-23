@@ -13,86 +13,84 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
-      <a href="../home/home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
-      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
+    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
+      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
+      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
         <a href="../work/work.html" class="text-ink">Work</a>
-        <a href="../products/products.html" class="hover:text-ink">Products</a>
-        <a href="../about/about.html" class="hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
+        <a href="../about/about.html" class="transition hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
       </nav>
       <a href="../contact/contact.html"
-         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
     <article>
-      <section class="grain border-b border-line px-10 py-14">
-        <a href="work.html" class="font-mono text-2xs uppercase tracking-label text-ink-3 hover:text-brand-500">← Work</a>
-        <p class="mt-6 font-mono text-2xs uppercase tracking-label text-brand-500">Case study · Chitragupt · 2026</p>
-        <h1 class="mt-3 max-w-[26ch] text-h1 font-semibold">
-          One person, 264 screens, and a price that had to be told the truth about.
+      <section class="px-6 pb-10 pt-14 md:px-10">
+        <a href="work.html" class="font-mono text-2xs uppercase tracking-label text-ink-3 transition hover:text-brand-500">← Work</a>
+        <p class="font-mono text-2xs uppercase tracking-label mt-8 text-brand-500">Chitragupt · 2026 · in build</p>
+        <h1 class="big mt-5 max-w-[20ch]">
+          264 screens drawn before a line of it shipped.
         </h1>
-        <p class="mt-5 max-w-[62ch] text-lead text-ink-2">
+        <p class="mt-8 max-w-[62ch] text-lead text-ink-2">
           A pre-file tax review for salaried Indians: upload Form 16, AIS, 26AS and a bank
-          statement, get the deductions a rushed CA misses.
+          statement, get back the deductions a rushed filing misses.
         </p>
-        <dl class="mt-9 grid grid-cols-4 gap-px border border-line bg-line">
-          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Role</dt><dd class="mt-1.5 text-sm font-medium">Product, design, build, deploy</dd></div>
-          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Screens drawn</dt><dd class="num mt-1.5 text-h2">264</dd></div>
-          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Stack</dt><dd class="mt-1.5 text-sm font-medium">Next.js · Postgres</dd></div>
-          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Model</dt><dd class="mt-1.5 text-sm font-medium text-m-year">Per tax year</dd></div>
+      </section>
+
+      <section class="field-accent">
+        <dl class="grid grid-cols-2 md:grid-cols-4">
+          <div class="border-b border-r border-ink/15 px-6 py-7 md:border-b-0 md:px-8"><dd class="numeral">264</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">Screens drawn</dt></div>
+          <div class="border-b border-ink/15 px-6 py-7 md:border-b-0 md:border-r md:px-8"><dd class="numeral">189</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">Cloud functions</dt></div>
+          <div class="border-r border-ink/15 px-6 py-7 md:px-8"><dd class="numeral">01</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">Person on it</dt></div>
+          <div class="px-6 py-7 md:px-8"><dd class="numeral">03</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">Priced tiers</dt></div>
         </dl>
       </section>
 
-      <section class="px-10 py-12">
-        <div class="slot h-72 rounded-lg"></div>
-
-        <div class="mt-12 grid grid-cols-[14rem_1fr] gap-10">
+      <section class="px-6 py-14 md:px-10">
+        <div class="grid gap-8 border-b border-line pb-12 md:grid-cols-[12rem_1fr] md:gap-12">
           <p class="font-mono text-2xs uppercase tracking-label text-ink-3">The problem</p>
-          <div class="max-w-[62ch] space-y-4 text-body text-ink-2">
+          <div class="max-w-[62ch] space-y-4 text-ink-2">
             <p>
-              A salaried filer in India hands a CA four documents and gets back a number. The
-              deductions that get missed are the ones nobody asked about — a let-out property,
-              an 80D premium paid for a parent, the HRA nobody claimed because the rent receipts
-              were with a former flatmate.
+              Every Indian tax calculator answers one question — which regime is cheaper for you,
+              one person, this year. That is the wrong unit. Tax in an Indian household moves
+              across people: a parent&rsquo;s medical premium, a spouse&rsquo;s home-loan interest,
+              a child&rsquo;s tuition.
             </p>
             <p>
-              The product is not tax filing. It is the review before filing: reconcile the four
-              documents against each other, flag what disagrees, and hand a verified CA a shorter
-              list.
+              Filed one at a time, a family routinely leaves a deduction on the table that was
+              always claimable. The product is not filing. It is the review before filing.
             </p>
           </div>
         </div>
 
-        <div class="mt-10 grid grid-cols-[14rem_1fr] gap-10">
+        <div class="grid gap-8 border-b border-line py-12 md:grid-cols-[12rem_1fr] md:gap-12">
           <p class="font-mono text-2xs uppercase tracking-label text-ink-3">The part worth telling</p>
-          <div class="max-w-[62ch] space-y-4 text-body text-ink-2">
+          <div class="max-w-[62ch] space-y-4 text-ink-2">
             <p>
-              An earlier version of this portfolio described Chitragupt as <i>&ldquo;free, and it
-              stays free&rdquo;</i> while the product&rsquo;s own config defined three priced tiers.
-              That page was linked from live store listings.
+              An earlier version of this portfolio called Chitragupt <i>free, and it stays
+              free</i> while the product&rsquo;s own config defined three priced tiers. That page
+              was linked from live store listings.
             </p>
             <p>
               The fix was not better wording. A promise made on behalf of a product is only as
-              true as the least convenient fact about it, and it decays silently because the thing
-              that breaks it lives in a different repository. So every fact on this site now lives
-              in one JSON file, is stated per product, and carries the date a human last checked
-              it against the source.
+              true as the least convenient fact about it, and it decays silently because the
+              thing that breaks it lives in a different repository.
             </p>
-            <blockquote class="border-l-2 border-brand-500 pl-5 text-ink">
-              The model is stated above the install button. Never below it, never in a footnote,
-              never softened into &ldquo;unlock&rdquo;.
-            </blockquote>
+            <p class="border-l-2 border-accent-500 pl-5 text-ink">
+              So every fact on this site now lives in one file, is stated per product, and carries
+              the date a human last checked it against the source.
+            </p>
           </div>
         </div>
 
-        <div class="mt-10 grid grid-cols-[14rem_1fr] gap-10">
-          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Designed before built</p>
-          <div class="max-w-[62ch] space-y-4 text-body text-ink-2">
+        <div class="grid gap-8 py-12 md:grid-cols-[12rem_1fr] md:gap-12">
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Drawn before built</p>
+          <div class="max-w-[62ch] space-y-4 text-ink-2">
             <p>
-              264 screens were drawn as static HTML and reviewed before a line of product code
-              shipped — every flow, and every empty, loading, error and locked state. A component
-              that appears in no HTML file does not ship.
+              264 screens as static HTML, reviewed before any product code shipped — every flow,
+              and every empty, loading, error and locked state. A component that appears in no
+              HTML file does not ship.
             </p>
             <p>
               Those sets live in the product repository, which is where they are reviewed. They
@@ -102,23 +100,28 @@
         </div>
       </section>
 
-      <section class="border-t border-line bg-muted px-10 py-12">
-        <div class="flex items-end justify-between gap-8">
+      <section class="border-t border-line px-6 py-12 md:px-10">
+        <div class="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <h2 class="max-w-[22ch] text-h2 font-semibold">Want something built this way?</h2>
-            <p class="mt-2 max-w-[48ch] text-sm text-ink-2">Designs first, facts checked, and a handover that survives my last day.</p>
+            <p class="big max-w-[18ch]">Want something built this way?</p>
+            <p class="mt-4 max-w-[46ch] text-ink-2">Screens first, facts checked, handover that outlives me.</p>
           </div>
-          <a href="../hire/hire.html" class="rounded-pill bg-ink px-5 py-3 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Work with me →</a>
+          <a href="../hire/hire.html" class="font-mono text-2xs uppercase tracking-label border border-ink px-5 py-3 font-medium transition hover:bg-ink hover:text-page">What I take on →</a>
         </div>
       </section>
     </article>
-    <footer class="mt-auto bg-ink px-10 py-8 text-band-ink/50">
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-2xs">
+    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
+      <a href="../contact/contact.html"
+         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
+        firodiya.ritesh@gmail.com
+      </a>
+      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
         <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="hover:text-band-ink">About</a>
-        <a href="../contact/contact.html" class="ml-auto hover:text-band-ink">Get in touch →</a>
+        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
+        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
+        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
       </div>
     </footer>
 

@@ -13,66 +13,79 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
-      <a href="../home/home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
-      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
-        <a href="../work/work.html" class="hover:text-ink">Work</a>
-        <a href="../products/products.html" class="hover:text-ink">Products</a>
-        <a href="../about/about.html" class="hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
+      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
+      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
+        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
+        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
+        <a href="../about/about.html" class="transition hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
       </nav>
       <a href="../contact/contact.html"
-         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <section class="grain px-10 py-16">
-      <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Get in touch</p>
-      <h1 class="mt-3 max-w-[20ch] text-h1 font-semibold">Hiring, building, or just want to argue about tooling?</h1>
-      <p class="mt-5 max-w-[58ch] text-lead text-ink-2">
-        Email is best and I reply to everything. Tell me what you are working on — a paragraph
-        is plenty.
+    <section class="px-6 pb-14 pt-16 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Get in touch</p>
+      <h1 class="huge mt-6 max-w-[14ch]">Say what<br>you need.</h1>
+      <p class="mt-10 max-w-[58ch] text-lead text-ink-2">
+        Email is best and I answer all of it. A paragraph is plenty — what you are building, and
+        what is in the way.
       </p>
 
-      <!-- Email, not a form. A static export has no server to post to, and a
-           contact form that silently drops messages is worse than no form. -->
-      <div class="mt-9 grid max-w-3xl grid-cols-2 gap-5">
-        <a href="#" class="group rounded-lg border border-line bg-surface p-6 transition hover:border-brand-200">
-          <i data-lucide="mail" class="h-5 w-5 text-brand-500"></i>
-          <p class="mt-3 text-sm font-semibold group-hover:text-brand-500">firodiya.ritesh@gmail.com</p>
-          <p class="mt-1 text-2xs text-ink-3">Usually same day</p>
+      <!-- Email, not a form. This is a static export with no server to post
+           to, and a contact form that silently drops messages is worse than no
+           form. A third-party handler would also put a stranger between a job
+           offer and an inbox. -->
+      <div class="mt-12">
+        <a class="row" href="#">
+          <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">01</span>
+          <span class="row-name">Email</span>
+          <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">firodiya.ritesh@gmail.com · usually same day</span>
+          <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
         </a>
-        <a href="#" class="group rounded-lg border border-line bg-surface p-6 transition hover:border-brand-200">
-          <i data-lucide="linkedin" class="h-5 w-5 text-brand-500"></i>
-          <p class="mt-3 text-sm font-semibold group-hover:text-brand-500">in/riteshfirodiya</p>
-          <p class="mt-1 text-2xs text-ink-3">For recruiters</p>
+        <a class="row" href="#">
+          <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">02</span>
+          <span class="row-name">LinkedIn</span>
+          <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">in/riteshfirodiya · for recruiters</span>
+          <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
         </a>
-        <a href="#" class="group rounded-lg border border-line bg-surface p-6 transition hover:border-brand-200">
-          <i data-lucide="github" class="h-5 w-5 text-brand-500"></i>
-          <p class="mt-3 text-sm font-semibold group-hover:text-brand-500">github.com/ritesh-firodiya</p>
-          <p class="mt-1 text-2xs text-ink-3">Most product repos are private</p>
+        <a class="row" href="#">
+          <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">03</span>
+          <span class="row-name">GitHub</span>
+          <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">ritesh-firodiya · most product repos are private</span>
+          <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
         </a>
-        <div class="rounded-lg border border-line bg-muted p-6">
-          <i data-lucide="map-pin" class="h-5 w-5 text-ink-3"></i>
-          <p class="mt-3 text-sm font-semibold">Pune, India · IST</p>
-          <p class="mt-1 text-2xs text-ink-3">Remote, and used to overlapping with other zones</p>
-        </div>
       </div>
 
-      <div class="mt-10 max-w-3xl rounded border-l-2 border-live bg-live-bg px-5 py-4">
-        <p class="text-sm font-medium text-ink">Open to senior / staff IC and tech-lead roles.</p>
-        <p class="mt-1 text-sm text-ink-2">
-          Also taking on consulting —
-          <a href="../hire/hire.html" class="text-brand-500 underline decoration-brand-200 underline-offset-4">what that looks like</a>.
-        </p>
+      <div class="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
+        <div>
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Where</p>
+          <p class="mt-2 font-semibold">Pune, India · IST</p>
+          <p class="mt-1 text-ink-2">Remote, and used to overlapping with other time zones.</p>
+        </div>
+        <div>
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Open to</p>
+          <p class="mt-2 font-semibold">Senior and staff IC, and tech lead.</p>
+          <p class="mt-1 text-ink-2">
+            Consulting too —
+            <a href="../hire/hire.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">what that looks like</a>.
+          </p>
+        </div>
       </div>
     </section>
-    <footer class="mt-auto bg-ink px-10 py-8 text-band-ink/50">
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-2xs">
+    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
+      <a href="../contact/contact.html"
+         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
+        firodiya.ritesh@gmail.com
+      </a>
+      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
         <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="hover:text-band-ink">About</a>
-        <a href="../contact/contact.html" class="ml-auto hover:text-band-ink">Get in touch →</a>
+        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
+        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
+        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
       </div>
     </footer>
 

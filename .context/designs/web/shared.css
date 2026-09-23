@@ -583,142 +583,166 @@ select:focus-visible {
 /* ============================================================================
    PALETTE — ritesh-firodiya.github.io. The only block that differs between sets.
    ============================================================================
-   RESERVED: the monetization scale (`--m-*`) carries product meaning and may
-   not be reused for anything else. Five models at EQUAL weight — there is no
-   good colour and no bad colour here. A subscription is not a warning and
-   ad-supported is not a confession; they are facts a person needs before they
-   tap install.
+   Direction: INDEX. White ground, near-black ink, one vermilion. The page is a
+   list — rules and type, no cards and no shadows — so the palette carries
+   almost no weight and the two places it does are deliberate: the counts band
+   and the contact block, which are full-bleed colour fields.
 
-   This site exists because an earlier version of it claimed "no ads in our
-   games" and "one-time purchases, not subscriptions" on a page linked from
-   live store listings. Tic Tac Toe ships an AdMob banner and interstitial;
-   four of eight apps are subscriptions. A studio-wide promise was the wrong
-   SHAPE of claim. Spending the model colours on decoration would flatten the
-   one signal the site is built to carry.
+   TWO REDS, and the split is load-bearing:
+     brand-500  #C2410C  passes AA on white, so it is what body links and small
+                         text use.
+     accent-500 #FF3B00  is 3.4:1 on white and fails AA outright. It is for
+                         FIELDS and DISPLAY TYPE ONLY — a filled band, a 96px
+                         numeral — never for a sentence. The bright red is the
+                         one that makes this direction look like itself, and
+                         the only way to keep it is to keep it off small text.
 
-   Release state (`--live` / `--beta` / `--build` / `--idea`) is a SECOND
-   reserved scale and is independent of the first. A product has a price and a
-   release state, and conflating them is how "coming soon" ends up meaning four
-   things. No model colour may read as a warning.
+   RESERVED: the monetization scale (`--m-*`). Five models at EQUAL weight —
+   there is no good colour and no bad colour. This site exists because an
+   earlier version claimed "no ads in our games" and "one-time purchases, not
+   subscriptions" on a page linked from live store listings; Tic Tac Toe ships
+   an AdMob banner and four of eight apps are subscriptions. Spending these
+   colours on decoration would flatten the one signal the site is built for.
 
-   Brand is burnt sienna. Role names only — calling it `--sienna` would make a
-   repalette a rename across every file.
+   RESERVED: release state (`--live` / `--beta` / `--build` / `--idea`), which
+   is independent of the model above. A product has a price AND a release
+   state; conflating them is how "coming soon" ends up meaning four things.
 
-   IN STEP WITH src/app/globals.css. Same values, same role names; Tailwind
-   v4's `--color-` namespace prefix is the only difference. When a value moves
-   here it moves there, and `pnpm contrast` asserts both themes.
+   IN STEP WITH src/app/globals.css. Same role names, same values; Tailwind
+   v4's `--color-` prefix is the only difference.
    ============================================================================ */
 
 :root {
   /* ---- ground ---- */
-  --page:    #fbf9f4;
-  --frame:   #ffffff;
-  --surface: #ffffff;
-  --muted:   #f4f0e6;
-  --sunken:  #ebe5d6;
+  --page:    #FFFFFF;
+  --frame:   #FFFFFF;
+  --surface: #FFFFFF;
+  --muted:   #F4F4F2;
+  --sunken:  #EAEAE6;
 
   /* ---- ink ---- */
-  --ink:         #14130f;
-  --ink-2:       #45423a;
-  --ink-3:       #6f6a61;
-  --ink-4:       #918b80;
-  --ink-inverse: #fbf9f4;
+  --ink:         #0A0A0A;
+  --ink-2:       #464644;
+  --ink-3:       #6B6B69;
+  --ink-4:       #8A8A87;
+  --ink-inverse: #FFFFFF;
 
-  --line:        #e4dfd2;
-  --line-strong: #cfc8b6;
+  --line:        #E4E4E1;
+  --line-strong: #C6C6C2;
 
-  /* ---- brand · burnt sienna ---- */
-  --brand-50:  #f7ebe6;
-  --brand-100: #f0d9d1;
-  --brand-200: #e0b3a4;
-  --brand-400: #a9452f;
-  --brand-500: #8a3324;
-  --brand-700: #6b261a;
-  --brand-900: #3f1610;
+  /* ---- brand · the readable red ---- */
+  --brand-50:  #FDEDE7;
+  --brand-100: #FAD8CC;
+  --brand-200: #F2AF97;
+  --brand-400: #DB5426;
+  --brand-500: #C2410C;
+  --brand-700: #8F2F09;
+  --brand-900: #541B05;
+
+  /* ---- accent · the hot red. Fields and display type only. ---- */
+  --accent-50:  #FFF0EB;
+  --accent-100: #FFD9CC;
+  --accent-200: #FFB499;
+  --accent-400: #FF5A2B;
+  --accent-500: #FF3B00;
+  --accent-600: #E63500;
+  --accent-700: #C22D00;
+  --accent-900: #6B1900;
 
   /* ---- status ---- */
-  --success:    #2c6e49;  --success-bg: #e6f1ea;  --success-fg: #1d4a31;
-  --warn:       #8a6114;  --warn-bg:    #f7eeda;  --warn-fg:    #5c400d;
-  --danger:     #9b2c2c;  --danger-bg:  #f7e6e6;  --danger-fg:  #6b1f1f;
-  --info:       #38587a;  --info-bg:    #e8eef5;  --info-fg:    #264057;
+  --success:    #15703F;  --success-bg: #E7F2EC;  --success-fg: #0E4A29;
+  --warn:       #8A5A00;  --warn-bg:    #F8EEDC;  --warn-fg:    #5C3C00;
+  --danger:     #A11B1B;  --danger-bg:  #F8E7E7;  --danger-fg:  #6E1212;
+  --info:       #1F4E8C;  --info-bg:    #E7EEF8;  --info-fg:    #14355F;
 
-  /* An inverted band — the contact block and the footer. Not `ink` +
-     `ink-inverse`: those flip with the theme, so a dark palette turned the
-     footer into a bright cream slab. Inverted means "the opposite of the
-     page", and the opposite of near-black is a lifted panel, not near-white. */
-  --band:     #14130f;
-  --band-ink: #fbf9f4;
-  --band-2:   #8e887c;
+  /* An inverted band — the contact block and the footer. NOT ink +
+     ink-inverse: those flip with the theme, so a dark palette turned the
+     footer into a bright white slab. Inverted means "the opposite of the
+     page", and the opposite of near-black is a lifted panel, not white. */
+  --band:     #0A0A0A;
+  --band-ink: #FFFFFF;
+  --band-2:   #8E8E8A;
 
-  --shadow-tint: 20 19 15;
+  --shadow-tint: 10 10 10;
 
   /* ---- RESERVED · monetization model ---- */
-  --m-free: #5a5750;  --m-free-bg: #efece3;
-  --m-ads:  #8a5a0b;  --m-ads-bg:  #f7eeda;
-  --m-once: #2c6e49;  --m-once-bg: #e6f1ea;
-  --m-sub:  #34508c;  --m-sub-bg:  #e7ecf5;
-  --m-year: #6b3a7a;  --m-year-bg: #f1e9f4;
+  --m-free: #55554F;  --m-free-bg: #EFEFEC;
+  --m-ads:  #8A5A00;  --m-ads-bg:  #F8EEDC;
+  --m-once: #15703F;  --m-once-bg: #E7F2EC;
+  --m-sub:  #1F4E8C;  --m-sub-bg:  #E7EEF8;
+  --m-year: #6B2E7A;  --m-year-bg: #F2E9F4;
 
   /* ---- RESERVED · release state ---- */
-  --live:  #2c6e49;  --live-bg:  #e6f1ea;
-  --beta:  #8a6114;  --beta-bg:  #f7eeda;
-  --build: #38587a;  --build-bg: #e8eef5;
-  --idea:  #6b6357;  --idea-bg:  #efebe1;
+  --live:  #15703F;  --live-bg:  #E7F2EC;
+  --beta:  #8A5A00;  --beta-bg:  #F8EEDC;
+  --build: #1F4E8C;  --build-bg: #E7EEF8;
+  --idea:  #6B6B66;  --idea-bg:  #EFEFEC;
 }
 
 /* A theme is a token remap (§8) — never a `dark:` prefix, never a second set
-   of utilities. `.phone--dark` is what _chrome.js toggles, and it re-resolves
-   `--ink` on the frame itself because inheritance carries the computed colour,
-   not the variable name.
+   of utilities. `.phone--dark` is what _chrome.js toggles.
 
    Roles invert rather than values: brand-50 stays "the quietest wash of the
-   brand" and so becomes the DARKEST sienna here. Flipping only some of them
-   would paint a wash lighter than the text sitting on it. */
+   brand" and becomes the DARKEST red here. Flipping only some of them would
+   paint a wash lighter than the text sitting on it.
+
+   The two reds swap jobs. On white, brand is the dark one and accent the
+   bright one; on black, the readable red has to be the LIGHTER of the two, so
+   brand-500 moves up the ramp and accent stays hot for fields. */
 .phone--dark {
-  --page:    #121110;
-  --frame:   #1c1a17;
-  --surface: #1c1a17;
-  --muted:   #1a1815;
-  --sunken:  #0c0b0a;
+  --page:    #0A0A0A;
+  --frame:   #141413;
+  --surface: #141413;
+  --muted:   #131312;
+  --sunken:  #050505;
 
-  --ink:         #f3f0e9;
-  --ink-2:       #c4bdb0;
-  --ink-3:       #968f83;
-  --ink-4:       #6f6961;
-  --ink-inverse: #14130f;
+  --ink:         #F2F2F0;
+  --ink-2:       #B6B6B2;
+  --ink-3:       #8A8A85;
+  --ink-4:       #63635F;
+  --ink-inverse: #0A0A0A;
 
-  --line:        #2b2926;
-  --line-strong: #423f39;
+  --line:        #232321;
+  --line-strong: #3A3A36;
 
-  --brand-50:  #2a1712;
-  --brand-100: #3d201a;
-  --brand-200: #5c3125;
-  --brand-400: #c96a4d;
-  --brand-500: #e08a6b;
-  --brand-700: #eda98e;
-  --brand-900: #f6d5c6;
+  --brand-50:  #2A1109;
+  --brand-100: #3D1A0C;
+  --brand-200: #5E2712;
+  --brand-400: #E8683A;
+  --brand-500: #FF8A5E;
+  --brand-700: #FFAE8C;
+  --brand-900: #FFD8C6;
 
-  --success:    #6fbf8f;  --success-bg: #17281f;  --success-fg: #9fd9b5;
-  --warn:       #d4a44a;  --warn-bg:    #2a2113;  --warn-fg:    #e8c884;
-  --danger:     #e08585;  --danger-bg:  #2b1818;  --danger-fg:  #f0aeae;
-  --info:       #7fa8d4;  --info-bg:    #17212b;  --info-fg:    #aac8e6;
+  --accent-50:  #2E1008;
+  --accent-100: #451709;
+  --accent-200: #6B240D;
+  --accent-400: #FF5A2B;
+  --accent-500: #FF3B00;
+  --accent-600: #FF6B3D;
+  --accent-700: #FF9470;
+  --accent-900: #FFCCB8;
 
-  --band:     #1c1a17;
-  --band-ink: #f3f0e9;
-  --band-2:   #c4bdb0;
+  --success:    #57C98A;  --success-bg: #12261B;  --success-fg: #90DCB0;
+  --warn:       #D9A441;  --warn-bg:    #261E0F;  --warn-fg:    #EBC77E;
+  --danger:     #E08383;  --danger-bg:  #281414;  --danger-fg:  #F0ACAC;
+  --info:       #7FA8DE;  --info-bg:    #131C28;  --info-fg:    #A9C6EB;
+
+  --band:     #141413;
+  --band-ink: #F2F2F0;
+  --band-2:   #B6B6B2;
 
   --shadow-tint: 0 0 0;
 
-  --m-free: #a9a396;  --m-free-bg: #201e1a;
-  --m-ads:  #d4a44a;  --m-ads-bg:  #2a2113;
-  --m-once: #6fbf8f;  --m-once-bg: #17281f;
-  --m-sub:  #86a8e0;  --m-sub-bg:  #171d2a;
-  --m-year: #bf92cc;  --m-year-bg: #241a28;
+  --m-free: #A5A59E;  --m-free-bg: #1C1C1A;
+  --m-ads:  #D9A441;  --m-ads-bg:  #261E0F;
+  --m-once: #57C98A;  --m-once-bg: #12261B;
+  --m-sub:  #7FA8DE;  --m-sub-bg:  #131C28;
+  --m-year: #BE8FCB;  --m-year-bg: #221827;
 
-  --live:  #6fbf8f;  --live-bg:  #17281f;
-  --beta:  #d4a44a;  --beta-bg:  #2a2113;
-  --build: #7fa8d4;  --build-bg: #17212b;
-  --idea:  #a9a396;  --idea-bg:  #201e1a;
+  --live:  #57C98A;  --live-bg:  #12261B;
+  --beta:  #D9A441;  --beta-bg:  #261E0F;
+  --build: #7FA8DE;  --build-bg: #131C28;
+  --idea:  #A5A59E;  --idea-bg:  #1C1C1A;
 }
 
 /* ============================================================================
@@ -727,60 +751,104 @@ select:focus-visible {
    §8: adding a class means declaring it here in the same edit. There is no
    lint; a class that resolves to nothing throws nothing and paints nothing,
    which is how `text-2xs` came to be used 186 times across three apps while
-   declared in exactly one.
-
-   Everything Tailwind can already express stays a utility. Nothing here is a
-   `.btn` or a `.card`.
+   declared in exactly one. Everything Tailwind can already express stays a
+   utility — nothing here is a .btn or a .card.
    ============================================================================ */
 
 /* A website frame is not a device. CORE's .phone assumes 390x844 and a 40px
-   device radius; _chrome.js already publishes the real 1440x900 from
-   routes.js, so only the rounding and the shadow need correcting — a 40px
-   radius on a 1440 frame reads as a tablet.
-
-   Unqualified because this set declares exactly one surface. The day a mobile
-   surface is drawn, this becomes a scoped rule and not before: a selector
-   guarding against a case that does not exist is a guess about the future. */
+   device radius; _chrome.js publishes the real 1440x900 from routes.js, so
+   only the rounding and the shadow need correcting. Unqualified because this
+   set declares exactly one surface. */
 .phone {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
 
-/* The one texture the previous set had that was worth keeping. Faint enough to
-   read as paper rather than as a dot grid — an earlier pass ran it at .35 on a
-   4px grid and it read as a pattern. */
-.grain { position: relative; }
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* ---- the index row: the whole direction in one class -----------------------
+   No card, no border box, no shadow. A hairline, a number, a name, and the row
+   itself inverting on hover. Everything else on this site is built from it. */
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.35rem 1.25rem;
+  border-top: 1px solid var(--line);
+  transition: background .18s, color .18s;
+  text-decoration: none;
+  color: inherit;
+}
+.row:last-of-type { border-bottom: 1px solid var(--line); }
+.row:hover { background: var(--ink); color: var(--page); }
+/* The quiet columns have to re-resolve inside the inverted row: a variable
+   remap only reaches declarations that read the variable, and text coloured
+   by a utility keeps that utility's value. */
+.row:hover .row-quiet { color: var(--band-2); }
+.row:hover .row-go { opacity: 1; transform: translateX(0); }
+.row-go { opacity: 0; transform: translateX(-8px); transition: .18s; }
+.row-name {
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1;
+}
+
+/* ---- the hover preview -----------------------------------------------------
+   Follows the pointer. It is the only image on the index, so it has to appear
+   exactly where the eye already is. A row with no screenshot shows nothing
+   rather than an empty frame chasing the cursor. */
+.peek {
+  position: fixed;
   pointer-events: none;
-  opacity: 0.05;
-  background-image: radial-gradient(var(--ink) 0.4px, transparent 0.4px);
-  background-size: 3px 3px;
+  z-index: 50;
+  width: 220px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.94);
+  transition: opacity .16s, transform .16s;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgb(var(--shadow-tint) / .5);
+}
+.peek.is-on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+/* ---- display type ----------------------------------------------------------
+   The one thing this direction spends its budget on. Two sizes and nothing in
+   between: a statement, and everything else. */
+.huge {
+  font-size: clamp(2.75rem, 10.5vw, 9rem);
+  line-height: .88;
+  letter-spacing: -.05em;
+  font-weight: 900;
+}
+.big {
+  font-size: clamp(1.75rem, 4.4vw, 3.25rem);
+  line-height: .98;
+  letter-spacing: -.04em;
+  font-weight: 800;
+}
+.numeral {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: .82;
+  letter-spacing: -.05em;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
 }
 
-/* A rule that fades out, for section breaks that should not read as a border. */
-.rule-fade {
-  height: 1px;
-  background: linear-gradient(to right, var(--line-strong), transparent);
-}
+/* ---- the accent field ------------------------------------------------------
+   Where the hot red is allowed. A full-bleed band carrying display type only —
+   the counts, and nothing that has to be read at 14px. */
+.field-accent { background: var(--accent-500); color: #0A0A0A; }
+.field-ink    { background: var(--band); color: var(--band-ink); }
 
-/* A browser chrome for web screenshots, so a web product does not render in a
-   phone. Three dots and a bar — enough to say "this is a site". */
-.browser { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); }
-.browser-bar {
-  display: flex; align-items: center; gap: 6px;
-  padding: 8px 10px; background: var(--muted); border-bottom: 1px solid var(--line);
-}
-.browser-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--line-strong); }
+/* A rule that means "section", heavier than the hairlines between rows. */
+.rule-head { border-bottom: 2px solid var(--ink); }
 
-/* A deliberately empty slot. §8's rule that a missing asset is visibly missing
-   needs somewhere to render it — hatching, not a grey box, so it never reads
-   as a real surface that happens to be blank. */
+/* A deliberately empty slot. A missing asset is visibly missing; a plain grey
+   box reads as a surface that happens to be blank, and hatching does not. */
 .slot {
-  background: repeating-linear-gradient(
-    45deg, var(--muted) 0 8px, var(--sunken) 8px 16px
-  );
+  background:
+    repeating-linear-gradient(135deg, transparent 0 10px, rgb(var(--shadow-tint) / .05) 10px 11px),
+    var(--muted);
   border: 1px dashed var(--line-strong);
 }

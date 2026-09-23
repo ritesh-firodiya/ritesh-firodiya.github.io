@@ -13,68 +13,61 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
-      <a href="../home/home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
-      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
+    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
+      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
+      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
         <a href="../work/work.html" class="text-ink">Work</a>
-        <a href="../products/products.html" class="hover:text-ink">Products</a>
-        <a href="../about/about.html" class="hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
+        <a href="../about/about.html" class="transition hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
       </nav>
       <a href="../contact/contact.html"
-         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <section class="border-b border-line px-10 py-14">
-      <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Work</p>
-      <h1 class="mt-3 max-w-[22ch] text-h1 font-semibold">What I built, and what it actually took.</h1>
-      <p class="mt-5 max-w-[60ch] text-lead text-ink-2">
-        Long-form, one per product. Not a gallery — what the problem was, what was tried,
-        what lost, and what shipped.
+    <section class="px-6 pb-12 pt-16 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Work</p>
+      <h1 class="huge mt-6 max-w-[11ch]">What it<br>took.</h1>
+      <p class="mt-10 max-w-[60ch] text-lead text-ink-2">
+        One writeup per product: the problem, what was tried, what lost, and what shipped.
+        Not a gallery — there are screenshots elsewhere.
       </p>
     </section>
 
-    <section class="px-10 py-12">
-      <a href="case-study.html" class="group grid grid-cols-[1.4fr_1fr] gap-10 rounded-lg border border-line bg-surface p-8 transition hover:border-brand-200">
-        <div>
-          <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Case study · 2026</p>
-          <h2 class="mt-3 max-w-[24ch] text-h1 font-semibold group-hover:text-brand-500">
-            Chitragupt — one person, 264 screens, and a price that had to be told the truth about.
-          </h2>
-          <p class="mt-4 max-w-[58ch] text-sm text-ink-2">
-            Household tax review for salaried Indians. Product, design, schema, build, deploy.
-            The interesting part is not the stack: an earlier version of this very site called it
-            free while its own config defined three priced tiers.
-          </p>
-          <div class="mt-6 flex gap-10 border-t border-line pt-5">
-            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">Role</p><p class="mt-1 text-sm font-medium">Everything</p></div>
-            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">Screens</p><p class="num mt-1 text-sm font-medium">264</p></div>
-            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">Stack</p><p class="mt-1 text-sm font-medium">Next · Postgres</p></div>
-            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">State</p><p class="mt-1 text-sm font-medium text-build">In build</p></div>
-          </div>
-          <span class="mt-6 inline-block text-sm font-medium text-brand-500">Read it →</span>
-        </div>
-        <div class="slot rounded"></div>
+    <section class="px-6 pb-20 md:px-10">
+            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
+        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">Written so far</h2><span class="font-mono text-2xs uppercase tracking-label text-ink-3">One</span>
+      </div>
+      <a class="row" href="case-study.html">
+        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">01</span>
+        <span class="row-name">Chitragupt</span>
+        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">2026 · 264 screens drawn</span>
+        <span class="font-mono text-2xs uppercase tracking-label row-go">Read it →</span>
       </a>
 
-      <!-- §11: the designs describe what exists. One case study is written, and
-           saying so beats padding the page with four thin ones. -->
-      <div class="mt-8 rounded-lg border border-dashed border-line-strong p-8">
-        <p class="font-mono text-2xs uppercase tracking-label text-ink-3">One written so far</p>
-        <p class="mt-2 max-w-[62ch] text-sm text-ink-2">
-          Aakalan, AskCal and Charades are shipping and have no writeup yet. They are listed under
-          <a href="../products/products.html" class="text-brand-500 underline decoration-brand-200 underline-offset-4">Products</a>
-          with their facts until one is written. A thin case study is worse than an honest gap.
+      <!-- §11: the designs describe what exists. Three shipping products have
+           no writeup, and saying so beats padding the page with thin ones. -->
+      <div class="mt-10 border-l-2 border-accent-500 pl-5">
+        <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Not written yet</p>
+        <p class="mt-2 max-w-[62ch] text-ink-2">
+          Aakalan, AskCal and Charades are on Google Play and have no writeup. They are listed
+          under <a href="../products/products.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">Products</a>
+          with their facts until one is written. A thin case study costs more than an absent one.
         </p>
       </div>
     </section>
-    <footer class="mt-auto bg-ink px-10 py-8 text-band-ink/50">
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-2xs">
+    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
+      <a href="../contact/contact.html"
+         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
+        firodiya.ritesh@gmail.com
+      </a>
+      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
         <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="hover:text-band-ink">About</a>
-        <a href="../contact/contact.html" class="ml-auto hover:text-band-ink">Get in touch →</a>
+        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
+        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
+        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
       </div>
     </footer>
 

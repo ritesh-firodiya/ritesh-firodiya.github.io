@@ -8,28 +8,32 @@ superseded-by: null
 ---
 
 ## Summary
-Every product, with how it is paid for.
+Every product, with who pays.
 
 ## Raw wireframe
 - .context/designs/web/products/products.html
 
 ## Why it is drawn this way
+**A table, and it stays a table.** This replaced a page that made studio-wide
+promises. Rows make the facts comparable and make an omission visible.
 
-**A table, and it stays a table.** This replaced a marketing page that made
-studio-wide promises. Rows make the facts comparable and make an omission
-visible.
+**Ads have a column.** The claim that broke was "no ads in our games"; the fact
+that broke it now cannot be omitted by accident.
 
-**Ads are a column.** The claim that broke was "no ads in our games"; the fact
-that broke it now has a column of its own and cannot be omitted by accident.
+**No prices.** The model is the durable fact; the figure changes, and the store
+listing is the only place it cannot go stale.
 
-**Prices are not published.** The model is. A figure on this page goes stale
-silently; the store listing is the only place it cannot.
+**The heading asks the question the reader has.** "Who pays, and how." beats
+"Products", which the nav already said.
 
-**The empty state keeps its filters pressed.** Clearing them to show the empty
-result would leave the reader unable to tell what they had asked for, and the
-copy names the combination that is empty — "nothing here is one-time on the web,
-the two one-time products are phone games" — so they learn something about the
-estate rather than just being blocked.
+**The empty state keeps its filters pressed** and names the combination that is
+empty, so the reader learns something about the estate instead of being blocked.
+
+## The voice, which is the same on every screen
+Specific over general — a number where there is one. Headings make a claim or
+state a fact, never name a category. Labels are nouns; buttons say what happens
+next. The thing first, then the caveat. No unlock, no empower, no seamless.
+Every gap is stated with its reason rather than left to be noticed.
 
 ## Related
 - [[home]]
@@ -37,3 +41,4 @@ estate rather than just being blocked.
 
 ## Sources
 - .context/designs/web/products/products.html
+- ~/git/personal/STYLE-GUIDE.md

@@ -13,122 +13,107 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
-      <a href="../home/home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
-      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
-        <a href="../work/work.html" class="hover:text-ink">Work</a>
+    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
+      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
+      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
+        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
         <a href="../products/products.html" class="text-ink">Products</a>
-        <a href="../about/about.html" class="hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+        <a href="../about/about.html" class="transition hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
       </nav>
       <a href="../contact/contact.html"
-         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <section class="border-b border-line px-10 py-12">
-      <a href="products.html" class="font-mono text-2xs uppercase tracking-label text-ink-3 hover:text-brand-500">← Products</a>
-      <div class="mt-6 flex items-start gap-6">
-        <div class="slot h-20 w-20 shrink-0 rounded-xl"></div>
+    <section class="px-6 pb-10 pt-14 md:px-10">
+      <a href="products.html" class="font-mono text-2xs uppercase tracking-label text-ink-3 transition hover:text-brand-500">← Products</a>
+      <div class="mt-8 flex flex-wrap items-start gap-6">
+        <div class="slot h-20 w-20 shrink-0 rounded-lg"></div>
         <div class="min-w-0 flex-1">
-          <div class="flex items-center gap-2">
-            <!-- RULE: the model sits ABOVE the install button. Never below it,
-                 never in a footnote, never softened into "unlock". -->
+          <!-- The model sits ABOVE the install button. Never below it, never in
+               a footnote, never softened into "unlock". This is the rule. -->
+          <div class="flex flex-wrap items-center gap-2">
             <span class="rounded-pill bg-m-sub-bg px-2.5 py-1 font-mono text-2xs uppercase tracking-label text-m-sub">Subscription</span>
-            <span class="rounded-pill bg-live-bg px-2.5 py-1 font-mono text-2xs uppercase tracking-label text-live">Live</span>
+            <span class="rounded-pill bg-live-bg px-2.5 py-1 font-mono text-2xs uppercase tracking-label text-live">On Google Play</span>
           </div>
-          <h1 class="mt-3 text-h1 font-semibold">Aakalan</h1>
-          <p class="mt-1 text-lead text-ink-2">Your expenses and everyone else&rsquo;s, on one ledger.</p>
-          <p class="mt-3 max-w-[62ch] text-sm text-ink-2">
-            Shared-expense tracking for groups that never settle up — a trip, a flat, a family.
-            Split a bill, see who owes whom, and settle in one move rather than six.
+          <h1 class="big mt-4">Aakalan</h1>
+          <p class="mt-3 max-w-[54ch] text-lead text-ink-2">
+            Splits a bill four ways, remembers who still owes, and settles the whole group in two
+            payments instead of six.
           </p>
-          <div class="mt-5 flex flex-wrap items-center gap-2">
-            <a href="#" class="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">
-              <i data-lucide="play" class="h-4 w-4"></i> Google Play
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a href="#" class="font-mono text-2xs uppercase tracking-label inline-flex items-center gap-2 bg-ink px-4 py-2.5 font-medium text-page transition hover:bg-brand-500">
+              <i data-lucide="play" class="h-4 w-4"></i> Get it on Google Play
             </a>
-            <a href="#" class="inline-flex items-center gap-2 rounded-pill border border-line-strong px-4 py-2 text-sm font-medium transition hover:border-brand-500 hover:text-brand-500">
-              <i data-lucide="apple" class="h-4 w-4"></i> TestFlight
+            <a href="#" class="font-mono text-2xs uppercase tracking-label inline-flex items-center gap-2 border border-line-strong px-4 py-2.5 font-medium transition hover:border-ink">
+              <i data-lucide="apple" class="h-4 w-4"></i> Join the iOS beta
             </a>
-            <a href="../hire/hire.html" class="text-sm font-medium text-ink-3 underline decoration-line-strong underline-offset-4 hover:text-brand-500">Built by me — work together</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ the facts, before anything asks you to install ══ -->
-    <section class="border-b border-line px-10 py-10">
-      <p class="font-mono text-2xs uppercase tracking-label text-ink-3">The facts · verified 2026-09-20</p>
-      <dl class="mt-5 grid grid-cols-4 gap-px border border-line bg-line">
-        <div class="bg-surface px-5 py-4">
-          <dt class="font-mono text-2xs uppercase tracking-label text-ink-3">How it is paid for</dt>
-          <dd class="mt-1.5 text-sm font-medium text-m-sub">Subscription</dd>
-          <dd class="mt-1 text-2xs text-ink-3">Monthly or yearly, in the app</dd>
-        </div>
-        <div class="bg-surface px-5 py-4">
-          <dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Ads</dt>
-          <dd class="mt-1.5 text-sm font-medium">None</dd>
-          <dd class="mt-1 text-2xs text-ink-3">No ad SDK is linked</dd>
-        </div>
-        <div class="bg-surface px-5 py-4">
-          <dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Analytics</dt>
-          <dd class="mt-1.5 text-sm font-medium">None</dd>
-          <dd class="mt-1 text-2xs text-ink-3">Crash reporting only</dd>
-        </div>
-        <div class="bg-surface px-5 py-4">
-          <dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Works offline</dt>
-          <dd class="mt-1.5 text-sm font-medium">Partly</dd>
-          <dd class="mt-1 text-2xs text-ink-3">Reads yes, settle-up no</dd>
-        </div>
+    <section class="px-6 pb-12 md:px-10">
+            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
+        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">The facts</h2><span class="font-mono text-2xs uppercase tracking-label text-ink-3">Checked 2026-09-20</span>
+      </div>
+      <dl class="grid gap-x-10 gap-y-7 py-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Paid for by</dt><dd class="mt-2 font-semibold text-m-sub">A subscription</dd><dd class="mt-1 text-sm text-ink-3">Monthly or yearly, bought in the app</dd></div>
+        <div><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Ads</dt><dd class="mt-2 font-semibold">None</dd><dd class="mt-1 text-sm text-ink-3">No ad SDK is linked into the build</dd></div>
+        <div><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">What it measures</dt><dd class="mt-2 font-semibold">Crashes only</dd><dd class="mt-1 text-sm text-ink-3">No analytics SDK, no advertising ID</dd></div>
+        <div><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Without a signal</dt><dd class="mt-2 font-semibold">Reads, not writes</dd><dd class="mt-1 text-sm text-ink-3">Balances show; settling waits for a connection</dd></div>
       </dl>
 
-      <!-- RULE: an unavailable platform renders disabled WITH the reason.
-           Never hidden, never linked to a track most people cannot open. -->
-      <div class="mt-5 flex items-center gap-8 rounded border border-line bg-muted px-5 py-3">
-        <span class="font-mono text-2xs uppercase tracking-label text-ink-3">Platforms</span>
+      <!-- An unavailable platform renders disabled WITH the reason. Never
+           hidden, never linked to a track most people cannot open. -->
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line py-5">
+        <span class="font-mono text-2xs uppercase tracking-label text-ink-3">Runs on</span>
         <span class="inline-flex items-center gap-2 text-sm"><i data-lucide="check" class="h-4 w-4 text-live"></i> Android</span>
-        <span class="inline-flex items-center gap-2 text-sm"><i data-lucide="check" class="h-4 w-4 text-beta"></i> iOS — TestFlight</span>
+        <span class="inline-flex items-center gap-2 text-sm"><i data-lucide="check" class="h-4 w-4 text-beta"></i> iOS — TestFlight only</span>
         <span class="inline-flex items-center gap-2 text-sm text-ink-4 line-through" title="No web client — the ledger is phone-only">
           <i data-lucide="x" class="h-4 w-4"></i> Web
         </span>
-        <span class="text-2xs text-ink-3">No web client — the ledger is phone-only</span>
+        <span class="text-sm text-ink-3">No web client. The ledger is phone-only and there is no plan to change that.</span>
       </div>
     </section>
 
-    <section class="border-b border-line px-10 py-10">
-      <h2 class="text-h2 font-semibold">What it does</h2>
-      <div class="mt-5 grid grid-cols-3 gap-8">
-        <div><h3 class="text-sm font-semibold">Split anything</h3><p class="mt-1 text-sm text-ink-2">Equally, by share, or by exact amount — and change your mind later.</p></div>
-        <div><h3 class="text-sm font-semibold">One settle-up</h3><p class="mt-1 text-sm text-ink-2">Six debts between four people collapse into the two payments that clear them.</p></div>
-        <div><h3 class="text-sm font-semibold">Groups that persist</h3><p class="mt-1 text-sm text-ink-2">A flat runs for years. A trip runs for a week. Both are the same object.</p></div>
+    <section class="px-6 pb-12 md:px-10">
+            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
+        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">What it does</h2>
       </div>
-    </section>
-
-    <section class="px-10 py-10">
-      <div class="grid grid-cols-3 gap-5">
-        <div class="slot h-72 rounded-lg"></div>
-        <div class="slot h-72 rounded-lg"></div>
-        <div class="slot h-72 rounded-lg"></div>
+      <div class="grid gap-8 py-8 sm:grid-cols-3">
+        <div><h3 class="font-semibold">Split it any way</h3><p class="mt-2 text-sm text-ink-2">Evenly, by share, or by exact amount — and change your mind after the fact.</p></div>
+        <div><h3 class="font-semibold">Settle in two moves</h3><p class="mt-2 text-sm text-ink-2">Six debts between four people collapse into the two payments that clear them.</p></div>
+        <div><h3 class="font-semibold">Groups that outlast a trip</h3><p class="mt-2 text-sm text-ink-2">A flat runs for years and a holiday for a week. Both are the same object.</p></div>
+      </div>
+      <div class="grid gap-5 pb-4 sm:grid-cols-3">
+        <div class="slot h-72 rounded"></div><div class="slot h-72 rounded"></div><div class="slot h-72 rounded"></div>
       </div>
     </section>
 
     <!-- The documents a store listing points at. Quieter than an install
          button and never in place of one, but one click from the top. -->
-    <section class="border-t border-line bg-muted px-10 py-8">
+    <section class="border-t border-line px-6 py-8 md:px-10">
       <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Documents</p>
-      <div class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-        <a href="../legal/policy.html" class="text-brand-500 underline decoration-brand-200 underline-offset-4">Privacy policy</a>
-        <a href="../legal/legal.html" class="text-brand-500 underline decoration-brand-200 underline-offset-4">Terms</a>
-        <a href="../legal/policy.html" class="text-brand-500 underline decoration-brand-200 underline-offset-4">Delete your account</a>
-        <a href="../contact/contact.html" class="text-brand-500 underline decoration-brand-200 underline-offset-4">Support</a>
+      <div class="mt-3 flex flex-wrap gap-x-7 gap-y-2 text-sm">
+        <a href="../legal/policy.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">Privacy policy</a>
+        <a href="../legal/legal.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">Terms</a>
+        <a href="../legal/policy.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">Delete your account</a>
+        <a href="../contact/contact.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">Support</a>
       </div>
     </section>
-    <footer class="mt-auto bg-ink px-10 py-8 text-band-ink/50">
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-2xs">
+    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
+      <a href="../contact/contact.html"
+         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
+        firodiya.ritesh@gmail.com
+      </a>
+      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
         <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="hover:text-band-ink">About</a>
-        <a href="../contact/contact.html" class="ml-auto hover:text-band-ink">Get in touch →</a>
+        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
+        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
+        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
       </div>
     </footer>
 

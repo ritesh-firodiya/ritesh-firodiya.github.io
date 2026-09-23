@@ -170,7 +170,6 @@ window.ROUTES = {
       { from: "home/home.html",                 to: "about/resume.html",              side: true },
       { from: "home/home.html",                 to: "hire/hire.html",                 side: true },
       { from: "home/home.html",                 to: "products/product.html",          side: true },
-      { from: "home/home.html",                 to: "products/unreleased.html",       side: true },
       { from: "home/home.html",                 to: "work/case-study.html",           side: true },
       { from: "legal/legal.html",               to: "about/about.html",               side: true },
       { from: "legal/legal.html",               to: "contact/contact.html",           side: true },
@@ -223,6 +222,11 @@ window.ROUTES = {
   },
 
   updated: "2026-09-23",
+
+  /* Direction: INDEX. Rebuilt from scratch 2026-09-23 — white ground, one
+     vermilion, and the page is a list rather than a grid of cards. The
+     previous set kept the old warm-paper identity and only moved its bands
+     around, which read as the same site rearranged. */
 
   /* Gaps, stated rather than left to be noticed. */
   missing: [

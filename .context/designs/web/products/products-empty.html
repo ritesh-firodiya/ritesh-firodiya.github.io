@@ -13,50 +13,59 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
-      <a href="../home/home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
-      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
-        <a href="../work/work.html" class="hover:text-ink">Work</a>
+    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
+      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
+      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
+        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
         <a href="../products/products.html" class="text-ink">Products</a>
-        <a href="../about/about.html" class="hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+        <a href="../about/about.html" class="transition hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
       </nav>
       <a href="../contact/contact.html"
-         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <section class="border-b border-line px-10 py-14">
-      <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Products · every fact verified 2026-09-20</p>
-      <h1 class="mt-3 max-w-[24ch] text-h1 font-semibold">How each one is paid for, and what it knows about you.</h1>
+    <section class="px-6 pb-12 pt-16 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Products · every fact checked 2026-09-20</p>
+      <h1 class="huge mt-6 max-w-[12ch]">Who pays,<br>and how.</h1>
     </section>
 
-    <section class="px-10 py-12">
-      <div class="flex items-center gap-2">
-        <button class="rounded-pill border border-line-strong px-3.5 py-1.5 text-sm transition hover:border-ink">All 13</button>
-        <button class="rounded-pill bg-ink px-3.5 py-1.5 text-sm font-medium text-ink-inverse">Web · one-time</button>
-        <button class="rounded-pill border border-line-strong px-3.5 py-1.5 text-sm transition hover:border-ink">Android</button>
+    <section class="px-6 pb-20 md:px-10">
+            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
+        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">All thirteen</h2><span class="font-mono text-2xs uppercase tracking-label text-ink-3">Two filters on</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 py-5">
+        <button class="font-mono text-2xs uppercase tracking-label border border-line-strong px-3.5 py-1.5 transition hover:border-ink">All 13</button>
+        <button class="font-mono text-2xs uppercase tracking-label bg-ink px-3.5 py-1.5 font-medium text-page">One-time</button>
+        <button class="font-mono text-2xs uppercase tracking-label bg-ink px-3.5 py-1.5 font-medium text-page">Web</button>
       </div>
 
-      <!-- An empty result is a sentence and a way out, not an illustration.
-           The filters that produced it stay on screen and stay pressed, or the
-           reader cannot tell what they asked for. -->
-      <div class="mt-7 rounded-lg border border-dashed border-line-strong px-10 py-16 text-center">
-        <p class="text-h3 font-semibold">No product matches both of those.</p>
-        <p class="mx-auto mt-2 max-w-[46ch] text-sm text-ink-2">
-          Nothing here is one-time on the web — the two one-time products are phone games.
+      <!-- An empty result is a sentence and a way out. The filters stay on
+           screen and stay pressed — clearing them to show the empty state
+           would leave the reader unable to tell what they had asked for. -->
+      <div class="border-t border-line py-20 text-center">
+        <p class="big">Nothing is both.</p>
+        <p class="mx-auto mt-4 max-w-[46ch] text-ink-2">
+          The two one-time products are phone games. Nothing on the web is bought once —
+          the web products are subscriptions or are not built.
         </p>
-        <button class="mt-6 rounded-pill border border-line-strong px-4 py-2 text-sm font-medium transition hover:border-brand-500 hover:text-brand-500">
-          Clear the filters
+        <button class="font-mono text-2xs uppercase tracking-label mt-8 border border-ink px-4 py-2 font-medium transition hover:bg-ink hover:text-page">
+          Clear both filters
         </button>
       </div>
     </section>
-    <footer class="mt-auto bg-ink px-10 py-8 text-band-ink/50">
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-2xs">
+    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
+      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
+      <a href="../contact/contact.html"
+         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
+        firodiya.ritesh@gmail.com
+      </a>
+      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
         <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="hover:text-band-ink">About</a>
-        <a href="../contact/contact.html" class="ml-auto hover:text-band-ink">Get in touch →</a>
+        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
+        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
+        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
+        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
       </div>
     </footer>
 

@@ -14,26 +14,29 @@ The landing page, and the only screen all four readers see.
 - .context/designs/web/home/home.html
 
 ## Why it is drawn this way
+**The page is a list.** Work and products are one index, because a reader cares
+what a thing is and not which bucket someone filed it under. No cards, no
+boxes, no shadows — a hairline, a number, a name, and the row inverting on
+hover. Everything else on this site is built from that one component.
 
-**The work comes before the pitch.** The set this replaces put a "three doors"
-band directly under the hero — *You are hiring · You need it built · You are
-curious* — and the first product did not appear until the fourth band. Every
-reader had to classify themselves correctly before the page gave them anything,
-and most guess wrong. Selected work is now band two, with pictures.
+**The hot red appears exactly once.** The counts band is the only place
+`--accent-500` is spent, and it carries display type only: at 3.6:1 on white it
+fails AA outright and can never hold a sentence. Splitting the red in two —
+`brand` readable, `accent` for fields — is what lets the bright one exist.
 
-**The hero is nine lines tall.** Name, claim, two buttons, four numbers. It was
-a full viewport of headline and forty words, which bought nothing and cost the
-fold.
+**No portrait, no badge, no stat row in the hero.** Those answer questions
+nobody has asked yet. The statement is nine lines tall so the index is the next
+thing on screen.
 
-**Six nav items, not three.** The site has six jobs; the old header carried
-Products, Screens and Résumé while Work, Hire, Support and Legal were reachable
-only from the footer. Résumé stays a button because a recruiter should never
-scroll for it.
+**The preview follows the pointer.** It is the only image on the page, so it
+appears where the eye already is. A row with no screenshot shows nothing rather
+than an empty frame chasing the cursor.
 
-**Four numbers, each checkable.** Products, live today, on Google Play, years.
-"Live" and "on Google Play" are deliberately two different counts — the first
-includes web products, and conflating them would make a claim the store does not
-support.
+## The voice, which is the same on every screen
+Specific over general — a number where there is one. Headings make a claim or
+state a fact, never name a category. Labels are nouns; buttons say what happens
+next. The thing first, then the caveat. No unlock, no empower, no seamless.
+Every gap is stated with its reason rather than left to be noticed.
 
 ## Related
 - [[home]]
@@ -41,3 +44,4 @@ support.
 
 ## Sources
 - .context/designs/web/home/home.html
+- ~/git/personal/STYLE-GUIDE.md

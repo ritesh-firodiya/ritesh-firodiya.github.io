@@ -35,12 +35,19 @@ tailwind.config = {
           700: "var(--brand-700)", 900: "var(--brand-900)",
           DEFAULT: "var(--brand-500)",
         },
-        /* NO ACCENT. This set has one brand colour, and §8 says accent is
-           declared only where a product has a second. Keeping an accent block
-           whose variables are undeclared is worse than omitting it: `var()`
-           with no fallback paints NOTHING, so a node edge or a swatch comes out
-           blank and reads as a bug rather than as a colour choice. The gallery
-           already falls back with var(--accent-500, var(--brand-500)). */
+        /* The second red. §8 allows accent where a product has one, and this
+           set does: #FF3B00 is 3.4:1 on white and fails AA outright, so it is
+           for FIELDS and DISPLAY TYPE ONLY, never a sentence. Splitting it from
+           brand is what lets the bright red exist at all. */
+        accent:  {
+          50: "var(--accent-50)", 100: "var(--accent-100)", 200: "var(--accent-200)",
+          400: "var(--accent-400)", 500: "var(--accent-500)", 600: "var(--accent-600)",
+          700: "var(--accent-700)", 900: "var(--accent-900)",
+          DEFAULT: "var(--accent-500)",
+        },
+        /* An inverted band — the contact block and the footer. Deliberately
+           NOT ink + ink-inverse, which flip with the theme. */
+        band:    { DEFAULT: "var(--band)", ink: "var(--band-ink)", 2: "var(--band-2)" },
 
         success: { DEFAULT: "var(--success)", bg: "var(--success-bg)", fg: "var(--success-fg)" },
         warn:    { DEFAULT: "var(--warn)",    bg: "var(--warn-bg)",    fg: "var(--warn-fg)" },

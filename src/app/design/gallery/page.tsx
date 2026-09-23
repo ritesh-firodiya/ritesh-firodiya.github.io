@@ -84,7 +84,7 @@ export default function GalleryPage() {
                       <a
                         key={idx.path}
                         href={`/products/${slug}/designs/${roots.length > 1 ? idx.surface + "/" : ""}`}
-                        className="inline-flex items-center rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent"
+                        className="inline-flex items-center rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inverse transition hover:bg-brand-500"
                       >
                         {roots.length > 1 ? `${idx.surface} gallery` : "Open the gallery"} →
                       </a>
@@ -121,7 +121,7 @@ export default function GalleryPage() {
         {mediaMissing.length > 0 && (
           <section className="px-gutter pb-section">
             <div className="mx-auto max-w-page">
-              <div className="rounded-card border border-line bg-paper-2 p-6">
+              <div className="rounded-card border border-line bg-muted p-6">
                 <Label>Stated rather than hidden</Label>
                 <h2 className="mt-3 font-display text-h2 font-semibold">
                   {mediaMissing.length} products have no screenshots here yet.

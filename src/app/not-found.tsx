@@ -23,13 +23,13 @@ export default function NotFound() {
         </p>
         <div className="mt-11 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
           {DOORS.map((d) => (
-            <Link key={d.href} href={d.href} className="group bg-surface p-6 transition hover:bg-paper-2">
-              <h2 className="font-display text-h3 font-semibold group-hover:text-accent">{d.title}</h2>
+            <Link key={d.href} href={d.href} className="group bg-surface p-6 transition hover:bg-muted">
+              <h2 className="font-display text-h3 font-semibold group-hover:text-brand-500">{d.title}</h2>
               <p className="mt-1.5 text-small text-ink-2">{d.body}</p>
             </Link>
           ))}
         </div>
-        <Link href="/" className="link-u mt-10 inline-flex items-center gap-2 self-start text-small font-medium text-accent">
+        <Link href="/" className="link-u mt-10 inline-flex items-center gap-2 self-start text-small font-medium text-brand-500">
           ← Back to the start
         </Link>
       </main>

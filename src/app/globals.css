@@ -22,43 +22,93 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
+  /* ═══ §8 of ~/git/personal/STYLE-GUIDE.md ═══════════════════════════════
+     The same palette contract every product design set declares, so one
+     vocabulary covers the estate: learn `ink-2` or `line-strong` once and it
+     means the same thing in charades, in askcal and here.
+
+     The naming rule is the whole policy:
+       the CSS variable is the Tailwind token path with dots as dashes.
+       `line.strong` ↔ `--line-strong`   `ink.2` ↔ `--ink-2`
+
+     Roles, never hues. `brand` is burnt sienna today; calling it `sienna`
+     would make a repalette a rename across every file. Tailwind v4 prefixes
+     the colour namespace with `--color-`, which is the one unavoidable
+     difference from a design set's `shared.css`.
+     ═══════════════════════════════════════════════════════════════════════ */
+
   /* ── Ground ───────────────────────────────────────────────────────────────
-     Warm paper, not white. #FFF is reserved for a card lifted off the page, so
-     "white" reads as elevation rather than as the default. */
-  --color-paper:   #fbf9f4;
-  --color-paper-2: #f4f0e6;
-  --color-paper-3: #ebe5d6;
+     Warm paper, not white. `frame` is the opaque card ground — the website's
+     equivalent of a set's phone frame, and for the same reason: `surface` may
+     become a translucent tint in a dark palette and would show straight
+     through anything laid over a backdrop. */
+  --color-page:    #fbf9f4;
+  --color-frame:   #ffffff;
   --color-surface: #ffffff;
+  --color-muted:   #f4f0e6;
+  --color-sunken:  #ebe5d6;
 
   /* ── Ink ──────────────────────────────────────────────────────────────────
-     Warm near-black, not #000. ink-3 is the quiet floor at 4.6:1 on paper —
-     the theme this replaced used a grey at 2.9:1 that failed AA outright. */
-  --color-ink:     #14130f;
-  --color-ink-2:   #45423a;
-  --color-ink-3:   #78736a;
-  --color-ink-inv: #fbf9f4;
+     Warm near-black, not #000. ink-3 is the quiet floor that still passes AA
+     on page; ink-4 is for disabled and struck-through only, and is the one
+     step that does not. Contrast ratios are asserted by scripts/check-contrast.mjs. */
+  --color-ink:         #14130f;
+  --color-ink-2:       #45423a;
+  --color-ink-3:       #6f6a61;
+  --color-ink-4:       #918b80;
+  --color-ink-inverse: #fbf9f4;
 
-  --color-line:   #e4dfd2;
-  --color-line-2: #cfc8b6;
+  --color-line:        #e4dfd2;
+  --color-line-strong: #cfc8b6;
 
-  /* ── Accent — burnt sienna ────────────────────────────────────────────────
-     7.3:1 on paper, so it is safe for body links and not only decoration.
-     One accent only. */
-  --color-accent:      #8a3324;
-  --color-accent-2:    #a9452f;
-  --color-accent-wash: #f7ebe6;
+  /* ── Brand — burnt sienna ─────────────────────────────────────────────────
+     A full ramp rather than the three ad-hoc steps this replaced, because §8
+     names the steps and a set that declares only some of them cannot be
+     re-themed by the same edit as its neighbours. brand-500 is safe for body
+     links, not only decoration. */
+  --color-brand-50:  #f7ebe6;
+  --color-brand-100: #f0d9d1;
+  --color-brand-200: #e0b3a4;
+  --color-brand-400: #a9452f;
+  --color-brand-500: #8a3324;
+  --color-brand-700: #6b261a;
+  --color-brand-900: #3f1610;
 
-  /* ── Monetization model — five, all at EQUAL weight ───────────────────────
-     There is no "good" colour and no "bad" colour here. A subscription is not
-     a warning and ad-supported is not a confession; they are facts a person
-     needs before they tap install.
+  /* ── Status — §8 requires all four, each with -bg and -fg ─────────────────
+     These are the framework's four. They are NOT the release states below:
+     a product being in beta is not a warning. */
+  --color-success:    #2c6e49;
+  --color-success-bg: #e6f1ea;
+  --color-success-fg: #1d4a31;
+  --color-warn:       #8a6114;
+  --color-warn-bg:    #f7eeda;
+  --color-warn-fg:    #5c400d;
+  --color-danger:     #9b2c2c;
+  --color-danger-bg:  #f7e6e6;
+  --color-danger-fg:  #6b1f1f;
+  --color-info:       #38587a;
+  --color-info-bg:    #e8eef5;
+  --color-info-fg:    #264057;
 
-     This scale exists because an earlier version of this site claimed "no ads
-     in our games" and "one-time purchases, not subscriptions" on a page linked
-     from live store listings. Tic Tac Toe ships an AdMob banner and
-     interstitial. Four of eight apps are subscriptions. A studio-wide promise
-     was the wrong SHAPE of claim; a per-app fact is the right one, and a
-     per-app fact needs a palette. */
+  /* r g b, so a shadow can be rgb(var(--shadow-tint) / 0.18) and follow the
+     theme. §8 requires the triple form. */
+  --shadow-tint: 20 19 15;
+
+  /* ── RESERVED · this site's own meaning ───────────────────────────────────
+     §8: "Each product declares its reserved colours — the one or two that
+     carry product meaning and may not be reused."
+
+     Here it is the monetization model, and it is the reason this site exists.
+     Five models at EQUAL visual weight: there is no good colour and no bad
+     colour. A subscription is not a warning and ad-supported is not a
+     confession — they are facts a person needs before they tap install.
+
+     An earlier version of this site claimed "no ads in our games" and
+     "one-time purchases, not subscriptions" on a page linked from live store
+     listings. Tic Tac Toe ships an AdMob banner and interstitial; four of
+     eight apps are subscriptions. A studio-wide promise was the wrong SHAPE
+     of claim. A per-app fact is the right one, and it needs its own scale —
+     which is exactly why these may not be reused for anything else. */
   --color-m-free:      #5a5750;
   --color-m-free-wash: #efece3;
   --color-m-ads:       #8a5a0b;
@@ -70,7 +120,7 @@
   --color-m-year:      #6b3a7a;
   --color-m-year-wash: #f1e9f4;
 
-  /* ── Status — where a product actually is ─────────────────────────────────
+  /* ── RESERVED · release state ─────────────────────────────────────────────
      Independent of model. A product has a price AND a release state, and
      conflating them is how "coming soon" ends up meaning four things. */
   --color-live:        #2c6e49;
@@ -133,6 +183,135 @@
   --shadow-frame: 0 2px 6px rgb(20 19 15 / 0.06), 0 24px 56px -24px rgb(20 19 15 / 0.34);
 }
 
+/* ═══ Dark — a token remap, never a `dark:` prefix ═════════════════════════
+   §8: "A theme is a token remap, never a `dark:` prefix and never a second set
+   of utilities." A design set does it with `.phone--dark`; a website does it
+   on the root. Either way every utility already reads `var(--color-…)`, so
+   nothing below restyles a single class — it moves what the classes resolve to.
+
+   Three states, and the order matters. `@theme` defines the light palette on
+   bare `:root`. The media query catches the system default and is guarded so
+   an explicit light choice still wins. The attribute block comes last so the
+   toggle beats the system in both directions.
+
+   Roles invert rather than values: in dark, brand-50 is the DARKEST sienna and
+   brand-900 the lightest, because `brand-50` means "the quietest wash of the
+   brand" and not "a light colour". A set that flipped only some of them would
+   paint a wash darker than the text on it. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; }
+  :root:not([data-theme="light"]) { --dark: 1; }
+}
+:root[data-theme="dark"] { color-scheme: dark; --dark: 1; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-page:    #121110;
+    --color-frame:   #1c1a17;
+    --color-surface: #1c1a17;
+    --color-muted:   #1a1815;
+    --color-sunken:  #0c0b0a;
+
+    --color-ink:         #f3f0e9;
+    --color-ink-2:       #c4bdb0;
+    --color-ink-3:       #968f83;
+    --color-ink-4:       #6f6961;
+    --color-ink-inverse: #14130f;
+
+    --color-line:        #2b2926;
+    --color-line-strong: #423f39;
+
+    --color-brand-50:  #2a1712;
+    --color-brand-100: #3d201a;
+    --color-brand-200: #5c3125;
+    --color-brand-400: #c96a4d;
+    --color-brand-500: #e08a6b;
+    --color-brand-700: #eda98e;
+    --color-brand-900: #f6d5c6;
+
+    --color-success:    #6fbf8f;
+    --color-success-bg: #17281f;
+    --color-success-fg: #9fd9b5;
+    --color-warn:       #d4a44a;
+    --color-warn-bg:    #2a2113;
+    --color-warn-fg:    #e8c884;
+    --color-danger:     #e08585;
+    --color-danger-bg:  #2b1818;
+    --color-danger-fg:  #f0aeae;
+    --color-info:       #7fa8d4;
+    --color-info-bg:    #17212b;
+    --color-info-fg:    #aac8e6;
+
+    --shadow-tint: 0 0 0;
+
+    /* The reserved scales follow too, or a model pill keeps a light wash
+       behind dark text and becomes the only unreadable thing on the page. */
+    --color-m-free: #a9a396; --color-m-free-wash: #201e1a;
+    --color-m-ads:  #d4a44a; --color-m-ads-wash:  #2a2113;
+    --color-m-once: #6fbf8f; --color-m-once-wash: #17281f;
+    --color-m-sub:  #86a8e0; --color-m-sub-wash:  #171d2a;
+    --color-m-year: #bf92cc; --color-m-year-wash: #241a28;
+
+    --color-live:   #6fbf8f; --color-live-wash:   #17281f;
+    --color-beta:   #d4a44a; --color-beta-wash:   #2a2113;
+    --color-build:  #7fa8d4; --color-build-wash:  #17212b;
+    --color-design: #a9a396; --color-design-wash: #201e1a;
+  }
+}
+
+:root[data-theme="dark"] {
+    --color-page:    #121110;
+    --color-frame:   #1c1a17;
+    --color-surface: #1c1a17;
+    --color-muted:   #1a1815;
+    --color-sunken:  #0c0b0a;
+
+    --color-ink:         #f3f0e9;
+    --color-ink-2:       #c4bdb0;
+    --color-ink-3:       #968f83;
+    --color-ink-4:       #6f6961;
+    --color-ink-inverse: #14130f;
+
+    --color-line:        #2b2926;
+    --color-line-strong: #423f39;
+
+    --color-brand-50:  #2a1712;
+    --color-brand-100: #3d201a;
+    --color-brand-200: #5c3125;
+    --color-brand-400: #c96a4d;
+    --color-brand-500: #e08a6b;
+    --color-brand-700: #eda98e;
+    --color-brand-900: #f6d5c6;
+
+    --color-success:    #6fbf8f;
+    --color-success-bg: #17281f;
+    --color-success-fg: #9fd9b5;
+    --color-warn:       #d4a44a;
+    --color-warn-bg:    #2a2113;
+    --color-warn-fg:    #e8c884;
+    --color-danger:     #e08585;
+    --color-danger-bg:  #2b1818;
+    --color-danger-fg:  #f0aeae;
+    --color-info:       #7fa8d4;
+    --color-info-bg:    #17212b;
+    --color-info-fg:    #aac8e6;
+
+    --shadow-tint: 0 0 0;
+
+    /* The reserved scales follow too, or a model pill keeps a light wash
+       behind dark text and becomes the only unreadable thing on the page. */
+    --color-m-free: #a9a396; --color-m-free-wash: #201e1a;
+    --color-m-ads:  #d4a44a; --color-m-ads-wash:  #2a2113;
+    --color-m-once: #6fbf8f; --color-m-once-wash: #17281f;
+    --color-m-sub:  #86a8e0; --color-m-sub-wash:  #171d2a;
+    --color-m-year: #bf92cc; --color-m-year-wash: #241a28;
+
+    --color-live:   #6fbf8f; --color-live-wash:   #17281f;
+    --color-beta:   #d4a44a; --color-beta-wash:   #2a2113;
+    --color-build:  #7fa8d4; --color-build-wash:  #17212b;
+    --color-design: #a9a396; --color-design-wash: #201e1a;
+}
+
 /* Section rhythm and page gutter. Outside @theme because they are only ever
    used as padding, so a full utility scale would add nothing.
 
@@ -151,7 +330,7 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    background: var(--color-paper);
+    background: var(--color-page);
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
@@ -161,11 +340,11 @@
     font-variation-settings: "SOFT" 28, "WONK" 1;
   }
   ::selection {
-    background: var(--color-accent-wash);
-    color: var(--color-accent);
+    background: var(--color-brand-50);
+    color: var(--color-brand-500);
   }
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-brand-500);
     outline-offset: 2px;
   }
 }
@@ -187,7 +366,7 @@
 /* An editorial hairline that fades out rather than stopping dead. */
 .rule-fade {
   height: 1px;
-  background: linear-gradient(90deg, var(--color-line-2), var(--color-line-2) 45%, transparent);
+  background: linear-gradient(90deg, var(--color-line-strong), var(--color-line-strong) 45%, transparent);
 }
 
 /* Paper grain over the hero band only. Without it a large flat warm field
@@ -203,7 +382,7 @@
 
 /* Underline that grows from the left on hover. Used on every prose link. */
 .link-u {
-  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-image: linear-gradient(var(--color-brand-500), var(--color-brand-500));
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -232,21 +411,21 @@
 }
 .browser-bar {
   height: 34px;
-  background: var(--color-paper-2);
+  background: var(--color-muted);
   border-bottom: 1px solid var(--color-line);
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 0 12px;
 }
-.browser-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--color-line-2); }
+.browser-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--color-line-strong); }
 
 /* Every image slot is a labelled placeholder, so an asset that never arrived is
    obvious at review instead of shipping as a grey box. */
 .shot-ph {
   background:
     repeating-linear-gradient(135deg, transparent 0 11px, rgb(20 19 15 / 0.045) 11px 12px),
-    linear-gradient(160deg, var(--color-paper-2), var(--color-paper-3));
+    linear-gradient(160deg, var(--color-muted), var(--color-sunken));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,7 +474,7 @@
    red/green matrix is unreadable to a red-green colourblind reviewer, and that
    page is about being honest, including about that. */
 .cell-pass::before { content: "✓"; color: var(--color-live); font-weight: 700; }
-.cell-fail::before { content: "✕"; color: var(--color-accent); font-weight: 700; }
+.cell-fail::before { content: "✕"; color: var(--color-brand-500); font-weight: 700; }
 .cell-na::before   { content: "–"; color: var(--color-ink-3); }
 
 /* ── Print · /resume only ──────────────────────────────────────────────────

@@ -67,7 +67,7 @@ function Row({ p }: { p: Product }) {
             <span className="shot-ph mt-0.5 h-[30px] w-[30px] shrink-0 rounded-lg" aria-hidden="true" />
           )}
           <span className="min-w-0">
-            <Link href={`/products/${p.slug}/`} className="link-u hover:text-accent">
+            <Link href={`/products/${p.slug}/`} className="link-u hover:text-brand-500">
               {p.name}
             </Link>
             <span className="mt-0.5 block font-sans text-xs2 font-normal text-ink-3">{p.tagline}</span>
@@ -126,13 +126,13 @@ export default function ProductsPage() {
                   availability, ordered by what is usable today
                 </caption>
                 <thead>
-                  <tr className="border-b border-line bg-paper-2">
+                  <tr className="border-b border-line bg-muted">
                     {HEADERS.map((h, i) => (
                       <th
                         key={h}
                         scope="col"
                         className={`whitespace-nowrap px-4 py-3 font-mono text-label uppercase tracking-label text-ink-3 ${
-                          i === 0 ? "tbl-stick bg-paper-2" : ""
+                          i === 0 ? "tbl-stick bg-muted" : ""
                         }`}
                       >
                         {h}

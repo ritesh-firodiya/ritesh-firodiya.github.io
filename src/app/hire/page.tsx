@@ -46,13 +46,13 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section className="border-y border-line bg-paper-2">
+        <section className="border-y border-line bg-muted">
           <div className="mx-auto max-w-page px-gutter py-section">
             <Label>What I take on</Label>
             <h2 className="mt-3 max-w-[20ch] font-display text-d2 font-semibold">Three shapes, and I will tell you if yours is a fourth.</h2>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {SHAPES.map((s) => (
-                <div key={s.title} className={`flex flex-col rounded-card border bg-surface p-7 shadow-lift ${s.feature ? "border-accent/30" : "border-line"}`}>
+                <div key={s.title} className={`flex flex-col rounded-card border bg-surface p-7 shadow-lift ${s.feature ? "border-brand-500/30" : "border-line"}`}>
                   <h3 className="font-display text-h2 font-semibold">{s.title}</h3>
                   <p className="mt-3 text-body text-ink-2">{s.body}</p>
                   <ul className="mt-6 space-y-2.5 text-small text-ink-2">
@@ -73,7 +73,7 @@ export default function HirePage() {
               <ol className="mt-10 border-t border-line">
                 {STEPS.map((s) => (
                   <li key={s.n} className="grid gap-2 border-b border-line py-6 sm:grid-cols-[3rem_1fr] sm:gap-6">
-                    <span className="font-display text-h2 font-semibold text-accent">{s.n}</span>
+                    <span className="font-display text-h2 font-semibold text-brand-500">{s.n}</span>
                     <div>
                       <h3 className="font-display text-h3 font-semibold">{s.title}</h3>
                       <p className="mt-1.5 max-w-prose text-small text-ink-2">{s.body}</p>
@@ -83,7 +83,7 @@ export default function HirePage() {
               </ol>
             </div>
             <aside className="lg:pt-16">
-              <div className="rounded-card border border-line bg-paper-2 p-7">
+              <div className="rounded-card border border-line bg-muted p-7">
                 <Label>Straight answers</Label>
                 <dl className="mt-5 space-y-5 text-small">
                   {ANSWERS.map((a) => (
@@ -91,7 +91,7 @@ export default function HirePage() {
                       <dt className="font-medium text-ink">{a.q}</dt>
                       <dd className="mt-1 text-ink-2">
                         {a.a}
-                        {a.q === "Full-time roles?" && <> <Link href="/resume" className="link-u text-accent">Résumé here</Link>.</>}
+                        {a.q === "Full-time roles?" && <> <Link href="/resume" className="link-u text-brand-500">Résumé here</Link>.</>}
                       </dd>
                     </div>
                   ))}
@@ -101,23 +101,23 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section id="start" className="scroll-mt-20 bg-ink text-ink-inv">
+        <section id="start" className="scroll-mt-20 bg-ink text-ink-inverse">
           <div className="mx-auto max-w-page px-gutter py-section">
-            <p className="font-mono text-label uppercase tracking-label text-ink-inv/55">Start</p>
+            <p className="font-mono text-label uppercase tracking-label text-ink-inverse/55">Start</p>
             <h2 className="mt-4 max-w-[16ch] font-display text-d2 font-semibold">Tell me what you are building.</h2>
-            <p className="mt-5 max-w-measure text-lead text-ink-inv/70">
+            <p className="mt-5 max-w-measure text-lead text-ink-inverse/70">
               Four lines is plenty: what it is, who it is for, when you need it, and what is already
               built. I answer every email within two working days.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="mailto:firodiya.ritesh@gmail.com?subject=Project%20brief&body=What%20it%20is%3A%0AWho%20it%20is%20for%3A%0AWhen%20you%20need%20it%3A%0AWhat%20is%20already%20built%3A%0A"
-                className="inline-flex items-center gap-2 rounded-pill bg-paper px-5 py-3 text-body font-medium text-ink transition hover:bg-accent hover:text-ink-inv"
+                className="inline-flex items-center gap-2 rounded-pill bg-page px-5 py-3 text-body font-medium text-ink transition hover:bg-brand-500 hover:text-ink-inverse"
               >
                 Email me the brief
               </a>
             </div>
-            <p className="mt-6 max-w-measure font-mono text-xs2 text-ink-inv/45">
+            <p className="mt-6 max-w-measure font-mono text-xs2 text-ink-inverse/45">
               The button prefills the subject and the four questions. No form, no CRM, no drip
               sequence — this site is static and stores nothing.
             </p>

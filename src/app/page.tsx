@@ -51,13 +51,13 @@ export default function Home() {
               </p>
 
               <div className="mt-7 flex flex-wrap items-center gap-3">
-                <Link href="/resume" className="inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-2.5 text-small font-medium text-ink-inv transition hover:bg-accent">
+                <Link href="/resume" className="inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-2.5 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
                   Read the résumé
                 </Link>
-                <Link href="/hire" className="inline-flex items-center gap-2 rounded-pill border border-line-2 bg-surface px-5 py-2.5 text-small font-medium transition hover:border-accent hover:text-accent">
+                <Link href="/hire" className="inline-flex items-center gap-2 rounded-pill border border-line-strong bg-surface px-5 py-2.5 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
                   Work with me
                 </Link>
-                <a href={`mailto:${profile.email}`} className="link-u text-small font-medium text-ink-3 hover:text-accent">
+                <a href={`mailto:${profile.email}`} className="link-u text-small font-medium text-ink-3 hover:text-brand-500">
                   {profile.email}
                 </a>
               </div>
@@ -89,14 +89,14 @@ export default function Home() {
         {/* ══ the three doors ══ Three readers land here and each wants a
             different thing. Naming them costs one band and removes the guessing
             the old sidebar forced. */}
-        <section className="border-y border-line bg-paper-2">
+        <section className="border-y border-line bg-muted">
           <div className="mx-auto grid max-w-page gap-px bg-line sm:grid-cols-3">
             {DOORS.map((d) => (
-              <Link key={d.href} href={d.href} className="group bg-paper-2 px-gutter py-9 transition hover:bg-surface">
+              <Link key={d.href} href={d.href} className="group bg-muted px-gutter py-9 transition hover:bg-surface">
                 <Label>{d.kicker}</Label>
                 <h2 className="mt-3 font-display text-h3 font-semibold text-ink">{d.title}</h2>
                 <p className="mt-2 max-w-[34ch] text-small text-ink-2">{d.body}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-small font-medium text-accent">
+                <span className="mt-4 inline-flex items-center gap-1.5 text-small font-medium text-brand-500">
                   {d.cta} <span className="transition group-hover:translate-x-1">→</span>
                 </span>
               </Link>
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-b border-line bg-paper">
+        <section className="border-b border-line bg-page">
           <div className="mx-auto flex max-w-page flex-wrap items-center gap-x-10 gap-y-4 px-gutter py-7">
             <Label>Shipped for</Label>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-display text-h3 font-medium text-ink-2">
@@ -121,7 +121,7 @@ export default function Home() {
               <Label>Products</Label>
               <h2 className="mt-3 max-w-[20ch] font-display text-d2 font-semibold">Things I built and put in front of people.</h2>
             </div>
-            <Link href="/products" className="link-u inline-flex items-center gap-1.5 pb-1 text-small font-medium text-accent">
+            <Link href="/products" className="link-u inline-flex items-center gap-1.5 pb-1 text-small font-medium text-brand-500">
               All {products.length} products →
             </Link>
           </div>
@@ -133,7 +133,7 @@ export default function Home() {
                 {(() => {
                   const m = mediaFor(p.slug);
                   return m.shots[0] ? (
-                    <div className="flex h-[320px] items-center justify-center overflow-hidden rounded-card border border-line bg-paper-2 p-5">
+                    <div className="flex h-[320px] items-center justify-center overflow-hidden rounded-card border border-line bg-muted p-5">
                       {m.kind === "web" ? (
                         <div className="browser w-full">
                           <div className="browser-bar"><span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" /></div>
@@ -163,7 +163,7 @@ export default function Home() {
                 <h3 className="mt-3 font-display text-h2 font-semibold">{p.name}</h3>
                 <p className="mt-1 font-display text-small italic text-ink-2">{p.tagline}</p>
                 <p className="mt-3 text-small text-ink-2">{p.blurb}</p>
-                <Link href={`/products/${p.slug}/`} className="link-u mt-auto inline-flex items-center gap-1.5 pt-5 text-small font-medium text-accent">
+                <Link href={`/products/${p.slug}/`} className="link-u mt-auto inline-flex items-center gap-1.5 pt-5 text-small font-medium text-brand-500">
                   How it is paid for →
                 </Link>
               </article>
@@ -178,9 +178,9 @@ export default function Home() {
             </div>
             <div className="mt-7 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
               {shipped.filter((p) => !FEATURED.includes(p.slug)).map((p) => (
-                <Link key={p.slug} href={`/products/${p.slug}/`} className="group bg-surface p-5 transition hover:bg-paper-2">
+                <Link key={p.slug} href={`/products/${p.slug}/`} className="group bg-surface p-5 transition hover:bg-muted">
                   <ModelPill model={p.model} />
-                  <h4 className="mt-3 font-display text-h3 font-semibold group-hover:text-accent">{p.name}</h4>
+                  <h4 className="mt-3 font-display text-h3 font-semibold group-hover:text-brand-500">{p.name}</h4>
                   <p className="mt-1.5 text-small text-ink-2">{p.blurb}</p>
                   <p className="mt-3 font-mono text-xs2 text-ink-3">{p.stack.slice(0, 4).join(" · ")}</p>
                 </Link>
@@ -190,14 +190,14 @@ export default function Home() {
         </section>
 
         {/* ══ experience ══ */}
-        <section id="experience" className="mt-section scroll-mt-20 border-y border-line bg-paper-2">
+        <section id="experience" className="mt-section scroll-mt-20 border-y border-line bg-muted">
           <div className="mx-auto max-w-page px-gutter py-section">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <Label>Experience</Label>
                 <h2 className="mt-3 max-w-[22ch] font-display text-d2 font-semibold">Nine years, mostly end-to-end.</h2>
               </div>
-              <Link href="/resume" className="link-u inline-flex items-center gap-1.5 pb-1 text-small font-medium text-accent">Full résumé →</Link>
+              <Link href="/resume" className="link-u inline-flex items-center gap-1.5 pb-1 text-small font-medium text-brand-500">Full résumé →</Link>
             </div>
             <ol className="mt-10 border-t border-line">
               {profile.experiences.map((e) => (
@@ -205,7 +205,7 @@ export default function Home() {
                   <p className="font-mono text-xs2 uppercase tracking-label text-ink-3">{e.from} — {e.to}</p>
                   <div>
                     <h3 className="font-display text-h3 font-semibold">
-                      {e.position} · <span className="text-accent">{e.company}</span>
+                      {e.position} · <span className="text-brand-500">{e.company}</span>
                     </h3>
                     <p className="mt-1 max-w-prose text-small text-ink-2">{e.description}</p>
                   </div>
@@ -233,17 +233,17 @@ export default function Home() {
         </section>
 
         {/* ══ contact ══ */}
-        <section id="contact" className="scroll-mt-20 border-t border-line bg-ink text-ink-inv">
+        <section id="contact" className="scroll-mt-20 border-t border-line bg-ink text-ink-inverse">
           <div className="mx-auto max-w-page px-gutter py-section">
-            <p className="font-mono text-label uppercase tracking-label text-ink-inv/55">Contact</p>
+            <p className="font-mono text-label uppercase tracking-label text-ink-inverse/55">Contact</p>
             <h2 className="mt-4 max-w-[18ch] font-display text-d2 font-semibold">Hiring, building, or just want to argue about tooling?</h2>
-            <p className="mt-5 max-w-measure text-lead text-ink-inv/70">{profile.currently}</p>
+            <p className="mt-5 max-w-measure text-lead text-ink-inverse/70">{profile.currently}</p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 rounded-pill bg-paper px-5 py-3 text-body font-medium text-ink transition hover:bg-accent hover:text-ink-inv">
+              <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 rounded-pill bg-page px-5 py-3 text-body font-medium text-ink transition hover:bg-brand-500 hover:text-ink-inverse">
                 {profile.email}
               </a>
-              <Link href="/resume" className="inline-flex items-center gap-2 rounded-pill border border-ink-inv/25 px-5 py-3 text-body font-medium text-ink-inv transition hover:border-ink-inv">Résumé</Link>
-              <Link href="/hire" className="inline-flex items-center gap-2 rounded-pill border border-ink-inv/25 px-5 py-3 text-body font-medium text-ink-inv transition hover:border-ink-inv">Work with me</Link>
+              <Link href="/resume" className="inline-flex items-center gap-2 rounded-pill border border-ink-inverse/25 px-5 py-3 text-body font-medium text-ink-inverse transition hover:border-ink-inverse">Résumé</Link>
+              <Link href="/hire" className="inline-flex items-center gap-2 rounded-pill border border-ink-inverse/25 px-5 py-3 text-body font-medium text-ink-inverse transition hover:border-ink-inverse">Work with me</Link>
             </div>
           </div>
         </section>

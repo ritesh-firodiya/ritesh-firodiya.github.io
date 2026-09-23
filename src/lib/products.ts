@@ -128,7 +128,7 @@ export const MODEL: Record<Model, { label: string; fg: string; bg: string }> = {
   "one-time": { label: "One-time", fg: "text-m-once", bg: "bg-m-once-wash" },
   subscription: { label: "Subscription", fg: "text-m-sub", bg: "bg-m-sub-wash" },
   "per-period": { label: "Per tax year", fg: "text-m-year", bg: "bg-m-year-wash" },
-  undecided: { label: "Undecided", fg: "text-ink-3", bg: "bg-paper-2" },
+  undecided: { label: "Undecided", fg: "text-ink-3", bg: "bg-muted" },
 };
 
 export const STATE: Record<PlatformState, { fg: string; bg: string }> = {
@@ -191,6 +191,41 @@ export function galleriesFor(slug: string): Gallery[] {
         : `/products/${slug}/designs/${g.surface}/`,
   }));
 }
+
+/* ── Style-guide conformance ──────────────────────────────────────────────
+   A design set is published only if it follows ~/git/personal/STYLE-GUIDE.md;
+   scripts/designs/conformance.mjs is the gate and its verdicts land here.
+
+   Every product is recorded, passing or not. A set that fails is not copied
+   into the export at all — so there is nothing to link to — and the product
+   page says which checks failed instead of quietly dropping the section. That
+   is the same rule the rest of this site runs on: a missing thing is visibly
+   missing, with its reason. */
+export type Check = { id: string; ok: boolean; detail: string };
+export type SurfaceVerdict = { pass: boolean; checks: Check[] };
+type StyleGuide = {
+  canonical: string;
+  results: Record<string, { surfaces: Record<string, SurfaceVerdict>; publishable: string[] }>;
+};
+const styleGuide = (designsRaw as unknown as { styleGuide?: StyleGuide }).styleGuide;
+
+/** Surfaces this product draws that do NOT follow the guide, with the reasons. */
+export function withheldFor(slug: string): { surface: string; failed: Check[] }[] {
+  const r = styleGuide?.results?.[slug];
+  if (!r) return [];
+  return Object.entries(r.surfaces)
+    .filter(([, v]) => !v.pass)
+    .map(([surface, v]) => ({ surface, failed: v.checks.filter((c) => !c.ok) }))
+    .sort((a, b) => a.surface.localeCompare(b.surface));
+}
+
+export const styleGuideCanonical = styleGuide?.canonical ?? null;
+
+/** How many products have at least one conforming surface, out of how many. */
+export const conformance = {
+  passing: Object.values(styleGuide?.results ?? {}).filter((r) => r.publishable.length > 0).length,
+  total: Object.keys(styleGuide?.results ?? {}).length,
+};
 
 export const designsGeneratedOn: string = designsRaw.generatedOn;
 export const totalScreens = Object.values(designSets).reduce((n, s) => n + s.screens.length, 0);

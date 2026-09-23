@@ -43,7 +43,7 @@ export default async function GoPage({ params }: { params: Promise<{ slug: strin
         {open.length > 0 ? (
           <div className="mt-6 grid gap-2.5">
               {open.map(([k, v]) => (
-                <Link key={k} href={v.url ?? "#"} className="flex items-center justify-center gap-2.5 rounded-pill bg-ink px-5 py-3 font-medium text-ink-inv transition hover:bg-accent">
+                <Link key={k} href={v.url ?? "#"} className="flex items-center justify-center gap-2.5 rounded-pill bg-ink px-5 py-3 font-medium text-ink-inverse transition hover:bg-brand-500">
                   {k === "ios" ? "App Store / TestFlight" : k === "android" ? "Google Play" : "Open the site"}
                 </Link>
               ))}
@@ -69,11 +69,11 @@ export default async function GoPage({ params }: { params: Promise<{ slug: strin
         )}
 
         <div className="mt-7 grid gap-2.5">
-          <Link href={`/products/${p.slug}/`} className="flex items-center justify-center gap-2 rounded-pill border border-line-2 px-5 py-2.5 text-small font-medium transition hover:border-accent">
+          <Link href={`/products/${p.slug}/`} className="flex items-center justify-center gap-2 rounded-pill border border-line-strong px-5 py-2.5 text-small font-medium transition hover:border-brand-500">
             Read about the app
           </Link>
           {open.length === 0 && (
-            <Link href="/support" className="flex items-center justify-center gap-2 rounded-pill border border-line-2 px-5 py-2.5 text-small font-medium transition hover:border-accent">
+            <Link href="/support" className="flex items-center justify-center gap-2 rounded-pill border border-line-strong px-5 py-2.5 text-small font-medium transition hover:border-brand-500">
               Tell me when it opens
             </Link>
           )}

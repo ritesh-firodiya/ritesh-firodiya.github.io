@@ -29,13 +29,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <Link href="/products" className="link-u inline-flex items-center gap-1.5 text-small text-ink-3 hover:text-ink">← Work</Link>
             <div className="mt-7 flex flex-wrap items-center gap-2">
               <StatePill state="live">{c.status}</StatePill>
-              <span className="rounded-pill bg-paper-2 px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">Solo build</span>
-              <span className="rounded-pill bg-paper-2 px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">{c.period}</span>
+              <span className="rounded-pill bg-muted px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">Solo build</span>
+              <span className="rounded-pill bg-muted px-2.5 py-1 font-mono text-label uppercase tracking-label text-ink-3">{c.period}</span>
             </div>
             <h1 className="mt-6 max-w-[14ch] font-display text-d1 font-semibold">{c.product}</h1>
             <p className="mt-5 max-w-measure font-display text-lead italic text-ink-2">{c.title}</p>
             {c.link && (
-              <a href={c.link.url} className="mt-9 inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+              <a href={c.link.url} className="mt-9 inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
                 Open {c.link.label} ↗
               </a>
             )}
@@ -63,7 +63,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                       <div className="mt-6 space-y-5">
                         {s.list.map((li) => (
                           <div key={li.t} className="rounded-card border border-line bg-surface p-5">
-                            <p className="font-mono text-label uppercase tracking-label text-accent">{li.t}</p>
+                            <p className="font-mono text-label uppercase tracking-label text-brand-500">{li.t}</p>
                             <p className="mt-2.5 text-small text-ink-2">{li.b}</p>
                           </div>
                         ))}
@@ -77,9 +77,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 <ul className="mt-3 space-y-1.5 text-small text-ink-2">
                   {c.stack.map((s) => <li key={s}>{s}</li>)}
                 </ul>
-                <div className="mt-8 rounded-card border border-line bg-paper-2 p-5">
+                <div className="mt-8 rounded-card border border-line bg-muted p-5">
                   <p className="text-small text-ink-2">Building something in this shape?</p>
-                  <Link href="/hire" className="mt-3 inline-flex items-center gap-1.5 text-small font-medium text-accent">Work with me →</Link>
+                  <Link href="/hire" className="mt-3 inline-flex items-center gap-1.5 text-small font-medium text-brand-500">Work with me →</Link>
                 </div>
               </aside>
             </div>

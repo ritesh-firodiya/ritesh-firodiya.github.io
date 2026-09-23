@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="bg-paper-3">
+    <div className="bg-sunken">
       {/* Toolbar disappears in print — the sheet below is the PDF. */}
-      <div className="no-print sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
+      <div className="no-print sticky top-0 z-40 border-b border-line bg-page/95 backdrop-blur">
         <div className="mx-auto flex max-w-page flex-wrap items-center gap-3 px-gutter py-3.5">
           <Link href="/" className="link-u inline-flex items-center gap-1.5 text-small text-ink-2 hover:text-ink">← Back to site</Link>
           <div className="ml-auto flex flex-wrap items-center gap-2.5">
-            <a href="/resume.pdf" className="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inv transition hover:bg-accent">
+            <a href="/resume.pdf" className="inline-flex items-center gap-2 rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
               Download PDF
             </a>
           </div>
@@ -73,7 +73,7 @@ export default function ResumePage() {
             ))}
             <li className="text-ink-2">
               …and {profile.projects.length - 5} more —{" "}
-              <Link href="/products" className="link-u font-medium text-accent">the full list</Link>.
+              <Link href="/products" className="link-u font-medium text-brand-500">the full list</Link>.
             </li>
           </ul>
         </section>

@@ -22,10 +22,11 @@ CSS-first `@theme` meant the design tokens ported almost verbatim.
 ```bash
 pnpm dev          # dev server
 pnpm designs      # pull the product design sets — see § Designs
+pnpm contrast     # WCAG AA on both palettes, computed from globals.css
 pnpm build        # static export → out/
 pnpm lint         # eslint
 pnpm typecheck    # tsc --noEmit
-pnpm check        # designs + lint + typecheck + build — run before pushing
+pnpm check        # designs + contrast + lint + typecheck + build
 ```
 
 ## The rule this site exists to enforce
@@ -86,7 +87,7 @@ src/data/        products.json, profile.json
 public/          app-ads.txt, resume.pdf, favicon, logo
 public/designs/  GITIGNORED — pulled from the private app repos, see § Designs
 public/products/ GITIGNORED — the gallery front doors, same source
-scripts/designs/ where a design set comes from (local vs private-repo clone)
+scripts/designs/ where a set comes from, and whether it may be published
 .context/designs/  the approved HTML+Tailwind design set this site was built from
 ```
 
@@ -155,6 +156,51 @@ and land on a public host:
 The OpenStreetMap `<iframe>`s in the property-app set are deliberately left
 alone — they are part of that design, and turning them into flat images would
 change it. They do leak the visitor's IP to OSM.
+
+## The style guide
+
+`~/git/personal/STYLE-GUIDE.md` governs the **product** design sets. Most of it
+is about things a website does not have — `routes.js`, the demo navbar, the
+390×844 frame, the flow chart, one screen per file. Two parts apply here:
+
+- **§8 Tokens, in full.** `src/app/globals.css` declares the same palette
+  contract every product set declares, so one vocabulary covers the estate.
+  Role names never hues; the CSS variable is the Tailwind token path with dots
+  as dashes; every value a `var(--token)`; a theme is a **token remap**, never
+  a `dark:` prefix. Tailwind v4's `--color-` namespace prefix is the only
+  unavoidable difference from a set's `shared.css`.
+- **§3's spirit** — lucide only, pinned versions, no class that resolves to
+  nothing.
+
+`scripts/designs/conformance.mjs` is the **publish gate**. A design set that
+does not follow the guide is not copied into the export at all, so it cannot be
+reached — not merely unlinked — and the product page states which checks failed.
+Hiding the gap would make a half-migrated estate look finished.
+
+What it checks, all mechanical:
+
+| Check | §  | Asks |
+|---|---|---|
+| `files` | 1 | all seven files present |
+| `shared-files` | 13 | `_chrome.js` / `_gallery.js` byte-identical to the canonical set |
+| `pinned-cdns` | 3 | tailwind 3.4.17, lucide 0.544.0 — nothing bare, nothing `@latest` |
+| `routes-manifest` | 2 | `window.ROUTES` with `product`, `surface`, `flows`, `flow.start` |
+| `declared-screens` | 2 | every file on disk is declared, and every declared file exists |
+| `screen-identity` | 2 | every screen carries `data-chrome` and a matching `data-file` |
+| `palette-tokens` | 8 | all 31 required tokens declared in `shared.css` |
+| `no-literal-colours` | 8 | no literal hex in `tailwind.config.js` |
+| `one-stylesheet` | 8 | `shared.css` and nothing else |
+
+The four the guide lists that are **not** here — links, click-through,
+flow-complete, acyclic (§12) — need the whole set walked and belong in the
+product repo, not in a website's build.
+
+**The canonical set is `charades/mobile`**, per §13. If charades itself is
+missing the sync throws rather than passing every set by default.
+
+`pnpm contrast` asserts every foreground/background pair in **both** palettes
+against WCAG AA, computed from `globals.css`. A palette comment claiming a
+ratio is a claim, and the theme this replaced carried one that was false.
 
 ## Tokens
 

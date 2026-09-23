@@ -7,7 +7,7 @@ import {
   IconGit, IconDesign, IconLive, IconAndroid, IconApple,
 } from "@/components/icons";
 import {
-  products, bySlug, mediaFor, screensFor, galleriesFor, MODEL,
+  products, bySlug, mediaFor, screensFor, galleriesFor, withheldFor, MODEL,
   type Product, type Gallery,
 } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
@@ -71,7 +71,7 @@ function ProductLinks({ p, galleries }: { p: Product; galleries: Gallery[] }) {
         <div className="mt-4 flex flex-wrap items-center gap-2">
           {links.map((l) => (
             <a key={l.label} href={l.href}
-               className="inline-flex items-center gap-1.5 rounded-pill border border-line-2 bg-surface px-2.5 py-1 text-small font-medium transition hover:border-accent hover:text-accent">
+               className="inline-flex items-center gap-1.5 rounded-pill border border-line-strong bg-surface px-2.5 py-1 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
               <l.Icon size={14} strokeWidth={1.75} aria-hidden /> {l.label}
             </a>
           ))}
@@ -81,7 +81,7 @@ function ProductLinks({ p, galleries }: { p: Product; galleries: Gallery[] }) {
         {docs.map((d, i) => (
           <span key={d.label} className="flex items-center gap-3">
             {i > 0 && <span aria-hidden>·</span>}
-            <a href={d.href} className="link-u hover:text-accent">{d.label}</a>
+            <a href={d.href} className="link-u hover:text-brand-500">{d.label}</a>
           </span>
         ))}
       </div>
@@ -133,6 +133,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const m = mediaFor(p.slug);
   const screens = screensFor(p.slug);
   const galleries = galleriesFor(p.slug);
+  const withheld = withheldFor(p.slug);
   const study = studyBySlug(p.slug);
   const others = products.filter((o) => o.slug !== p.slug).slice(0, 5);
   const live = Object.values(p.platforms).find((v) => v?.state === "live");
@@ -169,7 +170,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <p className="mt-2 max-w-prose text-small text-ink-2">{p.blurb}</p>
               <ProductLinks p={p} galleries={galleries} />
               {p.unreleasedNote && (
-                <p className="mt-2.5 max-w-prose border-l-2 border-line-2 pl-3 text-small text-ink-2">
+                <p className="mt-2.5 max-w-prose border-l-2 border-line-strong pl-3 text-small text-ink-2">
                   {p.unreleasedNote}
                 </p>
               )}
@@ -178,7 +179,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </section>
 
         {/* 2 · the facts, stated before anything asks you to install */}
-        <section className="border-y border-line bg-paper-2">
+        <section className="border-y border-line bg-muted">
           <div className="mx-auto max-w-page px-gutter py-5">
             <Facts p={p} />
             {p.modelDetail && (
@@ -208,7 +209,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <Label>Tech</Label>
               <ul className="flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
-                  <li key={s} className="rounded-pill border border-line-2 bg-surface px-2.5 py-0.5 font-mono text-xs2 text-ink-2">
+                  <li key={s} className="rounded-pill border border-line-strong bg-surface px-2.5 py-0.5 font-mono text-xs2 text-ink-2">
                     {s}
                   </li>
                 ))}
@@ -257,7 +258,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-1 text-xs2 text-ink-3">No store screenshots yet — these are the screens it is built around.</p>
             <ul className="mt-3 flex flex-wrap gap-1.5">
               {p.screens.map((s) => (
-                <li key={s} className="rounded-pill border border-line-2 bg-surface px-2.5 py-0.5 font-mono text-xs2 text-ink-2">
+                <li key={s} className="rounded-pill border border-line-strong bg-surface px-2.5 py-0.5 font-mono text-xs2 text-ink-2">
                   {s}
                 </li>
               ))}
@@ -267,7 +268,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         {/* 5 · designs — the app repo's own gallery, at its own URL */}
         {galleries.length > 0 && (
-          <section className="border-y border-line bg-paper-2">
+          <section className="border-y border-line bg-muted">
             <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-gutter py-5">
               <div>
                 <Label>Designs · {screens.length} screens</Label>
@@ -279,12 +280,38 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <div className="flex flex-wrap gap-2">
                 {galleries.map((g) => (
                   <a key={g.href} href={g.href}
-                     className="inline-flex items-center gap-2 rounded-pill bg-ink px-3.5 py-1.5 text-small font-medium text-ink-inv transition hover:bg-accent">
+                     className="inline-flex items-center gap-2 rounded-pill bg-ink px-3.5 py-1.5 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
                     <IconDesign size={14} strokeWidth={1.75} aria-hidden />
                     {galleries.length > 1 ? SURFACE_LABEL[g.surface] ?? g.surface : "Open the design set"}
                   </a>
                 ))}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* 5b · designs withheld — a set that does not follow the style guide is
+            not published, and the page says so rather than dropping the section.
+            Hiding it would make a half-migrated estate look finished. */}
+        {galleries.length === 0 && withheld.length > 0 && (
+          <section className="border-y border-line bg-muted">
+            <div className="mx-auto max-w-page px-gutter py-5">
+              <Label>Designs · not published</Label>
+              <p className="mt-1 max-w-prose text-small text-ink-2">
+                This product&rsquo;s design set does not yet follow the{" "}
+                <span className="font-medium text-ink">design set style guide</span>, so it is not
+                published here. The screens exist in the app repo; what is missing is the shared
+                machinery every set is read through.
+              </p>
+              <ul className="mt-3 space-y-1.5">
+                {withheld.map((w) => (
+                  <li key={w.surface} className="text-xs2 text-ink-3">
+                    <span className="font-mono uppercase tracking-label text-ink-2">{w.surface}</span>
+                    {" — "}
+                    {w.failed.map((c) => c.id).join(", ")}
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         )}
@@ -329,7 +356,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     The problem, the architecture, and the decisions worth defending.
                   </p>
                   <Link href={`/work/${study.slug}/`}
-                        className="mt-3 inline-flex items-center gap-2 rounded-pill border border-line-2 px-3.5 py-1.5 text-small font-medium transition hover:border-accent hover:text-accent">
+                        className="mt-3 inline-flex items-center gap-2 rounded-pill border border-line-strong px-3.5 py-1.5 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
                     Read the case study →
                   </Link>
                 </div>
@@ -343,11 +370,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <Label>More products</Label>
             <div className="mt-2.5 flex flex-wrap gap-x-5 gap-y-2">
               {others.map((o) => (
-                <Link key={o.slug} href={`/products/${o.slug}/`} className="link-u text-small font-medium hover:text-accent">
+                <Link key={o.slug} href={`/products/${o.slug}/`} className="link-u text-small font-medium hover:text-brand-500">
                   {o.name}
                 </Link>
               ))}
-              <Link href="/products" className="link-u ml-auto text-small font-medium text-accent">
+              <Link href="/products" className="link-u ml-auto text-small font-medium text-brand-500">
                 All {products.length} →
               </Link>
             </div>

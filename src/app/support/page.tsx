@@ -42,22 +42,22 @@ export default function SupportPage() {
                 <h2 className="font-display text-h2 font-semibold">{p.title}</h2>
                 <p className="mt-3 text-small text-ink-2">{p.body}</p>
                 <a href={`mailto:${EMAIL}?subject=${encodeURIComponent(p.subject)}`} className="mt-auto pt-7">
-                  <span className="inline-flex items-center gap-2 rounded-pill border border-line-2 px-4 py-2 text-small font-medium transition hover:border-accent hover:text-accent">
+                  <span className="inline-flex items-center gap-2 rounded-pill border border-line-strong px-4 py-2 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
                     {p.cta}
                   </span>
                 </a>
               </div>
             ))}
           </div>
-          <div className="mt-8 rounded-card border border-line bg-paper-2 p-6">
+          <div className="mt-8 rounded-card border border-line bg-muted p-6">
             <p className="text-body text-ink-2">
-              Or just email <a href={`mailto:${EMAIL}`} className="link-u font-medium text-accent">{EMAIL}</a> —
+              Or just email <a href={`mailto:${EMAIL}`} className="link-u font-medium text-brand-500">{EMAIL}</a> —
               every button above goes to the same inbox, with the subject already filled in.
             </p>
           </div>
         </section>
 
-        <section className="border-t border-line bg-paper-2">
+        <section className="border-t border-line bg-muted">
           <div className="mx-auto max-w-page px-gutter py-section">
             <h2 className="font-display text-d2 font-semibold">Asked often enough to answer here.</h2>
             <div className="mt-9 grid gap-x-12 gap-y-7 lg:grid-cols-2">
@@ -67,7 +67,7 @@ export default function SupportPage() {
                   In your Google Play or App Store account, not in the app — neither store lets a
                   developer cancel on your behalf. Access continues to the end of the period you have
                   already paid for. {subs.join(", ")} are the subscriptions;{" "}
-                  <Link href="/products" className="link-u text-accent">the full list is here</Link>.
+                  <Link href="/products" className="link-u text-brand-500">the full list is here</Link>.
                 </p>
               </div>
               <div>

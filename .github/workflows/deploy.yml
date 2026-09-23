@@ -57,6 +57,11 @@ jobs:
           }
           pnpm designs
 
+      # Both palettes, every pair, computed from globals.css rather than
+      # remembered. The theme this replaced carried a comment claiming a ratio
+      # the colour beside it did not meet.
+      - run: pnpm contrast
+
       - run: pnpm build
 
       # app-ads.txt is live AdMob revenue for Tic Tac Toe — AdMob only honours it

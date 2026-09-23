@@ -30,8 +30,8 @@ export default function LegalPage() {
             <div className="tbl-scroll">
               <table className="w-full border-collapse text-left">
                 <thead>
-                  <tr className="border-b border-line bg-paper-2">
-                    <th scope="col" className="tbl-stick bg-paper-2 px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">App</th>
+                  <tr className="border-b border-line bg-muted">
+                    <th scope="col" className="tbl-stick bg-muted px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">App</th>
                     <th scope="col" className="px-4 py-3.5 font-mono text-label uppercase tracking-label text-ink-3">Documents</th>
                   </tr>
                 </thead>
@@ -39,12 +39,12 @@ export default function LegalPage() {
                   {withLegal.map((p) => (
                     <tr key={p.slug} className="border-b border-line last:border-0">
                       <th scope="row" className="tbl-stick px-4 py-4 text-left font-display text-h3 font-semibold">
-                        <Link href={`/products/${p.slug}/`} className="link-u hover:text-accent">{p.name}</Link>
+                        <Link href={`/products/${p.slug}/`} className="link-u hover:text-brand-500">{p.name}</Link>
                       </th>
                       <td className="px-4 py-4">
-                        {p.legal.privacy && <Link href={p.legal.privacy} className="link-u text-accent">Privacy</Link>}
+                        {p.legal.privacy && <Link href={p.legal.privacy} className="link-u text-brand-500">Privacy</Link>}
                         {p.legal.privacy && p.legal.delete && <span className="text-ink-3"> · </span>}
-                        {p.legal.delete && <Link href={p.legal.delete} className="link-u text-accent">Delete account</Link>}
+                        {p.legal.delete && <Link href={p.legal.delete} className="link-u text-brand-500">Delete account</Link>}
                         {p.legal.privacyNote && <span className="mt-1 block text-xs2 text-ink-3">{p.legal.privacyNote}</span>}
                       </td>
                     </tr>

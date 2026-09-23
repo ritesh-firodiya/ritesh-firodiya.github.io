@@ -47,7 +47,7 @@ export default async function Image() {
           <div style={{ height: 1, background: LINE, marginBottom: 28 }} />
           <div style={{ display: "flex", gap: 40, fontSize: 24, color: INK3 }}>
             <div style={{ display: "flex" }}>Products</div>
-            <div style={{ display: "flex" }}>Design system</div>
+            <div style={{ display: "flex" }}>Screens</div>
             <div style={{ display: "flex" }}>Process</div>
             <div style={{ display: "flex", marginLeft: "auto", color: ACCENT }}>
               ritesh-firodiya.github.io

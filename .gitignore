@@ -20,3 +20,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Design sets pulled from the private app repos at build time.
+# scripts/sync-designs.mjs writes these; they are never committed here.
+# See CLAUDE.md, section Designs.
+/public/designs/
+/public/products/

@@ -7,8 +7,8 @@ Guidance for Claude Code working in this repository.
 The single public site for Ritesh Firodiya, deployed to **GitHub Pages** at
 https://ritesh-firodiya.github.io/ via GitHub Actions on every push to `main`.
 
-It carries everything: the portfolio, every app with its real price, the
-published design system, the development and marketing process, and legal.
+It carries everything: the portfolio, every app and how it is paid for, the
+screens each was built from, and legal.
 
 Stack: **Next.js 16 (App Router) + React 19 + Tailwind v4**, statically exported.
 Node 22, pnpm. No server, no request-time data, no client state.
@@ -21,10 +21,11 @@ CSS-first `@theme` meant the design tokens ported almost verbatim.
 
 ```bash
 pnpm dev          # dev server
+pnpm designs      # pull the product design sets — see § Designs
 pnpm build        # static export → out/
 pnpm lint         # eslint
 pnpm typecheck    # tsc --noEmit
-pnpm check        # lint + typecheck + build — run this before pushing
+pnpm check        # designs + lint + typecheck + build — run before pushing
 ```
 
 ## The rule this site exists to enforce
@@ -83,7 +84,10 @@ src/components/  site-chrome (header/footer), pills
 src/lib/         products, profile, design, notes, process — typed accessors
 src/data/        products.json, profile.json
 public/          app-ads.txt, resume.pdf, favicon, logo
-.context/designs/  the approved HTML+Tailwind design set this was built from
+public/designs/  GITIGNORED — pulled from the private app repos, see § Designs
+public/products/ GITIGNORED — the gallery front doors, same source
+scripts/designs/ where a design set comes from (local vs private-repo clone)
+.context/designs/  the approved HTML+Tailwind design set this site was built from
 ```
 
 Dynamic route families: `/products/[slug]`, `/go/[slug]`, `/notes/[slug]`. Each
@@ -101,6 +105,56 @@ set with two surfaces also gets `/products/<slug>/designs/<surface>/`.
 The same script neutralises links a gallery makes to screens that were never
 drawn — the href goes, the label and a `title` stay — so the gap is visible
 rather than a 404.
+
+## Designs
+
+**The screens are not in this repo and must never be committed to it.** They
+live in the private app repos under `.context/designs/`, and
+`scripts/sync-designs.mjs` pulls them at build time. `public/designs/` and
+`public/products/` are gitignored.
+
+```bash
+pnpm designs     # local:  reads ~/git/products/<app>/.context/designs
+DESIGNS_SOURCE=remote DESIGNS_TOKEN=<pat> pnpm designs   # what CI does
+```
+
+`scripts/designs/sources.mjs` picks the source: remote when `DESIGNS_TOKEN` is
+set, local otherwise, and `DESIGNS_SOURCE=remote|local` forces it. Remote is a
+`--depth 1 --filter=blob:none --sparse` clone of each repo's default branch,
+cached by commit SHA under `node_modules/.cache/designs/`.
+
+Why it works this way:
+
+- **A public repo does not store private work.** The site can show the screens
+  — Pages is public either way — but nothing private enters this repo's
+  history, where it would be permanent.
+- **A copy refreshed by hand is a copy that is wrong.** It was. Before this,
+  the committed set was short 31 aakalan screens, 8 askcal, 4 tic-tac-toe and 1
+  imposter, and still published a charades screen that had been deleted
+  upstream. The site showed a design set nobody had approved and nothing said
+  so. The build now pulls `main`, so what ships is what is merged.
+- **CI needs `secrets.DESIGNS_TOKEN`** — a fine-grained PAT on `ritvi-apps`
+  with one permission, Contents: read. It expires. When it does the deploy
+  fails with a named error rather than publishing a site with holes in it.
+
+Two guards run on every file, because these bytes come out of a private repo
+and land on a public host:
+
+- **CDN vendoring.** Every `src`/`href` on `cdn.tailwindcss.com`, `unpkg.com`,
+  `cdn.jsdelivr.net` and `cdnjs.cloudflare.com` is downloaded into
+  `public/designs/_vendor/` and rewritten — scripts *and* stylesheets, since
+  reactflow ships both. Anything left pointing at those hosts throws. Do not
+  re-hardcode the asset list: an earlier version hardcoded tailwind and lucide,
+  and silently missed reactflow, chart.js, mermaid and react when the sets
+  grew. `lucide@latest` is pinned to `0.544.0` so two builds of one commit
+  produce the same bytes.
+- **A secret scan.** AWS/Google/GitHub/Slack/Stripe key shapes and private-key
+  blocks. A wireframe that hardcoded a real key to make a demo work would
+  otherwise be published and never looked at again.
+
+The OpenStreetMap `<iframe>`s in the property-app set are deliberately left
+alone — they are part of that design, and turning them into flat images would
+change it. They do leak the visitor's IP to OSM.
 
 ## Tokens
 
@@ -140,12 +194,18 @@ Edit the documents here. Nothing syncs them back.
 - `/legal/<app>/<doc>.html` are static files in `public/`, deliberately not Next
   routes — the path suffix stays byte-identical to the old URL, so the redirect
   is a pure host swap and no legal text passes through a re-author.
-- The design set in `.context/designs/` is the spec. **When a page and its
-  wireframe disagree, the wireframe wins** and the page is corrected.
+- The design set in `.context/designs/` is this site's own spec. **When a page
+  and its wireframe disagree, the wireframe wins** and the page is corrected.
+  This is the *site's* design set; the products' sets are pulled, not stored —
+  see § Designs.
 
 ## Deploy
 
-Push to `main` → `.github/workflows/deploy.yml` runs lint, typecheck, build, the
-`app-ads.txt` assertion, then publishes `out/`. No staging environment.
+Push to `main` → `.github/workflows/deploy.yml` runs lint, typecheck, the design
+pull, build, the `app-ads.txt` assertion, then publishes `out/`. No staging
+environment.
 
-One-time setup: repo **Settings → Pages → Source = GitHub Actions**.
+One-time setup:
+- repo **Settings → Pages → Source = GitHub Actions**
+- repo **Settings → Secrets → Actions → `DESIGNS_TOKEN`**, a fine-grained PAT
+  on `ritvi-apps` with Contents: read. Without it the deploy fails by design.

@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "designs": "node scripts/sync-designs.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "pnpm lint && pnpm typecheck && pnpm build",
+    "check": "pnpm designs && pnpm lint && pnpm typecheck && pnpm build",
     "postbuild": "node scripts/postbuild.mjs"
   },
   "dependencies": {

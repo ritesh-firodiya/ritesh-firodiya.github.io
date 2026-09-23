@@ -1,16 +1,22 @@
 #!/usr/bin/env node
 /**
- * Copy the real design screens out of the (private) app repos into
+ * Pull the real design screens out of the (private) app repos into
  * public/designs/, so the site shows the actual wireframes instead of essays
  * about them.
+ *
+ * NOTHING THIS WRITES IS COMMITTED. public/designs/ and public/products/ are
+ * gitignored: a public repo does not store private work, and a copy that has
+ * to be refreshed by hand is a copy that is wrong. scripts/designs/sources.mjs
+ * decides where each set comes from — a sparse clone of the private repo in
+ * CI, the working copy under ~/git/products locally.
  *
  * Each design set is plain HTML that loads Tailwind from a CDN, lucide from
  * unpkg, and its own shared.css / tailwind.config.js by relative path. So:
  *
  *  - the folder shape is preserved, which keeps every relative link working
- *  - the two CDN scripts are vendored once into public/designs/_vendor/ and the
- *    tags rewritten. A public site should not depend on two third-party hosts
- *    being up, and unpkg would otherwise see every visitor's IP
+ *  - every CDN asset is vendored into public/designs/_vendor/ and the tags
+ *    rewritten. A public site should not depend on four third-party hosts
+ *    being up, and each would otherwise see every visitor's IP
  *  - each set's own index.html is kept and is what /products/<slug>/designs
  *    shows. It is the gallery the screens were designed and reviewed against;
  *    a second grid written here would be a different document that drifts the
@@ -28,9 +34,8 @@
 import { mkdir, readdir, readFile, writeFile, rm, stat, copyFile } from "node:fs/promises";
 import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } from "node:path";
 import { existsSync } from "node:fs";
-import { homedir } from "node:os";
+import { resolveSources } from "./designs/sources.mjs";
 
-const APPS = join(homedir(), "git", "products");
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
 const DATA = join(process.cwd(), "src", "data", "designs.json");
@@ -40,23 +45,24 @@ const DATA = join(process.cwd(), "src", "data", "designs.json");
    link and our scroll container around a document that already has its own. */
 const PAGES = join(process.cwd(), "public", "products");
 
-/** slug → repo dir. Keys match products.json so a product page finds its set. */
-const SETS = {
-  imposter: "imposter",
-  charades: "charades",
-  aakalan: "aakalan",
-  askcal: "askcal",
-  "tic-tac-toe": "tic-tac-toe",
-  "plan-kid": "plan-kid",
-  "dwarseva-property": "property-app",
-  chitragupt: "chitragupt",
-};
-
 // index.html is KEPT: it is the design set's own gallery, written in the app
 // repo, and the site shows that page rather than inventing a second one.
 // _review.html is a 14-iframe contact sheet for local review — not a document
 // anyone else needs.
 const SKIP_FILES = new Set(["_review.html"]);
+
+/* Credential shapes worth stopping a public deploy for. Deliberately narrow:
+   a pattern that fires on a wireframe's placeholder trains everyone to add an
+   exception, and then it catches nothing. */
+const SECRETS = [
+  ["AWS access key id", /\bAKIA[0-9A-Z]{16}\b/],
+  ["Google API key", /\bAIza[0-9A-Za-z_-]{35}\b/],
+  ["GitHub token", /\bgh[pousr]_[0-9A-Za-z]{36,}\b/],
+  ["Slack token", /\bxox[abposr]-[0-9A-Za-z-]{10,}\b/],
+  ["Stripe secret key", /\bsk_live_[0-9A-Za-z]{16,}\b/],
+  ["RevenueCat secret key", /\bsk_[0-9A-Za-z]{24,}\b/],
+  ["private key block", /-----BEGIN (?:RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----/],
+];
 const COPY_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg"]);
 
 const exists = async (p) => {
@@ -93,23 +99,55 @@ function stripElement(html, openRe) {
 // screen a dead end.
 const CHROME = [];
 
-async function vendor() {
-  await mkdir(VENDOR, { recursive: true });
-  const grab = async (url, name) => {
-    const dest = join(VENDOR, name);
-    if (await exists(dest)) return (await stat(dest)).size;
+/* Hosts served from here instead of from them.
+ *
+ * This used to be a two-entry list — tailwind and lucide — written when those
+ * were the only things the sets loaded. They are not any more: the sets on
+ * main also pull reactflow (script AND stylesheet), chart.js, mermaid, and
+ * react/react-dom. Hardcoding the list is what let that happen unseen, so the
+ * rewrite is now driven by what the HTML actually asks for. */
+const VENDOR_HOSTS = ["cdn.tailwindcss.com", "unpkg.com", "cdn.jsdelivr.net", "cdnjs.cloudflare.com"];
+const HOSTS_RE = VENDOR_HOSTS.map((h) => h.replace(/\./g, "\\.")).join("|");
+const ASSET_RE = new RegExp(`(?:src|href)="(https://(?:${HOSTS_RE})[^"]*)"`, "g");
+
+/* `@latest` is not a version. 112 files ask for it, so two builds a month
+   apart would ship different icons from the same commit — and the claim that
+   these pages are the repo's own bytes would quietly stop being true. Pin it
+   to what the rest of the estate already pins. */
+const PINS = [[/^https:\/\/unpkg\.com\/lucide@latest\//, "https://unpkg.com/lucide@0.544.0/"]];
+const pin = (url) => PINS.reduce((u, [re, to]) => u.replace(re, to), url);
+
+/** A readable, collision-free local filename for a vendored URL. */
+function vendorName(url) {
+  const u = new URL(url);
+  const name = (u.host + u.pathname).replace(/[^A-Za-z0-9._@-]+/g, "_").replace(/_+$/, "");
+  return /\.(js|mjs|css)$/.test(name) ? name : `${name}.js`;
+}
+
+/** url → { name, bytes }, downloaded at most once per run. */
+const vendored = new Map();
+
+async function vendorAsset(rawUrl) {
+  const url = pin(rawUrl);
+  const held = vendored.get(url);
+  if (held) return held;
+
+  const name = vendorName(url);
+  const dest = join(VENDOR, name);
+  let bytes;
+  if (await exists(dest)) {
+    bytes = (await stat(dest)).size;
+  } else {
     const r = await fetch(url);
-    if (!r.ok) throw new Error(`${name}: ${r.status}`);
+    if (!r.ok) throw new Error(`vendoring ${url}: HTTP ${r.status}`);
     const body = Buffer.from(await r.arrayBuffer());
+    await mkdir(VENDOR, { recursive: true });
     await writeFile(dest, body);
-    return body.length;
-  };
-  // lucide is pinned rather than @latest: a design set that renders differently
-  // next month because an icon library moved is not a design set.
-  return {
-    tailwind: await grab("https://cdn.tailwindcss.com", "tailwind.js"),
-    lucide: await grab("https://unpkg.com/lucide@0.460.0/dist/umd/lucide.js", "lucide.js"),
-  };
+    bytes = body.length;
+  }
+  const rec = { url, name, bytes };
+  vendored.set(url, rec);
+  return rec;
 }
 
 async function* walk(dir) {
@@ -122,15 +160,16 @@ async function* walk(dir) {
 
 await rm(OUT, { recursive: true, force: true }).catch(() => {});
 await mkdir(OUT, { recursive: true });
-const v = await vendor();
+await mkdir(VENDOR, { recursive: true });
 
 const manifest = {};
 let screens = 0;
 let bytes = 0;
 
-for (const [slug, dir] of Object.entries(SETS)) {
-  const src = join(APPS, dir, ".context", "designs");
-  if (!(await exists(src))) continue;
+const { mode, sets } = resolveSources();
+
+for (const [slug, source] of Object.entries(sets)) {
+  const src = source.dir;
   const entries = [];
 
   for await (const file of walk(src)) {
@@ -150,25 +189,29 @@ for (const [slug, dir] of Object.entries(SETS)) {
     let h = await readFile(file, "utf8");
     for (const re of CHROME) h = stripElement(h, re);
 
+    /* Rewrite whatever this file asks for, rather than the two things an
+       earlier version assumed it would. Both `src` and `href`: reactflow ships
+       a stylesheet, and a design set missing its stylesheet is a broken page
+       that still passes every check. */
     const up = relative(dirname(dest), VENDOR).split(sep).join("/") || ".";
-    /* The version suffix is optional: most sets load the bare CDN root, six
-       tic-tac-toe files pin `/3.4.17`. The first version of this regex matched
-       only the bare form, so those six shipped a live cdn.tailwindcss.com tag
-       — the exact third-party dependency the vendoring exists to remove. The
-       assertion below is what would have caught it. */
-    h = h.replace(
-      /<script src="https:\/\/cdn\.tailwindcss\.com[^"]*"><\/script>/g,
-      `<script src="${up}/tailwind.js"></script>`,
-    );
-    h = h.replace(
-      /<script src="https:\/\/unpkg\.com\/lucide@[^"]*"><\/script>/g,
-      `<script src="${up}/lucide.js"></script>`,
-    );
+    for (const url of new Set([...h.matchAll(ASSET_RE)].map((m) => m[1]))) {
+      const { name } = await vendorAsset(url);
+      h = h.split(`"${url}"`).join(`"${up}/${name}"`);
+    }
 
     /* Fail loudly rather than publish a page that still calls a CDN. A silent
        miss here is invisible until someone reads the network tab. */
-    const leaked = h.match(/https:\/\/(cdn\.tailwindcss\.com|unpkg\.com)[^"']*/g);
-    if (leaked) throw new Error(`${rel}: un-vendored CDN reference ${leaked[0]}`);
+    const leaked = h.match(new RegExp(`https://(?:${HOSTS_RE})[^"']*`, "g"));
+    if (leaked) throw new Error(`${slug}/${rel}: un-vendored CDN reference ${leaked[0]}`);
+
+    /* These bytes came out of a PRIVATE repo and are about to sit on a public
+       host. A wireframe that hardcoded a real key to make a demo work would be
+       published by this script and nothing else would ever look at it. So the
+       scan runs here, at the boundary, and stops the build. */
+    for (const [name, re] of SECRETS) {
+      const hit = h.match(re);
+      if (hit) throw new Error(`${slug}/${rel}: looks like a ${name} — refusing to publish it`);
+    }
 
     await writeFile(dest, h);
     bytes += Buffer.byteLength(h);
@@ -273,7 +316,11 @@ await writeFile(
       $comment:
         "GENERATED by scripts/sync-designs.mjs from the private app repos. Do not hand-edit.",
       generatedOn: new Date().toISOString().slice(0, 10),
-      vendored: v,
+      source: mode,
+      commits: Object.fromEntries(
+        Object.entries(sets).map(([s, x]) => [s, { repo: x.origin, sha: x.sha }]),
+      ),
+      vendored: [...vendored.values()].sort((a, b) => a.name.localeCompare(b.name)),
       sets: manifest,
     },
     null,
@@ -281,12 +328,15 @@ await writeFile(
   ) + "\n",
 );
 
+console.log(`source: ${mode}${mode === "remote" ? " (private repos, default branch)" : " (~/git/products)"}`);
 console.log(`published ${pages} gallery page(s) under /products/<slug>/designs/`);
 console.log(`neutralised ${neutralised} dead link(s) to screens that were never drawn`);
 console.log(`synced ${screens} screens, ${(bytes / 1024 / 1024).toFixed(2)}MB html`);
-console.log(
-  `vendored tailwind ${(v.tailwind / 1024).toFixed(0)}KB · lucide ${(v.lucide / 1024).toFixed(0)}KB`,
-);
+const vendorKB = [...vendored.values()].reduce((n, x) => n + x.bytes, 0) / 1024;
+console.log(`vendored ${vendored.size} asset(s), ${vendorKB.toFixed(0)}KB, from ${VENDOR_HOSTS.length} host(s)`);
+for (const x of [...vendored.values()].sort((a, b) => b.bytes - a.bytes)) {
+  console.log(`  ${String(Math.round(x.bytes / 1024)).padStart(4)}KB  ${x.url}`);
+}
 for (const [s, e] of Object.entries(manifest)) {
   console.log(`  ${s.padEnd(20)} ${String(e.screens.length).padStart(3)} screens · ${e.indexes.length} gallery page(s)`);
 }

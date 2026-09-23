@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>B · System</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{
+ colors:{bg:'#07090A',panel:'#0D1113',panel2:'#121719',line:'#1C2326',line2:'#2A3438',
+         ink:'#DDE3E6',dim:'#7C8A90',dim2:'#4E5A5F',amber:'#FFB86B',ok:'#5BD99B',warn:'#FFD166',cold:'#7AB8FF'},
+ fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','system-ui','sans-serif']},
+}}}
+</script>
+<style>
+  body{-webkit-font-smoothing:antialiased}
+  .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  /* A visible column grid. The page admits what it is built on rather than
+     hiding it — which is the whole conceit of this direction. */
+  .grid-bg{background-image:linear-gradient(90deg,#11181A 1px,transparent 1px);background-size:calc(100%/12) 100%}
+  .bar{height:6px;background:#1C2326;overflow:hidden}
+  .bar>i{display:block;height:100%}
+  /* A hairline cross at each cell corner, like a plotted sheet. */
+  .cell{position:relative}
+  .cell::before,.cell::after{content:'';position:absolute;background:#2A3438}
+  .cell::before{left:-3px;top:-1px;width:7px;height:1px}
+  .cell::after{left:-1px;top:-3px;width:1px;height:7px}
+</style>
+</head>
+<body class="bg-bg font-mono text-ink">
+
+<!-- ══ status bar ══ Always-on, like a system HUD. It carries live facts, not
+     navigation labels — the nav is four words at the right. -->
+<header class="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur">
+  <!-- Wraps to two rows on a phone rather than being clipped. The status
+       strip is the point of this direction, so hiding it at narrow widths
+       would remove the thing that makes the bar worth having. -->
+  <div class="mx-auto flex max-w-[84rem] flex-wrap items-center gap-x-6 gap-y-1.5 px-5 py-2.5">
+    <span class="k text-amber">● ritesh.firodiya</span>
+    <span class="k hidden text-dim2 lg:inline">pune/ist · 9y · 13 products · 4 live</span>
+    <nav class="k ml-auto flex gap-4 text-dim sm:gap-5">
+      <a href="#work" class="hover:text-ink">work</a><a href="#ledger" class="hover:text-ink">ledger</a>
+      <a href="#history" class="hover:text-ink">history</a><a href="#contact" class="hover:text-ink">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-[84rem] px-5">
+
+<!-- ══ header block ══ -->
+<section class="grid-bg border-b border-line py-16">
+  <p class="k text-amber">open to senior &amp; staff · and consulting</p>
+  <h1 class="mt-6 font-sans text-[clamp(2.5rem,7vw,5.5rem)] font-semibold leading-[.95] tracking-[-.04em]">
+    Engineer who ships.
+  </h1>
+  <p class="mt-7 max-w-[62ch] font-sans text-lg leading-relaxed text-dim">
+    Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify. Thirteen products
+    for India, built solo, each one publishing how it is paid for and when that was last checked
+    against the repository it ships from.
+  </p>
+  <div class="mt-9 flex flex-wrap gap-3">
+    <a href="#work" class="k border border-amber bg-amber/10 px-4 py-2 font-medium text-amber transition hover:bg-amber hover:text-bg">read the record</a>
+    <a href="#contact" class="k border border-line2 px-4 py-2 transition hover:border-amber hover:text-amber">firodiya.ritesh@gmail.com</a>
+  </div>
+</section>
+
+<!-- ══ work ══ Two case slots. Numbers do the talking. -->
+<section id="work" class="border-b border-line py-14">
+  <p class="k text-dim2">§01 — selected work</p>
+  <a href="#" class="group mt-6 block border border-line bg-panel p-7 transition hover:border-amber/40">
+    <div class="flex flex-wrap items-start justify-between gap-6">
+      <div class="min-w-0">
+        <p class="k text-amber">case study · chitragupt</p>
+        <h2 class="mt-3 max-w-[30ch] font-sans text-2xl font-semibold leading-snug tracking-tight group-hover:text-amber md:text-3xl">
+          One person, 264 screens, and a price that had to be told the truth about.
+        </h2>
+        <p class="mt-4 max-w-[64ch] font-sans text-dim">
+          Household tax review for salaried Indians. Product, design, schema, build, deploy. The
+          interesting part is not the stack — an earlier version of this site called it free while
+          its own config defined three priced tiers.
+        </p>
+        <span class="k mt-6 inline-block text-amber">read →</span>
+      </div>
+      <dl class="grid w-full max-w-xs shrink-0 grid-cols-2 gap-px bg-line sm:w-auto">
+        <div class="cell bg-panel2 px-4 py-3"><dt class="k text-dim2">role</dt><dd class="mt-1.5 text-sm">everything</dd></div>
+        <div class="cell bg-panel2 px-4 py-3"><dt class="k text-dim2">screens</dt><dd class="mt-1.5 text-sm text-amber">264</dd></div>
+        <div class="cell bg-panel2 px-4 py-3"><dt class="k text-dim2">stack</dt><dd class="mt-1.5 text-sm">next · pg</dd></div>
+        <div class="cell bg-panel2 px-4 py-3"><dt class="k text-dim2">year</dt><dd class="mt-1.5 text-sm">2026</dd></div>
+      </dl>
+    </div>
+  </a>
+</section>
+
+<!-- ══ the ledger ══ The site's premise as the interface. Every product is a
+     checked row: model, ads, per-platform state, screens, verified date. -->
+<section id="ledger" class="border-b border-line py-14">
+  <div class="flex flex-wrap items-baseline justify-between gap-3">
+    <p class="k text-dim2">§02 — the ledger · every fact verified 2026-09-20</p>
+    <div class="k flex gap-1">
+      <button class="bg-amber px-3 py-1.5 text-bg">all</button>
+      <button class="border border-line2 px-3 py-1.5 text-dim transition hover:border-amber hover:text-amber">live</button>
+      <button class="border border-line2 px-3 py-1.5 text-dim transition hover:border-amber hover:text-amber">idea</button>
+    </div>
+  </div>
+  <div class="mt-6 overflow-x-auto border border-line">
+    <table class="w-full min-w-[54rem] border-collapse text-left text-[13px]">
+      <thead class="bg-panel2"><tr class="k text-dim2">
+        <th class="px-4 py-3 font-normal">product</th><th class="px-4 py-3 font-normal">paid for by</th>
+        <th class="px-4 py-3 font-normal">ads</th><th class="px-4 py-3 font-normal">android</th>
+        <th class="px-4 py-3 font-normal">ios</th><th class="px-4 py-3 font-normal">web</th>
+        <th class="px-4 py-3 font-normal">screens</th>
+      </tr></thead>
+      <tbody>
+        <tr class="border-t border-line bg-panel transition hover:bg-panel2">
+          <td class="px-4 py-3"><b class="font-sans font-semibold text-ink">Aakalan</b> <span class="text-dim2">shared expenses</span></td>
+          <td class="px-4 py-3 text-dim">subscription</td><td class="px-4 py-3 text-dim2">none</td>
+          <td class="px-4 py-3 text-ok">● live</td><td class="px-4 py-3 text-dim2">—</td><td class="px-4 py-3 text-cold">● build</td><td class="px-4 py-3 text-dim">49</td>
+        </tr>
+        <tr class="border-t border-line bg-panel transition hover:bg-panel2">
+          <td class="px-4 py-3"><b class="font-sans font-semibold text-ink">AskCal</b> <span class="text-dim2">calorie counter</span></td>
+          <td class="px-4 py-3 text-dim">subscription</td><td class="px-4 py-3 text-dim2">none</td>
+          <td class="px-4 py-3 text-ok">● live</td><td class="px-4 py-3 text-dim2">—</td><td class="px-4 py-3 text-cold">● build</td><td class="px-4 py-3 text-dim">43</td>
+        </tr>
+        <tr class="border-t border-line bg-panel transition hover:bg-panel2">
+          <td class="px-4 py-3"><b class="font-sans font-semibold text-ink">Tic Tac Toe</b> <span class="text-dim2">3×3</span></td>
+          <td class="px-4 py-3 text-dim">free</td>
+          <td class="px-4 py-3 text-warn">banner + interstitial</td>
+          <td class="px-4 py-3 text-ok">● live</td><td class="px-4 py-3 text-dim2">—</td><td class="px-4 py-3 text-dim2">—</td><td class="px-4 py-3 text-dim">9</td>
+        </tr>
+        <tr class="border-t border-line bg-panel transition hover:bg-panel2">
+          <td class="px-4 py-3"><b class="font-sans font-semibold text-ink">Chitragupt</b> <span class="text-dim2">tax review</span></td>
+          <td class="px-4 py-3 text-dim">per tax year</td><td class="px-4 py-3 text-dim2">none</td>
+          <td class="px-4 py-3 text-cold">● build</td><td class="px-4 py-3 text-cold">● build</td><td class="px-4 py-3 text-cold">● build</td><td class="px-4 py-3 text-amber">264</td>
+        </tr>
+        <tr class="border-t border-line bg-panel/60">
+          <td class="px-4 py-3 text-dim2" colspan="7"><span class="k">+ 9 more</span> — Charades · Imposter · Plan-Kid · dwarseva ×2 · scrvio · trunk · tradx · Learning Platform</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="k mt-3 text-dim2">an empty cell is an unavailable platform, never a hidden one</p>
+</section>
+
+<!-- ══ history ══ A timeline drawn as bars, because nine years is a shape. -->
+<section id="history" class="border-b border-line py-14">
+  <div class="flex flex-wrap items-baseline justify-between gap-3">
+    <p class="k text-dim2">§03 — history</p><a href="#" class="k text-amber">full résumé →</a>
+  </div>
+  <div class="mt-7 space-y-3">
+    <div class="grid grid-cols-[1fr] gap-2 sm:grid-cols-[16rem_1fr] sm:items-center sm:gap-5">
+      <p class="font-sans text-sm"><b class="font-semibold">Senior Software Engineer</b> <span class="text-dim">· Walmart</span></p>
+      <div class="flex items-center gap-3"><div class="bar flex-1"><i style="width:14%;margin-left:86%;background:#FFB86B"></i></div><span class="k w-24 shrink-0 text-dim2">2025—26</span></div>
+    </div>
+    <div class="grid grid-cols-[1fr] gap-2 sm:grid-cols-[16rem_1fr] sm:items-center sm:gap-5">
+      <p class="font-sans text-sm"><b class="font-semibold">Tech Lead &amp; Full-Stack</b> <span class="text-dim">· TopLegal</span></p>
+      <div class="flex items-center gap-3"><div class="bar flex-1"><i style="width:7%;margin-left:78%;background:#FFB86B"></i></div><span class="k w-24 shrink-0 text-dim2">2024—25</span></div>
+    </div>
+    <div class="grid grid-cols-[1fr] gap-2 sm:grid-cols-[16rem_1fr] sm:items-center sm:gap-5">
+      <p class="font-sans text-sm"><b class="font-semibold">Senior Frontend</b> <span class="text-dim">· ManifestIT</span></p>
+      <div class="flex items-center gap-3"><div class="bar flex-1"><i style="width:8%;margin-left:67%;background:#7C8A90"></i></div><span class="k w-24 shrink-0 text-dim2">2023—24</span></div>
+    </div>
+    <div class="grid grid-cols-[1fr] gap-2 sm:grid-cols-[16rem_1fr] sm:items-center sm:gap-5">
+      <p class="font-sans text-sm"><b class="font-semibold">Senior Software Engineer</b> <span class="text-dim">· Masai School</span></p>
+      <div class="flex items-center gap-3"><div class="bar flex-1"><i style="width:17%;margin-left:45%;background:#7C8A90"></i></div><span class="k w-24 shrink-0 text-dim2">2021—23</span></div>
+    </div>
+    <div class="grid grid-cols-[1fr] gap-2 sm:grid-cols-[16rem_1fr] sm:items-center sm:gap-5">
+      <p class="font-sans text-sm text-dim">Swiggy · Globant · Speechify · Confluxsys</p>
+      <div class="flex items-center gap-3"><div class="bar flex-1"><i style="width:43%;margin-left:0;background:#2A3438"></i></div><span class="k w-24 shrink-0 text-dim2">2017—21</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ engagements ══ -->
+<section class="border-b border-line py-14">
+  <p class="k text-dim2">§04 — work together</p>
+  <div class="mt-6 grid gap-px bg-line md:grid-cols-3">
+    <a href="#" class="cell group bg-panel p-6 transition hover:bg-panel2"><p class="k text-amber">6 – 12 weeks</p><h3 class="mt-2 font-sans text-lg font-semibold group-hover:text-amber">MVP from zero</h3><p class="mt-2 font-sans text-sm text-dim">Designs first, store listing at the end.</p></a>
+    <a href="#" class="cell group bg-panel p-6 transition hover:bg-panel2"><p class="k text-amber">3 – 12 months</p><h3 class="mt-2 font-sans text-lg font-semibold group-hover:text-amber">Lead the team</h3><p class="mt-2 font-sans text-sm text-dim">Architecture, standards, and writing code.</p></a>
+    <a href="#" class="cell group bg-panel p-6 transition hover:bg-panel2"><p class="k text-amber">4 – 10 weeks</p><h3 class="mt-2 font-sans text-lg font-semibold group-hover:text-amber">AI tooling</h3><p class="mt-2 font-sans text-sm text-dim">Agents and MCP on the Anthropic SDK.</p></a>
+  </div>
+</section>
+
+<!-- ══ contact ══ -->
+<section id="contact" class="py-16">
+  <p class="k text-dim2">§05 — contact</p>
+  <h2 class="mt-4 max-w-[22ch] font-sans text-[clamp(1.6rem,4vw,2.75rem)] font-semibold leading-tight tracking-tight">
+    Hiring, building, or just curious?
+  </h2>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a href="#" class="k bg-amber px-5 py-3 font-medium text-bg transition hover:bg-ink">firodiya.ritesh@gmail.com</a>
+    <a href="#" class="k border border-line2 px-5 py-3 transition hover:border-amber hover:text-amber">résumé</a>
+  </div>
+  <div class="k mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-6 text-dim2">
+    <span>© 2026 ritesh firodiya</span><a href="#" class="hover:text-amber">products</a>
+    <a href="#" class="hover:text-amber">legal</a><a href="#" class="hover:text-amber">support</a>
+  </div>
+</section>
+</main>
+<script>lucide.createIcons()</script>
+</body>
+</html>

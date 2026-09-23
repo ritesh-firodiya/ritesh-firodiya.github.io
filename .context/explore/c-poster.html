@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C · Poster</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{
+ colors:{cream:'#F2EDE3',sand:'#E6DFD1',ink:'#14171A',teal:'#0E3B3E',coral:'#FF5C39',dim:'#5D6266'},
+ fontFamily:{display:['Space Grotesk','system-ui','sans-serif'],sans:['Inter','system-ui','sans-serif']},
+}}}
+</script>
+<style>
+  body{-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .disp{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.88}
+  /* Colour blocks that break the grid. Nothing on this page is centred in a
+     container — the asymmetry IS the layout, and a card would undo it. */
+  .block-teal{background:#0E3B3E;color:#F2EDE3}
+  .block-coral{background:#FF5C39;color:#14171A}
+  .tilt{transform:rotate(-1.4deg)}
+  .tilt-r{transform:rotate(1deg)}
+  .edge{box-shadow:14px 14px 0 #14171A}
+  .edge-coral{box-shadow:14px 14px 0 #FF5C39}
+  .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(3.5rem,9vw,7rem);line-height:.8;letter-spacing:-.05em}
+</style>
+</head>
+<body class="bg-cream text-ink font-sans">
+
+<!-- ══ bar ══ -->
+<header class="sticky top-0 z-40 flex items-center gap-6 border-b-2 border-ink bg-cream px-5 py-3 md:px-8">
+  <a href="#" class="font-display text-lg">Ritesh Firodiya</a>
+  <nav class="k ml-auto hidden gap-6 md:flex">
+    <a href="#work" class="hover:text-coral">Work</a><a href="#products" class="hover:text-coral">Products</a>
+    <a href="#about" class="hover:text-coral">About</a><a href="#hire" class="hover:text-coral">Hire</a>
+  </nav>
+  <a href="#contact" class="k block-coral border-2 border-ink px-3.5 py-2">Get in touch</a>
+</header>
+
+<main>
+<!-- ══ poster hero ══ Type over a colour field, deliberately off-axis. -->
+<section class="relative overflow-hidden px-5 pb-20 pt-14 md:px-8 md:pt-20">
+  <div class="absolute -right-24 -top-12 h-[30rem] w-[30rem] rounded-full bg-sand md:-right-16"></div>
+  <div class="relative">
+    <p class="k text-coral">Pune, India · open to senior &amp; staff · and consulting</p>
+    <h1 class="disp mt-6 text-[clamp(3rem,13vw,11rem)]">
+      Engineer<br><span class="text-teal">who ships.</span>
+    </h1>
+    <div class="mt-10 grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-end">
+      <p class="max-w-[52ch] text-lg leading-snug md:text-xl">
+        Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify.
+        <b class="font-semibold">Thirteen products for India, built solo</b>, and every one of
+        them says how it is paid for before you install it.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#work" class="k block-teal border-2 border-ink px-5 py-3">See the work</a>
+        <a href="#hire" class="k border-2 border-ink px-5 py-3 transition hover:bg-ink hover:text-cream">Work together</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ numbers ══ A coral band, full bleed, with the four facts. -->
+<section class="block-coral border-y-2 border-ink">
+  <div class="grid grid-cols-2 divide-x-2 divide-ink/20 md:grid-cols-4">
+    <div class="px-6 py-8"><p class="num">13</p><p class="k mt-3">Products</p></div>
+    <div class="px-6 py-8"><p class="num">04</p><p class="k mt-3">Live today</p></div>
+    <div class="px-6 py-8 max-md:border-t-2 max-md:border-ink/20"><p class="num">02</p><p class="k mt-3">On Google Play</p></div>
+    <div class="px-6 py-8 max-md:border-t-2 max-md:border-ink/20"><p class="num">09</p><p class="k mt-3">Years shipping</p></div>
+  </div>
+</section>
+
+<!-- ══ work ══ Offset slabs with a hard shadow, not cards in a grid. -->
+<section id="work" class="px-5 py-20 md:px-8">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <h2 class="disp text-[clamp(2rem,5vw,3.5rem)]">Selected work</h2>
+    <a href="#" class="k border-b-2 border-coral pb-1 text-coral">All work →</a>
+  </div>
+
+  <a href="#" class="group mt-12 block border-2 border-ink bg-cream edge transition hover:-translate-x-1 hover:-translate-y-1">
+    <div class="grid md:grid-cols-[1.3fr_1fr]">
+      <div class="p-7 md:p-10">
+        <p class="k text-coral">Case study · Chitragupt</p>
+        <h3 class="disp mt-4 max-w-[20ch] text-[clamp(1.75rem,4vw,3rem)]">
+          264 screens, one person, and a price that had to be told the truth about.
+        </h3>
+        <p class="mt-5 max-w-[50ch] text-dim">
+          Household tax review for salaried Indians. Product, design, schema, build, deploy.
+        </p>
+        <div class="k mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t-2 border-ink pt-5">
+          <span>Role — Everything</span><span>Screens — 264</span><span>Next · Postgres</span>
+        </div>
+      </div>
+      <div class="block-teal grid place-items-center p-10 max-md:border-t-2 max-md:border-ink md:border-l-2 md:border-ink">
+        <span class="num opacity-30">01</span>
+      </div>
+    </div>
+  </a>
+
+  <div class="mt-10 grid gap-10 md:grid-cols-2">
+    <a href="#" class="group border-2 border-ink bg-cream p-7 edge-coral transition hover:-translate-x-1 hover:-translate-y-1">
+      <div class="flex items-start justify-between gap-4">
+        <div><p class="k text-teal">Subscription · Live</p>
+          <h3 class="disp mt-3 text-3xl">Aakalan</h3>
+          <p class="mt-2 max-w-[34ch] text-dim">Your expenses and everyone else&rsquo;s, on one ledger.</p></div>
+        <span class="num text-sand">02</span>
+      </div>
+    </a>
+    <a href="#" class="group border-2 border-ink bg-cream p-7 edge-coral transition hover:-translate-x-1 hover:-translate-y-1">
+      <div class="flex items-start justify-between gap-4">
+        <div><p class="k text-teal">Subscription · Live</p>
+          <h3 class="disp mt-3 text-3xl">AskCal</h3>
+          <p class="mt-2 max-w-[34ch] text-dim">A calorie counter that admits what it cannot see.</p></div>
+        <span class="num text-sand">03</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══ products ══ A teal field carrying the honesty rule. -->
+<section id="products" class="block-teal border-y-2 border-ink px-5 py-20 md:px-8">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="k text-coral">Products · verified 2026-09-20</p>
+      <h2 class="disp mt-3 max-w-[18ch] text-[clamp(2rem,5vw,3.5rem)]">Thirteen, honestly labelled.</h2>
+    </div>
+    <a href="#" class="k border-b-2 border-coral pb-1 text-coral">All products →</a>
+  </div>
+  <p class="mt-6 max-w-[58ch] text-cream/75">
+    How each one is paid for sits above its install button — never below it, never softened into
+    &ldquo;unlock&rdquo;. No promise is made on behalf of all of them.
+  </p>
+  <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <a href="#" class="border-2 border-cream/25 p-5 transition hover:border-coral"><p class="k text-coral">Free · ads</p><h3 class="disp mt-2.5 text-2xl">Tic Tac Toe</h3><p class="mt-1.5 text-sm text-cream/65">Banner and interstitial.</p></a>
+    <a href="#" class="border-2 border-cream/25 p-5 transition hover:border-coral"><p class="k text-coral">One-time</p><h3 class="disp mt-2.5 text-2xl">Charades</h3><p class="mt-1.5 text-sm text-cream/65">Buy once, keep it.</p></a>
+    <a href="#" class="border-2 border-cream/25 p-5 transition hover:border-coral"><p class="k text-coral">One-time</p><h3 class="disp mt-2.5 text-2xl">Imposter</h3><p class="mt-1.5 text-sm text-cream/65">Beta on Android.</p></a>
+    <a href="#" class="border-2 border-cream/25 p-5 transition hover:border-coral"><p class="k text-cream/50">Not built</p><h3 class="disp mt-2.5 text-2xl">+ 6 more</h3><p class="mt-1.5 text-sm text-cream/65">Specs and schemas only.</p></a>
+  </div>
+</section>
+
+<!-- ══ about ══ Big statement, list beside it. -->
+<section id="about" class="px-5 py-20 md:px-8">
+  <div class="grid gap-12 md:grid-cols-[1fr_1.1fr] md:gap-20">
+    <div>
+      <p class="k text-coral">Nine years</p>
+      <h2 class="disp mt-4 max-w-[14ch] text-[clamp(2rem,5vw,3.5rem)]">Postgres schema to Play Store release.</h2>
+      <p class="mt-6 max-w-[40ch] text-dim">Usually as the only person who touches both ends.</p>
+      <a href="#" class="k mt-6 inline-block border-b-2 border-coral pb-1 text-coral">Full résumé →</a>
+    </div>
+    <ol class="self-end">
+      <li class="flex items-baseline justify-between gap-6 border-b-2 border-ink py-4"><span class="font-display text-lg">Walmart</span><span class="k text-dim">Sr. SWE · 25—26</span></li>
+      <li class="flex items-baseline justify-between gap-6 border-b-2 border-ink py-4"><span class="font-display text-lg">TopLegal</span><span class="k text-dim">Tech Lead · 24—25</span></li>
+      <li class="flex items-baseline justify-between gap-6 border-b-2 border-ink py-4"><span class="font-display text-lg">Masai School</span><span class="k text-dim">Sr. SWE · 21—23</span></li>
+      <li class="flex items-baseline justify-between gap-6 border-b-2 border-ink py-4"><span class="font-display text-lg text-dim">Swiggy · Globant · Speechify</span><span class="k text-dim">17—21</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ hire ══ Three slabs, tilted just enough to read as posters. -->
+<section id="hire" class="border-t-2 border-ink bg-sand px-5 py-20 md:px-8">
+  <h2 class="disp text-[clamp(2rem,5vw,3.5rem)]">Work together</h2>
+  <div class="mt-12 grid gap-8 md:grid-cols-3">
+    <a href="#" class="tilt border-2 border-ink bg-cream p-7 edge transition hover:rotate-0"><p class="num text-sand">01</p><h3 class="disp mt-4 text-2xl">MVP from zero</h3><p class="mt-2 text-sm text-dim">Designs first. Store listing at the end, not a repo.</p><p class="k mt-5 text-coral">6 – 12 weeks</p></a>
+    <a href="#" class="tilt-r border-2 border-ink bg-cream p-7 edge transition hover:rotate-0"><p class="num text-sand">02</p><h3 class="disp mt-4 text-2xl">Lead the team</h3><p class="mt-2 text-sm text-dim">Architecture, standards, and writing code — not only talking.</p><p class="k mt-5 text-coral">3 – 12 months</p></a>
+    <a href="#" class="tilt border-2 border-ink bg-cream p-7 edge transition hover:rotate-0"><p class="num text-sand">03</p><h3 class="disp mt-4 text-2xl">AI tooling</h3><p class="mt-2 text-sm text-dim">Agents, MCP and evals on the Anthropic SDK.</p><p class="k mt-5 text-coral">4 – 10 weeks</p></a>
+  </div>
+</section>
+
+<!-- ══ contact ══ -->
+<section id="contact" class="block-teal border-t-2 border-ink px-5 py-20 md:px-8">
+  <p class="k text-coral">Get in touch</p>
+  <h2 class="disp mt-5 max-w-[16ch] text-[clamp(2.25rem,6vw,4.5rem)]">Hiring, building, or just curious?</h2>
+  <a href="#" class="disp mt-8 block break-all text-[clamp(1.4rem,4.4vw,3rem)] text-coral hover:text-cream">firodiya.ritesh@gmail.com</a>
+  <div class="k mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t-2 border-cream/20 pt-6 text-cream/60">
+    <span>© 2026</span><a href="#" class="hover:text-coral">Products</a><a href="#" class="hover:text-coral">Legal</a>
+    <a href="#" class="hover:text-coral">Support</a><a href="#" class="hover:text-coral">LinkedIn</a><a href="#" class="hover:text-coral">GitHub</a>
+  </div>
+</section>
+</main>
+<script>lucide.createIcons()</script>
+</body>
+</html>

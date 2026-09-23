@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A · Index</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{
+ colors:{paper:'#FFFFFF',ink:'#0A0A0A',dim:'#6E6E6E',rule:'#E2E2E2',hot:'#FF3B00'},
+ fontFamily:{sans:['Inter Tight','system-ui','sans-serif'],mono:['IBM Plex Mono','monospace']},
+}}}
+</script>
+<style>
+  body{-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  /* The index row is the whole design. No card, no border, no shadow — a rule,
+     a number, a name, and the row itself inverting on hover. */
+  .row{position:relative;display:grid;grid-template-columns:4rem 1fr auto 6rem;align-items:baseline;
+       gap:1.5rem;padding:1.4rem 1.5rem;border-top:1px solid #E2E2E2;transition:background .18s,color .18s}
+  .row:last-child{border-bottom:1px solid #E2E2E2}
+  .row:hover{background:#0A0A0A;color:#fff}
+  .row:hover .row-dim{color:#8A8A8A}
+  .row:hover .row-arrow{opacity:1;transform:translateX(0)}
+  .row-arrow{opacity:0;transform:translateX(-8px);transition:.18s}
+  .row-name{font-size:clamp(1.6rem,3.6vw,2.9rem);font-weight:800;letter-spacing:-.035em;line-height:1}
+  /* The preview follows the pointer. It is the only image on the page, so it
+     has to earn its place by appearing exactly where you are already looking. */
+  #peek{position:fixed;pointer-events:none;width:230px;z-index:50;opacity:0;transform:translate(-50%,-50%) scale(.94);
+        transition:opacity .16s,transform .16s;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+  #peek.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .huge{font-size:clamp(3rem,11vw,10.5rem);line-height:.86;letter-spacing:-.05em;font-weight:900}
+</style>
+</head>
+<body class="bg-paper text-ink font-sans">
+
+<img id="peek" alt="" />
+
+<!-- ══ bar ══ Small, quiet, permanent. The page is the navigation. -->
+<header class="sticky top-0 z-40 flex items-center gap-8 border-b border-rule bg-paper/92 px-6 py-3.5 backdrop-blur md:px-10">
+  <a href="#" class="tag font-medium">Ritesh Firodiya</a>
+  <nav class="tag ml-auto hidden gap-7 text-dim md:flex">
+    <a href="#work" class="hover:text-ink">Work</a><a href="#products" class="hover:text-ink">Products</a>
+    <a href="#about" class="hover:text-ink">About</a><a href="#hire" class="hover:text-ink">Hire</a>
+  </nav>
+  <a href="#contact" class="tag rounded-none border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-paper">Get in touch</a>
+</header>
+
+<main>
+<!-- ══ statement ══ One sentence at poster scale. No portrait, no badge, no
+     stat row — those are answers to questions nobody has asked yet. -->
+<section class="px-6 pb-16 pt-20 md:px-10 md:pt-28">
+  <p class="tag text-hot">Pune, India — open to senior &amp; staff, and consulting</p>
+  <h1 class="huge mt-7 max-w-[13ch]">Engineer<br>who ships.</h1>
+  <div class="mt-12 grid gap-8 border-t border-rule pt-7 md:grid-cols-[1fr_auto] md:items-end">
+    <p class="max-w-[58ch] text-lg leading-snug text-dim md:text-xl">
+      Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify.
+      <span class="text-ink">Thirteen products for India, built solo</span>, and every one of them
+      says how it is paid for before you install it.
+    </p>
+    <a href="#work" class="tag inline-flex items-center gap-2 self-start border-b-2 border-hot pb-1 font-medium text-hot md:self-end">
+      Index ↓
+    </a>
+  </div>
+</section>
+
+<!-- ══ the index ══ THE page. Work and products are one list because a reader
+     does not care which bucket a thing is in — they care what it is. -->
+<section id="work" class="px-6 pb-6 md:px-10">
+  <div class="flex items-baseline justify-between border-b-2 border-ink pb-3">
+    <h2 class="tag font-medium">Index — selected work</h2>
+    <span class="tag text-dim">2017 — 2026</span>
+  </div>
+
+  <a class="row" href="#" data-shot="">
+    <span class="tag row-dim text-dim">01</span>
+    <span class="row-name">Chitragupt</span>
+    <span class="tag row-dim hidden text-dim sm:block">Tax review · 264 screens</span>
+    <span class="tag row-arrow text-right">Case study →</span>
+  </a>
+  <a class="row" href="#" data-shot="../../public/media/aakalan/home.webp">
+    <span class="tag row-dim text-dim">02</span>
+    <span class="row-name">Aakalan</span>
+    <span class="tag row-dim hidden text-dim sm:block">Shared expenses · Live</span>
+    <span class="tag row-arrow text-right">Product →</span>
+  </a>
+  <a class="row" href="#" data-shot="../../public/media/askcal/today.webp">
+    <span class="tag row-dim text-dim">03</span>
+    <span class="row-name">AskCal</span>
+    <span class="tag row-dim hidden text-dim sm:block">Calorie counter · Live</span>
+    <span class="tag row-arrow text-right">Product →</span>
+  </a>
+  <a class="row" href="#" data-shot="../../public/media/charades/home.webp">
+    <span class="tag row-dim text-dim">04</span>
+    <span class="row-name">Charades</span>
+    <span class="tag row-dim hidden text-dim sm:block">Party game · Live</span>
+    <span class="tag row-arrow text-right">Product →</span>
+  </a>
+  <a class="row" href="#" data-shot="../../public/media/tic-tac-toe/home.webp">
+    <span class="tag row-dim text-dim">05</span>
+    <span class="row-name">Tic&nbsp;Tac&nbsp;Toe</span>
+    <span class="tag row-dim hidden text-dim sm:block">Free · carries ads</span>
+    <span class="tag row-arrow text-right">Product →</span>
+  </a>
+  <a class="row" href="#" data-shot="../../public/media/imposter/setup.webp">
+    <span class="tag row-dim text-dim">06</span>
+    <span class="row-name">Imposter</span>
+    <span class="tag row-dim hidden text-dim sm:block">Party game · Beta</span>
+    <span class="tag row-arrow text-right">Product →</span>
+  </a>
+</section>
+
+<!-- ══ products ══ The full ledger, because the honesty rule needs a table.
+     Kept deliberately plain: this is the part that must not look designed. -->
+<section id="products" class="mt-20 px-6 md:px-10">
+  <div class="flex items-baseline justify-between border-b-2 border-ink pb-3">
+    <h2 class="tag font-medium">All thirteen — how each is paid for</h2>
+    <span class="tag text-dim">Verified 2026-09-20</span>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full min-w-[40rem] border-collapse text-left">
+      <thead><tr class="tag text-dim">
+        <th class="border-b border-rule py-3 pr-6 font-normal">Product</th>
+        <th class="border-b border-rule py-3 pr-6 font-normal">Paid for by</th>
+        <th class="border-b border-rule py-3 pr-6 font-normal">Ads</th>
+        <th class="border-b border-rule py-3 font-normal">State</th>
+      </tr></thead>
+      <tbody class="text-[15px]">
+        <tr><td class="border-b border-rule py-3 pr-6 font-semibold">Aakalan</td><td class="border-b border-rule py-3 pr-6 text-dim">Subscription</td><td class="border-b border-rule py-3 pr-6 text-dim">None</td><td class="border-b border-rule py-3 tag text-hot">Live</td></tr>
+        <tr><td class="border-b border-rule py-3 pr-6 font-semibold">AskCal</td><td class="border-b border-rule py-3 pr-6 text-dim">Subscription</td><td class="border-b border-rule py-3 pr-6 text-dim">None</td><td class="border-b border-rule py-3 tag text-hot">Live</td></tr>
+        <tr><td class="border-b border-rule py-3 pr-6 font-semibold">Tic Tac Toe</td><td class="border-b border-rule py-3 pr-6 text-dim">Free</td><td class="border-b border-rule py-3 pr-6 font-medium">Banner + interstitial</td><td class="border-b border-rule py-3 tag text-hot">Live</td></tr>
+        <tr><td class="border-b border-rule py-3 pr-6 font-semibold">Chitragupt</td><td class="border-b border-rule py-3 pr-6 text-dim">Per tax year</td><td class="border-b border-rule py-3 pr-6 text-dim">None</td><td class="border-b border-rule py-3 tag text-dim">In build</td></tr>
+        <tr><td class="py-3 pr-6 text-dim" colspan="4"><span class="tag">+ 9 more</span> — six are specs and schemas, not shipping products.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ about ══ Two columns, no portrait. The nine years are the picture. -->
+<section id="about" class="mt-20 px-6 md:px-10">
+  <div class="flex items-baseline justify-between border-b-2 border-ink pb-3">
+    <h2 class="tag font-medium">Nine years</h2>
+    <a href="#" class="tag text-hot">Résumé →</a>
+  </div>
+  <div class="grid gap-10 pt-8 md:grid-cols-[1fr_1.1fr] md:gap-16">
+    <p class="max-w-[46ch] text-2xl font-medium leading-tight tracking-tight md:text-3xl">
+      Postgres schema to Play Store release — usually as the only person who touches both.
+    </p>
+    <ol class="text-[15px]">
+      <li class="flex justify-between gap-6 border-b border-rule py-3"><span><b class="font-semibold">Senior Software Engineer</b> · Walmart</span><span class="tag shrink-0 text-dim">25—26</span></li>
+      <li class="flex justify-between gap-6 border-b border-rule py-3"><span><b class="font-semibold">Tech Lead &amp; Full-Stack</b> · TopLegal</span><span class="tag shrink-0 text-dim">24—25</span></li>
+      <li class="flex justify-between gap-6 border-b border-rule py-3"><span><b class="font-semibold">Senior Frontend</b> · ManifestIT</span><span class="tag shrink-0 text-dim">23—24</span></li>
+      <li class="flex justify-between gap-6 border-b border-rule py-3"><span><b class="font-semibold">Senior Software Engineer</b> · Masai School</span><span class="tag shrink-0 text-dim">21—23</span></li>
+      <li class="flex justify-between gap-6 py-3 text-dim"><span>Swiggy · Globant · Speechify · Confluxsys</span><span class="tag shrink-0">17—21</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ hire ══ Three lines, not three cards. -->
+<section id="hire" class="mt-20 px-6 md:px-10">
+  <div class="border-b-2 border-ink pb-3"><h2 class="tag font-medium">Work together</h2></div>
+  <a class="row" href="#"><span class="tag row-dim text-dim">01</span><span class="row-name">MVP from zero</span><span class="tag row-dim hidden text-dim sm:block">6 – 12 weeks</span><span class="tag row-arrow text-right">→</span></a>
+  <a class="row" href="#"><span class="tag row-dim text-dim">02</span><span class="row-name">Lead the team</span><span class="tag row-dim hidden text-dim sm:block">3 – 12 months</span><span class="tag row-arrow text-right">→</span></a>
+  <a class="row" href="#"><span class="tag row-dim text-dim">03</span><span class="row-name">AI tooling</span><span class="tag row-dim hidden text-dim sm:block">4 – 10 weeks</span><span class="tag row-arrow text-right">→</span></a>
+</section>
+
+<!-- ══ contact ══ The address at poster scale. It is the only thing on the
+     page anyone is asked to do. -->
+<section id="contact" class="mt-24 bg-ink px-6 py-20 text-paper md:px-10">
+  <p class="tag text-hot">Get in touch</p>
+  <a href="#" class="mt-6 block break-all text-[clamp(1.75rem,6.5vw,5rem)] font-extrabold leading-none tracking-[-.04em] hover:text-hot">
+    firodiya.ritesh@gmail.com
+  </a>
+  <div class="tag mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/15 pt-6 text-white/55">
+    <span>© 2026</span><a href="#" class="hover:text-paper">Products</a>
+    <a href="#" class="hover:text-paper">Legal</a><a href="#" class="hover:text-paper">Support</a>
+    <a href="#" class="hover:text-paper">LinkedIn</a><a href="#" class="hover:text-paper">GitHub</a>
+  </div>
+</section>
+</main>
+
+<script>
+  /* Preview follows the pointer. Rows with no shot show nothing rather than a
+     placeholder — an empty frame chasing the cursor is worse than no frame. */
+  const peek = document.getElementById("peek");
+  document.querySelectorAll(".row[data-shot]").forEach(row => {
+    const src = row.dataset.shot;
+    row.addEventListener("pointerenter", () => { if (!src) return; peek.src = src; peek.classList.add("on"); });
+    row.addEventListener("pointerleave", () => peek.classList.remove("on"));
+    row.addEventListener("pointermove", e => {
+      peek.style.left = Math.min(e.clientX + 190, innerWidth - 140) + "px";
+      peek.style.top = e.clientY + "px";
+    });
+  });
+  lucide.createIcons();
+</script>
+</body>
+</html>

@@ -21,12 +21,11 @@ CSS-first `@theme` meant the design tokens ported almost verbatim.
 
 ```bash
 pnpm dev          # dev server
-pnpm designs      # pull the product design sets — see § Designs
 pnpm contrast     # WCAG AA on both palettes, computed from globals.css
 pnpm build        # static export → out/
 pnpm lint         # eslint
 pnpm typecheck    # tsc --noEmit
-pnpm check        # designs + contrast + lint + typecheck + build
+pnpm check        # contrast + lint + typecheck + build
 ```
 
 ## The rule this site exists to enforce
@@ -82,86 +81,27 @@ only guarantee.
 ```
 src/app/         routes — App Router, all statically exported
 src/components/  site-chrome (header/footer), pills
-src/lib/         products, profile, design, notes, process — typed accessors
+src/lib/         products, profile, case-studies — typed accessors
 src/data/        products.json, profile.json
 public/          app-ads.txt, resume.pdf, favicon, logo
-public/designs/  GITIGNORED — pulled from the private app repos, see § Designs
-public/products/ GITIGNORED — the gallery front doors, same source
-scripts/designs/ where a set comes from, and whether it may be published
 .context/designs/  the approved HTML+Tailwind design set this site was built from
 ```
 
-Dynamic route families: `/products/[slug]`, `/go/[slug]`, `/notes/[slug]`. Each
+Dynamic route families: `/products/[slug]`, `/work/[slug]`, `/go/[slug]`. Each
 has `generateStaticParams`; a new one without it will not be exported.
-
-**`/products/<slug>/designs/` is not a route.** It is a static file written by
-`scripts/sync-designs.mjs` into `public/products/`, and its contents are the app
-repo's own `.context/designs/index.html` — the gallery the screens were designed
-and reviewed against — byte-identical apart from an injected `<base href>` that
-keeps its relative links pointing at the real screens under `/designs/`. Do not
-wrap it in a Next route: a header, a back link and a scroll container of ours
-around a document that already has its own is a second gallery that drifts. A
-set with two surfaces also gets `/products/<slug>/designs/<surface>/`.
-
-The same script neutralises links a gallery makes to screens that were never
-drawn — the href goes, the label and a `title` stay — so the gap is visible
-rather than a 404.
-
-## Designs
-
-**The screens are not in this repo and must never be committed to it.** They
-live in the private app repos under `.context/designs/`, and
-`scripts/sync-designs.mjs` pulls them at build time. `public/designs/` and
-`public/products/` are gitignored.
-
-```bash
-pnpm designs     # local:  reads ~/git/products/<app>/.context/designs
-DESIGNS_SOURCE=remote DESIGNS_TOKEN=<pat> pnpm designs   # what CI does
-```
-
-`scripts/designs/sources.mjs` picks the source: remote when `DESIGNS_TOKEN` is
-set, local otherwise, and `DESIGNS_SOURCE=remote|local` forces it. Remote is a
-`--depth 1 --filter=blob:none --sparse` clone of each repo's default branch,
-cached by commit SHA under `node_modules/.cache/designs/`.
-
-Why it works this way:
-
-- **A public repo does not store private work.** The site can show the screens
-  — Pages is public either way — but nothing private enters this repo's
-  history, where it would be permanent.
-- **A copy refreshed by hand is a copy that is wrong.** It was. Before this,
-  the committed set was short 31 aakalan screens, 8 askcal, 4 tic-tac-toe and 1
-  imposter, and still published a charades screen that had been deleted
-  upstream. The site showed a design set nobody had approved and nothing said
-  so. The build now pulls `main`, so what ships is what is merged.
-- **CI needs `secrets.DESIGNS_TOKEN`** — a fine-grained PAT on `ritvi-apps`
-  with one permission, Contents: read. It expires. When it does the deploy
-  fails with a named error rather than publishing a site with holes in it.
-
-Two guards run on every file, because these bytes come out of a private repo
-and land on a public host:
-
-- **CDN vendoring.** Every `src`/`href` on `cdn.tailwindcss.com`, `unpkg.com`,
-  `cdn.jsdelivr.net` and `cdnjs.cloudflare.com` is downloaded into
-  `public/designs/_vendor/` and rewritten — scripts *and* stylesheets, since
-  reactflow ships both. Anything left pointing at those hosts throws. Do not
-  re-hardcode the asset list: an earlier version hardcoded tailwind and lucide,
-  and silently missed reactflow, chart.js, mermaid and react when the sets
-  grew. `lucide@latest` is pinned to `0.544.0` so two builds of one commit
-  produce the same bytes.
-- **A secret scan.** AWS/Google/GitHub/Slack/Stripe key shapes and private-key
-  blocks. A wireframe that hardcoded a real key to make a demo work would
-  otherwise be published and never looked at again.
-
-The OpenStreetMap `<iframe>`s in the property-app set are deliberately left
-alone — they are part of that design, and turning them into flat images would
-change it. They do leak the visitor's IP to OSM.
 
 ## The style guide
 
-`~/git/personal/STYLE-GUIDE.md` governs the **product** design sets. Most of it
-is about things a website does not have — `routes.js`, the demo navbar, the
-390×844 frame, the flow chart, one screen per file. Two parts apply here:
+`~/git/personal/STYLE-GUIDE.md` governs design sets, and **this repo has one of
+its own** at `.context/designs/`. The product design sets are NOT here and must
+never be copied here again — they live in their own repos, which is where they
+are reviewed. `/design/` was deleted in Sep 2026 along with `sync-designs.mjs`,
+`designs.json` and 2.8MB of duplicated product HTML: a portfolio is a brand
+site, not a design-set viewer, and publishing someone's wireframes on it made
+the site slower, the repo larger, and the build dependent on eight private
+repos and a token that had to be kept alive.
+
+What the guide asks of this repo:
 
 - **§8 Tokens, in full.** `src/app/globals.css` declares the same palette
   contract every product set declares, so one vocabulary covers the estate.
@@ -169,34 +109,10 @@ is about things a website does not have — `routes.js`, the demo navbar, the
   as dashes; every value a `var(--token)`; a theme is a **token remap**, never
   a `dark:` prefix. Tailwind v4's `--color-` namespace prefix is the only
   unavoidable difference from a set's `shared.css`.
-- **§3's spirit** — lucide only, pinned versions, no class that resolves to
-  nothing.
-
-`scripts/designs/conformance.mjs` is the **publish gate**. A design set that
-does not follow the guide is not copied into the export at all, so it cannot be
-reached — not merely unlinked — and the product page states which checks failed.
-Hiding the gap would make a half-migrated estate look finished.
-
-What it checks, all mechanical:
-
-| Check | §  | Asks |
-|---|---|---|
-| `files` | 1 | all seven files present |
-| `shared-files` | 13 | `_chrome.js` / `_gallery.js` byte-identical to the canonical set |
-| `pinned-cdns` | 3 | tailwind 3.4.17, lucide 0.544.0 — nothing bare, nothing `@latest` |
-| `routes-manifest` | 2 | `window.ROUTES` with `product`, `surface`, `flows`, `flow.start` |
-| `declared-screens` | 2 | every file on disk is declared, and every declared file exists |
-| `screen-identity` | 2 | every screen carries `data-chrome` and a matching `data-file` |
-| `palette-tokens` | 8 | all 31 required tokens declared in `shared.css` |
-| `no-literal-colours` | 8 | no literal hex in `tailwind.config.js` |
-| `one-stylesheet` | 8 | `shared.css` and nothing else |
-
-The four the guide lists that are **not** here — links, click-through,
-flow-complete, acyclic (§12) — need the whole set walked and belong in the
-product repo, not in a website's build.
-
-**The canonical set is `charades/mobile`**, per §13. If charades itself is
-missing the sync throws rather than passing every set by default.
+- **§1–§7 for `.context/designs/`** — the site's own design set follows the
+  same layout, manifest, navbar and flow chart as any product's.
+- **§3's spirit in the app** — lucide only, pinned versions, no class that
+  resolves to nothing.
 
 `pnpm contrast` asserts every foreground/background pair in **both** palettes
 against WCAG AA, computed from `globals.css`. A palette comment claiming a
@@ -242,16 +158,13 @@ Edit the documents here. Nothing syncs them back.
   is a pure host swap and no legal text passes through a re-author.
 - The design set in `.context/designs/` is this site's own spec. **When a page
   and its wireframe disagree, the wireframe wins** and the page is corrected.
-  This is the *site's* design set; the products' sets are pulled, not stored —
-  see § Designs.
+- **Never copy a product's design set into this repo.** It was done once, cost
+  2.8MB and a build-time dependency on eight private repos, and was deleted.
 
 ## Deploy
 
-Push to `main` → `.github/workflows/deploy.yml` runs lint, typecheck, the design
-pull, build, the `app-ads.txt` assertion, then publishes `out/`. No staging
-environment.
+Push to `main` → `.github/workflows/deploy.yml` runs lint, typecheck, contrast,
+build, the `app-ads.txt` assertion, then publishes `out/`. No staging
+environment. **No secrets** — the build reads nothing outside this repo.
 
-One-time setup:
-- repo **Settings → Pages → Source = GitHub Actions**
-- repo **Settings → Secrets → Actions → `DESIGNS_TOKEN`**, a fine-grained PAT
-  on `ritvi-apps` with Contents: read. Without it the deploy fails by design.
+One-time setup: repo **Settings → Pages → Source = GitHub Actions**.

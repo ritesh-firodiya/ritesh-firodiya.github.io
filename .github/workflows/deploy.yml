@@ -38,25 +38,6 @@ jobs:
       # lint are different problems and the log should say which one failed.
       - run: pnpm lint
       - run: pnpm exec tsc --noEmit
-      # Pull the design sets out of the private app repos. They are not stored
-      # in this public repo, so this has to happen before the build or every
-      # product page ships with its screens missing.
-      #
-      # DESIGNS_TOKEN is a fine-grained PAT on the ritvi-apps org with exactly
-      # one permission: Contents: read. It expires; when it does this step
-      # fails loudly rather than deploying a site with holes in it.
-      - name: Pull design sets from the private app repos
-        env:
-          DESIGNS_TOKEN: ${{ secrets.DESIGNS_TOKEN }}
-          DESIGNS_SOURCE: remote
-        run: |
-          test -n "$DESIGNS_TOKEN" || {
-            echo "::error::secrets.DESIGNS_TOKEN is not set. Create a fine-grained PAT"
-            echo "::error::on ritvi-apps with Contents: read, and add it as a repo secret."
-            exit 1
-          }
-          pnpm designs
-
       # Both palettes, every pair, computed from globals.css rather than
       # remembered. The theme this replaced carried a comment claiming a ratio
       # the colour beside it did not meet.

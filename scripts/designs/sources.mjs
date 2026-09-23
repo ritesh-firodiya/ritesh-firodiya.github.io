@@ -45,6 +45,13 @@ const LOCAL_ROOT = join(homedir(), "git", "products");
 const git = (args, cwd) =>
   execFileSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
 
+/** Strip the token out of anything on its way to a log. CI logs are public. */
+const redact = (text, token) =>
+  text
+    .split(token).join("***")
+    .replace(/x-access-token:[^@]*@/g, "x-access-token:***@")
+    .split("\n").map((l) => l.trim()).filter(Boolean).slice(-3).join(" | ") || "no detail from git";
+
 /**
  * Clone just `.context/designs` at the tip of the default branch.
  *
@@ -63,10 +70,19 @@ function cloneSparse(slug, repo, token) {
   let head;
   try {
     head = git(["ls-remote", url, "HEAD"]).split(/\s+/)[0];
-  } catch {
-    // Never let a token reach a log — execFileSync puts the whole command,
-    // URL and all, into the error it throws.
-    throw new Error(`${repo}: cannot reach repo — is DESIGNS_TOKEN valid and scoped to it?`);
+  } catch (e) {
+    /* Say what actually went wrong. An earlier version threw a generic
+       "cannot reach repo" because execFileSync puts the whole command — token
+       and all — into the error it raises, and dropping the message was the
+       quick way to keep it out of a public CI log. That made the one failure
+       this script can have undiagnosable from the log, which is worse. Redact
+       instead of discard. */
+    throw new Error(`${repo}: cannot reach repo — ${redact(String(e.stderr || e.message || ""), token)}
+  Check, in this order:
+    1. the PAT's resource owner is the ORG (ritvi-apps), not your user account
+    2. an org owner has approved it — fine-grained PATs start pending
+    3. ${repo} is in its selected repositories
+    4. it grants Contents: read`);
   }
 
   if (existsSync(dir) && existsSync(stamp) && readFileSync(stamp, "utf8").trim() === head) {

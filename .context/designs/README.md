@@ -1,71 +1,85 @@
-# One site — designs
+# ritesh-firodiya.github.io — design set
 
-Pure HTML + Tailwind (Play CDN). Nothing is wired to a framework.
+Built to `~/git/personal/STYLE-GUIDE.md`. Serve it over http and open
+`web/index.html`:
 
-Open `index.html` — it is the gallery and links every screen.
-
-```
-tailwind.config.js   token scales, every value a var(--…)
-shared.css           token definitions + frames, grain, table, gallery, print
-index.html           gallery · start here
-web/                 21 screens — products (+4 model variants), go, design ×4,
-                     process ×3, notes ×2, home, work, hire, resume, legal,
-                     support, 404
-mobile/              11 screens at 390
+```sh
+cd .context && python3 -m http.server 8866
+# → http://localhost:8866/designs/web/index.html
 ```
 
-Direction: **editorial light** — warm paper, near-black warm ink, one
-burnt-sienna accent, Fraunces display over Inter text.
+**Serve from `.context/`, not from `web/`.** The notes drawer fetches
+`../../documents/wiki/surfaces/<slug>.md`, which resolves above `web/`. And
+never `file://` — fetch is blocked there and a server without
+`Cache-Control: no-store` will hand you a stale stylesheet and make every
+visual check a lie.
 
-## Why this exists
+## What is here
 
-The previous pass claimed "no ads in our games" and "one-time purchases, not
-subscriptions". Both were false: one game ships an AdMob banner and
-interstitial, and four of eight apps are subscriptions. A third page said
-Chitragupt was free while its config defines three priced tiers. A fourth gave
-Imposter a working install button while its `STATUS.md` said nothing was live.
+```
+web/            the only surface. 1440x900, light and dark
+  index.html        the flow chart
+  screenshots.html  every screen at once, live
+  routes.js         THE MANIFEST — 14 screens, 95 edges
+  _chrome.js        copied byte for byte from charades/mobile
+  _gallery.js       copied byte for byte from charades/mobile
+  shared.css        CORE (byte for byte) + this site's palette + components
+  tailwind.config.js
+  <flow>/<screen>.html
+```
 
-The mistake was the *shape* of the claim, not the wording. This set replaces
-every studio-wide promise with per-app facts.
+Reasoning lives in `../documents/wiki/surfaces/`, one page per screen, and is
+what the ⓘ button in the bar opens.
 
-## The four rules added here
+## The seven checks
 
-1. The model is stated before the install button, always — and the five models
-   render at equal visual weight.
-2. No studio-wide promise.
-3. Availability is never a euphemism; an unavailable platform renders disabled
-   **with the reason**.
-4. A missing asset is visibly missing.
+All pass as of 2026-09-23. §12 lists five; the two extra are the ones the
+publish gate used to run.
 
-Plus the five inherited from the previous set (three doors, picture above the
-fold, status sorts the grid, tokens are variables, no component classes).
+| Check | Result |
+|---|---|
+| declared-screens | 14 screens, all accounted for |
+| screen-identity | every screen declares its own `data-file` |
+| pinned-cdns | tailwind 3.4.17, lucide 0.544.0 |
+| links | every local `href` resolves |
+| click-through | all 94 edges are real links |
+| flow-complete | every screen-to-screen link is declared |
+| acyclic | forward graph is a DAG |
 
-## Build target
+## Two things worth knowing
 
-**A single Next.js app + Tailwind v4. Not a monorepo, not Fresh.**
+**73 of the 95 edges are the site header and footer.** Every screen but 404
+carries them, so each links to Work, Products, About, Hire, Contact, Legal and
+Home. §12 says every link is a declared edge or the chart under-reports the
+product — so they are declared, `side` for navigation that makes no progress
+and `back` for returns to Home. They were **derived by scanning the real
+hrefs**, not recalled; §13 warns a set written from memory under-reports itself
+by about a quarter, and a header is the easiest thing in a design to stop
+seeing.
 
-No monorepo because there is no second app and no shared package — the fact
-generator reads *private sibling repos* from `~/git`, so it belongs next to
-`bin/index` and `bin/check`, not in a workspace.
+**`screenshots.html` was changed, and the change belongs in every set.** The
+canonical copy hardcodes `195x422` tiles with a `390x844` iframe at
+`scale(0.5)` — the phone numbers, baked in — so any non-phone surface renders
+clipped down its right edge. Since `--frame-w` / `--frame-h` are already
+published by `_chrome.js` from `routes.js`, the tile now derives from them. **A
+390-wide set still computes exactly `195x422` at `0.5`**, so the file is safe
+to copy back over charades, aakalan, askcal and tic-tac-toe with no visible
+change. Until it is, this set's copy differs from canonical — §13 says a
+shared file that needs to behave differently is changed in every set, not
+locally in one, and this is the "in every set" half still outstanding.
 
-Next.js because Tailwind v4's `@theme` is CSS-first, so the `:root` block in
-`shared.css` becomes the real theme nearly verbatim; file-system routing plus
-`generateStaticParams()` removes the `fresh.gen.ts` + hardcoded-`ROUTES`
-double-gotcha across ~20 routes and four dynamic families; MDX for `/notes` is
-native; and Twind 0.16 is unmaintained while Fresh 2 drops the plugin anyway,
-so a Tailwind port is owed regardless.
+## Gaps, stated
 
-`output: 'export'` gives static HTML for Pages, and the repo keeps its name so
-the absolute links stay valid.
+- **No mobile surface.** The site is responsive; the narrow screens are not
+  drawn. The surface toggle renders `mobile` struck through rather than hiding
+  it, so the gap looks like a gap.
+- **No Support screen.** The live route exists and nothing describes it yet.
+- `loading`, `error`, `offline` and `locked` are not drawn, each with its
+  reason in `routes.js` — a static export has no request to wait on, nothing
+  posts, there is no service worker, and nothing is gated.
 
-## Known gap
+## Relationship to the live site
 
-The gallery's live iframes still show the development chrome carried by every
-design file. The sync step has to strip it before anything is published. It is
-left visible on `/design/gallery` rather than hidden.
-
-## Next phase
-
-A generator that reads the app repositories and **refuses to build when a
-stated fact disagrees with source**. Until that exists, every number on
-`/products` is hand-checked against the repos and dated.
+**The live site does not implement this yet.** `.context/designs-v1/` is the
+set the deployed pages were built from and stays until this one is approved and
+built. When a page and its wireframe disagree, the wireframe wins.

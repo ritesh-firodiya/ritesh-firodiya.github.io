@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ritesh Firodiya — screenshots</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* A flow's heading, so the sheet reads as the journey rather than as a
+       wall of phones. The flow name is here once instead of under every tile. */
+    .sheet-flow {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--ink-3);
+      margin: 26px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line);
+    }
+    .sheet-flow:first-child { margin-top: 0; }
+    .sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--tile-w, 195px), 1fr)); gap: 22px; }
+    /* Live iframes, not stills: a sheet of stills is stale the day after it is
+       made, and this page exists to catch the screen that drifted.
+
+       The tile is DERIVED from the set's own frame, never hardcoded. This used
+       to read 195x422 with a 390x844 iframe at scale(0.5) — the phone numbers,
+       baked in — so every non-phone surface rendered clipped down its right
+       edge and the one page whose job is "find the screen that drifted" could
+       not show a web screen at all. A phone set still computes exactly
+       195x422 at 0.5, so this is the same file for every set that had it
+       working before. */
+    .tile-box { width: var(--tile-w, 195px); height: var(--tile-h, 422px); overflow: hidden;
+                border: 1px solid var(--line); border-radius: 14px; background: var(--frame); }
+    .tile-box iframe { width: var(--frame-w, 390px); height: var(--frame-h, 844px); border: 0;
+                       transform: scale(var(--tile-scale, 0.5)); transform-origin: top left; pointer-events: none; }
+  </style>
+</head>
+<body data-chrome data-page="screenshots">
+
+<div class="max-w-[1200px] mx-auto px-6 py-8">
+  <div id="sheet"></div>
+</div>
+
+<script src="routes.js"></script>
+<script src="_chrome.js"></script>
+<script>
+  /* One tile per SCREEN, grouped by flow, in the order the product reaches
+     them — Splash, then Home, then the game, and so on. Both the grouping and
+     the order come from window.WF, which _chrome.js derives from routes.js and
+     the flow chart reads too, so this page and the chart cannot disagree.
+
+     States get no tile of their own. "Board" beside "Board · loading" beside
+     "Game History · empty" is the same screen listed twice, and on a sheet
+     whose whole job is "find the screen that drifted" the duplicate is noise.
+     The chrome bar's state switcher is where the variants live — there you are
+     already looking at the screen they are variants of. */
+  /* Size the tiles from the frame routes.js declared. _chrome.js has already
+     published it as --frame-w / --frame-h, so this page never needs to know
+     which surface it is on.
+
+     A wide surface gets a wider tile rather than a smaller scale: 1440 at the
+     phone's 0.5 would be 720px across and two tiles would not fit a row, and
+     at the phone's 195px width the text is unreadable. 360 is the widest tile
+     that still fits three to a row at 1200. */
+  var cs = getComputedStyle(document.documentElement);
+  var frameW = parseInt(cs.getPropertyValue("--frame-w"), 10) || 390;
+  var frameH = parseInt(cs.getPropertyValue("--frame-h"), 10) || 844;
+  var tileW = frameW >= 800 ? 360 : 195;
+  var tileScale = tileW / frameW;
+  var root = document.documentElement.style;
+  root.setProperty("--tile-w", tileW + "px");
+  root.setProperty("--tile-h", Math.round(frameH * tileScale) + "px");
+  root.setProperty("--tile-scale", String(tileScale));
+
+  var out = [];
+  window.WF.journey.forEach(function (group) {
+    out.push('<h2 class="sheet-flow mono">' + group.flow + "/</h2>");
+    out.push('<div class="sheet">');
+    group.screens.forEach(function (s) {
+      out.push(
+        '<a href="' + s.file + '" class="no-underline">' +
+        '<div class="tile-box"><iframe src="' + s.file + '?bare" loading="lazy" title="' + s.name + '"></iframe></div>' +
+        '<p class="mt-2 text-sm font-bold text-ink">' + s.name + "</p></a>");
+    });
+    out.push("</div>");
+  });
+  document.getElementById("sheet").innerHTML = out.join("");
+  /* The tiles are built after _chrome.js has run, so the theme it restored has
+     to be pushed into the iframes as they arrive. */
+  document.querySelectorAll("#sheet iframe").forEach(function (fr) {
+    fr.addEventListener("load", function () {
+      try {
+        fr.contentDocument.documentElement.dataset.wfTheme = document.documentElement.dataset.wfTheme;
+        var dark = document.documentElement.dataset.wfTheme === "dark";
+        fr.contentDocument.querySelectorAll(".phone").forEach(function (ph) {
+          ph.classList.toggle("phone--dark", dark);
+        });
+      } catch (e) {}
+    });
+  });
+</script>
+</body>
+</html>

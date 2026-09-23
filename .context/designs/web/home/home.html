@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ritesh Firodiya — Home</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body data-chrome data-file="home/home.html">
+
+<div class="stage">
+  <div class="phone">
+
+    <!-- ══ site header ══ Six destinations, because the site has six jobs.
+         The old header carried three links and a CTA while Work, Hire,
+         Support and Legal were reachable only from the footer. -->
+    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
+      <a href="home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
+      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
+        <a href="../work/work.html" class="hover:text-ink">Work</a>
+        <a href="../products/products.html" class="hover:text-ink">Products</a>
+        <a href="../about/about.html" class="hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+      </nav>
+      <a href="../contact/contact.html"
+         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+    </header>
+
+    <!-- ══ hero ══ Name, claim, proof, two doors. Nine lines tall, so the work
+         below is visible without scrolling. The set this replaces spent a full
+         viewport on a headline and forty words, then asked the reader to pick
+         a lane before showing them anything. -->
+    <section class="grain border-b border-line px-10 pb-14 pt-16">
+      <p class="inline-flex items-center gap-2 rounded-pill border border-live/30 bg-live-bg px-3 py-1 font-mono text-2xs uppercase tracking-label text-live">
+        <span class="h-1.5 w-1.5 rounded-pill bg-live"></span> Open to senior &amp; staff roles · and consulting
+      </p>
+      <h1 class="mt-6 max-w-[14ch] text-display font-bold">Engineer who ships.</h1>
+      <div class="mt-8 flex items-end gap-12">
+        <p class="max-w-[54ch] text-lead text-ink-2">
+          Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify.
+          Now building <b class="font-semibold text-ink">thirteen products for India</b>, and
+          stating how every one of them is paid for before you install it.
+        </p>
+        <div class="slot h-24 w-24 shrink-0 rounded-lg"></div>
+      </div>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="../work/work.html" class="rounded-pill bg-ink px-5 py-2.5 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">See the work</a>
+        <a href="../hire/hire.html" class="rounded-pill border border-line-strong px-5 py-2.5 text-sm font-medium transition hover:border-brand-500 hover:text-brand-500">Work together</a>
+        <a href="../contact/contact.html" class="text-sm font-medium text-ink-3 underline decoration-line-strong underline-offset-4 hover:text-brand-500">firodiya.ritesh@gmail.com</a>
+      </div>
+      <dl class="mt-10 grid grid-cols-4 gap-px border border-line bg-line">
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Products</dt><dd class="num mt-1.5 text-h2">13</dd></div>
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Live today</dt><dd class="num mt-1.5 text-h2 text-live">4</dd></div>
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">On Google Play</dt><dd class="num mt-1.5 text-h2">2</dd></div>
+        <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Years shipping</dt><dd class="num mt-1.5 text-h2">9</dd></div>
+      </dl>
+    </section>
+
+    <!-- ══ selected work ══ GOAL 1. Promoted from band four to band one:
+         "can this person ship" is the question every one of the four readers
+         is really asking, and a picture answers it faster than a paragraph. -->
+    <section class="border-b border-line px-10 py-14">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Selected work</p>
+          <h2 class="mt-2 max-w-[24ch] text-h1 font-semibold">Things I built, and what it took.</h2>
+        </div>
+        <a href="../work/work.html" class="text-sm font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">All work</a>
+      </div>
+
+      <div class="mt-9 grid grid-cols-3 gap-6">
+        <a href="../work/case-study.html" class="group col-span-2 flex flex-col rounded-lg border border-line bg-surface p-7 transition hover:border-brand-200">
+          <div class="slot mb-6 h-48 rounded"></div>
+          <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Case study · Chitragupt</p>
+          <h3 class="mt-2 max-w-[28ch] text-h2 font-semibold group-hover:text-brand-500">
+            One person, 264 screens, and a price that had to be told the truth about.
+          </h3>
+          <p class="mt-3 max-w-[60ch] text-sm text-ink-2">
+            Household tax review for salaried Indians. Product, design, schema, build, deploy.
+          </p>
+          <div class="mt-5 flex gap-8 border-t border-line pt-4">
+            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">Role</p><p class="mt-1 text-sm font-medium">Everything</p></div>
+            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">Screens</p><p class="num mt-1 text-sm font-medium">264</p></div>
+            <div><p class="font-mono text-2xs uppercase tracking-label text-ink-3">Stack</p><p class="mt-1 text-sm font-medium">Next · Postgres</p></div>
+          </div>
+        </a>
+
+        <div class="flex flex-col gap-6">
+          <a href="../products/product.html" class="group flex-1 rounded-lg border border-line bg-surface p-5 transition hover:border-brand-200">
+            <div class="slot mb-4 h-24 rounded"></div>
+            <span class="rounded-pill bg-m-sub-bg px-2 py-0.5 font-mono text-2xs uppercase tracking-label text-m-sub">Subscription</span>
+            <h3 class="mt-2 text-h3 font-semibold group-hover:text-brand-500">Aakalan</h3>
+            <p class="mt-1 text-sm text-ink-2">Shared expenses for groups that never settle up.</p>
+          </a>
+          <a href="../products/product.html" class="group flex-1 rounded-lg border border-line bg-surface p-5 transition hover:border-brand-200">
+            <div class="slot mb-4 h-24 rounded"></div>
+            <span class="rounded-pill bg-m-sub-bg px-2 py-0.5 font-mono text-2xs uppercase tracking-label text-m-sub">Subscription</span>
+            <h3 class="mt-2 text-h3 font-semibold group-hover:text-brand-500">AskCal</h3>
+            <p class="mt-1 text-sm text-ink-2">A calorie counter that admits what it cannot see.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ experience ══ GOAL 2. Condensed: the full history is the résumé's
+         job. Eight rows here would make the page a CV. -->
+    <section class="border-b border-line bg-muted px-10 py-14">
+      <div class="grid grid-cols-[1fr_2fr] gap-12">
+        <div>
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Experience</p>
+          <h2 class="mt-2 text-h1 font-semibold">Nine years, mostly end-to-end.</h2>
+          <p class="mt-3 max-w-[34ch] text-sm text-ink-2">
+            Postgres schema to Play Store release — usually as the only person who touches both.
+          </p>
+          <a href="../about/resume.html" class="mt-4 inline-block text-sm font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">Full résumé</a>
+        </div>
+        <ol class="border-t border-line">
+          <li class="grid grid-cols-[9rem_1fr] items-baseline gap-6 border-b border-line py-3.5">
+            <p class="font-mono text-2xs uppercase tracking-label text-ink-3">2025 — 2026</p>
+            <p class="text-sm"><b class="font-semibold">Senior Software Engineer</b> · <span class="text-brand-500">Walmart</span></p></li>
+          <li class="grid grid-cols-[9rem_1fr] items-baseline gap-6 border-b border-line py-3.5">
+            <p class="font-mono text-2xs uppercase tracking-label text-ink-3">2024 — 2025</p>
+            <p class="text-sm"><b class="font-semibold">Tech Lead &amp; Full-Stack</b> · <span class="text-brand-500">TopLegal</span></p></li>
+          <li class="grid grid-cols-[9rem_1fr] items-baseline gap-6 border-b border-line py-3.5">
+            <p class="font-mono text-2xs uppercase tracking-label text-ink-3">2021 — 2023</p>
+            <p class="text-sm"><b class="font-semibold">Senior Software Engineer</b> · <span class="text-brand-500">Masai School</span></p></li>
+          <li class="grid grid-cols-[9rem_1fr] items-baseline gap-6 border-b border-line py-3.5">
+            <p class="font-mono text-2xs uppercase tracking-label text-ink-3">2017 — 2021</p>
+            <p class="text-sm text-ink-2">Swiggy · Globant · Speechify · Confluxsys</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══ products ══ GOAL 3. The brand-site half: every product, its model
+         stated, and the legal documents a store listing points at. -->
+    <section class="border-b border-line px-10 py-14">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Products · verified 2026-09-20</p>
+          <h2 class="mt-2 max-w-[26ch] text-h1 font-semibold">Thirteen products, honestly labelled.</h2>
+        </div>
+        <a href="../products/products.html" class="text-sm font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">All products</a>
+      </div>
+      <p class="mt-4 max-w-[62ch] text-sm text-ink-2">
+        How each one is paid for is stated above its install button — never below it, never
+        softened into &ldquo;unlock&rdquo;. No promise is made on behalf of all of them.
+      </p>
+      <div class="mt-8 grid grid-cols-4 gap-px border border-line bg-line">
+        <a href="../products/product.html" class="group bg-surface p-5 transition hover:bg-muted">
+          <span class="rounded-pill bg-m-sub-bg px-2 py-0.5 font-mono text-2xs uppercase tracking-label text-m-sub">Subscription</span>
+          <h3 class="mt-2.5 text-h3 font-semibold group-hover:text-brand-500">Aakalan</h3>
+          <p class="mt-1 text-sm text-ink-2">Shared expenses.</p>
+        </a>
+        <a href="../products/product.html" class="group bg-surface p-5 transition hover:bg-muted">
+          <span class="rounded-pill bg-m-ads-bg px-2 py-0.5 font-mono text-2xs uppercase tracking-label text-m-ads">Free · ads</span>
+          <h3 class="mt-2.5 text-h3 font-semibold group-hover:text-brand-500">Tic Tac Toe</h3>
+          <p class="mt-1 text-sm text-ink-2">Banner and interstitial.</p>
+        </a>
+        <a href="../products/product.html" class="group bg-surface p-5 transition hover:bg-muted">
+          <span class="rounded-pill bg-m-once-bg px-2 py-0.5 font-mono text-2xs uppercase tracking-label text-m-once">One-time</span>
+          <h3 class="mt-2.5 text-h3 font-semibold group-hover:text-brand-500">Charades</h3>
+          <p class="mt-1 text-sm text-ink-2">Buy once, keep it.</p>
+        </a>
+        <a href="../products/unreleased.html" class="group bg-surface p-5 transition hover:bg-muted">
+          <span class="rounded-pill bg-idea-bg px-2 py-0.5 font-mono text-2xs uppercase tracking-label text-idea">Not built</span>
+          <h3 class="mt-2.5 text-h3 font-semibold group-hover:text-brand-500">+ 6 more</h3>
+          <p class="mt-1 text-sm text-ink-2">Specs and schemas, nothing shipping.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══ work together ══ GOALS 4 & 6, side by side because they are two
+         answers to one question and splitting them across bands made the
+         reader scroll to compare. -->
+    <section class="border-b border-line px-10 py-14">
+      <div class="grid grid-cols-2 gap-6">
+        <a href="../hire/hire.html" class="group rounded-lg border border-line bg-surface p-8 transition hover:border-brand-200">
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Work together</p>
+          <h2 class="mt-2 text-h2 font-semibold group-hover:text-brand-500">An MVP, a team to lead, or AI tooling.</h2>
+          <p class="mt-3 max-w-[44ch] text-sm text-ink-2">
+            What I take on, what it costs in time, and what you get at the end of it.
+          </p>
+          <span class="mt-5 inline-block text-sm font-medium text-brand-500">What I take on →</span>
+        </a>
+        <a href="../about/resume.html" class="group rounded-lg border border-line bg-surface p-8 transition hover:border-brand-200">
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Hiring</p>
+          <h2 class="mt-2 text-h2 font-semibold group-hover:text-brand-500">Senior / staff IC and tech lead.</h2>
+          <p class="mt-3 max-w-[44ch] text-sm text-ink-2">
+            Nine years, four countries&rsquo; worth of remote teams, on the web and in the store.
+          </p>
+          <span class="mt-5 inline-block text-sm font-medium text-brand-500">Read the résumé →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══ contact ══ GOAL 5. An end node: the journey this site exists for
+         finishes here. -->
+    <section class="bg-ink px-10 py-14 text-ink-inverse">
+      <p class="font-mono text-2xs uppercase tracking-label text-ink-inverse/55">Get in touch</p>
+      <h2 class="mt-3 max-w-[20ch] text-h1 font-semibold">Hiring, building, or just want to argue about tooling?</h2>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="../contact/contact.html" class="rounded-pill bg-page px-5 py-3 text-sm font-medium text-ink transition hover:bg-brand-500 hover:text-ink-inverse">firodiya.ritesh@gmail.com</a>
+        <a href="../about/resume.html" class="rounded-pill border border-ink-inverse/25 px-5 py-3 text-sm font-medium transition hover:border-ink-inverse">Résumé</a>
+      </div>
+    </section>
+
+    <!-- ══ footer ══ Legal lives here and is reachable from every page: two
+         live Play listings point at these documents, and a 404 on one is
+         grounds for an app to be pulled. -->
+    <footer class="bg-ink px-10 pb-8 text-ink-inverse/50">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ink-inverse/10 pt-6 font-mono text-2xs">
+        <span>© 2026 Ritesh Firodiya</span>
+        <a href="../products/products.html" class="hover:text-ink-inverse">Products</a>
+        <a href="../legal/legal.html" class="hover:text-ink-inverse">Legal</a>
+        <a href="../about/about.html" class="hover:text-ink-inverse">About</a>
+        <a href="../contact/contact.html" class="ml-auto hover:text-ink-inverse">Get in touch →</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="../routes.js"></script>
+<script src="../_chrome.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

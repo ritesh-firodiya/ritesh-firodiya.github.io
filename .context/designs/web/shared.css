@@ -1,0 +1,774 @@
+/* ============================================================================
+   CORE — identical in every product. Do not edit per product.
+   ============================================================================
+   Everything metric is shared; everything hued is not. A game and a tax app
+   should not look the same — they should look like they were built by the same
+   people. So the type scale, the radii, the shadow geometry, the frame and the
+   token NAMES are fixed here, and each product supplies only colour, below the
+   PALETTE banner.
+
+   The naming rule, which is the whole naming policy:
+
+       the CSS variable is the Tailwind token path with dots as dashes.
+       line.strong <-> --line-strong.  ink.2 <-> --ink-2.  brand.500 <-> --brand-500.
+
+   It ends every naming argument and it is checkable by eye. Before it, sets
+   broke it in both directions at once — Tailwind key `line` with CSS var
+   `--border`, key `ink` with `--text-primary` — and neither name could be
+   trusted to find the other.
+   ============================================================================ */
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Type. The first four steps were byte-identical across every set that had
+     a token layer — the strongest existing convention in the tree. */
+  --fs-2xs: 10px;     --lh-2xs: 1.3;
+  --fs-xs: 11.5px;    --lh-xs: 1.4;
+  --fs-sm: 13px;      --lh-sm: 1.45;
+  --fs-base: 14px;    --lh-base: 1.5;
+  --fs-body: 16px;    --lh-body: 1.5;
+  --fs-lead: 18px;    --lh-lead: 1.45;
+  --fs-h3: 22px;      --lh-h3: 1.25;    --ls-h3: -0.01em;
+  --fs-h2: 28px;      --lh-h2: 1.15;    --ls-h2: -0.02em;
+  --fs-h1: 36px;      --lh-h1: 1.08;    --ls-h1: -0.02em;
+  --fs-display: 46px; --lh-display: 1.02; --ls-display: -0.03em;
+
+  --tracking-label: 0.18em;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 28px;
+  --radius-pill: 999px;
+  --radius-phone: 40px;
+
+  /* Geometry is shared; tint and strength are per product, because a dark
+     palette needs far more alpha to read at all. --shadow-tint is an `r g b`
+     triple, declared in the palette block. */
+  --shadow-a1: 0.05;
+  --shadow-a2: 0.07;
+  --shadow-a3: 0.18;
+  --shadow-sm: 0 1px 2px rgb(var(--shadow-tint) / var(--shadow-a1));
+  --shadow:    0 4px 14px rgb(var(--shadow-tint) / var(--shadow-a2));
+  --shadow-lg: 0 14px 34px -10px rgb(var(--shadow-tint) / var(--shadow-a3));
+  --shadow-phone: 0 0 0 1px var(--line-strong), 0 30px 60px -20px rgb(var(--shadow-tint) / var(--shadow-a3));
+
+  --frame-w: 390px;
+  --frame-h: 844px;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background: var(--page);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.mono { font-family: var(--font-mono); }
+.num  { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; letter-spacing: -0.01em; }
+
+/* ---- Phone frame — a device, not a utility --------------------------------
+   390 wide is the spec and never changes. The HEIGHT is clamped to whatever is
+   left under the chrome bar, and the content scrolls inside the frame the way
+   it scrolls on the phone.
+
+   This replaces a transform: scale() approach that looked right and was not —
+   a transform does not change layout height, so the frame still occupied its
+   full 844px, and the page scrolled to reveal a frame that was already drawn
+   smaller. --chrome-h is measured by _chrome.js, because the bar wraps to two
+   rows on a narrow window and a guessed constant is wrong exactly when it
+   matters. */
+.phone {
+  width: var(--frame-w);
+  max-width: 100%;
+  height: min(var(--frame-h), calc(100dvh - var(--chrome-h, 0px) - var(--stage-pad, 32px)));
+  background: var(--frame);
+  /* The frame re-resolves ink itself. Without this, text with no colour class
+     inherits body's COMPUTED colour, which was resolved in the light scope —
+     so a dark frame kept black body text while everything token-driven around
+     it turned white. A variable remap only reaches declarations that read the
+     variable; inheritance carries the old value, not the new name. */
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--radius-phone);
+  box-shadow: var(--shadow-phone);
+}
+.phone::-webkit-scrollbar { width: 0; }
+/* A footer pinned to the bottom of the DEVICE, not the bottom of the content:
+   sticky keeps it in view while the content above it scrolls, which is what a
+   tab bar or a primary action actually does on the phone. */
+.phone > .pin-bottom { margin-top: auto; position: sticky; bottom: 0; }
+
+/* The stage is exactly the frame plus its padding, so the page itself never
+   scrolls on a screen that already fits. */
+.stage {
+  display: grid;
+  place-items: start center;
+  /* The same variable the frame subtracts from its own height, so the two
+     cannot disagree. A literal 16px here left the frame 32px shorter than the
+     space it was given. */
+  padding: calc(var(--stage-pad, 32px) / 2) 0;
+  height: 100dvh;
+  box-sizing: border-box;
+}
+
+/* ?bare is what the screenshots sheet embeds and what you capture a single
+   screen with. The gutter and the device rounding are framing for a screen
+   being *looked at*; inside a 390x844 tile they are a white margin and four
+   clipped corners, and the frame no longer fills the tile it was sized for. */
+[data-bare] .stage { padding: 0; }
+[data-bare] .phone {
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+}
+
+/* A theme scope is a token remap, never a second set of utilities. A utility
+   written against a variable follows whichever scope it lands in, so the theme
+   toggle changes no markup and nothing can be dark in one place and light in
+   another. */
+/* A screen with a modal over it does not scroll. `position: absolute; inset: 0`
+   resolves against the frame's padding box, and in a scroll container that is
+   the visible box pinned to the top of the scrollable area — so scrolling the
+   frame slid the backdrop off the screen and left the card floating over
+   nothing. A modal blocks the content underneath in the app too. */
+.phone--modal { overflow: hidden; }
+
+.phone--page   { background: var(--page); }
+.phone--sunken { background: var(--sunken); }
+
+/* The device status bar. The OS draws this, not the app — but the app pads for
+   it (pt-safe), so a wireframe that omits it puts every screen ~44px too high
+   and makes the first row look like it has more air than it will. */
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  padding: 12px 20px 2px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.statusbar-time { font-weight: 600; letter-spacing: 0.02em; }
+.statusbar-icons { display: flex; align-items: center; gap: 6px; }
+
+/* ---- Dev chrome — injected by _chrome.js, not part of the product ---------
+   Everything around the screen and nothing in it. One bar, same controls, same
+   order, in every product.
+
+   And the same COLOURS in every product. These are declared here rather than
+   read from the palette because the bar is tooling: reading --brand-500 made
+   the active chip blue in tic-tac-toe and navy in charades, so the same
+   control looked like a different control depending on which set you opened,
+   and the bar read as part of the product rather than as the thing holding
+   it. Nothing below this line may reference a product token. */
+:root {
+  --chrome-bg:      #ffffff;
+  --chrome-surface: #ffffff;
+  --chrome-line:    #d4d4d8;   /* zinc-300 */
+  --chrome-ink:     #3f3f46;   /* zinc-700 */
+  --chrome-ink-2:   #71717a;   /* zinc-500 */
+  --chrome-ink-3:   #a1a1aa;   /* zinc-400 */
+  --chrome-active:  #18181b;   /* zinc-900 */
+  --chrome-soft:    #f4f4f5;   /* zinc-100 */
+}
+
+.chrome {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--chrome-line);
+  background: color-mix(in srgb, var(--chrome-bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  padding: 7px 16px;
+}
+.chrome-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+.chrome-group { display: flex; align-items: center; gap: 6px; }
+/* The middle group scrolls; the row does not wrap. A wrapped row is two
+   stacked bars, which reads as two bars — chitragupt's settings flow has
+   twenty-three screens and pushed the bar onto a second line on a full-width
+   window. Scrolling the names keeps the row one line at every width, so the
+   nav on the left and the display controls on the right never move, and
+   --chrome-h stays put instead of doubling. min-width:0 is what actually lets
+   a flex child shrink below its content and scroll. */
+.chrome-mid {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.chrome-mid::-webkit-scrollbar { display: none; }
+.chrome-left, .chrome-right { flex: 0 0 auto; }
+/* Navigation left, settings right, and a gap between them that grows. */
+.chrome-right { margin-left: auto; }
+/* There is no .chrome-label. The breadcrumb it styled — `mobile · /game ›` —
+   said what the surface toggle on the right already says and what the flow
+   tint in the chart already says, and it sat between the nav chips and the
+   screen chips pushing the two apart for no information. */
+.chrome-chip {
+  border-radius: 6px;
+  border: 1px solid var(--chrome-line);
+  background: var(--chrome-surface);
+  padding: 2px 8px;
+  color: var(--chrome-ink);
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chrome-chip:hover { border-color: var(--chrome-active); }
+.chrome-chip.is-current {
+  border-color: var(--chrome-active);
+  background: var(--chrome-soft);
+  color: var(--chrome-active);
+  font-weight: 600;
+}
+
+/* Icon controls ------------------------------------------------------------
+   The controls that mean the same thing on every page — all routes,
+   screenshots, back, next, theme, surface, notes — are icons. They are lucide,
+   the estate's one icon set, asked for by name: nothing here carries a copy of
+   any path data, and there is no second icon library on the page.
+
+   The chip keeps its label in `title` and `aria-label`, so hovering still says
+   which control this is. An icon whose meaning you have to click to learn is
+   worse than the word it replaced. */
+.chrome-chip--icon {
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+}
+.chrome-ico { display: grid; place-items: center; line-height: 0; }
+.chrome svg { width: 14px; height: 14px; }
+/* The fallback when the lucide CDN did not load: the placeholder renders its
+   own label instead of an empty square. Wider than an icon slot, so the chip
+   grows to fit rather than clipping the word. */
+.chrome-ico--text {
+  font-size: 9px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+.chrome-chip--icon:has(.chrome-ico--text) { width: auto; padding: 0 4px; }
+.seg-chip--icon:has(.chrome-ico--text) { padding: 2px 6px; }
+
+/* Segmented controls: surface, theme, and this screen's states. Always
+   rendered in the same slot — a control that appears only sometimes moves
+   everything beside it the day a product gains a surface or a dark scope. */
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--chrome-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.seg--states { margin-left: 4px; }
+.seg-chip {
+  padding: 2px 10px;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--chrome-ink-2);
+  background: var(--chrome-surface);
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.seg-chip + .seg-chip { border-left: 1px solid var(--chrome-line); }
+.seg-chip:hover { color: var(--chrome-active); }
+.seg-chip.is-current { background: var(--chrome-active); color: #fff; }
+.seg-chip--icon { padding: 2px 8px; display: inline-grid; place-items: center; }
+
+/* A surface that is not drawn is struck through, never omitted: a missing
+   thing has to look missing, or its absence reads as "no such thing". */
+.seg-chip.is-absent { color: var(--chrome-ink-3); text-decoration: line-through; cursor: default; }
+/* line-through does not cross an <svg>, so an icon half draws its own strike:
+   a hairline at the same angle, in the same colour, so a struck icon and a
+   struck word read as the same statement. It applies to a dead back/next as
+   well as to an undrawn theme or surface — §4 says the ends of the set are
+   struck through, and dimming alone did not say it. */
+.seg-chip--icon.is-absent,
+.chrome-chip--icon.is-absent { position: relative; text-decoration: none; }
+.seg-chip--icon.is-absent::after,
+.chrome-chip--icon.is-absent::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 50%;
+  border-top: 1px solid currentColor;
+  transform: rotate(-20deg);
+}
+/* A dead back/next at the ends of the set: shown, not hidden, so the bar does
+   not reflow as you step through it. */
+.chrome-chip.is-absent { color: var(--chrome-ink-3); border-color: var(--chrome-line); cursor: default; }
+.chrome-chip.is-absent:hover { border-color: var(--chrome-line); }
+
+/* ---- Notes drawer --------------------------------------------------------
+   The rationale lives in the wiki and only in the wiki. This renders it beside
+   the screen on demand, collapsed by default — the screen is the thing under
+   review, and an essay next to it competes for the eye.
+
+   Dev chrome, so the same fixed colours as the bar. */
+.notes {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(400px, 92vw);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  background: var(--chrome-surface);
+  border-left: 1px solid var(--chrome-line);
+  box-shadow: -12px 0 32px rgb(24 24 27 / 0.12);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--chrome-ink);
+}
+/* A panel that covers a third of the screen needs a way out that is not
+   "find the button you opened it with", which the bar may have scrolled. */
+.notes-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--chrome-line);
+  flex: none;
+}
+.notes-title {
+  flex: 1;
+  margin: 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--chrome-ink-2);
+}
+.notes-close {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--chrome-line);
+  border-radius: 7px;
+  background: var(--chrome-surface);
+  color: var(--chrome-ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+.notes-close:hover { background: var(--chrome-soft); border-color: var(--chrome-active); }
+.notes-body { flex: 1; min-height: 0; overflow-y: auto; padding: 16px 18px 28px; }
+.notes-body h3, .notes-body h4, .notes-body h5 {
+  font-size: 13px; color: var(--chrome-active); margin: 16px 0 6px;
+}
+.notes-body h3:first-child, .notes-body h4:first-child { margin-top: 0; }
+.notes-body p { margin: 0 0 10px; }
+.notes-body ul { margin: 0 0 10px; padding-left: 18px; }
+.notes-body li { margin-bottom: 4px; }
+.notes-body code {
+  font-family: var(--font-mono); font-size: 11.5px;
+  background: var(--chrome-soft); padding: 1px 4px; border-radius: 4px;
+}
+.notes-body a { color: var(--chrome-active); }
+
+/* The info button lives at the far right of the bar, past the display
+   controls: it is about the page you are on, and it is the only control that
+   opens something over the screen rather than changing the screen. */
+/* The notes button is a .chrome-chip--icon like the rest; it only differs in
+   being round, because it is the one control that opens something OVER the
+   screen rather than changing which screen you are looking at. */
+.chrome-info { border-radius: 999px; margin-left: 2px; }
+.chrome-info.is-current { background: var(--chrome-active); border-color: var(--chrome-active); color: #fff; }
+/* A screen with no wiki page still renders the button, struck out, for the
+   same reason a missing theme is struck out rather than omitted: the gap has
+   to look like a gap. */
+.chrome-info.is-absent { color: var(--chrome-ink-3); cursor: default; }
+
+/* There is no .screen-layout and no .rationale any more. One screen per file:
+   a second frame in a file has no URL, cannot appear in routes.js, and cannot
+   be linked to. Themes are the toggle in the chrome bar, states are their own
+   files, and the reasoning is in the wiki behind the notes drawer. */
+
+/* ---- The flow chart ------------------------------------------------------
+   The gallery is this and nothing else: no title, no description, no tables.
+   React Flow draws it; the node positions come from routes.js. */
+/* The chart fills what is left under the bar. _chrome.js measures the bar and
+   publishes --chrome-h, so this stays right when it wraps to two rows. */
+.chart-page { height: 100dvh; display: flex; flex-direction: column; }
+.chart-canvas { flex: 1; min-height: 0; background: var(--page); }
+
+/* React Flow paints its own node chrome; this replaces it rather than sitting
+   on top, so the nodes look like the rest of the estate. */
+.react-flow__node.fnode {
+  width: auto;
+  padding: 10px 14px 10px 12px;
+  border: 1px solid var(--line);
+  /* The flow's colour, on the edge a reader's eye follows down a column. */
+  border-left: 4px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  opacity: 0.88;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.react-flow__node.fnode:hover { border-color: var(--brand-500); opacity: 1; }
+/* The normal way through the product is the thing a flow chart has to answer
+   first, so the screens on it are the ones that read as solid. */
+.react-flow__node.fnode.is-main { opacity: 1; box-shadow: var(--shadow); }
+/* The two ends say so: where a session starts, and where it finishes. */
+.react-flow__node.fnode.is-start { box-shadow: 0 0 0 2px var(--brand-500), var(--shadow); }
+.react-flow__node.fnode.is-end   { box-shadow: 0 0 0 2px var(--success), var(--shadow); }
+/* Hovering a screen isolates its own paths: everything it does not touch fades
+   back. With thirty edges on one chart this is the difference between tracing
+   a route and guessing at one. Declared after .is-main deliberately — same
+   specificity, and the dim has to win over the spine's own opacity. */
+.react-flow__node.fnode.is-dim { opacity: 0.16; }
+.react-flow__node.fnode.is-lit {
+  opacity: 1;
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 2px var(--brand-500), var(--shadow);
+}
+/* The screen whose routes are being traced, as against the screens that lead
+   to it — otherwise "how do I reach X" lights up a dozen boxes and X is not
+   one of them to look at. */
+.react-flow__node.fnode.is-sel {
+  border-color: var(--brand-700);
+  background: var(--brand-50);
+  box-shadow: 0 0 0 3px var(--brand-500), var(--shadow-lg);
+}
+.fnode-label { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+/* The box asks the chart a question; only this opens the screen. Without a
+   separate control there was no way to interrogate a node without leaving the
+   page you were interrogating it from. */
+.fnode-go {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--frame);
+  color: var(--ink-3);
+}
+.fnode-go:hover { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+.fname { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.fflow { font-size: 9.5px; color: var(--ink-3); letter-spacing: 0.02em; }
+.react-flow__handle { opacity: 0; }
+
+/* The key. Six swatches, so the colours mean something without a paragraph. */
+.react-flow__panel.fkey {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  max-width: 260px;
+  margin: 12px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: var(--shadow-sm);
+  font-size: 10px;
+  color: var(--ink-2);
+}
+.fkey-item { display: inline-flex; align-items: center; gap: 5px; }
+.fkey-dot { width: 9px; height: 3px; border-radius: 2px; }
+.fkey-line { width: 14px; height: 0; border-top: 2px solid var(--brand-500); }
+.fkey-toggle {
+  flex: 0 0 100%;
+  margin-bottom: 2px;
+  padding: 3px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.fkey-toggle.is-on { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+.fkey-hint { flex: 0 0 100%; margin-top: 2px; color: var(--ink-4); font-size: 9.5px; }
+
+.react-flow__controls-button {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  fill: var(--ink-2);
+}
+
+/* ---- Gallery -------------------------------------------------------------
+   The route table IS the screens inventory. A second inventory in Markdown is
+   a copy that drifts the day a screen is added. */
+.route-table { width: 100%; font-size: 13px; border-collapse: collapse; }
+.route-table th {
+  text-align: left;
+  padding: 9px 13px;
+  font-size: 10px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--line);
+  background: var(--muted);
+}
+.route-table td {
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.route-table tr:last-child td { border-bottom: none; }
+
+.section-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-3);
+  font-weight: 700;
+}
+
+/* Status of a screen, on its gallery row and nowhere else. A screen must not
+   move sections the day it is approved. */
+.status { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 6px; white-space: nowrap; }
+.status--built    { background: var(--success-bg); color: var(--success-fg); }
+.status--approved { background: var(--muted);      color: var(--ink-2); }
+.status--review   { background: var(--warn-bg);    color: var(--warn-fg); }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* lucide injects an <svg> in place of the <i> and inherits currentColor. */
+.lucide { display: inline-block; vertical-align: -0.125em; stroke-width: 2; }
+
+/* ---- a11y baseline -------------------------------------------------------- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brand-500);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   PALETTE — ritesh-firodiya.github.io. The only block that differs between sets.
+   ============================================================================
+   RESERVED: the monetization scale (`--m-*`) carries product meaning and may
+   not be reused for anything else. Five models at EQUAL weight — there is no
+   good colour and no bad colour here. A subscription is not a warning and
+   ad-supported is not a confession; they are facts a person needs before they
+   tap install.
+
+   This site exists because an earlier version of it claimed "no ads in our
+   games" and "one-time purchases, not subscriptions" on a page linked from
+   live store listings. Tic Tac Toe ships an AdMob banner and interstitial;
+   four of eight apps are subscriptions. A studio-wide promise was the wrong
+   SHAPE of claim. Spending the model colours on decoration would flatten the
+   one signal the site is built to carry.
+
+   Release state (`--live` / `--beta` / `--build` / `--idea`) is a SECOND
+   reserved scale and is independent of the first. A product has a price and a
+   release state, and conflating them is how "coming soon" ends up meaning four
+   things. No model colour may read as a warning.
+
+   Brand is burnt sienna. Role names only — calling it `--sienna` would make a
+   repalette a rename across every file.
+
+   IN STEP WITH src/app/globals.css. Same values, same role names; Tailwind
+   v4's `--color-` namespace prefix is the only difference. When a value moves
+   here it moves there, and `pnpm contrast` asserts both themes.
+   ============================================================================ */
+
+:root {
+  /* ---- ground ---- */
+  --page:    #fbf9f4;
+  --frame:   #ffffff;
+  --surface: #ffffff;
+  --muted:   #f4f0e6;
+  --sunken:  #ebe5d6;
+
+  /* ---- ink ---- */
+  --ink:         #14130f;
+  --ink-2:       #45423a;
+  --ink-3:       #6f6a61;
+  --ink-4:       #918b80;
+  --ink-inverse: #fbf9f4;
+
+  --line:        #e4dfd2;
+  --line-strong: #cfc8b6;
+
+  /* ---- brand · burnt sienna ---- */
+  --brand-50:  #f7ebe6;
+  --brand-100: #f0d9d1;
+  --brand-200: #e0b3a4;
+  --brand-400: #a9452f;
+  --brand-500: #8a3324;
+  --brand-700: #6b261a;
+  --brand-900: #3f1610;
+
+  /* ---- status ---- */
+  --success:    #2c6e49;  --success-bg: #e6f1ea;  --success-fg: #1d4a31;
+  --warn:       #8a6114;  --warn-bg:    #f7eeda;  --warn-fg:    #5c400d;
+  --danger:     #9b2c2c;  --danger-bg:  #f7e6e6;  --danger-fg:  #6b1f1f;
+  --info:       #38587a;  --info-bg:    #e8eef5;  --info-fg:    #264057;
+
+  --shadow-tint: 20 19 15;
+
+  /* ---- RESERVED · monetization model ---- */
+  --m-free: #5a5750;  --m-free-bg: #efece3;
+  --m-ads:  #8a5a0b;  --m-ads-bg:  #f7eeda;
+  --m-once: #2c6e49;  --m-once-bg: #e6f1ea;
+  --m-sub:  #34508c;  --m-sub-bg:  #e7ecf5;
+  --m-year: #6b3a7a;  --m-year-bg: #f1e9f4;
+
+  /* ---- RESERVED · release state ---- */
+  --live:  #2c6e49;  --live-bg:  #e6f1ea;
+  --beta:  #8a6114;  --beta-bg:  #f7eeda;
+  --build: #38587a;  --build-bg: #e8eef5;
+  --idea:  #6b6357;  --idea-bg:  #efebe1;
+}
+
+/* A theme is a token remap (§8) — never a `dark:` prefix, never a second set
+   of utilities. `.phone--dark` is what _chrome.js toggles, and it re-resolves
+   `--ink` on the frame itself because inheritance carries the computed colour,
+   not the variable name.
+
+   Roles invert rather than values: brand-50 stays "the quietest wash of the
+   brand" and so becomes the DARKEST sienna here. Flipping only some of them
+   would paint a wash lighter than the text sitting on it. */
+.phone--dark {
+  --page:    #121110;
+  --frame:   #1c1a17;
+  --surface: #1c1a17;
+  --muted:   #1a1815;
+  --sunken:  #0c0b0a;
+
+  --ink:         #f3f0e9;
+  --ink-2:       #c4bdb0;
+  --ink-3:       #968f83;
+  --ink-4:       #6f6961;
+  --ink-inverse: #14130f;
+
+  --line:        #2b2926;
+  --line-strong: #423f39;
+
+  --brand-50:  #2a1712;
+  --brand-100: #3d201a;
+  --brand-200: #5c3125;
+  --brand-400: #c96a4d;
+  --brand-500: #e08a6b;
+  --brand-700: #eda98e;
+  --brand-900: #f6d5c6;
+
+  --success:    #6fbf8f;  --success-bg: #17281f;  --success-fg: #9fd9b5;
+  --warn:       #d4a44a;  --warn-bg:    #2a2113;  --warn-fg:    #e8c884;
+  --danger:     #e08585;  --danger-bg:  #2b1818;  --danger-fg:  #f0aeae;
+  --info:       #7fa8d4;  --info-bg:    #17212b;  --info-fg:    #aac8e6;
+
+  --shadow-tint: 0 0 0;
+
+  --m-free: #a9a396;  --m-free-bg: #201e1a;
+  --m-ads:  #d4a44a;  --m-ads-bg:  #2a2113;
+  --m-once: #6fbf8f;  --m-once-bg: #17281f;
+  --m-sub:  #86a8e0;  --m-sub-bg:  #171d2a;
+  --m-year: #bf92cc;  --m-year-bg: #241a28;
+
+  --live:  #6fbf8f;  --live-bg:  #17281f;
+  --beta:  #d4a44a;  --beta-bg:  #2a2113;
+  --build: #7fa8d4;  --build-bg: #17212b;
+  --idea:  #a9a396;  --idea-bg:  #201e1a;
+}
+
+/* ============================================================================
+   COMPONENTS — this set's own classes.
+   ============================================================================
+   §8: adding a class means declaring it here in the same edit. There is no
+   lint; a class that resolves to nothing throws nothing and paints nothing,
+   which is how `text-2xs` came to be used 186 times across three apps while
+   declared in exactly one.
+
+   Everything Tailwind can already express stays a utility. Nothing here is a
+   `.btn` or a `.card`.
+   ============================================================================ */
+
+/* A website frame is not a device. CORE's .phone assumes 390x844 and a 40px
+   device radius; _chrome.js already publishes the real 1440x900 from
+   routes.js, so only the rounding and the shadow need correcting — a 40px
+   radius on a 1440 frame reads as a tablet.
+
+   Unqualified because this set declares exactly one surface. The day a mobile
+   surface is drawn, this becomes a scoped rule and not before: a selector
+   guarding against a case that does not exist is a guess about the future. */
+.phone {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* The one texture the previous set had that was worth keeping. Faint enough to
+   read as paper rather than as a dot grid — an earlier pass ran it at .35 on a
+   4px grid and it read as a pattern. */
+.grain { position: relative; }
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(var(--ink) 0.4px, transparent 0.4px);
+  background-size: 3px 3px;
+}
+
+/* A rule that fades out, for section breaks that should not read as a border. */
+.rule-fade {
+  height: 1px;
+  background: linear-gradient(to right, var(--line-strong), transparent);
+}
+
+/* A browser chrome for web screenshots, so a web product does not render in a
+   phone. Three dots and a bar — enough to say "this is a site". */
+.browser { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); }
+.browser-bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 10px; background: var(--muted); border-bottom: 1px solid var(--line);
+}
+.browser-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--line-strong); }
+
+/* A deliberately empty slot. §8's rule that a missing asset is visibly missing
+   needs somewhere to render it — hatching, not a grey box, so it never reads
+   as a real surface that happens to be blank. */
+.slot {
+  background: repeating-linear-gradient(
+    45deg, var(--muted) 0 8px, var(--sunken) 8px 16px
+  );
+  border: 1px dashed var(--line-strong);
+}

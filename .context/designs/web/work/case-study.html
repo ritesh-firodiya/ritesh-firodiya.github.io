@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ritesh Firodiya — Case study</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="../tailwind.config.js"></script>
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body data-chrome data-file="work/case-study.html">
+
+<div class="stage">
+  <div class="phone">
+    <header class="sticky top-0 z-30 flex items-center gap-8 border-b border-line bg-page/95 px-10 py-4 backdrop-blur">
+      <a href="../home/home.html" class="text-h3 font-semibold tracking-tight">Ritesh Firodiya</a>
+      <nav class="ml-auto flex items-center gap-7 text-sm text-ink-2">
+        <a href="../work/work.html" class="text-ink">Work</a>
+        <a href="../products/products.html" class="hover:text-ink">Products</a>
+        <a href="../about/about.html" class="hover:text-ink">About</a>
+        <a href="../hire/hire.html" class="hover:text-ink">Hire me</a>
+      </nav>
+      <a href="../contact/contact.html"
+         class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Get in touch</a>
+    </header>
+
+    <article>
+      <section class="grain border-b border-line px-10 py-14">
+        <a href="work.html" class="font-mono text-2xs uppercase tracking-label text-ink-3 hover:text-brand-500">← Work</a>
+        <p class="mt-6 font-mono text-2xs uppercase tracking-label text-brand-500">Case study · Chitragupt · 2026</p>
+        <h1 class="mt-3 max-w-[26ch] text-h1 font-semibold">
+          One person, 264 screens, and a price that had to be told the truth about.
+        </h1>
+        <p class="mt-5 max-w-[62ch] text-lead text-ink-2">
+          A pre-file tax review for salaried Indians: upload Form 16, AIS, 26AS and a bank
+          statement, get the deductions a rushed CA misses.
+        </p>
+        <dl class="mt-9 grid grid-cols-4 gap-px border border-line bg-line">
+          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Role</dt><dd class="mt-1.5 text-sm font-medium">Product, design, build, deploy</dd></div>
+          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Screens drawn</dt><dd class="num mt-1.5 text-h2">264</dd></div>
+          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Stack</dt><dd class="mt-1.5 text-sm font-medium">Next.js · Postgres</dd></div>
+          <div class="bg-surface px-5 py-4"><dt class="font-mono text-2xs uppercase tracking-label text-ink-3">Model</dt><dd class="mt-1.5 text-sm font-medium text-m-year">Per tax year</dd></div>
+        </dl>
+      </section>
+
+      <section class="px-10 py-12">
+        <div class="slot h-72 rounded-lg"></div>
+
+        <div class="mt-12 grid grid-cols-[14rem_1fr] gap-10">
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">The problem</p>
+          <div class="max-w-[62ch] space-y-4 text-body text-ink-2">
+            <p>
+              A salaried filer in India hands a CA four documents and gets back a number. The
+              deductions that get missed are the ones nobody asked about — a let-out property,
+              an 80D premium paid for a parent, the HRA nobody claimed because the rent receipts
+              were with a former flatmate.
+            </p>
+            <p>
+              The product is not tax filing. It is the review before filing: reconcile the four
+              documents against each other, flag what disagrees, and hand a verified CA a shorter
+              list.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 grid grid-cols-[14rem_1fr] gap-10">
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">The part worth telling</p>
+          <div class="max-w-[62ch] space-y-4 text-body text-ink-2">
+            <p>
+              An earlier version of this portfolio described Chitragupt as <i>&ldquo;free, and it
+              stays free&rdquo;</i> while the product&rsquo;s own config defined three priced tiers.
+              That page was linked from live store listings.
+            </p>
+            <p>
+              The fix was not better wording. A promise made on behalf of a product is only as
+              true as the least convenient fact about it, and it decays silently because the thing
+              that breaks it lives in a different repository. So every fact on this site now lives
+              in one JSON file, is stated per product, and carries the date a human last checked
+              it against the source.
+            </p>
+            <blockquote class="border-l-2 border-brand-500 pl-5 text-ink">
+              The model is stated above the install button. Never below it, never in a footnote,
+              never softened into &ldquo;unlock&rdquo;.
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="mt-10 grid grid-cols-[14rem_1fr] gap-10">
+          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Designed before built</p>
+          <div class="max-w-[62ch] space-y-4 text-body text-ink-2">
+            <p>
+              264 screens were drawn as static HTML and reviewed before a line of product code
+              shipped — every flow, and every empty, loading, error and locked state. A component
+              that appears in no HTML file does not ship.
+            </p>
+            <p>
+              Those sets live in the product repository, which is where they are reviewed. They
+              are deliberately not republished here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-line bg-muted px-10 py-12">
+        <div class="flex items-end justify-between gap-8">
+          <div>
+            <h2 class="max-w-[22ch] text-h2 font-semibold">Want something built this way?</h2>
+            <p class="mt-2 max-w-[48ch] text-sm text-ink-2">Designs first, facts checked, and a handover that survives my last day.</p>
+          </div>
+          <a href="../hire/hire.html" class="rounded-pill bg-ink px-5 py-3 text-sm font-medium text-ink-inverse transition hover:bg-brand-500">Work with me →</a>
+        </div>
+      </section>
+    </article>
+    <footer class="mt-auto bg-ink px-10 py-8 text-ink-inverse/50">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-2xs">
+        <span>© 2026 Ritesh Firodiya</span>
+        <a href="../products/products.html" class="hover:text-ink-inverse">Products</a>
+        <a href="../legal/legal.html" class="hover:text-ink-inverse">Legal</a>
+        <a href="../about/about.html" class="hover:text-ink-inverse">About</a>
+        <a href="../contact/contact.html" class="ml-auto hover:text-ink-inverse">Get in touch →</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="../routes.js"></script>
+<script src="../_chrome.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

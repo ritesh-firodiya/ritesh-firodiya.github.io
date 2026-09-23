@@ -12,13 +12,15 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // public/ holds vendored third-party bundles — Tailwind's Play CDN build
-    // and lucide's UMD build, copied in by scripts/sync-designs.mjs — plus 209
-    // design HTML files and their own tailwind.config.js. None of it is source,
-    // all of it is minified or generated, and linting it fails the build on
-    // someone else's code style.
+    // public/ holds generated and vendored files, not source.
     "public/**",
     "scripts/captured/**",
+    // .context/ is the design set, not the app. _chrome.js and _gallery.js are
+    // copied BYTE FOR BYTE from the canonical set and must never be edited per
+    // product (STYLE-GUIDE.md §13), so a lint rule that would have us "fix" an
+    // unused catch binding in them is pointed at the wrong repository — the fix
+    // belongs upstream, in every set at once, or nowhere.
+    ".context/**",
   ]),
 ]);
 

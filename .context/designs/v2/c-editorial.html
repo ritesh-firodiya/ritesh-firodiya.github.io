@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Direction C — Editorial II</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  colors: {
+    paper:'#FBF9F4', paper2:'#F5F1E8', surface:'#FFFDF8',
+    ink:'#14130F', ink2:'#4A473E', ink3:'#86816F', line:'#E4DFD1', line2:'#D2CBB8',
+    accent:'#A6552E', accentWash:'#F6E9E1',
+    live:'#3F6B44', beta:'#8A6A12', build:'#3F5C86', idea:'#6B6357',
+  },
+  fontFamily:{ display:['Fraunces','Georgia','serif'], sans:['Inter','system-ui','sans-serif'], mono:['JetBrains Mono','ui-monospace','monospace'] },
+  maxWidth:{ page:'72rem', measure:'34rem' },
+  borderRadius:{ card:'10px', pill:'999px' },
+}}}
+</script>
+<style>
+  body{ -webkit-font-smoothing:antialiased }
+  .label{ font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase }
+  /* the one texture the old set had that was worth keeping */
+  .grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05;
+    background-image:radial-gradient(#14130F 0.4px, transparent 0.4px); background-size:3px 3px }
+  .rule{ height:1px; background:linear-gradient(to right,#D2CBB8,rgba(210,203,184,0)) }
+  .phone{ border-radius:20px; padding:5px; background:#14130F; box-shadow:0 14px 34px -16px rgba(20,19,15,.5) }
+  .phone img{ border-radius:15px; display:block; width:100% }
+  .ph{ background:repeating-linear-gradient(45deg,#EFEADC 0 8px,#F5F1E8 8px 16px) }
+</style>
+</head>
+<body class="bg-paper text-ink font-sans">
+
+<header class="sticky top-0 z-40 border-b border-line bg-paper/92 backdrop-blur">
+  <div class="mx-auto flex max-w-page items-center gap-8 px-7 py-4">
+    <a href="#" class="font-display text-lg font-semibold tracking-tight">Ritesh Firodiya</a>
+    <nav class="ml-auto hidden items-center gap-7 text-sm text-ink2 md:flex">
+      <a href="#work" class="hover:text-ink">Work</a><a href="#products" class="hover:text-ink">Products</a>
+      <a href="#" class="hover:text-ink">Screens</a><a href="#" class="hover:text-ink">About</a>
+    </nav>
+    <a href="#" class="rounded-pill bg-ink px-4 py-2 text-sm font-medium text-paper transition hover:bg-accent">Résumé</a>
+  </div>
+</header>
+
+<main>
+<!-- ═══ hero ═══ one column, one claim, a measure that is actually readable.
+     The old hero ran the headline, a five-line paragraph, three buttons and a
+     four-item stat row down the same left edge and gave the eye no order. ═══ -->
+<section class="grain relative overflow-hidden border-b border-line">
+  <div class="mx-auto max-w-page px-7 pb-14 pt-20">
+    <p class="label inline-flex items-center gap-2 rounded-pill border border-live/25 bg-live/5 px-3 py-1 text-live">
+      <span class="h-1.5 w-1.5 rounded-pill bg-live"></span> Open to senior &amp; staff · and consulting
+    </p>
+    <h1 class="mt-6 max-w-[13ch] font-display text-6xl font-semibold leading-[0.98] tracking-[-0.02em] md:text-8xl">
+      Engineer who ships.
+    </h1>
+    <div class="mt-9 flex flex-wrap items-end gap-x-14 gap-y-8">
+      <p class="max-w-measure text-lg leading-[1.65] text-ink2">
+        Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify.
+        Now building <b class="font-semibold text-ink">thirteen products for India</b>, and
+        stating how each one is paid for before you install it.
+      </p>
+      <img src="../../../public/me.webp" alt="" width="104" height="104"
+           class="h-[104px] w-[104px] rounded-card border border-line object-cover" />
+    </div>
+    <div class="mt-9 flex flex-wrap items-center gap-3">
+      <a href="#products" class="rounded-pill bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent">See the products</a>
+      <a href="#work" class="rounded-pill border border-line2 bg-surface px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent">Read a case study</a>
+      <a href="#" class="text-sm font-medium text-ink3 underline decoration-line2 underline-offset-4 hover:text-accent">firodiya.ritesh@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ products ═══ promoted from band four to band one, with pictures ═══ -->
+<section id="products" class="mx-auto max-w-page px-7 py-16">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="label text-ink3">Products · verified 2026-09-20</p>
+      <h2 class="mt-3 max-w-[20ch] font-display text-4xl font-semibold tracking-tight">Things I built and put in front of people.</h2>
+    </div>
+    <a href="#" class="text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4">All thirteen →</a>
+  </div>
+  <div class="rule mt-8"></div>
+
+  <div class="mt-12 grid gap-10 lg:grid-cols-3">
+    <article class="flex flex-col">
+      <div class="flex h-[300px] items-end justify-center rounded-card border border-line bg-paper2 px-6 pt-8">
+        <div class="phone w-[142px]"><img src="../../../public/media/aakalan/home.webp" alt="Aakalan home" /></div>
+      </div>
+      <div class="mt-5 flex items-center gap-2">
+        <span class="rounded-pill bg-accentWash px-2.5 py-0.5 text-[11px] font-medium text-accent">Subscription</span>
+        <span class="label ml-auto text-live">Live on Play</span>
+      </div>
+      <h3 class="mt-3 font-display text-2xl font-semibold">Aakalan</h3>
+      <p class="mt-1 font-display text-sm italic text-ink2">Your expenses and everyone else’s, on one screen.</p>
+      <p class="mt-3 text-sm leading-relaxed text-ink2">Shared-expense tracking for groups that never settle up. 49 screens designed.</p>
+      <a href="#" class="mt-auto pt-5 text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4">How it is paid for →</a>
+    </article>
+
+    <article class="flex flex-col">
+      <div class="flex h-[300px] items-end justify-center rounded-card border border-line bg-paper2 px-6 pt-8">
+        <div class="phone w-[142px]"><img src="../../../public/media/askcal/today.webp" alt="AskCal today" /></div>
+      </div>
+      <div class="mt-5 flex items-center gap-2">
+        <span class="rounded-pill bg-accentWash px-2.5 py-0.5 text-[11px] font-medium text-accent">Subscription</span>
+        <span class="label ml-auto text-live">Live on Play</span>
+      </div>
+      <h3 class="mt-3 font-display text-2xl font-semibold">AskCal</h3>
+      <p class="mt-1 font-display text-sm italic text-ink2">A calorie counter that admits what it cannot see.</p>
+      <p class="mt-3 text-sm leading-relaxed text-ink2">Photo in, estimate out — and it says when it is guessing. 39 screens.</p>
+      <a href="#" class="mt-auto pt-5 text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4">How it is paid for →</a>
+    </article>
+
+    <article class="flex flex-col">
+      <div class="ph flex h-[300px] items-center justify-center rounded-card border border-dashed border-line2">
+        <p class="label px-6 text-center text-ink3">No screenshot yet · Chitragupt</p>
+      </div>
+      <div class="mt-5 flex items-center gap-2">
+        <span class="rounded-pill bg-accentWash px-2.5 py-0.5 text-[11px] font-medium text-accent">Per period</span>
+        <span class="label ml-auto text-build">In build</span>
+      </div>
+      <h3 class="mt-3 font-display text-2xl font-semibold">Chitragupt</h3>
+      <p class="mt-1 font-display text-sm italic text-ink2">Household tax review for salaried Indians.</p>
+      <p class="mt-3 text-sm leading-relaxed text-ink2">The largest of them — 264 screens designed and reviewed before a line shipped.</p>
+      <a href="#" class="mt-auto pt-5 text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4">How it is paid for →</a>
+    </article>
+  </div>
+
+  <!-- the rest, compact and honest about state -->
+  <div class="mt-14">
+    <div class="rule mb-8"></div>
+    <div class="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      <a href="#" class="group bg-surface p-5 transition hover:bg-paper2">
+        <span class="label text-beta">Free · ads</span>
+        <h4 class="mt-2.5 font-display text-lg font-semibold group-hover:text-accent">Tic Tac Toe</h4>
+        <p class="mt-1.5 text-sm text-ink2">The classic 3×3, done properly. Ships an AdMob banner and interstitial.</p>
+      </a>
+      <a href="#" class="group bg-surface p-5 transition hover:bg-paper2">
+        <span class="label text-accent">One-time</span>
+        <h4 class="mt-2.5 font-display text-lg font-semibold group-hover:text-accent">Imposter</h4>
+        <p class="mt-1.5 text-sm text-ink2">Everyone gets the word. Except one of you. Beta on Android.</p>
+      </a>
+      <a href="#" class="group bg-surface p-5 transition hover:bg-paper2">
+        <span class="label text-accent">One-time</span>
+        <h4 class="mt-2.5 font-display text-lg font-semibold group-hover:text-accent">Charades</h4>
+        <p class="mt-1.5 text-sm text-ink2">Dumb charades for the room you are already in.</p>
+      </a>
+      <div class="bg-surface/70 p-5 sm:col-span-2 lg:col-span-3">
+        <span class="label text-idea">Not built yet · six</span>
+        <p class="mt-2 text-sm text-ink2">
+          Plan-Kid · dwarseva Property · dwarseva Societies · scrvio · trunk · tradx · Learning Platform.
+          Listed because the specs and schemas exist, not because anything ships.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ work ═══ -->
+<section id="work" class="border-y border-line bg-paper2">
+  <div class="mx-auto max-w-page px-7 py-16">
+    <p class="label text-ink3">Selected work</p>
+    <h2 class="mt-3 max-w-[22ch] font-display text-4xl font-semibold tracking-tight">How one of them was actually built.</h2>
+    <a href="#" class="group mt-9 grid gap-9 rounded-card border border-line bg-surface p-8 transition hover:border-accent/40 md:grid-cols-[1.35fr_1fr]">
+      <div>
+        <p class="label text-accent">Case study</p>
+        <h3 class="mt-3 max-w-[24ch] font-display text-3xl font-semibold leading-tight group-hover:text-accent">
+          One person, 264 screens, and a price that had to be told the truth about.
+        </h3>
+        <p class="mt-4 max-w-measure leading-relaxed text-ink2">
+          Chitragupt — household tax review for salaried Indians. Product, design, schema, build,
+          deploy. The interesting part is not the stack: an earlier version of this very site
+          called it free while its own config defined three priced tiers.
+        </p>
+        <span class="mt-6 inline-block text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4">Read it →</span>
+      </div>
+      <div class="ph flex items-center justify-center rounded-card border border-dashed border-line2 p-10">
+        <p class="label text-ink3">Cover image</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ experience ═══ -->
+<section class="mx-auto max-w-page px-7 py-16">
+  <div class="grid gap-12 md:grid-cols-[1fr_1.9fr]">
+    <div>
+      <p class="label text-ink3">Experience</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight">Nine years, mostly end-to-end.</h2>
+      <p class="mt-4 max-w-[32ch] leading-relaxed text-ink2">Postgres schema to Play Store release — usually as the only person who touches both.</p>
+      <a href="#" class="mt-5 inline-block text-sm font-medium text-accent underline decoration-accent/30 underline-offset-4">Full résumé →</a>
+    </div>
+    <ol class="border-t border-line">
+      <li class="grid gap-1 border-b border-line py-4 md:grid-cols-[9rem_1fr] md:items-baseline md:gap-6">
+        <p class="label text-ink3">2025 — 2026</p>
+        <p class="font-display text-lg font-semibold">Senior Software Engineer · <span class="text-accent">Walmart</span></p></li>
+      <li class="grid gap-1 border-b border-line py-4 md:grid-cols-[9rem_1fr] md:items-baseline md:gap-6">
+        <p class="label text-ink3">2024 — 2025</p>
+        <p class="font-display text-lg font-semibold">Tech Lead &amp; Full-Stack · <span class="text-accent">TopLegal</span></p></li>
+      <li class="grid gap-1 border-b border-line py-4 md:grid-cols-[9rem_1fr] md:items-baseline md:gap-6">
+        <p class="label text-ink3">2023 — 2024</p>
+        <p class="font-display text-lg font-semibold">Senior Frontend Engineer · <span class="text-accent">ManifestIT</span></p></li>
+      <li class="grid gap-1 border-b border-line py-4 md:grid-cols-[9rem_1fr] md:items-baseline md:gap-6">
+        <p class="label text-ink3">2021 — 2023</p>
+        <p class="font-display text-lg font-semibold">Senior Software Engineer · <span class="text-accent">Masai School</span></p></li>
+      <li class="grid gap-1 border-b border-line py-4 md:grid-cols-[9rem_1fr] md:items-baseline md:gap-6">
+        <p class="label text-ink3">2017 — 2021</p>
+        <p class="text-ink2">Swiggy · Globant · Speechify · Confluxsys</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="border-t border-line bg-ink text-paper">
+  <div class="mx-auto flex max-w-page flex-wrap items-end justify-between gap-8 px-7 py-16">
+    <div>
+      <p class="label text-paper/50">Contact</p>
+      <h2 class="mt-4 max-w-[17ch] font-display text-4xl font-semibold tracking-tight">Hiring, building, or just curious?</h2>
+      <p class="mt-4 max-w-measure text-paper/65">Open to senior / staff IC and tech-lead roles. Pune, India.</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href="#" class="rounded-pill bg-paper px-5 py-3 font-medium text-ink transition hover:bg-accent hover:text-paper">firodiya.ritesh@gmail.com</a>
+      <a href="#" class="rounded-pill border border-paper/25 px-5 py-3 font-medium transition hover:border-paper">Résumé</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-ink text-paper/45">
+  <div class="mx-auto flex max-w-page flex-wrap gap-x-6 gap-y-2 border-t border-paper/10 px-7 py-6 font-mono text-xs">
+    <span>© 2026 Ritesh Firodiya</span><a href="#" class="hover:text-paper">Products</a>
+    <a href="#" class="hover:text-paper">Screens</a><a href="#" class="hover:text-paper">Legal</a><a href="#" class="hover:text-paper">Support</a>
+  </div>
+</footer>
+</body>
+</html>

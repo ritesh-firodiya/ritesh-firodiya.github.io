@@ -19,6 +19,16 @@ const root = new URL("..", import.meta.url).pathname;
 const out = join(root, "out");
 const BASE = "https://ritesh-firodiya.github.io";
 
+/**
+ * The design sets scripts/sync-designs.mjs pulls from the private app repos.
+ * They are published HTML but they are not pages OF this site: no Next
+ * metadata, no canonical, deliberately out of the sitemap. Everything that
+ * asks "is this page correct" has to skip them; the unreferenced-asset check
+ * still reads them, because that is where their own assets are referenced.
+ */
+const isSyncedDesign = (routeOrPath) =>
+  routeOrPath.startsWith("/designs/") || /^\/products\/[^/]+\/designs\//.test(routeOrPath);
+
 before(() => {
   assert.ok(existsSync(out), "out/ does not exist — run `pnpm build` first");
 });
@@ -34,7 +44,9 @@ function pages() {
         walk(p);
       } else if (e.name === "index.html") {
         const rel = relative(out, dir).split("\\").join("/");
-        found.push({ route: rel === "" ? "/" : `/${rel}/`, file: p, html: readFileSync(p, "utf8") });
+        const route = rel === "" ? "/" : `/${rel}/`;
+        if (isSyncedDesign(route)) continue;
+        found.push({ route, file: p, html: readFileSync(p, "utf8") });
       }
     }
   };
@@ -140,8 +152,18 @@ test("nothing large enough to notice ships unreferenced", () => {
   // over this that no exported page mentions is almost certainly the same
   // mistake again.
   const LIMIT = 100 * 1024;
-  const html = pages().map((p) => p.html).join("\n") +
-    readFileSync(join(out, "sitemap.xml"), "utf8");
+  // Every HTML and JS file in the export, including the synced design sets —
+  // a vendored bundle is referenced from a design page, not from a site page.
+  const corpus = [];
+  const collect = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const f = join(dir, e.name);
+      if (e.isDirectory()) { collect(f); continue; }
+      if (/\.(html|js|css|xml)$/.test(e.name)) corpus.push(readFileSync(f, "utf8"));
+    }
+  };
+  collect(out);
+  const html = corpus.join("\n");
   const offenders = [];
   const walk = (dir) => {
     for (const e of readdirSync(dir, { withFileTypes: true })) {
@@ -153,8 +175,13 @@ test("nothing large enough to notice ships unreferenced", () => {
       }
       if (/\.(html|txt|xml|ico|pdf|json|webmanifest)$/.test(e.name)) continue;
       if (statSync(p).size < LIMIT) continue;
+      // Matched on basename, not on the absolute path: the synced design sets
+      // reference their own assets relatively ("routes.js", "../../_vendor/x.js"),
+      // so an absolute-href search reports every one of them as an orphan. A
+      // basename is a weaker match but still catches the case this exists for —
+      // a file nothing anywhere mentions, like the 604KB sample.png.
       const href = "/" + relative(out, p).split("\\").join("/");
-      if (!html.includes(href)) offenders.push(`${href} (${Math.round(statSync(p).size / 1024)}KB)`);
+      if (!html.includes(e.name)) offenders.push(`${href} (${Math.round(statSync(p).size / 1024)}KB)`);
     }
   };
   walk(out);

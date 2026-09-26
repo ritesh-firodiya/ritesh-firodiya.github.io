@@ -4,11 +4,11 @@ import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, StatePill, Label } from "@/components/pills";
 import {
-  IconGit, IconLive, IconAndroid, IconApple,
+  IconGit, IconDesign, IconLive, IconAndroid, IconApple,
 } from "@/components/icons";
 import {
-  products, bySlug, mediaFor, MODEL,
-  type Product,
+  products, bySlug, mediaFor, screensFor, galleriesFor, withheldFor, MODEL,
+  type Product, type Gallery,
 } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 
@@ -27,12 +27,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const SURFACE_LABEL: Record<string, string> = { mobile: "Phone", web: "Web", website: "Web" };
 const TERMS = "/legal/terms.html";
 
 /* Row one: the places this product actually exists. Only what is real — a
    disabled icon in a nav row is noise, and what is unavailable is said in
    words underneath, once, where it can carry the reason. */
-function ProductLinks({ p }: { p: Product }) {
+function ProductLinks({ p, galleries }: { p: Product; galleries: Gallery[] }) {
   const open = (v?: { state: string; url: string | null }) =>
     v && v.url && (v.state === "live" || v.state === "beta") ? v.url : null;
   const { web, ios, android } = p.platforms;
@@ -41,6 +42,12 @@ function ProductLinks({ p }: { p: Product }) {
     open(web) && { href: open(web)!, label: "Live", Icon: IconLive, out: true },
     open(android) && { href: open(android)!, label: "Google Play", Icon: IconAndroid, out: true },
     open(ios) && { href: open(ios)!, label: ios!.state === "beta" ? "TestFlight" : "App Store", Icon: IconApple, out: true },
+    ...galleries.map((g) => ({
+      href: g.href,
+      label: galleries.length > 1 ? `${SURFACE_LABEL[g.surface] ?? g.surface} designs` : "Designs",
+      Icon: IconDesign,
+      out: false,
+    })),
     p.repo && { href: p.repo, label: "Source", Icon: IconGit, out: true },
   ].filter(Boolean) as { href: string; label: string; Icon: typeof IconGit; out: boolean }[];
 
@@ -125,6 +132,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
 
   const m = mediaFor(p.slug);
+  const screens = screensFor(p.slug);
+  const galleries = galleriesFor(p.slug);
+  const withheld = withheldFor(p.slug);
   const study = studyBySlug(p.slug);
   const others = products.filter((o) => o.slug !== p.slug).slice(0, 5);
   const live = Object.values(p.platforms).find((v) => v?.state === "live");
@@ -159,7 +169,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <p className="mt-1 font-mono text-xs2 text-ink-3">Listed as &ldquo;{p.fullName}&rdquo;</p>
               )}
               <p className="mt-2 max-w-prose text-small text-ink-2">{p.blurb}</p>
-              <ProductLinks p={p} />
+              <ProductLinks p={p} galleries={galleries} />
               {p.unreleasedNote && (
                 <p className="mt-2.5 max-w-prose border-l-2 border-line-strong pl-3 text-small text-ink-2">
                   {p.unreleasedNote}
@@ -216,7 +226,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <h2 className="font-display text-h2 font-semibold">Screenshots</h2>
               {m.kind === "web" && (
                 <span className="font-mono text-xs2 text-ink-3">
-                  Public card only — screens behind the sign-in are not published.
+                  Captured from the public pages, against a demo account.
                 </span>
               )}
             </div>
@@ -254,6 +264,56 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </li>
               ))}
             </ul>
+          </section>
+        )}
+
+        {/* 5 · designs — the app repo's own gallery, at its own URL */}
+        {galleries.length > 0 && (
+          <section className="border-y border-line bg-muted">
+            <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-gutter py-5">
+              <div>
+                <Label>Designs · {screens.length} screens</Label>
+                <p className="mt-1 max-w-prose text-small text-ink-2">
+                  The HTML wireframes this was built from, rendering live — the same gallery the
+                  screens were reviewed against.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {galleries.map((g) => (
+                  <a key={g.href} href={g.href}
+                     className="inline-flex items-center gap-2 rounded-pill bg-ink px-3.5 py-1.5 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
+                    <IconDesign size={14} strokeWidth={1.75} aria-hidden />
+                    {galleries.length > 1 ? SURFACE_LABEL[g.surface] ?? g.surface : "Open the design set"}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 5b · designs withheld — a set that does not follow the style guide is
+            not published, and the page says so rather than dropping the section.
+            Hiding it would make a half-migrated estate look finished. */}
+        {galleries.length === 0 && withheld.length > 0 && (
+          <section className="border-y border-line bg-muted">
+            <div className="mx-auto max-w-page px-gutter py-5">
+              <Label>Designs · not published</Label>
+              <p className="mt-1 max-w-prose text-small text-ink-2">
+                This product&rsquo;s design set does not yet follow the{" "}
+                <span className="font-medium text-ink">design set style guide</span>, so it is not
+                published here. The screens exist in the app repo; what is missing is the shared
+                machinery every set is read through.
+              </p>
+              <ul className="mt-3 space-y-1.5">
+                {withheld.map((w) => (
+                  <li key={w.surface} className="text-xs2 text-ink-3">
+                    <span className="font-mono uppercase tracking-label text-ink-2">{w.surface}</span>
+                    {" — "}
+                    {w.failed.map((c) => c.id).join(", ")}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
         )}
 

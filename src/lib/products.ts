@@ -144,3 +144,88 @@ export const modelCounts = products.reduce<Record<string, number>>((acc, p) => {
   acc[p.model] = (acc[p.model] ?? 0) + 1;
   return acc;
 }, {});
+
+/* ── Real design screens ──────────────────────────────────────────────────
+   Synced from the app repos by scripts/sync-designs.mjs. These are the actual
+   wireframes every app was built from — plain HTML, rendered live in an iframe
+   rather than screenshotted, because a screenshot goes stale the moment a
+   design changes and nothing tells you. */
+import designsRaw from "@/data/designs.json";
+
+export type Screen = { path: string; title: string; surface: string; area: string | null };
+export type Gallery = {
+  /** The original file under /designs/, where its own relative links resolve. */
+  path: string;
+  /** The clean per-product URL that serves those same bytes via <base>. */
+  href: string;
+  title: string;
+  surface: string;
+};
+/* The generated JSON carries no `href` — that is derived here, and `area` is
+   narrowed per-set by TS's literal inference, so the cast goes via unknown. */
+type DesignSet = { indexes: Omit<Gallery, "href">[]; screens: Screen[] };
+const designSets = designsRaw.sets as unknown as Record<string, DesignSet>;
+
+export const screensFor = (slug: string): Screen[] => designSets[slug]?.screens ?? [];
+
+/** The set's own gallery page for each surface — the index.html sitting at the
+ *  top of `mobile/` or `web/`, written in the app repo. Deeper index.html files
+ *  (one per flow) are still copied so the links inside it work, but they are
+ *  reached by navigating the gallery, not by entering at them. */
+export function galleriesFor(slug: string): Gallery[] {
+  const all = designSets[slug]?.indexes ?? [];
+  const depth = (g: { path: string }) => g.path.split("/").length;
+  const roots = new Map<string, Omit<Gallery, "href">>();
+  for (const g of all) {
+    const held = roots.get(g.surface);
+    if (!held || depth(g) < depth(held)) roots.set(g.surface, g);
+  }
+  const sorted = [...roots.values()].sort((a, b) => a.surface.localeCompare(b.surface));
+  // One surface needs no disambiguating segment; several do. Kept in step with
+  // the paths scripts/sync-designs.mjs writes into public/products/.
+  return sorted.map((g) => ({
+    ...g,
+    href:
+      sorted.length === 1
+        ? `/products/${slug}/designs/`
+        : `/products/${slug}/designs/${g.surface}/`,
+  }));
+}
+
+/* ── Style-guide conformance ──────────────────────────────────────────────
+   A design set is published only if it follows ~/git/personal/STYLE-GUIDE.md;
+   scripts/designs/conformance.mjs is the gate and its verdicts land here.
+
+   Every product is recorded, passing or not. A set that fails is not copied
+   into the export at all — so there is nothing to link to — and the product
+   page says which checks failed instead of quietly dropping the section. That
+   is the same rule the rest of this site runs on: a missing thing is visibly
+   missing, with its reason. */
+export type Check = { id: string; ok: boolean; detail: string };
+export type SurfaceVerdict = { pass: boolean; checks: Check[] };
+type StyleGuide = {
+  canonical: string;
+  results: Record<string, { surfaces: Record<string, SurfaceVerdict>; publishable: string[] }>;
+};
+const styleGuide = (designsRaw as unknown as { styleGuide?: StyleGuide }).styleGuide;
+
+/** Surfaces this product draws that do NOT follow the guide, with the reasons. */
+export function withheldFor(slug: string): { surface: string; failed: Check[] }[] {
+  const r = styleGuide?.results?.[slug];
+  if (!r) return [];
+  return Object.entries(r.surfaces)
+    .filter(([, v]) => !v.pass)
+    .map(([surface, v]) => ({ surface, failed: v.checks.filter((c) => !c.ok) }))
+    .sort((a, b) => a.surface.localeCompare(b.surface));
+}
+
+export const styleGuideCanonical = styleGuide?.canonical ?? null;
+
+/** How many products have at least one conforming surface, out of how many. */
+export const conformance = {
+  passing: Object.values(styleGuide?.results ?? {}).filter((r) => r.publishable.length > 0).length,
+  total: Object.keys(styleGuide?.results ?? {}).length,
+};
+
+export const designsGeneratedOn: string = designsRaw.generatedOn;
+export const totalScreens = Object.values(designSets).reduce((n, s) => n + s.screens.length, 0);

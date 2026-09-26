@@ -49,6 +49,28 @@ jobs:
       # verifiedOn or a legal path pointing at nothing fails in seconds.
       - run: pnpm test:data
 
+      # The design sets live in the private app repos and are NOT committed
+      # here, so this has to run before the build or every product page ships
+      # with its screens missing.
+      #
+      # DESIGNS_TOKEN is a fine-grained PAT on the ritvi-apps org with exactly
+      # one permission: Contents: read. IT EXPIRES. When it does, this step
+      # fails and the deploy stops — four deploys were lost to exactly that
+      # before the sets were removed in aee146d, and restoring the build-time
+      # pull restores that failure mode too. It fails loudly and early rather
+      # than publishing a site with holes in it.
+      - name: Pull design sets from the private app repos
+        env:
+          DESIGNS_TOKEN: ${{ secrets.DESIGNS_TOKEN }}
+          DESIGNS_SOURCE: remote
+        run: |
+          test -n "$DESIGNS_TOKEN" || {
+            echo "::error::secrets.DESIGNS_TOKEN is not set. Create a fine-grained PAT"
+            echo "::error::on ritvi-apps with Contents: read, and add it as a repo secret."
+            exit 1
+          }
+          pnpm designs
+
       - run: pnpm build
 
       # Metadata in Next is inherited, so a page can be right in isolation and

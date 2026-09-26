@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: p.name,
     description: `${p.tagline} ${MODEL[p.model].label}. ${p.blurb}`.trim(),
+    alternates: { canonical: `/products/${p.slug}/` },
   };
 }
 

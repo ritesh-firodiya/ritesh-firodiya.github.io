@@ -6,6 +6,7 @@ import { shipped, MODEL } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Résumé",
   description: "Full-stack engineer and tech lead, ~9 years. Products shipped, then employment.",
+  alternates: { canonical: "/resume/" },
 };
 
 export default function ResumePage() {

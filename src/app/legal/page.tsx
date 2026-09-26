@@ -7,6 +7,7 @@ import { products } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Legal",
   description: "Privacy policies and account-deletion pages for every app, in one place.",
+  alternates: { canonical: "/legal/" },
 };
 
 const withLegal = products.filter((p) => p.legal.privacy || p.legal.delete);

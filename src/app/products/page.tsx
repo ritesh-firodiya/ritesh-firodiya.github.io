@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Products",
   description:
     "Every product with how it is paid for, what it shows you and what it measures — apps, platforms and tools, ordered by what you can actually use today.",
+  alternates: { canonical: "/products/" },
 };
 
 const dash = <span className="text-ink-3">—</span>;

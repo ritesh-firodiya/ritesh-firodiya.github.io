@@ -6,6 +6,7 @@ import { Label } from "@/components/pills";
 export const metadata: Metadata = {
   title: "Work with me",
   description: "Three engagement shapes — zero to launched, lead the team, or AI and agent tooling. Fixed price per milestone, and a written scope within a week.",
+  alternates: { canonical: "/hire/" },
 };
 
 const SHAPES = [

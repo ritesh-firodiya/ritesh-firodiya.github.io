@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Full-stack engineer and lead, ~9 years. Postgres schema to Play Store release. Pune, India.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about/" },
 };
 
 export default function About() {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { ModelPill, Label } from "@/components/pills";
 import { products, shipped, unbuilt, mediaFor, verifiedOn } from "@/lib/products";
@@ -12,6 +13,13 @@ const FEATURED = ["aakalan", "askcal"];
 /* The compact row under the features. Four is what fits one line at 1440
    without wrapping into a second row that reads as a different section. */
 const COMPACT = ["tic-tac-toe", "charades", "imposter", "chitragupt"];
+
+/* Title and description come from the layout defaults; this exists only to
+   own the canonical. Every page states its own — an inherited one silently
+   becomes a duplicate-content claim the moment a route is added. */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   const study = CASE_STUDIES[0];

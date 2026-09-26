@@ -12,7 +12,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const c = studyBySlug(slug);
-  return c ? { title: `${c.product} — case study`, description: c.title } : {};
+  return c
+    ? {
+        title: `${c.product} — case study`,
+        description: c.title,
+        alternates: { canonical: `/work/${c.slug}/` },
+      }
+    : {};
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {

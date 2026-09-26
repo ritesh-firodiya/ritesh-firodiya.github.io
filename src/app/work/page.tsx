@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Long-form writeups: what the problem was, what was tried, what lost, and what shipped.",
-  alternates: { canonical: "/work" },
+  alternates: { canonical: "/work/" },
 };
 
 /* This page exists because the case study was orphaned. /work/chitragupt was

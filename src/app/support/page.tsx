@@ -7,6 +7,7 @@ import { products } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Support",
   description: "A bug, a purchase problem, or deleting your account and data. One person reads these and answers them.",
+  alternates: { canonical: "/support/" },
 };
 
 const EMAIL = "firodiya.ritesh@gmail.com";

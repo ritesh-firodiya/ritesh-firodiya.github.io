@@ -8,7 +8,7 @@ import { profile } from "@/lib/profile";
 export const metadata: Metadata = {
   title: "Get in touch",
   description: "Email, LinkedIn and GitHub. Open to senior / staff roles and consulting.",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact/" },
 };
 
 /* Email, not a form. This is a static export with no server to post to, and a

@@ -10,7 +10,8 @@ Next.js 16 + React 19 + Tailwind v4, statically exported to GitHub Pages.
 ```bash
 pnpm install
 pnpm dev      # http://localhost:3000
-pnpm check    # contrast + lint + typecheck + build
+pnpm test     # data invariants + assertions on the exported HTML
+pnpm check    # contrast + lint + typecheck + test:data + build + test:export
 ```
 
 The product design sets are **not in this repo** and are not published here.

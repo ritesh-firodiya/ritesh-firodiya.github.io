@@ -25,8 +25,51 @@ pnpm contrast     # WCAG AA on both palettes, computed from globals.css
 pnpm build        # static export → out/
 pnpm lint         # eslint
 pnpm typecheck    # tsc --noEmit
-pnpm check        # contrast + lint + typecheck + build
+pnpm test:data    # data invariants — no build needed
+pnpm test:export  # assertions on the exported HTML in out/ — needs a build
+pnpm test         # both
+pnpm check        # contrast + lint + typecheck + test:data + build + test:export
 ```
+
+## Tests
+
+`tests/` holds the rules on this page, asserted. Plain `node --test`, no
+dependency and no config. A rule that is only written down decays exactly the
+way the "no ads in our games" claim decayed, so anything checkable from inside
+this repo is checked.
+
+`tests/data.test.mjs` reads `src/data/`. Slugs unique and URL-safe; a
+`live`/`beta` platform has a url and a `closed`/`none` one carries a reason
+instead; an iOS url labelled TestFlight *is* a TestFlight url and one labelled
+App Store is not; every local `legal.*` path resolves to a file in `public/`;
+anything installable from a store has a privacy policy; every `media.json` src
+exists and nothing in `public/media` is an orphan; **`verifiedOn` is at most 30
+days old**; no `p.price`, `p.priceNote`, `p.tiers` or rupee figure appears
+anywhere under `src/app` (rule 2b); no studio-wide ads or subscription claim
+(rule 1).
+
+`tests/export.test.mjs` reads `out/`, so it runs after a build. **Every
+indexable page declares its own canonical**, no page but `/` claims to be `/`, a
+noindex page declares none, the noindex set is exactly `/go/`, every page has a
+title and a description, the sitemap matches what actually shipped, app-ads.txt
+survived, every legal document exported, and nothing over 100KB ships
+unreferenced.
+
+Two of these exist because of bugs that were live:
+
+- **The canonical.** The root layout declared `alternates: { canonical: "/" }`.
+  Next inherits metadata, so the 35 pages that did not override it told search
+  engines they were duplicates of the homepage — including every
+  `/products/[slug]`, which are the pages this site exists to serve. **Every
+  page now declares its own canonical and the root layout declares none.** No
+  source-level test could have caught it; only the built HTML shows it.
+- **The unreferenced asset.** `public/sample.png`, 604KB, referenced nowhere,
+  shipped on every deploy for months.
+
+The 30-day `verifiedOn` ceiling is a stopgap for `bin/products` not existing
+yet. When re-verifying, check the **stores**, not the app repos alone — Tic Tac
+Toe went live on the App Store while `products.json` was still sending visitors
+to a TestFlight, and the app repo's own STATUS.md did not say otherwise.
 
 ## The rule this site exists to enforce
 
@@ -84,6 +127,7 @@ src/components/  site-chrome (header/footer), pills
 src/lib/         products, profile, case-studies — typed accessors
 src/data/        products.json, profile.json
 public/          app-ads.txt, resume.pdf, favicon, logo
+tests/           data invariants + assertions on the exported HTML
 .context/designs/  the approved HTML+Tailwind design set this site was built from
 ```
 

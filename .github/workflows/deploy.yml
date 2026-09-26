@@ -6,6 +6,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -43,7 +45,17 @@ jobs:
       # the colour beside it did not meet.
       - run: pnpm contrast
 
+      # The invariants CLAUDE.md states in prose. No build needed, so a stale
+      # verifiedOn or a legal path pointing at nothing fails in seconds.
+      - run: pnpm test:data
+
       - run: pnpm build
+
+      # Metadata in Next is inherited, so a page can be right in isolation and
+      # wrong once built. These read the exported HTML: every indexable page
+      # declares its own canonical, the noindex set is exactly /go/, the sitemap
+      # matches what shipped, and nothing large ships unreferenced.
+      - run: pnpm test:export
 
       # app-ads.txt is live AdMob revenue for Tic Tac Toe — AdMob only honours it
       # on the domain named in the Play listing's developer-website field, and a
@@ -55,13 +67,18 @@ jobs:
           grep -q "pub-" out/app-ads.txt || { echo "::error::out/app-ads.txt has no publisher id"; exit 1; }
           echo "app-ads.txt ok: $(cat out/app-ads.txt)"
 
+      # Publishing steps only. A pull request runs every check above and then
+      # stops here — nothing from a branch reaches Pages.
       - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
         with:
           path: ./out
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

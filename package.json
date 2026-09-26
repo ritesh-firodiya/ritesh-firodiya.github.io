@@ -9,8 +9,11 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "pnpm contrast && pnpm lint && pnpm typecheck && pnpm build",
-    "postbuild": "node scripts/postbuild.mjs"
+    "check": "pnpm contrast && pnpm lint && pnpm typecheck && pnpm test:data && pnpm build && pnpm test:export",
+    "postbuild": "node scripts/postbuild.mjs",
+    "test:data": "node --test tests/data.test.mjs",
+    "test:export": "node --test tests/export.test.mjs",
+    "test": "node --test tests/"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",

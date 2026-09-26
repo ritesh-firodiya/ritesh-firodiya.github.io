@@ -65,15 +65,21 @@ const SOURCES = {
                    icons: [`${S}/icon-512.png`, "assets/icons/icon.png",
                            "ios/TicTacToe/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png"],
                    shots: [`${S}/android/phone`, `${S}/ios/iphone-6.9`, `${S}/screenshots`] },
-  // A web product with no store folder at all. Its icon is in the mobile app's
-  // Expo assets; its screenshots are captured from the live site by
-  // scripts/capture-web.mjs into .capture/, which this then processes.
   // A web product with no store folder. Its icon is in the mobile app's Expo
-  // assets. It has no in-product screenshots here, and the live app cannot be
-  // captured without a signed-in session — publishing someone's account view is
-  // not something to do casually — so the one public artifact is its own
-  // OpenGraph card, fetched into scripts/captured/ and labelled as a card
-  // rather than dressed up as a screenshot.
+  // assets. Its shots are captured by hand from the PUBLIC marketing pages on
+  // chitragupt.ai into scripts/captured/, which this then processes.
+  //
+  // Those pages embed the product's own four surfaces — inbox, tax review,
+  // expense review, portfolio review — rendered against a demo persona
+  // ("Aarav"), so they show the real UI without publishing anyone's account.
+  // Until 2026-09-26 the only artifact here was the site's OpenGraph card,
+  // which made the lead product the one product with no picture of itself.
+  //
+  // Two things to preserve when re-capturing: crop to the product surface and
+  // leave the marketing caption out, and keep the "Hire a CA from ..." panel
+  // out of frame — it carries a price, and rule 2b keeps prices off this site.
+  // (An earlier comment here referenced scripts/capture-web.mjs. No such file
+  // has ever existed in this repo.)
   chitragupt:    { kind: "web",
                    icons: ["apps/mobile/assets/icons/icon.png", "apps/website/src/app/icon.png"],
                    shots: [`${S}/screenshots`], localShots: "chitragupt" },

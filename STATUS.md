@@ -1,7 +1,10 @@
 Stage: live
 Updated: 2026-09-26
-Next: nothing blocking. The design set in .context/designs/web is approved and
-      built; the live site implements it.
+Next: implement .context/designs/web in src/. The set was redrawn in f3472b8
+      with a new voice and new headings and the code was never updated — every
+      page's h1 and most section headings still match the PREVIOUS design.
+      (An earlier edit of this file wrongly claimed the site implemented the
+      set. It does not.)
 Note: products.json verified against the stores on 2026-09-26 — Play tracks read
       from the Play Developer API, iOS from the public App Store lookup. Tic Tac
       Toe is live on the App Store (was still described as a TestFlight beta).

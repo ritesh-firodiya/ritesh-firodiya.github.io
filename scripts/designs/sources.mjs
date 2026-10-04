@@ -36,13 +36,13 @@ export const SETS = {
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
   "seedha-ghar": { repo: "ritvi-apps/property-app", local: "property-app" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
-  /* These three moved into ritvi-apps on 2026-10-04. They used read-only
-     deploy keys while they lived under other owners; the org has deploy keys
-     switched off, so they are read with DESIGNS_TOKEN like the rest. The
-     token must list them — it is scoped to named repos. */
-  scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio" },
-  trunk: { repo: "ritvi-apps/trunk", local: "trunk" },
-  "dwarseva-societies": { repo: "ritvi-apps/dwarseva", local: "dwarseva" },
+  /* These three moved into ritvi-apps on 2026-10-04 and kept the read-only
+     deploy keys they had under their old owners. DESIGNS_TOKEN is scoped to
+     named repos and does not list them, so the key is still how each is read.
+     The org setting "deploy keys" must stay enabled for this to work. */
+  scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
+  trunk: { repo: "ritvi-apps/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
+  "dwarseva-societies": { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
 };
 
 const SUBDIR = ".context/designs";

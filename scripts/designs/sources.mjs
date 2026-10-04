@@ -36,12 +36,13 @@ export const SETS = {
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
   "seedha-ghar": { repo: "ritvi-apps/property-app", local: "property-app" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
-  /* These three live under other owners. A fine-grained PAT covers ONE owner,
-     so each is read with its own read-only deploy key instead: narrower than
-     a token, and it never expires. The key is the secret named here. */
-  scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
-  trunk: { repo: "ritvi-apps/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
-  "dwarseva-societies": { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
+  /* These three moved into ritvi-apps on 2026-10-04. They used read-only
+     deploy keys while they lived under other owners; the org has deploy keys
+     switched off, so they are read with DESIGNS_TOKEN like the rest. The
+     token must list them — it is scoped to named repos. */
+  scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio" },
+  trunk: { repo: "ritvi-apps/trunk", local: "trunk" },
+  "dwarseva-societies": { repo: "ritvi-apps/dwarseva", local: "dwarseva" },
 };
 
 const SUBDIR = ".context/designs";

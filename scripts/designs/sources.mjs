@@ -39,9 +39,9 @@ export const SETS = {
   /* These three live under other owners. A fine-grained PAT covers ONE owner,
      so each is read with its own read-only deploy key instead: narrower than
      a token, and it never expires. The key is the secret named here. */
-  scrvio: { repo: "scrvio/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
-  trunk: { repo: "ritesh-firodiya/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
-  "dwarseva-societies": { repo: "dwarseva/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
+  scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
+  trunk: { repo: "ritvi-apps/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
+  "dwarseva-societies": { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
 };
 
 const SUBDIR = ".context/designs";

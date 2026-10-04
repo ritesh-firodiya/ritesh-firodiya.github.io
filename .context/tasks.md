@@ -6,9 +6,7 @@ horizon: 2026-10-18
 # Tasks — ritesh-firodiya.github.io
 
 ## Now
-1. [ ] T020 Owner reviews the built site locally, then commit and push `redesign/hiring-first`
-2. [ ] T021 Before the first deploy: confirm `DESIGNS_TOKEN` has not expired and covers all eight product repos  needs:T020
-3. [ ] T022 After deploy: open the live site, confirm a wiki page and a design gallery load, then fill `ops/release.yml`  needs:T021
+1. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
 
 ## Parallel
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
@@ -20,11 +18,12 @@ horizon: 2026-10-18
 - [ ] T012 Confirm store listings point at `/products/<slug>/`
       blocked-by: not verified against Play Console or App Store Connect  since:2026-10-04
       unblock: read each listing's website field  next-check:2026-10-11
-- [ ] T026 Remote sync is untested: `sources.mjs` now sparse-checks the wiki and listing folders and reads the tree with `git ls-tree`
-      blocked-by: needs DESIGNS_TOKEN, which only CI has  since:2026-10-04
-      unblock: watch the first CI run's "Pull design sets…" step  next-check:on first push
 
 ## Done
+- [x] T020 Committed, pushed and merged to main  done:2026-10-04
+- [x] T021 New org-owned `DESIGNS_TOKEN` created and set  done:2026-10-04
+- [x] T022 Deployed and verified live  done:2026-10-04
+- [x] T026 Remote sync proven, locally with the token and in CI  done:2026-10-04
 - [x] T000 Delete the old design set and redraw it hiring-first  done:2026-10-04
 - [x] T001 Owner reviewed the design set  done:2026-10-04
 - [x] T002 Palette ported to `globals.css`; contrast passes both themes, both files  done:2026-10-04
@@ -62,4 +61,12 @@ horizon: 2026-10-18
   today. The "Design set withheld" card and row are built and currently unused.
 - Deviation from the wireframe: a legal document keeps no site header. It is a
   static file restyled by `public/legal/legal.css`, with a breadcrumb to Legal.
-- Next: T020.
+- Deploy: three failures before it went live, each a different cause.
+  (1) The first token's resource owner was the user account, which cannot see
+  org repos. (2) A value piped into `gh secret set` through the shell hook
+  arrived mangled; `gh secret set -f <env file>` is the reliable form.
+  (3) `actions/checkout` leaves the job token in the git config as an
+  Authorization header, and git sends it instead of the token in the URL —
+  fixed with `persist-credentials: false` and by clearing the header in
+  `sources.mjs`. All three report as "Repository not found".
+- Next: T012, T023.

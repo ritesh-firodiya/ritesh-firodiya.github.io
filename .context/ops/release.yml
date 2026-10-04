@@ -3,7 +3,9 @@
 # assumed.
 
 updated: 2026-10-04
-verified_by: git log (local); the live site was NOT fetched to confirm
+verified_by: >
+  gh run watch (deploy run 37192784023, success); curl of 30 live URLs;
+  one project page opened in a browser
 
 surfaces:
   web:
@@ -11,22 +13,30 @@ surfaces:
     host: GitHub Pages, from the `main` branch via .github/workflows/deploy.yml
     live:
       branch: main
-      commit: f3472b8  # head of main on 2026-10-04
-      verified: false  # carried from git; nobody opened the deployed site today
-    pending:
-      branch: redesign/hiring-first
-      what: the hiring-first redesign — new pages, wikis, build-time pictures
-      state: built and passing `pnpm check` locally; not committed, not pushed
+      commit: 783c64d
+      since: "2026-10-04"
+      what: the hiring-first redesign
+      verified: true
+      checked: >
+        home, work, process, about, resume, contact, support, legal, three
+        project pages, two wiki indexes, a wiki page, a design gallery, an
+        embedded design screen, store art, a short link, all four forwarding
+        addresses, a legal document and its stylesheet, app-ads.txt, the
+        sitemap (646 URLs), resume.pdf and the 404
 
 secrets:
   DESIGNS_TOKEN:
-    where: GitHub repo secret
-    what: fine-grained PAT on ritvi-apps, Contents read
-    expires: unknown — check before the first deploy of the redesign
+    where: GitHub repo secret; copy in ~/git/local/secrets/personal/ritesh-firodiya.github.io/.env
+    what: >
+      fine-grained PAT "portfolio-context-ritvi-apps". Resource owner
+      ritvi-apps — a token owned by the user account cannot see org repos,
+      which is what the first token got wrong. Contents read on imposter,
+      charades, aakalan, askcal, tic-tac-toe, plan-kid, property-app, chitragupt.
+    created: "2026-10-04"
+    expires: "2027-10-05"
     note: >
-      The redesign reads wikis and store art through the same token, from the
-      same repos, so no new access is needed. Private product repos that are
-      NOT in scripts/designs/sources.mjs are not read.
+      Adding a ninth product to scripts/designs/sources.mjs means adding its
+      repo to this token. The older "portfolio-designs" token is unused.
 
 known_gaps:
   - learning-platform is a live web demo with sign-up and no privacy policy.

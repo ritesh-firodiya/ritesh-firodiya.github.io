@@ -18,9 +18,16 @@ export const SECRETS = [
   ["private key block", /-----BEGIN (?:RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----/],
 ];
 
+/* Values the vendors themselves publish as examples. A settings screen that
+   shows AWS's own placeholder in its key field is drawn correctly; it holds no
+   secret. Exact strings only — a pattern here would be a hole in the scan. */
+const DOCUMENTED_EXAMPLES = ["AKIAIOSFODNN7EXAMPLE", "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"];
+
 /** Throws, naming the file, on the first match. */
 export function assertNoSecrets(text, where) {
+  let scanned = text;
+  for (const example of DOCUMENTED_EXAMPLES) scanned = scanned.split(example).join("");
   for (const [name, re] of SECRETS) {
-    if (re.test(text)) throw new Error(`${where}: looks like a ${name} — refusing to publish it`);
+    if (re.test(scanned)) throw new Error(`${where}: looks like a ${name} — refusing to publish it`);
   }
 }

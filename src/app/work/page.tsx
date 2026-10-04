@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { HireBand, StatePill } from "@/components/ui";
 import { ProjectCard } from "@/components/project-card";
+import { hasPicture } from "@/components/picture";
 import { WorkGrid, type Filter, type Item } from "@/components/work-grid";
 import { products, hasBuild, stageOf, stageCounts, STAGE_LABEL, type Product } from "@/lib/products";
 import { evidenceLine } from "@/lib/evidence";
@@ -37,8 +38,10 @@ function Row({ p }: { p: Product }) {
 
 export default function WorkPage() {
   const item = (p: Product, node: React.ReactNode): Item => ({ key: p.slug, stage: stageOf(p), node });
-  const cards = products.filter(hasBuild).map((p) => item(p, <ProjectCard p={p} />));
-  const rows = products.filter((p) => !hasBuild(p)).map((p) => item(p, <Row p={p} />));
+  /* A card needs something to show: a build, or at least a drawn screen. */
+  const isCard = (p: Product) => hasBuild(p) || hasPicture(p);
+  const cards = products.filter(isCard).map((p) => item(p, <ProjectCard p={p} />));
+  const rows = products.filter((p) => !isCard(p)).map((p) => item(p, <Row p={p} />));
   const counts: { key: Filter; label: string; n: number }[] = [
     { key: "all", label: "All", n: products.length },
     ...(["live", "test", "build", "draft"] as const).map((k) => ({ key: k, label: STAGE_LABEL[k], n: stageCounts[k] })),

@@ -36,7 +36,7 @@ import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } 
 import { existsSync } from "node:fs";
 import { resolveSources } from "./designs/sources.mjs";
 import { checkSurface, canonicalHashes, CANONICAL } from "./designs/conformance.mjs";
-import { SECRETS } from "./designs/secrets.mjs";
+import { assertNoSecrets } from "./designs/secrets.mjs";
 
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
@@ -154,6 +154,7 @@ await mkdir(VENDOR, { recursive: true });
 
 const manifest = {};
 let screens = 0;
+let notes = 0;
 let bytes = 0;
 
 const { mode, sets } = resolveSources();
@@ -209,6 +210,21 @@ for (const [slug, source] of Object.entries(sets)) {
     const dest = join(OUT, slug, rel);
     await mkdir(dirname(dest), { recursive: true });
 
+    if (basename(file) === "_chrome.js") {
+      /* The bar's notes button fetches `../../wiki/surfaces/<page>.md`, which
+         in the product repo is `.context/wiki/`. Here a set lives at
+         /designs/<slug>/<surface>/, two levels up is /designs/ — shared by
+         every product. So the notes are published at /designs/<slug>/wiki/ and
+         this one path is rewritten. Without it the button answered 404 on
+         every screen of every set. */
+      const js = await readFile(file, "utf8");
+      const needle = '"../../wiki/surfaces/"';
+      if (js.split(needle).length !== 2) {
+        throw new Error(`${slug}/${rel}: expected exactly one ${needle} to rewrite — has _chrome.js changed?`);
+      }
+      await writeFile(dest, js.replace(needle, '"../wiki/surfaces/"'));
+      continue;
+    }
     if (ext !== ".html") {
       await copyFile(file, dest);
       continue;
@@ -236,10 +252,7 @@ for (const [slug, source] of Object.entries(sets)) {
        host. A wireframe that hardcoded a real key to make a demo work would be
        published by this script and nothing else would ever look at it. So the
        scan runs here, at the boundary, and stops the build. */
-    for (const [name, re] of SECRETS) {
-      const hit = h.match(re);
-      if (hit) throw new Error(`${slug}/${rel}: looks like a ${name} — refusing to publish it`);
-    }
+    assertNoSecrets(h, `${slug}/${rel}`);
 
     await writeFile(dest, h);
     bytes += Buffer.byteLength(h);
@@ -257,6 +270,21 @@ for (const [slug, source] of Object.entries(sets)) {
       isIndex: basename(file) === "index.html",
     });
   }
+  /* The notes pages the bar opens: the product's own wiki surface pages, as
+     Markdown, scanned like everything else that leaves a private repo. */
+  const notesDir = join(source.root, ".context", "wiki", "surfaces");
+  if (entries.length && (await exists(notesDir))) {
+    const out = join(OUT, slug, "wiki", "surfaces");
+    await mkdir(out, { recursive: true });
+    for (const f of await readdir(notesDir)) {
+      if (!f.endsWith(".md")) continue;
+      const md = await readFile(join(notesDir, f), "utf8");
+      assertNoSecrets(md, `${slug} wiki surfaces/${f}`);
+      await writeFile(join(out, f), md);
+      notes++;
+    }
+  }
+
   if (entries.length) {
     entries.sort((a, b) => a.path.localeCompare(b.path));
     manifest[slug] = {
@@ -374,7 +402,7 @@ const published = Object.values(conformance).filter((c) => c.publishable.length)
 console.log(`\npublishing ${published} of ${Object.keys(conformance).length} products' design sets\n`);
 console.log(`published ${pages} gallery page(s) under /products/<slug>/designs/`);
 console.log(`neutralised ${neutralised} dead link(s) to screens that were never drawn`);
-console.log(`synced ${screens} screens, ${(bytes / 1024 / 1024).toFixed(2)}MB html`);
+console.log(`synced ${screens} screens, ${(bytes / 1024 / 1024).toFixed(2)}MB html, ${notes} notes pages`);
 const vendorKB = [...vendored.values()].reduce((n, x) => n + x.bytes, 0) / 1024;
 console.log(`vendored ${vendored.size} asset(s), ${vendorKB.toFixed(0)}KB, from ${VENDOR_HOSTS.length} host(s)`);
 for (const x of [...vendored.values()].sort((a, b) => b.bytes - a.bytes)) {

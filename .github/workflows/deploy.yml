@@ -69,6 +69,11 @@ jobs:
       - name: Pull design sets, wikis and store art from the private app repos
         env:
           DESIGNS_TOKEN: ${{ secrets.DESIGNS_TOKEN }}
+          # Three products live under other owners, where the token above
+          # cannot reach. Each is read with its own read-only deploy key.
+          DEPLOY_KEY_SCRVIO: ${{ secrets.DEPLOY_KEY_SCRVIO }}
+          DEPLOY_KEY_TRUNK: ${{ secrets.DEPLOY_KEY_TRUNK }}
+          DEPLOY_KEY_DWARSEVA: ${{ secrets.DEPLOY_KEY_DWARSEVA }}
           DESIGNS_SOURCE: remote
         run: |
           test -n "$DESIGNS_TOKEN" || {

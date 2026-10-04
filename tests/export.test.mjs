@@ -94,6 +94,20 @@ test("the wikis exported, one page per wiki page", () => {
   }
 });
 
+test("every published design set ships its notes pages, and its bar points at them", () => {
+  // The bar's notes button fetches Markdown. It answered 404 on every screen
+  // of every set until the wiki pages were published beside the designs.
+  const designs = JSON.parse(readFileSync(join(root, "src/data/generated/designs.json"), "utf8"));
+  for (const [slug, set] of Object.entries(designs.sets)) {
+    const notes = join(out, "designs", slug, "wiki", "surfaces");
+    assert.ok(existsSync(notes) && readdirSync(notes).some((f) => f.endsWith(".md")), `${slug}: no notes pages at /designs/${slug}/wiki/surfaces/`);
+    for (const surface of new Set(set.screens.map((s) => s.surface))) {
+      const chrome = readFileSync(join(out, "designs", slug, surface, "_chrome.js"), "utf8");
+      assert.ok(chrome.includes('"../wiki/surfaces/"'), `${slug}/${surface}: _chrome.js still points two levels up`);
+    }
+  }
+});
+
 test("every picture a page shows is a file that shipped", () => {
   const missing = new Set();
   for (const { route, html } of pages()) {

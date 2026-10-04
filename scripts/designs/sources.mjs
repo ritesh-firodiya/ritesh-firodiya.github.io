@@ -36,6 +36,12 @@ export const SETS = {
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
   "dwarseva-property": { repo: "ritvi-apps/property-app", local: "property-app" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
+  /* These three live under other owners. A fine-grained PAT covers ONE owner,
+     so each is read with its own read-only deploy key instead: narrower than
+     a token, and it never expires. The key is the secret named here. */
+  scrvio: { repo: "scrvio/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
+  trunk: { repo: "ritesh-firodiya/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
+  "dwarseva-societies": { repo: "dwarseva/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
 };
 
 const SUBDIR = ".context/designs";
@@ -54,13 +60,13 @@ const LOCAL_ROOT = join(homedir(), "git", "products");
 /* The empty extraheader clears any Authorization header a CI checkout left in
    the git config. With one set, git sends it instead of the token in the URL,
    and a token that cannot see the repo answers "Repository not found". */
-const git = (args, cwd) =>
+const gitWith = (env, args, cwd) =>
   execFileSync("git", ["-c", "http.https://github.com/.extraheader=", ...args], {
     cwd,
+    env: env ?? process.env,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
   }).trim();
-
 /** Strip the token out of anything on its way to a log. CI logs are public. */
 const redact = (text, token) =>
   text
@@ -78,11 +84,22 @@ const redact = (text, token) =>
  * The clone is cached by commit SHA under node_modules/.cache. A second run on
  * an unchanged repo does one `ls-remote` and stops.
  */
-function cloneSparse(slug, repo, token) {
+function cloneSparse(slug, repo, token, keyName) {
   const dir = join(CACHE, slug);
-  const url = `https://x-access-token:${token}@github.com/${repo}.git`;
   const stamp = join(CACHE, `${slug}.sha`);
-
+  let url = `https://x-access-token:${token}@github.com/${repo}.git`;
+  let env;
+  if (keyName) {
+    /* ssh wants the key in a file only its owner can read. It is written
+       under the cache and never logged. */
+    mkdirSync(CACHE, { recursive: true });
+    const keyFile = join(CACHE, `${slug}.key`);
+    writeFileSync(keyFile, process.env[keyName].trimEnd() + "\n", { mode: 0o600 });
+    url = `git@github.com:${repo}.git`;
+    env = { ...process.env, GIT_SSH_COMMAND: `ssh -i ${keyFile} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new` };
+    token = "\u0000"; // nothing to redact
+  }
+  const git = (args, cwd) => gitWith(env, args, cwd);
   let head;
   try {
     head = git(["ls-remote", url, "HEAD"]).split(/\s+/)[0];
@@ -93,6 +110,10 @@ function cloneSparse(slug, repo, token) {
        quick way to keep it out of a public CI log. That made the one failure
        this script can have undiagnosable from the log, which is worse. Redact
        instead of discard. */
+    if (keyName) {
+      throw new Error(`${repo}: cannot reach repo with ${keyName} — ${redact(String(e.stderr || e.message || ""), token)}
+  Check that the secret holds the private half of a deploy key on ${repo}.`);
+    }
     throw new Error(`${repo}: cannot reach repo — ${redact(String(e.stderr || e.message || ""), token)}
   Check, in this order:
     1. the PAT's resource owner is the ORG (ritvi-apps), not your user account
@@ -142,7 +163,11 @@ export function resolveSources() {
 
   for (const [slug, cfg] of Object.entries(SETS)) {
     if (mode === "remote") {
-      const r = cloneSparse(slug, cfg.repo, token);
+      if (cfg.key && !process.env[cfg.key]) {
+        missing.push(`${slug} (${cfg.repo} needs the deploy key in ${cfg.key})`);
+        continue;
+      }
+      const r = cloneSparse(slug, cfg.repo, token, cfg.key);
       if (!existsSync(r.dir)) { missing.push(`${slug} (${cfg.repo} has no ${SUBDIR})`); continue; }
       out[slug] = { ...r, origin: cfg.repo, mode };
     } else {

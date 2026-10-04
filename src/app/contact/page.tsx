@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Briefcase, Download, GitBranch, Mail, type LucideIcon } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { profile } from "@/lib/profile";
+import { CopyButton } from "@/components/copy-button";
+import { gmailCompose, mailto } from "@/lib/mail";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -30,16 +32,21 @@ export default function ContactPage() {
         <h1 className="page-title mt-3">Get in touch.</h1>
         <p className="mt-4 max-w-[56ch] text-lead text-ink-2">Email is fastest. Usually a reply within two working days.</p>
 
-        {/* A mailto, not a form: a static site has nowhere to post one to. */}
-        <a href={`mailto:${profile.email}`} className="card mt-8 flex flex-wrap items-center justify-between gap-6 p-8">
+        {/* Not a form: a static site has nowhere to post one to. Three ways,
+            because a mailto link does nothing on a machine with no mail app. */}
+        <div className="card mt-8 flex flex-wrap items-center justify-between gap-6 p-8">
           <div>
             <p className="eyebrow">Email</p>
             <p className="section-title mt-2 break-all">{profile.email}</p>
           </div>
-          <span className="btn btn-primary">
-            <Mail size={16} aria-hidden /> Write an email
-          </span>
-        </a>
+          <div className="flex flex-wrap gap-2.5">
+            <a href={gmailCompose()} target="_blank" rel="noopener" className="btn btn-primary">
+              <Mail size={16} aria-hidden /> Write in Gmail
+            </a>
+            <a href={mailto()} className="btn btn-quiet">Open mail app</a>
+            <CopyButton text={profile.email} />
+          </div>
+        </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
           {ways.map(({ Icon, title, note, href }) => (

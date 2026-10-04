@@ -10,10 +10,9 @@ import { Moon, Sun } from "lucide-react";
  * this component sets one attribute and touches nothing else — every utility
  * on the page already reads `var(--color-…)` and follows on its own.
  *
- * Three states, not two. "system" is the default and is not a third palette:
- * it is the absence of a choice, which lets the media query in globals.css
- * decide. Collapsing it to a boolean is how a site ends up ignoring the OS
- * setting for everyone who never pressed the button.
+ * Until someone presses the button there is no stored choice, and the media
+ * query in globals.css follows the OS. A press stores the opposite of what is
+ * on screen, so the button always does something visible.
  *
  * The choice lives in localStorage, which is an external store, so it is read
  * with useSyncExternalStore rather than copied into state by an effect. The
@@ -21,13 +20,6 @@ import { Moon, Sun } from "lucide-react";
  * rendered once with the wrong value and then again with the right one.
  */
 type Theme = "light" | "dark" | "system";
-
-const NEXT: Record<Theme, Theme> = { system: "dark", dark: "light", light: "system" };
-const LABEL: Record<Theme, string> = {
-  system: "Theme: following your system — switch to dark",
-  dark: "Theme: dark — switch to light",
-  light: "Theme: light — follow your system",
-};
 
 /** Same-tab writes fire no `storage` event, so the setter announces itself. */
 const CHANGED = "themechange";
@@ -56,36 +48,46 @@ function readTheme(): Theme {
    script in layout.tsx assumes when it finds nothing stored. */
 const serverTheme = (): Theme => "system";
 
+/* What is actually on screen. "system" is the absence of a choice, so it
+   resolves to whatever the OS asks for. */
+function shownDark(theme: Theme): boolean {
+  if (theme === "system") return typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return theme === "dark";
+}
+
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribe, readTheme, serverTheme);
+  const dark = shownDark(theme);
 
-  function apply(next: Theme) {
+  /* One press always changes the page. The button used to cycle
+     system → dark → light, so on a dark system the first press went from
+     "dark by default" to "dark by choice" and looked broken. */
+  function toggle() {
+    const next = dark ? "light" : "dark";
     const root = document.documentElement;
+    root.setAttribute("data-theme", next);
     try {
-      if (next === "system") {
-        root.removeAttribute("data-theme");
-        localStorage.removeItem("theme");
-      } else {
-        root.setAttribute("data-theme", next);
-        localStorage.setItem("theme", next);
-      }
+      localStorage.setItem("theme", next);
     } catch {
-      // Storage refused; still honour the click for this page view.
-      if (next === "system") root.removeAttribute("data-theme");
-      else root.setAttribute("data-theme", next);
+      // Storage refused; the click is still honoured for this page view.
     }
     window.dispatchEvent(new Event(CHANGED));
   }
 
+  const label = dark ? "Switch to light theme" : "Switch to dark theme";
   return (
     <button
       type="button"
-      onClick={() => apply(NEXT[theme])}
-      title={LABEL[theme]}
-      aria-label={LABEL[theme]}
+      onClick={toggle}
+      title={label}
+      aria-label={label}
       className="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 transition hover:border-line-strong hover:text-ink"
+      suppressHydrationWarning
     >
-      {theme === "dark" ? <Moon size={16} strokeWidth={1.75} /> : <Sun size={16} strokeWidth={1.75} />}
+      {/* Both icons are rendered and CSS shows one, so the server and the
+          browser agree on the markup whatever the theme turns out to be. */}
+      <Sun size={16} strokeWidth={1.75} className="theme-icon-light" aria-hidden />
+      <Moon size={16} strokeWidth={1.75} className="theme-icon-dark" aria-hidden />
     </button>
   );
 }

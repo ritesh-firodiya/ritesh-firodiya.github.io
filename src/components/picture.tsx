@@ -29,11 +29,25 @@ export const embedPathOf = (p: Product): string | null => {
   return hasScreen(p.slug, path) ? path : null;
 };
 
+export const isPhoneEmbed = (p: Product): boolean => Boolean(p.embed?.startsWith("mobile/"));
+
+/** Has anything to show: store art, or a design screen of its own. */
+export const hasPicture = (p: Product): boolean => shotsOf(p, 1).length > 0 || embedPathOf(p) !== null;
+
 /** The picture slot at the top of a card. A product that names a design
- *  screen is a web product first, so that leads; otherwise its best store shot. */
+ *  screen shows that; otherwise its best store shot. */
 export function CardPicture({ p }: { p: Product }) {
   const shot = shotsOf(p, 1)[0];
   const embed = embedPathOf(p);
+  if (embed && isPhoneEmbed(p)) {
+    return (
+      <div className="flex h-56 justify-center overflow-hidden bg-muted pt-5">
+        <div className="w-40 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong">
+          <Embed src={embed} title={`${p.name} design screen`} phone />
+        </div>
+      </div>
+    );
+  }
   if (embed) {
     return (
       <div className="h-56 overflow-hidden bg-muted">

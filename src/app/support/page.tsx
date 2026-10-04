@@ -4,6 +4,8 @@ import { Bug, CreditCard, Trash2, type LucideIcon } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { products } from "@/lib/products";
 import { profile } from "@/lib/profile";
+import { CopyButton } from "@/components/copy-button";
+import { gmailCompose, mailto } from "@/lib/mail";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -39,9 +41,12 @@ export default function SupportPage() {
               <Icon size={24} className="text-brand-500" aria-hidden />
               <h2 className="mt-4 text-h3 font-bold">{title}</h2>
               <p className="mb-6 mt-2 text-base text-ink-2">{body}</p>
-              <a href={`mailto:${profile.email}?subject=${encodeURIComponent(subject)}`} className="btn btn-quiet mt-auto self-start">
-                {cta}
-              </a>
+              <div className="mt-auto flex flex-wrap gap-2">
+                <a href={gmailCompose({ subject })} target="_blank" rel="noopener" className="btn btn-quiet">
+                  {cta}
+                </a>
+                <a href={mailto({ subject })} className="btn btn-quiet">Mail app</a>
+              </div>
             </div>
           ))}
         </div>
@@ -69,7 +74,14 @@ export default function SupportPage() {
           </div>
         </section>
 
-        <p className="mt-8 rounded-lg border border-line bg-muted p-5 text-base text-ink-2">
+        <div className="mt-8 flex flex-wrap items-center gap-3 rounded-lg border border-line bg-muted p-5 text-base text-ink-2">
+          <span>
+            Every button above writes to <b className="font-semibold text-ink">{profile.email}</b>.
+          </span>
+          <CopyButton text={profile.email} />
+        </div>
+
+        <p className="mt-4 rounded-lg border border-line bg-muted p-5 text-base text-ink-2">
           Looking for a privacy policy? <Link href="/legal/" className="text-link">All legal documents</Link>.
         </p>
       </main>

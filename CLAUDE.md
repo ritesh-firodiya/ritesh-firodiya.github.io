@@ -49,6 +49,9 @@ and commits none of them.
 - `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
   and **withholds any surface that fails `STYLE-GUIDE.md`** — the reasons land
   in `designs.json` and the project page prints them.
+- It also publishes each product's wiki surface pages as Markdown at
+  `/designs/<slug>/wiki/surfaces/` and rewrites one path in the copied
+  `_chrome.js`, so the bar's notes button works on the site.
 - `scripts/sync-context.mjs` does the wiki, the pictures and the board. Run it
   second: a wiki page about a screen links to that screen, and only the design
   manifest knows which screens were published.
@@ -103,6 +106,13 @@ home page. To change what leads, re-order the file.
   at card size.
 - A `closed` platform renders as a **"Join the test"** button: a pre-filled
   email asking to be added to the tester list. `none` renders disabled.
+- A closed platform's steps offer **Gmail's compose page beside `mailto:`**
+  (`src/lib/mail.ts`). A mailto link does nothing on a machine with no mail
+  app, and the button then looks broken. `testUrl` is the store's own tester
+  page, for after the account has been added.
+- `embed` also gives a product with no store art a picture: one of its own
+  design screens, live. A product with a build or a picture is a card on
+  `/work/`; the rest are rows.
 - `src/lib/case-studies.ts` holds the long-form text for a project page. A
   product without one shows its `features` instead.
 - `src/data/profile.json` drives the home page, About and the résumé.
@@ -192,9 +202,20 @@ repo is a set of redirect pages pointing here.
 Push to `main` → `.github/workflows/deploy.yml`: lint, typecheck, contrast,
 data tests, **`pnpm sync`**, build, export tests, then publish `out/`.
 
-**One secret: `DESIGNS_TOKEN`**, a fine-grained PAT on the `ritvi-apps` org with
-Contents: read on the product repos. **It expires.** When it does the sync step
-fails and the deploy stops, which is the intended failure: a site with its
-screens, wikis and pictures missing must not publish.
+**Four secrets, all read-only on product repos:**
+
+| Secret | Reads | Kind |
+|---|---|---|
+| `DESIGNS_TOKEN` | the eight repos under `ritvi-apps` | fine-grained PAT, Contents: read. **Expires 2027-10-05.** Its resource owner must be the org: a token owned by the user account cannot see org repos |
+| `DEPLOY_KEY_SCRVIO` | `scrvio/scrvio` | deploy key, never expires |
+| `DEPLOY_KEY_TRUNK` | `ritesh-firodiya/trunk` | deploy key |
+| `DEPLOY_KEY_DWARSEVA` | `dwarseva/dwarseva` | deploy key |
+
+A fine-grained PAT covers one owner, so a product under another owner gets a
+deploy key and a `key:` entry in `scripts/designs/sources.mjs`. When any of
+these is missing or dead the sync step fails and the deploy stops, which is the
+intended failure: a site with its screens, wikis and pictures missing must not
+publish. `actions/checkout` runs with `persist-credentials: false`, or git
+sends the job's own token instead of these.
 
 One-time setup: repo **Settings → Pages → Source = GitHub Actions**.

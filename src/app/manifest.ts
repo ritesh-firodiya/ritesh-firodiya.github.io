@@ -21,7 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
       // Maskable: Android crops an install icon to its own shape, and a square
       // photo survives that where a letterform loses its edges.
       { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
-      { src: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { src: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   };
 }

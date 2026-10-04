@@ -49,13 +49,15 @@
           "state": "closed",
           "label": "Closed testing only",
           "url": null,
-          "note": "On the closed track; the production track has never had a release"
+          "note": "On the closed track; the production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.askcal"
         },
         "ios": {
           "state": "closed",
           "label": "Waiting for App Store review",
           "url": null,
-          "note": "Submitted for review; there is no public build yet"
+          "note": "Submitted for review; there is no public build yet",
+          "testUrl": "https://testflight.apple.com/join/5VeKUcaj"
         }
       },
       "unreleasedNote": "Nothing is installable today. We would rather say that than show a button that goes nowhere.",
@@ -266,7 +268,8 @@
           "state": "closed",
           "label": "Closed testing only",
           "url": null,
-          "note": "Play Console declarations pending; alpha is the ceiling"
+          "note": "Play Console declarations pending; alpha is the ceiling",
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.aakalan"
         },
         "ios": {
           "state": "beta",
@@ -552,7 +555,8 @@
           "state": "closed",
           "label": "Closed testing, not public",
           "url": null,
-          "note": "Production track has never had a release"
+          "note": "Production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter"
         },
         "ios": {
           "state": "closed",
@@ -661,7 +665,8 @@
     {
       "slug": "scrvio",
       "name": "Scrvio",
-      "stageLabel": "In build",
+      "stageLabel": "Site is up",
+      "embed": "web/library/library.html",
       "fullName": "Scrvio",
       "tagline": "Privacy-first browser screen recorder.",
       "blurb": "Record screen, camera and audio from the browser with no install and no sign-up, then keep the recordings in your own S3 bucket rather than a vendor's cloud.",
@@ -679,10 +684,10 @@
       "notBuilt": false,
       "platforms": {
         "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "scrvio.com serves the marketing site (verified 2026-09-22); sign-ups are not open yet"
+          "state": "beta",
+          "label": "Open scrvio.com",
+          "url": "https://scrvio.com",
+          "note": "The site is up and links to sign-up. Whether billing is live is not verified."
         }
       },
       "stack": [
@@ -708,7 +713,7 @@
       "permissions": [],
       "screens": [],
       "legal": {
-        "privacy": null,
+        "privacy": "https://scrvio.com/privacy-policy",
         "delete": null
       },
       "repo": null
@@ -717,6 +722,7 @@
       "slug": "trunk",
       "name": "Trunk",
       "stageLabel": "In build",
+      "embed": "web/deltas/deltas.html",
       "fullName": "Trunk",
       "tagline": "Product development where every change is a delta.",
       "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
@@ -765,6 +771,7 @@
       "slug": "dwarseva-societies",
       "name": "DwarSeva Societies",
       "stageLabel": "In build",
+      "embed": "web/home/home.html",
       "fullName": "DwarSeva — Societies",
       "tagline": "Approval and society management.",
       "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
@@ -864,6 +871,7 @@
       "slug": "plan-kid",
       "name": "Plan-Kid",
       "stageLabel": "In design",
+      "embed": "mobile/home/home-conceive.html",
       "fullName": "Plan-Kid — Parenthood journey",
       "tagline": "A parenthood journey app for couples in India.",
       "blurb": "From the pre-decision stage through to parenting.",
@@ -917,6 +925,7 @@
       "slug": "dwarseva-property",
       "name": "DwarSeva Property",
       "stageLabel": "In design",
+      "embed": "web/buyer/home.html",
       "fullName": "DwarSeva — Property",
       "tagline": "Map-based property listings for India.",
       "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",

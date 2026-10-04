@@ -26,6 +26,9 @@ export type Platform = {
   label: string;
   url: string | null;
   note: string;
+  /** For a `closed` platform: where a tester goes to install once their
+   *  account has been added to the list. */
+  testUrl?: string;
 };
 
 export type Product = {

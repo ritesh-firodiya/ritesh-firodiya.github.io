@@ -76,4 +76,12 @@ horizon: 2026-10-18
   "Join the test" button (a pre-filled email) instead of a disabled one; the
   project page is flat — hero, one facts row, two links, the write-up; type
   and spacing are tighter everywhere.
+- Review round 4, on the live site. Found by crawling it and pressing things:
+  the notes button 404'd on every design screen (the wiki pages were never
+  published beside the sets); the theme button's first press did nothing on a
+  dark system (it went from system-dark to chosen-dark); "Join the test" was a
+  bare mailto, which does nothing without a mail app; scrvio, trunk and
+  dwarseva had design sets and wikis that the site did not read; a product
+  with two surfaces linked only one chart; `/apple-touch-icon.png.png` 404'd.
+  All fixed. Three repos under other owners are read with deploy keys.
 - Next: T028, T012, T023.

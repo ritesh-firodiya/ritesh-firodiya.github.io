@@ -48,8 +48,8 @@ export function WorkGrid({
 
       {shownRows.length > 0 && (
         <>
-          <h2 className="section-title mt-14">Not shipped yet.</h2>
-          <p className="mt-2 max-w-[60ch] text-base text-ink-2">Code or designs exist, and nothing is installable. Each row says which.</p>
+          <h2 className="section-title mt-10">Nothing to show yet.</h2>
+          <p className="mt-2 max-w-[60ch] text-base text-ink-2">Code exists, with no screens drawn and nothing to install.</p>
           <div className="card mt-6 overflow-hidden">{shownRows.map((r) => <Fragment key={r.key}>{r.node}</Fragment>)}</div>
         </>
       )}

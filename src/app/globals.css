@@ -476,6 +476,17 @@
   /* --n is how many facts there are, so the row never ends on an empty cell. */
   @media (min-width: 1024px) { .facts { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); } }
 
+  /* The theme button shows the icon of the theme you would switch TO leaving:
+     a sun on a light page, a moon on a dark one. Chosen in CSS, from the same
+     conditions that pick the palette, so there is no flash and no mismatch. */
+  .theme-icon-dark { display: none; }
+  :root[data-theme="dark"] .theme-icon-light { display: none; }
+  :root[data-theme="dark"] .theme-icon-dark { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-icon-light { display: none; }
+    :root:not([data-theme="light"]) .theme-icon-dark { display: block; }
+  }
+
   /* The eyebrow on the inverted band, where ink-3 does not apply. */
   .eyebrow--band { color: var(--color-band-2); }
 }

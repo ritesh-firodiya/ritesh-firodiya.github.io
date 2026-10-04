@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { profile } from "@/lib/profile";
+import { gmailCompose } from "@/lib/mail";
 import { type Product, stageOf } from "@/lib/products";
 
 /** The release state. The colour is derived; only the words are the product's. */
@@ -31,7 +32,10 @@ export function HireBand({ title }: { title: string }) {
           <p className="mt-2 text-base text-band-2">Email is fastest. Usually a reply within two working days.</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href={`mailto:${profile.email}`} className="btn btn-band">
+          {/* Gmail's compose page, because a mailto link does nothing on a
+              machine with no mail app. The address is the label, so it can
+              always be read and copied. */}
+          <a href={gmailCompose()} target="_blank" rel="noopener" className="btn btn-band">
             <Mail size={16} aria-hidden /> {profile.email}
           </a>
           <Link href="/resume/" className="btn btn-band-quiet">

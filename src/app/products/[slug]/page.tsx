@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Apple, BookOpen, ExternalLink, FlaskConical, Monitor, Play, Workflow, type LucideIcon } from "lucide-react";
+import { Apple, BookOpen, ExternalLink, FlaskConical, Mail, Monitor, Play, Workflow, type LucideIcon } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { Chips, HireBand, StatePill } from "@/components/ui";
 import { Embed } from "@/components/embed";
-import { ShotImage, embedPathOf } from "@/components/picture";
+import { ShotImage, embedPathOf, isPhoneEmbed } from "@/components/picture";
+import { CopyButton } from "@/components/copy-button";
+import { gmailCompose, mailto } from "@/lib/mail";
 import {
   products, bySlug, mediaFor, shotsOf, galleriesFor, screensFor, withheldFor, hasBuild,
   MODEL_LABEL, type Platform, type Product,
@@ -40,8 +42,9 @@ const PLATFORM: Record<string, { name: string; Icon: LucideIcon }> = {
  * Every way to get the product, as one row of buttons.
  *
  *   live / beta  a link: the store, the site, the public TestFlight
- *   closed       a build exists behind a tester list, so the button asks to be
- *                added to it — an email with the subject already written
+ *   closed       a build exists behind a tester list. The button jumps to the
+ *                steps under it, which hold real links: write to me (in Gmail,
+ *                or any mail app), then the store's own tester page
  *   none         nothing exists; drawn disabled with its reason, never hidden
  */
 function Access({ p }: { p: Product }) {
@@ -49,10 +52,6 @@ function Access({ p }: { p: Product }) {
   const open = platforms.filter(([, v]) => v.state === "live" || v.state === "beta");
   const closed = platforms.filter(([, v]) => v.state === "closed");
   const none = platforms.filter(([, v]) => v.state === "none");
-  const testerMail = (k: string) =>
-    `mailto:${profile.email}?subject=${encodeURIComponent(`Tester access: ${p.name} on ${PLATFORM[k].name}`)}&body=${encodeURIComponent(
-      k === "android" ? "The Google account I use on my phone:\n" : "The Apple ID email I use on my phone:\n",
-    )}`;
 
   return (
     <>
@@ -65,8 +64,8 @@ function Access({ p }: { p: Product }) {
             </a>
           );
         })}
-        {closed.map(([k, v], i) => (
-          <a key={k} href={testerMail(k)} className={`btn ${open.length === 0 && i === 0 ? "btn-primary" : "btn-quiet"}`} title={v.note}>
+        {closed.map(([k], i) => (
+          <a key={k} href={`#join-${k}`} className={`btn ${open.length === 0 && i === 0 ? "btn-primary" : "btn-quiet"}`}>
             <FlaskConical size={16} aria-hidden /> Join the {PLATFORM[k].name} test
           </a>
         ))}
@@ -79,12 +78,45 @@ function Access({ p }: { p: Product }) {
           );
         })}
       </div>
-      {closed.length > 0 && (
-        <p className="mt-2 max-w-[56ch] text-xs text-ink-3">
-          {closed.map(([k, v]) => `${PLATFORM[k].name}: ${v.note || v.label}`).join(". ")}. Joining a test sends me an
-          email; I add your account and reply with the install link.
-        </p>
-      )}
+
+      {closed.map(([k, v]) => {
+        const account = k === "android" ? "Google account" : "Apple ID";
+        const draft = {
+          subject: `Tester access: ${p.name} on ${PLATFORM[k].name}`,
+          body: `The ${account} email I use on my phone:\n`,
+        };
+        return (
+          <div key={k} id={`join-${k}`} className="card mt-4 max-w-[34rem] scroll-mt-24 p-4 text-sm">
+            <p className="font-semibold">Join the {PLATFORM[k].name} test</p>
+            <p className="mt-1 text-ink-3">{v.note || v.label}.</p>
+            <ol className="mt-3 grid gap-3">
+              <li>
+                <span className="text-ink-2">1. Send me the {account} email you use on your phone.</span>
+                <span className="mt-2 flex flex-wrap gap-2">
+                  <a href={gmailCompose(draft)} target="_blank" rel="noopener" className="btn btn-quiet">
+                    <Mail size={16} aria-hidden /> Write in Gmail
+                  </a>
+                  <a href={mailto(draft)} className="btn btn-quiet">Open mail app</a>
+                  <CopyButton text={profile.email} />
+                </span>
+              </li>
+              <li>
+                <span className="text-ink-2">
+                  2. I add you and reply, usually within two working days.
+                  {v.testUrl ? " Then open the test page on your phone:" : " The reply carries the install link."}
+                </span>
+                {v.testUrl && (
+                  <span className="mt-2 flex">
+                    <a href={v.testUrl} target="_blank" rel="noopener" className="btn btn-quiet">
+                      <ExternalLink size={16} aria-hidden /> {k === "android" ? "Google Play test page" : "TestFlight"}
+                    </a>
+                  </span>
+                )}
+              </li>
+            </ol>
+          </div>
+        );
+      })}
     </>
   );
 }
@@ -104,7 +136,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
 
   const study = studyBySlug(p.slug);
-  const icon = mediaFor(p.slug).icon;
+  const media = mediaFor(p.slug);
+  const icon = media.icon;
   const shots = shotsOf(p, 3);
   const embed = embedPathOf(p);
   const galleries = galleriesFor(p.slug);
@@ -151,9 +184,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div>
               {embed ? (
                 <>
-                  <div className="overflow-hidden rounded-lg border border-line-strong shadow-lg">
-                    <Embed src={embed} title={`${p.name} design screen`} />
+                  <div className={`overflow-hidden border border-line-strong shadow-lg ${isPhoneEmbed(p) ? "mx-auto w-56 rounded-xl" : "rounded-lg"}`}>
+                    <Embed src={embed} title={`${p.name} design screen`} phone={isPhoneEmbed(p)} />
                   </div>
+                  {galleries.length > 0 && media.shots.length === 0 && (
+                    <p className="mt-3 text-center text-xs text-ink-3">A screen from the design set, live. Nothing is built or captured yet.</p>
+                  )}
                   {/* It has an app as well as a site: the app's shots sit under. */}
                   {shots.length > 0 && (
                     <div className="mx-auto mt-4 grid max-w-xs grid-cols-3 gap-3">
@@ -195,16 +231,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         {/* What it left behind: the screens and the reasoning. */}
         {(galleries.length > 0 || withheld.length > 0 || wiki) && (
           <section className="wrap grid gap-5 pb-10 sm:grid-cols-2">
-            {galleries.length > 0 && (
-              /* A plain anchor: the gallery is the product's own static page. */
-              <a href={galleries[0].href} className="card flex items-center gap-4 p-5">
+            {galleries.map((g) => (
+              /* A plain anchor: the gallery is the product's own static page.
+                 One per surface, so a product with a phone app and a site
+                 links to both charts. */
+              <a key={g.surface} href={g.href} className="card flex items-center gap-4 p-5">
                 <Workflow size={24} className="shrink-0 text-brand-500" aria-hidden />
                 <span>
-                  <span className="block text-body font-bold">{screensFor(p.slug).length} screens in the design set</span>
+                  <span className="block text-body font-bold">
+                    {screensFor(p.slug).filter((x) => x.surface === g.surface).length} {g.surface} screens
+                  </span>
                   <span className="text-sm text-ink-2">Open the flow chart, and every screen as a live page.</span>
                 </span>
               </a>
-            )}
+            ))}
             {withheld.map((w) => (
               <div key={w.surface} className="card flex items-center gap-4 border-dashed p-5">
                 <Workflow size={24} className="shrink-0 text-ink-3" aria-hidden />

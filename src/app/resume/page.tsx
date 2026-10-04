@@ -25,6 +25,11 @@ export default function ResumePage() {
           <div className="min-w-0 flex-1">
             <h1 className="page-title">{profile.name}</h1>
             <p className="text-base text-ink-2">Senior full-stack engineer · {profile.location}</p>
+            {/* The buttons beside this are hidden on paper, so the sheet needs its own contact line. */}
+            <p className="print-only text-sm text-ink-2">
+              {profile.email} · linkedin.com/in/{profile.linkedin} · github.com/{profile.github} ·{" "}
+              {profile.github}.github.io
+            </p>
           </div>
           <div className="no-print flex flex-wrap gap-2">
             <a href="/resume.pdf" className="btn btn-primary">

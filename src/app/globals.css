@@ -451,9 +451,15 @@
 /* ── Print · /resume only ──────────────────────────────────────────────────
    The résumé is the one route with a second, non-screen output. Cmd+P has to
    produce the sheet and nothing else. */
+.print-only { display: none; }
+
 @media print {
-  @page { margin: 14mm; }
+  @page { size: A4; margin: 11mm 13mm; }
   .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  /* Sized so the whole résumé is two sheets, and no role splits across them. */
+  html { font-size: 82%; }
+  li { break-inside: avoid; }
   html, body { background: #fff !important; }
   a { color: inherit !important; text-decoration: none !important; }
   .card { box-shadow: none !important; }

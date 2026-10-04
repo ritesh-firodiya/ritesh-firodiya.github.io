@@ -69,6 +69,7 @@ const FORWARDS = {
   "/about/": "/resume/", "/contact/": "/resume/", "/hire/": "/resume/",
   "/work/chitragupt/": "/products/chitragupt/",
   "/products/dwarseva-property/": "/products/seedha-ghar/",
+  "/products/dwarseva-societies/": "/products/dwarseva/",
 };
 
 test("out/ actually contains the site", () => {

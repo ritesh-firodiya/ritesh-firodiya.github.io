@@ -360,7 +360,7 @@
       "private": true
     },
     {
-      "name": "DwarSeva — Societies",
+      "name": "DwarSeva",
       "tagline": "Approval and society management",
       "description": "A modular society management system covering visitor check-ins, community events, service requests, payments and staff attendance. Backend, web admin and mobile share one Turborepo with NestJS, GraphQL and Prisma at the core.",
       "stack": [

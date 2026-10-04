@@ -44,7 +44,7 @@ export const SETS = {
      The org setting "deploy keys" must stay enabled for this to work. */
   scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
   trunk: { repo: "ritvi-apps/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
-  "dwarseva-societies": { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
+  dwarseva: { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
 };
 
 const SUBDIR = ".context/designs";

@@ -863,12 +863,12 @@
       "repo": null
     },
     {
-      "slug": "dwarseva-societies",
-      "name": "DwarSeva Societies",
+      "slug": "dwarseva",
+      "name": "DwarSeva",
       "stageLabel": "In build",
       "embed": "web/home/home.html",
       "embedMobile": "mobile/home/resident-home.html",
-      "fullName": "DwarSeva — Societies",
+      "fullName": "DwarSeva",
       "tagline": "Approval and society management.",
       "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
       "sourceOfTruth": "ventures/dwarseva",
@@ -885,10 +885,10 @@
       "notBuilt": false,
       "platforms": {
         "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Not open yet"
+          "state": "beta",
+          "label": "Open dwarseva.com",
+          "url": "https://dwarseva.com",
+          "note": "The domain is not answering today; hosting is being moved"
         }
       },
       "stack": [
@@ -909,8 +909,9 @@
       "permissions": [],
       "screens": [],
       "legal": {
-        "privacy": null,
-        "delete": null
+        "privacy": "https://dwarseva.com/privacy",
+        "delete": null,
+        "privacyNote": "The policy is a page of the product's own website, which is not answering until its hosting is moved."
       },
       "repo": null
     },

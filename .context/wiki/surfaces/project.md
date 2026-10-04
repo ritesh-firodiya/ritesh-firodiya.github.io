@@ -8,7 +8,7 @@ superseded-by: null
 ---
 
 ## Summary
-One project with a build: what it is, where it is on the eight stages, its screens, its wiki, and where to get it.
+One project with a build: what it is, how to get it, its screens and wiki, and the write-up.
 
 ## Route
 `/products/<slug>/`
@@ -17,29 +17,22 @@ One project with a build: what it is, where it is on the eight stages, its scree
 - .context/designs/web/work/project.html
 
 ## Why it is drawn this way
-**The example is AskCal**, the owner's lead project.
+**The first screenful is the whole answer.** Name, state, Mobile and Web tags, one paragraph, the buttons, the screens and wiki, the stack, and the picture. The write-up is under it for whoever wants the reasoning.
 
-**One page does two jobs, in this order.** The top is for anyone: what it is and where to get it. Everything below is the case study for the hiring reader.
+**Every way to get it is one row of buttons.** A live or beta platform is a link. A closed one is "Join the test", which opens a written email asking to be added; the store's own test page sits beside it where there is one. A platform with nothing built is not drawn.
 
-**The URL stays `/products/<slug>/`.** Store listings point there. `/work/<slug>/` redirects to it.
+**The email opens in Gmail**, not through `mailto:`, which does nothing on a machine with no mail app.
 
-**A platform nobody can install from is drawn disabled, with its reason.** AskCal is waiting for App Store review and is in closed testing on Play, so both buttons are off and both say why.
+**A product with a site and an app shows both.** The web screen is the picture and the phone stands on its corner.
 
-**The screenshots are the store's own.** All six, in listing order, read from the product's listing folder. Nothing is copied.
+**The write-up is two columns of short sections**, and one column on a phone. A bold lead and what follows it; no cards, nothing nested.
 
-**The stage track says how far it has got.** The same eight stages as the process page, filled to where this project is.
-
-**How it is paid for is a model, never a price.** Prices are not published on this site. Ads and analytics are disclosed because that is disclosure, not pricing.
-
-**AskCal is a global app.** Its own rule is that nothing a user reads may brand it to one country, and that holds on this page too.
-
-**Built differently from the wireframe (2026-10-04, review round 3).** The owner found the page over-nested. The built page is flat: a hero with the links, one ruled row of facts, two links to the design set and the wiki, then the write-up in one column. The stage track, the side column of cards and the cards around each decision are gone. A closed platform is a "Join the test" button that opens a pre-filled email, because a build that needs testers should ask for them. The wireframe has not been redrawn yet.
+**No price anywhere on the page.**
 
 ## Related
-- [[work]]
+- [[home]]
 - [[wiki]]
 - [[unreleased]]
-- [[legal]]
 
 ## Sources
 - .context/designs/web/work/project.html

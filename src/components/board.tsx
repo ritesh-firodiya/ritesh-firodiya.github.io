@@ -15,12 +15,45 @@ const ICON: Record<string, LucideIcon> = {
 };
 const DOT: Record<Level, string> = { 0: "dot dot--none", 1: "dot dot--half", 2: "dot" };
 
-/** The process and the proof in one table: the eight stages across, what each
- *  leaves behind under its name, and one row of dots per project. */
+/**
+ * The process and the proof in one place: the eight stages, what each leaves
+ * behind, and one row of dots per project.
+ *
+ * Written for the phone first: a key of the stages, then each project as its
+ * name over eight dots. From `md` up there is room for the table.
+ */
 export function Board({ products }: { products: Product[] }) {
+  const dots = (p: Product) =>
+    levelsOf(p).map((v, i) => (
+      <span key={STAGES[i].key} className={DOT[v]} role="img" aria-label={`${STAGES[i].name}: ${LEVEL_LABEL[v]}`} title={`${STAGES[i].name}: ${LEVEL_LABEL[v]}`} />
+    ));
+
   return (
-    <div className="card overflow-x-auto">
-      <table className="tbl board min-w-[820px]">
+    <div className="card overflow-hidden">
+      <div className="md:hidden">
+        <ol className="grid grid-cols-2 gap-x-3 gap-y-1.5 border-b border-line bg-muted p-3 text-xs">
+          {STAGES.map((s, i) => (
+            <li key={s.key}>
+              <b className="font-bold">
+                {i + 1}. {s.name}
+              </b>{" "}
+              <span className="text-ink-3">{s.leaves}</span>
+            </li>
+          ))}
+        </ol>
+        <ul>
+          {products.map((p) => (
+            <li key={p.slug} className="border-b border-line px-3 py-2.5 last:border-b-0">
+              <Link href={`/products/${p.slug}/`} className="text-base font-semibold">
+                {p.name}
+              </Link>
+              <div className="mt-1.5 grid grid-cols-8">{dots(p)}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <table className="tbl board hidden md:table">
         <thead>
           <tr>
             <th scope="col">Project</th>
@@ -29,7 +62,7 @@ export function Board({ products }: { products: Product[] }) {
               return (
                 <th key={s.key} scope="col" title={s.what}>
                   <span className="flex items-center gap-1.5 text-ink">
-                    <Icon size={14} className="text-brand-500" aria-hidden /> {i + 1}. {s.name}
+                    <Icon size={14} className="shrink-0 text-brand-500" aria-hidden /> {i + 1}. {s.name}
                   </span>
                   <span className="board-leaves">{s.leaves}</span>
                 </th>
@@ -45,10 +78,8 @@ export function Board({ products }: { products: Product[] }) {
                   {p.name}
                 </Link>
               </td>
-              {levelsOf(p).map((v, i) => (
-                <td key={STAGES[i].key}>
-                  <span className={DOT[v]} role="img" aria-label={`${STAGES[i].name}: ${LEVEL_LABEL[v]}`} title={`${STAGES[i].name}: ${LEVEL_LABEL[v]}`} />
-                </td>
+              {dots(p).map((d) => (
+                <td key={d.key}>{d}</td>
               ))}
             </tr>
           ))}

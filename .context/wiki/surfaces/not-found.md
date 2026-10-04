@@ -17,13 +17,12 @@ The page for an address that does not exist.
 - .context/designs/web/states/404.html
 
 ## Why it is drawn this way
-**It offers the two places most lost visitors wanted.** Old links to `/hire` and `/work/<slug>` are redirected, so anything landing here is a typo or a deleted page. Home and Work cover both.
+**It offers the one place a lost visitor wanted.** Old addresses forward, so anything landing here is a typo or a deleted page.
 
 **The header and footer stay.** A bare 404 strands the reader; the nav is the recovery.
 
 ## Related
 - [[home]]
-- [[work]]
 
 ## Sources
 - .context/designs/web/states/404.html

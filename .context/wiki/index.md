@@ -6,16 +6,12 @@ Navigation. The screen inventory is the flow chart at
 ## Surfaces
 | Page | Screen | Route |
 |---|---|---|
-| [[home]] | home/home.html | `/` |
-| [[work]] | work/work.html | `/work/` |
+| [[home]] | home/home.html | `/`, with `#work` and `#process` |
 | [[project]] | work/project.html | `/products/<slug>/` |
 | [[unreleased]] | work/unreleased.html | `/products/<slug>/` |
-| [[process]] | process/process.html | `/process/` |
 | [[wiki]] | wiki/wiki.html | `/products/<slug>/wiki/` |
 | [[wiki-page]] | wiki/page.html | `/products/<slug>/wiki/<type>/<page>/` |
-| [[about]] | about/about.html | `/about/` |
-| [[resume]] | about/resume.html | `/resume/` |
-| [[contact]] | contact/contact.html | `/contact/` |
+| [[resume]] | resume/resume.html | `/resume/` |
 | [[support]] | support/support.html | `/support/` |
 | [[legal]] | legal/legal.html | `/legal/` |
 | [[policy]] | legal/policy.html | `/legal/<app>/<doc>.html` |
@@ -26,3 +22,4 @@ Navigation. The screen inventory is the flow chart at
 | Date | Page |
 |---|---|
 | 2026-10-04 | [[2026-10-04-hiring-first-redesign]] |
+| 2026-10-04 | [[2026-10-04-four-pages-mobile-first]] |

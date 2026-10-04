@@ -9,7 +9,6 @@ horizon: 2026-10-18
 1. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
 
 ## Parallel
-- [ ] T028 [P] Redraw the whole `designs/web` set to match the built site. Round 4 (2026-10-04) cut the site to Home, a project page, the wiki and the résumé; the set still draws Work, Process, About and Contact as pages
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
 - [ ] T023 [P] Re-verify every row of `products.json` against the stores and bump `verifiedOn` (due by 2026-10-26)
 - [ ] T024 [P] Case studies for Aakalan and Charades — they lead the site and show a feature list, not a write-up
@@ -21,6 +20,7 @@ horizon: 2026-10-18
       unblock: read each listing's website field  next-check:2026-10-11
 
 ## Done
+- [x] T028 Design set redrawn to the built site: 11 screens + 1 state, phone first  done:2026-10-04
 - [x] T020 Committed, pushed and merged to main  done:2026-10-04
 - [x] T021 New org-owned `DESIGNS_TOKEN` created and set  done:2026-10-04
 - [x] T022 Deployed and verified live  done:2026-10-04
@@ -90,3 +90,7 @@ horizon: 2026-10-18
   their addresses forward. Hero pictures, the stats row, the hire band, the
   facts row and the tester-steps card are gone. Cards carry Mobile / Web tags.
   The home page went from about 5200px tall to about 1900px.
+- Done: T028. The set passes `check-designs.py` (48 declared edges, 54 links).
+  The generator lives outside the repo; the screens are the source.
+- Mobile first: the board is a list under `md`, the wiki rail follows the
+  article on a phone, and `CLAUDE.md` now states the rule.

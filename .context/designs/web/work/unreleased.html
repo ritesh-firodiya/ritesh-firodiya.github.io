@@ -15,136 +15,54 @@
   <div class="phone">
 
     <header class="site-head">
-      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
-        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
-          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
-          Ritesh Firodiya
+      <div class="wrap flex items-center gap-4 py-2 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
+          <span class="hidden sm:inline">Ritesh Firodiya</span>
         </a>
-        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
-        <a href="../work/work.html" class="nav-link nav-link--on">Work</a>
-        <a href="../process/process.html" class="nav-link">How I build</a>
-        <a href="../about/about.html" class="nav-link">About</a>
-        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        <nav class="ml-auto flex items-center gap-5" aria-label="Main">
+          <a href="../home/home.html#work" class="nav-link nav-link--on">Work</a>
+          <a href="../home/home.html#process" class="nav-link">Process</a>
+          <a href="../resume/resume.html" class="nav-link">Résumé</a>
         </nav>
-        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+        <button type="button" class="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> <span class="hidden sm:inline">Email</span></a>
       </div>
-      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
-        <a href="../work/work.html" class="nav-link nav-link--on">Work</a>
-        <a href="../process/process.html" class="nav-link">How I build</a>
-        <a href="../about/about.html" class="nav-link">About</a>
-        <a href="../about/resume.html" class="nav-link">Résumé</a>
-      </nav>
     </header>
 
-      <main>
-        <section class="wrap pb-10 pt-10 lg:pt-12">
-          <p class="text-sm text-ink-3"><a href="../work/work.html" class="hover:text-ink">Work</a> / DwarSeva Property</p>
-          <div class="mt-5 grid items-start gap-10 lg:grid-cols-[1fr_1.15fr]">
-            <div>
-              <span class="state state--draft">In design</span>
-              <h1 class="page-title mt-5">DwarSeva Property</h1>
-              <p class="mt-3 max-w-[46ch] text-lead text-ink-2">Map-based property listings for India. Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.</p>
-              <p class="mt-6 rounded-lg border border-line bg-muted p-4 text-base text-ink-2"><b class="font-semibold text-ink">Nothing to install.</b> No application code exists yet. What exists is listed below.</p>
-              <div class="mt-5 grid gap-2.5">
-                <span class="btn btn-off justify-between"><span class="inline-flex items-center gap-2"><i data-lucide="monitor" class="h-4 w-4"></i> Web</span><span class="text-xs font-normal">Screens are drawn; no code and no deployment</span></span>
-                <span class="btn btn-off justify-between"><span class="inline-flex items-center gap-2"><i data-lucide="smartphone" class="h-4 w-4"></i> Android</span><span class="text-xs font-normal">Pre-product</span></span>
-                <span class="btn btn-off justify-between"><span class="inline-flex items-center gap-2"><i data-lucide="apple" class="h-4 w-4"></i> iOS</span><span class="text-xs font-normal">Pre-product</span></span>
-              </div>
+      <main class="wrap pb-10">
+        <section class="grid items-center gap-8 py-6 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <a href="../home/home.html#work" class="inline-flex items-center gap-1 text-sm text-ink-3 hover:text-ink"><i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Work</a>
+            <div class="mt-2 flex flex-wrap items-center gap-2.5">
+              <img src="../../../../public/media/dwarseva-societies/icon.webp" alt="" class="h-10 w-10 rounded-lg border border-line" />
+              <h1 class="page-title">DwarSeva Property</h1>
+              <span class="state state--draft">In design</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span>
             </div>
-            <div class="slot grid aspect-[16/10] place-items-center rounded-lg">
-              <p class="eyebrow">No screenshot — nothing is built</p>
-            </div>
+            <p class="mt-3 max-w-[58ch] text-body text-ink-2">Map-based property listings for India. Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.</p>
+            <p class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+              <a href="#" data-to="/products/dwarseva-property/designs/mobile/" class="text-link">mobile screens</a>
+              <a href="#" data-to="/products/dwarseva-property/designs/web/" class="text-link">web screens</a>
+              <a href="../wiki/wiki.html" class="text-link inline-flex items-center gap-1"><i data-lucide="book-open" class="h-3.5 w-3.5"></i> 33 wiki pages</a>
+            </p>
+            <div class="mt-4"><p class="flex flex-wrap gap-1.5"><span class="chip">Turborepo</span> <span class="chip">Next.js</span> <span class="chip">Expo</span> <span class="chip">NestJS</span> <span class="chip">PostgreSQL</span></p></div>
           </div>
+          <div class="relative pb-6 pr-6"><div class="overflow-hidden rounded-lg border border-line-strong shadow-lg"><div class="embed "><iframe src="../../../../../../products/property-app/.context/designs/web/buyer/home.html?bare" title="DwarSeva Property design screen" loading="lazy" tabindex="-1"></iframe></div></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute bottom-0 right-0 w-[22%]"><div class="embed embed--phone"><iframe src="../../../../../../products/property-app/.context/designs/mobile/buyer/home.html?bare" title="DwarSeva Property mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
         </section>
 
-        <section class="border-y border-line bg-surface">
-          <div class="wrap py-12">
-            <p class="eyebrow">What exists today</p>
-            <h2 class="section-title mt-2">A wiki, and a design set that is not ready to show.</h2>
-            <div class="mt-7 grid gap-6 lg:grid-cols-2">
-              <div class="card border-dashed bg-page p-6">
-                <div class="flex items-center justify-between"><i data-lucide="workflow" class="h-6 w-6 text-ink-3"></i><span class="mono text-xs text-ink-3">mobile · web</span></div>
-                <h3 class="mt-5 text-h3 font-bold">Design set withheld</h3>
-                <p class="mt-2 text-base text-ink-2">The screens are drawn, but the set does not follow the style guide yet, so it is not published.</p>
-                <ul class="mono mt-4 grid gap-1 border-t border-line pt-4 text-xs text-ink-3">
-                  <li>No routes.js manifest</li>
-                  <li>Unpinned CDNs</li>
-                  <li>Literal colours in the Tailwind config</li>
-                </ul>
-              </div>
-              <a href="../wiki/wiki.html" class="card bg-page p-6">
-                <div class="flex items-center justify-between"><i data-lucide="book-open" class="h-6 w-6 text-brand-500"></i><span class="mono text-xs text-ink-3">12 decisions · 8 surfaces</span></div>
-                <p class="figure mt-5">33</p>
-                <h3 class="mt-1 text-h3 font-bold">pages in the wiki</h3>
-                <p class="mt-2 text-base text-ink-2">The decisions made so far, each with its date and its reason.</p>
-                <p class="text-link mt-4 inline-block text-base">Read the wiki</p>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="wrap grid gap-6 py-14 lg:grid-cols-2">
-          <div class="card p-5">
-            <p class="eyebrow">Planned stack</p>
-            <p class="mt-3 flex flex-wrap gap-1.5"><span class="chip">Turborepo</span> <span class="chip">Next.js</span> <span class="chip">Expo</span> <span class="chip">NestJS</span> <span class="chip">PostgreSQL</span></p>
-          </div>
-          <div class="card p-5">
-            <p class="eyebrow">How it will be paid for</p>
-            <p class="mt-3 text-base font-semibold">Undecided</p>
-            <p class="mt-1 text-sm text-ink-2">Not decided yet. It is listed here so the list is complete, not because there is anything to buy.</p>
-          </div>
-        </section>
-
-        <section class="wrap pb-14">
-          <div class="flex items-center justify-between gap-4 border-t border-line pt-6">
-            <a href="../work/work.html" class="text-link text-base">All projects</a>
-            <a href="../process/process.html" class="text-link text-base">How I build</a>
-          </div>
-        </section>
       </main>
 
-      <section class="bg-band text-band-ink">
-        <div class="wrap flex flex-wrap items-center justify-between gap-6 py-12">
-          <div>
-            <h2 class="section-title max-w-[26ch]">Want to see how the built ones turned out?</h2>
-            <p class="mt-2 text-base text-band-2">Email is fastest. Usually a reply within two working days.</p>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-band"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
-            <a href="../about/resume.html" class="btn btn-band-quiet">Read the résumé</a>
-          </div>
-        </div>
-      </section>
-
-    <footer class="mt-auto bg-band text-band-ink">
-      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div>
-          <p class="text-body font-bold">Ritesh Firodiya</p>
-          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
-          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">Site</p>
-          <a href="../work/work.html">Work</a>
-          <a href="../process/process.html">How I build</a>
-          <a href="../about/about.html">About</a>
-          <a href="../about/resume.html">Résumé</a>
-          <a href="../contact/contact.html">Contact</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+    <footer class="mt-auto border-t border-line">
+      <div class="wrap flex flex-wrap items-center gap-x-5 gap-y-1.5 py-4 text-sm text-ink-2">
+        <a href="mailto:firodiya.ritesh@gmail.com" class="font-semibold text-ink">firodiya.ritesh@gmail.com</a>
+        <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+        <a href="https://github.com/ritesh-firodiya">GitHub</a>
+        <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        <span class="ml-auto flex gap-5 text-ink-3">
           <a href="../support/support.html">Support</a>
-          <a href="../legal/legal.html">Privacy and legal</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
-          <a href="https://github.com/ritesh-firodiya">GitHub</a>
-          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-          <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        </div>
+          <a href="../legal/legal.html">Legal</a>
+        </span>
       </div>
-      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
     </footer>
   </div>
 </div>

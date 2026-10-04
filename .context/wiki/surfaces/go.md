@@ -25,7 +25,7 @@ The short link for one app, for a bio, a QR code or a forwarded message. noindex
 
 ## Related
 - [[project]]
-- [[work]]
+- [[home]]
 
 ## Sources
 - .context/designs/web/go/go.html

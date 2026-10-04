@@ -8,25 +8,27 @@ superseded-by: null
 ---
 
 ## Summary
-The full work history as a page, with the PDF one click away.
+The résumé as a page, with the PDF one button away. It is also where About and Contact went.
 
 ## Route
 `/resume/`
 
 ## Raw wireframe
-- .context/designs/web/about/resume.html
+- .context/designs/web/resume/resume.html
 
 ## Why it is drawn this way
-**It is a page first and a PDF second.** A recruiter on a phone reads the page; one filing an application downloads the file. Both buttons are in the first screenful.
+**A page first and a PDF second.** A recruiter on a phone reads the page; one filing an application downloads the file. Both are in the first screenful.
 
-**All eight roles, newest first, with dates in their own column.** Dates are what a reader scans for gaps, so they line up.
+**The person is here now.** About and Contact were separate pages that repeated the summary, the skills and the email. The photo, the summary and the three ways to reach me head this page instead.
 
-**It ends on contact.** The résumé is the last thing read before a decision, so the next step is right under it.
+**Dates sit in their own column** from `lg` up, because they are what a reader scans for gaps. On a phone they sit above the role.
+
+**Skills are two columns of rows and come last.** They are a lookup table for someone matching keywords.
+
+**It prints.** The header, the footer and the buttons carry `no-print`.
 
 ## Related
-- [[about]]
-- [[contact]]
-- [[work]]
+- [[home]]
 
 ## Sources
-- .context/designs/web/about/resume.html
+- .context/designs/web/resume/resume.html

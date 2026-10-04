@@ -718,36 +718,37 @@ select:focus-visible {
    screenshots sheet the iframe is 1440 wide, so this still renders 1440. */
 [data-bare] .phone { width: 100%; }
 
+/* MOBILE FIRST. Every rule below is the phone layout; a `min-width` query
+   only adds to it. There is no `max-width` query in this file, and the
+   screens use no `max-*:` utility. Kept in step with the `@layer components`
+   block of src/app/globals.css. */
+
 /* The page column. One width for every band on every screen. */
-.wrap { width: 100%; max-width: 1168px; margin-inline: auto; padding-inline: 24px; }
-@media (min-width: 768px) { .wrap { padding-inline: 40px; } }
+.wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: 16px; }
+@media (min-width: 768px) { .wrap { padding-inline: 28px; } }
 
 /* ---- type ---- */
 .hero-title {
-  font-size: clamp(2.25rem, 4.4vw, 3.75rem);
-  line-height: 1.05; letter-spacing: -0.035em; font-weight: 800;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.12; letter-spacing: -0.03em; font-weight: 800;
 }
 .page-title {
-  font-size: clamp(2rem, 3.4vw, 3rem);
-  line-height: 1.06; letter-spacing: -0.03em; font-weight: 800;
+  font-size: clamp(1.4rem, 2.1vw, 1.75rem);
+  line-height: 1.12; letter-spacing: -0.03em; font-weight: 800;
 }
 .section-title {
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  line-height: 1.12; letter-spacing: -0.025em; font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.15; letter-spacing: -0.02em; font-weight: 700;
 }
 .eyebrow {
   font-family: var(--font-mono); font-size: var(--fs-xs); line-height: 1.4;
   text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
 }
-.figure {
-  font-size: clamp(1.75rem, 2.8vw, 2.5rem); line-height: 1;
-  letter-spacing: -0.03em; font-weight: 800; font-variant-numeric: tabular-nums;
-}
 
 /* ---- actions ---- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 11px 18px; border-radius: var(--radius-pill);
+  padding: 7px 14px; border-radius: var(--radius-pill);
   font-size: var(--fs-base); font-weight: 600; line-height: 1.2;
   border: 1px solid transparent; text-decoration: none; white-space: nowrap;
   transition: background .15s, border-color .15s, color .15s;
@@ -756,14 +757,6 @@ select:focus-visible {
 .btn-primary:hover { background: var(--brand-700); }
 .btn-quiet { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
 .btn-quiet:hover { border-color: var(--brand-500); color: var(--brand-500); }
-/* On the inverted band, where surface and ink do not apply. */
-.btn-band { background: var(--band-ink); color: var(--band); }
-.btn-band-quiet { color: var(--band-ink); border-color: var(--band-2); }
-/* A platform nobody can install from. Rendered, never hidden, with its reason. */
-.btn-off {
-  background: var(--muted); color: var(--ink-3); border-color: var(--line);
-  border-style: dashed; cursor: not-allowed;
-}
 .text-link {
   color: var(--brand-500); font-weight: 600; text-decoration: underline;
   text-decoration-color: var(--brand-200); text-underline-offset: 4px;
@@ -799,6 +792,13 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
   font-size: var(--fs-xs); line-height: 1.5; color: var(--ink-2);
   background: var(--muted); border: 1px solid var(--line); white-space: nowrap;
 }
+/* Mobile or Web: what kind of product it is. Outlined, so it never reads as a state. */
+.tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: 600; line-height: 1.5; white-space: nowrap;
+  color: var(--ink-2); border: 1px solid var(--line-strong);
+}
 .chip--on { background: var(--ink); color: var(--page); border-color: var(--ink); }
 
 /* ---- pictures. NOTHING IS COPIED INTO THIS REPO. ------------------------------
@@ -806,7 +806,7 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
    or a product's own design screen, embedded live. */
 .shot { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
 /* In a fixed-height card slot: fill it, and start just under the headline so the app itself shows. */
-.shot--crop { height: 100%; object-fit: cover; object-position: 50% 35%; border-radius: 0; }
+.shot--crop { height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 0; }
 
 /* A design screen at its own logical size, scaled to the box. tan(atan2()) is
    how CSS divides one length by another and gets a number. Because it is the
@@ -826,23 +826,8 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
 .embed--phone { aspect-ratio: 390 / 844; }
 .embed--phone iframe { width: 390px; height: 844px; transform: scale(tan(atan2(100cqw, 390px))); }
 
-/* ---- the eight stages, as a line you read left to right ---- */
-.track { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
-.track-step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-right: 12px; }
-.track-step::before {
-  content: ""; position: absolute; top: 17px; left: 36px; right: 0; height: 2px; background: var(--line-strong);
-}
-.track-step:last-child::before { display: none; }
-.track-pin {
-  position: relative; display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 8px;
-  border-radius: 999px; border: 2px solid var(--brand-200); background: var(--brand-50); color: var(--brand-500);
-}
-.track-step--done .track-pin { background: var(--brand-500); border-color: var(--brand-500); color: var(--ink-inverse); }
-.track-step--done::before { background: var(--brand-500); }
-.track-step--half .track-pin { background: var(--surface); border-color: var(--brand-500); }
-
 /* One cell of the board: done, under way, not started. */
-.dot { display: inline-block; width: 14px; height: 14px; border-radius: 999px; background: var(--brand-500); border: 2px solid var(--brand-500); }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 999px; background: var(--brand-500); border: 2px solid var(--brand-500); }
 .dot--half { background: linear-gradient(90deg, var(--brand-500) 50%, transparent 50%); }
 .dot--none { background: transparent; border-color: var(--line-strong); }
 
@@ -855,31 +840,27 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
   border: 1px dashed var(--line-strong);
 }
 
-/* ---- the flow sketch on Home and How I build: boxes joined by a rule ---- */
-.node {
-  position: relative; padding: 8px 12px; border-radius: var(--radius-sm);
-  background: var(--surface); border: 1px solid var(--line-strong);
-  border-left: 3px solid var(--brand-500);
-  font-size: var(--fs-xs); font-weight: 600; white-space: nowrap;
-}
-.node--quiet { border-left-color: var(--line-strong); color: var(--ink-3); }
-.node-link { height: 1px; background: var(--line-strong); flex: 1 1 16px; min-width: 16px; }
-
 /* ---- a table that reads as rows, not as a grid ---- */
 .tbl { width: 100%; border-collapse: collapse; text-align: left; }
 .tbl th {
   font-family: var(--font-mono); font-size: var(--fs-2xs); font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
-  padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--muted);
+  padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--muted);
 }
-.tbl td { padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: var(--fs-base); vertical-align: middle; }
+.tbl td { padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: var(--fs-base); vertical-align: middle; }
 .tbl tr:last-child td { border-bottom: 0; }
+
+/* The board: a stage's name and what it leaves behind head each column. */
+.board th { vertical-align: top; text-transform: none; letter-spacing: 0; font-family: var(--font-sans); font-size: var(--fs-xs); font-weight: 700; }
+.board-leaves { display: block; margin-top: 2px; font-weight: 400; color: var(--ink-3); }
+.board td { padding-block: 6px; }
+.board td:not(:first-child) { padding-left: 20px; }
 
 /* ---- a rendered wiki page. Markdown in, this out. ---- */
 .wiki-prose { font-size: var(--fs-body); line-height: 1.65; color: var(--ink-2); }
 .wiki-prose h2 {
   font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -0.01em; font-weight: 700;
-  color: var(--ink); margin: 36px 0 10px; padding-top: 20px; border-top: 1px solid var(--line);
+  color: var(--ink); margin: 24px 0 8px; padding-top: 16px; border-top: 1px solid var(--line);
 }
 .wiki-prose h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 .wiki-prose p { margin: 0 0 14px; }
@@ -902,5 +883,5 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
 .nav-link:hover { color: var(--ink); }
 .nav-link--on { color: var(--ink); border-bottom-color: var(--brand-500); }
 
-/* The hairline inside the inverted band. --line belongs to the page, not the band. */
-.band-rule { border-top: 1px solid color-mix(in srgb, var(--band-2) 30%, transparent); }
+/* A store screenshot standing on the page rather than lying in a box. */
+.shot--lift { box-shadow: var(--shadow-lg); border: 1px solid var(--line); }

@@ -137,6 +137,12 @@ home page. To change what leads, re-order the file.
 | `/go/[slug]/` | short links for QR codes and bios, `noindex` |
 | `/work/`, `/process/`, `/about/`, `/contact/`, `/products/`, `/hire/`, `/design/gallery/`, `/work/chitragupt/` | forwarding addresses (meta refresh), `noindex` |
 
+**Mobile first.** Every base style and every unprefixed utility is the phone
+layout; `sm:`, `md:` and `lg:` only add to it. There is no `max-width` media
+query and no `max-*:` utility in this repo. Where a wide layout cannot shrink
+(the stage board is a nine-column table), the phone gets its own markup and the
+table appears from `md` up — never a table that scrolls sideways.
+
 **Keep it short.** The site was cut down on 2026-10-04 because it explained too
 much: no intro paragraphs, no closing call-to-action bands, no fact that
 appears twice on a page. Work, About, Process and Contact were separate pages

@@ -25,11 +25,11 @@ One wiki page, rendered from the project's Markdown.
 
 **`[[links]]` become real links**, and the pages they point to are listed again in the rail, so the wiki can be walked.
 
-**It ends on the résumé.** A reader three pages into a wiki is interested; the next step is offered once, at the bottom.
+**On a phone the article comes first**, then its screen, then the rail.
 
 ## Related
 - [[wiki]]
-- [[process]]
+- [[home]]
 - [[resume]]
 
 ## Sources

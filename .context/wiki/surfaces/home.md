@@ -8,7 +8,7 @@ superseded-by: null
 ---
 
 ## Summary
-The landing page. It answers a hiring manager's four questions in order: who, where, what, how.
+The whole site on one page: who, then every project, then the eight stages each one goes through.
 
 ## Route
 `/`
@@ -17,25 +17,24 @@ The landing page. It answers a hiring manager's four questions in order: who, wh
 - .context/designs/web/home/home.html
 
 ## Why it is drawn this way
-**One reader, one job.** The page this replaces served six goals in one scroll. This one is written for someone deciding whether to interview me, and every band answers the next question that person has.
+**One page, three parts.** Who I am is one sentence and three buttons. Work is every project. Process is one board. Work, Process, About and Contact used to be four more pages that repeated what was here; their addresses forward (2026-10-04, review round 4).
 
-**AskCal leads, then Aakalan, then Charades.** That is the owner's order of importance (2026-10-04), and it is the same order in the hero, in Selected work and on the Work page.
+**AskCal, Chitragupt and Aakalan lead.** They are the first three in `products.json` and get the larger cards. Everything else sits four to a row.
 
-**The pictures are each product's own store art.** Nothing is copied into this repo. The hero and the cards read the listing images straight from the product repos, so a new screenshot there is a new picture here.
+**A card says what the project is before it is opened:** the release state, a Mobile or Web tag, and how many screens and wiki pages it left behind. A product with a site and an app carries both tags and shows a phone standing beside its web screen.
 
-**Employers come before projects.** A strip of company names sits directly under the hero, because that is the first filter a recruiter applies.
+**The pictures are each product's own.** Store art from its listing, or one of its design screens embedded live. Nothing is copied into this repo.
 
-**The process band shows a whole product life, not one habit.** An earlier draft said "every app is drawn and written down before it is coded". That is one stage of eight. The band now shows all eight, with the three lead apps placed on them, so the claim is "I take a product the whole way" and the reader can see how far each one has got.
+**A project with nothing to show is a row**, not a card with an empty picture.
 
-**Two calls to action, the same two everywhere:** the résumé and an email.
+**The board is the process.** The eight stages head the columns, each with what it leaves behind, and every project is a row of dots counted from its own repository. On a phone it is a key and a list, not a table that scrolls sideways.
 
-**Built differently from the wireframe (2026-10-04, review round 3).** The leads are AskCal, Chitragupt, Aakalan. Selected work is three equal cards, the four numbers are one ruled row, the process band shows the board without the stage line, and type and spacing are tighter. The wireframe has not been redrawn yet.
+**Nothing is said twice.** No stats row, no closing band. The email is in the header and the footer, on every page.
 
 ## Related
-- [[work]]
-- [[process]]
+- [[project]]
+- [[unreleased]]
 - [[resume]]
-- [[contact]]
 
 ## Sources
 - .context/designs/web/home/home.html

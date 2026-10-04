@@ -15,33 +15,24 @@
   <div class="phone">
 
     <header class="site-head">
-      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
-        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
-          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
-          Ritesh Firodiya
+      <div class="wrap flex items-center gap-4 py-2 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
+          <span class="hidden sm:inline">Ritesh Firodiya</span>
         </a>
-        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
-        <a href="../work/work.html" class="nav-link">Work</a>
-        <a href="../process/process.html" class="nav-link">How I build</a>
-        <a href="../about/about.html" class="nav-link">About</a>
-        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        <nav class="ml-auto flex items-center gap-5" aria-label="Main">
+          <a href="../home/home.html#work" class="nav-link">Work</a>
+          <a href="../home/home.html#process" class="nav-link">Process</a>
+          <a href="../resume/resume.html" class="nav-link">Résumé</a>
         </nav>
-        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+        <button type="button" class="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> <span class="hidden sm:inline">Email</span></a>
       </div>
-      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
-        <a href="../work/work.html" class="nav-link">Work</a>
-        <a href="../process/process.html" class="nav-link">How I build</a>
-        <a href="../about/about.html" class="nav-link">About</a>
-        <a href="../about/resume.html" class="nav-link">Résumé</a>
-      </nav>
     </header>
 
-      <main class="wrap pb-16 pt-12 lg:pt-16">
-        <p class="eyebrow">Legal</p>
-        <h1 class="page-title mt-3">Privacy and legal documents.</h1>
-        <p class="mt-4 max-w-[60ch] text-lead text-ink-2">One row per app. These addresses do not move.</p>
-        <div class="card mt-8 overflow-hidden">
+      <main class="wrap pb-10 pt-6">
+        <h1 class="page-title">Privacy and legal</h1>
+        <div class="card mt-4 overflow-hidden">
           <table class="tbl">
             <thead><tr><th class="w-[30%]">App</th><th>Documents</th></tr></thead>
             <tbody>
@@ -55,37 +46,20 @@
             </tbody>
           </table>
         </div>
-        <p class="mt-6 max-w-[70ch] text-sm text-ink-3">Older links on ritvi-apps.github.io still work and redirect here. Questions about any of these: <a href="../support/support.html" class="text-link">Support</a>.</p>
+        <p class="mt-3 text-sm text-ink-3">Questions: <a href="../support/support.html" class="text-link">Support</a>.</p>
       </main>
 
-    <footer class="mt-auto bg-band text-band-ink">
-      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div>
-          <p class="text-body font-bold">Ritesh Firodiya</p>
-          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
-          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">Site</p>
-          <a href="../work/work.html">Work</a>
-          <a href="../process/process.html">How I build</a>
-          <a href="../about/about.html">About</a>
-          <a href="../about/resume.html">Résumé</a>
-          <a href="../contact/contact.html">Contact</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+    <footer class="mt-auto border-t border-line">
+      <div class="wrap flex flex-wrap items-center gap-x-5 gap-y-1.5 py-4 text-sm text-ink-2">
+        <a href="mailto:firodiya.ritesh@gmail.com" class="font-semibold text-ink">firodiya.ritesh@gmail.com</a>
+        <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+        <a href="https://github.com/ritesh-firodiya">GitHub</a>
+        <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        <span class="ml-auto flex gap-5 text-ink-3">
           <a href="../support/support.html">Support</a>
-          <a href="../legal/legal.html">Privacy and legal</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
-          <a href="https://github.com/ritesh-firodiya">GitHub</a>
-          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-          <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        </div>
+          <a href="../legal/legal.html">Legal</a>
+        </span>
       </div>
-      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
     </footer>
   </div>
 </div>

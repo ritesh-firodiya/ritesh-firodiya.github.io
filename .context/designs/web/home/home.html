@@ -15,208 +15,216 @@
   <div class="phone">
 
     <header class="site-head">
-      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
-        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
-          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
-          Ritesh Firodiya
+      <div class="wrap flex items-center gap-4 py-2 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
+          <span class="hidden sm:inline">Ritesh Firodiya</span>
         </a>
-        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
-        <a href="../work/work.html" class="nav-link">Work</a>
-        <a href="../process/process.html" class="nav-link">How I build</a>
-        <a href="../about/about.html" class="nav-link">About</a>
-        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        <nav class="ml-auto flex items-center gap-5" aria-label="Main">
+          <a href="../home/home.html#work" class="nav-link">Work</a>
+          <a href="../home/home.html#process" class="nav-link">Process</a>
+          <a href="../resume/resume.html" class="nav-link">Résumé</a>
         </nav>
-        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+        <button type="button" class="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> <span class="hidden sm:inline">Email</span></a>
       </div>
-      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
-        <a href="../work/work.html" class="nav-link">Work</a>
-        <a href="../process/process.html" class="nav-link">How I build</a>
-        <a href="../about/about.html" class="nav-link">About</a>
-        <a href="../about/resume.html" class="nav-link">Résumé</a>
-      </nav>
     </header>
 
-      <main>
-        <section class="wrap grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[1.1fr_1fr] lg:pt-20">
-          <div>
-            <p class="inline-flex items-center gap-2 rounded-pill bg-success-bg px-3 py-1 text-xs font-semibold text-success-fg"><span class="h-1.5 w-1.5 rounded-pill bg-success"></span> Open to senior, staff and tech-lead roles</p>
-            <h1 class="hero-title mt-5">Full-stack engineer who takes a product from an idea to the store.</h1>
-            <p class="mt-5 max-w-[54ch] text-lead text-ink-2">Nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. React, React Native, Next.js and NestJS, from the Postgres schema to the Play Store release.</p>
-            <div class="mt-8 flex flex-wrap items-center gap-3">
-              <a href="../about/resume.html" class="btn btn-primary"><i data-lucide="file-text" class="h-4 w-4"></i> Read the résumé</a>
-              <a href="../work/work.html" class="btn btn-quiet">See the work</a>
-              <a href="mailto:firodiya.ritesh@gmail.com" class="text-link ml-1 text-base">firodiya.ritesh@gmail.com</a>
-            </div>
-            <p class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-3">
-              <span class="inline-flex items-center gap-1.5"><i data-lucide="map-pin" class="h-4 w-4"></i> Pune, India</span>
-              <span class="inline-flex items-center gap-1.5"><i data-lucide="calendar" class="h-4 w-4"></i> Shipping since 2017</span>
-            </p>
+      <main class="wrap pb-10">
+        <section class="flex flex-wrap items-center gap-x-8 gap-y-4 py-7">
+          <div class="min-w-0 flex-1 basis-[30rem]">
+            <h1 class="hero-title">Full-stack engineer who takes a product from an idea to the store.</h1>
+            <p class="mt-2 text-body text-ink-2">Nine years of TypeScript at Walmart, Swiggy, Speechify, Globant. Pune, India. Open to senior, staff and tech-lead roles.</p>
           </div>
-          <div class="grid grid-cols-3 items-center gap-4">
-            <img src="../../../../../../products/aakalan/.context/listing/ios/screenshots/en-US/01-balances.png" alt="Aakalan — balances" loading="lazy" class="shot " />
-            <img src="../../../../../../products/askcal/.context/listing/ios/screenshots/en-US/02-clarify.png" alt="AskCal — it asks what the camera can't see" loading="lazy" class="shot scale-110 shadow-lg" />
-            <img src="../../../../../../products/charades/.context/listing/ios/screenshots/en-US/01-home.png" alt="Charades — home" loading="lazy" class="shot " />
+          <div class="flex flex-wrap gap-2">
+            <a href="../resume/resume.html" class="btn btn-primary"><i data-lucide="file-text" class="h-4 w-4"></i> Résumé</a>
+            <a href="https://linkedin.com/in/riteshfirodiya" class="btn btn-quiet"><i data-lucide="briefcase" class="h-4 w-4"></i> LinkedIn</a>
+            <a href="https://github.com/ritesh-firodiya" class="btn btn-quiet"><i data-lucide="git-branch" class="h-4 w-4"></i> GitHub</a>
           </div>
         </section>
 
-        <section class="border-y border-line bg-surface">
-          <div class="wrap flex flex-wrap items-center gap-x-10 gap-y-3 py-5">
-            <p class="eyebrow">Worked at</p>
-            <span class="text-lead font-bold text-ink-2">Walmart</span>
-            <span class="text-lead font-bold text-ink-2">Swiggy</span>
-            <span class="text-lead font-bold text-ink-2">Speechify</span>
-            <span class="text-lead font-bold text-ink-2">Globant</span>
-            <span class="text-lead font-bold text-ink-2">Masai School</span>
-            <span class="text-lead font-bold text-ink-2">TopLegal</span>
+        <section id="work">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 class="section-title">Work</h2>
+            <p class="mono text-xs text-ink-3">13 projects · 3 live · 815 screens · 856 wiki pages</p>
           </div>
-        </section>
-
-        <section class="wrap grid grid-cols-2 gap-4 py-12 lg:grid-cols-4">
-          <div class="card p-5"><p class="figure">9</p><p class="mt-2 text-sm text-ink-2">years shipping production code</p></div>
-          <div class="card p-5"><p class="figure">13</p><p class="mt-2 text-sm text-ink-2">projects of my own</p></div>
-          <div class="card p-5"><p class="figure">3</p><p class="mt-2 text-sm text-ink-2">live today, on the web and in the stores</p></div>
-          <div class="card p-5"><p class="figure">450</p><p class="mt-2 text-sm text-ink-2">screens designed</p></div>
-        </section>
-
-        <section class="wrap pb-16">
-          <div class="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p class="eyebrow">Selected work</p>
-              <h2 class="section-title mt-2">Three I would talk through in an interview.</h2>
-            </div>
-            <a href="../work/work.html" class="text-link text-base">All 13 projects</a>
-          </div>
-          <div class="mt-8 grid gap-6 lg:grid-cols-3">
-            <a href="../work/project.html" class="card grid overflow-hidden lg:col-span-2 lg:grid-cols-[1fr_1.05fr]">
-              <div class="p-7">
-                <span class="state state--test">In App Store review</span>
-                <h3 class="mt-3 text-h2 font-bold">AskCal</h3>
-                <p class="mt-2 text-body text-ink-2">An AI calorie counter that admits what it cannot see. It estimates from a photo, marks what it could not establish, and asks one or two questions instead of guessing.</p>
-                <dl class="mt-6 grid gap-4 border-t border-line pt-5">
-                  <div><dt class="eyebrow">Role</dt><dd class="mt-1 text-sm font-semibold">Product, design, app, backend, release</dd></div>
-                  <div><dt class="eyebrow">Built with</dt><dd class="mt-1 text-sm font-semibold">Expo, Firebase Functions, Zod, a swappable vision model</dd></div>
-                  <div><dt class="eyebrow">Measured</dt><dd class="mt-1 text-sm font-semibold">An accuracy harness gates every change to the estimator</dd></div>
-                </dl>
-              </div>
-              <div class="grid grid-cols-2 gap-3 bg-muted p-5">
-                <img src="../../../../../../products/askcal/.context/listing/ios/screenshots/en-US/02-clarify.png" alt="AskCal — it asks what the camera can't see" loading="lazy" class="shot " />
-                <img src="../../../../../../products/askcal/.context/listing/ios/screenshots/en-US/03-result.png" alt="AskCal — a range, not a false number" loading="lazy" class="shot " />
+          <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="h-52 overflow-hidden bg-muted"><img src="../../../../public/media/askcal/01-today.webp" alt="AskCal screenshot" class="shot shot--crop" /></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--test">In App Store review</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
+                <h3 class="mt-2 text-body font-bold">AskCal</h3>
+                <p class="mt-0.5 text-sm text-ink-2">A calorie counter that admits what it cannot see.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">45 screens · 44 wiki pages</p>
               </div>
             </a>
-            <div class="grid gap-6">
-              <a href="../work/project.html" class="card flex gap-5 overflow-hidden p-5">
-                <div class="w-24 shrink-0"><img src="../../../../../../products/aakalan/.context/listing/ios/screenshots/en-US/01-balances.png" alt="Aakalan — balances" loading="lazy" class="shot " /></div>
-                <div>
-                  <span class="state state--test">Public iOS beta</span>
-                  <h3 class="mt-3 text-h3 font-bold">Aakalan</h3>
-                  <p class="mt-1 text-sm text-ink-2">Shared expenses on one ledger, settled over UPI. Expo, Firestore, RevenueCat.</p>
-                </div>
-              </a>
-              <a href="../work/project.html" class="card flex gap-5 overflow-hidden p-5">
-                <div class="w-24 shrink-0"><img src="../../../../../../products/charades/.context/listing/ios/screenshots/en-US/01-home.png" alt="Charades — home" loading="lazy" class="shot " /></div>
-                <div>
-                  <span class="state state--live">Live on Google Play</span>
-                  <h3 class="mt-3 text-h3 font-bold">Charades</h3>
-                  <p class="mt-1 text-sm text-ink-2">Offline party game with 5,149 cards. Expo, Zustand, RevenueCat.</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="border-y border-line bg-surface">
-          <div class="wrap py-16">
-            <div class="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p class="eyebrow">How I build</p>
-                <h2 class="section-title mt-2 max-w-[26ch]">The same eight stages, from an idea to a product people use.</h2>
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="relative h-52 overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/chitragupt/.context/designs/web/tax/tax.html?bare" title="Chitragupt design screen" loading="lazy" tabindex="-1"></iframe></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute -bottom-10 right-3 w-20"><img src="../../../../public/media/chitragupt/02-tax.webp" alt="Chitragupt on a phone" class="shot rounded-none" /></div></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--test">Pre-launch</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
+                <h3 class="mt-2 text-body font-bold">Chitragupt</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Household tax review for salaried Indian filers.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">245 screens · 328 wiki pages</p>
               </div>
-              <a href="../process/process.html" class="btn btn-quiet">See the whole process <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
-            </div>
-            <div class="mt-8 overflow-x-auto">
-              <ol class="track min-w-[760px]">
-                <li class="track-step"><span class="track-pin"><i data-lucide="lightbulb" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">01</span><span class="text-base font-bold">Idea</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="search" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">02</span><span class="text-base font-bold">Research</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="list-checks" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">03</span><span class="text-base font-bold">Define</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="pencil-ruler" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">04</span><span class="text-base font-bold">Design</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="hammer" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">05</span><span class="text-base font-bold">Build</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="rocket" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">06</span><span class="text-base font-bold">Release</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="megaphone" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">07</span><span class="text-base font-bold">Market</span></li>
-                <li class="track-step"><span class="track-pin"><i data-lucide="activity" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">08</span><span class="text-base font-bold">Operate</span></li>
-              </ol>
-            </div>
-            <div class="card mt-8 overflow-x-auto bg-page">
-              <table class="tbl min-w-[760px]">
-                <thead><tr><th>Project</th><th class="text-center">Idea</th><th class="text-center">Research</th><th class="text-center">Define</th><th class="text-center">Design</th><th class="text-center">Build</th><th class="text-center">Release</th><th class="text-center">Market</th><th class="text-center">Operate</th></tr></thead>
-                <tbody>
-                  <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">AskCal</a></td><td class="text-center"><span class="dot" title="Idea: Done"></span></td><td class="text-center"><span class="dot" title="Research: Done"></span></td><td class="text-center"><span class="dot" title="Define: Done"></span></td><td class="text-center"><span class="dot" title="Design: Done"></span></td><td class="text-center"><span class="dot" title="Build: Done"></span></td><td class="text-center"><span class="dot dot--half" title="Release: Under way"></span></td><td class="text-center"><span class="dot dot--half" title="Market: Under way"></span></td><td class="text-center"><span class="dot dot--none" title="Operate: Not started"></span></td></tr>
-                  <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Aakalan</a></td><td class="text-center"><span class="dot" title="Idea: Done"></span></td><td class="text-center"><span class="dot dot--none" title="Research: Not started"></span></td><td class="text-center"><span class="dot" title="Define: Done"></span></td><td class="text-center"><span class="dot" title="Design: Done"></span></td><td class="text-center"><span class="dot" title="Build: Done"></span></td><td class="text-center"><span class="dot dot--half" title="Release: Under way"></span></td><td class="text-center"><span class="dot dot--half" title="Market: Under way"></span></td><td class="text-center"><span class="dot dot--none" title="Operate: Not started"></span></td></tr>
-                  <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Charades</a></td><td class="text-center"><span class="dot" title="Idea: Done"></span></td><td class="text-center"><span class="dot" title="Research: Done"></span></td><td class="text-center"><span class="dot" title="Define: Done"></span></td><td class="text-center"><span class="dot" title="Design: Done"></span></td><td class="text-center"><span class="dot" title="Build: Done"></span></td><td class="text-center"><span class="dot" title="Release: Done"></span></td><td class="text-center"><span class="dot dot--half" title="Market: Under way"></span></td><td class="text-center"><span class="dot dot--half" title="Operate: Under way"></span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-3"><span class="inline-flex items-center gap-2"><span class="dot"></span> Done</span><span class="inline-flex items-center gap-2"><span class="dot dot--half"></span> Under way</span><span class="inline-flex items-center gap-2"><span class="dot dot--none"></span> Not started</span></p>
+            </a>
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="h-52 overflow-hidden bg-muted"><img src="../../../../public/media/aakalan/01-balances.webp" alt="Aakalan screenshot" class="shot shot--crop" /></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--test">Public iOS beta</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
+                <h3 class="mt-2 text-body font-bold">Aakalan</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Your expenses and everyone else's, on one ledger.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">49 screens · 49 wiki pages</p>
+              </div>
+            </a>
+          </div>
+          <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="h-40 overflow-hidden bg-muted"><img src="../../../../public/media/charades/01-home.webp" alt="Charades screenshot" class="shot shot--crop" /></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--live">Live on Google Play</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
+                <h3 class="mt-2 text-body font-bold">Charades</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Dumb charades for the room you are already in.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">16 screens · 20 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="h-40 overflow-hidden bg-muted"><img src="../../../../public/media/tic-tac-toe/01-home.webp" alt="Tic Tac Toe screenshot" class="shot shot--crop" /></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--live">Live on both stores</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
+                <h3 class="mt-2 text-body font-bold">Tic Tac Toe</h3>
+                <p class="mt-0.5 text-sm text-ink-2">The classic 3×3, done properly.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">8 screens · 13 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="h-40 overflow-hidden bg-muted"><img src="../../../../public/media/imposter/01-setup.webp" alt="Imposter screenshot" class="shot shot--crop" /></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--test">Closed testing</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
+                <h3 class="mt-2 text-body font-bold">Imposter</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Everyone gets the word. Except one of you.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">31 screens · 29 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/project.html" class="card flex flex-col overflow-hidden">
+              <div class="relative h-40 overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/scrvio/.context/designs/web/library/library.html?bare" title="Scrvio design screen" loading="lazy" tabindex="-1"></iframe></div></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--test">Site is up</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
+                <h3 class="mt-2 text-body font-bold">Scrvio</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Privacy-first browser screen recorder.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">96 screens · 75 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/unreleased.html" class="card flex flex-col overflow-hidden">
+              <div class="relative h-40 overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/trunk/.context/designs/web/deltas/deltas.html?bare" title="Trunk design screen" loading="lazy" tabindex="-1"></iframe></div></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--build">In build</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
+                <h3 class="mt-2 text-body font-bold">Trunk</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Product development where every change is a delta.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">86 screens · 72 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/unreleased.html" class="card flex flex-col overflow-hidden">
+              <div class="relative h-40 overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/dwarseva/.context/designs/web/home/home.html?bare" title="DwarSeva Societies design screen" loading="lazy" tabindex="-1"></iframe></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute -bottom-10 right-3 w-20"><div class="embed embed--phone"><iframe src="../../../../../../products/dwarseva/.context/designs/mobile/home/resident-home.html?bare" title="DwarSeva Societies mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--build">In build</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
+                <h3 class="mt-2 text-body font-bold">DwarSeva Societies</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Approval and society management.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">104 screens · 91 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/unreleased.html" class="card flex flex-col overflow-hidden">
+              <div class="flex h-40 justify-center overflow-hidden bg-muted pt-4"><div class="w-36 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong"><div class="embed embed--phone"><iframe src="../../../../../../products/plan-kid/.context/designs/mobile/home/home-conceive.html?bare" title="Plan-Kid design screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--draft">In design</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
+                <h3 class="mt-2 text-body font-bold">Plan-Kid</h3>
+                <p class="mt-0.5 text-sm text-ink-2">A parenthood journey app for couples in India.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">54 screens · 102 wiki pages</p>
+              </div>
+            </a>
+            <a href="../work/unreleased.html" class="card flex flex-col overflow-hidden">
+              <div class="relative h-40 overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/property-app/.context/designs/web/buyer/home.html?bare" title="DwarSeva Property design screen" loading="lazy" tabindex="-1"></iframe></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute -bottom-10 right-3 w-20"><div class="embed embed--phone"><iframe src="../../../../../../products/property-app/.context/designs/mobile/buyer/home.html?bare" title="DwarSeva Property mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
+              <div class="flex flex-1 flex-col p-3.5">
+                <div class="flex flex-wrap items-center gap-1.5"><span class="state state--draft">In design</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
+                <h3 class="mt-2 text-body font-bold">DwarSeva Property</h3>
+                <p class="mt-0.5 text-sm text-ink-2">Map-based property listings for India.</p>
+                <p class="mono mt-auto pt-2.5 text-2xs text-ink-3">81 screens · 33 wiki pages</p>
+              </div>
+            </a>
+          </div>
+          <div class="card mt-3 overflow-hidden">
+            <a href="../work/project.html" class="flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-line px-3.5 py-2.5 text-sm last:border-b-0 hover:bg-muted">
+              <span class="text-base font-bold">Learning Platform</span> <span class="state state--live">Live demo</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span> <span class="text-ink-2">An LMS where courses are code.</span>
+            </a>
+            <a href="../work/unreleased.html" class="flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-line px-3.5 py-2.5 text-sm last:border-b-0 hover:bg-muted">
+              <span class="text-base font-bold">tradx</span> <span class="state state--build">In build</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span> <span class="text-ink-2">India-focused trading research and paper trading.</span>
+            </a>
           </div>
         </section>
 
-        <section class="wrap grid gap-10 py-16 lg:grid-cols-[1fr_2fr]">
-          <div>
-            <p class="eyebrow">Experience</p>
-            <h2 class="section-title mt-2">Nine years, mostly end to end.</h2>
-            <a href="../about/resume.html" class="text-link mt-4 inline-block text-base">Full résumé</a>
+        <section id="process" class="mt-8">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 class="section-title">Process</h2>
+            <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-3"><span class="inline-flex items-center gap-1.5"><span class="dot"></span> Done</span><span class="inline-flex items-center gap-1.5"><span class="dot dot--half"></span> Under way</span><span class="inline-flex items-center gap-1.5"><span class="dot dot--none"></span> Not started</span></p>
           </div>
-          <ol>
-            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">Apr 2025 — May 2026</p><p class="text-body"><b class="font-semibold">Senior Software Engineer</b> <span class="text-ink-3">·</span> Walmart</p></li>
-            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">Jul 2024 — Jan 2025</p><p class="text-body"><b class="font-semibold">Tech Lead & Full-Stack Engineer</b> <span class="text-ink-3">·</span> TopLegal</p></li>
-            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">Oct 2023 — May 2024</p><p class="text-body"><b class="font-semibold">Senior Frontend Engineer</b> <span class="text-ink-3">·</span> ManifestIT</p></li>
-            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">May 2023 — Aug 2023</p><p class="text-body"><b class="font-semibold">Software Engineer (Contract)</b> <span class="text-ink-3">·</span> Speechify</p></li>
-            <li class="grid gap-1 border-y border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">2017 — 2023</p><p class="text-body text-ink-2">Masai School · Swiggy · Globant · Confluxsys</p></li>
-          </ol>
+          <div class="mt-3">
+          <div class="card overflow-hidden">
+            <div class="md:hidden">
+              <ol class="grid grid-cols-2 gap-x-3 gap-y-1.5 border-b border-line bg-muted p-3 text-xs">
+                <li><b class="font-bold">1. Idea</b> <span class="text-ink-3">A thesis</span></li>
+                <li><b class="font-bold">2. Research</b> <span class="text-ink-3">Notes, a brief</span></li>
+                <li><b class="font-bold">3. Define</b> <span class="text-ink-3">Decisions, features</span></li>
+                <li><b class="font-bold">4. Design</b> <span class="text-ink-3">Screens, a flow chart</span></li>
+                <li><b class="font-bold">5. Build</b> <span class="text-ink-3">The app, tests</span></li>
+                <li><b class="font-bold">6. Release</b> <span class="text-ink-3">An installable build</span></li>
+                <li><b class="font-bold">7. Market</b> <span class="text-ink-3">A findable listing</span></li>
+                <li><b class="font-bold">8. Operate</b> <span class="text-ink-3">Metrics, fixes</span></li>
+              </ol>
+              <ul>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">AskCal</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">Chitragupt</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">Aakalan</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot dot--none" role="img" aria-label="Research: Not started" title="Research: Not started"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">Charades</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot" role="img" aria-label="Release: Done" title="Release: Done"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--half" role="img" aria-label="Operate: Under way" title="Operate: Under way"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">Tic Tac Toe</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot dot--none" role="img" aria-label="Research: Not started" title="Research: Not started"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot" role="img" aria-label="Release: Done" title="Release: Done"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--half" role="img" aria-label="Operate: Under way" title="Operate: Under way"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">Imposter</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot dot--none" role="img" aria-label="Research: Not started" title="Research: Not started"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/project.html" class="text-base font-semibold">Scrvio</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/unreleased.html" class="text-base font-semibold">Trunk</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/unreleased.html" class="text-base font-semibold">DwarSeva Societies</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/unreleased.html" class="text-base font-semibold">Plan-Kid</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+                <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/unreleased.html" class="text-base font-semibold">DwarSeva Property</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
+              </ul>
+            </div>
+            <table class="tbl board hidden md:table">
+              <thead><tr><th scope="col">Project</th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="lightbulb" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 1. Idea</span><span class="board-leaves">A thesis</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="search" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 2. Research</span><span class="board-leaves">Notes, a brief</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="list-checks" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 3. Define</span><span class="board-leaves">Decisions, features</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="pencil-ruler" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 4. Design</span><span class="board-leaves">Screens, a flow chart</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="hammer" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 5. Build</span><span class="board-leaves">The app, tests</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="rocket" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 6. Release</span><span class="board-leaves">An installable build</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="megaphone" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 7. Market</span><span class="board-leaves">A findable listing</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="activity" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 8. Operate</span><span class="board-leaves">Metrics, fixes</span></th></tr></thead>
+              <tbody>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">AskCal</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Chitragupt</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Aakalan</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Research: Not started" title="Research: Not started"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Charades</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot" role="img" aria-label="Release: Done" title="Release: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Operate: Under way" title="Operate: Under way"></span></td></tr>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Tic Tac Toe</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Research: Not started" title="Research: Not started"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot" role="img" aria-label="Release: Done" title="Release: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Operate: Under way" title="Operate: Under way"></span></td></tr>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Imposter</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Research: Not started" title="Research: Not started"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Scrvio</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot dot--half" role="img" aria-label="Release: Under way" title="Release: Under way"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/unreleased.html" class="font-semibold hover:text-brand-500">Trunk</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span></td><td><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/unreleased.html" class="font-semibold hover:text-brand-500">DwarSeva Societies</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot" role="img" aria-label="Build: Done" title="Build: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/unreleased.html" class="font-semibold hover:text-brand-500">Plan-Kid</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span></td><td><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+                <tr><td><a href="../work/unreleased.html" class="font-semibold hover:text-brand-500">DwarSeva Property</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span></td><td><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
         </section>
       </main>
 
-      <section class="bg-band text-band-ink">
-        <div class="wrap flex flex-wrap items-center justify-between gap-6 py-12">
-          <div>
-            <h2 class="section-title max-w-[26ch]">Hiring for a senior, staff or tech-lead role?</h2>
-            <p class="mt-2 text-base text-band-2">Email is fastest. Usually a reply within two working days.</p>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-band"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
-            <a href="../about/resume.html" class="btn btn-band-quiet">Read the résumé</a>
-          </div>
-        </div>
-      </section>
-
-    <footer class="mt-auto bg-band text-band-ink">
-      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div>
-          <p class="text-body font-bold">Ritesh Firodiya</p>
-          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
-          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">Site</p>
-          <a href="../work/work.html">Work</a>
-          <a href="../process/process.html">How I build</a>
-          <a href="../about/about.html">About</a>
-          <a href="../about/resume.html">Résumé</a>
-          <a href="../contact/contact.html">Contact</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+    <footer class="mt-auto border-t border-line">
+      <div class="wrap flex flex-wrap items-center gap-x-5 gap-y-1.5 py-4 text-sm text-ink-2">
+        <a href="mailto:firodiya.ritesh@gmail.com" class="font-semibold text-ink">firodiya.ritesh@gmail.com</a>
+        <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+        <a href="https://github.com/ritesh-firodiya">GitHub</a>
+        <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        <span class="ml-auto flex gap-5 text-ink-3">
           <a href="../support/support.html">Support</a>
-          <a href="../legal/legal.html">Privacy and legal</a>
-        </div>
-        <div class="flex flex-col gap-2 text-sm">
-          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
-          <a href="https://github.com/ritesh-firodiya">GitHub</a>
-          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-          <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        </div>
+          <a href="../legal/legal.html">Legal</a>
+        </span>
       </div>
-      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
     </footer>
   </div>
 </div>

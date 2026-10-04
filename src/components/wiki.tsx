@@ -11,7 +11,7 @@ export function WikiRail({ p, on }: { p: Product; on?: WikiType }) {
   const others = wikiSlugs.map(bySlug).filter((x): x is Product => Boolean(x) && x!.slug !== p.slug);
 
   return (
-    <aside className="lg:sticky lg:top-24 lg:self-start">
+    <aside className="order-last lg:sticky lg:top-20 lg:order-first lg:self-start">
       <p className="eyebrow">Project</p>
       {/* A native disclosure, so moving between wikis needs no script. */}
       <details className="card mt-2">

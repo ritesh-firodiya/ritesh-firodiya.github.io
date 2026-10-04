@@ -8,6 +8,7 @@ Navigation. The screen inventory is the flow chart at
 |---|---|---|
 | [[home]] | home/home.html | `/`, with `#work` and `#process` |
 | [[project]] | work/project.html | `/products/<slug>/` |
+| [[testing]] | work/testing.html | `/products/<slug>/` |
 | [[unreleased]] | work/unreleased.html | `/products/<slug>/` |
 | [[wiki]] | wiki/wiki.html | `/products/<slug>/wiki/` |
 | [[wiki-page]] | wiki/page.html | `/products/<slug>/wiki/<type>/<page>/` |

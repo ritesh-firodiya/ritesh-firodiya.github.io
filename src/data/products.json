@@ -437,7 +437,7 @@
       "model": "free-ads",
       "price": "Nothing",
       "priceNote": "no in-app purchases at all",
-      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, no other app of mine has ads at all.",
+      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, Chess is the only other app of mine with ads.",
       "ads": "Banner + interstitial",
       "adSurfaces": [
         {
@@ -603,6 +603,101 @@
       ],
       "legal": {
         "privacy": "/legal/imposter/privacy-policy.html",
+        "delete": null
+      },
+      "kind": "app",
+      "repo": null
+    },
+    {
+      "slug": "chess",
+      "name": "Chess",
+      "stageLabel": "Closed test, in redesign",
+      "fullName": "Chess — Classic Game",
+      "tagline": "The whole game, on one phone.",
+      "blurb": "Two players passing one device, or a computer opponent at three levels. Every rule is in: castling, en passant, promotion and the draws.",
+      "sourceOfTruth": "apps/chess",
+      "model": "free-ads",
+      "price": "Nothing",
+      "priceNote": "no in-app purchases at all",
+      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner and a full-screen ad between games, so the ad network receives an advertising identifier from your device. The app asks for non-personalised ads only. There is no ad-free tier.",
+      "ads": "Banner + interstitial",
+      "adSurfaces": [
+        {
+          "kind": "Banner",
+          "where": "On the home and game screens"
+        },
+        {
+          "kind": "Interstitial",
+          "where": "Full screen, between games"
+        },
+        {
+          "kind": "Rewarded",
+          "where": "None — not used",
+          "absent": true
+        }
+      ],
+      "offline": "Plays offline — only the ads need a network",
+      "analytics": "None of its own — AdMob measurement only",
+      "version": "1.0.0",
+      "unreleasedNote": "Version 1.0.0 is on a closed Play track. The app is being redrawn from scratch before it goes public; the new designs are under review.",
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "No web app",
+          "url": null,
+          "note": "Mobile only — nothing to open in a browser"
+        },
+        "android": {
+          "state": "closed",
+          "label": "Closed testing only",
+          "url": null,
+          "note": "On the closed track; the production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.chess"
+        },
+        "ios": {
+          "state": "none",
+          "label": "No iOS build",
+          "url": null,
+          "note": "Not built for iPhone yet"
+        }
+      },
+      "stack": [
+        "Expo Router",
+        "React Native",
+        "NativeWind",
+        "Zustand"
+      ],
+      "features": [
+        {
+          "icon": "users",
+          "title": "Two players on one phone",
+          "body": "Pass and play. No accounts, no lobby, no second device."
+        },
+        {
+          "icon": "cpu",
+          "title": "Three computer levels",
+          "body": "Easy moves at random, Medium mixes in real moves, Hard searches two to three moves ahead."
+        },
+        {
+          "icon": "scale",
+          "title": "The full rules",
+          "body": "Castling, en passant, promotion, check and checkmate, stalemate and the fifty-move draw."
+        }
+      ],
+      "permissions": [
+        {
+          "name": "Network",
+          "why": "Only to fetch ads. The game itself needs none."
+        },
+        {
+          "name": "Not requested",
+          "why": "No camera, microphone, contacts, location or storage.",
+          "absent": true
+        }
+      ],
+      "screens": [],
+      "legal": {
+        "privacy": "/legal/chess/privacy-policy.html",
         "delete": null
       },
       "kind": "app",

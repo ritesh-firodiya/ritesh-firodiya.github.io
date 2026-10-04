@@ -31,8 +31,7 @@ export default function Home() {
           <div className="min-w-0 flex-1 basis-[30rem]">
             <h1 className="hero-title">{profile.headline}</h1>
             <p className="mt-2 text-body text-ink-2">
-              Nine years of TypeScript at {profile.workedAt.slice(0, 4).join(", ")}. {profile.location}. Open to senior,
-              staff and tech-lead roles.
+              Nine years of TypeScript at {profile.workedAt.slice(0, 4).join(", ")}. {profile.location}.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">

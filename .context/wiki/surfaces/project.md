@@ -33,6 +33,8 @@ One project with a build: what it is, where it is on the eight stages, its scree
 
 **AskCal is a global app.** Its own rule is that nothing a user reads may brand it to one country, and that holds on this page too.
 
+**Built differently from the wireframe (2026-10-04, review round 3).** The owner found the page over-nested. The built page is flat: a hero with the links, one ruled row of facts, two links to the design set and the wiki, then the write-up in one column. The stage track, the side column of cards and the cards around each decision are gone. A closed platform is a "Join the test" button that opens a pre-filled email, because a build that needs testers should ask for them. The wireframe has not been redrawn yet.
+
 ## Related
 - [[work]]
 - [[wiki]]

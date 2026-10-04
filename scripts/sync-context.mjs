@@ -27,7 +27,7 @@ const MEDIA = join(process.cwd(), "public", "media");
 
 const SHOT_WIDTH = 720; // shown at about 350px; this is 2x
 const ICON_SIZE = 256;
-const MAX_SHOTS = 6;
+const MAX_SHOTS = 8; // every phone shot in the listing; the page picks which to show
 
 /** First match wins. iOS first: its art is drawn for the taller canvas. */
 const SHOT_DIRS = [

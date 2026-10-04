@@ -6,6 +6,11 @@
       "slug": "askcal",
       "name": "AskCal",
       "stageLabel": "In App Store review",
+      "shots": [
+        "01-today",
+        "05-meal",
+        "06-trends"
+      ],
       "fullName": "AskCal — AI calorie counter",
       "tagline": "A calorie counter that admits what it cannot see.",
       "blurb": "Every value is marked Seen, Guessed or Unknown, resolved against USDA data.",
@@ -105,9 +110,124 @@
       "repo": null
     },
     {
+      "slug": "chitragupt",
+      "name": "Chitragupt",
+      "stageLabel": "Pre-launch",
+      "shots": [
+        "02-tax",
+        "01-home",
+        "03-expenses"
+      ],
+      "fullName": "Chitragupt — Household tax review",
+      "tagline": "Household tax review for salaried Indian filers.",
+      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
+      "sourceOfTruth": "apps/chitragupt",
+      "model": "per-period",
+      "price": "₹249 / ₹499 / ₹799",
+      "priceNote": "per assessment year, three tiers",
+      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
+      "tiers": [
+        {
+          "label": "Free",
+          "amount": "₹0",
+          "unit": " forever",
+          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
+        },
+        {
+          "label": "Self",
+          "amount": "₹249",
+          "unit": "/AY",
+          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
+        },
+        {
+          "label": "AI Self",
+          "amount": "₹499",
+          "unit": "/AY",
+          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
+        },
+        {
+          "label": "Pro Family",
+          "amount": "₹799",
+          "unit": "/AY",
+          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
+        }
+      ],
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web app",
+      "analytics": "PostHog + Sentry",
+      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
+      "version": null,
+      "platforms": {
+        "web": {
+          "state": "beta",
+          "label": "Open chitragupt.ai",
+          "url": "https://chitragupt.ai",
+          "note": "Deployed and reachable; version one has not launched"
+        },
+        "android": {
+          "state": "closed",
+          "label": "Internal testing only",
+          "url": null,
+          "note": "On Google Play's internal track; nothing has been sent for review"
+        },
+        "ios": {
+          "state": "none",
+          "label": "No iOS app",
+          "url": null,
+          "note": "Android only"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Cloud Run",
+        "Firebase Functions",
+        "Firestore",
+        "Zod",
+        "Turborepo"
+      ],
+      "features": [
+        {
+          "icon": "inbox",
+          "title": "Four pillars, one ledger",
+          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
+        },
+        {
+          "icon": "upload",
+          "title": "Parses what you upload",
+          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
+        },
+        {
+          "icon": "columns-2",
+          "title": "Both regimes, side by side",
+          "body": "With the right ITR form picked for you and the delta stated in rupees."
+        },
+        {
+          "icon": "file-text",
+          "title": "CA-ready handoff",
+          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": "https://chitragupt.ai/legal/privacy",
+        "delete": "/legal/chitragupt/delete-account.html",
+        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
+      },
+      "kind": "app",
+      "repo": null,
+      "embed": "web/tax/tax.html"
+    },
+    {
       "slug": "aakalan",
       "name": "Aakalan",
       "stageLabel": "Public iOS beta",
+      "shots": [
+        "01-balances",
+        "05-spending",
+        "06-person"
+      ],
       "fullName": "Aakalan — Split expenses",
       "tagline": "Your expenses and everyone else's, on one ledger.",
       "blurb": "Split with friends and flatmates, and settle over UPI without leaving the app.",
@@ -213,6 +333,11 @@
       "slug": "charades",
       "name": "Charades",
       "stageLabel": "Live on Google Play",
+      "shots": [
+        "01-home",
+        "05-packs",
+        "06-history"
+      ],
       "fullName": "Charades — Act it Out!",
       "tagline": "Dumb charades for the room you are already in.",
       "blurb": "5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline, no daily limits.",
@@ -297,111 +422,6 @@
       },
       "kind": "app",
       "repo": null
-    },
-    {
-      "slug": "chitragupt",
-      "name": "Chitragupt",
-      "stageLabel": "Pre-launch",
-      "fullName": "Chitragupt — Household tax review",
-      "tagline": "Household tax review for salaried Indian filers.",
-      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
-      "sourceOfTruth": "apps/chitragupt",
-      "model": "per-period",
-      "price": "₹249 / ₹499 / ₹799",
-      "priceNote": "per assessment year, three tiers",
-      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
-      "tiers": [
-        {
-          "label": "Free",
-          "amount": "₹0",
-          "unit": " forever",
-          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
-        },
-        {
-          "label": "Self",
-          "amount": "₹249",
-          "unit": "/AY",
-          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
-        },
-        {
-          "label": "AI Self",
-          "amount": "₹499",
-          "unit": "/AY",
-          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
-        },
-        {
-          "label": "Pro Family",
-          "amount": "₹799",
-          "unit": "/AY",
-          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
-        }
-      ],
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web app",
-      "analytics": "PostHog + Sentry",
-      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
-      "version": null,
-      "platforms": {
-        "web": {
-          "state": "beta",
-          "label": "Open chitragupt.ai",
-          "url": "https://chitragupt.ai",
-          "note": "Deployed and reachable; version one has not launched"
-        },
-        "android": {
-          "state": "closed",
-          "label": "Internal testing only",
-          "url": null,
-          "note": "On Google Play's internal track; nothing has been sent for review"
-        },
-        "ios": {
-          "state": "none",
-          "label": "No iOS app",
-          "url": null,
-          "note": "Android only"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "Cloud Run",
-        "Firebase Functions",
-        "Firestore",
-        "Zod",
-        "Turborepo"
-      ],
-      "features": [
-        {
-          "icon": "inbox",
-          "title": "Four pillars, one ledger",
-          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
-        },
-        {
-          "icon": "upload",
-          "title": "Parses what you upload",
-          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
-        },
-        {
-          "icon": "columns-2",
-          "title": "Both regimes, side by side",
-          "body": "With the right ITR form picked for you and the delta stated in rupees."
-        },
-        {
-          "icon": "file-text",
-          "title": "CA-ready handoff",
-          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": "https://chitragupt.ai/legal/privacy",
-        "delete": "/legal/chitragupt/delete-account.html",
-        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
-      },
-      "kind": "app",
-      "repo": null,
-      "embed": "web/tax/tax.html"
     },
     {
       "slug": "tic-tac-toe",

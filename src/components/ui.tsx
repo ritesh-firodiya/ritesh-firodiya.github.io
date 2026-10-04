@@ -25,7 +25,7 @@ export function Chips({ items }: { items: string[] }) {
 export function HireBand({ title }: { title: string }) {
   return (
     <section className="no-print bg-band text-band-ink">
-      <div className="wrap flex flex-wrap items-center justify-between gap-6 py-12">
+      <div className="wrap flex flex-wrap items-center justify-between gap-6 py-9">
         <div>
           <h2 className="section-title max-w-[26ch]">{title}</h2>
           <p className="mt-2 text-base text-band-2">Email is fastest. Usually a reply within two working days.</p>

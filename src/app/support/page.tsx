@@ -28,7 +28,7 @@ export default function SupportPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="wrap pb-16 pt-12 lg:pt-16">
+      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
         <p className="eyebrow">Support</p>
         <h1 className="page-title mt-3 max-w-[20ch]">Help with one of the apps.</h1>
         <p className="mt-4 max-w-[58ch] text-lead text-ink-2">One person reads these and answers them. Usually a reply within two working days.</p>
@@ -46,7 +46,7 @@ export default function SupportPage() {
           ))}
         </div>
 
-        <section className="mt-14">
+        <section className="mt-10">
           <h2 className="section-title">Asked often.</h2>
           <div className="mt-6 grid gap-x-12 lg:grid-cols-2">
             <Faq q="How do I stop a subscription renewing?">

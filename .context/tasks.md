@@ -9,6 +9,7 @@ horizon: 2026-10-18
 1. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
 
 ## Parallel
+- [ ] T028 [P] Redraw `home/home.html`, `work/project.html` and `work/unreleased.html` to match the built pages. The site was changed first on 2026-10-04 (review round 3); each screen's notes page records the departure
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
 - [ ] T023 [P] Re-verify every row of `products.json` against the stores and bump `verifiedOn` (due by 2026-10-26)
 - [ ] T024 [P] Case studies for Aakalan and Charades — they lead the site and show a feature list, not a write-up
@@ -69,4 +70,10 @@ horizon: 2026-10-18
   Authorization header, and git sends it instead of the token in the URL —
   fixed with `persist-credentials: false` and by clearing the header in
   `sources.mjs`. All three report as "Repository not found".
-- Next: T012, T023.
+- Review round 3, on the live site: leads are AskCal, Chitragupt, Aakalan;
+  a product names its own best screenshots (`shots` in products.json) because
+  the listing's tilted close-ups read badly small; a closed platform is now a
+  "Join the test" button (a pre-filled email) instead of a disabled one; the
+  project page is flat — hero, one facts row, two links, the write-up; type
+  and spacing are tighter everywhere.
+- Next: T028, T012, T023.

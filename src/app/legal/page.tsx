@@ -19,7 +19,7 @@ export default function LegalPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="wrap pb-16 pt-12 lg:pt-16">
+      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
         <p className="eyebrow">Legal</p>
         <h1 className="page-title mt-3">Privacy and legal documents.</h1>
         <p className="mt-4 max-w-[60ch] text-lead text-ink-2">One row per app. These addresses do not move.</p>

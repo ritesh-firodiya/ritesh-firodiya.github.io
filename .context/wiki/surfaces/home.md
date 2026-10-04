@@ -29,6 +29,8 @@ The landing page. It answers a hiring manager's four questions in order: who, wh
 
 **Two calls to action, the same two everywhere:** the résumé and an email.
 
+**Built differently from the wireframe (2026-10-04, review round 3).** The leads are AskCal, Chitragupt, Aakalan. Selected work is three equal cards, the four numbers are one ruled row, the process band shows the board without the stage line, and type and spacing are tighter. The wireframe has not been redrawn yet.
+
 ## Related
 - [[work]]
 - [[process]]

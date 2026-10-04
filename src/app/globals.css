@@ -279,23 +279,23 @@
 
   /* ---- type ---- */
   .hero-title {
-    font-size: clamp(2.25rem, 4.4vw, 3.75rem);
-    line-height: 1.05; letter-spacing: -0.035em; font-weight: 800;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.06; letter-spacing: -0.035em; font-weight: 800;
   }
   .page-title {
-    font-size: clamp(2rem, 3.4vw, 3rem);
-    line-height: 1.06; letter-spacing: -0.03em; font-weight: 800;
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+    line-height: 1.08; letter-spacing: -0.03em; font-weight: 800;
   }
   .section-title {
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-    line-height: 1.12; letter-spacing: -0.025em; font-weight: 700;
+    font-size: clamp(1.3rem, 1.9vw, 1.625rem);
+    line-height: 1.15; letter-spacing: -0.02em; font-weight: 700;
   }
   .eyebrow {
     font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.4;
     text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-3);
   }
   .figure {
-    font-size: clamp(1.75rem, 2.8vw, 2.5rem); line-height: 1;
+    font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1;
     letter-spacing: -0.03em; font-weight: 800; font-variant-numeric: tabular-nums;
   }
 
@@ -361,7 +361,7 @@
      or a product's own design screen, embedded live. */
   .shot { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
   /* In a fixed-height card slot: fill it, and start just under the headline so the app itself shows. */
-  .shot--crop { height: 100%; object-fit: cover; object-position: 50% 35%; border-radius: 0; }
+  .shot--crop { height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 0; }
 
   /* A design screen at its own logical size, scaled to the box. tan(atan2()) is
      how CSS divides one length by another and gets a number. Because it is the
@@ -459,6 +459,22 @@
 
   /* The hairline inside the inverted band. --line belongs to the page, not the band. */
   .band-rule { border-top: 1px solid color-mix(in srgb, var(--color-band-2) 30%, transparent); }
+
+  /* The hero's ground: a wash of the brand that fades out, so the first
+     screen is not one flat field. Reads the palette, so it follows the theme. */
+  .hero-wash {
+    background:
+      radial-gradient(60rem 28rem at 85% -10%, var(--color-brand-100), transparent 70%),
+      radial-gradient(40rem 20rem at 0% 0%, var(--color-brand-50), transparent 70%);
+  }
+  /* A store screenshot standing on the page rather than lying in a box. */
+  .shot--lift { box-shadow: var(--shadow-lg); border: 1px solid var(--color-line); }
+  /* Facts in one ruled row: cells divided by hairlines, no card per fact. */
+  .facts { display: grid; gap: 1px; background: var(--color-line); border: 1px solid var(--color-line); border-radius: var(--radius-lg); overflow: hidden; }
+  .facts > * { background: var(--color-surface); padding: 14px 16px; }
+  @media (min-width: 640px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* --n is how many facts there are, so the row never ends on an empty cell. */
+  @media (min-width: 1024px) { .facts { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); } }
 
   /* The eyebrow on the inverted band, where ink-3 does not apply. */
   .eyebrow--band { color: var(--color-band-2); }

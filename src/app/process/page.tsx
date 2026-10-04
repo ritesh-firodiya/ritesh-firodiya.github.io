@@ -22,7 +22,7 @@ export default function ProcessPage() {
     <>
       <SiteHeader on="process" />
       <main id="main">
-        <section className="wrap pb-12 pt-12 lg:pt-16">
+        <section className="wrap pb-10 pt-8 lg:pt-10">
           <p className="eyebrow">How I build</p>
           <h1 className="page-title mt-3 max-w-[22ch]">From an idea to a product people use, in eight stages.</h1>
           <p className="mt-4 max-w-[62ch] text-lead text-ink-2">
@@ -51,7 +51,7 @@ export default function ProcessPage() {
         </section>
 
         <section className="border-y border-line bg-surface">
-          <div className="wrap py-14">
+          <div className="wrap py-10">
             <p className="eyebrow">Where each project is</p>
             <h2 className="section-title mt-2 max-w-[30ch]">Every project, placed on the eight stages.</h2>
             <p className="mt-3 max-w-[62ch] text-base text-ink-2">
@@ -68,7 +68,7 @@ export default function ProcessPage() {
           </div>
         </section>
 
-        <section className="wrap py-14">
+        <section className="wrap py-10">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="eyebrow">Open the work</p>

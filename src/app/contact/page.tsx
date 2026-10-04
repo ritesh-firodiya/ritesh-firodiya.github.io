@@ -25,7 +25,7 @@ export default function ContactPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="wrap pb-16 pt-12 lg:pt-16">
+      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
         <p className="eyebrow">Contact</p>
         <h1 className="page-title mt-3">Get in touch.</h1>
         <p className="mt-4 max-w-[56ch] text-lead text-ink-2">Email is fastest. Usually a reply within two working days.</p>
@@ -51,7 +51,7 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <section className="mt-12 grid gap-10 lg:grid-cols-[1fr_2fr]">
+        <section className="mt-9 grid gap-10 lg:grid-cols-[1fr_2fr]">
           <div>
             <p className="eyebrow">What I am open to</p>
             <h2 className="section-title mt-2">In this order.</h2>

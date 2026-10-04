@@ -37,6 +37,11 @@ export type Product = {
   /** A product with no screenshot can show one of its own design screens
    *  instead, live. Path inside its design set: "web/tax/tax.html". */
   embed?: string;
+  /** Which store screenshots to show, best first, by file name without the
+   *  extension: "01-today". The listing's own order is written for a store
+   *  page; a tilted close-up reads badly at card size, so the straight-on
+   *  shots are named here. Without it, the listing order is used. */
+  shots?: string[];
   fullName: string;
   tagline: string;
   blurb: string;
@@ -73,6 +78,15 @@ export type Shot = { src: string; label: string; width: number; height: number }
 export type Media = { icon: string | null; shots: Shot[] };
 const mediaRaw = generated<{ media: Record<string, Media> }>("media.json", { media: {} });
 export const mediaFor = (slug: string): Media => mediaRaw.media[slug] ?? { icon: null, shots: [] };
+
+const fileName = (src: string) => src.slice(src.lastIndexOf("/") + 1).replace(/\.\w+$/, "");
+/** A product's screenshots in the order the site should show them: the ones
+ *  it names first, then whatever else the listing has. */
+export function shotsOf(p: Pick<Product, "slug" | "shots">, limit = 3): Shot[] {
+  const all = mediaFor(p.slug).shots;
+  const named = (p.shots ?? []).map((n) => all.find((s) => fileName(s.src) === n)).filter((s): s is Shot => Boolean(s));
+  return [...named, ...all.filter((s) => !named.includes(s))].slice(0, limit);
+}
 
 export const verifiedOn: string = raw.verifiedOn;
 /**

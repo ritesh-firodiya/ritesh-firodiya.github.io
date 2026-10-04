@@ -19,7 +19,7 @@ export default function ResumePage() {
   return (
     <>
       <SiteHeader on="resume" />
-      <main id="main" className="wrap pb-16 pt-12 lg:pt-16">
+      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow">Résumé</p>
@@ -39,7 +39,7 @@ export default function ResumePage() {
 
         <p className="card mt-8 max-w-[80ch] p-6 text-body text-ink-2">{profile.summary}</p>
 
-        <section className="mt-12">
+        <section className="mt-9">
           <h2 className="section-title">Experience</h2>
           <ol className="mt-5">
             {profile.experiences.map((e) => (
@@ -73,7 +73,7 @@ export default function ResumePage() {
           </div>
         </section>
 
-        <section className="mt-12 grid gap-6 lg:grid-cols-2">
+        <section className="mt-9 grid gap-6 lg:grid-cols-2">
           <div className="card p-6">
             <p className="eyebrow">Education</p>
             <h3 className="mt-3 text-h3 font-bold">{school.degree}</h3>
@@ -90,7 +90,7 @@ export default function ResumePage() {
           </Link>
         </section>
 
-        <div className="no-print mt-12 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-brand-50 p-8">
+        <div className="no-print mt-9 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-brand-50 p-8">
           <h2 className="section-title max-w-[24ch]">Does this match a role you have open?</h2>
           <Link href="/contact/" className="btn btn-primary">
             Get in touch <ArrowRight size={16} aria-hidden />

@@ -40,7 +40,7 @@ export default async function WikiIndexPage({ params }: { params: Promise<{ slug
   return (
     <>
       <SiteHeader on="process" />
-      <main id="main" className="wrap pb-16 pt-10 lg:pt-12">
+      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
         <div className="grid gap-10 lg:grid-cols-[15rem_1fr]">
           <WikiRail p={p} />
           <div className="min-w-0">

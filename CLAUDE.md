@@ -98,6 +98,11 @@ home page. To change what leads, re-order the file.
   `src/lib/products.ts`): any `live` → live; any `beta`/`closed` → in testing;
   otherwise in build, or in design when `notBuilt`. Only the words
   (`stageLabel`) are typed, and a test checks the two agree.
+- `shots` names a product's best store screenshots, best first. The listing's
+  own order is written for a store page, and its tilted close-ups read badly
+  at card size.
+- A `closed` platform renders as a **"Join the test"** button: a pre-filled
+  email asking to be added to the tester list. `none` renders disabled.
 - `src/lib/case-studies.ts` holds the long-form text for a project page. A
   product without one shows its `features` instead.
 - `src/data/profile.json` drives the home page, About and the résumé.

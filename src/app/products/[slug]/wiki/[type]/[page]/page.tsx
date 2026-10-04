@@ -45,7 +45,7 @@ export default async function WikiPageRoute({ params }: { params: Promise<Params
   return (
     <>
       <SiteHeader on="process" />
-      <main id="main" className="wrap pb-16 pt-10 lg:pt-12">
+      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
         <div className="grid gap-10 lg:grid-cols-[15rem_1fr_16rem]">
           <WikiRail p={p} on={w.type} />
           <article className="min-w-0">
@@ -62,7 +62,7 @@ export default async function WikiPageRoute({ params }: { params: Promise<Params
             {/* The product's own Markdown, rendered at build time by
                 scripts/sync-context.mjs. The site adds nothing to the text. */}
             <div className="wiki-prose mt-8" dangerouslySetInnerHTML={{ __html: w.html }} />
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-brand-50 p-6">
+            <div className="mt-9 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-brand-50 p-6">
               <p className="max-w-[40ch] text-body font-semibold">Every project of mine is written down like this.</p>
               <Link href="/resume/" className="btn btn-primary">Read the résumé</Link>
             </div>

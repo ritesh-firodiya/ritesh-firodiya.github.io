@@ -19,7 +19,7 @@ export default function AboutPage() {
     <>
       <SiteHeader on="about" />
       <main id="main">
-        <section className="wrap grid gap-12 pb-14 pt-12 lg:grid-cols-[20rem_1fr] lg:pt-16">
+        <section className="wrap grid gap-12 pb-10 pt-8 lg:grid-cols-[18rem_1fr] lg:pt-10">
           <aside>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/me.webp" alt={profile.name} width={640} height={640} className="aspect-square w-full max-w-[20rem] rounded-xl border border-line object-cover" />
@@ -50,7 +50,7 @@ export default function AboutPage() {
         {/* Each habit links to where it can be checked. A value nobody can
             verify is decoration. */}
         <section className="border-y border-line bg-surface">
-          <div className="wrap py-14">
+          <div className="wrap py-10">
             <p className="eyebrow">How I work</p>
             <h2 className="section-title mt-2">Three habits you can check on this site.</h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
@@ -80,7 +80,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="wrap py-14">
+        <section className="wrap py-10">
           <p className="eyebrow">Skills</p>
           <h2 className="section-title mt-2">What I have shipped with.</h2>
           <div className="mt-6 border-b border-line">

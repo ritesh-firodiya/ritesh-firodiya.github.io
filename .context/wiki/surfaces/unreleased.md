@@ -27,6 +27,8 @@ One project nobody can use yet: what exists, what does not, and why.
 
 **No screenshot slot pretends.** It is hatched and labelled.
 
+**Built differently from the wireframe (2026-10-04, review round 3).** It shares the flat project page; see [[project]]. The wireframe has not been redrawn yet.
+
 ## Related
 - [[project]]
 - [[work]]

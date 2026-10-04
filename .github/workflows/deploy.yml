@@ -25,7 +25,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # persist-credentials: false is load-bearing. By default checkout leaves
+      # the job's own GITHUB_TOKEN in the git config as an Authorization header
+      # for github.com, and git sends THAT instead of the token in a clone URL.
+      # The job token cannot see the product repos, so every one of them came
+      # back "Repository not found" while DESIGNS_TOKEN was perfectly valid.
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v4
 

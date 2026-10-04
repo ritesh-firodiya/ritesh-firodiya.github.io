@@ -51,8 +51,15 @@ const SPARSE = [
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git", "products");
 
+/* The empty extraheader clears any Authorization header a CI checkout left in
+   the git config. With one set, git sends it instead of the token in the URL,
+   and a token that cannot see the repo answers "Repository not found". */
 const git = (args, cwd) =>
-  execFileSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  execFileSync("git", ["-c", "http.https://github.com/.extraheader=", ...args], {
+    cwd,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  }).trim();
 
 /** Strip the token out of anything on its way to a log. CI logs are public. */
 const redact = (text, token) =>

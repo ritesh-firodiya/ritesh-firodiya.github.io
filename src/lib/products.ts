@@ -26,9 +26,12 @@ export type Platform = {
   label: string;
   url: string | null;
   note: string;
-  /** For a `closed` platform: where a tester goes to install once their
-   *  account has been added to the list. */
+  /** For a `closed` platform: where a tester goes to install — the Play
+   *  opt-in page, or a public TestFlight link. */
   testUrl?: string;
+  /** For a closed Android track that admits a Google Group: the group anyone
+   *  can join without asking. With it, nobody has to send an email address. */
+  groupUrl?: string;
 };
 
 export type Product = {
@@ -220,6 +223,14 @@ export function galleriesFor(slug: string): Gallery[] {
         ? `/products/${slug}/designs/`
         : `/products/${slug}/designs/${g.surface}/`,
   }));
+}
+
+/** Where a design link lands: the surface's contact sheet, every screen at
+ *  once. The flow chart is one click away in the set's own bar. Falls back to
+ *  the gallery when a set ships no sheet. */
+export function sheetFor(slug: string, g: Gallery): string {
+  const sheet = `/designs/${slug}/${g.surface}/screenshots.html`;
+  return (designSets[slug]?.screens ?? []).some((s) => s.path === sheet) ? sheet : g.href;
 }
 
 /* ── Style-guide conformance ──────────────────────────────────────────────

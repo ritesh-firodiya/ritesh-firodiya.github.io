@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Apple, ArrowLeft, BookOpen, ExternalLink, FlaskConical, Monitor, Play, type LucideIcon } from "lucide-react";
+import { Apple, ArrowLeft, BookOpen, ExternalLink, FlaskConical, Mail, Monitor, Play, Smartphone, Users, type LucideIcon } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { Chips, StatePill, SurfaceTags } from "@/components/ui";
 import { ProductPicture } from "@/components/picture";
 import { gmailCompose } from "@/lib/mail";
-import { products, bySlug, mediaFor, galleriesFor, screensFor, type Platform, type Product } from "@/lib/products";
+import { products, bySlug, mediaFor, galleriesFor, screensFor, sheetFor, type Platform, type Product } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
 
@@ -32,54 +32,54 @@ const PLATFORM: Record<string, { name: string; Icon: LucideIcon }> = {
 };
 
 /**
- * Every way to get the product, as one row of buttons.
+ * Every way to get the product, as one row of buttons. Each opens in a new
+ * tab: they all leave this site.
  *
  *   live / beta  the store, the site, the public TestFlight
- *   closed       a build behind a tester list: the button opens a written
- *                email asking to be added, and the store's test page sits
- *                beside it where there is one
+ *   closed       the direct way in, where there is one: the Google Group and
+ *                then the Play opt-in page on Android, the TestFlight link on
+ *                iOS. Only a track with no door of its own falls back to a
+ *                written email asking to be added.
  */
-function Access({ p }: { p: Product }) {
-  const platforms = Object.entries(p.platforms).filter(([, v]) => v) as [string, Platform][];
-  const open = platforms.filter(([, v]) => v.state === "live" || v.state === "beta");
-  const closed = platforms.filter(([, v]) => v.state === "closed");
-  if (open.length + closed.length === 0) return null;
+type Door = { key: string; href: string; label: string; Icon: LucideIcon; title?: string };
 
+function doorsOf(p: Product): Door[] {
+  const platforms = Object.entries(p.platforms).filter(([, v]) => v) as [string, Platform][];
+  const doors: Door[] = [];
+  for (const [k, v] of platforms) {
+    if (v.state !== "live" && v.state !== "beta") continue;
+    doors.push({ key: k, href: v.url!, label: v.label, Icon: k === "web" ? ExternalLink : PLATFORM[k].Icon });
+  }
+  for (const [k, v] of platforms) {
+    if (v.state !== "closed") continue;
+    const name = PLATFORM[k].name;
+    if (k === "android" && v.groupUrl && v.testUrl) {
+      doors.push({ key: `${k}-group`, href: v.groupUrl, label: "1. Join the tester group", Icon: Users, title: "One click, no approval" });
+      doors.push({ key: `${k}-install`, href: v.testUrl, label: "2. Install from Play", Icon: Play, title: "Use the same Google account" });
+    } else if (k === "ios" && v.testUrl) {
+      doors.push({ key: k, href: v.testUrl, label: "Join on TestFlight", Icon: FlaskConical, title: v.note || v.label });
+    } else {
+      const account = k === "android" ? "Google account" : "Apple ID";
+      const draft = {
+        subject: `Tester access: ${p.name} on ${name}`,
+        body: `Please add me to the ${p.name} test.\nThe ${account} email I use on my phone:\n`,
+      };
+      doors.push({ key: k, href: gmailCompose(draft), label: `Ask to join the ${name} test`, Icon: Mail, title: v.note || v.label });
+    }
+  }
+  return doors;
+}
+
+function Access({ p }: { p: Product }) {
+  const doors = doorsOf(p);
+  if (doors.length === 0) return null;
   return (
     <div className="mt-4 flex flex-wrap gap-2">
-      {open.map(([k, v], i) => {
-        const { Icon } = PLATFORM[k];
-        return (
-          <a key={k} href={v.url!} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
-            {k === "web" ? <ExternalLink size={16} aria-hidden /> : <Icon size={16} aria-hidden />} {v.label}
-          </a>
-        );
-      })}
-      {closed.map(([k, v], i) => {
-        const account = k === "android" ? "Google account" : "Apple ID";
-        const draft = {
-          subject: `Tester access: ${p.name} on ${PLATFORM[k].name}`,
-          body: `Please add me to the ${p.name} test.\nThe ${account} email I use on my phone:\n`,
-        };
-        return (
-          <span key={k} className="contents">
-            <a
-              href={gmailCompose(draft)}
-              target="_blank"
-              rel="noopener"
-              title={v.note || v.label}
-              className={`btn ${open.length === 0 && i === 0 ? "btn-primary" : "btn-quiet"}`}
-            >
-              <FlaskConical size={16} aria-hidden /> Join the {PLATFORM[k].name} test
-            </a>
-            {v.testUrl && (
-              <a href={v.testUrl} target="_blank" rel="noopener" className="btn btn-quiet">
-                <ExternalLink size={16} aria-hidden /> {k === "android" ? "Play test page" : "TestFlight"}
-              </a>
-            )}
-          </span>
-        );
-      })}
+      {doors.map((d, i) => (
+        <a key={d.key} href={d.href} target="_blank" rel="noopener" title={d.title} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
+          <d.Icon size={16} aria-hidden /> {d.label}
+        </a>
+      ))}
     </div>
   );
 }
@@ -121,12 +121,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-3 max-w-[58ch] text-body text-ink-2">{study?.lead ?? `${p.tagline} ${p.blurb}`}</p>
             <Access p={p} />
             <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-              {/* Plain anchors: a design set is the product's own static page. */}
-              {galleries.map((g) => (
-                <a key={g.surface} href={g.href} className="text-link">
-                  {count(g.surface)} {g.surface} screens
-                </a>
-              ))}
+              {/* Plain anchors: a design set is the product's own static page.
+                  Each opens its contact sheet in a new tab. */}
+              {galleries.map((g) => {
+                const Icon = g.surface === "mobile" ? Smartphone : Monitor;
+                return (
+                  <a key={g.surface} href={sheetFor(p.slug, g)} target="_blank" rel="noopener" className="text-link inline-flex items-center gap-1">
+                    <Icon size={14} aria-hidden /> {count(g.surface)} {g.surface} screens
+                  </a>
+                );
+              })}
               {wiki && (
                 <Link href={wikiHref(p.slug)} className="text-link inline-flex items-center gap-1">
                   <BookOpen size={14} aria-hidden /> {wiki.total} wiki pages

@@ -50,7 +50,8 @@
           "label": "Closed testing only",
           "url": null,
           "note": "On the closed track; the production track has never had a release",
-          "testUrl": "https://play.google.com/apps/testing/com.riteshf.askcal"
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.askcal",
+          "groupUrl": "https://groups.google.com/g/askcal-testers"
         },
         "ios": {
           "state": "closed",
@@ -60,7 +61,7 @@
           "testUrl": "https://testflight.apple.com/join/5VeKUcaj"
         }
       },
-      "unreleasedNote": "Nothing is installable today. We would rather say that than show a button that goes nowhere.",
+      "unreleasedNote": "Not public yet. Both test tracks are open to anyone: join the tester group for Android, or the TestFlight for iPhone.",
       "stack": [
         "Expo",
         "React Native",
@@ -219,7 +220,8 @@
       },
       "kind": "app",
       "repo": null,
-      "embed": "web/tax/tax.html"
+      "embed": "web/home/home.html",
+      "embedMobile": "mobile/home/home.html"
     },
     {
       "slug": "aakalan",
@@ -269,7 +271,8 @@
           "label": "Closed testing only",
           "url": null,
           "note": "Play Console declarations pending; alpha is the ceiling",
-          "testUrl": "https://play.google.com/apps/testing/com.riteshf.aakalan"
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.aakalan",
+          "groupUrl": "https://groups.google.com/g/aakalan-testers"
         },
         "ios": {
           "state": "beta",
@@ -556,16 +559,18 @@
           "label": "Closed testing, not public",
           "url": null,
           "note": "Production track has never had a release",
-          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter"
+          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter",
+          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers"
         },
         "ios": {
           "state": "closed",
           "label": "Waiting for App Store review",
           "url": null,
-          "note": "Submitted for review; there is no public build yet"
+          "note": "Submitted for review; there is no public build yet",
+          "testUrl": "https://testflight.apple.com/join/qYT8tpPr"
         }
       },
-      "unreleasedNote": "Neither store has a public release yet. The build is finished and in review on iOS; the Android production track has never had a release. Rather than link a testing URL that most people cannot open, there is no button here until a track is genuinely open.",
+      "unreleasedNote": "Neither store has a public release yet. The build is in review on iOS. Both test tracks are open to anyone: the tester group for Android, the TestFlight for iPhone.",
       "stack": [
         "React Native",
         "Expo",
@@ -761,7 +766,7 @@
       "slug": "scrvio",
       "name": "Scrvio",
       "stageLabel": "Site is up",
-      "embed": "web/library/library.html",
+      "embed": "web/home/home.html",
       "fullName": "Scrvio",
       "tagline": "Privacy-first browser screen recorder.",
       "blurb": "Record screen, camera and audio from the browser with no install and no sign-up, then keep the recordings in your own S3 bucket rather than a vendor's cloud.",
@@ -817,7 +822,7 @@
       "slug": "trunk",
       "name": "Trunk",
       "stageLabel": "In build",
-      "embed": "web/deltas/deltas.html",
+      "embed": "web/design/journey.html",
       "fullName": "Trunk",
       "tagline": "Product development where every change is a delta.",
       "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
@@ -867,7 +872,7 @@
       "name": "DwarSeva",
       "stageLabel": "In build",
       "embed": "web/home/home.html",
-      "embedMobile": "mobile/home/resident-home.html",
+      "embedMobile": "mobile/visitors/guard-visitors.html",
       "fullName": "DwarSeva",
       "tagline": "Approval and society management.",
       "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",

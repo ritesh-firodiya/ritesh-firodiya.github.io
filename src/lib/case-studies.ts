@@ -76,9 +76,6 @@ export const CASE_STUDIES: CaseStudy[] = [
         { t: "189 small functions, not one service", b: "Each deduction is its own function with its own tests. Wrong numbers are the only failure mode that matters here, and this shape makes a wrong number traceable to one file." },
         { t: "The verdict is free", b: "Which regime wins, and by how much, costs nothing. A tax tool that computes a number and then asks for money before showing it has already lost the user. The paid tiers are the full workings and the household lens." },
       ]},
-      { h: "Where it stands", p: [
-        "The web app is deployed and reachable; version one has not launched. An Android app is on Google Play's internal testing track. It is also the only product of mine carrying analytics — PostHog and Sentry, behind a consent gate — which is stated on this page rather than buried.",
-      ]},
     ],
     stack: ["Next.js", "Cloud Run", "Firebase Functions", "Firestore", "Zod", "Turborepo", "TypeScript"],
     link: { label: "chitragupt.ai", url: "https://chitragupt.ai" },

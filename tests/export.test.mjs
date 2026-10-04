@@ -64,11 +64,15 @@ const NOT_A_PAGE = (route) => route === "/404/" || route === "/_not-found/";
 /* A forwarding address: an old URL that now points somewhere else. It is a
    meta refresh, not a page — noindex, no canonical, not in the sitemap. */
 const forwardOf = (html) => html.match(/<meta http-equiv="refresh" content="0; url=([^"]+)"/)?.[1] ?? null;
-const FORWARDS = { "/products/": "/work/", "/hire/": "/contact/", "/design/gallery/": "/process/", "/work/chitragupt/": "/products/chitragupt/" };
+const FORWARDS = {
+  "/work/": "/#work", "/products/": "/#work", "/process/": "/#process", "/design/gallery/": "/#process",
+  "/about/": "/resume/", "/contact/": "/resume/", "/hire/": "/resume/",
+  "/work/chitragupt/": "/products/chitragupt/",
+};
 
 test("out/ actually contains the site", () => {
   const routes = pages().map((p) => p.route);
-  for (const r of ["/", "/work/", "/process/", "/about/", "/contact/", "/legal/", "/support/", "/resume/"]) {
+  for (const r of ["/", "/resume/", "/legal/", "/support/"]) {
     assert.ok(routes.includes(r), `${r} was not exported`);
   }
   assert.ok(routes.filter((r) => /^\/products\/[^/]+\/$/.test(r)).length >= 10,
@@ -80,7 +84,9 @@ test("every old address still forwards, to a page that exists", () => {
   for (const [from, to] of Object.entries(FORWARDS)) {
     assert.ok(byRoute.has(from), `${from} is gone — store listings and old links still point at it`);
     assert.equal(forwardOf(byRoute.get(from)), to, `${from} does not forward to ${to}`);
-    assert.ok(byRoute.has(to), `${from} forwards to ${to}, which was not exported`);
+    const [page, anchor] = to.split("#");
+    assert.ok(byRoute.has(page), `${from} forwards to ${to}, which was not exported`);
+    if (anchor) assert.ok(byRoute.get(page).includes(`id="${anchor}"`), `${from} forwards to ${to}, and ${page} has no #${anchor}`);
   }
 });
 

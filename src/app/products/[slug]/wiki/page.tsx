@@ -39,21 +39,17 @@ export default async function WikiIndexPage({ params }: { params: Promise<{ slug
 
   return (
     <>
-      <SiteHeader on="process" />
-      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
-        <div className="grid gap-10 lg:grid-cols-[15rem_1fr]">
+      <SiteHeader on="work" />
+      <main id="main" className="wrap pb-10 pt-6">
+        <div className="grid gap-8 lg:grid-cols-[14rem_1fr]">
           <WikiRail p={p} />
           <div className="min-w-0">
             <p className="text-sm text-ink-3">
-              <Link href="/work/" className="hover:text-ink">Work</Link> /{" "}
+              <Link href="/#work" className="hover:text-ink">Work</Link> /{" "}
               <Link href={`/products/${slug}/`} className="hover:text-ink">{p.name}</Link> / Wiki
             </p>
-            <h1 className="page-title mt-3">{p.name} wiki</h1>
-            <p className="mt-3 max-w-[60ch] text-lead text-ink-2">
-              What a picture cannot hold: the rules that only break across screens, the product&rsquo;s own names and
-              numbers, and why each screen is drawn the way it is.
-            </p>
-            <p className="mt-4 font-mono text-xs text-ink-3">
+            <h1 className="page-title mt-2">{p.name} wiki</h1>
+            <p className="mt-2 font-mono text-xs text-ink-3">
               {wiki.total} pages{wiki.verified ? ` · last verified ${wiki.verified}` : ""}
             </p>
             <WikiIndex groups={groups} total={wiki.total} />

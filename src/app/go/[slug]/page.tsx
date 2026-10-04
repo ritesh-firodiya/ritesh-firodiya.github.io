@@ -83,7 +83,7 @@ export default async function GoPage({ params }: { params: Promise<{ slug: strin
           <p className="mt-5 text-xs text-ink-3">This page sets no cookies and records nothing.</p>
         </div>
         <p className="mt-6 text-center">
-          <Link href="/work/" className="text-link text-sm">All work</Link>
+          <Link href="/#work" className="text-link text-sm">All work</Link>
         </p>
       </div>
     </main>

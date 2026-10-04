@@ -13,14 +13,14 @@ import { type Product, galleriesFor, surfacesOf, stageOf } from "@/lib/products"
  * build, and nobody edits this site to make it happen.
  */
 export const STAGES = [
-  { key: "idea", name: "Idea", icon: "lightbulb", what: "A problem I have, or one I keep seeing other people have.", leaves: "A one-paragraph thesis" },
-  { key: "research", name: "Research", icon: "search", what: "Who else solves it, what they charge, and where they fail.", leaves: "Source notes and a research brief" },
-  { key: "define", name: "Define", icon: "list-checks", what: "What is in version one, what is not, and the names and numbers everything else must match.", leaves: "Decisions and a feature list" },
-  { key: "design", name: "Design", icon: "pencil-ruler", what: "Every screen and every state, as a clickable HTML page.", leaves: "A design set and a flow chart" },
-  { key: "build", name: "Build", icon: "hammer", what: "The data model first, then the app against the designs.", leaves: "The app, with tests" },
-  { key: "release", name: "Release", icon: "rocket", what: "Store listing, screenshots, privacy, review.", leaves: "A build people can install" },
-  { key: "market", name: "Market", icon: "megaphone", what: "Positioning, store search, and somewhere to say it.", leaves: "A listing people can find" },
-  { key: "operate", name: "Operate", icon: "activity", what: "Numbers, support, and the fixes they point to.", leaves: "Metrics and release notes" },
+  { key: "idea", name: "Idea", icon: "lightbulb", what: "A problem I have, or one I keep seeing other people have.", leaves: "A thesis" },
+  { key: "research", name: "Research", icon: "search", what: "Who else solves it, what they charge, and where they fail.", leaves: "Notes, a brief" },
+  { key: "define", name: "Define", icon: "list-checks", what: "What is in version one, what is not, and the names and numbers everything else must match.", leaves: "Decisions, features" },
+  { key: "design", name: "Design", icon: "pencil-ruler", what: "Every screen and every state, as a clickable HTML page.", leaves: "Screens, a flow chart" },
+  { key: "build", name: "Build", icon: "hammer", what: "The data model first, then the app against the designs.", leaves: "The app, tests" },
+  { key: "release", name: "Release", icon: "rocket", what: "Store listing, screenshots, privacy, review.", leaves: "An installable build" },
+  { key: "market", name: "Market", icon: "megaphone", what: "Positioning, store search, and somewhere to say it.", leaves: "A findable listing" },
+  { key: "operate", name: "Operate", icon: "activity", what: "Numbers, support, and the fixes they point to.", leaves: "Metrics, fixes" },
 ] as const;
 
 /** 2 done · 1 under way · 0 not started. */
@@ -54,13 +54,4 @@ export function levelsOf(p: Product): Level[] {
     c.marketing > 0 ? 1 : 0,
     c.metrics + c.support > 0 ? 1 : 0,
   ];
-}
-
-export function progressLine(levels: Level[]): string {
-  const n = (v: Level) => levels.filter((x) => x === v).length;
-  const words = (k: number) => ["no", "one", "two", "three", "four", "five", "six", "seven", "eight"][k];
-  const done = n(2);
-  const half = n(1);
-  const first = `${words(done)[0].toUpperCase()}${words(done).slice(1)} stage${done === 1 ? "" : "s"} done`;
-  return half ? `${first}, ${words(half)} under way.` : `${first}.`;
 }

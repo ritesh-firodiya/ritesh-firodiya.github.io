@@ -40,6 +40,9 @@ export type Product = {
   /** A product with no screenshot can show one of its own design screens
    *  instead, live. Path inside its design set: "web/tax/tax.html". */
   embed?: string;
+  /** A product with a site AND an app names a phone screen too, shown beside
+   *  the web one. Path inside its design set: "mobile/home/home.html". */
+  embedMobile?: string;
   /** Which store screenshots to show, best first, by file name without the
    *  extension: "01-today". The listing's own order is written for a store
    *  page; a tilted close-up reads badly at card size, so the straight-on
@@ -244,4 +247,16 @@ export function withheldFor(slug: string): { surface: string; failed: Check[] }[
 
 /** Every surface a product draws, published or not. */
 export const surfacesOf = (slug: string): string[] => Object.keys(styleGuide?.results?.[slug]?.surfaces ?? {});
+
+/** Whether a product is a phone app, a site, or both: the tags on its card.
+ *  Counted from what is drawn and what is built, so it cannot be mistyped. */
+export type Surface = "mobile" | "web";
+export function surfaceTags(p: Product): Surface[] {
+  const built = Object.entries(p.platforms)
+    .filter(([, v]) => v && v.state !== "none")
+    .map(([k]) => (k === "web" ? "web" : "mobile"));
+  const found = new Set<string>([...surfacesOf(p.slug), ...built]);
+  if (found.size === 0) found.add(p.kind === "platform" ? "web" : "mobile");
+  return (["mobile", "web"] as const).filter((s) => found.has(s));
+}
 export const totalScreens = Object.keys(designSets).reduce((n, slug) => n + screensFor(slug).length, 0);

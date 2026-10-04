@@ -44,28 +44,24 @@ export default async function WikiPageRoute({ params }: { params: Promise<Params
 
   return (
     <>
-      <SiteHeader on="process" />
-      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
-        <div className="grid gap-10 lg:grid-cols-[15rem_1fr_16rem]">
+      <SiteHeader on="work" />
+      <main id="main" className="wrap pb-10 pt-6">
+        <div className="grid gap-8 lg:grid-cols-[14rem_1fr_15rem]">
           <WikiRail p={p} on={w.type} />
           <article className="min-w-0">
             <p className="text-sm text-ink-3">
-              <Link href="/work/" className="hover:text-ink">Work</Link> /{" "}
+              <Link href="/#work" className="hover:text-ink">Work</Link> /{" "}
               <Link href={`/products/${slug}/`} className="hover:text-ink">{p.name}</Link> /{" "}
               <Link href={wikiHref(slug)} className="hover:text-ink">Wiki</Link> / {kind.label}
             </p>
-            <h1 className="page-title mt-3 break-words">{w.slug}</h1>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
+            <h1 className="page-title mt-2 break-words">{w.slug}</h1>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               <Chips items={meta} />
               {w.id && <span className="font-mono text-xs text-ink-3">{w.id}</span>}
             </div>
             {/* The product's own Markdown, rendered at build time by
                 scripts/sync-context.mjs. The site adds nothing to the text. */}
-            <div className="wiki-prose mt-8" dangerouslySetInnerHTML={{ __html: w.html }} />
-            <div className="mt-9 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-brand-50 p-6">
-              <p className="max-w-[40ch] text-body font-semibold">Every project of mine is written down like this.</p>
-              <Link href="/resume/" className="btn btn-primary">Read the résumé</Link>
-            </div>
+            <div className="wiki-prose mt-5" dangerouslySetInnerHTML={{ __html: w.html }} />
           </article>
           <aside className="lg:sticky lg:top-24 lg:self-start">
             {w.wireframe && (

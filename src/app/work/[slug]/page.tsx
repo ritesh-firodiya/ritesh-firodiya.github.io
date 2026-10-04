@@ -16,5 +16,5 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function OldCaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  return <Forward to={`/products/${slug}/`} why="The case study is part of the project page now." />;
+  return <Forward to={`/products/${slug}/`} />;
 }

@@ -9,7 +9,7 @@ horizon: 2026-10-18
 1. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
 
 ## Parallel
-- [ ] T028 [P] Redraw `home/home.html`, `work/project.html` and `work/unreleased.html` to match the built pages. The site was changed first on 2026-10-04 (review round 3); each screen's notes page records the departure
+- [ ] T028 [P] Redraw the whole `designs/web` set to match the built site. Round 4 (2026-10-04) cut the site to Home, a project page, the wiki and the résumé; the set still draws Work, Process, About and Contact as pages
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
 - [ ] T023 [P] Re-verify every row of `products.json` against the stores and bump `verifiedOn` (due by 2026-10-26)
 - [ ] T024 [P] Case studies for Aakalan and Charades — they lead the site and show a feature list, not a write-up
@@ -85,3 +85,8 @@ horizon: 2026-10-18
   with two surfaces linked only one chart; `/apple-touch-icon.png.png` 404'd.
   All fixed. Three repos under other owners are read with deploy keys.
 - Next: T028, T012, T023.
+- Review round 4: "over explanatory, too much white space, too many pages".
+  Work, Process, About and Contact became sections of Home or the résumé and
+  their addresses forward. Hero pictures, the stats row, the hire band, the
+  facts row and the tester-steps card are gone. Cards carry Mobile / Web tags.
+  The home page went from about 5200px tall to about 1900px.

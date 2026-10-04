@@ -30,17 +30,21 @@ export default function SupportPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
-        <p className="eyebrow">Support</p>
-        <h1 className="page-title mt-3 max-w-[20ch]">Help with one of the apps.</h1>
-        <p className="mt-4 max-w-[58ch] text-lead text-ink-2">One person reads these and answers them. Usually a reply within two working days.</p>
+      <main id="main" className="wrap pb-10 pt-6">
+        <h1 className="page-title">Support</h1>
+        <p className="mt-2 flex flex-wrap items-center gap-3 text-base text-ink-2">
+          <span>
+            Write to <b className="font-semibold text-ink">{profile.email}</b>. Usually a reply within two working days.
+          </span>
+          <CopyButton text={profile.email} />
+        </p>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        <div className="mt-4 grid gap-3 lg:grid-cols-3">
           {PATHS.map(({ Icon, title, body, cta, subject }) => (
-            <div key={title} className="card flex flex-col p-6">
-              <Icon size={24} className="text-brand-500" aria-hidden />
-              <h2 className="mt-4 text-h3 font-bold">{title}</h2>
-              <p className="mb-6 mt-2 text-base text-ink-2">{body}</p>
+            <div key={title} className="card flex flex-col p-4">
+              <Icon size={20} className="text-brand-500" aria-hidden />
+              <h2 className="mt-2 text-body font-bold">{title}</h2>
+              <p className="mb-4 mt-1 text-base text-ink-2">{body}</p>
               <div className="mt-auto flex flex-wrap gap-2">
                 <a href={gmailCompose({ subject })} target="_blank" rel="noopener" className="btn btn-quiet">
                   {cta}
@@ -51,9 +55,9 @@ export default function SupportPage() {
           ))}
         </div>
 
-        <section className="mt-10">
-          <h2 className="section-title">Asked often.</h2>
-          <div className="mt-6 grid gap-x-12 lg:grid-cols-2">
+        <section className="mt-6">
+          <h2 className="section-title">Asked often</h2>
+          <div className="mt-2 grid gap-x-10 lg:grid-cols-2">
             <Faq q="How do I stop a subscription renewing?">
               In your Google Play or App Store account, not in the app — neither store lets a developer cancel on your
               behalf. Access continues to the end of the period you have already paid for. {list(subs)} are the
@@ -74,15 +78,8 @@ export default function SupportPage() {
           </div>
         </section>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3 rounded-lg border border-line bg-muted p-5 text-base text-ink-2">
-          <span>
-            Every button above writes to <b className="font-semibold text-ink">{profile.email}</b>.
-          </span>
-          <CopyButton text={profile.email} />
-        </div>
-
-        <p className="mt-4 rounded-lg border border-line bg-muted p-5 text-base text-ink-2">
-          Looking for a privacy policy? <Link href="/legal/" className="text-link">All legal documents</Link>.
+        <p className="mt-3 text-sm text-ink-3">
+          Privacy policies: <Link href="/legal/" className="text-link">All legal documents</Link>.
         </p>
       </main>
       <SiteFooter />
@@ -92,9 +89,9 @@ export default function SupportPage() {
 
 function Faq({ q, children }: { q: string; children: React.ReactNode }) {
   return (
-    <div className="border-t border-line py-5">
+    <div className="border-t border-line py-3">
       <h3 className="text-body font-bold">{q}</h3>
-      <p className="mt-2 text-base text-ink-2">{children}</p>
+      <p className="mt-1 text-base text-ink-2">{children}</p>
     </div>
   );
 }

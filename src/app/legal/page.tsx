@@ -19,11 +19,9 @@ export default function LegalPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="wrap pb-12 pt-8 lg:pt-10">
-        <p className="eyebrow">Legal</p>
-        <h1 className="page-title mt-3">Privacy and legal documents.</h1>
-        <p className="mt-4 max-w-[60ch] text-lead text-ink-2">One row per app. These addresses do not move.</p>
-        <div className="card mt-8 overflow-hidden">
+      <main id="main" className="wrap pb-10 pt-6">
+        <h1 className="page-title">Privacy and legal</h1>
+        <div className="card mt-4 overflow-hidden">
           <table className="tbl">
             <thead>
               <tr>
@@ -58,9 +56,8 @@ export default function LegalPage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-6 max-w-[70ch] text-sm text-ink-3">
-          Older links on ritvi-apps.github.io still work and redirect here. Questions about any of these:{" "}
-          <Link href="/support/" className="text-link">Support</Link>.
+        <p className="mt-3 text-sm text-ink-3">
+          Questions: <Link href="/support/" className="text-link">Support</Link>.
         </p>
       </main>
       <SiteFooter />

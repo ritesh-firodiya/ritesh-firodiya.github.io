@@ -18,7 +18,7 @@ export const forwardMetadata = (to: string): Metadata => ({
   other: { "forward-to": to },
 });
 
-export function Forward({ to, why }: { to: string; why: string }) {
+export function Forward({ to, why }: { to: string; why?: string }) {
   return (
     <main id="main" className="wrap grid min-h-dvh place-items-center py-24 text-center">
       {/* React hoists this into <head>. */}
@@ -26,7 +26,7 @@ export function Forward({ to, why }: { to: string; why: string }) {
       <div>
         <p className="eyebrow">Moved</p>
         <h1 className="page-title mt-4">This page has moved.</h1>
-        <p className="mx-auto mt-4 max-w-[44ch] text-lead text-ink-2">{why}</p>
+        {why && <p className="mx-auto mt-4 max-w-[44ch] text-lead text-ink-2">{why}</p>}
         <Link href={to} className="btn btn-primary mt-8">
           Go there now
         </Link>

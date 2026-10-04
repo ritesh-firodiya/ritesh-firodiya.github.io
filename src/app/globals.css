@@ -274,35 +274,31 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 @layer components {
   /* The page column. One width for every band on every screen. */
-  .wrap { width: 100%; max-width: 1168px; margin-inline: auto; padding-inline: 24px; }
-  @media (min-width: 768px) { .wrap { padding-inline: 40px; } }
+  .wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: 16px; }
+  @media (min-width: 768px) { .wrap { padding-inline: 28px; } }
 
   /* ---- type ---- */
   .hero-title {
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    line-height: 1.06; letter-spacing: -0.035em; font-weight: 800;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.12; letter-spacing: -0.03em; font-weight: 800;
   }
   .page-title {
-    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
-    line-height: 1.08; letter-spacing: -0.03em; font-weight: 800;
+    font-size: clamp(1.4rem, 2.1vw, 1.75rem);
+    line-height: 1.12; letter-spacing: -0.03em; font-weight: 800;
   }
   .section-title {
-    font-size: clamp(1.3rem, 1.9vw, 1.625rem);
+    font-size: 1.125rem;
     line-height: 1.15; letter-spacing: -0.02em; font-weight: 700;
   }
   .eyebrow {
     font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.4;
     text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-3);
   }
-  .figure {
-    font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1;
-    letter-spacing: -0.03em; font-weight: 800; font-variant-numeric: tabular-nums;
-  }
 
   /* ---- actions ---- */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 11px 18px; border-radius: var(--radius-pill);
+    padding: 7px 14px; border-radius: var(--radius-pill);
     font-size: var(--text-base); font-weight: 600; line-height: 1.2;
     border: 1px solid transparent; text-decoration: none; white-space: nowrap;
     transition: background .15s, border-color .15s, color .15s;
@@ -311,14 +307,6 @@
   .btn-primary:hover { background: var(--color-brand-700); }
   .btn-quiet { background: var(--color-surface); color: var(--color-ink); border-color: var(--color-line-strong); }
   .btn-quiet:hover { border-color: var(--color-brand-500); color: var(--color-brand-500); }
-  /* On the inverted band, where surface and ink do not apply. */
-  .btn-band { background: var(--color-band-ink); color: var(--color-band); }
-  .btn-band-quiet { color: var(--color-band-ink); border-color: var(--color-band-2); }
-  /* A platform nobody can install from. Rendered, never hidden, with its reason. */
-  .btn-off {
-    background: var(--color-muted); color: var(--color-ink-3); border-color: var(--color-line);
-    border-style: dashed; cursor: not-allowed;
-  }
   .text-link {
     color: var(--color-brand-500); font-weight: 600; text-decoration: underline;
     text-decoration-color: var(--color-brand-200); text-underline-offset: 4px;
@@ -354,6 +342,13 @@
     font-size: var(--text-xs); line-height: 1.5; color: var(--color-ink-2);
     background: var(--color-muted); border: 1px solid var(--color-line); white-space: nowrap;
   }
+  /* Mobile or Web: what kind of product it is. Outlined, so it never reads as a state. */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: var(--radius-pill);
+    font-size: var(--text-xs); font-weight: 600; line-height: 1.5; white-space: nowrap;
+    color: var(--color-ink-2); border: 1px solid var(--color-line-strong);
+  }
   .chip--on { background: var(--color-ink); color: var(--color-page); border-color: var(--color-ink); }
 
   /* ---- pictures. NOTHING IS COPIED INTO THIS REPO. ------------------------------
@@ -381,23 +376,8 @@
   .embed--phone { aspect-ratio: 390 / 844; }
   .embed--phone iframe { width: 390px; height: 844px; transform: scale(tan(atan2(100cqw, 390px))); }
 
-  /* ---- the eight stages, as a line you read left to right ---- */
-  .track { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
-  .track-step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-right: 12px; }
-  .track-step::before {
-    content: ""; position: absolute; top: 17px; left: 36px; right: 0; height: 2px; background: var(--color-line-strong);
-  }
-  .track-step:last-child::before { display: none; }
-  .track-pin {
-    position: relative; display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 8px;
-    border-radius: 999px; border: 2px solid var(--color-brand-200); background: var(--color-brand-50); color: var(--color-brand-500);
-  }
-  .track-step--done .track-pin { background: var(--color-brand-500); border-color: var(--color-brand-500); color: var(--color-ink-inverse); }
-  .track-step--done::before { background: var(--color-brand-500); }
-  .track-step--half .track-pin { background: var(--color-surface); border-color: var(--color-brand-500); }
-
   /* One cell of the board: done, under way, not started. */
-  .dot { display: inline-block; width: 14px; height: 14px; border-radius: 999px; background: var(--color-brand-500); border: 2px solid var(--color-brand-500); }
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 999px; background: var(--color-brand-500); border: 2px solid var(--color-brand-500); }
   .dot--half { background: linear-gradient(90deg, var(--color-brand-500) 50%, transparent 50%); }
   .dot--none { background: transparent; border-color: var(--color-line-strong); }
 
@@ -410,31 +390,27 @@
     border: 1px dashed var(--color-line-strong);
   }
 
-  /* ---- the flow sketch on Home and How I build: boxes joined by a rule ---- */
-  .node {
-    position: relative; padding: 8px 12px; border-radius: var(--radius-sm);
-    background: var(--color-surface); border: 1px solid var(--color-line-strong);
-    border-left: 3px solid var(--color-brand-500);
-    font-size: var(--text-xs); font-weight: 600; white-space: nowrap;
-  }
-  .node--quiet { border-left-color: var(--color-line-strong); color: var(--color-ink-3); }
-  .node-link { height: 1px; background: var(--color-line-strong); flex: 1 1 16px; min-width: 16px; }
-
   /* ---- a table that reads as rows, not as a grid ---- */
   .tbl { width: 100%; border-collapse: collapse; text-align: left; }
   .tbl th {
     font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 500;
     text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-3);
-    padding: 12px 16px; border-bottom: 1px solid var(--color-line); background: var(--color-muted);
+    padding: 8px 12px; border-bottom: 1px solid var(--color-line); background: var(--color-muted);
   }
-  .tbl td { padding: 14px 16px; border-bottom: 1px solid var(--color-line); font-size: var(--text-base); vertical-align: middle; }
+  .tbl td { padding: 8px 12px; border-bottom: 1px solid var(--color-line); font-size: var(--text-base); vertical-align: middle; }
   .tbl tr:last-child td { border-bottom: 0; }
+
+  /* The board: a stage's name and what it leaves behind head each column. */
+  .board th { vertical-align: top; text-transform: none; letter-spacing: 0; font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 700; }
+  .board-leaves { display: block; margin-top: 2px; font-weight: 400; color: var(--color-ink-3); }
+  .board td { padding-block: 6px; }
+  .board td:not(:first-child) { padding-left: 20px; }
 
   /* ---- a rendered wiki page. Markdown in, this out. ---- */
   .wiki-prose { font-size: var(--text-body); line-height: 1.65; color: var(--color-ink-2); }
   .wiki-prose h2 {
     font-size: var(--text-h3); line-height: 1.25; letter-spacing: -0.01em; font-weight: 700;
-    color: var(--color-ink); margin: 36px 0 10px; padding-top: 20px; border-top: 1px solid var(--color-line);
+    color: var(--color-ink); margin: 24px 0 8px; padding-top: 16px; border-top: 1px solid var(--color-line);
   }
   .wiki-prose h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
   .wiki-prose p { margin: 0 0 14px; }
@@ -457,25 +433,8 @@
   .nav-link:hover { color: var(--color-ink); }
   .nav-link--on { color: var(--color-ink); border-bottom-color: var(--color-brand-500); }
 
-  /* The hairline inside the inverted band. --line belongs to the page, not the band. */
-  .band-rule { border-top: 1px solid color-mix(in srgb, var(--color-band-2) 30%, transparent); }
-
-  /* The hero's ground: a wash of the brand that fades out, so the first
-     screen is not one flat field. Reads the palette, so it follows the theme. */
-  .hero-wash {
-    background:
-      radial-gradient(60rem 28rem at 85% -10%, var(--color-brand-100), transparent 70%),
-      radial-gradient(40rem 20rem at 0% 0%, var(--color-brand-50), transparent 70%);
-  }
   /* A store screenshot standing on the page rather than lying in a box. */
   .shot--lift { box-shadow: var(--shadow-lg); border: 1px solid var(--color-line); }
-  /* Facts in one ruled row: cells divided by hairlines, no card per fact. */
-  .facts { display: grid; gap: 1px; background: var(--color-line); border: 1px solid var(--color-line); border-radius: var(--radius-lg); overflow: hidden; }
-  .facts > * { background: var(--color-surface); padding: 14px 16px; }
-  @media (min-width: 640px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  /* --n is how many facts there are, so the row never ends on an empty cell. */
-  @media (min-width: 1024px) { .facts { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); } }
-
   /* The theme button shows the icon of the theme you would switch TO leaving:
      a sun on a light page, a moon on a dark one. Chosen in CSS, from the same
      conditions that pick the palette, so there is no flash and no mismatch. */
@@ -487,8 +446,6 @@
     :root:not([data-theme="light"]) .theme-icon-dark { display: block; }
   }
 
-  /* The eyebrow on the inverted band, where ink-3 does not apply. */
-  .eyebrow--band { color: var(--color-band-2); }
 }
 
 /* ── Print · /resume only ──────────────────────────────────────────────────

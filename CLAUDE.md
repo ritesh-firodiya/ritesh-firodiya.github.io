@@ -105,17 +105,21 @@ home page. To change what leads, re-order the file.
   own order is written for a store page, and its tilted close-ups read badly
   at card size.
 - A `closed` platform renders as a **"Join the test"** button: a pre-filled
-  email asking to be added to the tester list. `none` renders disabled.
-- A closed platform's steps offer **Gmail's compose page beside `mailto:`**
+  email asking to be added to the tester list. `none` is not shown.
+- A closed platform's button opens **Gmail's compose page**, not `mailto:`
   (`src/lib/mail.ts`). A mailto link does nothing on a machine with no mail
   app, and the button then looks broken. `testUrl` is the store's own tester
-  page, for after the account has been added.
+  page, shown as a second button.
 - `embed` also gives a product with no store art a picture: one of its own
-  design screens, live. A product with a build or a picture is a card on
-  `/work/`; the rest are rows.
+  design screens, live. `embedMobile` names a phone screen to stand beside a
+  web one. A product with a picture is a card on the home page; the rest are
+  rows.
+- **Mobile / Web tags** are derived (`surfaceTags` in `src/lib/products.ts`)
+  from the surfaces a product draws and the platforms it has built. A product
+  with both shows both.
 - `src/lib/case-studies.ts` holds the long-form text for a project page. A
   product without one shows its `features` instead.
-- `src/data/profile.json` drives the home page, About and the résumé.
+- `src/data/profile.json` drives the home page and the résumé.
 - `verifiedOn` is the date a human last checked every row. The tests fail once
   it is 30 days old. Check the **stores** and each product's
   `.context/ops/release.yml`, not memory.
@@ -124,16 +128,20 @@ home page. To change what leads, re-order the file.
 
 | Route | What it is |
 |---|---|
-| `/` | who, where, what, how — in that order |
-| `/work/` | every project. Cards for what has a build, rows for what does not |
-| `/products/[slug]/` | one project: what it is, where to get it, how far it has got, the case study |
+| `/` | one line on who, then `#work` (every project) and `#process` (the eight stages as a board) |
+| `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
 | `/products/[slug]/designs/` | that project's own design gallery — a static file, not a route |
-| `/process/` | the eight stages, the board, every design set and wiki |
-| `/about/`, `/resume/`, `/contact/` | the person |
+| `/resume/` | the person |
 | `/support/`, `/legal/` | for app users and store reviewers |
 | `/go/[slug]/` | short links for QR codes and bios, `noindex` |
-| `/products/`, `/hire/`, `/design/gallery/`, `/work/chitragupt/` | forwarding addresses (meta refresh), `noindex` |
+| `/work/`, `/process/`, `/about/`, `/contact/`, `/products/`, `/hire/`, `/design/gallery/`, `/work/chitragupt/` | forwarding addresses (meta refresh), `noindex` |
+
+**Keep it short.** The site was cut down on 2026-10-04 because it explained too
+much: no intro paragraphs, no closing call-to-action bands, no fact that
+appears twice on a page. Work, About, Process and Contact were separate pages
+and are now sections of Home or the résumé. Do not add a page for something a
+section can hold.
 
 Project pages stay at `/products/<slug>/` because store listings point there.
 

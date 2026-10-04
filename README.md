@@ -15,12 +15,11 @@ pnpm check    # sync, contrast, lint, typecheck, tests, build
 
 ## What is on it
 
-- **Work** — every project, with its release state, its screens and its wiki.
-- **How I build** — the eight stages every product goes through, and where each
-  project is on them.
+- **Home** — every project with its release state, then the eight stages every
+  product goes through and where each project is on them.
 - **A project page** for each — what it is, where to get it, how it was built.
 - **Each project's wiki**, in full, and a link to its design set.
-- **Résumé, About, Contact.**
+- **Résumé.**
 - **Support and Legal** for people who use the apps.
 
 ## Nothing about a product is stored here

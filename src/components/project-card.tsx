@@ -1,22 +1,23 @@
 import Link from "next/link";
-import { StatePill } from "@/components/ui";
+import { StatePill, SurfaceTags } from "@/components/ui";
 import { CardPicture } from "@/components/picture";
 import type { Product } from "@/lib/products";
 import { evidenceLine } from "@/lib/evidence";
 
-/** One project as a card: its picture, how far along it is, what it is. The
- *  same card on the home page and on Work, so a project looks like itself
- *  wherever it appears. */
-export function ProjectCard({ p, detail = false }: { p: Product; detail?: boolean }) {
+/** One project: its picture, its state, whether it is an app or a site, and
+ *  what it left behind. */
+export function ProjectCard({ p, lead = false }: { p: Product; lead?: boolean }) {
   return (
-    <Link href={`/products/${p.slug}/`} className="card overflow-hidden">
-      <CardPicture p={p} />
-      <div className="p-5">
-        <StatePill p={p} />
-        <h3 className="mt-3 text-h3 font-bold">{p.name}</h3>
-        <p className="mt-1 text-base text-ink-2">{p.tagline}</p>
-        {detail && <p className="mt-2 text-sm text-ink-3">{p.blurb}</p>}
-        <p className="mt-4 border-t border-line pt-3 font-mono text-xs text-ink-3">{evidenceLine(p)}</p>
+    <Link href={`/products/${p.slug}/`} className="card flex flex-col overflow-hidden">
+      <CardPicture p={p} tall={lead} />
+      <div className="flex flex-1 flex-col p-3.5">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <StatePill p={p} />
+          <SurfaceTags p={p} />
+        </div>
+        <h3 className="mt-2 text-body font-bold">{p.name}</h3>
+        <p className="mt-0.5 text-sm text-ink-2">{p.tagline}</p>
+        <p className="mt-auto pt-2.5 font-mono text-2xs text-ink-3">{evidenceLine(p)}</p>
       </div>
     </Link>
   );

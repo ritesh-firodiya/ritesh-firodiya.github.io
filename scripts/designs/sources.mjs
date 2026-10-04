@@ -36,6 +36,8 @@ export const SETS = {
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
   "seedha-ghar": { repo: "ritvi-apps/property-app", local: "property-app" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
+  /* Public repo: any token, or none, can read it. */
+  cooking: { repo: "ritvi-apps/cooking", local: "cooking" },
   /* These three moved into ritvi-apps on 2026-10-04 and kept the read-only
      deploy keys they had under their old owners. DESIGNS_TOKEN is scoped to
      named repos and does not list them, so the key is still how each is read.

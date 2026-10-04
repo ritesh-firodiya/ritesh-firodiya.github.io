@@ -61,13 +61,50 @@ const isNoindex = (html) => /<meta name="robots" content="[^"]*noindex/.test(htm
    _not-found is the internal route that produces them. None is a real URL. */
 const NOT_A_PAGE = (route) => route === "/404/" || route === "/_not-found/";
 
+/* A forwarding address: an old URL that now points somewhere else. It is a
+   meta refresh, not a page — noindex, no canonical, not in the sitemap. */
+const forwardOf = (html) => html.match(/<meta http-equiv="refresh" content="0; url=([^"]+)"/)?.[1] ?? null;
+const FORWARDS = { "/products/": "/work/", "/hire/": "/contact/", "/design/gallery/": "/process/", "/work/chitragupt/": "/products/chitragupt/" };
+
 test("out/ actually contains the site", () => {
   const routes = pages().map((p) => p.route);
-  for (const r of ["/", "/products/", "/work/", "/about/", "/contact/", "/hire/", "/legal/", "/support/", "/resume/"]) {
+  for (const r of ["/", "/work/", "/process/", "/about/", "/contact/", "/legal/", "/support/", "/resume/"]) {
     assert.ok(routes.includes(r), `${r} was not exported`);
   }
-  assert.ok(routes.filter((r) => r.startsWith("/products/") && r !== "/products/").length >= 10,
+  assert.ok(routes.filter((r) => /^\/products\/[^/]+\/$/.test(r)).length >= 10,
     "the product pages did not export");
+});
+
+test("every old address still forwards, to a page that exists", () => {
+  const byRoute = new Map(pages().map((p) => [p.route, p.html]));
+  for (const [from, to] of Object.entries(FORWARDS)) {
+    assert.ok(byRoute.has(from), `${from} is gone — store listings and old links still point at it`);
+    assert.equal(forwardOf(byRoute.get(from)), to, `${from} does not forward to ${to}`);
+    assert.ok(byRoute.has(to), `${from} forwards to ${to}, which was not exported`);
+  }
+});
+
+test("the wikis exported, one page per wiki page", () => {
+  const index = JSON.parse(readFileSync(join(root, "src/data/generated/wiki.json"), "utf8")).wiki;
+  const routes = new Set(pages().map((p) => p.route));
+  for (const [slug, w] of Object.entries(index)) {
+    assert.ok(routes.has(`/products/${slug}/wiki/`), `the ${slug} wiki index did not export`);
+    const n = [...routes].filter((r) => r.startsWith(`/products/${slug}/wiki/`) && r !== `/products/${slug}/wiki/`).length;
+    assert.equal(n, w.total, `${slug}: ${w.total} wiki pages were synced and ${n} exported`);
+  }
+});
+
+test("every picture a page shows is a file that shipped", () => {
+  const missing = new Set();
+  for (const { route, html } of pages()) {
+    for (const m of html.matchAll(/<img[^>]+src="(\/[^"]+)"/g)) {
+      if (!existsSync(join(out, decodeURIComponent(m[1])))) missing.add(`${route} → ${m[1]}`);
+    }
+    for (const m of html.matchAll(/<iframe[^>]+src="(\/[^"?]+)/g)) {
+      if (!existsSync(join(out, decodeURIComponent(m[1])))) missing.add(`${route} → ${m[1]}`);
+    }
+  }
+  assert.deepEqual([...missing], [], `these pictures are referenced and missing:\n  ${[...missing].join("\n  ")}`);
 });
 
 test("every indexable page declares its own canonical", () => {
@@ -97,10 +134,10 @@ test("a noindex page does not also declare a canonical", () => {
   }
 });
 
-test("the short links are noindex, and nothing else is", () => {
+test("the short links and the forwarding addresses are noindex, and nothing else is", () => {
   for (const { route, html } of pages()) {
     if (NOT_A_PAGE(route)) continue;
-    const shouldHide = route.startsWith("/go/");
+    const shouldHide = route.startsWith("/go/") || route in FORWARDS;
     assert.equal(isNoindex(html), shouldHide, `${route}: noindex=${isNoindex(html)}, expected ${shouldHide}`);
   }
 });
@@ -109,7 +146,7 @@ test("every page has a title and a description", () => {
   for (const { route, html } of pages()) {
     if (NOT_A_PAGE(route)) continue;
     assert.match(html, /<title>[^<]+<\/title>/, `${route} has no title`);
-    if (route.startsWith("/go/")) continue; // noindex; a description buys nothing
+    if (isNoindex(html)) continue; // a description buys nothing on a page search never shows
     assert.match(html, /<meta name="description" content="[^"]+"/, `${route} has no description`);
   }
 });

@@ -39,6 +39,15 @@ export const SETS = {
 };
 
 const SUBDIR = ".context/designs";
+/** Everything the site reads from a product repo, and nothing else. The wiki
+ *  and the store art come from the same clone as the designs, so there is one
+ *  token, one fetch and one commit SHA per product. */
+const SPARSE = [
+  SUBDIR,
+  ".context/wiki",
+  ".context/listing/ios/screenshots/en-US",
+  ".context/listing/android/metadata/en-US/images",
+];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git", "products");
 
@@ -85,20 +94,24 @@ function cloneSparse(slug, repo, token) {
     4. it grants Contents: read`);
   }
 
-  if (existsSync(dir) && existsSync(stamp) && readFileSync(stamp, "utf8").trim() === head) {
-    return { dir: join(dir, SUBDIR), sha: head, cached: true };
+  /* The stamp names what was checked out as well as which commit. A clone
+     cached before SPARSE gained a folder has the same SHA and none of that
+     folder's files — every wiki would come back empty, silently. */
+  const want = `${head} ${SPARSE.join(",")}`;
+  if (existsSync(dir) && existsSync(stamp) && readFileSync(stamp, "utf8").trim() === want) {
+    return { dir: join(dir, SUBDIR), root: dir, sha: head, cached: true };
   }
 
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(CACHE, { recursive: true });
   try {
     git(["clone", "--depth", "1", "--filter=blob:none", "--sparse", "--quiet", url, dir]);
-    git(["sparse-checkout", "set", SUBDIR], dir);
+    git(["sparse-checkout", "set", ...SPARSE], dir);
   } catch {
     throw new Error(`${repo}: sparse clone failed`);
   }
-  writeFileSync(stamp, head + "\n");
-  return { dir: join(dir, SUBDIR), sha: head, cached: false };
+  writeFileSync(stamp, want + "\n");
+  return { dir: join(dir, SUBDIR), root: dir, sha: head, cached: false };
 }
 
 /**
@@ -128,7 +141,7 @@ export function resolveSources() {
     } else {
       const dir = join(LOCAL_ROOT, cfg.local, SUBDIR);
       if (!existsSync(dir)) { missing.push(`${slug} (${dir})`); continue; }
-      out[slug] = { dir, sha: null, cached: false, origin: cfg.local, mode };
+      out[slug] = { dir, root: join(LOCAL_ROOT, cfg.local), sha: null, cached: false, origin: cfg.local, mode };
     }
   }
 
@@ -141,4 +154,23 @@ export function resolveSources() {
     );
   }
   return { mode, sets: out };
+}
+
+/**
+ * Every tracked path in a product repo, without fetching a single blob.
+ *
+ * The stage board asks "does this product have research, a feature list,
+ * marketing?" — questions about which files exist, not what is in them. A
+ * blobless clone already holds the whole tree, so `ls-tree` answers for free.
+ * Locally `ls-files` gives the same list and skips node_modules.
+ */
+export function listTree(source) {
+  const args = source.mode === "remote" ? ["ls-tree", "-r", "--name-only", "HEAD"] : ["ls-files"];
+  try {
+    return execFileSync("git", args, { cwd: source.root, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 })
+      .split("\n")
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
 }

@@ -20,7 +20,7 @@ const PHOTO = `data:image/jpeg;base64,${readFileSync(
 export default async function AppleIcon() {
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: "#14130f" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", background: "#0B1220" }}>
         <img src={PHOTO} width={180} height={180} alt="" />
       </div>
     ),

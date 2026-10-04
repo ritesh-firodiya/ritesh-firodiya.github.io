@@ -1,352 +1,250 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Design tokens — ported from .context/designs/shared.css
+   Design tokens — ported from .context/designs/web/shared.css
+   Direction: PROOF. The reader is hiring. Cool paper, navy ink, one blue, and
+   white cards that hold real screenshots.
 
-   This is the payoff for the rule every design set in ~/git follows: a Tailwind
-   value is always `var(--token)`, never a literal. Tailwind v4 defines its
-   theme in CSS rather than in JavaScript, so the `:root` block from the
-   wireframes becomes the real theme almost verbatim. A port, not a rewrite.
+   Tailwind v4 defines its theme in CSS, so the palette block of the design set
+   becomes the real theme almost verbatim. v4 namespaces decide which utility a
+   variable generates:
+     --color-*   → bg-*, text-*, border-*
+     --text-*    → text-*  (+ --text-*--line-height / --letter-spacing)
+     --font-*    → font-*
+     --radius-*  → rounded-*
+     --shadow-*  → shadow-*
+   A token with no entry here has no utility. That is the enforcement: you
+   cannot use a colour you did not define.
 
-   v4 namespaces decide which utility a variable generates:
-     --color-*     → bg-*, text-*, border-*
-     --text-*      → text-*  (+ --text-*--line-height / --letter-spacing)
-     --font-*      → font-*
-     --radius-*    → rounded-*
-     --shadow-*    → shadow-*
-     --tracking-*  → tracking-*
-     --container-* → max-w-*
-
-   A token with no entry here simply has no utility. That is the enforcement:
-   you cannot use a colour you did not define.
+   Role names, never hues (STYLE-GUIDE.md §8). The CSS variable is the Tailwind
+   token path with dots as dashes; v4's `--color-` prefix is the one unavoidable
+   difference from the set's `shared.css`. `pnpm contrast` checks both files.
    ═══════════════════════════════════════════════════════════════════════════ */
-
 @theme {
-  /* ═══ §8 of ~/git/personal/STYLE-GUIDE.md ═══════════════════════════════
-     The same palette contract every product design set declares, so one
-     vocabulary covers the estate: learn `ink-2` or `line-strong` once and it
-     means the same thing in charades, in askcal and here.
+  /* ── Ground ── */
+  --color-page:    #F5F6F8;
+  --color-frame:   #F5F6F8;
+  --color-surface: #FFFFFF;
+  --color-muted:   #ECEEF2;
+  --color-sunken:  #E1E4EA;
 
-     The naming rule is the whole policy:
-       the CSS variable is the Tailwind token path with dots as dashes.
-       `line.strong` ↔ `--line-strong`   `ink.2` ↔ `--ink-2`
+  /* ── Ink. ink-3 is the quiet floor that still passes AA on page; ink-4 is
+     for disabled and struck-through only. ── */
+  --color-ink:         #0B1220;
+  --color-ink-2:       #3A4458;
+  --color-ink-3:       #5A6478;
+  --color-ink-4:       #7A8496;
+  --color-ink-inverse: #FFFFFF;
 
-     Roles, never hues. `brand` is burnt sienna today; calling it `sienna`
-     would make a repalette a rename across every file. Tailwind v4 prefixes
-     the colour namespace with `--color-`, which is the one unavoidable
-     difference from a design set's `shared.css`.
-     ═══════════════════════════════════════════════════════════════════════ */
+  --color-line:        #DFE3EA;
+  --color-line-strong: #C3C9D4;
 
-  /* ── Ground ───────────────────────────────────────────────────────────────
-     Warm paper, not white. `frame` is the opaque card ground — the website's
-     equivalent of a set's phone frame, and for the same reason: `surface` may
-     become a translucent tint in a dark palette and would show straight
-     through anything laid over a backdrop. */
-  --color-page:    #fbf9f4;
-  --color-frame:   #ffffff;
-  --color-surface: #ffffff;
-  --color-muted:   #f4f0e6;
-  --color-sunken:  #ebe5d6;
+  /* ── Brand — the one blue. Links, the primary button, the active tab. ── */
+  --color-brand-50:  #EEF1FF;
+  --color-brand-100: #DDE3FF;
+  --color-brand-200: #BBC6FF;
+  --color-brand-400: #6177F5;
+  --color-brand-500: #3147E8;
+  --color-brand-700: #2233B0;
+  --color-brand-900: #141E6B;
 
-  /* ── Ink ──────────────────────────────────────────────────────────────────
-     Warm near-black, not #000. ink-3 is the quiet floor that still passes AA
-     on page; ink-4 is for disabled and struck-through only, and is the one
-     step that does not. Contrast ratios are asserted by scripts/check-contrast.mjs. */
-  --color-ink:         #14130f;
-  --color-ink-2:       #45423a;
-  --color-ink-3:       #6f6a61;
-  --color-ink-4:       #918b80;
-  --color-ink-inverse: #fbf9f4;
+  /* ── Status ── */
+  --color-success:    #14713F;
+  --color-success-bg: #E6F3EB;
+  --color-success-fg: #0D4A29;
+  --color-warn:       #8A5A00;
+  --color-warn-bg:    #F8EEDC;
+  --color-warn-fg:    #5C3C00;
+  --color-danger:     #A11B1B;
+  --color-danger-bg:  #F8E7E7;
+  --color-danger-fg:  #6E1212;
+  --color-info:       #1F4E8C;
+  --color-info-bg:    #E7EEF8;
+  --color-info-fg:    #14355F;
 
-  --color-line:        #e4dfd2;
-  --color-line-strong: #cfc8b6;
+  /* ── Inverted band — the contact block and the footer. NOT ink + ink-inverse:
+     those flip with the theme and turn a dark page's footer into a white slab. ── */
+  --color-band:     #0B1220;
+  --color-band-ink: #FFFFFF;
+  --color-band-2:   #9AA5BA;
 
-  /* ── Brand — burnt sienna ─────────────────────────────────────────────────
-     A full ramp rather than the three ad-hoc steps this replaced, because §8
-     names the steps and a set that declares only some of them cannot be
-     re-themed by the same edit as its neighbours. brand-500 is safe for body
-     links, not only decoration. */
-  --color-brand-50:  #f7ebe6;
-  --color-brand-100: #f0d9d1;
-  --color-brand-200: #e0b3a4;
-  --color-brand-400: #a9452f;
-  --color-brand-500: #8a3324;
-  --color-brand-700: #6b261a;
-  --color-brand-900: #3f1610;
-
-  /* ── Status — §8 requires all four, each with -bg and -fg ─────────────────
-     These are the framework's four. They are NOT the release states below:
-     a product being in beta is not a warning. */
-  --color-success:    #2c6e49;
-  --color-success-bg: #e6f1ea;
-  --color-success-fg: #1d4a31;
-  --color-warn:       #8a6114;
-  --color-warn-bg:    #f7eeda;
-  --color-warn-fg:    #5c400d;
-  --color-danger:     #9b2c2c;
-  --color-danger-bg:  #f7e6e6;
-  --color-danger-fg:  #6b1f1f;
-  --color-info:       #38587a;
-  --color-info-bg:    #e8eef5;
-  --color-info-fg:    #264057;
-
-
-  /* ── Inverted band ────────────────────────────────────────────────────────
-     A band that reverses out of the page: the contact block, the footer.
-
-     It cannot be `bg-ink` + `text-ink-inverse`. Those two flip with the theme
-     — which is correct for them and wrong here — so on a dark page the footer
-     came out as a bright cream slab, the single loudest thing on the screen.
-     "Inverted" has to mean "the opposite of the page", and in a dark palette
-     the opposite of near-black is not near-white; it is a panel lifted a
-     little off the page. */
-  --color-band:     #14130f;
-  --color-band-ink: #fbf9f4;
-  /* Lightened, not ink-2. The quiet tone on an inverted band has to move
-     AWAY from the band, and ink-2 on near-black is 1.85:1 — the contrast
-     check caught it before it shipped. */
-  --color-band-2:   #8e887c;
-
-  /* r g b, so a shadow can be rgb(var(--shadow-tint) / 0.18) and follow the
-     theme. §8 requires the triple form. */
-  --shadow-tint: 20 19 15;
-
-  /* ── RESERVED · this site's own meaning ───────────────────────────────────
-     §8: "Each product declares its reserved colours — the one or two that
-     carry product meaning and may not be reused."
-
-     Here it is the monetization model, and it is the reason this site exists.
-     Five models at EQUAL visual weight: there is no good colour and no bad
-     colour. A subscription is not a warning and ad-supported is not a
-     confession — they are facts a person needs before they tap install.
-
-     An earlier version of this site claimed "no ads in our games" and
-     "one-time purchases, not subscriptions" on a page linked from live store
-     listings. Tic Tac Toe ships an AdMob banner and interstitial; four of
-     eight apps are subscriptions. A studio-wide promise was the wrong SHAPE
-     of claim. A per-app fact is the right one, and it needs its own scale —
-     which is exactly why these may not be reused for anything else. */
-  --color-m-free:      #5a5750;
-  --color-m-free-bg: #efece3;
-  --color-m-ads:       #8a5a0b;
-  --color-m-ads-bg:  #f7eeda;
-  --color-m-once:      #2c6e49;
-  --color-m-once-bg: #e6f1ea;
-  --color-m-sub:       #34508c;
-  --color-m-sub-bg:  #e7ecf5;
-  --color-m-year:      #6b3a7a;
-  --color-m-year-bg: #f1e9f4;
+  /* r g b, so a shadow can follow the theme. */
+  --shadow-tint: 11 18 32;
+  --shadow-a1: 0.05;
+  --shadow-a2: 0.07;
+  --shadow-a3: 0.18;
 
   /* ── RESERVED · release state ─────────────────────────────────────────────
-     Independent of model. A product has a price AND a release state, and
-     conflating them is how "coming soon" ends up meaning four things. */
-  --color-live:        #2c6e49;
-  --color-live-bg:   #e6f1ea;
-  --color-beta:        #8a6114;
-  --color-beta-bg:   #f7eeda;
-  --color-build:       #38587a;
-  --color-build-bg:  #e8eef5;
-  --color-idea:      #6b6357;
-  --color-idea-bg: #efebe1;
+     Green: anyone can install or open it today. Amber: a build exists behind a
+     door. Violet: code exists and nothing is installable. Slate: designs only.
+     A project's state is a fact about the project, not a verdict on it, so
+     these borrow from neither `success` nor `warn` and are used for nothing
+     else. */
+  --color-live:     #14713F;
+  --color-live-bg:  #E6F3EB;
+  --color-test:     #8A5A00;
+  --color-test-bg:  #F8EEDC;
+  --color-build:    #5B3FB8;
+  --color-build-bg: #EEE9FB;
+  --color-draft:    #4F5A70;
+  --color-draft-bg: #E9ECF1;
 
-  /* ── Type ─────────────────────────────────────────────────────────────────
-     Fraunces for display only — a variable optical-size serif, warm, editorial,
-     and almost unused in engineer portfolios, which is the point when the thing
-     being replaced was a template everyone recognises. Inter carries every word
-     anyone reads. Mono is labels, dates and stacks.
-     Families are injected by next/font in layout.tsx. */
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono:    var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* ── Type. Inter carries every word; mono is labels, dates and counts.
+     Families are injected by next/font in layout.tsx. ── */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --text-d1: clamp(2rem, 1.3rem + 2.2vw, 2.75rem);
-  --text-d1--line-height: 1.05;
-  --text-d1--letter-spacing: -0.03em;
-  --text-d2: clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
-  --text-d2--line-height: 1.15;
-  --text-d2--letter-spacing: -0.02em;
-  --text-h2: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-  --text-h2--line-height: 1.12;
-  --text-h2--letter-spacing: -0.02em;
-  --text-h3: 1.1875rem;
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: 1.3;
+  --text-xs: 0.71875rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.45;
+  --text-base: 0.875rem;
+  --text-base--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.45;
+  --text-h3: 1.375rem;
   --text-h3--line-height: 1.25;
   --text-h3--letter-spacing: -0.01em;
-  --text-lead: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
-  --text-lead--line-height: 1.6;
-  --text-body: 1rem;
-  --text-body--line-height: 1.6;
-  --text-small: 0.9375rem;
-  --text-small--line-height: 1.6;
-  --text-xs2: 0.8125rem;
-  --text-xs2--line-height: 1.5;
-  --text-label: 0.6875rem;
-  --text-label--line-height: 1.4;
-  --text-label--letter-spacing: 0.14em;
+  --text-h2: 1.75rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
 
-  --tracking-label: 0.14em;
-
-  /* ── Measure ──────────────────────────────────────────────────────────────
-     The site this replaced gave content 50% of the viewport and left the rest
-     empty. Content owns the page now; the measure caps line length on purpose
-     rather than a column cap doing it by accident. */
-  --container-page:    70rem;
-  --container-prose:   68ch;
-  --container-measure: 58ch;
-
-  --radius-card: 14px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-pill: 999px;
 
-  --shadow-lift:  0 1px 2px rgb(20 19 15 / 0.04), 0 8px 24px -12px rgb(20 19 15 / 0.18);
-  --shadow-frame: 0 2px 6px rgb(20 19 15 / 0.06), 0 24px 56px -24px rgb(20 19 15 / 0.34);
+  --shadow-sm: 0 1px 2px rgb(var(--shadow-tint) / var(--shadow-a1));
+  --shadow-md: 0 4px 14px rgb(var(--shadow-tint) / var(--shadow-a2));
+  --shadow-lg: 0 14px 34px -10px rgb(var(--shadow-tint) / var(--shadow-a3));
 }
 
 /* ═══ Dark — a token remap, never a `dark:` prefix ═════════════════════════
-   §8: "A theme is a token remap, never a `dark:` prefix and never a second set
-   of utilities." A design set does it with `.phone--dark`; a website does it
-   on the root. Either way every utility already reads `var(--color-…)`, so
-   nothing below restyles a single class — it moves what the classes resolve to.
+   Every utility already reads `var(--color-…)`, so nothing below restyles a
+   class — it moves what the classes resolve to.
 
-   Three states, and the order matters. `@theme` defines the light palette on
-   bare `:root`. The media query catches the system default and is guarded so
-   an explicit light choice still wins. The attribute block comes last so the
-   toggle beats the system in both directions.
+   Three states, and the order matters. `@theme` defines the light palette. The
+   media query catches the system default and is guarded so an explicit light
+   choice still wins. The attribute block comes last so the toggle beats the
+   system in both directions.
 
-   Roles invert rather than values: in dark, brand-50 is the DARKEST sienna and
-   brand-900 the lightest, because `brand-50` means "the quietest wash of the
-   brand" and not "a light colour". A set that flipped only some of them would
-   paint a wash darker than the text on it. */
+   Roles invert rather than values: brand-50 stays "the quietest wash of the
+   brand" and becomes the darkest blue, and brand-500 moves up the ramp because
+   the readable blue on navy is the lighter one. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) { color-scheme: dark; }
-  :root:not([data-theme="light"]) { --dark: 1; }
 }
-:root[data-theme="dark"] { color-scheme: dark; --dark: 1; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-page:    #121110;
-    --color-frame:   #1c1a17;
-    --color-surface: #1c1a17;
-    --color-muted:   #1a1815;
-    --color-sunken:  #0c0b0a;
+    --color-page:    #0A0E16;
+    --color-frame:   #0A0E16;
+    --color-surface: #131926;
+    --color-muted:   #101521;
+    --color-sunken:  #06090F;
 
-    --color-ink:         #f3f0e9;
-    --color-ink-2:       #c4bdb0;
-    --color-ink-3:       #968f83;
-    --color-ink-4:       #6f6961;
-    --color-ink-inverse: #14130f;
+    --color-ink:         #EDF0F6;
+    --color-ink-2:       #B5BDCC;
+    --color-ink-3:       #8D97AA;
+    --color-ink-4:       #687286;
+    --color-ink-inverse: #0A0E16;
 
-    --color-line:        #2b2926;
-    --color-line-strong: #423f39;
+    --color-line:        #222A3A;
+    --color-line-strong: #364057;
 
-    --color-brand-50:  #2a1712;
-    --color-brand-100: #3d201a;
-    --color-brand-200: #5c3125;
-    --color-brand-400: #c96a4d;
-    --color-brand-500: #e08a6b;
-    --color-brand-700: #eda98e;
-    --color-brand-900: #f6d5c6;
+    --color-brand-50:  #111838;
+    --color-brand-100: #18224F;
+    --color-brand-200: #25347A;
+    --color-brand-400: #6F84FF;
+    --color-brand-500: #8C9DFF;
+    --color-brand-700: #B7C2FF;
+    --color-brand-900: #E0E5FF;
 
-    --color-success:    #6fbf8f;
-    --color-success-bg: #17281f;
-    --color-success-fg: #9fd9b5;
-    --color-warn:       #d4a44a;
-    --color-warn-bg:    #2a2113;
-    --color-warn-fg:    #e8c884;
-    --color-danger:     #e08585;
-    --color-danger-bg:  #2b1818;
-    --color-danger-fg:  #f0aeae;
-    --color-info:       #7fa8d4;
-    --color-info-bg:    #17212b;
-    --color-info-fg:    #aac8e6;
+    --color-success:    #57C98A;
+    --color-success-bg: #12261B;
+    --color-success-fg: #A6E3C2;
+    --color-warn:       #D9A441;
+    --color-warn-bg:    #261E0F;
+    --color-warn-fg:    #EBCB8B;
+    --color-danger:     #EF7A7A;
+    --color-danger-bg:  #2A1414;
+    --color-danger-fg:  #F6B5B5;
+    --color-info:       #7FA8DE;
+    --color-info-bg:    #131C28;
+    --color-info-fg:    #B7CFEE;
 
-    --color-band:     #1c1a17;
-    --color-band-ink: #f3f0e9;
-    --color-band-2:   #c4bdb0;
+    --color-band:     #131926;
+    --color-band-ink: #EDF0F6;
+    --color-band-2:   #8D97AA;
 
     --shadow-tint: 0 0 0;
+    --shadow-a1: 0.3;
+    --shadow-a2: 0.4;
+    --shadow-a3: 0.6;
 
-    /* The reserved scales follow too, or a model pill keeps a light wash
-       behind dark text and becomes the only unreadable thing on the page. */
-    --color-m-free: #a9a396; --color-m-free-bg: #201e1a;
-    --color-m-ads:  #d4a44a; --color-m-ads-bg:  #2a2113;
-    --color-m-once: #6fbf8f; --color-m-once-bg: #17281f;
-    --color-m-sub:  #86a8e0; --color-m-sub-bg:  #171d2a;
-    --color-m-year: #bf92cc; --color-m-year-bg: #241a28;
-
-    --color-live:   #6fbf8f; --color-live-bg:   #17281f;
-    --color-beta:   #d4a44a; --color-beta-bg:   #2a2113;
-    --color-build:  #7fa8d4; --color-build-bg:  #17212b;
-    --color-idea: #a9a396; --color-idea-bg: #201e1a;
+    --color-live:  #57C98A; --color-live-bg:  #12261B;
+    --color-test:  #D9A441; --color-test-bg:  #261E0F;
+    --color-build: #A893F0; --color-build-bg: #1C1730;
+    --color-draft: #A3ACBD; --color-draft-bg: #1A1F2B;
   }
 }
 
 :root[data-theme="dark"] {
-    --color-page:    #121110;
-    --color-frame:   #1c1a17;
-    --color-surface: #1c1a17;
-    --color-muted:   #1a1815;
-    --color-sunken:  #0c0b0a;
+    --color-page:    #0A0E16;
+    --color-frame:   #0A0E16;
+    --color-surface: #131926;
+    --color-muted:   #101521;
+    --color-sunken:  #06090F;
 
-    --color-ink:         #f3f0e9;
-    --color-ink-2:       #c4bdb0;
-    --color-ink-3:       #968f83;
-    --color-ink-4:       #6f6961;
-    --color-ink-inverse: #14130f;
+    --color-ink:         #EDF0F6;
+    --color-ink-2:       #B5BDCC;
+    --color-ink-3:       #8D97AA;
+    --color-ink-4:       #687286;
+    --color-ink-inverse: #0A0E16;
 
-    --color-line:        #2b2926;
-    --color-line-strong: #423f39;
+    --color-line:        #222A3A;
+    --color-line-strong: #364057;
 
-    --color-brand-50:  #2a1712;
-    --color-brand-100: #3d201a;
-    --color-brand-200: #5c3125;
-    --color-brand-400: #c96a4d;
-    --color-brand-500: #e08a6b;
-    --color-brand-700: #eda98e;
-    --color-brand-900: #f6d5c6;
+    --color-brand-50:  #111838;
+    --color-brand-100: #18224F;
+    --color-brand-200: #25347A;
+    --color-brand-400: #6F84FF;
+    --color-brand-500: #8C9DFF;
+    --color-brand-700: #B7C2FF;
+    --color-brand-900: #E0E5FF;
 
-    --color-success:    #6fbf8f;
-    --color-success-bg: #17281f;
-    --color-success-fg: #9fd9b5;
-    --color-warn:       #d4a44a;
-    --color-warn-bg:    #2a2113;
-    --color-warn-fg:    #e8c884;
-    --color-danger:     #e08585;
-    --color-danger-bg:  #2b1818;
-    --color-danger-fg:  #f0aeae;
-    --color-info:       #7fa8d4;
-    --color-info-bg:    #17212b;
-    --color-info-fg:    #aac8e6;
+    --color-success:    #57C98A;
+    --color-success-bg: #12261B;
+    --color-success-fg: #A6E3C2;
+    --color-warn:       #D9A441;
+    --color-warn-bg:    #261E0F;
+    --color-warn-fg:    #EBCB8B;
+    --color-danger:     #EF7A7A;
+    --color-danger-bg:  #2A1414;
+    --color-danger-fg:  #F6B5B5;
+    --color-info:       #7FA8DE;
+    --color-info-bg:    #131C28;
+    --color-info-fg:    #B7CFEE;
 
-    --color-band:     #1c1a17;
-    --color-band-ink: #f3f0e9;
-    --color-band-2:   #c4bdb0;
+    --color-band:     #131926;
+    --color-band-ink: #EDF0F6;
+    --color-band-2:   #8D97AA;
 
     --shadow-tint: 0 0 0;
+    --shadow-a1: 0.3;
+    --shadow-a2: 0.4;
+    --shadow-a3: 0.6;
 
-    /* The reserved scales follow too, or a model pill keeps a light wash
-       behind dark text and becomes the only unreadable thing on the page. */
-    --color-m-free: #a9a396; --color-m-free-bg: #201e1a;
-    --color-m-ads:  #d4a44a; --color-m-ads-bg:  #2a2113;
-    --color-m-once: #6fbf8f; --color-m-once-bg: #17281f;
-    --color-m-sub:  #86a8e0; --color-m-sub-bg:  #171d2a;
-    --color-m-year: #bf92cc; --color-m-year-bg: #241a28;
-
-    --color-live:   #6fbf8f; --color-live-bg:   #17281f;
-    --color-beta:   #d4a44a; --color-beta-bg:   #2a2113;
-    --color-build:  #7fa8d4; --color-build-bg:  #17212b;
-    --color-idea: #a9a396; --color-idea-bg: #201e1a;
-}
-
-/* Section rhythm and page gutter. Outside @theme because they are only ever
-   used as padding, so a full utility scale would add nothing.
-
-   Halved in Sep 2026. The first version spent a full viewport on a three-line
-   headline and forty words, on a portfolio that announced 264 design screens
-   and then showed none of them. Density is not decoration here: the page has
-   to carry evidence, and evidence needs the room the headline was taking. */
-:root {
-  --sp-section: clamp(2rem, 1.4rem + 2vw, 3.5rem);
-  --sp-gutter: clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem);
+    --color-live:  #57C98A; --color-live-bg:  #12261B;
+    --color-test:  #D9A441; --color-test-bg:  #261E0F;
+    --color-build: #A893F0; --color-build-bg: #1C1730;
+    --color-draft: #A3ACBD; --color-draft-bg: #1A1F2B;
 }
 
 @layer base {
@@ -359,14 +257,9 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
-  /* Fraunces ships soft/wonk axes; dial them warm once, globally, so no
-     component has to remember a font-variation-settings string. */
-  .font-display {
-    font-variation-settings: "SOFT" 28, "WONK" 1;
-  }
   ::selection {
-    background: var(--color-brand-50);
-    color: var(--color-brand-500);
+    background: var(--color-brand-100);
+    color: var(--color-brand-900);
   }
   :focus-visible {
     outline: 2px solid var(--color-brand-500);
@@ -374,142 +267,202 @@
   }
 }
 
-@layer utilities {
-  .px-gutter { padding-inline: var(--sp-gutter); }
-  .py-section { padding-block: var(--sp-section); }
-  .pt-section { padding-top: var(--sp-section); }
-  .pb-section { padding-bottom: var(--sp-section); }
-  .mt-section { margin-top: var(--sp-section); }
-}
-
 /* ═══════════════════════════════════════════════════════════════════════════
-   Things Tailwind cannot express
-   There is no .btn, .card, .chip or .row in here. A component class Tailwind
-   can already express is a second source of truth, and it drifts.
+   Components — the same classes the design set declares, in the same order.
+   In a layer, so a utility on the same element still wins: `.card` sets a
+   background and `bg-page` beside it must be able to change it.
    ═══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+  /* The page column. One width for every band on every screen. */
+  .wrap { width: 100%; max-width: 1168px; margin-inline: auto; padding-inline: 24px; }
+  @media (min-width: 768px) { .wrap { padding-inline: 40px; } }
 
-/* An editorial hairline that fades out rather than stopping dead. */
-.rule-fade {
-  height: 1px;
-  background: linear-gradient(90deg, var(--color-line-strong), var(--color-line-strong) 45%, transparent);
+  /* ---- type ---- */
+  .hero-title {
+    font-size: clamp(2.25rem, 4.4vw, 3.75rem);
+    line-height: 1.05; letter-spacing: -0.035em; font-weight: 800;
+  }
+  .page-title {
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    line-height: 1.06; letter-spacing: -0.03em; font-weight: 800;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.12; letter-spacing: -0.025em; font-weight: 700;
+  }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.4;
+    text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-3);
+  }
+  .figure {
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem); line-height: 1;
+    letter-spacing: -0.03em; font-weight: 800; font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- actions ---- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 18px; border-radius: var(--radius-pill);
+    font-size: var(--text-base); font-weight: 600; line-height: 1.2;
+    border: 1px solid transparent; text-decoration: none; white-space: nowrap;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .btn-primary { background: var(--color-brand-500); color: var(--color-ink-inverse); }
+  .btn-primary:hover { background: var(--color-brand-700); }
+  .btn-quiet { background: var(--color-surface); color: var(--color-ink); border-color: var(--color-line-strong); }
+  .btn-quiet:hover { border-color: var(--color-brand-500); color: var(--color-brand-500); }
+  /* On the inverted band, where surface and ink do not apply. */
+  .btn-band { background: var(--color-band-ink); color: var(--color-band); }
+  .btn-band-quiet { color: var(--color-band-ink); border-color: var(--color-band-2); }
+  /* A platform nobody can install from. Rendered, never hidden, with its reason. */
+  .btn-off {
+    background: var(--color-muted); color: var(--color-ink-3); border-color: var(--color-line);
+    border-style: dashed; cursor: not-allowed;
+  }
+  .text-link {
+    color: var(--color-brand-500); font-weight: 600; text-decoration: underline;
+    text-decoration-color: var(--color-brand-200); text-underline-offset: 4px;
+  }
+  .text-link:hover { text-decoration-color: var(--color-brand-500); }
+
+  /* ---- surfaces ---- */
+  .card {
+    background: var(--color-surface); border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+  }
+  /* :where keeps this at zero specificity, so a `flex` utility on the same link wins. */
+  :where(a.card) { display: block; }
+  a.card { text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s, transform .15s; }
+  a.card:hover { border-color: var(--color-brand-200); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  /* ---- RESERVED · the release state pill ---- */
+  .state {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: var(--radius-pill);
+    font-size: var(--text-xs); font-weight: 600; line-height: 1.5; white-space: nowrap;
+  }
+  .state::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+  .state--live  { color: var(--color-live);  background: var(--color-live-bg); }
+  .state--test  { color: var(--color-test);  background: var(--color-test-bg); }
+  .state--build { color: var(--color-build); background: var(--color-build-bg); }
+  .state--draft { color: var(--color-draft); background: var(--color-draft-bg); }
+
+  /* A stack name, a page type, a filter. Never a state. */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: var(--radius-pill);
+    font-size: var(--text-xs); line-height: 1.5; color: var(--color-ink-2);
+    background: var(--color-muted); border: 1px solid var(--color-line); white-space: nowrap;
+  }
+  .chip--on { background: var(--color-ink); color: var(--color-page); border-color: var(--color-ink); }
+
+  /* ---- pictures. NOTHING IS COPIED INTO THIS REPO. ------------------------------
+     A picture is either a product's own store art, read from its listing folder,
+     or a product's own design screen, embedded live. */
+  .shot { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
+  /* In a fixed-height card slot: fill it, and start just under the headline so the app itself shows. */
+  .shot--crop { height: 100%; object-fit: cover; object-position: 50% 35%; border-radius: 0; }
+
+  /* A design screen at its own logical size, scaled to the box. tan(atan2()) is
+     how CSS divides one length by another and gets a number. Because it is the
+     real file, it follows the theme toggle. */
+  .embed {
+    position: relative; width: 100%; aspect-ratio: 1440 / 900; overflow: hidden;
+    container-type: inline-size; background: var(--color-sunken);
+  }
+  .embed iframe {
+    position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0;
+    pointer-events: none; transform-origin: 0 0;
+    transform: scale(tan(atan2(100cqw, 1440px)));
+  }
+  /* In a fixed-height card slot: fill the slot rather than keep 16:10. */
+  .embed--fill { height: 100%; aspect-ratio: auto; }
+  .embed--fill iframe { height: 1200px; }
+  .embed--phone { aspect-ratio: 390 / 844; }
+  .embed--phone iframe { width: 390px; height: 844px; transform: scale(tan(atan2(100cqw, 390px))); }
+
+  /* ---- the eight stages, as a line you read left to right ---- */
+  .track { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+  .track-step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-right: 12px; }
+  .track-step::before {
+    content: ""; position: absolute; top: 17px; left: 36px; right: 0; height: 2px; background: var(--color-line-strong);
+  }
+  .track-step:last-child::before { display: none; }
+  .track-pin {
+    position: relative; display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 8px;
+    border-radius: 999px; border: 2px solid var(--color-brand-200); background: var(--color-brand-50); color: var(--color-brand-500);
+  }
+  .track-step--done .track-pin { background: var(--color-brand-500); border-color: var(--color-brand-500); color: var(--color-ink-inverse); }
+  .track-step--done::before { background: var(--color-brand-500); }
+  .track-step--half .track-pin { background: var(--color-surface); border-color: var(--color-brand-500); }
+
+  /* One cell of the board: done, under way, not started. */
+  .dot { display: inline-block; width: 14px; height: 14px; border-radius: 999px; background: var(--color-brand-500); border: 2px solid var(--color-brand-500); }
+  .dot--half { background: linear-gradient(90deg, var(--color-brand-500) 50%, transparent 50%); }
+  .dot--none { background: transparent; border-color: var(--color-line-strong); }
+
+  /* A deliberately empty slot. A missing asset is visibly missing; a plain grey
+     box reads as a surface that happens to be blank, and hatching does not. */
+  .slot {
+    background:
+      repeating-linear-gradient(135deg, transparent 0 10px, rgb(var(--shadow-tint) / .06) 10px 11px),
+      var(--color-muted);
+    border: 1px dashed var(--color-line-strong);
+  }
+
+  /* ---- the flow sketch on Home and How I build: boxes joined by a rule ---- */
+  .node {
+    position: relative; padding: 8px 12px; border-radius: var(--radius-sm);
+    background: var(--color-surface); border: 1px solid var(--color-line-strong);
+    border-left: 3px solid var(--color-brand-500);
+    font-size: var(--text-xs); font-weight: 600; white-space: nowrap;
+  }
+  .node--quiet { border-left-color: var(--color-line-strong); color: var(--color-ink-3); }
+  .node-link { height: 1px; background: var(--color-line-strong); flex: 1 1 16px; min-width: 16px; }
+
+  /* ---- a table that reads as rows, not as a grid ---- */
+  .tbl { width: 100%; border-collapse: collapse; text-align: left; }
+  .tbl th {
+    font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-ink-3);
+    padding: 12px 16px; border-bottom: 1px solid var(--color-line); background: var(--color-muted);
+  }
+  .tbl td { padding: 14px 16px; border-bottom: 1px solid var(--color-line); font-size: var(--text-base); vertical-align: middle; }
+  .tbl tr:last-child td { border-bottom: 0; }
+
+  /* ---- a rendered wiki page. Markdown in, this out. ---- */
+  .wiki-prose { font-size: var(--text-body); line-height: 1.65; color: var(--color-ink-2); }
+  .wiki-prose h2 {
+    font-size: var(--text-h3); line-height: 1.25; letter-spacing: -0.01em; font-weight: 700;
+    color: var(--color-ink); margin: 36px 0 10px; padding-top: 20px; border-top: 1px solid var(--color-line);
+  }
+  .wiki-prose h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .wiki-prose p { margin: 0 0 14px; }
+  .wiki-prose b, .wiki-prose strong { color: var(--color-ink); font-weight: 600; }
+  .wiki-prose ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
+  .wiki-prose li { margin-bottom: 6px; }
+  .wiki-prose code {
+    font-family: var(--font-mono); font-size: 0.86em; padding: 1px 6px;
+    border-radius: 6px; background: var(--color-muted); border: 1px solid var(--color-line);
+  }
+  .wiki-prose a { color: var(--color-brand-500); text-decoration: underline; text-decoration-color: var(--color-brand-200); text-underline-offset: 3px; }
+
+  /* The header's own blur, so the bar stays readable over a screenshot. */
+  .site-head {
+    position: sticky; top: 0; z-index: 30;
+    background: color-mix(in srgb, var(--color-page) 88%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-line);
+  }
+  .nav-link { color: var(--color-ink-2); font-size: var(--text-base); font-weight: 500; white-space: nowrap; padding: 6px 0; border-bottom: 2px solid transparent; }
+  .nav-link:hover { color: var(--color-ink); }
+  .nav-link--on { color: var(--color-ink); border-bottom-color: var(--color-brand-500); }
+
+  /* The hairline inside the inverted band. --line belongs to the page, not the band. */
+  .band-rule { border-top: 1px solid color-mix(in srgb, var(--color-band-2) 30%, transparent); }
+
+  /* The eyebrow on the inverted band, where ink-3 does not apply. */
+  .eyebrow--band { color: var(--color-band-2); }
 }
-
-/* Paper grain over the hero band only. Without it a large flat warm field
-   banners on wide displays. */
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Underline that grows from the left on hover. Used on every prose link. */
-.link-u {
-  background-image: linear-gradient(var(--color-brand-500), var(--color-brand-500));
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.22s ease;
-}
-.link-u:hover { background-size: 100% 1px; }
-
-/* Device and browser frames for product screenshots. */
-.device {
-  border-radius: 34px;
-  background: linear-gradient(160deg, #2a2822, #15140f);
-  padding: 9px;
-  box-shadow: var(--shadow-frame);
-}
-.device-screen {
-  border-radius: 26px;
-  overflow: hidden;
-  display: block;
-  background: var(--color-surface);
-}
-.browser {
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  box-shadow: var(--shadow-frame);
-  background: var(--color-surface);
-}
-.browser-bar {
-  height: 34px;
-  background: var(--color-muted);
-  border-bottom: 1px solid var(--color-line);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 12px;
-}
-.browser-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--color-line-strong); }
-
-/* Every image slot is a labelled placeholder, so an asset that never arrived is
-   obvious at review instead of shipping as a grey box. */
-/* A deliberately empty slot. The rule is that a missing asset is visibly
-   missing; a plain grey box reads as a surface that happens to be blank, and
-   hatching does not. Named `slot` to match the class in the design set —
-   one vocabulary across both, which is the whole point of §8.
-
-   The hatch reads --shadow-tint rather than a literal. It was rgb(20 19 15),
-   the light ink, which on the dark palette drew near-black lines on a dark
-   ground and made the slot look like a rendering fault. */
-.slot {
-  background:
-    repeating-linear-gradient(135deg, transparent 0 11px, rgb(var(--shadow-tint) / 0.06) 11px 12px),
-    linear-gradient(160deg, var(--color-muted), var(--color-sunken));
-  border: 1px dashed var(--color-line-strong);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-/* A store button that is real but unavailable — disabled, with the reason
-   beside it. Not a hidden button, and not a live-looking one. */
-.btn-off { opacity: 0.45; cursor: not-allowed; }
-
-/* ── The comparison table ──────────────────────────────────────────────────
-   Three things Tailwind cannot do, all about surviving 390px without lying:
-   the scroller must SAY it scrolls or a phone reader never sees the price
-   column; the app name must stay pinned or a row of numbers detaches from its
-   subject; and prices need tabular figures to be comparable by eye.
-
-   The fade lives on the WRAPPER, never the scroller — a pseudo-element inside
-   an overflow-x container scrolls away exactly when it is needed. The scroller
-   must also never carry Tailwind's `overflow-hidden`, which sets both axes and
-   silently kills the scrolling. Learned the hard way. */
-.tbl-scroll { overflow-x: auto; scrollbar-width: thin; }
-.tbl-wrap { position: relative; }
-.tbl-wrap::after {
-  content: "";
-  position: absolute;
-  inset-block: 0;
-  right: 0;
-  width: 44px;
-  pointer-events: none;
-  border-radius: 0 var(--radius-card) var(--radius-card) 0;
-  background: linear-gradient(90deg, transparent, var(--color-surface));
-}
-@media (min-width: 1120px) {
-  .tbl-wrap::after { display: none; }
-}
-.tbl-stick { position: sticky; left: 0; z-index: 1; background: var(--color-surface); }
-.nums { font-variant-numeric: tabular-nums; }
-
-/* Horizontal rail with snap — snap-stop and the hidden scrollbar have no
-   utility form, and both matter on a phone. */
-.rail { scroll-snap-type: x mandatory; scrollbar-width: none; }
-.rail::-webkit-scrollbar { display: none; }
-.rail > * { scroll-snap-align: start; scroll-snap-stop: always; }
-
-/* Drift matrix — pass/fail cells carry a glyph as well as a colour. A
-   red/green matrix is unreadable to a red-green colourblind reviewer, and that
-   page is about being honest, including about that. */
-.cell-pass::before { content: "✓"; color: var(--color-live); font-weight: 700; }
-.cell-fail::before { content: "✕"; color: var(--color-brand-500); font-weight: 700; }
-.cell-na::before   { content: "–"; color: var(--color-ink-3); }
 
 /* ── Print · /resume only ──────────────────────────────────────────────────
    The résumé is the one route with a second, non-screen output. Cmd+P has to
@@ -519,5 +472,5 @@
   .no-print { display: none !important; }
   html, body { background: #fff !important; }
   a { color: inherit !important; text-decoration: none !important; }
-  .link-u { background-image: none !important; }
+  .card { box-shadow: none !important; }
 }

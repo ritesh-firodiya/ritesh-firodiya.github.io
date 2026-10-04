@@ -1,68 +1,57 @@
 import Link from "next/link";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { profile } from "@/lib/profile";
 
-/* Six destinations, because the site has six jobs. The version this replaces
-   carried three — Products, Screens, Résumé — while Work, Hire, Support and
-   Legal were reachable only from the footer or from prose inside a page.
+/**
+ * The header belongs to one reader: someone deciding whether to interview me.
+ * Support and Legal are for people who use the apps and for store reviewers,
+ * who arrive by direct link — they live in the footer.
+ */
+export type NavKey = "work" | "process" | "about" | "resume";
 
-   Résumé is not in this list on purpose: it is the CTA slot on pages where
-   hiring is the likely intent, and a recruiter should never scroll for it. */
-const NAV = [
-  { href: "/work", label: "Work" },
-  { href: "/products", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/hire", label: "Hire me" },
-] as const;
+const NAV: { key: NavKey; label: string; href: string }[] = [
+  { key: "work", label: "Work", href: "/work/" },
+  { key: "process", label: "How I build", href: "/process/" },
+  { key: "about", label: "About", href: "/about/" },
+  { key: "resume", label: "Résumé", href: "/resume/" },
+];
 
-export function SiteHeader({
-  active,
-  cta = { href: "/contact", label: "Get in touch" },
-}: {
-  active?: string;
-  cta?: { href: string; label: string };
-}) {
+function NavLinks({ on }: { on?: NavKey }) {
+  return NAV.map((n) => (
+    <Link
+      key={n.key}
+      href={n.href}
+      aria-current={n.key === on ? "page" : undefined}
+      className={`nav-link${n.key === on ? " nav-link--on" : ""}`}
+    >
+      {n.label}
+    </Link>
+  ));
+}
+
+export function SiteHeader({ on }: { on?: NavKey }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-page/95 backdrop-blur">
-      <div className="mx-auto flex max-w-page items-center gap-4 px-gutter py-4 sm:gap-8">
-        <Link href="/" className="text-h3 font-semibold tracking-tight">
-          Ritesh Firodiya
+    <header className="site-head no-print">
+      <div className="wrap flex items-center gap-4 py-3 md:gap-6">
+        <Link href="/" className="flex items-center gap-2.5 text-base font-bold">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/me.webp" alt="" width={32} height={32} className="h-8 w-8 rounded-full object-cover" />
+          {profile.name}
         </Link>
-        {/* The nav collapses below sm rather than becoming a hamburger: four
-            links fit a phone as a wrapped row, and a drawer for four items is
-            a tap to reveal what would already have been on screen. */}
-        <nav className="ml-auto hidden items-center gap-7 text-small text-ink-2 sm:flex">
-          {NAV.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className={active === n.href ? "text-ink" : "transition hover:text-ink"}
-              aria-current={active === n.href ? "page" : undefined}
-            >
-              {n.label}
-            </Link>
-          ))}
+        <nav className="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
+          <NavLinks on={on} />
         </nav>
-        <div className="ml-auto flex items-center gap-2 sm:ml-0 sm:gap-3">
+        <span className="ml-auto md:ml-0">
           <ThemeToggle />
-          <Link
-            href={cta.href}
-            className="rounded-pill bg-ink px-4 py-2 text-small font-medium text-ink-inverse transition hover:bg-brand-500"
-          >
-            {cta.label}
-          </Link>
-        </div>
+        </span>
+        <Link href="/contact/" className="btn btn-primary">
+          Get in touch
+        </Link>
       </div>
-      <nav className="flex items-center gap-5 border-t border-line px-gutter py-2.5 text-small text-ink-2 sm:hidden">
-        {NAV.map((n) => (
-          <Link
-            key={n.href}
-            href={n.href}
-            className={active === n.href ? "text-ink" : ""}
-            aria-current={active === n.href ? "page" : undefined}
-          >
-            {n.label}
-          </Link>
-        ))}
+      {/* No menu button: a hidden menu is a state nobody drew. On a phone the
+          same four links sit in a row that scrolls. */}
+      <nav className="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
+        <NavLinks on={on} />
       </nav>
     </header>
   );
@@ -70,19 +59,39 @@ export function SiteHeader({
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto bg-band text-band-ink/50">
-      <div className="mx-auto flex max-w-page flex-wrap items-center gap-x-6 gap-y-2 px-gutter py-7 font-mono text-xs2">
-        <span>© {new Date().getFullYear()} Ritesh Firodiya</span>
-        <Link href="/products" className="transition hover:text-band-ink">Products</Link>
-        {/* Legal is in the footer of every page and must stay there: two live
-            Play listings point at documents under /legal/, and a reader who
-            arrives from a store listing has exactly one thing they want. */}
-        <Link href="/legal" className="transition hover:text-band-ink">Legal</Link>
-        <Link href="/support" className="transition hover:text-band-ink">Support</Link>
-        <Link href="/about" className="transition hover:text-band-ink">About</Link>
-        <Link href="/contact" className="ml-auto transition hover:text-band-ink">
-          Get in touch →
-        </Link>
+    <footer className="no-print mt-auto bg-band text-band-ink">
+      <div className="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <p className="text-body font-bold">{profile.name}</p>
+          <p className="mt-2 max-w-[34ch] text-sm text-band-2">
+            Full-stack engineer in {profile.location}. Open to senior, staff and tech-lead roles.
+          </p>
+          <a href={`mailto:${profile.email}`} className="mt-4 inline-block text-sm font-semibold underline underline-offset-4">
+            {profile.email}
+          </a>
+        </div>
+        <div className="flex flex-col gap-2 text-sm">
+          <p className="eyebrow eyebrow--band mb-1">Site</p>
+          <Link href="/work/">Work</Link>
+          <Link href="/process/">How I build</Link>
+          <Link href="/about/">About</Link>
+          <Link href="/resume/">Résumé</Link>
+          <Link href="/contact/">Contact</Link>
+        </div>
+        <div className="flex flex-col gap-2 text-sm">
+          <p className="eyebrow eyebrow--band mb-1">For app users</p>
+          <Link href="/support/">Support</Link>
+          <Link href="/legal/">Privacy and legal</Link>
+        </div>
+        <div className="flex flex-col gap-2 text-sm">
+          <p className="eyebrow eyebrow--band mb-1">Elsewhere</p>
+          <a href={`https://github.com/${profile.github}`}>GitHub</a>
+          <a href={`https://linkedin.com/in/${profile.linkedin}`}>LinkedIn</a>
+          <a href="/resume.pdf">Résumé PDF</a>
+        </div>
+      </div>
+      <div className="wrap band-rule py-4 text-xs text-band-2">
+        © {new Date().getFullYear()} {profile.name} · {profile.location}
       </div>
     </footer>
   );

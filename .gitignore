@@ -26,3 +26,9 @@ yarn-error.log*
 # See CLAUDE.md, section Designs.
 /public/designs/
 /public/products/
+
+# Everything else read out of the product repos at build time: store art, wiki
+# pages and the stage board. scripts/sync-context.mjs writes these. A picture or
+# a wiki page has one home, the product's repo.
+/public/media/
+/src/data/generated/

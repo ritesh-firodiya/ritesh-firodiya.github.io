@@ -3,111 +3,9 @@
   "verifiedOn": "2026-09-26",
   "products": [
     {
-      "slug": "chitragupt",
-      "name": "Chitragupt",
-      "fullName": "Chitragupt — Household tax review",
-      "tagline": "Household tax review for salaried Indian filers.",
-      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
-      "sourceOfTruth": "apps/chitragupt",
-      "model": "per-period",
-      "price": "₹249 / ₹499 / ₹799",
-      "priceNote": "per assessment year, three tiers",
-      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
-      "tiers": [
-        {
-          "label": "Free",
-          "amount": "₹0",
-          "unit": " forever",
-          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
-        },
-        {
-          "label": "Self",
-          "amount": "₹249",
-          "unit": "/AY",
-          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
-        },
-        {
-          "label": "AI Self",
-          "amount": "₹499",
-          "unit": "/AY",
-          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
-        },
-        {
-          "label": "Pro Family",
-          "amount": "₹799",
-          "unit": "/AY",
-          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
-        }
-      ],
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web app",
-      "analytics": "PostHog + Sentry",
-      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
-      "version": null,
-      "platforms": {
-        "web": {
-          "state": "live",
-          "label": "Open chitragupt.ai",
-          "url": "https://chitragupt.ai",
-          "note": ""
-        },
-        "android": {
-          "state": "none",
-          "label": "Mobile app paused",
-          "url": null,
-          "note": "Paused for V1"
-        },
-        "ios": {
-          "state": "none",
-          "label": "Mobile app paused",
-          "url": null,
-          "note": "Paused for V1"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "Cloud Run",
-        "Firebase Functions",
-        "Firestore",
-        "Zod",
-        "Turborepo"
-      ],
-      "features": [
-        {
-          "icon": "inbox",
-          "title": "Four pillars, one ledger",
-          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
-        },
-        {
-          "icon": "upload",
-          "title": "Parses what you upload",
-          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
-        },
-        {
-          "icon": "columns-2",
-          "title": "Both regimes, side by side",
-          "body": "With the right ITR form picked for you and the delta stated in rupees."
-        },
-        {
-          "icon": "file-text",
-          "title": "CA-ready handoff",
-          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": "https://chitragupt.ai/legal/privacy",
-        "delete": "/legal/chitragupt/delete-account.html",
-        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
       "slug": "askcal",
       "name": "AskCal",
+      "stageLabel": "In App Store review",
       "fullName": "AskCal — AI calorie counter",
       "tagline": "A calorie counter that admits what it cannot see.",
       "blurb": "Every value is marked Seen, Guessed or Unknown, resolved against USDA data.",
@@ -144,15 +42,15 @@
         },
         "android": {
           "state": "closed",
-          "label": "Internal testing only",
+          "label": "Closed testing only",
           "url": null,
-          "note": "1.2.0 is live on the internal and closed tracks; the production track has never had a release"
+          "note": "On the closed track; the production track has never had a release"
         },
         "ios": {
           "state": "closed",
-          "label": "TestFlight internal only",
+          "label": "Waiting for App Store review",
           "url": null,
-          "note": "Internal group only, so there is no public link — testers are added by Apple ID"
+          "note": "Submitted for review; there is no public build yet"
         }
       },
       "unreleasedNote": "Nothing is installable today. We would rather say that than show a button that goes nowhere.",
@@ -209,6 +107,7 @@
     {
       "slug": "aakalan",
       "name": "Aakalan",
+      "stageLabel": "Public iOS beta",
       "fullName": "Aakalan — Split expenses",
       "tagline": "Your expenses and everyone else's, on one ledger.",
       "blurb": "Split with friends and flatmates, and settle over UPI without leaving the app.",
@@ -311,87 +210,9 @@
       "repo": null
     },
     {
-      "slug": "imposter",
-      "name": "Imposter",
-      "fullName": "Imposter: Find the Liar",
-      "tagline": "Everyone gets the word. Except one of you.",
-      "blurb": "Social deduction for 3–20 people on one phone.",
-      "sourceOfTruth": "apps/imposter",
-      "model": "one-time",
-      "price": "Not priced yet",
-      "priceNote": "3 packs free, rest in one payment",
-      "modelDetail": "Three categories will be free with no time limit. The other seven are a single payment — no subscription, nothing that renews, and no ad SDK in the project at all. The price is not set yet, so there is no number on this page.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "Yes — fully",
-      "analytics": "None",
-      "version": "1.0.0",
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "Mobile only — nothing to open in a browser"
-        },
-        "android": {
-          "state": "closed",
-          "label": "Closed testing, not public",
-          "url": null,
-          "note": "Production track has never had a release"
-        },
-        "ios": {
-          "state": "closed",
-          "label": "TestFlight only, not public",
-          "url": null,
-          "note": "App Store version never submitted"
-        }
-      },
-      "unreleasedNote": "Neither store has a public release yet. The build is finished and in review on iOS; the Android production track has never had a release. Rather than link a testing URL that most people cannot open, there is no button here until a track is genuinely open.",
-      "stack": [
-        "React Native",
-        "Expo",
-        "TypeScript",
-        "RevenueCat"
-      ],
-      "features": [
-        {
-          "icon": "venetian-mask",
-          "title": "A hint, hand-written",
-          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
-        },
-        {
-          "icon": "ghost",
-          "title": "Mr. White sees nothing",
-          "body": "And can still steal the round by naming the word at the end."
-        },
-        {
-          "icon": "eye-off",
-          "title": "No analytics, at all",
-          "body": "There is no analytics SDK in the project. Nothing about your rounds leaves the phone."
-        }
-      ],
-      "permissions": [
-        {
-          "name": "Not requested",
-          "why": "None declared at all. The app makes exactly one network call, to the purchase service.",
-          "absent": true
-        }
-      ],
-      "screens": [
-        "Word reveal",
-        "The hint",
-        "Pack picker"
-      ],
-      "legal": {
-        "privacy": "/legal/imposter/privacy-policy.html",
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
       "slug": "charades",
       "name": "Charades",
+      "stageLabel": "Live on Google Play",
       "fullName": "Charades — Act it Out!",
       "tagline": "Dumb charades for the room you are already in.",
       "blurb": "5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline, no daily limits.",
@@ -478,365 +299,114 @@
       "repo": null
     },
     {
-      "slug": "learning-platform",
-      "name": "Learning Platform",
-      "fullName": "Learning Platform",
-      "tagline": "An LMS where courses are code.",
-      "blurb": "Courses are authored as markdown in a Git repository and synced into the product on push, so content review happens in pull requests rather than in a CMS.",
-      "sourceOfTruth": "private",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Built for a client rather than sold directly, so there is no public price.",
+      "slug": "chitragupt",
+      "name": "Chitragupt",
+      "stageLabel": "Pre-launch",
+      "fullName": "Chitragupt — Household tax review",
+      "tagline": "Household tax review for salaried Indian filers.",
+      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
+      "sourceOfTruth": "apps/chitragupt",
+      "model": "per-period",
+      "price": "₹249 / ₹499 / ₹799",
+      "priceNote": "per assessment year, three tiers",
+      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
+      "tiers": [
+        {
+          "label": "Free",
+          "amount": "₹0",
+          "unit": " forever",
+          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
+        },
+        {
+          "label": "Self",
+          "amount": "₹249",
+          "unit": "/AY",
+          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
+        },
+        {
+          "label": "AI Self",
+          "amount": "₹499",
+          "unit": "/AY",
+          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
+        },
+        {
+          "label": "Pro Family",
+          "amount": "₹799",
+          "unit": "/AY",
+          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
+        }
+      ],
       "ads": "None",
       "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
+      "offline": "No — it is a web app",
+      "analytics": "PostHog + Sentry",
+      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
       "version": null,
-      "notBuilt": false,
       "platforms": {
         "web": {
-          "state": "live",
-          "label": "Open the demo",
-          "url": "https://learning-platform-web-gamma.vercel.app/",
-          "note": "Demo on a Vercel preview hostname — TODO: move to a real domain"
-        }
-      },
-      "stack": [
-        "NestJS",
-        "Apollo GraphQL",
-        "Next.js",
-        "Prisma",
-        "PostgreSQL"
-      ],
-      "features": [
-        {
-          "icon": "check",
-          "title": "Courses live in Git",
-          "body": "Authored as markdown and synced on push, so a content change is a pull request."
-        },
-        {
-          "icon": "check",
-          "title": "Review before publish",
-          "body": "Content goes through the same review as code, because it is code."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "repo": null
-    },
-    {
-      "slug": "plan-kid",
-      "name": "Plan-Kid",
-      "fullName": "Plan-Kid — Parenthood journey",
-      "tagline": "A parenthood journey app for couples in India.",
-      "blurb": "From the pre-decision stage through to parenting.",
-      "sourceOfTruth": "apps/plan-kid",
-      "model": "subscription",
-      "price": "₹2,499/yr",
-      "priceNote": "planned, not charged yet",
-      "modelDetail": "Planned as an annual subscription. Nothing is charged today because nothing is built.",
-      "ads": "None — ruled out by design",
-      "adSurfaces": [],
-      "offline": null,
-      "analytics": null,
-      "version": null,
-      "notBuilt": true,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "In design — no web surface planned"
+          "state": "beta",
+          "label": "Open chitragupt.ai",
+          "url": "https://chitragupt.ai",
+          "note": "Deployed and reachable; version one has not launched"
         },
         "android": {
-          "state": "none",
-          "label": "In design",
+          "state": "closed",
+          "label": "Internal testing only",
           "url": null,
-          "note": "No application code exists yet"
+          "note": "On Google Play's internal track; nothing has been sent for review"
         },
         "ios": {
           "state": "none",
-          "label": "In design",
+          "label": "No iOS app",
           "url": null,
-          "note": "No application code exists yet"
-        }
-      },
-      "stack": [
-        "Expo",
-        "React Native",
-        "Firebase"
-      ],
-      "features": [],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
-      "slug": "dwarseva-property",
-      "name": "DwarSeva Property",
-      "fullName": "DwarSeva — Property",
-      "tagline": "Map-based property listings for India.",
-      "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",
-      "sourceOfTruth": "apps/property-app",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Not decided yet. It is listed here so the list is complete, not because there is anything to buy.",
-      "ads": null,
-      "adSurfaces": [],
-      "offline": null,
-      "analytics": null,
-      "version": null,
-      "notBuilt": true,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In design",
-          "url": null,
-          "note": "Web screens are drawn; no application code and no deployment"
-        },
-        "android": {
-          "state": "none",
-          "label": "In design",
-          "url": null,
-          "note": "Pre-product"
-        },
-        "ios": {
-          "state": "none",
-          "label": "In design",
-          "url": null,
-          "note": "Pre-product"
-        }
-      },
-      "stack": [
-        "Turborepo",
-        "Next.js",
-        "Expo",
-        "NestJS",
-        "PostgreSQL"
-      ],
-      "features": [],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
-      "slug": "scrvio",
-      "name": "Scrvio",
-      "fullName": "Scrvio",
-      "tagline": "Privacy-first browser screen recorder.",
-      "blurb": "Record screen, camera and audio from the browser with no install and no sign-up, then keep the recordings in your own S3 bucket rather than a vendor's cloud.",
-      "sourceOfTruth": "ventures/scrvio",
-      "kind": "platform",
-      "model": "subscription",
-      "price": "Not priced yet",
-      "priceNote": "per-seat, planned",
-      "modelDetail": "Planned as per-seat billing through Stripe. Nothing is charged yet — it is still in build.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "scrvio.com serves the marketing site (verified 2026-09-22); sign-ups are not open yet"
-        }
-      },
-      "stack": [
-        "NestJS",
-        "Next.js",
-        "PostgreSQL",
-        "Prisma",
-        "Stripe",
-        "S3"
-      ],
-      "features": [
-        {
-          "icon": "check",
-          "title": "Your bucket, not ours",
-          "body": "Recordings land in your own S3, which is the whole point."
-        },
-        {
-          "icon": "check",
-          "title": "No install, no sign-up",
-          "body": "It records from the browser."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "repo": null
-    },
-    {
-      "slug": "trunk",
-      "name": "Trunk",
-      "fullName": "Trunk",
-      "tagline": "Product development where every change is a delta.",
-      "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
-      "sourceOfTruth": "ventures/trunk",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Not decided. It is in build and not open.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Not open yet"
+          "note": "Android only"
         }
       },
       "stack": [
         "Next.js",
-        "React",
-        "TypeScript",
+        "Cloud Run",
+        "Firebase Functions",
+        "Firestore",
+        "Zod",
         "Turborepo"
       ],
       "features": [
         {
-          "icon": "check",
-          "title": "One record per change",
-          "body": "Spec, flag, signal and doc all hang off the same delta."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "repo": null
-    },
-    {
-      "slug": "dwarseva-societies",
-      "name": "DwarSeva Societies",
-      "fullName": "DwarSeva — Societies",
-      "tagline": "Approval and society management.",
-      "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
-      "sourceOfTruth": "ventures/dwarseva",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Sold to societies rather than to individuals, so there is no consumer price.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Not open yet"
-        }
-      },
-      "stack": [
-        "NestJS",
-        "Next.js",
-        "GraphQL",
-        "Prisma",
-        "PostgreSQL",
-        "Docker"
-      ],
-      "features": [
+          "icon": "inbox",
+          "title": "Four pillars, one ledger",
+          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
+        },
         {
-          "icon": "check",
-          "title": "Visitors, events, dues, staff",
-          "body": "The four things a society actually runs on, in one system."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "repo": null
-    },
-    {
-      "slug": "tradx",
-      "name": "tradx",
-      "fullName": "tradx",
-      "tagline": "India-focused trading research and paper trading.",
-      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
-      "sourceOfTruth": "trading/tradx",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Internal. Not sold.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Internal, not open"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "Docker",
-        "TypeScript"
-      ],
-      "features": [
+          "icon": "upload",
+          "title": "Parses what you upload",
+          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
+        },
         {
-          "icon": "check",
-          "title": "Paper-only by default",
-          "body": "Live routing is gated behind a flag, deliberately."
+          "icon": "columns-2",
+          "title": "Both regimes, side by side",
+          "body": "With the right ITR form picked for you and the delta stated in rupees."
+        },
+        {
+          "icon": "file-text",
+          "title": "CA-ready handoff",
+          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
         }
       ],
       "permissions": [],
       "screens": [],
       "legal": {
-        "privacy": null,
-        "delete": null
+        "privacy": "https://chitragupt.ai/legal/privacy",
+        "delete": "/legal/chitragupt/delete-account.html",
+        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
       },
-      "repo": null
+      "kind": "app",
+      "repo": null,
+      "embed": "web/tax/tax.html"
     },
     {
       "slug": "tic-tac-toe",
       "name": "Tic Tac Toe",
+      "stageLabel": "Live on both stores",
       "fullName": "Tic Tac Toe — 2 Player XO",
       "tagline": "The classic 3×3, done properly.",
       "blurb": "Two players on one device, or a minimax AI that never loses on Hard.",
@@ -929,6 +499,450 @@
       ],
       "legal": {
         "privacy": "/legal/tictactoe/privacy-policy.html",
+        "delete": null
+      },
+      "kind": "app",
+      "repo": null
+    },
+    {
+      "slug": "imposter",
+      "name": "Imposter",
+      "stageLabel": "Closed testing",
+      "fullName": "Imposter: Find the Liar",
+      "tagline": "Everyone gets the word. Except one of you.",
+      "blurb": "Social deduction for 3–20 people on one phone.",
+      "sourceOfTruth": "apps/imposter",
+      "model": "one-time",
+      "price": "Not priced yet",
+      "priceNote": "3 packs free, rest in one payment",
+      "modelDetail": "Three categories will be free with no time limit. The other seven are a single payment — no subscription, nothing that renews, and no ad SDK in the project at all. The price is not set yet, so there is no number on this page.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "Yes — fully",
+      "analytics": "None",
+      "version": "1.0.0",
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "No web app",
+          "url": null,
+          "note": "Mobile only — nothing to open in a browser"
+        },
+        "android": {
+          "state": "closed",
+          "label": "Closed testing, not public",
+          "url": null,
+          "note": "Production track has never had a release"
+        },
+        "ios": {
+          "state": "closed",
+          "label": "TestFlight only, not public",
+          "url": null,
+          "note": "App Store version never submitted"
+        }
+      },
+      "unreleasedNote": "Neither store has a public release yet. The build is finished and in review on iOS; the Android production track has never had a release. Rather than link a testing URL that most people cannot open, there is no button here until a track is genuinely open.",
+      "stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "RevenueCat"
+      ],
+      "features": [
+        {
+          "icon": "venetian-mask",
+          "title": "A hint, hand-written",
+          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
+        },
+        {
+          "icon": "ghost",
+          "title": "Mr. White sees nothing",
+          "body": "And can still steal the round by naming the word at the end."
+        },
+        {
+          "icon": "eye-off",
+          "title": "No analytics, at all",
+          "body": "There is no analytics SDK in the project. Nothing about your rounds leaves the phone."
+        }
+      ],
+      "permissions": [
+        {
+          "name": "Not requested",
+          "why": "None declared at all. The app makes exactly one network call, to the purchase service.",
+          "absent": true
+        }
+      ],
+      "screens": [
+        "Word reveal",
+        "The hint",
+        "Pack picker"
+      ],
+      "legal": {
+        "privacy": "/legal/imposter/privacy-policy.html",
+        "delete": null
+      },
+      "kind": "app",
+      "repo": null
+    },
+    {
+      "slug": "learning-platform",
+      "name": "Learning Platform",
+      "stageLabel": "Live demo",
+      "fullName": "Learning Platform",
+      "tagline": "An LMS where courses are code.",
+      "blurb": "Courses are authored as markdown in a Git repository and synced into the product on push, so content review happens in pull requests rather than in a CMS.",
+      "sourceOfTruth": "private",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Built for a client rather than sold directly, so there is no public price.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "live",
+          "label": "Open the demo",
+          "url": "https://learning-platform-web-gamma.vercel.app/",
+          "note": "Demo on a Vercel preview hostname — TODO: move to a real domain"
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Apollo GraphQL",
+        "Next.js",
+        "Prisma",
+        "PostgreSQL"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Courses live in Git",
+          "body": "Authored as markdown and synced on push, so a content change is a pull request."
+        },
+        {
+          "icon": "check",
+          "title": "Review before publish",
+          "body": "Content goes through the same review as code, because it is code."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "scrvio",
+      "name": "Scrvio",
+      "stageLabel": "In build",
+      "fullName": "Scrvio",
+      "tagline": "Privacy-first browser screen recorder.",
+      "blurb": "Record screen, camera and audio from the browser with no install and no sign-up, then keep the recordings in your own S3 bucket rather than a vendor's cloud.",
+      "sourceOfTruth": "ventures/scrvio",
+      "kind": "platform",
+      "model": "subscription",
+      "price": "Not priced yet",
+      "priceNote": "per-seat, planned",
+      "modelDetail": "Planned as per-seat billing through Stripe. Nothing is charged yet — it is still in build.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "scrvio.com serves the marketing site (verified 2026-09-22); sign-ups are not open yet"
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Next.js",
+        "PostgreSQL",
+        "Prisma",
+        "Stripe",
+        "S3"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Your bucket, not ours",
+          "body": "Recordings land in your own S3, which is the whole point."
+        },
+        {
+          "icon": "check",
+          "title": "No install, no sign-up",
+          "body": "It records from the browser."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "trunk",
+      "name": "Trunk",
+      "stageLabel": "In build",
+      "fullName": "Trunk",
+      "tagline": "Product development where every change is a delta.",
+      "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
+      "sourceOfTruth": "ventures/trunk",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Not decided. It is in build and not open.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Not open yet"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Turborepo"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "One record per change",
+          "body": "Spec, flag, signal and doc all hang off the same delta."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "dwarseva-societies",
+      "name": "DwarSeva Societies",
+      "stageLabel": "In build",
+      "fullName": "DwarSeva — Societies",
+      "tagline": "Approval and society management.",
+      "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
+      "sourceOfTruth": "ventures/dwarseva",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Sold to societies rather than to individuals, so there is no consumer price.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Not open yet"
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Next.js",
+        "GraphQL",
+        "Prisma",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Visitors, events, dues, staff",
+          "body": "The four things a society actually runs on, in one system."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "tradx",
+      "name": "tradx",
+      "stageLabel": "In build",
+      "fullName": "tradx",
+      "tagline": "India-focused trading research and paper trading.",
+      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
+      "sourceOfTruth": "trading/tradx",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Internal. Not sold.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Internal, not open"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Prisma",
+        "PostgreSQL",
+        "Docker",
+        "TypeScript"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Paper-only by default",
+          "body": "Live routing is gated behind a flag, deliberately."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "plan-kid",
+      "name": "Plan-Kid",
+      "stageLabel": "In design",
+      "fullName": "Plan-Kid — Parenthood journey",
+      "tagline": "A parenthood journey app for couples in India.",
+      "blurb": "From the pre-decision stage through to parenting.",
+      "sourceOfTruth": "apps/plan-kid",
+      "model": "subscription",
+      "price": "₹2,499/yr",
+      "priceNote": "planned, not charged yet",
+      "modelDetail": "Planned as an annual subscription. Nothing is charged today because nothing is built.",
+      "ads": "None — ruled out by design",
+      "adSurfaces": [],
+      "offline": null,
+      "analytics": null,
+      "version": null,
+      "notBuilt": true,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "No web app",
+          "url": null,
+          "note": "In design — no web surface planned"
+        },
+        "android": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "No application code exists yet"
+        },
+        "ios": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "No application code exists yet"
+        }
+      },
+      "stack": [
+        "Expo",
+        "React Native",
+        "Firebase"
+      ],
+      "features": [],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "kind": "app",
+      "repo": null
+    },
+    {
+      "slug": "dwarseva-property",
+      "name": "DwarSeva Property",
+      "stageLabel": "In design",
+      "fullName": "DwarSeva — Property",
+      "tagline": "Map-based property listings for India.",
+      "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",
+      "sourceOfTruth": "apps/property-app",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Not decided yet. It is listed here so the list is complete, not because there is anything to buy.",
+      "ads": null,
+      "adSurfaces": [],
+      "offline": null,
+      "analytics": null,
+      "version": null,
+      "notBuilt": true,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Web screens are drawn; no application code and no deployment"
+        },
+        "android": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Pre-product"
+        },
+        "ios": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Pre-product"
+        }
+      },
+      "stack": [
+        "Turborepo",
+        "Next.js",
+        "Expo",
+        "NestJS",
+        "PostgreSQL"
+      ],
+      "features": [],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
         "delete": null
       },
       "kind": "app",

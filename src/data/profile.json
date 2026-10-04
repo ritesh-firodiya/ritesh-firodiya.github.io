@@ -1,6 +1,6 @@
 {
   "name": "Ritesh Firodiya",
-  "title": "Ritesh Firodiya — Engineer who ships",
+  "title": "Ritesh Firodiya — Full-stack engineer",
   "github": "ritesh-firodiya",
   "linkedin": "riteshfirodiya",
   "website": "https://ritesh-firodiya.github.io/",
@@ -8,7 +8,7 @@
   "phone": "+919226737797",
   "location": "Pune, India",
   "avatar": "https://avatars.githubusercontent.com/u/40817224?v=4",
-  "headline": "Engineer who ships.",
+  "headline": "Full-stack engineer who takes a product from an idea to the store.",
   "tagline": "~9 years across web, mobile, and backend. Now building my own products for India — web and mobile — and agent tooling on Anthropic SDK + MCP.",
   "about": [
     "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. Most recently, I spent a year as a Senior Engineer at Walmart on internal revenue tooling — wrapped up May 2026.",
@@ -214,7 +214,7 @@
         "Zod",
         "Turborepo"
       ],
-      "status": "Live",
+      "status": "Pre-launch",
       "link": "https://chitragupt.ai",
       "private": true
     },
@@ -423,5 +423,13 @@
       "from": "2013",
       "to": "2017"
     }
+  ],
+  "workedAt": [
+    "Walmart",
+    "Swiggy",
+    "Speechify",
+    "Globant",
+    "Masai School",
+    "TopLegal"
   ]
 }

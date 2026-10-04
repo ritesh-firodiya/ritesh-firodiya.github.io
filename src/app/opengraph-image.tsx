@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Ritesh Firodiya — Engineer who ships";
+export const alt = "Ritesh Firodiya — Full-stack engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -12,12 +12,12 @@ export const dynamic = "force-static";
 // export. Colours are the real tokens; ImageResponse cannot read the CSS
 // theme, so they are the one place in the codebase a hex is written twice.
 // If the palette changes, this file changes with it.
-const PAPER = "#fbf9f4";
-const INK = "#14130f";
-const INK2 = "#45423a";
-const INK3 = "#78736a";
-const ACCENT = "#8a3324";
-const LINE = "#e4dfd2";
+const PAPER = "#F5F6F8";
+const INK = "#0B1220";
+const INK2 = "#3A4458";
+const INK3 = "#5A6478";
+const ACCENT = "#3147E8";
+const LINE = "#DFE3EA";
 
 export default async function Image() {
   return new ImageResponse(
@@ -35,20 +35,20 @@ export default async function Image() {
               Ritesh Firodiya
             </div>
           </div>
-          <div style={{ fontSize: 96, fontWeight: 700, color: INK, marginTop: 40, letterSpacing: -3, lineHeight: 1.05 }}>
-            Engineer who ships.
+          <div style={{ fontSize: 76, fontWeight: 700, color: INK, marginTop: 40, letterSpacing: -2.5, lineHeight: 1.06, maxWidth: 1000 }}>
+            Full-stack engineer who takes a product from an idea to the store.
           </div>
           <div style={{ fontSize: 34, color: INK2, marginTop: 28, maxWidth: 900, lineHeight: 1.4 }}>
-            Thirteen products for India. How each one is paid for, stated before you install it.
+            Nine years of production TypeScript. Thirteen products of my own.
           </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ height: 1, background: LINE, marginBottom: 28 }} />
           <div style={{ display: "flex", gap: 40, fontSize: 24, color: INK3 }}>
-            <div style={{ display: "flex" }}>Products</div>
-            <div style={{ display: "flex" }}>Screens</div>
+            <div style={{ display: "flex" }}>Work</div>
             <div style={{ display: "flex" }}>Process</div>
+            <div style={{ display: "flex" }}>Résumé</div>
             <div style={{ display: "flex", marginLeft: "auto", color: ACCENT }}>
               ritesh-firodiya.github.io
             </div>

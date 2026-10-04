@@ -1,94 +1,76 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { Label } from "@/components/pills";
-import { CASE_STUDIES } from "@/lib/case-studies";
-import { products } from "@/lib/products";
+import { HireBand, StatePill } from "@/components/ui";
+import { CardPicture } from "@/components/picture";
+import { WorkGrid, type Filter, type Item } from "@/components/work-grid";
+import { products, hasBuild, stageOf, stageCounts, STAGE_LABEL, type Product } from "@/lib/products";
+import { evidenceLine } from "@/lib/evidence";
+
+const NUMBER = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen"];
+const say = (n: number) => NUMBER[n] ?? String(n);
+
+const title = `${say(products.length)} projects. ${say(stageCounts.live)} ${stageCounts.live === 1 ? "is" : "are"} live.`;
 
 export const metadata: Metadata = {
   title: "Work",
-  description:
-    "Long-form writeups: what the problem was, what was tried, what lost, and what shipped.",
+  description: `${products.length} projects of my own: ${stageCounts.live} live, ${stageCounts.test} in testing. Each one opens to its screens, its wiki and its store listing.`,
   alternates: { canonical: "/work/" },
 };
 
-/* This page exists because the case study was orphaned. /work/chitragupt was
-   linked from exactly one place — the bottom of one product page — with no
-   index and no mention in the nav, so the strongest asset for both recruiters
-   and clients was effectively hidden. */
-export default function Work() {
-  const written = new Set(CASE_STUDIES.map((c) => c.slug));
-  const shippedWithoutStudy = products.filter(
-    (p) => !p.notBuilt && !written.has(p.slug) && Object.values(p.platforms).some((v) => v && (v.state === "live" || v.state === "beta")),
+/** Something with a build is a card with its picture. */
+function Card({ p }: { p: Product }) {
+  return (
+    <Link href={`/products/${p.slug}/`} className="card overflow-hidden">
+      <CardPicture p={p} />
+      <div className="p-5">
+        <StatePill p={p} />
+        <h3 className="mt-3 text-h3 font-bold">{p.name}</h3>
+        <p className="mt-1 text-base text-ink-2">{p.tagline}</p>
+        <p className="mt-4 border-t border-line pt-3 font-mono text-xs text-ink-3">{evidenceLine(p)}</p>
+      </div>
+    </Link>
   );
+}
+
+/** Something with nothing to show yet is a row, not a card with an empty picture. */
+function Row({ p }: { p: Product }) {
+  return (
+    <Link
+      href={`/products/${p.slug}/`}
+      className="grid items-center gap-x-6 gap-y-1 border-b border-line px-5 py-4 last:border-b-0 hover:bg-muted sm:grid-cols-[8rem_14rem_1fr_auto]"
+    >
+      <span>
+        <StatePill p={p} />
+      </span>
+      <span className="text-body font-bold">{p.name}</span>
+      <span className="text-base text-ink-2">{p.tagline}</span>
+      <span className="font-mono text-xs text-ink-3">{evidenceLine(p)}</span>
+    </Link>
+  );
+}
+
+export default function WorkPage() {
+  const item = (p: Product, node: React.ReactNode): Item => ({ key: p.slug, stage: stageOf(p), node });
+  const cards = products.filter(hasBuild).map((p) => item(p, <Card p={p} />));
+  const rows = products.filter((p) => !hasBuild(p)).map((p) => item(p, <Row p={p} />));
+  const counts: { key: Filter; label: string; n: number }[] = [
+    { key: "all", label: "All", n: products.length },
+    ...(["live", "test", "build", "draft"] as const).map((k) => ({ key: k, label: STAGE_LABEL[k], n: stageCounts[k] })),
+  ];
 
   return (
     <>
-      <SiteHeader active="/work" />
-      <main id="main">
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-page px-gutter py-14">
-            <Label>Work</Label>
-            <h1 className="mt-3 max-w-[22ch] text-d1 font-semibold">
-              What I built, and what it actually took.
-            </h1>
-            <p className="mt-5 max-w-measure text-lead text-ink-2">
-              Long-form, one per product. Not a gallery — what the problem was, what was tried,
-              what lost, and what shipped.
-            </p>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-page px-gutter py-12">
-          <div className="space-y-6">
-            {CASE_STUDIES.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/work/${c.slug}/`}
-                className="group grid gap-8 rounded-card border border-line bg-surface p-7 transition hover:border-brand-200 lg:grid-cols-[1.4fr_1fr] lg:p-8"
-              >
-                <div>
-                  <Label>
-                    Case study · {c.period}
-                  </Label>
-                  <h2 className="mt-3 max-w-[26ch] text-d2 font-semibold transition group-hover:text-brand-500">
-                    {c.title}
-                  </h2>
-                  <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-5">
-                    {c.facts.map((f) => (
-                      <div key={f.k}>
-                        <dt className="font-mono text-label uppercase tracking-label text-ink-3">{f.k}</dt>
-                        <dd className="mt-1 max-w-[28ch] text-small font-medium">{f.v}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <span className="mt-6 inline-block text-small font-medium text-brand-500">Read it →</span>
-                </div>
-                <div className="slot hidden rounded lg:block" aria-hidden />
-              </Link>
-            ))}
-          </div>
-
-          {/* The gap is stated rather than padded. A thin case study damages
-              the one that says something. */}
-          {shippedWithoutStudy.length > 0 && (
-            <div className="mt-8 rounded-card border border-dashed border-line-strong p-8">
-              <Label>
-                {CASE_STUDIES.length === 1 ? "One written so far" : `${CASE_STUDIES.length} written so far`}
-              </Label>
-              <p className="mt-2 max-w-prose text-small text-ink-2">
-                {shippedWithoutStudy.map((p) => p.name).join(", ")}{" "}
-                {shippedWithoutStudy.length === 1 ? "is" : "are"} shipping and{" "}
-                {shippedWithoutStudy.length === 1 ? "has" : "have"} no writeup yet. Listed under{" "}
-                <Link href="/products" className="text-brand-500 underline decoration-brand-200 underline-offset-4">
-                  Products
-                </Link>{" "}
-                with their facts until one is written.
-              </p>
-            </div>
-          )}
-        </section>
+      <SiteHeader on="work" />
+      <main id="main" className="wrap pb-16 pt-12 lg:pt-16">
+        <p className="eyebrow">Work</p>
+        <h1 className="page-title mt-3">{title}</h1>
+        <p className="mt-4 max-w-[60ch] text-lead text-ink-2">
+          Each one opens to its screens, its wiki and, where there is one, its store listing.
+        </p>
+        <WorkGrid counts={counts} cards={cards} rows={rows} />
       </main>
+      <HireBand title="Seen enough to talk?" />
       <SiteFooter />
     </>
   );

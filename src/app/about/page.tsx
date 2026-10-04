@@ -1,104 +1,109 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { BookOpen, FileText, PencilRuler, Rocket } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { Label } from "@/components/pills";
+import { Chips, HireBand } from "@/components/ui";
 import { profile } from "@/lib/profile";
-import { products } from "@/lib/products";
+import { products, stageCounts } from "@/lib/products";
+import { totalWikiPages, wikiSlugs, wikiHref } from "@/lib/wiki";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Full-stack engineer and lead, ~9 years. Postgres schema to Play Store release. Pune, India.",
+  description: "Who I am, how I work, and what I am looking for: a full-stack engineer and lead with about nine years of production TypeScript.",
   alternates: { canonical: "/about/" },
 };
 
-export default function About() {
-  const live = products.filter((p) =>
-    Object.values(p.platforms).some((v) => v && v.state === "live"),
-  ).length;
-
+export default function AboutPage() {
+  const last = profile.experiences[0];
   return (
     <>
-      <SiteHeader active="/about" cta={{ href: "/resume", label: "Résumé" }} />
+      <SiteHeader on="about" />
       <main id="main">
-        <section className="grain relative overflow-hidden border-b border-line">
-          <div className="mx-auto max-w-page px-gutter py-14">
-            <Label>About</Label>
-            <h1 className="mt-3 max-w-[22ch] text-d1 font-semibold">
-              Postgres schema to Play Store release.
-            </h1>
-            <div className="mt-8 flex flex-wrap items-start gap-10 lg:gap-14">
-              <div className="max-w-prose space-y-4 text-body text-ink-2">
-                {profile.about.map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-                <p>
-                  {products.length} products built solo — {live} usable today — and agent tooling
-                  on the Anthropic SDK and MCP. Building alone is what taught me to write the
-                  design set before the code: a component that appears in no HTML file does not
-                  ship.
-                </p>
-              </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/me.webp"
-                alt={profile.name}
-                width={176}
-                height={176}
-                className="h-44 w-44 shrink-0 rounded-card border border-line object-cover"
-              />
+        <section className="wrap grid gap-12 pb-14 pt-12 lg:grid-cols-[20rem_1fr] lg:pt-16">
+          <aside>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/me.webp" alt={profile.name} width={640} height={640} className="aspect-square w-full max-w-[20rem] rounded-xl border border-line object-cover" />
+            <dl className="card mt-5 grid gap-4 p-5 text-sm">
+              <Fact k="Based in" v={profile.location} />
+              <Fact k="Experience" v="About nine years, since 2017" />
+              <Fact k="Last role" v={`${last.position}, ${last.company}`} />
+              <Fact k="Open to" v="Senior / staff IC and tech-lead roles" />
+            </dl>
+          </aside>
+          <div>
+            <p className="eyebrow">About</p>
+            <h1 className="page-title mt-3 max-w-[18ch]">I like owning the whole thing.</h1>
+            <div className="mt-6 grid max-w-[66ch] gap-4 text-body text-ink-2">
+              {profile.about.map((t) => (
+                <p key={t.slice(0, 32)}>{t}</p>
+              ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/resume" className="rounded-pill bg-ink px-5 py-2.5 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
-                Read the résumé
+              <Link href="/resume/" className="btn btn-primary">
+                <FileText size={16} aria-hidden /> Read the résumé
               </Link>
-              <Link href="/contact" className="rounded-pill border border-line-strong px-5 py-2.5 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
-                Get in touch
-              </Link>
+              <Link href="/contact/" className="btn btn-quiet">Get in touch</Link>
             </div>
           </div>
         </section>
 
-        {/* The full history lives here, not on the landing page — eight rows
-            there would turn Home into a CV. */}
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-page px-gutter py-12">
-            <Label>Experience</Label>
-            <h2 className="mt-2 text-d2 font-semibold">Nine years, mostly end-to-end.</h2>
-            <ol className="mt-8 border-t border-line">
-              {profile.experiences.map((e) => (
-                <li key={`${e.company}-${e.from}`} className="grid gap-1 border-b border-line py-5 md:grid-cols-[11rem_1fr] md:items-baseline md:gap-8">
-                  <p className="font-mono text-label uppercase tracking-label text-ink-3">
-                    {e.from} — {e.to}
-                  </p>
-                  <div>
-                    <h3 className="text-h3 font-semibold">
-                      {e.position} · <span className="text-brand-500">{e.company}</span>
-                    </h3>
-                    <p className="mt-1 max-w-prose text-small text-ink-2">{e.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+        {/* Each habit links to where it can be checked. A value nobody can
+            verify is decoration. */}
+        <section className="border-y border-line bg-surface">
+          <div className="wrap py-14">
+            <p className="eyebrow">How I work</p>
+            <h2 className="section-title mt-2">Three habits you can check on this site.</h2>
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              <div className="card bg-page p-6">
+                <PencilRuler size={24} className="text-brand-500" aria-hidden />
+                <h3 className="mt-4 text-h3 font-bold">Draw it first</h3>
+                <p className="mt-2 text-base text-ink-2">Every screen and every state is an HTML page before it is a component. The wireframe is the spec.</p>
+                <Link href="/process/" className="text-link mt-4 inline-block text-sm">The design sets</Link>
+              </div>
+              <div className="card bg-page p-6">
+                <BookOpen size={24} className="text-brand-500" aria-hidden />
+                <h3 className="mt-4 text-h3 font-bold">Write down why</h3>
+                <p className="mt-2 text-base text-ink-2">
+                  Each decision gets a dated page saying what was tried and why it lost. {totalWikiPages} pages across {wikiSlugs.length} projects.
+                </p>
+                <Link href={wikiHref(products[0].slug)} className="text-link mt-4 inline-block text-sm">A project wiki</Link>
+              </div>
+              <div className="card bg-page p-6">
+                <Rocket size={24} className="text-brand-500" aria-hidden />
+                <h3 className="mt-4 text-h3 font-bold">Ship it myself</h3>
+                <p className="mt-2 text-base text-ink-2">
+                  Schema, API, UI, payments and the store release. {stageCounts.live} of {products.length} projects are live today.
+                </p>
+                <Link href="/work/" className="text-link mt-4 inline-block text-sm">The work</Link>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Groups with the real tools in each, not a wall of logos. A tag
-            cloud says nothing about depth and survives no reader who knows
-            the domain. */}
-        <section className="mx-auto max-w-page px-gutter py-12">
-          <Label>What I work in</Label>
-          <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {Object.entries(profile.skills).map(([group, items]) => (
-              <div key={group}>
-                <p className="font-mono text-label uppercase tracking-label text-ink-3">{group}</p>
-                <p className="mt-2 text-small text-ink-2">{items.join(" · ")}</p>
+        <section className="wrap py-14">
+          <p className="eyebrow">Skills</p>
+          <h2 className="section-title mt-2">What I have shipped with.</h2>
+          <div className="mt-6 border-b border-line">
+            {Object.entries(profile.skills).map(([k, v]) => (
+              <div key={k} className="grid gap-2 border-t border-line py-3 sm:grid-cols-[10rem_1fr]">
+                <p className="eyebrow pt-1">{k}</p>
+                <Chips items={v} />
               </div>
             ))}
           </div>
         </section>
       </main>
+      <HireBand title="Want the short version?" />
       <SiteFooter />
     </>
+  );
+}
+
+function Fact({ k, v }: { k: string; v: string }) {
+  return (
+    <div>
+      <dt className="eyebrow">{k}</dt>
+      <dd className="mt-1 font-semibold">{v}</dd>
+    </div>
   );
 }

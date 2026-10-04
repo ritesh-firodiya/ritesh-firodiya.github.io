@@ -1,0 +1,66 @@
+/* One stylesheet for every legal document on this host.
+ *
+ * The documents are static files, not pages of the app: their paths are
+ * hardcoded in shipped builds and in store listings, so the path and the text
+ * stay exactly as they are and only this file changes how they look.
+ *
+ * Same palette as the site (src/app/globals.css). One narrow column and
+ * nothing beside it — a policy is read top to bottom or searched.
+ */
+:root {
+  --page: #F5F6F8; --surface: #FFFFFF; --muted: #ECEEF2;
+  --ink: #0B1220; --ink-2: #3A4458; --ink-3: #5A6478;
+  --line: #DFE3EA; --brand: #3147E8; --brand-wash: #EEF1FF;
+  --warn-bg: #F8EEDC; --warn-fg: #5C3C00;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0A0E16; --surface: #131926; --muted: #101521;
+    --ink: #EDF0F6; --ink-2: #B5BDCC; --ink-3: #8D97AA;
+    --line: #222A3A; --brand: #8C9DFF; --brand-wash: #111838;
+    --warn-bg: #261E0F; --warn-fg: #EBCB8B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0A0E16; --surface: #131926; --muted: #101521;
+  --ink: #EDF0F6; --ink-2: #B5BDCC; --ink-3: #8D97AA;
+  --line: #222A3A; --brand: #8C9DFF; --brand-wash: #111838;
+  --warn-bg: #261E0F; --warn-fg: #EBCB8B;
+  color-scheme: dark;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--page); color: var(--ink-2);
+  line-height: 1.65; max-width: 72ch; margin: 0 auto; padding: 40px 24px 72px;
+  -webkit-font-smoothing: antialiased;
+}
+.crumb { font-size: 13px; color: var(--ink-3); margin-bottom: 20px; }
+.crumb a { color: var(--ink-3); text-decoration: none; }
+.crumb a:hover { color: var(--ink); }
+h1 { font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+h2 { font-size: 22px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 700; color: var(--ink); margin: 36px 0 10px; padding-top: 20px; border-top: 1px solid var(--line); }
+h3 { font-size: 17px; font-weight: 700; color: var(--ink); margin: 24px 0 8px; }
+p, li { font-size: 16px; margin-bottom: 14px; }
+ul, ol { padding-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 6px; }
+strong, b { color: var(--ink); font-weight: 600; }
+a { color: var(--brand); text-underline-offset: 3px; }
+.subtitle, .sub { color: var(--ink-3); font-size: 14px; margin-bottom: 28px; }
+/* The one answer most readers came for, boxed at the top. */
+.highlight { background: var(--brand-wash); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin: 20px 0; color: var(--ink); }
+.highlight p { margin-bottom: 0; }
+.warn { background: var(--warn-bg); color: var(--warn-fg); border-radius: 16px; padding: 18px 20px; margin: 20px 0; }
+.warn p, .warn li { color: inherit; }
+.warn strong { color: inherit; }
+.note { color: var(--ink-3); font-size: 13px; margin-top: 32px; }
+/* Numbered instructions, boxed so they read as the thing to do. */
+.steps { background: var(--brand-wash); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin: 20px 0; color: var(--ink); }
+.steps ol, .steps ul { margin-bottom: 0; }
+.steps li { margin-bottom: 10px; }
+.steps li:last-child, .steps p:last-child, .warn p:last-child { margin-bottom: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }

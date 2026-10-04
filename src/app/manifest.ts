@@ -10,11 +10,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Ritesh Firodiya",
     short_name: "Ritesh F",
     description:
-      "Engineer who ships. Every app, how it is paid for, and the screens it was built from.",
+      "Full-stack engineer. The work, the process, and every app with its screens and its wiki.",
     start_url: "/",
     display: "minimal-ui",
-    background_color: "#fbf9f4", // --color-paper
-    theme_color: "#14130f", // --color-ink
+    background_color: "#F5F6F8", // --color-page
+    theme_color: "#0B1220", // --color-ink
     icons: [
       { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
       { src: "/icon-192.png", sizes: "192x192", type: "image/png" },

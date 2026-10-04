@@ -49,17 +49,17 @@ jobs:
       # verifiedOn or a legal path pointing at nothing fails in seconds.
       - run: pnpm test:data
 
-      # The design sets live in the private app repos and are NOT committed
-      # here, so this has to run before the build or every product page ships
-      # with its screens missing.
+      # Everything the site shows about a product other than its facts lives in
+      # that product's own private repo and is NOT committed here: the design
+      # set, the wiki, the store art. This has to run before the build or every
+      # project page ships with its screens, its wiki and its pictures missing.
       #
       # DESIGNS_TOKEN is a fine-grained PAT on the ritvi-apps org with exactly
       # one permission: Contents: read. IT EXPIRES. When it does, this step
       # fails and the deploy stops — four deploys were lost to exactly that
-      # before the sets were removed in aee146d, and restoring the build-time
-      # pull restores that failure mode too. It fails loudly and early rather
-      # than publishing a site with holes in it.
-      - name: Pull design sets from the private app repos
+      # once. It fails loudly and early rather than publishing a site with
+      # holes in it.
+      - name: Pull design sets, wikis and store art from the private app repos
         env:
           DESIGNS_TOKEN: ${{ secrets.DESIGNS_TOKEN }}
           DESIGNS_SOURCE: remote
@@ -69,7 +69,7 @@ jobs:
             echo "::error::on ritvi-apps with Contents: read, and add it as a repo secret."
             exit 1
           }
-          pnpm designs
+          pnpm sync
 
       - run: pnpm build
 

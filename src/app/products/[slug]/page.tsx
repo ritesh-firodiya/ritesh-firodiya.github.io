@@ -1,16 +1,19 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Apple, BookOpen, Check, ExternalLink, Monitor, Play, Workflow, type LucideIcon } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { ModelPill, StatePill, Label } from "@/components/pills";
+import { Chips, HireBand, StatePill } from "@/components/ui";
+import { Embed } from "@/components/embed";
+import { ShotImage, embedPathOf } from "@/components/picture";
+import { StageTrack } from "@/components/stage";
 import {
-  IconGit, IconDesign, IconLive, IconAndroid, IconApple,
-} from "@/components/icons";
-import {
-  products, bySlug, mediaFor, screensFor, galleriesFor, withheldFor, MODEL,
-  type Product, type Gallery,
+  products, bySlug, mediaFor, galleriesFor, screensFor, surfacesOf, withheldFor, hasBuild,
+  MODEL_LABEL, type Platform, type Product,
 } from "@/lib/products";
+import { levelsOf, onBoard, progressLine } from "@/lib/board";
 import { studyBySlug } from "@/lib/case-studies";
+import { wikiOf, wikiHref, WIKI_TYPES } from "@/lib/wiki";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -21,109 +24,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = bySlug(slug);
   if (!p) return {};
   return {
-    title: p.name,
-    description: `${p.tagline} ${MODEL[p.model].label}. ${p.blurb}`.trim(),
+    title: p.fullName,
+    description: `${p.tagline} ${p.blurb}`,
     alternates: { canonical: `/products/${p.slug}/` },
   };
 }
 
-const SURFACE_LABEL: Record<string, string> = { mobile: "Phone", web: "Web", website: "Web" };
-const TERMS = "/legal/terms.html";
+const PLATFORM: Record<string, { name: string; Icon: LucideIcon }> = {
+  web: { name: "Web", Icon: Monitor },
+  ios: { name: "App Store", Icon: Apple },
+  android: { name: "Google Play", Icon: Play },
+};
+const isOpen = (v: Platform) => v.state === "live" || v.state === "beta";
 
-/* Row one: the places this product actually exists. Only what is real — a
-   disabled icon in a nav row is noise, and what is unavailable is said in
-   words underneath, once, where it can carry the reason. */
-function ProductLinks({ p, galleries }: { p: Product; galleries: Gallery[] }) {
-  const open = (v?: { state: string; url: string | null }) =>
-    v && v.url && (v.state === "live" || v.state === "beta") ? v.url : null;
-  const { web, ios, android } = p.platforms;
-
-  const links = [
-    open(web) && { href: open(web)!, label: "Live", Icon: IconLive, out: true },
-    open(android) && { href: open(android)!, label: "Google Play", Icon: IconAndroid, out: true },
-    open(ios) && { href: open(ios)!, label: ios!.state === "beta" ? "TestFlight" : "App Store", Icon: IconApple, out: true },
-    ...galleries.map((g) => ({
-      href: g.href,
-      label: galleries.length > 1 ? `${SURFACE_LABEL[g.surface] ?? g.surface} designs` : "Designs",
-      Icon: IconDesign,
-      out: false,
-    })),
-    p.repo && { href: p.repo, label: "Source", Icon: IconGit, out: true },
-  ].filter(Boolean) as { href: string; label: string; Icon: typeof IconGit; out: boolean }[];
-
-  /* Row two: the documents. Quieter than an install button and never in place
-     of one, but a store listing points here for them, so they are one click
-     from the top of the page rather than buried at the bottom. */
-  const docs = [
-    p.legal.privacy && { href: p.legal.privacy, label: "Privacy" },
-    { href: TERMS, label: "Terms" },
-    p.legal.delete && { href: p.legal.delete, label: "Delete account" },
-    { href: "/support/", label: "Support" },
-  ].filter(Boolean) as { href: string; label: string }[];
-
-  const shut = (["ios", "android", "web"] as const)
-    .map((k) => [k, p.platforms[k]] as const)
-    .filter(([, v]) => v && !open(v))
-    .map(([k, v]) => `${k === "ios" ? "iOS" : k === "android" ? "Android" : "Web"}: ${v!.note || v!.label}`);
-
-  return (
-    <>
-      {links.length > 0 && (
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          {links.map((l) => (
-            <a key={l.label} href={l.href}
-               className="inline-flex items-center gap-1.5 rounded-pill border border-line-strong bg-surface px-2.5 py-1 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
-              <l.Icon size={14} strokeWidth={1.75} aria-hidden /> {l.label}
-            </a>
-          ))}
-        </div>
-      )}
-      <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs2 text-ink-3">
-        {docs.map((d, i) => (
-          <span key={d.label} className="flex items-center gap-3">
-            {i > 0 && <span aria-hidden>·</span>}
-            <a href={d.href} className="link-u hover:text-brand-500">{d.label}</a>
-          </span>
-        ))}
-      </div>
-      {shut.length > 0 && (
-        <p className="mt-2 font-mono text-xs2 text-ink-3">Not available — {shut.join(" · ")}</p>
-      )}
-    </>
-  );
-}
-
-/* The facts the site exists to state, in one strip above everything else.
-   `ads` and `offline` were in products.json and on no page — which is exactly
-   the drift this rebuild was for. */
-function Facts({ p }: { p: Product }) {
-  const rows = [
-    { k: "Model", v: MODEL[p.model].label },
-    {
-      k: "Ads",
-      v: p.ads ?? "—",
-      loud: p.model === "free-ads",
-      // The surfaces get their own block below; here just name them.
-      note: p.adSurfaces.filter((s) => !s.absent).map((s) => s.kind).join(" · ") || undefined,
-    },
-    { k: "Offline", v: p.offline ?? "—" },
-    { k: "Analytics", v: p.analytics ?? "—", loud: !!p.analytics && p.analytics !== "None" },
-    p.version ? { k: "Version", v: p.version } : null,
-  ].filter(Boolean) as { k: string; v: string; note?: string; loud?: boolean }[];
-
-  return (
-    <dl className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 lg:grid-cols-6">
-      {rows.map((r) => (
-        <div key={r.k}>
-          <dt className="font-mono text-label uppercase tracking-label text-ink-3">{r.k}</dt>
-          <dd className={`mt-0.5 text-small font-medium ${r.loud ? "text-m-ads" : ""}`}>
-            {r.v}
-            {r.note && <span className="mt-0.5 block text-xs2 font-normal text-ink-3">{r.note}</span>}
-          </dd>
-        </div>
-      ))}
-    </dl>
-  );
+/** The two most numerous page types, as the small print on the wiki card. */
+function wikiBreakdown(slug: string): string {
+  const byType = wikiOf(slug)?.byType ?? {};
+  return WIKI_TYPES.map((t) => ({ label: t.label.toLowerCase(), n: byType[t.type] ?? 0 }))
+    .filter((t) => t.n > 0)
+    .sort((a, b) => b.n - a.n)
+    .slice(0, 2)
+    .map((t) => `${t.n} ${t.label}`)
+    .join(" · ");
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -131,258 +53,295 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const p = bySlug(slug);
   if (!p) notFound();
 
-  const m = mediaFor(p.slug);
-  const screens = screensFor(p.slug);
+  const study = studyBySlug(p.slug);
+  const media = mediaFor(p.slug);
+  const embed = embedPathOf(p);
+  const platforms = Object.entries(p.platforms).filter(([, v]) => v) as [string, Platform][];
+  const open = platforms.filter(([, v]) => isOpen(v));
+  const shut = platforms.filter(([, v]) => !isOpen(v));
   const galleries = galleriesFor(p.slug);
   const withheld = withheldFor(p.slug);
-  const study = studyBySlug(p.slug);
-  const others = products.filter((o) => o.slug !== p.slug).slice(0, 5);
-  const live = Object.values(p.platforms).find((v) => v?.state === "live");
+  const wiki = wikiOf(p.slug);
+  const next = products[(products.indexOf(p) + 1) % products.length];
+  const hasEvidence = galleries.length > 0 || withheld.length > 0 || wiki !== null;
 
   return (
     <>
-      <SiteHeader active="/products" />
+      <SiteHeader on="work" />
       <main id="main">
-        {/* 1 · who it is, where it is, what it costs */}
-        <section className="mx-auto max-w-page px-gutter pb-7 pt-8">
-          <Link href="/products" className="link-u inline-flex items-center gap-1.5 text-xs2 text-ink-3 hover:text-ink">
-            ← All products
-          </Link>
-
-          <div className="mt-4 flex flex-wrap items-start gap-5">
-            {m.icon ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={m.icon} alt={`${p.name} icon`} width={64} height={64}
-                   className="h-16 w-16 shrink-0 rounded-card border border-line" />
-            ) : (
-              <span className="slot h-16 w-16 shrink-0 rounded-card font-mono text-xs2 text-ink-3">—</span>
-            )}
-
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <h1 className="font-display text-d2 font-semibold">{p.name}</h1>
-                <ModelPill model={p.model} />
-                {live && <StatePill state="live">Live</StatePill>}
+        {/* What it is and where to get it. This half is for anyone. */}
+        <section className="wrap pb-10 pt-10 lg:pt-12">
+          <p className="text-sm text-ink-3">
+            <Link href="/work/" className="hover:text-ink">Work</Link> / {p.name}
+          </p>
+          <div className="mt-5 grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
+            <div>
+              <div className="flex items-center gap-4">
+                {media.icon && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={media.icon} alt="" width={56} height={56} className="h-14 w-14 rounded-xl border border-line" />
+                )}
+                <StatePill p={p} />
               </div>
-              <p className="mt-1.5 max-w-measure font-display text-lead italic text-ink-2">{p.tagline}</p>
-              {p.fullName && p.fullName !== p.name && (
-                <p className="mt-1 font-mono text-xs2 text-ink-3">Listed as &ldquo;{p.fullName}&rdquo;</p>
-              )}
-              <p className="mt-2 max-w-prose text-small text-ink-2">{p.blurb}</p>
-              <ProductLinks p={p} galleries={galleries} />
-              {p.unreleasedNote && (
-                <p className="mt-2.5 max-w-prose border-l-2 border-line-strong pl-3 text-small text-ink-2">
-                  {p.unreleasedNote}
+              <h1 className="page-title mt-5">{p.name}</h1>
+              <p className="mt-3 max-w-[46ch] text-lead text-ink-2">{study?.lead ?? `${p.tagline} ${p.blurb}`}</p>
+
+              {open.length === 0 && (
+                <p className="mt-6 rounded-lg border border-line bg-muted p-4 text-base text-ink-2">
+                  <b className="font-semibold text-ink">Nothing to install.</b>{" "}
+                  {p.unreleasedNote ?? (p.notBuilt ? "No application code exists yet. What exists is listed below." : "A build exists, and it is not public yet.")}
                 </p>
               )}
-            </div>
-          </div>
-        </section>
 
-        {/* 2 · the facts, stated before anything asks you to install */}
-        <section className="border-y border-line bg-muted">
-          <div className="mx-auto max-w-page px-gutter py-5">
-            <Facts p={p} />
-            {p.modelDetail && (
-              <p className="mt-4 max-w-prose text-small text-ink-2">{p.modelDetail}</p>
-            )}
-            {/* Where each ad actually appears. The format names the surface that
-                is NOT used too — "Rewarded: none" is a fact someone deciding
-                whether to install is entitled to, and hiding it would be the
-                same omission this site was rebuilt to stop. */}
-            {p.adSurfaces.length > 0 && (
-              <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
-                {p.adSurfaces.map((s) => (
-                  <div key={s.kind} className={s.absent ? "text-ink-3" : ""}>
-                    <dt className="font-mono text-xs2 font-medium">{s.kind}</dt>
-                    <dd className="text-xs2 text-ink-2">{s.where}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-          </div>
-        </section>
-
-        {/* 3 · tech */}
-        {p.stack.length > 0 && (
-          <section className="border-y border-line">
-            <div className="mx-auto flex max-w-page flex-wrap items-baseline gap-x-6 gap-y-2 px-gutter py-4">
-              <Label>Tech</Label>
-              <ul className="flex flex-wrap gap-1.5">
-                {p.stack.map((s) => (
-                  <li key={s} className="rounded-pill border border-line-strong bg-surface px-2.5 py-0.5 font-mono text-xs2 text-ink-2">
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        )}
-
-        {/* 4 · screenshots */}
-        {m.shots.length > 0 && (
-          <section className="mx-auto max-w-page px-gutter py-7">
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 className="font-display text-h2 font-semibold">Screenshots</h2>
-              {m.kind === "web" && (
-                <span className="font-mono text-xs2 text-ink-3">
-                  Captured from the public pages, against a demo account.
-                </span>
-              )}
-            </div>
-            <div className="rail mt-4 flex gap-4 overflow-x-auto pb-3">
-              {m.shots.map((s) =>
-                m.kind === "web" ? (
-                  <div key={s.src} className="browser w-full max-w-3xl shrink-0">
-                    <div className="browser-bar">
-                      <span className="browser-dot" /><span className="browser-dot" /><span className="browser-dot" />
-                    </div>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="block w-full" />
-                  </div>
-                ) : (
-                  <div key={s.src} className="device w-[172px] shrink-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={s.src} alt={`${p.name} — ${s.label}`} loading="lazy" className="device-screen w-full" />
-                  </div>
-                ),
-              )}
-            </div>
-          </section>
-        )}
-
-        {/* 4b · the screens, named, when there is no picture of them. A product
-               with nothing shipped still has a shape worth stating. */}
-        {m.shots.length === 0 && p.screens.length > 0 && (
-          <section className="mx-auto max-w-page px-gutter py-7">
-            <h2 className="font-display text-h2 font-semibold">Screens</h2>
-            <p className="mt-1 text-xs2 text-ink-3">No store screenshots yet — these are the screens it is built around.</p>
-            <ul className="mt-3 flex flex-wrap gap-1.5">
-              {p.screens.map((s) => (
-                <li key={s} className="rounded-pill border border-line-strong bg-surface px-2.5 py-0.5 font-mono text-xs2 text-ink-2">
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {/* 5 · designs — the app repo's own gallery, at its own URL */}
-        {galleries.length > 0 && (
-          <section className="border-y border-line bg-muted">
-            <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-gutter py-5">
-              <div>
-                <Label>Designs · {screens.length} screens</Label>
-                <p className="mt-1 max-w-prose text-small text-ink-2">
-                  The HTML wireframes this was built from, rendering live — the same gallery the
-                  screens were reviewed against.
-                </p>
+              {/* An open platform is a button. A closed one is drawn disabled
+                  with its reason — never hidden, never a link to nowhere. */}
+              <div className="mt-6 grid gap-2.5 sm:max-w-md">
+                {open.map(([k, v], i) => {
+                  const { Icon } = PLATFORM[k];
+                  return (
+                    <a key={k} href={v.url!} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
+                      {k === "web" ? <ExternalLink size={16} aria-hidden /> : <Icon size={16} aria-hidden />} {v.label}
+                    </a>
+                  );
+                })}
+                {shut.map(([k, v]) => {
+                  const { name, Icon } = PLATFORM[k];
+                  return (
+                    <span key={k} className="btn btn-off justify-between whitespace-normal text-left" aria-disabled="true">
+                      <span className="inline-flex items-center gap-2">
+                        <Icon size={16} aria-hidden /> {name}
+                      </span>
+                      <span className="text-right text-xs font-normal">{v.note || v.label}</span>
+                    </span>
+                  );
+                })}
               </div>
-              <div className="flex flex-wrap gap-2">
-                {galleries.map((g) => (
-                  <a key={g.href} href={g.href}
-                     className="inline-flex items-center gap-2 rounded-pill bg-ink px-3.5 py-1.5 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
-                    <IconDesign size={14} strokeWidth={1.75} aria-hidden />
-                    {galleries.length > 1 ? SURFACE_LABEL[g.surface] ?? g.surface : "Open the design set"}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 5b · designs withheld — a set that does not follow the style guide is
-            not published, and the page says so rather than dropping the section.
-            Hiding it would make a half-migrated estate look finished. */}
-        {galleries.length === 0 && withheld.length > 0 && (
-          <section className="border-y border-line bg-muted">
-            <div className="mx-auto max-w-page px-gutter py-5">
-              <Label>Designs · not published</Label>
-              <p className="mt-1 max-w-prose text-small text-ink-2">
-                This product&rsquo;s design set does not yet follow the{" "}
-                <span className="font-medium text-ink">design set style guide</span>, so it is not
-                published here. The screens exist in the app repo; what is missing is the shared
-                machinery every set is read through.
-              </p>
-              <ul className="mt-3 space-y-1.5">
-                {withheld.map((w) => (
-                  <li key={w.surface} className="text-xs2 text-ink-3">
-                    <span className="font-mono uppercase tracking-label text-ink-2">{w.surface}</span>
-                    {" — "}
-                    {w.failed.map((c) => c.id).join(", ")}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        )}
-
-        {/* 6 · what it does */}
-        {p.features.length > 0 && (
-          <section className="mx-auto max-w-page px-gutter py-7">
-            <h2 className="font-display text-h2 font-semibold">What it does</h2>
-            <dl className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
-              {p.features.map((f) => (
-                <div key={f.title}>
-                  <dt className="text-small font-semibold">{f.title}</dt>
-                  <dd className="mt-1 text-small text-ink-2">{f.body}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-        )}
-
-        {/* 7 · the quieter facts */}
-        {(p.permissions.length > 0 || study) && (
-          <section className="border-t border-line">
-            <div className="mx-auto grid max-w-page gap-8 px-gutter py-7 lg:grid-cols-[2fr_1fr] lg:gap-14">
-              {p.permissions.length > 0 && (
-                <div>
-                  <h2 className="font-display text-h2 font-semibold">Permissions &amp; data</h2>
-                  <dl className="mt-3 divide-y divide-line border-y border-line">
-                    {p.permissions.map((perm) => (
-                      <div key={perm.name} className="grid gap-0.5 py-2.5 sm:grid-cols-[9rem_1fr] sm:gap-5">
-                        <dt className={`text-small font-medium ${perm.absent ? "text-ink-3" : ""}`}>{perm.name}</dt>
-                        <dd className="text-small text-ink-2">{perm.why}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  {p.analyticsNote && <p className="mt-2.5 max-w-prose text-small text-ink-2">{p.analyticsNote}</p>}
-                </div>
+              {open.some(([, v]) => v.note) && (
+                <p className="mt-2 text-xs text-ink-3">{open.map(([, v]) => v.note).filter(Boolean).join(" ")}</p>
               )}
+
               {study && (
-                <div>
-                  <h2 className="font-display text-h2 font-semibold">Written up in full</h2>
-                  <p className="mt-2 max-w-prose text-small text-ink-2">
-                    The problem, the architecture, and the decisions worth defending.
-                  </p>
-                  <Link href={`/work/${study.slug}/`}
-                        className="mt-3 inline-flex items-center gap-2 rounded-pill border border-line-strong px-3.5 py-1.5 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
-                    Read the case study →
-                  </Link>
+                <dl className="mt-8 grid gap-5 border-t border-line pt-6 sm:grid-cols-2">
+                  {study.facts.map((f) => (
+                    <div key={f.k}>
+                      <dt className="eyebrow">{f.k}</dt>
+                      <dd className="mt-1 text-base font-semibold">{f.v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+
+            {/* Every picture is the product's own: its design screen embedded
+                live, then its store art. With neither, a slot that says so. */}
+            <div className="grid gap-4">
+              {embed && (
+                <div className="overflow-hidden rounded-lg border border-line-strong shadow-lg">
+                  <Embed src={embed} title={`${p.name} design screen`} />
                 </div>
               )}
+              {media.shots.length > 0 && (
+                <div className="grid grid-cols-3 gap-3">
+                  {media.shots.map((s) => (
+                    <ShotImage key={s.src} shot={s} name={p.name} />
+                  ))}
+                </div>
+              )}
+              {!embed && media.shots.length === 0 && (
+                <div className="slot grid aspect-[16/10] place-items-center rounded-lg">
+                  <p className="eyebrow">{hasBuild(p) ? "No screenshot yet" : "No screenshot — nothing is built"}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* How far it has got, and the two things it left behind. */}
+        {(onBoard(p) || hasEvidence) && (
+          <section className="border-y border-line bg-surface">
+            <div className="wrap py-12">
+              {onBoard(p) && (
+                <>
+                  <p className="eyebrow">How far it has got</p>
+                  <h2 className="section-title mt-2">{progressLine(levelsOf(p))}</h2>
+                  <div className="mt-7">
+                    <StageTrack levels={levelsOf(p)} />
+                  </div>
+                </>
+              )}
+              <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                {galleries.length > 0 && (
+                  /* A plain anchor: the gallery is the product's own static page. */
+                  <a href={galleries[0].href} className="card bg-page p-6">
+                    <div className="flex items-center justify-between">
+                      <Workflow size={24} className="text-brand-500" aria-hidden />
+                      <span className="font-mono text-xs text-ink-3">{surfacesOf(p.slug).join(" · ")}</span>
+                    </div>
+                    <p className="figure mt-5">{screensFor(p.slug).length}</p>
+                    <h3 className="mt-1 text-h3 font-bold">screens in the design set</h3>
+                    <p className="mt-2 text-base text-ink-2">A flow chart of every screen, and each one as a live HTML page.</p>
+                    <p className="text-link mt-4 inline-block text-base">Open the flow chart</p>
+                  </a>
+                )}
+                {withheld.map((w) => (
+                  <div key={w.surface} className="card border-dashed bg-page p-6">
+                    <div className="flex items-center justify-between">
+                      <Workflow size={24} className="text-ink-3" aria-hidden />
+                      <span className="font-mono text-xs text-ink-3">{w.surface}</span>
+                    </div>
+                    <h3 className="mt-5 text-h3 font-bold">Design set withheld</h3>
+                    <p className="mt-2 text-base text-ink-2">
+                      The screens are drawn, but the set does not follow the style guide yet, so it is not published.
+                    </p>
+                    <ul className="mt-4 grid gap-1 border-t border-line pt-4 font-mono text-xs text-ink-3">
+                      {w.failed.map((c) => (
+                        <li key={c.id}>{c.detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                {wiki && (
+                  <Link href={wikiHref(p.slug)} className="card bg-page p-6">
+                    <div className="flex items-center justify-between">
+                      <BookOpen size={24} className="text-brand-500" aria-hidden />
+                      <span className="font-mono text-xs text-ink-3">{wikiBreakdown(p.slug)}</span>
+                    </div>
+                    <p className="figure mt-5">{wiki.total}</p>
+                    <h3 className="mt-1 text-h3 font-bold">pages in the wiki</h3>
+                    <p className="mt-2 text-base text-ink-2">Why each screen is drawn the way it is, and every decision with its reason.</p>
+                    <p className="text-link mt-4 inline-block text-base">Read the wiki</p>
+                  </Link>
+                )}
+              </div>
             </div>
           </section>
         )}
 
-        <section className="border-t border-line">
-          <div className="mx-auto max-w-page px-gutter py-5">
-            <Label>More products</Label>
-            <div className="mt-2.5 flex flex-wrap gap-x-5 gap-y-2">
-              {others.map((o) => (
-                <Link key={o.slug} href={`/products/${o.slug}/`} className="link-u text-small font-medium hover:text-brand-500">
-                  {o.name}
-                </Link>
-              ))}
-              <Link href="/products" className="link-u ml-auto text-small font-medium text-brand-500">
-                All {products.length} →
-              </Link>
+        {/* The case study, for the hiring reader. */}
+        <section className="wrap grid gap-12 py-14 lg:grid-cols-[1fr_20rem]">
+          <div className="max-w-[68ch]">
+            {study ? (
+              study.sections.map((s, i) => (
+                <div key={s.h} className={i > 0 ? "mt-12" : ""}>
+                  <h2 className="section-title">{s.h}</h2>
+                  {s.p?.map((t) => (
+                    <p key={t.slice(0, 32)} className="mt-4 text-body text-ink-2">{t}</p>
+                  ))}
+                  {s.list && <StudyList heading={s.h} items={s.list} />}
+                </div>
+              ))
+            ) : p.features.length > 0 ? (
+              <>
+                <h2 className="section-title">What it does</h2>
+                <StudyList heading="What it does" items={p.features.map((f) => ({ t: f.title, b: f.body }))} />
+              </>
+            ) : (
+              <>
+                <h2 className="section-title">What it is</h2>
+                <p className="mt-4 text-body text-ink-2">{p.blurb}</p>
+              </>
+            )}
+          </div>
+
+          <aside className="grid content-start gap-6">
+            <div className="card p-5">
+              <p className="eyebrow">{p.notBuilt ? "Planned stack" : "Stack"}</p>
+              <div className="mt-3">
+                <Chips items={study?.stack ?? p.stack} />
+              </div>
             </div>
+            {/* The model, never a price. The store listing is where a price belongs. */}
+            <div className="card p-5">
+              <p className="eyebrow">{p.notBuilt ? "How it will be paid for" : "How it is paid for"}</p>
+              <p className="mt-3 text-base font-semibold">{MODEL_LABEL[p.model]}</p>
+              <p className="mt-1 text-sm text-ink-2">{p.modelDetail}</p>
+              <Disclosure p={p} />
+            </div>
+            <div className="card p-5">
+              <p className="eyebrow">Privacy and help</p>
+              <ul className="mt-3 grid gap-2 text-sm">
+                {p.legal.privacy && (
+                  <li>
+                    <a href={p.legal.privacy} className="text-link">Privacy policy</a>
+                  </li>
+                )}
+                {p.legal.delete && (
+                  <li>
+                    <a href={p.legal.delete} className="text-link">Delete your account</a>
+                  </li>
+                )}
+                <li>
+                  <Link href="/support/" className="text-link">Get support</Link>
+                </li>
+              </ul>
+              {p.legal.privacyNote && <p className="mt-3 text-xs text-ink-3">{p.legal.privacyNote}</p>}
+            </div>
+          </aside>
+        </section>
+
+        <section className="wrap pb-14">
+          <div className="flex items-center justify-between gap-4 border-t border-line pt-6">
+            <Link href="/work/" className="text-link text-base">All projects</Link>
+            <Link href={`/products/${next.slug}/`} className="text-right">
+              <span className="eyebrow block">Next project</span>
+              <span className="text-h3 font-bold">{next.name}</span>
+            </Link>
           </div>
         </section>
       </main>
+      <HireBand title={hasBuild(p) ? "Like how this one was built?" : "Want to see how the built ones turned out?"} />
       <SiteFooter />
+    </>
+  );
+}
+
+/** A decision reads as a card; anything else reads as a checked list. */
+function StudyList({ heading, items }: { heading: string; items: { t: string; b: string }[] }) {
+  if (/decision/i.test(heading)) {
+    return (
+      <div className="mt-4 grid gap-4">
+        {items.map((d) => (
+          <div key={d.t} className="card p-6">
+            <h3 className="text-h3 font-bold">{d.t}</h3>
+            <p className="mt-2 text-base text-ink-2">{d.b}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <ul className="mt-4">
+      {items.map((f) => (
+        <li key={f.t} className="flex gap-3 border-t border-line py-3.5 text-body">
+          <Check size={16} className="mt-1 shrink-0 text-brand-500" aria-hidden />
+          <span>
+            <b className="font-semibold">{f.t}</b> <span className="text-ink-2">{f.b}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Ads, analytics and offline: disclosure, stated per app, only where known. */
+function Disclosure({ p }: { p: Product }) {
+  const rows = [
+    ["Ads", p.ads],
+    ["Analytics", p.analytics],
+    ["Works offline", p.offline],
+  ].filter((r): r is [string, string] => Boolean(r[1]));
+  if (rows.length === 0) return null;
+  return (
+    <>
+      <dl className="mt-4 grid gap-2 border-t border-line pt-4 text-sm">
+        {rows.map(([k, v]) => (
+          <div key={k} className="flex justify-between gap-3">
+            <dt className="text-ink-3">{k}</dt>
+            <dd className="text-right font-semibold">{v}</dd>
+          </div>
+        ))}
+      </dl>
+      {p.analyticsNote && <p className="mt-3 text-xs text-ink-3">{p.analyticsNote}</p>}
     </>
   );
 }

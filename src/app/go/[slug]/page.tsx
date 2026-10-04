@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Label } from "@/components/pills";
-import { products, bySlug, type Platform } from "@/lib/products";
+import { Apple, ExternalLink, Play } from "lucide-react";
+import { StatePill } from "@/components/ui";
+import { products, bySlug, mediaFor, type Platform } from "@/lib/products";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -14,15 +15,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return p ? { title: `Get ${p.name}`, robots: { index: false, follow: true } } : {};
 }
 
+const NAME: Record<string, string> = { web: "Web", ios: "iOS", android: "Android" };
+
 /**
  * The short link. One per app, for a bio, a QR code or a forwarded message, so
  * the link never has to be reprinted when a platform opens.
  *
- * It is a PAGE and not a bare redirect for three reasons: a wrong platform
- * guess must be recoverable in one tap, a platform with nothing installable has
- * to say why, and a desktop visitor needs something other than a store they
- * cannot install from. Platform detection is deliberately left to the client at
- * runtime — this file is prerendered, so it must render usefully for everyone.
+ * It is a PAGE and not a bare redirect: a wrong platform guess must be
+ * recoverable in one tap, a platform with nothing installable has to say why,
+ * and a desktop visitor needs something other than a store they cannot install
+ * from. No site header — someone who scanned a code came for one app.
  */
 export default async function GoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -32,59 +34,58 @@ export default async function GoPage({ params }: { params: Promise<{ slug: strin
   const entries = Object.entries(p.platforms).filter(([, v]) => v) as [string, Platform][];
   const open = entries.filter(([, v]) => v.state === "live" || v.state === "beta");
   const shut = entries.filter(([, v]) => v.state !== "live" && v.state !== "beta");
+  const icon = mediaFor(p.slug).icon;
 
   return (
-    <main id="main" className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-gutter py-section">
-      <div className="rounded-card border border-line bg-surface p-8 text-center shadow-frame">
-        <span className="slot mx-auto block h-[88px] w-[88px] rounded-card font-mono text-xs2 text-ink-3">Icon</span>
-        <h1 className="mt-6 font-display text-h2 font-semibold">{p.name}</h1>
-        <p className="mt-2 text-small text-ink-2">{p.tagline}</p>
-
-        {open.length > 0 ? (
-          <div className="mt-6 grid gap-2.5">
-              {open.map(([k, v]) => (
-                <Link key={k} href={v.url ?? "#"} className="flex items-center justify-center gap-2.5 rounded-pill bg-ink px-5 py-3 font-medium text-ink-inverse transition hover:bg-brand-500">
-                  {k === "ios" ? "App Store / TestFlight" : k === "android" ? "Google Play" : "Open the site"}
-                </Link>
-              ))}
-          </div>
-        ) : (
-          <p className="mt-6 max-w-prose text-small text-ink-2">
-            {p.unreleasedNote ?? "Nothing is installable today."}
-          </p>
-        )}
-
-        {shut.length > 0 && (
-          <div className="mt-6 border-t border-line pt-5 text-left">
-            <Label>Not available yet</Label>
-            <ul className="mt-3 space-y-2 text-small text-ink-2">
-              {shut.map(([k, v]) => (
-                <li key={k} className="flex items-baseline justify-between gap-3">
-                  <span className="font-medium">{k === "ios" ? "iOS" : k === "android" ? "Android" : "Web"}</span>
-                  <span className="text-right text-xs2 text-ink-3">{v.note || v.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="mt-7 grid gap-2.5">
-          <Link href={`/products/${p.slug}/`} className="flex items-center justify-center gap-2 rounded-pill border border-line-strong px-5 py-2.5 text-small font-medium transition hover:border-brand-500">
-            Read about the app
-          </Link>
-          {open.length === 0 && (
-            <Link href="/support" className="flex items-center justify-center gap-2 rounded-pill border border-line-strong px-5 py-2.5 text-small font-medium transition hover:border-brand-500">
-              Tell me when it opens
-            </Link>
+    <main id="main" className="grid min-h-dvh flex-1 place-items-center px-6 py-16">
+      <div className="w-full max-w-md">
+        <div className="card p-8 text-center">
+          {icon ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={icon} alt="" width={80} height={80} className="mx-auto h-20 w-20 rounded-xl" />
+          ) : (
+            <span className="slot mx-auto grid h-20 w-20 place-items-center rounded-xl font-mono text-xs text-ink-3">Icon</span>
           )}
+          <h1 className="mt-5 text-h2 font-bold">{p.name}</h1>
+          <p className="mt-1 text-base text-ink-2">{p.tagline}</p>
+          <p className="mt-3">
+            <StatePill p={p} />
+          </p>
+
+          {open.length > 0 ? (
+            <div className="mt-6 grid gap-2.5">
+              {open.map(([k, v], i) => (
+                <a key={k} href={v.url!} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
+                  {k === "ios" ? <Apple size={16} aria-hidden /> : k === "android" ? <Play size={16} aria-hidden /> : <ExternalLink size={16} aria-hidden />}
+                  {v.label}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-6 text-base text-ink-2">{p.unreleasedNote ?? "Nothing is installable today."}</p>
+          )}
+
+          {shut.length > 0 && (
+            <div className="mt-6 border-t border-line pt-5 text-left">
+              <p className="eyebrow">Not available</p>
+              <ul className="mt-3 grid gap-2 text-sm">
+                {shut.map(([k, v]) => (
+                  <li key={k} className="flex items-baseline justify-between gap-3">
+                    <span className="font-semibold">{NAME[k]}</span>
+                    <span className="text-right text-ink-3">{v.note || v.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <Link href={`/products/${p.slug}/`} className="btn btn-quiet mt-6 w-full">Read about the app</Link>
+          <p className="mt-5 text-xs text-ink-3">This page sets no cookies and records nothing.</p>
         </div>
-
-        <p className="mt-6 text-xs2 text-ink-3">This page sets no cookies and records nothing.</p>
+        <p className="mt-6 text-center">
+          <Link href="/work/" className="text-link text-sm">All work</Link>
+        </p>
       </div>
-
-      <Link href="/products" className="link-u mx-auto mt-8 inline-flex items-center gap-1.5 text-small text-ink-2 hover:text-ink">
-        ← All products
-      </Link>
     </main>
   );
 }

@@ -1,305 +1,216 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArrowRight, Calendar, FileText, MapPin } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { ModelPill, Label } from "@/components/pills";
-import { products, shipped, unbuilt, mediaFor, verifiedOn } from "@/lib/products";
+import { HireBand, StatePill } from "@/components/ui";
+import { ShotImage } from "@/components/picture";
+import { Board, BoardLegend, StageTrack } from "@/components/stage";
+import { products, mediaFor, stageCounts, totalScreens } from "@/lib/products";
+import { onBoard } from "@/lib/board";
 import { profile } from "@/lib/profile";
-import { CASE_STUDIES } from "@/lib/case-studies";
+import { studyBySlug } from "@/lib/case-studies";
 
-/* Named rather than sliced, so reordering products.json cannot silently
-   promote something with no screenshot into the two feature slots. */
-const FEATURED = ["aakalan", "askcal"];
+/* The first three products in products.json are the three this page leads
+   with. To change what leads, re-order the file. */
+const [lead, second, third] = products;
+const side = [second, third];
 
-/* The compact row under the features. Four is what fits one line at 1440
-   without wrapping into a second row that reads as a different section. */
-const COMPACT = ["tic-tac-toe", "charades", "imposter", "chitragupt"];
-
-/* Title and description come from the layout defaults; this exists only to
-   own the canonical. Every page states its own — an inherited one silently
-   becomes a duplicate-content claim the moment a route is added. */
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+/* Every page states its own canonical — an inherited one silently becomes a
+   duplicate-content claim the moment a route is added. */
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
-  const study = CASE_STUDIES[0];
-  const featured = FEATURED.map((s) => products.find((p) => p.slug === s)!).filter(Boolean);
-  const compact = COMPACT.map((s) => products.find((p) => p.slug === s)!).filter(Boolean);
-
-  /* Two counts that were once one. "Live" includes the web products; "on
-     Google Play" must mean the Play listing specifically, or it is a claim the
-     store does not support. */
-  const live = products.filter((p) =>
-    Object.values(p.platforms).some((v) => v && v.state === "live"),
-  ).length;
-  const onPlay = products.filter((p) => p.platforms.android?.state === "live").length;
+  const study = studyBySlug(lead.slug);
+  const leadShots = mediaFor(lead.slug).shots;
+  /* The second listing shot is usually the one that shows what the product
+     does; the first is its home screen. */
+  const hero = [mediaFor(second.slug).shots[0], leadShots[1] ?? leadShots[0], mediaFor(third.slug).shots[0]];
+  const heroNames = [second.name, lead.name, third.name];
+  const recent = profile.experiences.slice(0, 4);
+  const earlier = profile.experiences.slice(4);
 
   return (
     <>
       <SiteHeader />
       <main id="main">
-        {/* ══ hero ══ Name, claim, two doors, four numbers — and that is all.
-            The version this replaces spent a full viewport on a headline and
-            forty words, then put a "three doors" band under it that made every
-            reader classify themselves before the page had shown them anything.
-            The work is now the next thing down. */}
-        <section className="grain relative overflow-hidden border-b border-line">
-          <div className="mx-auto max-w-page px-gutter pb-12 pt-14 sm:pt-20">
-            <p className="inline-flex items-center gap-2 rounded-pill border border-live/30 bg-live-bg px-3 py-1 font-mono text-label uppercase tracking-label text-live">
-              <span className="h-1.5 w-1.5 rounded-pill bg-live" aria-hidden />
-              Open to senior &amp; staff roles · and consulting
+        <section className="wrap grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[1.1fr_1fr] lg:pt-20">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-pill bg-success-bg px-3 py-1 text-xs font-semibold text-success-fg">
+              <span className="h-1.5 w-1.5 rounded-pill bg-success" aria-hidden /> Open to senior, staff and tech-lead roles
             </p>
-            <h1 className="mt-6 max-w-[14ch] text-d1 font-bold">{profile.headline}</h1>
-
-            <div className="mt-8 flex flex-wrap items-end gap-8 sm:gap-12">
-              <p className="max-w-measure text-lead text-ink-2">
-                Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify. Now
-                building{" "}
-                <b className="font-semibold text-ink">{products.length} products for India</b>, and
-                stating how every one of them is paid for before you install it.
-              </p>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/me.webp"
-                alt={profile.name}
-                width={96}
-                height={96}
-                className="h-24 w-24 shrink-0 rounded-card border border-line object-cover"
-              />
-            </div>
-
+            <h1 className="hero-title mt-5">{profile.headline}</h1>
+            <p className="mt-5 max-w-[54ch] text-lead text-ink-2">
+              Nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. React, React Native, Next.js
+              and NestJS, from the Postgres schema to the Play Store release.
+            </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/work" className="rounded-pill bg-ink px-5 py-2.5 text-small font-medium text-ink-inverse transition hover:bg-brand-500">
+              <Link href="/resume/" className="btn btn-primary">
+                <FileText size={16} aria-hidden /> Read the résumé
+              </Link>
+              <Link href="/work/" className="btn btn-quiet">
                 See the work
               </Link>
-              <Link href="/hire" className="rounded-pill border border-line-strong px-5 py-2.5 text-small font-medium transition hover:border-brand-500 hover:text-brand-500">
-                Work together
-              </Link>
-              <a href={`mailto:${profile.email}`} className="text-small font-medium text-ink-3 underline decoration-line-strong underline-offset-4 transition hover:text-brand-500">
+              <a href={`mailto:${profile.email}`} className="text-link ml-1 text-base">
                 {profile.email}
               </a>
             </div>
-
-            <dl className="mt-10 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
-              <Stat k="Products" v={products.length} />
-              <Stat k="Live today" v={live} tone="text-live" />
-              <Stat k="On Google Play" v={onPlay} />
-              <Stat k="Years shipping" v={9} />
-            </dl>
+            <p className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-3">
+              <span className="inline-flex items-center gap-1.5">
+                <MapPin size={16} aria-hidden /> {profile.location}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar size={16} aria-hidden /> Shipping since 2017
+              </span>
+            </p>
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            {hero.map((shot, i) =>
+              shot ? (
+                <ShotImage key={shot.src} shot={shot} name={heroNames[i]} className={i === 1 ? "scale-110 shadow-lg" : ""} />
+              ) : (
+                <div key={heroNames[i]} className="slot grid aspect-[9/19] place-items-center rounded-lg">
+                  <p className="eyebrow">No screenshot yet</p>
+                </div>
+              ),
+            )}
           </div>
         </section>
 
-        {/* ══ selected work ══ GOAL 1, and band two rather than band four.
-            "Can this person ship" is what all four readers are really asking,
-            and a picture answers it faster than a paragraph. */}
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-page px-gutter py-14">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <Label>Selected work</Label>
-                <h2 className="mt-2 max-w-[24ch] text-d2 font-semibold">
-                  Things I built, and what it took.
-                </h2>
-              </div>
-              <Link href="/work" className="text-small font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">
-                All work
-              </Link>
-            </div>
-
-            <div className="mt-9 grid gap-6 lg:grid-cols-3">
-              <Link
-                href={`/work/${study.slug}/`}
-                className="group flex flex-col rounded-card border border-line bg-surface p-7 transition hover:border-brand-200 lg:col-span-2"
-              >
-                <Shot slug={study.slug} className="mb-6 h-48" />
-                <Label>Case study · {study.product}</Label>
-                <h3 className="mt-2 max-w-[30ch] text-h2 font-semibold transition group-hover:text-brand-500">
-                  {study.title}
-                </h3>
-                <dl className="mt-auto flex flex-wrap gap-x-10 gap-y-3 border-t border-line pt-4">
-                  {study.facts.slice(0, 3).map((f) => (
-                    <div key={f.k}>
-                      <dt className="font-mono text-label uppercase tracking-label text-ink-3">{f.k}</dt>
-                      <dd className="mt-1 max-w-[24ch] text-small font-medium">{f.v}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </Link>
-
-              <div className="flex flex-col gap-6">
-                {featured.map((p) => (
-                  <Link
-                    key={p.slug}
-                    href={`/products/${p.slug}/`}
-                    className="group flex-1 rounded-card border border-line bg-surface p-5 transition hover:border-brand-200"
-                  >
-                    <Shot slug={p.slug} className="mb-4 h-24" />
-                    <ModelPill model={p.model} />
-                    <h3 className="mt-2 text-h3 font-semibold transition group-hover:text-brand-500">{p.name}</h3>
-                    <p className="mt-1 text-small text-ink-2">{p.tagline}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
+        <section className="border-y border-line bg-surface">
+          <div className="wrap flex flex-wrap items-center gap-x-10 gap-y-3 py-5">
+            <p className="eyebrow">Worked at</p>
+            {profile.workedAt.map((c) => (
+              <span key={c} className="text-lead font-bold text-ink-2">
+                {c}
+              </span>
+            ))}
           </div>
         </section>
 
-        {/* ══ experience ══ GOAL 2, condensed. Eight rows here would make the
-            landing page a CV; the full history is the résumé's job. */}
-        <section className="border-b border-line bg-muted">
-          <div className="mx-auto max-w-page px-gutter py-14">
-            <div className="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
-              <div>
-                <Label>Experience</Label>
-                <h2 className="mt-2 text-d2 font-semibold">Nine years, mostly end-to-end.</h2>
-                <p className="mt-3 max-w-[34ch] text-small text-ink-2">
-                  Postgres schema to Play Store release — usually as the only person who touches
-                  both.
+        <section className="wrap grid grid-cols-2 gap-4 py-12 lg:grid-cols-4">
+          <Stat n={9} label="years shipping production code" />
+          <Stat n={products.length} label="projects of my own" />
+          <Stat n={stageCounts.live} label="live today, on the web and in the stores" />
+          <Stat n={totalScreens} label="screens designed" />
+        </section>
+
+        <section className="wrap pb-16">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">Selected work</p>
+              <h2 className="section-title mt-2">Three I would talk through in an interview.</h2>
+            </div>
+            <Link href="/work/" className="text-link text-base">
+              All {products.length} projects
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            <Link href={`/products/${lead.slug}/`} className="card grid overflow-hidden lg:col-span-2 lg:grid-cols-[1fr_1.05fr]">
+              <div className="p-7">
+                <StatePill p={lead} />
+                <h3 className="mt-3 text-h2 font-bold">{lead.name}</h3>
+                <p className="mt-2 text-body text-ink-2">
+                  {lead.tagline} {lead.blurb}
                 </p>
-                <Link href="/resume" className="mt-4 inline-block text-small font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">
-                  Full résumé
-                </Link>
+                {study && (
+                  <dl className="mt-6 grid gap-4 border-t border-line pt-5">
+                    {study.facts.slice(0, 3).map((f) => (
+                      <div key={f.k}>
+                        <dt className="eyebrow">{f.k}</dt>
+                        <dd className="mt-1 text-sm font-semibold">{f.v}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
               </div>
-              <ol className="border-t border-line">
-                {profile.experiences.slice(0, 3).map((e) => (
-                  <li key={e.company} className="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:items-baseline sm:gap-6">
-                    <p className="font-mono text-label uppercase tracking-label text-ink-3">
-                      {e.from} — {e.to}
-                    </p>
-                    <p className="text-small">
-                      <b className="font-semibold">{e.position}</b> ·{" "}
-                      <span className="text-brand-500">{e.company}</span>
-                    </p>
-                  </li>
+              <div className="grid grid-cols-2 gap-3 bg-muted p-5">
+                {leadShots.slice(1, 3).map((s) => (
+                  <ShotImage key={s.src} shot={s} name={lead.name} />
                 ))}
-                <li className="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:items-baseline sm:gap-6">
-                  <p className="font-mono text-label uppercase tracking-label text-ink-3">2017 — 2023</p>
-                  <p className="text-small text-ink-2">
-                    {profile.experiences.slice(3).map((e) => e.company).join(" · ")}
-                  </p>
-                </li>
-              </ol>
+              </div>
+            </Link>
+            <div className="grid gap-6">
+              {side.map((p) => {
+                const shot = mediaFor(p.slug).shots[0];
+                return (
+                  <Link key={p.slug} href={`/products/${p.slug}/`} className="card flex gap-5 overflow-hidden p-5">
+                    {shot && (
+                      <div className="w-24 shrink-0">
+                        <ShotImage shot={shot} name={p.name} />
+                      </div>
+                    )}
+                    <div>
+                      <StatePill p={p} />
+                      <h3 className="mt-3 text-h3 font-bold">{p.name}</h3>
+                      <p className="mt-1 text-sm text-ink-2">{p.blurb}</p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* ══ products ══ GOAL 3 — the brand-site half. */}
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-page px-gutter py-14">
+        <section className="border-y border-line bg-surface">
+          <div className="wrap py-16">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <Label>Products · verified {verifiedOn}</Label>
-                <h2 className="mt-2 max-w-[26ch] text-d2 font-semibold">
-                  {products.length} products, honestly labelled.
-                </h2>
+                <p className="eyebrow">How I build</p>
+                <h2 className="section-title mt-2 max-w-[26ch]">The same eight stages, from an idea to a product people use.</h2>
               </div>
-              <Link href="/products" className="text-small font-medium text-brand-500 underline decoration-brand-200 underline-offset-4">
-                All products
+              <Link href="/process/" className="btn btn-quiet">
+                See the whole process <ArrowRight size={16} aria-hidden />
               </Link>
             </div>
-            <p className="mt-4 max-w-prose text-small text-ink-2">
-              How each one is paid for is stated above its install button — never below it, never
-              softened into &ldquo;unlock&rdquo;. No promise is made on behalf of all of them.
-            </p>
-
-            <div className="mt-8 grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-              {compact.map((p) => (
-                <Link key={p.slug} href={`/products/${p.slug}/`} className="group bg-surface p-5 transition hover:bg-muted">
-                  <ModelPill model={p.model} />
-                  <h3 className="mt-2.5 text-h3 font-semibold transition group-hover:text-brand-500">{p.name}</h3>
-                  <p className="mt-1 text-small text-ink-2">{p.tagline}</p>
-                </Link>
-              ))}
+            <div className="mt-8">
+              <StageTrack />
             </div>
-            <p className="mt-4 font-mono text-xs2 text-ink-3">
-              + {unbuilt.length} listed because a spec and a schema exist, not because anything
-              ships. {shipped.length} are built.
-            </p>
+            <div className="card mt-8 overflow-x-auto bg-page">
+              <Board products={[lead, ...side].filter(onBoard)} />
+            </div>
+            <BoardLegend />
           </div>
         </section>
 
-        {/* ══ the two ways to work with me ══ GOALS 4 and 6, side by side
-            because they are two answers to one question. */}
-        <section className="border-b border-line">
-          <div className="mx-auto grid max-w-page gap-6 px-gutter py-14 md:grid-cols-2">
-            <Door
-              href="/hire"
-              kicker="Work together"
-              title="An MVP, a team to lead, or AI tooling."
-              body="What I take on, what it costs in time, and what you get at the end of it."
-              cta="What I take on"
-            />
-            <Door
-              href="/resume"
-              kicker="Hiring"
-              title="Senior / staff IC and tech lead."
-              body="Nine years across remote teams, on the web and in the store."
-              cta="Read the résumé"
-            />
+        <section className="wrap grid gap-10 py-16 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <p className="eyebrow">Experience</p>
+            <h2 className="section-title mt-2">Nine years, mostly end to end.</h2>
+            <Link href="/resume/" className="text-link mt-4 inline-block text-base">
+              Full résumé
+            </Link>
           </div>
-        </section>
-
-        {/* ══ contact ══ GOAL 5, and the end of the journey. */}
-        <section className="bg-band text-band-ink">
-          <div className="mx-auto max-w-page px-gutter py-14">
-            <p className="font-mono text-label uppercase tracking-label text-band-ink/55">Get in touch</p>
-            <h2 className="mt-3 max-w-[20ch] text-d2 font-semibold">
-              Hiring, building, or just want to argue about tooling?
-            </h2>
-            <p className="mt-4 max-w-measure text-band-ink/65">{profile.currently}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={`mailto:${profile.email}`} className="rounded-pill bg-page px-5 py-3 text-small font-medium text-ink transition hover:bg-brand-500 hover:text-band-ink">
-                {profile.email}
-              </a>
-              <Link href="/contact" className="rounded-pill border border-band-ink/25 px-5 py-3 text-small font-medium transition hover:border-band-ink">
-                Every way to reach me
-              </Link>
-            </div>
-          </div>
+          <ol>
+            {recent.map((e) => (
+              <li key={e.company} className="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline">
+                <p className="font-mono text-xs text-ink-3">
+                  {e.from} — {e.to}
+                </p>
+                <p className="text-body">
+                  <b className="font-semibold">{e.position}</b> <span className="text-ink-3">·</span> {e.company}
+                </p>
+              </li>
+            ))}
+            <li className="grid gap-1 border-y border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline">
+              <p className="font-mono text-xs text-ink-3">
+                {earlier.at(-1)?.from.split(" ").at(-1)} — {earlier[0]?.to.split(" ").at(-1)}
+              </p>
+              <p className="text-body text-ink-2">{earlier.map((e) => e.company.replace(/\s*\(.*\)/, "")).join(" · ")}</p>
+            </li>
+          </ol>
         </section>
       </main>
+      <HireBand title="Hiring for a senior, staff or tech-lead role?" />
       <SiteFooter />
     </>
   );
 }
 
-function Stat({ k, v, tone }: { k: string; v: number; tone?: string }) {
+function Stat({ n, label }: { n: number; label: string }) {
   return (
-    <div className="bg-surface px-5 py-4">
-      <dt className="font-mono text-label uppercase tracking-label text-ink-3">{k}</dt>
-      <dd className={`mt-1.5 text-h2 tabular-nums ${tone ?? ""}`}>{v}</dd>
-    </div>
-  );
-}
-
-function Door({ href, kicker, title, body, cta }: Record<"href" | "kicker" | "title" | "body" | "cta", string>) {
-  return (
-    <Link href={href} className="group rounded-card border border-line bg-surface p-8 transition hover:border-brand-200">
-      <Label>{kicker}</Label>
-      <h2 className="mt-2 text-h2 font-semibold transition group-hover:text-brand-500">{title}</h2>
-      <p className="mt-3 max-w-[44ch] text-small text-ink-2">{body}</p>
-      <span className="mt-5 inline-block text-small font-medium text-brand-500">{cta} →</span>
-    </Link>
-  );
-}
-
-/* A real screenshot where one exists, and a visibly empty slot where none
-   does. The rule is that a missing asset is visibly missing — a grey box
-   reads as a surface that happens to be blank, hatching does not. */
-function Shot({ slug, className = "" }: { slug: string; className?: string }) {
-  const m = mediaFor(slug);
-  const shot = m.shots[0];
-  if (!shot) {
-    return (
-      <div className={`slot flex items-center justify-center rounded ${className}`}>
-        <p className="font-mono text-label uppercase tracking-label text-ink-3">No screenshot yet</p>
-      </div>
-    );
-  }
-  return (
-    <div className={`flex items-center justify-center overflow-hidden rounded bg-muted ${className}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={shot.src} alt={`${slug} — ${shot.label}`} loading="lazy" className="h-full w-auto object-contain" />
+    <div className="card p-5">
+      <p className="figure">{n}</p>
+      <p className="mt-2 text-sm text-ink-2">{label}</p>
     </div>
   );
 }

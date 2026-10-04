@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 // Self-hosted at build time by next/font — no render-blocking request to
 // Google, and no layout shift. The wireframes used an @import because they run
 // from a CDN with no build step; this is the same three faces, done properly.
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
-});
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -21,11 +15,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ritesh-firodiya.github.io"),
   title: {
-    default: "Ritesh Firodiya — Engineer who ships",
+    default: "Ritesh Firodiya — Full-stack engineer",
     template: "%s — Ritesh Firodiya",
   },
   description:
-    "Full-stack engineer and lead, ~9 years. Thirteen products for India — eight of them apps, two live on the Play Store. How each app is paid for, stated plainly.",
+    "Full-stack engineer with nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. Thirteen products of my own, each with its screens, its wiki and its store listing.",
   openGraph: {
     type: "website",
     siteName: "Ritesh Firodiya",
@@ -44,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
       <head>
         {/* Runs before first paint. A stored choice applied in an effect
             repaints after the light palette has already been shown, which is
@@ -59,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-dvh flex-col antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-pill focus:bg-ink focus:px-4 focus:py-2 focus:text-small focus:text-ink-inverse"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-pill focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-page"
         >
           Skip to content
         </a>

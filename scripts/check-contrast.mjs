@@ -69,25 +69,18 @@ const PAIRS = [
   ["ink-4", "page", UI, "disabled / struck through only, UI minimum"],
   ["brand-500", "page", AA, "body links, not only decoration"],
   ["brand-500", "surface", AA, "links on a card"],
-  /* accent is the hot red and is UI-minimum ON PURPOSE: it is for filled
-     fields and display type, never a sentence. If it ever passes AA it has
-     probably been dulled into a second brand colour. */
-  ["accent-500", "page", UI, "FIELDS AND DISPLAY TYPE ONLY — never small text"],
+  ["ink-inverse", "brand-500", AA, "the primary button"],
+  ["brand-700", "brand-50", AA, "the active item in a rail"],
   ["band-ink", "band", AA, "inverted band — footer, contact"],
   ["band-2", "band", UI, "quiet text on an inverted band"],
   ["success-fg", "success-bg", AA, "status pill"],
   ["warn-fg", "warn-bg", AA, "status pill"],
   ["danger-fg", "danger-bg", AA, "status pill"],
   ["info-fg", "info-bg", AA, "status pill"],
-  ["m-free", "m-free-bg", AA, "model pill"],
-  ["m-ads", "m-ads-bg", AA, "model pill"],
-  ["m-once", "m-once-bg", AA, "model pill"],
-  ["m-sub", "m-sub-bg", AA, "model pill"],
-  ["m-year", "m-year-bg", AA, "model pill"],
   ["live", "live-bg", AA, "state pill"],
-  ["beta", "beta-bg", AA, "state pill"],
+  ["test", "test-bg", AA, "state pill"],
   ["build", "build-bg", AA, "state pill"],
-  ["idea", "idea-bg", AA, "state pill"],
+  ["draft", "draft-bg", AA, "state pill"],
 ];
 
 const FILES = [

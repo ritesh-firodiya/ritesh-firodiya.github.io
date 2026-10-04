@@ -83,7 +83,7 @@ export function ThemeToggle() {
       onClick={() => apply(NEXT[theme])}
       title={LABEL[theme]}
       aria-label={LABEL[theme]}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-pill border border-line text-ink-2 transition hover:border-line-strong hover:text-ink"
+      className="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 transition hover:border-line-strong hover:text-ink"
     >
       {theme === "dark" ? <Moon size={16} strokeWidth={1.75} /> : <Sun size={16} strokeWidth={1.75} />}
     </button>

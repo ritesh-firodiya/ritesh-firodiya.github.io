@@ -8,15 +8,15 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, extname } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const root = new URL("..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(join(root, p), "utf8"));
 
 const productsFile = read("src/data/products.json");
 const products = productsFile.products;
-const media = read("src/data/media.json");
 const profile = read("src/data/profile.json");
 
 const MODELS = ["one-time", "subscription", "per-period", "free-ads", "undecided"];
@@ -166,31 +166,39 @@ test("every live web product either has a privacy policy or is a known exception
     `these are listed as exceptions but now have a policy — drop them from WEB_WITHOUT_POLICY: ${fixed.join(", ")}`);
 });
 
-/* ── media ──────────────────────────────────────────────────────────────── */
+/* ── the release state ─────────────────────────────────────────────────── */
 
-test("every screenshot and icon in media.json is a file that shipped", () => {
-  for (const [slug, m] of Object.entries(media.media)) {
-    const srcs = [m.icon, ...(m.shots ?? []).map((s) => s.src)].filter(Boolean);
-    for (const src of srcs) {
-      assert.ok(existsSync(join(root, "public", src)), `${slug}: ${src} is referenced but missing`);
-    }
+test("every product says how far along it is, in words", () => {
+  for (const p of products) {
+    assert.ok(p.stageLabel?.trim(), `${p.slug} has no stageLabel — its pill would be empty`);
+    assert.ok(p.stageLabel.length <= 28, `${p.slug}.stageLabel is too long for a pill: "${p.stageLabel}"`);
   }
 });
 
-test("no orphan files in public/media", () => {
-  const referenced = new Set();
-  for (const m of Object.values(media.media)) {
-    if (m.icon) referenced.add(m.icon);
-    for (const s of m.shots ?? []) referenced.add(s.src);
+test("a product is called live only when something is actually live", () => {
+  // The colour of the pill is derived from the platforms; the words are typed.
+  // This is the check that the two cannot disagree.
+  for (const p of products) {
+    const live = Object.values(p.platforms).some((v) => v?.state === "live");
+    assert.equal(/^live\b/i.test(p.stageLabel), live,
+      `${p.slug} is labelled "${p.stageLabel}" but ${live ? "has" : "has no"} live platform`);
   }
-  const dir = join(root, "public", "media");
-  for (const slug of readdirSync(dir)) {
-    if (!statSync(join(dir, slug)).isDirectory()) continue;
-    for (const f of readdirSync(join(dir, slug))) {
-      const href = `/media/${slug}/${f}`;
-      assert.ok(referenced.has(href), `${href} ships but nothing references it`);
-    }
+});
+
+test("a design screen named as a product's picture is a path inside its design set", () => {
+  for (const p of products) {
+    if (!p.embed) continue;
+    assert.match(p.embed, /^(mobile|web)\/[a-z0-9-]+\/[a-z0-9-]+\.html$/, `${p.slug}.embed is not a screen path: ${p.embed}`);
   }
+});
+
+test("nothing read out of a product repo is committed to this one", () => {
+  // Store art, design sets and wiki pages have one home: the product's repo.
+  // They are read at build time into these folders, which must stay untracked.
+  const tracked = execFileSync("git", ["ls-files", "public/media", "public/designs", "public/products", "src/data/generated"], { cwd: root, encoding: "utf8" })
+    .split("\n")
+    .filter(Boolean);
+  assert.deepEqual(tracked, [], `these generated files are tracked by git:\n  ${tracked.join("\n  ")}`);
 });
 
 /* ── freshness ──────────────────────────────────────────────────────────── */

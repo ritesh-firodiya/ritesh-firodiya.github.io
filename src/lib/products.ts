@@ -1,5 +1,5 @@
 import raw from "@/data/products.json";
-import mediaRaw from "@/data/media.json";
+import { generated } from "@/lib/generated";
 
 /**
  * The five monetization models, and they render at equal visual weight.
@@ -31,6 +31,12 @@ export type Platform = {
 export type Product = {
   slug: string;
   name: string;
+  /** How far along it is, in two or three words. The colour is derived from
+   *  the platforms; only the words are typed. */
+  stageLabel: string;
+  /** A product with no screenshot can show one of its own design screens
+   *  instead, live. Path inside its design set: "web/tax/tax.html". */
+  embed?: string;
   fullName: string;
   tagline: string;
   blurb: string;
@@ -59,23 +65,14 @@ export type Product = {
   legal: { privacy: string | null; delete: string | null; privacyNote?: string };
 };
 
-/** Web-sized derivatives written by scripts/sync-assets.mjs. An app with no
- *  entry has no store assets to derive from, and the page renders a labelled
- *  placeholder — visibly missing beats a grey box, which is rule 8. */
-export type Media = {
-  /** Decides the frame the site draws: a phone bezel, or browser chrome.
-   *  Drawing a web product inside a phone would be a small lie about it. */
-  kind: "mobile" | "web";
-  icon: string | null;
-  shots: { src: string; label: string }[];
-};
-const media = mediaRaw.media as Record<string, Media>;
-export const mediaFor = (slug: string): Media =>
-  media[slug] ?? { kind: "mobile", icon: null, shots: [] };
-export const mediaGeneratedOn: string = mediaRaw.generatedOn;
-/** Apps the sync could not find assets for, with the reason. Rendered on
- *  /design/gallery so the gap is stated rather than hidden. */
-export const mediaMissing = mediaRaw.missing as { slug: string; why: string }[];
+/** The product's own store art, resized by scripts/sync-context.mjs at build
+ *  time. Nothing is committed here: re-shoot the listing in the product repo
+ *  and the next build shows it. An app with no entry has no listing yet, and
+ *  the page renders a labelled placeholder — visibly missing beats a grey box. */
+export type Shot = { src: string; label: string; width: number; height: number };
+export type Media = { icon: string | null; shots: Shot[] };
+const mediaRaw = generated<{ media: Record<string, Media> }>("media.json", { media: {} });
+export const mediaFor = (slug: string): Media => mediaRaw.media[slug] ?? { icon: null, shots: [] };
 
 export const verifiedOn: string = raw.verifiedOn;
 /**
@@ -106,51 +103,55 @@ export const unbuilt = products.filter((p) => p.notBuilt);
  *  category you can just store. */
 export type Kind = "app" | "platform";
 
-/** Order by how real a thing is: something you can install or open today, then
- *  a beta you can join, then work in progress, then an idea. Derived from the
- *  platform states rather than typed, so it cannot drift from the table. */
-export function rank(p: Product): number {
+/**
+ * The release state — the one colour scale this site reserves.
+ *
+ *   live   anyone can install or open it today
+ *   test   a build exists behind a door: a beta, a closed track, a review queue
+ *   build  code exists and nothing is installable
+ *   draft  designs only
+ *
+ * Derived from the platform states rather than typed, so it cannot drift from
+ * the buttons on the same page.
+ */
+export type Stage = "live" | "test" | "build" | "draft";
+export function stageOf(p: Product): Stage {
   const states = Object.values(p.platforms).filter(Boolean).map((v) => v!.state);
-  if (states.includes("live")) return 0;
-  if (states.includes("beta")) return 1;
-  if (p.notBuilt) return 3;
-  return 2;
+  if (states.includes("live")) return "live";
+  if (states.includes("beta") || states.includes("closed")) return "test";
+  return p.notBuilt ? "draft" : "build";
 }
-/** Availability order. Kept for counting what is usable today; it no longer
- *  decides what is listed first — see the note on `products` below. */
-export const byRank = (a: Product, b: Product) => rank(a) - rank(b) || a.name.localeCompare(b.name);
-
-/** Model → the token pair. Deliberately no "good"/"bad" ordering: a
- *  subscription is not a warning and ad-supported is not a confession. */
-export const MODEL: Record<Model, { label: string; fg: string; bg: string }> = {
-  free: { label: "Free", fg: "text-m-free", bg: "bg-m-free-bg" },
-  "free-ads": { label: "Free · ads", fg: "text-m-ads", bg: "bg-m-ads-bg" },
-  "one-time": { label: "One-time", fg: "text-m-once", bg: "bg-m-once-bg" },
-  subscription: { label: "Subscription", fg: "text-m-sub", bg: "bg-m-sub-bg" },
-  "per-period": { label: "Per tax year", fg: "text-m-year", bg: "bg-m-year-bg" },
-  undecided: { label: "Undecided", fg: "text-ink-3", bg: "bg-muted" },
+export const STAGE_LABEL: Record<Stage, string> = {
+  live: "Live",
+  test: "In testing",
+  build: "In build",
+  draft: "In design",
 };
+export const stageCounts = products.reduce<Record<Stage, number>>(
+  (acc, p) => ({ ...acc, [stageOf(p)]: acc[stageOf(p)] + 1 }),
+  { live: 0, test: 0, build: 0, draft: 0 },
+);
 
-export const STATE: Record<PlatformState, { fg: string; bg: string }> = {
-  live: { fg: "text-live", bg: "bg-live-bg" },
-  beta: { fg: "text-beta", bg: "bg-beta-bg" },
-  closed: { fg: "text-idea", bg: "bg-idea-bg" },
-  none: { fg: "text-idea", bg: "bg-idea-bg" },
+/** Something to look at or install: a card on /work. The rest are rows. */
+export const hasBuild = (p: Product): boolean => ["live", "test"].includes(stageOf(p));
+
+/** How an app is paid for, in the words the page shows. A fact, stated at
+ *  equal weight for every model: a subscription is not a warning and
+ *  ad-supported is not a confession. Never a price — see CLAUDE.md rule 2b. */
+export const MODEL_LABEL: Record<Model, string> = {
+  free: "Free",
+  "free-ads": "Free, with ads",
+  "one-time": "One-time purchase",
+  subscription: "Subscription",
+  "per-period": "Per tax year",
+  undecided: "Undecided",
 };
-
-/** Counts for the filter row. Derived, never typed into a page — a hardcoded
- *  "8 apps" is exactly the kind of fact that goes stale silently. */
-export const modelCounts = products.reduce<Record<string, number>>((acc, p) => {
-  acc[p.model] = (acc[p.model] ?? 0) + 1;
-  return acc;
-}, {});
 
 /* ── Real design screens ──────────────────────────────────────────────────
    Synced from the app repos by scripts/sync-designs.mjs. These are the actual
    wireframes every app was built from — plain HTML, rendered live in an iframe
    rather than screenshotted, because a screenshot goes stale the moment a
    design changes and nothing tells you. */
-import designsRaw from "@/data/designs.json";
 
 export type Screen = { path: string; title: string; surface: string; area: string | null };
 export type Gallery = {
@@ -164,9 +165,18 @@ export type Gallery = {
 /* The generated JSON carries no `href` — that is derived here, and `area` is
    narrowed per-set by TS's literal inference, so the cast goes via unknown. */
 type DesignSet = { indexes: Omit<Gallery, "href">[]; screens: Screen[] };
-const designSets = designsRaw.sets as unknown as Record<string, DesignSet>;
+type StyleGuide = {
+  canonical: string;
+  results: Record<string, { surfaces: Record<string, SurfaceVerdict>; publishable: string[] }>;
+};
+const designsRaw = generated<{ sets: Record<string, DesignSet>; styleGuide?: StyleGuide }>("designs.json", { sets: {} });
+const designSets = designsRaw.sets;
 
-export const screensFor = (slug: string): Screen[] => designSets[slug]?.screens ?? [];
+/** The contact sheet is a page of the set, not a screen of the product. */
+export const screensFor = (slug: string): Screen[] =>
+  (designSets[slug]?.screens ?? []).filter((s) => !s.path.endsWith("/screenshots.html"));
+export const hasScreen = (slug: string, path: string): boolean =>
+  (designSets[slug]?.screens ?? []).some((s) => s.path === path);
 
 /** The set's own gallery page for each surface — the index.html sitting at the
  *  top of `mobile/` or `web/`, written in the app repo. Deeper index.html files
@@ -203,11 +213,7 @@ export function galleriesFor(slug: string): Gallery[] {
    missing, with its reason. */
 export type Check = { id: string; ok: boolean; detail: string };
 export type SurfaceVerdict = { pass: boolean; checks: Check[] };
-type StyleGuide = {
-  canonical: string;
-  results: Record<string, { surfaces: Record<string, SurfaceVerdict>; publishable: string[] }>;
-};
-const styleGuide = (designsRaw as unknown as { styleGuide?: StyleGuide }).styleGuide;
+const styleGuide = designsRaw.styleGuide;
 
 /** Surfaces this product draws that do NOT follow the guide, with the reasons. */
 export function withheldFor(slug: string): { surface: string; failed: Check[] }[] {
@@ -219,13 +225,6 @@ export function withheldFor(slug: string): { surface: string; failed: Check[] }[
     .sort((a, b) => a.surface.localeCompare(b.surface));
 }
 
-export const styleGuideCanonical = styleGuide?.canonical ?? null;
-
-/** How many products have at least one conforming surface, out of how many. */
-export const conformance = {
-  passing: Object.values(styleGuide?.results ?? {}).filter((r) => r.publishable.length > 0).length,
-  total: Object.keys(styleGuide?.results ?? {}).length,
-};
-
-export const designsGeneratedOn: string = designsRaw.generatedOn;
-export const totalScreens = Object.values(designSets).reduce((n, s) => n + s.screens.length, 0);
+/** Every surface a product draws, published or not. */
+export const surfacesOf = (slug: string): string[] => Object.keys(styleGuide?.results?.[slug]?.surfaces ?? {});
+export const totalScreens = Object.keys(designSets).reduce((n, slug) => n + screensFor(slug).length, 0);

@@ -36,10 +36,11 @@ import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } 
 import { existsSync } from "node:fs";
 import { resolveSources } from "./designs/sources.mjs";
 import { checkSurface, canonicalHashes, CANONICAL } from "./designs/conformance.mjs";
+import { SECRETS } from "./designs/secrets.mjs";
 
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
-const DATA = join(process.cwd(), "src", "data", "designs.json");
+const DATA = join(process.cwd(), "src", "data", "generated", "designs.json");
 /* Clean per-product URLs for the galleries. These are static files, not Next
    routes — the page served is the app repo's own index.html, unaltered but
    for a <base> tag. Wrapping it in a route would put our header, our back
@@ -52,18 +53,6 @@ const PAGES = join(process.cwd(), "public", "products");
 // anyone else needs.
 const SKIP_FILES = new Set(["_review.html"]);
 
-/* Credential shapes worth stopping a public deploy for. Deliberately narrow:
-   a pattern that fires on a wireframe's placeholder trains everyone to add an
-   exception, and then it catches nothing. */
-const SECRETS = [
-  ["AWS access key id", /\bAKIA[0-9A-Z]{16}\b/],
-  ["Google API key", /\bAIza[0-9A-Za-z_-]{35}\b/],
-  ["GitHub token", /\bgh[pousr]_[0-9A-Za-z]{36,}\b/],
-  ["Slack token", /\bxox[abposr]-[0-9A-Za-z-]{10,}\b/],
-  ["Stripe secret key", /\bsk_live_[0-9A-Za-z]{16,}\b/],
-  ["RevenueCat secret key", /\bsk_[0-9A-Za-z]{24,}\b/],
-  ["private key block", /-----BEGIN (?:RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----/],
-];
 const COPY_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg"]);
 
 const exists = async (p) => {
@@ -348,6 +337,7 @@ for (const [slug, set] of Object.entries(manifest)) {
   }
 }
 
+await mkdir(dirname(DATA), { recursive: true });
 await writeFile(
   DATA,
   JSON.stringify(

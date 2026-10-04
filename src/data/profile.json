@@ -376,9 +376,9 @@
       "private": true
     },
     {
-      "name": "DwarSeva — Property",
+      "name": "Seedha Ghar",
       "tagline": "Map-based property listings for India",
-      "description": "Property search on a map, with a prepaid wallet and a universal ₹5-per-action friction filter so only serious enquiries get through. Every listing is verified by a human. Separate codebase from the society platform.",
+      "description": "Property search on a map, with a prepaid wallet and a universal ₹5-per-action friction filter so only serious enquiries get through. Every listing is verified by a human.",
       "stack": [
         "Turborepo",
         "Next.js",

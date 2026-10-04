@@ -34,7 +34,7 @@ export const SETS = {
   askcal: { repo: "ritvi-apps/askcal", local: "askcal" },
   "tic-tac-toe": { repo: "ritvi-apps/tic-tac-toe", local: "tic-tac-toe" },
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
-  "dwarseva-property": { repo: "ritvi-apps/property-app", local: "property-app" },
+  "seedha-ghar": { repo: "ritvi-apps/property-app", local: "property-app" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
   /* These three live under other owners. A fine-grained PAT covers ONE owner,
      so each is read with its own read-only deploy key instead: narrower than

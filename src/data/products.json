@@ -923,12 +923,12 @@
       "repo": null
     },
     {
-      "slug": "dwarseva-property",
-      "name": "DwarSeva Property",
+      "slug": "seedha-ghar",
+      "name": "Seedha Ghar",
       "stageLabel": "In design",
       "embed": "web/buyer/home.html",
       "embedMobile": "mobile/buyer/home.html",
-      "fullName": "DwarSeva — Property",
+      "fullName": "Seedha Ghar",
       "tagline": "Map-based property listings for India.",
       "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",
       "sourceOfTruth": "apps/property-app",

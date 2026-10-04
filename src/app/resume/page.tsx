@@ -65,7 +65,7 @@ export default function ResumePage() {
 
         <div className="grid gap-x-8 border-b border-line lg:grid-cols-2">
           {Object.entries(profile.skills).map(([k, v]) => (
-            <div key={k} className="grid gap-x-4 gap-y-1 border-b border-line py-2.5 sm:grid-cols-[8rem_1fr]">
+            <div key={k} className="grid content-start items-start gap-x-4 gap-y-1 border-b border-line py-2.5 sm:grid-cols-[8rem_1fr]">
               <p className="eyebrow pt-1">{k}</p>
               <Chips items={v} />
             </div>

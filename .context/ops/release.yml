@@ -1,0 +1,37 @@
+# What is live right now. Overwritten whenever reality changes — the only file
+# here that is allowed to be *wrong*, which is why it is re-verified, not
+# assumed.
+
+updated: 2026-10-04
+verified_by: git log (local); the live site was NOT fetched to confirm
+
+surfaces:
+  web:
+    url: https://ritesh-firodiya.github.io
+    host: GitHub Pages, from the `main` branch via .github/workflows/deploy.yml
+    live:
+      branch: main
+      commit: f3472b8  # head of main on 2026-10-04
+      verified: false  # carried from git; nobody opened the deployed site today
+    pending:
+      branch: redesign/hiring-first
+      what: the hiring-first redesign — new pages, wikis, build-time pictures
+      state: built and passing `pnpm check` locally; not committed, not pushed
+
+secrets:
+  DESIGNS_TOKEN:
+    where: GitHub repo secret
+    what: fine-grained PAT on ritvi-apps, Contents read
+    expires: unknown — check before the first deploy of the redesign
+    note: >
+      The redesign reads wikis and store art through the same token, from the
+      same repos, so no new access is needed. Private product repos that are
+      NOT in scripts/designs/sources.mjs are not read.
+
+known_gaps:
+  - learning-platform is a live web demo with sign-up and no privacy policy.
+    Pinned as a known exception in tests/data.test.mjs.
+  - bin/products does not exist, so products.json is hand-maintained and
+    verifiedOn plus the 30-day test are the only guarantee.
+  - products.json `verifiedOn` is 2026-09-26. On 2026-10-04 only Chitragupt and
+    AskCal were re-read, against their own ops/release.yml.

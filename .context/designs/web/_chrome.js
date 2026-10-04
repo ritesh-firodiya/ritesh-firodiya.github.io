@@ -446,7 +446,7 @@
   right.appendChild(sw);
 
   /* ---- notes: the rationale, from the wiki ------------------------------
-     It lives in .context/documents/wiki/surfaces/ and only there — decisions,
+     It lives in .context/wiki/surfaces/ and only there — decisions,
      constraints, anything true of THIS page that the pixels do not show.
 
      Far right, past the display controls: it is the only control in the bar
@@ -475,7 +475,7 @@
       drawer.appendChild(body);
       document.body.appendChild(drawer);
 
-      var wikiRel = up + "../../documents/wiki/surfaces/" + slug + ".md";
+      var wikiRel = up + "../../wiki/surfaces/" + slug + ".md";
       var loaded = false;
       function setOpen(open) {
         drawer.hidden = !open;

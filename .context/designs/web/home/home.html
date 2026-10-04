@@ -13,184 +13,211 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
-      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
-      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
-        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
-        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
-        <a href="../about/about.html" class="transition hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
+
+    <header class="site-head">
+      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
+          Ritesh Firodiya
+        </a>
+        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        </nav>
+        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+      </div>
+      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
       </nav>
-      <a href="../contact/contact.html"
-         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <!-- ══ statement ══ One sentence at poster scale. No portrait, no badge,
-         no stat row here — those answer questions nobody has asked yet, and
-         the index below is what the reader came for. -->
-    <section class="px-6 pb-14 pt-16 md:px-10 md:pt-24">
-      <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Pune, India — open to senior and staff roles, and to consulting</p>
-      <h1 class="huge mt-7 max-w-[13ch]">Engineer<br>who ships.</h1>
-      <div class="mt-12 grid gap-8 border-t border-line pt-7 md:grid-cols-[1fr_auto] md:items-end">
-        <p class="max-w-[58ch] text-lead text-ink-2">
-          Nine years of production TypeScript — Walmart, Swiggy, Globant, Speechify.
-          <span class="text-ink">Thirteen products for India, built alone</span>, and every one of
-          them states how it is paid for above the button that installs it.
-        </p>
-        <a href="#index" class="font-mono text-2xs uppercase tracking-label inline-flex items-center gap-2 self-start border-b-2 border-accent-500 pb-1 font-medium text-brand-500 md:self-end">
-          The index ↓
-        </a>
-      </div>
-    </section>
+      <main>
+        <section class="wrap grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[1.1fr_1fr] lg:pt-20">
+          <div>
+            <p class="inline-flex items-center gap-2 rounded-pill bg-success-bg px-3 py-1 text-xs font-semibold text-success-fg"><span class="h-1.5 w-1.5 rounded-pill bg-success"></span> Open to senior, staff and tech-lead roles</p>
+            <h1 class="hero-title mt-5">Full-stack engineer who takes a product from an idea to the store.</h1>
+            <p class="mt-5 max-w-[54ch] text-lead text-ink-2">Nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. React, React Native, Next.js and NestJS, from the Postgres schema to the Play Store release.</p>
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a href="../about/resume.html" class="btn btn-primary"><i data-lucide="file-text" class="h-4 w-4"></i> Read the résumé</a>
+              <a href="../work/work.html" class="btn btn-quiet">See the work</a>
+              <a href="mailto:firodiya.ritesh@gmail.com" class="text-link ml-1 text-base">firodiya.ritesh@gmail.com</a>
+            </div>
+            <p class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-3">
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="map-pin" class="h-4 w-4"></i> Pune, India</span>
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="calendar" class="h-4 w-4"></i> Shipping since 2017</span>
+            </p>
+          </div>
+          <div class="grid grid-cols-3 items-center gap-4">
+            <img src="../../../../../../products/aakalan/.context/listing/ios/screenshots/en-US/01-balances.png" alt="Aakalan — balances" loading="lazy" class="shot " />
+            <img src="../../../../../../products/askcal/.context/listing/ios/screenshots/en-US/02-clarify.png" alt="AskCal — it asks what the camera can't see" loading="lazy" class="shot scale-110 shadow-lg" />
+            <img src="../../../../../../products/charades/.context/listing/ios/screenshots/en-US/01-home.png" alt="Charades — home" loading="lazy" class="shot " />
+          </div>
+        </section>
 
-    <!-- ══ counts ══ The one place the hot red is spent, and it carries only
-         display type. Four numbers, each checkable against a store listing. -->
-    <section class="field-accent">
-      <dl class="grid grid-cols-2 md:grid-cols-4">
-        <div class="border-b border-r border-ink/15 px-6 py-8 md:border-b-0 md:px-8">
-          <dd class="numeral">13</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">Products built</dt></div>
-        <div class="border-b border-ink/15 px-6 py-8 md:border-b-0 md:border-r md:px-8">
-          <dd class="numeral">04</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">You can use today</dt></div>
-        <div class="border-r border-ink/15 px-6 py-8 md:px-8">
-          <dd class="numeral">02</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">On Google Play</dt></div>
-        <div class="px-6 py-8 md:px-8">
-          <dd class="numeral">09</dd><dt class="font-mono text-2xs uppercase tracking-label mt-3 font-medium">Years shipping</dt></div>
-      </dl>
-    </section>
+        <section class="border-y border-line bg-surface">
+          <div class="wrap flex flex-wrap items-center gap-x-10 gap-y-3 py-5">
+            <p class="eyebrow">Worked at</p>
+            <span class="text-lead font-bold text-ink-2">Walmart</span>
+            <span class="text-lead font-bold text-ink-2">Swiggy</span>
+            <span class="text-lead font-bold text-ink-2">Speechify</span>
+            <span class="text-lead font-bold text-ink-2">Globant</span>
+            <span class="text-lead font-bold text-ink-2">Masai School</span>
+            <span class="text-lead font-bold text-ink-2">TopLegal</span>
+          </div>
+        </section>
 
-    <!-- ══ the index ══ THE page. Work and products are one list: a reader
-         cares what a thing is, not which bucket someone filed it under. -->
-    <section id="index" class="px-6 pt-16 md:px-10">
-            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
-        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">Index — what I have built</h2><span class="font-mono text-2xs uppercase tracking-label text-ink-3">2017 — 2026</span>
-      </div>
-      <a class="row" href="../work/case-study.html" data-shot="">
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">01</span>
-        <span class="row-name">Chitragupt</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">Tax review · 264 screens drawn</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-go">Case study →</span>
-      </a>
-      <a class="row" href="../products/product.html" data-shot="../../../public/media/aakalan/home.webp">
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">02</span>
-        <span class="row-name">Aakalan</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">Shared expenses · on Google Play</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-go">Product →</span>
-      </a>
-      <a class="row" href="../products/product.html" data-shot="../../../public/media/askcal/today.webp">
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">03</span>
-        <span class="row-name">AskCal</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">Calorie counter · on Google Play</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-go">Product →</span>
-      </a>
-      <a class="row" href="../products/product.html" data-shot="../../../public/media/charades/home.webp">
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">04</span>
-        <span class="row-name">Charades</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">Party game · on Google Play</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-go">Product →</span>
-      </a>
-      <a class="row" href="../products/product.html" data-shot="../../../public/media/tic-tac-toe/home.webp">
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">05</span>
-        <span class="row-name">Tic&nbsp;Tac&nbsp;Toe</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">Free, carries ads · on Google Play</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-go">Product →</span>
-      </a>
-      <a class="row" href="../products/product.html" data-shot="../../../public/media/imposter/setup.webp">
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">06</span>
-        <span class="row-name">Imposter</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">Party game · Android beta</span>
-        <span class="font-mono text-2xs uppercase tracking-label row-go">Product →</span>
-      </a>
-      <p class="font-mono text-2xs uppercase tracking-label mt-5 text-ink-3">
-        Seven more exist as a spec and a schema and nothing else.
-        <a href="../products/products.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">All thirteen, with how each is paid for →</a>
-      </p>
-    </section>
+        <section class="wrap grid grid-cols-2 gap-4 py-12 lg:grid-cols-4">
+          <div class="card p-5"><p class="figure">9</p><p class="mt-2 text-sm text-ink-2">years shipping production code</p></div>
+          <div class="card p-5"><p class="figure">13</p><p class="mt-2 text-sm text-ink-2">projects of my own</p></div>
+          <div class="card p-5"><p class="figure">3</p><p class="mt-2 text-sm text-ink-2">live today, on the web and in the stores</p></div>
+          <div class="card p-5"><p class="figure">450</p><p class="mt-2 text-sm text-ink-2">screens designed</p></div>
+        </section>
 
-    <!-- ══ nine years ══ A statement and a list. No timeline graphic: the
-         dates are already in order and a chart would add decoration, not
-         information. -->
-    <section class="px-6 pt-20 md:px-10">
-            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
-        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">Nine years</h2><span class="font-mono text-2xs uppercase tracking-label text-ink-3">Mostly end-to-end</span>
-      </div>
-      <div class="grid gap-10 pt-8 md:grid-cols-[1fr_1.15fr] md:gap-16">
-        <div>
-          <p class="big max-w-[16ch]">Postgres schema to Play Store release.</p>
-          <p class="mt-5 max-w-[42ch] text-ink-2">
-            Usually as the only person who touches both ends — which is where the habit of
-            drawing every screen before writing any of it came from.
-          </p>
-          <a href="../about/about.html" class="font-mono text-2xs uppercase tracking-label mt-6 inline-block border-b-2 border-accent-500 pb-1 font-medium text-brand-500">Read the full history →</a>
+        <section class="wrap pb-16">
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p class="eyebrow">Selected work</p>
+              <h2 class="section-title mt-2">Three I would talk through in an interview.</h2>
+            </div>
+            <a href="../work/work.html" class="text-link text-base">All 13 projects</a>
+          </div>
+          <div class="mt-8 grid gap-6 lg:grid-cols-3">
+            <a href="../work/project.html" class="card grid overflow-hidden lg:col-span-2 lg:grid-cols-[1fr_1.05fr]">
+              <div class="p-7">
+                <span class="state state--test">In App Store review</span>
+                <h3 class="mt-3 text-h2 font-bold">AskCal</h3>
+                <p class="mt-2 text-body text-ink-2">An AI calorie counter that admits what it cannot see. It estimates from a photo, marks what it could not establish, and asks one or two questions instead of guessing.</p>
+                <dl class="mt-6 grid gap-4 border-t border-line pt-5">
+                  <div><dt class="eyebrow">Role</dt><dd class="mt-1 text-sm font-semibold">Product, design, app, backend, release</dd></div>
+                  <div><dt class="eyebrow">Built with</dt><dd class="mt-1 text-sm font-semibold">Expo, Firebase Functions, Zod, a swappable vision model</dd></div>
+                  <div><dt class="eyebrow">Measured</dt><dd class="mt-1 text-sm font-semibold">An accuracy harness gates every change to the estimator</dd></div>
+                </dl>
+              </div>
+              <div class="grid grid-cols-2 gap-3 bg-muted p-5">
+                <img src="../../../../../../products/askcal/.context/listing/ios/screenshots/en-US/02-clarify.png" alt="AskCal — it asks what the camera can't see" loading="lazy" class="shot " />
+                <img src="../../../../../../products/askcal/.context/listing/ios/screenshots/en-US/03-result.png" alt="AskCal — a range, not a false number" loading="lazy" class="shot " />
+              </div>
+            </a>
+            <div class="grid gap-6">
+              <a href="../work/project.html" class="card flex gap-5 overflow-hidden p-5">
+                <div class="w-24 shrink-0"><img src="../../../../../../products/aakalan/.context/listing/ios/screenshots/en-US/01-balances.png" alt="Aakalan — balances" loading="lazy" class="shot " /></div>
+                <div>
+                  <span class="state state--test">Public iOS beta</span>
+                  <h3 class="mt-3 text-h3 font-bold">Aakalan</h3>
+                  <p class="mt-1 text-sm text-ink-2">Shared expenses on one ledger, settled over UPI. Expo, Firestore, RevenueCat.</p>
+                </div>
+              </a>
+              <a href="../work/project.html" class="card flex gap-5 overflow-hidden p-5">
+                <div class="w-24 shrink-0"><img src="../../../../../../products/charades/.context/listing/ios/screenshots/en-US/01-home.png" alt="Charades — home" loading="lazy" class="shot " /></div>
+                <div>
+                  <span class="state state--live">Live on Google Play</span>
+                  <h3 class="mt-3 text-h3 font-bold">Charades</h3>
+                  <p class="mt-1 text-sm text-ink-2">Offline party game with 5,149 cards. Expo, Zustand, RevenueCat.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="border-y border-line bg-surface">
+          <div class="wrap py-16">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p class="eyebrow">How I build</p>
+                <h2 class="section-title mt-2 max-w-[26ch]">The same eight stages, from an idea to a product people use.</h2>
+              </div>
+              <a href="../process/process.html" class="btn btn-quiet">See the whole process <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+            </div>
+            <div class="mt-8 overflow-x-auto">
+              <ol class="track min-w-[760px]">
+                <li class="track-step"><span class="track-pin"><i data-lucide="lightbulb" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">01</span><span class="text-base font-bold">Idea</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="search" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">02</span><span class="text-base font-bold">Research</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="list-checks" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">03</span><span class="text-base font-bold">Define</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="pencil-ruler" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">04</span><span class="text-base font-bold">Design</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="hammer" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">05</span><span class="text-base font-bold">Build</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="rocket" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">06</span><span class="text-base font-bold">Release</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="megaphone" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">07</span><span class="text-base font-bold">Market</span></li>
+                <li class="track-step"><span class="track-pin"><i data-lucide="activity" class="h-4 w-4"></i></span><span class="mono text-2xs text-ink-3">08</span><span class="text-base font-bold">Operate</span></li>
+              </ol>
+            </div>
+            <div class="card mt-8 overflow-x-auto bg-page">
+              <table class="tbl min-w-[760px]">
+                <thead><tr><th>Project</th><th class="text-center">Idea</th><th class="text-center">Research</th><th class="text-center">Define</th><th class="text-center">Design</th><th class="text-center">Build</th><th class="text-center">Release</th><th class="text-center">Market</th><th class="text-center">Operate</th></tr></thead>
+                <tbody>
+                  <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">AskCal</a></td><td class="text-center"><span class="dot" title="Idea: Done"></span></td><td class="text-center"><span class="dot" title="Research: Done"></span></td><td class="text-center"><span class="dot" title="Define: Done"></span></td><td class="text-center"><span class="dot" title="Design: Done"></span></td><td class="text-center"><span class="dot" title="Build: Done"></span></td><td class="text-center"><span class="dot dot--half" title="Release: Under way"></span></td><td class="text-center"><span class="dot dot--half" title="Market: Under way"></span></td><td class="text-center"><span class="dot dot--none" title="Operate: Not started"></span></td></tr>
+                  <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Aakalan</a></td><td class="text-center"><span class="dot" title="Idea: Done"></span></td><td class="text-center"><span class="dot dot--none" title="Research: Not started"></span></td><td class="text-center"><span class="dot" title="Define: Done"></span></td><td class="text-center"><span class="dot" title="Design: Done"></span></td><td class="text-center"><span class="dot" title="Build: Done"></span></td><td class="text-center"><span class="dot dot--half" title="Release: Under way"></span></td><td class="text-center"><span class="dot dot--half" title="Market: Under way"></span></td><td class="text-center"><span class="dot dot--none" title="Operate: Not started"></span></td></tr>
+                  <tr><td><a href="../work/project.html" class="font-semibold hover:text-brand-500">Charades</a></td><td class="text-center"><span class="dot" title="Idea: Done"></span></td><td class="text-center"><span class="dot" title="Research: Done"></span></td><td class="text-center"><span class="dot" title="Define: Done"></span></td><td class="text-center"><span class="dot" title="Design: Done"></span></td><td class="text-center"><span class="dot" title="Build: Done"></span></td><td class="text-center"><span class="dot" title="Release: Done"></span></td><td class="text-center"><span class="dot dot--half" title="Market: Under way"></span></td><td class="text-center"><span class="dot dot--half" title="Operate: Under way"></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-3"><span class="inline-flex items-center gap-2"><span class="dot"></span> Done</span><span class="inline-flex items-center gap-2"><span class="dot dot--half"></span> Under way</span><span class="inline-flex items-center gap-2"><span class="dot dot--none"></span> Not started</span></p>
+          </div>
+        </section>
+
+        <section class="wrap grid gap-10 py-16 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <p class="eyebrow">Experience</p>
+            <h2 class="section-title mt-2">Nine years, mostly end to end.</h2>
+            <a href="../about/resume.html" class="text-link mt-4 inline-block text-base">Full résumé</a>
+          </div>
+          <ol>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">Apr 2025 — May 2026</p><p class="text-body"><b class="font-semibold">Senior Software Engineer</b> <span class="text-ink-3">·</span> Walmart</p></li>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">Jul 2024 — Jan 2025</p><p class="text-body"><b class="font-semibold">Tech Lead & Full-Stack Engineer</b> <span class="text-ink-3">·</span> TopLegal</p></li>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">Oct 2023 — May 2024</p><p class="text-body"><b class="font-semibold">Senior Frontend Engineer</b> <span class="text-ink-3">·</span> ManifestIT</p></li>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">May 2023 — Aug 2023</p><p class="text-body"><b class="font-semibold">Software Engineer (Contract)</b> <span class="text-ink-3">·</span> Speechify</p></li>
+            <li class="grid gap-1 border-y border-line py-4 sm:grid-cols-[12rem_1fr] sm:items-baseline"><p class="mono text-xs text-ink-3">2017 — 2023</p><p class="text-body text-ink-2">Masai School · Swiggy · Globant · Confluxsys</p></li>
+          </ol>
+        </section>
+      </main>
+
+      <section class="bg-band text-band-ink">
+        <div class="wrap flex flex-wrap items-center justify-between gap-6 py-12">
+          <div>
+            <h2 class="section-title max-w-[26ch]">Hiring for a senior, staff or tech-lead role?</h2>
+            <p class="mt-2 text-base text-band-2">Email is fastest. Usually a reply within two working days.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-band"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
+            <a href="../about/resume.html" class="btn btn-band-quiet">Read the résumé</a>
+          </div>
         </div>
-        <ol>
-          <li class="flex items-baseline justify-between gap-6 border-b border-line py-3.5">
-            <span><b class="font-semibold">Senior Software Engineer</b> <span class="text-ink-2">· Walmart</span></span>
-            <span class="font-mono text-2xs uppercase tracking-label shrink-0 text-ink-3">2025 — 26</span></li>
-          <li class="flex items-baseline justify-between gap-6 border-b border-line py-3.5">
-            <span><b class="font-semibold">Tech Lead &amp; Full-Stack</b> <span class="text-ink-2">· TopLegal</span></span>
-            <span class="font-mono text-2xs uppercase tracking-label shrink-0 text-ink-3">2024 — 25</span></li>
-          <li class="flex items-baseline justify-between gap-6 border-b border-line py-3.5">
-            <span><b class="font-semibold">Senior Frontend Engineer</b> <span class="text-ink-2">· ManifestIT</span></span>
-            <span class="font-mono text-2xs uppercase tracking-label shrink-0 text-ink-3">2023 — 24</span></li>
-          <li class="flex items-baseline justify-between gap-6 border-b border-line py-3.5">
-            <span><b class="font-semibold">Senior Software Engineer</b> <span class="text-ink-2">· Masai School</span></span>
-            <span class="font-mono text-2xs uppercase tracking-label shrink-0 text-ink-3">2021 — 23</span></li>
-          <li class="flex items-baseline justify-between gap-6 py-3.5 text-ink-2">
-            <span>Swiggy · Globant · Speechify · Confluxsys</span>
-            <span class="font-mono text-2xs uppercase tracking-label shrink-0 text-ink-3">2017 — 21</span></li>
-        </ol>
-      </div>
-    </section>
+      </section>
 
-    <!-- ══ work together ══ Three rows, same component as the index. Each one
-         names the time it takes, because that is the question that actually
-         gates the conversation. -->
-    <section class="px-6 pb-20 pt-20 md:px-10">
-            <div class="rule-head flex flex-wrap items-baseline justify-between gap-3 pb-3">
-        <h2 class="font-mono text-2xs uppercase tracking-label font-medium">Work together</h2><span class="font-mono text-2xs uppercase tracking-label text-ink-3">What I take on</span>
+    <footer class="mt-auto bg-band text-band-ink">
+      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <p class="text-body font-bold">Ritesh Firodiya</p>
+          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
+          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Site</p>
+          <a href="../work/work.html">Work</a>
+          <a href="../process/process.html">How I build</a>
+          <a href="../about/about.html">About</a>
+          <a href="../about/resume.html">Résumé</a>
+          <a href="../contact/contact.html">Contact</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+          <a href="../support/support.html">Support</a>
+          <a href="../legal/legal.html">Privacy and legal</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        </div>
       </div>
-      <a class="row" href="../hire/hire.html"><span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">01</span><span class="row-name">MVP from zero</span><span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">6 – 12 weeks</span><span class="font-mono text-2xs uppercase tracking-label row-go">→</span></a>
-      <a class="row" href="../hire/hire.html"><span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">02</span><span class="row-name">Lead the team</span><span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">3 – 12 months</span><span class="font-mono text-2xs uppercase tracking-label row-go">→</span></a>
-      <a class="row" href="../hire/hire.html"><span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">03</span><span class="row-name">AI tooling</span><span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">4 – 10 weeks</span><span class="font-mono text-2xs uppercase tracking-label row-go">→</span></a>
-      <p class="font-mono text-2xs uppercase tracking-label mt-5 text-ink-3">
-        Hiring instead?
-        <a href="../about/resume.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">The résumé →</a>
-      </p>
-    </section>
-
-    <!-- The preview is the only image on this page. A row with no screenshot
-         shows nothing at all rather than an empty frame chasing the cursor. -->
-    <img class="peek" id="peek" alt="" />
-    <script>
-      (function () {
-        var peek = document.getElementById("peek");
-        document.querySelectorAll(".row[data-shot]").forEach(function (row) {
-          var src = row.dataset.shot;
-          if (!src) return;
-          row.addEventListener("pointerenter", function () { peek.src = src; peek.classList.add("is-on"); });
-          row.addEventListener("pointerleave", function () { peek.classList.remove("is-on"); });
-          row.addEventListener("pointermove", function (e) {
-            peek.style.left = Math.min(e.clientX + 180, innerWidth - 130) + "px";
-            peek.style.top = e.clientY + "px";
-          });
-        });
-      })();
-    </script>
-    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
-      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
-      <a href="../contact/contact.html"
-         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
-        firodiya.ritesh@gmail.com
-      </a>
-      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
-        <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
-      </div>
+      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
     </footer>
-
   </div>
 </div>
 

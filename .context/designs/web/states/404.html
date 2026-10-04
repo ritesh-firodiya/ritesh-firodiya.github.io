@@ -13,46 +13,71 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
-      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
-      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
-        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
-        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
-        <a href="../about/about.html" class="transition hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
+
+    <header class="site-head">
+      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
+          Ritesh Firodiya
+        </a>
+        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        </nav>
+        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+      </div>
+      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
       </nav>
-      <a href="../contact/contact.html"
-         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <section class="grid flex-1 place-items-center px-6 py-24 md:px-10">
-      <div class="w-full max-w-[52ch]">
-        <p class="font-mono text-2xs uppercase tracking-label text-brand-500">404</p>
-        <h1 class="huge mt-6">Not here.</h1>
-        <p class="mt-8 text-lead text-ink-2">
-          It moved, or it never existed. The legal documents are the one thing on this site that
-          never moves — if a store listing sent you looking for a policy, it is one row down.
-        </p>
-        <div class="mt-10">
-          <a class="row" href="../legal/legal.html">
-            <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">01</span>
-            <span class="row-name">Legal</span>
-            <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
-          </a>
-          <a class="row" href="../products/products.html">
-            <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">02</span>
-            <span class="row-name">Products</span>
-            <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
-          </a>
-          <a class="row" href="../home/home.html">
-            <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">03</span>
-            <span class="row-name">Start over</span>
-            <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
-          </a>
+      <main class="wrap grid flex-1 place-items-center py-24 text-center">
+        <div>
+          <p class="eyebrow">Error 404</p>
+          <h1 class="page-title mt-4">This page does not exist.</h1>
+          <p class="mx-auto mt-4 max-w-[44ch] text-lead text-ink-2">The address may be mistyped, or the page was removed.</p>
+          <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="../home/home.html" class="btn btn-primary">Go to the home page</a>
+            <a href="../work/work.html" class="btn btn-quiet">See the work</a>
+          </div>
+        </div>
+      </main>
+
+    <footer class="mt-auto bg-band text-band-ink">
+      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <p class="text-body font-bold">Ritesh Firodiya</p>
+          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
+          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Site</p>
+          <a href="../work/work.html">Work</a>
+          <a href="../process/process.html">How I build</a>
+          <a href="../about/about.html">About</a>
+          <a href="../about/resume.html">Résumé</a>
+          <a href="../contact/contact.html">Contact</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+          <a href="../support/support.html">Support</a>
+          <a href="../legal/legal.html">Privacy and legal</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
         </div>
       </div>
-    </section>
-
+      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
+    </footer>
   </div>
 </div>
 

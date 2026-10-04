@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ritesh Firodiya — Policy</title>
+  <title>Ritesh Firodiya — Charades privacy policy</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="../tailwind.config.js"></script>
   <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
@@ -13,78 +13,89 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
-      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
-      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
-        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
-        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
-        <a href="../about/about.html" class="transition hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
+
+    <header class="site-head">
+      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
+          Ritesh Firodiya
+        </a>
+        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        </nav>
+        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+      </div>
+      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
       </nav>
-      <a href="../contact/contact.html"
-         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <article class="px-6 py-14 md:px-10">
-      <a href="legal.html" class="font-mono text-2xs uppercase tracking-label text-ink-3 transition hover:text-brand-500">← Legal</a>
-      <header class="mt-8 border-b border-line pb-8">
-        <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Aakalan · privacy policy</p>
-        <h1 class="big mt-5 max-w-[22ch]">What Aakalan stores, and what it does not.</h1>
-        <p class="font-mono text-2xs uppercase tracking-label mt-4 text-ink-3">Last updated 20 September 2026</p>
-      </header>
+      <main class="wrap pb-16 pt-12 lg:pt-16">
+        <div class="mx-auto max-w-[72ch]">
+          <p class="text-sm text-ink-3"><a href="../legal/legal.html" class="hover:text-ink">Legal</a> / Charades</p>
+          <h1 class="page-title mt-3">Privacy Policy</h1>
+          <p class="mt-2 text-base text-ink-3">Charades - Act it Out! — The Charades Party Game · Last updated: September 2026</p>
+          <p class="mt-6 rounded-lg border border-line bg-brand-50 p-5 text-body text-ink">Charades - Act it Out! does not collect your personal data. The app has no ads, no analytics and no user accounts. Your settings, packs and game history stay on your device. We do not run servers that store your personal data.</p>
+          <div class="wiki-prose mt-8">
+            <h2>Information We Collect</h2>
+            <p>We collect nothing. The app contains no advertising SDK, no analytics SDK and no crash-reporting SDK, and it does not send your usage, your device identifiers or your game data to us.</p>
+            <p>The app can be played entirely offline. Network access is used only to load pack prices and to complete a purchase you start yourself.</p>
+            <h2>Data Stored On Your Device</h2>
+            <p>The following is stored locally and never transmitted to us:</p>
+            <ul>
+              <li>Settings (haptics, vibration, sounds, tilt, language)</li>
+              <li>Selected and unlocked packs</li>
+              <li>Game history (capped at the most recent 50 rounds)</li>
+              <li>Whether you have completed onboarding</li>
+            </ul>
+            <p>Uninstalling the app permanently deletes all of it.</p>
+            <h2>Purchases</h2>
+            <p>The app sells one-time pack unlocks. There is no subscription and no advertising.</p>
+            <p>Google Play processes the payment. We never see or handle your card or billing details.</p>
+            <h2>No Account Required</h2>
+            <p>The app does not require sign-up, login or any account creation. It works immediately after installation.</p>
+            <h2>Contact</h2>
+            <p>If you have questions about this privacy policy, contact us at: <a href="mailto:firodiya.ritesh@gmail.com">firodiya.ritesh@gmail.com</a></p>
+          </div>
+        </div>
+      </main>
 
-      <!-- One column at a readable measure, nothing else. No cards, no pull
-           quotes, no sidebar: someone arrives here from a store listing with
-           one question and leaves once it is answered. -->
-      <div class="mt-10 max-w-[68ch] space-y-5 text-ink-2">
-        <h2 class="text-h3 font-semibold text-ink">What is not collected</h2>
-        <p>
-          No advertising identifier. No location. No contacts — adding someone to a group uses a
-          name you type, not your address book. No analytics SDK is linked into the app.
-        </p>
-        <p class="text-ink-3">
-          This section is first because it is the one people open the page to check.
-        </p>
-
-        <h2 class="pt-4 text-h3 font-semibold text-ink">What is collected</h2>
-        <p>
-          The expenses, groups and people you enter, and an email address if you create an
-          account. Nothing else, and nothing in the background.
-        </p>
-
-        <h2 class="pt-4 text-h3 font-semibold text-ink">Crash reports</h2>
-        <p>
-          A crash sends a stack trace, the device model and the app version. A report can contain
-          the name of the screen you were on. It does not contain your expenses.
-        </p>
-
-        <h2 class="pt-4 text-h3 font-semibold text-ink">Deleting everything</h2>
-        <p>
-          Settings → Account → Delete account removes it all within thirty days, backups included.
-          You can also
-          <a href="../contact/contact.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">email a deletion request</a>
-          and it will be handled the same way.
-        </p>
-
-        <h2 class="pt-4 text-h3 font-semibold text-ink">Who to ask</h2>
-        <p>firodiya.ritesh@gmail.com · Pune, India.</p>
+    <footer class="mt-auto bg-band text-band-ink">
+      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <p class="text-body font-bold">Ritesh Firodiya</p>
+          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
+          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Site</p>
+          <a href="../work/work.html">Work</a>
+          <a href="../process/process.html">How I build</a>
+          <a href="../about/about.html">About</a>
+          <a href="../about/resume.html">Résumé</a>
+          <a href="../contact/contact.html">Contact</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+          <a href="../support/support.html">Support</a>
+          <a href="../legal/legal.html">Privacy and legal</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        </div>
       </div>
-    </article>
-    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
-      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
-      <a href="../contact/contact.html"
-         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
-        firodiya.ritesh@gmail.com
-      </a>
-      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
-        <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
-      </div>
+      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
     </footer>
-
   </div>
 </div>
 

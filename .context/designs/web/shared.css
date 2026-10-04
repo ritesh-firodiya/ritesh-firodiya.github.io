@@ -583,30 +583,20 @@ select:focus-visible {
 /* ============================================================================
    PALETTE — ritesh-firodiya.github.io. The only block that differs between sets.
    ============================================================================
-   Direction: INDEX. White ground, near-black ink, one vermilion. The page is a
-   list — rules and type, no cards and no shadows — so the palette carries
-   almost no weight and the two places it does are deliberate: the counts band
-   and the contact block, which are full-bleed colour fields.
+   Direction: PROOF. The reader is hiring. Cool paper, navy ink, one blue, and
+   white cards that hold real screenshots. Colour is spent on two things only:
+   the next action (brand) and how far along a project is (the state scale).
 
-   TWO REDS, and the split is load-bearing:
-     brand-500  #C2410C  passes AA on white, so it is what body links and small
-                         text use.
-     accent-500 #FF3B00  is 3.4:1 on white and fails AA outright. It is for
-                         FIELDS and DISPLAY TYPE ONLY — a filled band, a 96px
-                         numeral — never for a sentence. The bright red is the
-                         one that makes this direction look like itself, and
-                         the only way to keep it is to keep it off small text.
+   RESERVED: release state — `--live` / `--test` / `--build` / `--draft`.
+   Green means anyone can install or open it today. Amber means a build exists
+   but the door is not public. Violet means code exists and nothing is
+   installable. Slate means designs only. These four may not be used for
+   decoration, and `success`/`warn` may not stand in for them: a project's
+   state is a fact about the project, not a verdict on it.
 
-   RESERVED: the monetization scale (`--m-*`). Five models at EQUAL weight —
-   there is no good colour and no bad colour. This site exists because an
-   earlier version claimed "no ads in our games" and "one-time purchases, not
-   subscriptions" on a page linked from live store listings; Tic Tac Toe ships
-   an AdMob banner and four of eight apps are subscriptions. Spending these
-   colours on decoration would flatten the one signal the site is built for.
-
-   RESERVED: release state (`--live` / `--beta` / `--build` / `--idea`), which
-   is independent of the model above. A product has a price AND a release
-   state; conflating them is how "coming soon" ends up meaning four things.
+   `--band` is the one token §8 does not name. An inverted band cannot be
+   ink + ink-inverse — those flip with the theme and turn a dark page's
+   contact block into a white slab.
 
    IN STEP WITH src/app/globals.css. Same role names, same values; Tailwind
    v4's `--color-` prefix is the only difference.
@@ -614,241 +604,303 @@ select:focus-visible {
 
 :root {
   /* ---- ground ---- */
-  --page:    #FFFFFF;
-  --frame:   #FFFFFF;
+  --page:    #F5F6F8;
+  --frame:   #F5F6F8;
   --surface: #FFFFFF;
-  --muted:   #F4F4F2;
-  --sunken:  #EAEAE6;
+  --muted:   #ECEEF2;
+  --sunken:  #E1E4EA;
 
   /* ---- ink ---- */
-  --ink:         #0A0A0A;
-  --ink-2:       #464644;
-  --ink-3:       #6B6B69;
-  --ink-4:       #8A8A87;
+  --ink:         #0B1220;
+  --ink-2:       #3A4458;
+  --ink-3:       #5A6478;
+  --ink-4:       #7A8496;
   --ink-inverse: #FFFFFF;
 
-  --line:        #E4E4E1;
-  --line-strong: #C6C6C2;
+  --line:        #DFE3EA;
+  --line-strong: #C3C9D4;
 
-  /* ---- brand · the readable red ---- */
-  --brand-50:  #FDEDE7;
-  --brand-100: #FAD8CC;
-  --brand-200: #F2AF97;
-  --brand-400: #DB5426;
-  --brand-500: #C2410C;
-  --brand-700: #8F2F09;
-  --brand-900: #541B05;
-
-  /* ---- accent · the hot red. Fields and display type only. ---- */
-  --accent-50:  #FFF0EB;
-  --accent-100: #FFD9CC;
-  --accent-200: #FFB499;
-  --accent-400: #FF5A2B;
-  --accent-500: #FF3B00;
-  --accent-600: #E63500;
-  --accent-700: #C22D00;
-  --accent-900: #6B1900;
+  /* ---- brand · the one blue. Links, the primary button, the active tab. ---- */
+  --brand-50:  #EEF1FF;
+  --brand-100: #DDE3FF;
+  --brand-200: #BBC6FF;
+  --brand-400: #6177F5;
+  --brand-500: #3147E8;
+  --brand-700: #2233B0;
+  --brand-900: #141E6B;
 
   /* ---- status ---- */
-  --success:    #15703F;  --success-bg: #E7F2EC;  --success-fg: #0E4A29;
+  --success:    #14713F;  --success-bg: #E6F3EB;  --success-fg: #0D4A29;
   --warn:       #8A5A00;  --warn-bg:    #F8EEDC;  --warn-fg:    #5C3C00;
   --danger:     #A11B1B;  --danger-bg:  #F8E7E7;  --danger-fg:  #6E1212;
   --info:       #1F4E8C;  --info-bg:    #E7EEF8;  --info-fg:    #14355F;
 
-  /* An inverted band — the contact block and the footer. NOT ink +
-     ink-inverse: those flip with the theme, so a dark palette turned the
-     footer into a bright white slab. Inverted means "the opposite of the
-     page", and the opposite of near-black is a lifted panel, not white. */
-  --band:     #0A0A0A;
+  /* ---- the inverted band · contact block and footer ---- */
+  --band:     #0B1220;
   --band-ink: #FFFFFF;
-  --band-2:   #8E8E8A;
+  --band-2:   #9AA5BA;
 
-  --shadow-tint: 10 10 10;
-
-  /* ---- RESERVED · monetization model ---- */
-  --m-free: #55554F;  --m-free-bg: #EFEFEC;
-  --m-ads:  #8A5A00;  --m-ads-bg:  #F8EEDC;
-  --m-once: #15703F;  --m-once-bg: #E7F2EC;
-  --m-sub:  #1F4E8C;  --m-sub-bg:  #E7EEF8;
-  --m-year: #6B2E7A;  --m-year-bg: #F2E9F4;
+  --shadow-tint: 11 18 32;
 
   /* ---- RESERVED · release state ---- */
-  --live:  #15703F;  --live-bg:  #E7F2EC;
-  --beta:  #8A5A00;  --beta-bg:  #F8EEDC;
-  --build: #1F4E8C;  --build-bg: #E7EEF8;
-  --idea:  #6B6B66;  --idea-bg:  #EFEFEC;
+  --live:  #14713F;  --live-bg:  #E6F3EB;
+  --test:  #8A5A00;  --test-bg:  #F8EEDC;
+  --build: #5B3FB8;  --build-bg: #EEE9FB;
+  --draft: #4F5A70;  --draft-bg: #E9ECF1;
 }
 
-/* A theme is a token remap (§8) — never a `dark:` prefix, never a second set
-   of utilities. `.phone--dark` is what _chrome.js toggles.
-
-   Roles invert rather than values: brand-50 stays "the quietest wash of the
-   brand" and becomes the DARKEST red here. Flipping only some of them would
-   paint a wash lighter than the text sitting on it.
-
-   The two reds swap jobs. On white, brand is the dark one and accent the
-   bright one; on black, the readable red has to be the LIGHTER of the two, so
-   brand-500 moves up the ramp and accent stays hot for fields. */
+/* A theme is a token remap (§8) — never a `dark:` prefix. `.phone--dark` is
+   what _chrome.js toggles. Roles invert rather than values: brand-50 stays
+   "the quietest wash of the brand" and becomes the darkest blue here, and
+   brand-500 moves up the ramp because the readable blue on navy is the
+   lighter one. */
 .phone--dark {
-  --page:    #0A0A0A;
-  --frame:   #141413;
-  --surface: #141413;
-  --muted:   #131312;
-  --sunken:  #050505;
+  --page:    #0A0E16;
+  --frame:   #0A0E16;
+  --surface: #131926;
+  --muted:   #101521;
+  --sunken:  #06090F;
 
-  --ink:         #F2F2F0;
-  --ink-2:       #B6B6B2;
-  --ink-3:       #8A8A85;
-  --ink-4:       #63635F;
-  --ink-inverse: #0A0A0A;
+  --ink:         #EDF0F6;
+  --ink-2:       #B5BDCC;
+  --ink-3:       #8D97AA;
+  --ink-4:       #687286;
+  --ink-inverse: #0A0E16;
 
-  --line:        #232321;
-  --line-strong: #3A3A36;
+  --line:        #222A3A;
+  --line-strong: #364057;
 
-  --brand-50:  #2A1109;
-  --brand-100: #3D1A0C;
-  --brand-200: #5E2712;
-  --brand-400: #E8683A;
-  --brand-500: #FF8A5E;
-  --brand-700: #FFAE8C;
-  --brand-900: #FFD8C6;
+  --brand-50:  #111838;
+  --brand-100: #18224F;
+  --brand-200: #25347A;
+  --brand-400: #6F84FF;
+  --brand-500: #8C9DFF;
+  --brand-700: #B7C2FF;
+  --brand-900: #E0E5FF;
 
-  --accent-50:  #2E1008;
-  --accent-100: #451709;
-  --accent-200: #6B240D;
-  --accent-400: #FF5A2B;
-  --accent-500: #FF3B00;
-  --accent-600: #FF6B3D;
-  --accent-700: #FF9470;
-  --accent-900: #FFCCB8;
+  --success:    #57C98A;  --success-bg: #12261B;  --success-fg: #A6E3C2;
+  --warn:       #D9A441;  --warn-bg:    #261E0F;  --warn-fg:    #EBCB8B;
+  --danger:     #EF7A7A;  --danger-bg:  #2A1414;  --danger-fg:  #F6B5B5;
+  --info:       #7FA8DE;  --info-bg:    #131C28;  --info-fg:    #B7CFEE;
 
-  --success:    #57C98A;  --success-bg: #12261B;  --success-fg: #90DCB0;
-  --warn:       #D9A441;  --warn-bg:    #261E0F;  --warn-fg:    #EBC77E;
-  --danger:     #E08383;  --danger-bg:  #281414;  --danger-fg:  #F0ACAC;
-  --info:       #7FA8DE;  --info-bg:    #131C28;  --info-fg:    #A9C6EB;
-
-  --band:     #141413;
-  --band-ink: #F2F2F0;
-  --band-2:   #B6B6B2;
+  --band:     #131926;
+  --band-ink: #EDF0F6;
+  --band-2:   #8D97AA;
 
   --shadow-tint: 0 0 0;
-
-  --m-free: #A5A59E;  --m-free-bg: #1C1C1A;
-  --m-ads:  #D9A441;  --m-ads-bg:  #261E0F;
-  --m-once: #57C98A;  --m-once-bg: #12261B;
-  --m-sub:  #7FA8DE;  --m-sub-bg:  #131C28;
-  --m-year: #BE8FCB;  --m-year-bg: #221827;
+  --shadow-a1: 0.3;
+  --shadow-a2: 0.4;
+  --shadow-a3: 0.6;
 
   --live:  #57C98A;  --live-bg:  #12261B;
-  --beta:  #D9A441;  --beta-bg:  #261E0F;
-  --build: #7FA8DE;  --build-bg: #131C28;
-  --idea:  #A5A59E;  --idea-bg:  #1C1C1A;
+  --test:  #D9A441;  --test-bg:  #261E0F;
+  --build: #A893F0;  --build-bg: #1C1730;
+  --draft: #A3ACBD;  --draft-bg: #1A1F2B;
 }
 
 /* ============================================================================
    COMPONENTS — this set's own classes.
    ============================================================================
-   §8: adding a class means declaring it here in the same edit. There is no
-   lint; a class that resolves to nothing throws nothing and paints nothing,
-   which is how `text-2xs` came to be used 186 times across three apps while
-   declared in exactly one. Everything Tailwind can already express stays a
-   utility — nothing here is a .btn or a .card.
+   §8: adding a class means declaring it here in the same edit. A class that
+   resolves to nothing throws nothing and paints nothing.
    ============================================================================ */
 
-/* A website frame is not a device. CORE's .phone assumes 390x844 and a 40px
-   device radius; _chrome.js publishes the real 1440x900 from routes.js, so
-   only the rounding and the shadow need correcting. Unqualified because this
-   set declares exactly one surface. */
+/* A website frame is not a device. CORE's .phone assumes a 40px device
+   radius; only the rounding and the shadow need correcting. */
 .phone {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
 
-/* ---- the index row: the whole direction in one class -----------------------
-   No card, no border box, no shadow. A hairline, a number, a name, and the row
-   itself inverting on hover. Everything else on this site is built from it. */
-.row {
-  position: relative;
-  display: grid;
-  grid-template-columns: 3.5rem 1fr auto;
-  align-items: baseline;
-  gap: 1.25rem;
-  padding: 1.35rem 1.25rem;
-  border-top: 1px solid var(--line);
-  transition: background .18s, color .18s;
-  text-decoration: none;
-  color: inherit;
+/* Bare mode is the real page: it fills whatever window it is given, so
+   `?bare` at 390px is the phone layout. CORE pins the frame's logical width
+   here, which is right for a device and wrong for a responsive site. In the
+   screenshots sheet the iframe is 1440 wide, so this still renders 1440. */
+[data-bare] .phone { width: 100%; }
+
+/* The page column. One width for every band on every screen. */
+.wrap { width: 100%; max-width: 1168px; margin-inline: auto; padding-inline: 24px; }
+@media (min-width: 768px) { .wrap { padding-inline: 40px; } }
+
+/* ---- type ---- */
+.hero-title {
+  font-size: clamp(2.25rem, 4.4vw, 3.75rem);
+  line-height: 1.05; letter-spacing: -0.035em; font-weight: 800;
 }
-.row:last-of-type { border-bottom: 1px solid var(--line); }
-.row:hover { background: var(--ink); color: var(--page); }
-/* The quiet columns have to re-resolve inside the inverted row: a variable
-   remap only reaches declarations that read the variable, and text coloured
-   by a utility keeps that utility's value. */
-.row:hover .row-quiet { color: var(--band-2); }
-.row:hover .row-go { opacity: 1; transform: translateX(0); }
-.row-go { opacity: 0; transform: translateX(-8px); transition: .18s; }
-.row-name {
-  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
-  font-weight: 800;
-  letter-spacing: -.035em;
-  line-height: 1;
+.page-title {
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.06; letter-spacing: -0.03em; font-weight: 800;
+}
+.section-title {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.12; letter-spacing: -0.025em; font-weight: 700;
+}
+.eyebrow {
+  font-family: var(--font-mono); font-size: var(--fs-xs); line-height: 1.4;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
+}
+.figure {
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem); line-height: 1;
+  letter-spacing: -0.03em; font-weight: 800; font-variant-numeric: tabular-nums;
 }
 
-/* ---- the hover preview -----------------------------------------------------
-   Follows the pointer. It is the only image on the index, so it has to appear
-   exactly where the eye already is. A row with no screenshot shows nothing
-   rather than an empty frame chasing the cursor. */
-.peek {
-  position: fixed;
-  pointer-events: none;
-  z-index: 50;
-  width: 220px;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(.94);
-  transition: opacity .16s, transform .16s;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgb(var(--shadow-tint) / .5);
+/* ---- actions ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 18px; border-radius: var(--radius-pill);
+  font-size: var(--fs-base); font-weight: 600; line-height: 1.2;
+  border: 1px solid transparent; text-decoration: none; white-space: nowrap;
+  transition: background .15s, border-color .15s, color .15s;
 }
-.peek.is-on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.btn-primary { background: var(--brand-500); color: var(--ink-inverse); }
+.btn-primary:hover { background: var(--brand-700); }
+.btn-quiet { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
+.btn-quiet:hover { border-color: var(--brand-500); color: var(--brand-500); }
+/* On the inverted band, where surface and ink do not apply. */
+.btn-band { background: var(--band-ink); color: var(--band); }
+.btn-band-quiet { color: var(--band-ink); border-color: var(--band-2); }
+/* A platform nobody can install from. Rendered, never hidden, with its reason. */
+.btn-off {
+  background: var(--muted); color: var(--ink-3); border-color: var(--line);
+  border-style: dashed; cursor: not-allowed;
+}
+.text-link {
+  color: var(--brand-500); font-weight: 600; text-decoration: underline;
+  text-decoration-color: var(--brand-200); text-underline-offset: 4px;
+}
+.text-link:hover { text-decoration-color: var(--brand-500); }
 
-/* ---- display type ----------------------------------------------------------
-   The one thing this direction spends its budget on. Two sizes and nothing in
-   between: a statement, and everything else. */
-.huge {
-  font-size: clamp(2.75rem, 10.5vw, 9rem);
-  line-height: .88;
-  letter-spacing: -.05em;
-  font-weight: 900;
+/* ---- surfaces ---- */
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
 }
-.big {
-  font-size: clamp(1.75rem, 4.4vw, 3.25rem);
-  line-height: .98;
-  letter-spacing: -.04em;
-  font-weight: 800;
-}
-.numeral {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: .82;
-  letter-spacing: -.05em;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
-}
+/* :where keeps this at zero specificity, so a `flex` utility on the same link wins. */
+:where(a.card) { display: block; }
+a.card { text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s, transform .15s; }
+a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transform: translateY(-2px); }
 
-/* ---- the accent field ------------------------------------------------------
-   Where the hot red is allowed. A full-bleed band carrying display type only —
-   the counts, and nothing that has to be read at 14px. */
-.field-accent { background: var(--accent-500); color: #0A0A0A; }
-.field-ink    { background: var(--band); color: var(--band-ink); }
+/* ---- RESERVED · the release state pill ---- */
+.state {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: 600; line-height: 1.5; white-space: nowrap;
+}
+.state::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.state--live  { color: var(--live);  background: var(--live-bg); }
+.state--test  { color: var(--test);  background: var(--test-bg); }
+.state--build { color: var(--build); background: var(--build-bg); }
+.state--draft { color: var(--draft); background: var(--draft-bg); }
 
-/* A rule that means "section", heavier than the hairlines between rows. */
-.rule-head { border-bottom: 2px solid var(--ink); }
+/* A stack name, a page type, a filter. Never a state. */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); line-height: 1.5; color: var(--ink-2);
+  background: var(--muted); border: 1px solid var(--line); white-space: nowrap;
+}
+.chip--on { background: var(--ink); color: var(--page); border-color: var(--ink); }
+
+/* ---- pictures. NOTHING IS COPIED INTO THIS REPO. ------------------------------
+   A picture is either a product's own store art, read from its listing folder,
+   or a product's own design screen, embedded live. */
+.shot { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
+/* In a fixed-height card slot: fill it, and start just under the headline so the app itself shows. */
+.shot--crop { height: 100%; object-fit: cover; object-position: 50% 35%; border-radius: 0; }
+
+/* A design screen at its own logical size, scaled to the box. tan(atan2()) is
+   how CSS divides one length by another and gets a number. Because it is the
+   real file, it follows the theme toggle. */
+.embed {
+  position: relative; width: 100%; aspect-ratio: 1440 / 900; overflow: hidden;
+  container-type: inline-size; background: var(--sunken);
+}
+.embed iframe {
+  position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0;
+  pointer-events: none; transform-origin: 0 0;
+  transform: scale(tan(atan2(100cqw, 1440px)));
+}
+/* In a fixed-height card slot: fill the slot rather than keep 16:10. */
+.embed--fill { height: 100%; aspect-ratio: auto; }
+.embed--fill iframe { height: 1200px; }
+.embed--phone { aspect-ratio: 390 / 844; }
+.embed--phone iframe { width: 390px; height: 844px; transform: scale(tan(atan2(100cqw, 390px))); }
+
+/* ---- the eight stages, as a line you read left to right ---- */
+.track { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.track-step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding-right: 12px; }
+.track-step::before {
+  content: ""; position: absolute; top: 17px; left: 36px; right: 0; height: 2px; background: var(--line-strong);
+}
+.track-step:last-child::before { display: none; }
+.track-pin {
+  position: relative; display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 8px;
+  border-radius: 999px; border: 2px solid var(--brand-200); background: var(--brand-50); color: var(--brand-500);
+}
+.track-step--done .track-pin { background: var(--brand-500); border-color: var(--brand-500); color: var(--ink-inverse); }
+.track-step--done::before { background: var(--brand-500); }
+.track-step--half .track-pin { background: var(--surface); border-color: var(--brand-500); }
+
+/* One cell of the board: done, under way, not started. */
+.dot { display: inline-block; width: 14px; height: 14px; border-radius: 999px; background: var(--brand-500); border: 2px solid var(--brand-500); }
+.dot--half { background: linear-gradient(90deg, var(--brand-500) 50%, transparent 50%); }
+.dot--none { background: transparent; border-color: var(--line-strong); }
 
 /* A deliberately empty slot. A missing asset is visibly missing; a plain grey
    box reads as a surface that happens to be blank, and hatching does not. */
 .slot {
   background:
-    repeating-linear-gradient(135deg, transparent 0 10px, rgb(var(--shadow-tint) / .05) 10px 11px),
+    repeating-linear-gradient(135deg, transparent 0 10px, rgb(var(--shadow-tint) / .06) 10px 11px),
     var(--muted);
   border: 1px dashed var(--line-strong);
 }
+
+/* ---- the flow sketch on Home and How I build: boxes joined by a rule ---- */
+.node {
+  position: relative; padding: 8px 12px; border-radius: var(--radius-sm);
+  background: var(--surface); border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--brand-500);
+  font-size: var(--fs-xs); font-weight: 600; white-space: nowrap;
+}
+.node--quiet { border-left-color: var(--line-strong); color: var(--ink-3); }
+.node-link { height: 1px; background: var(--line-strong); flex: 1 1 16px; min-width: 16px; }
+
+/* ---- a table that reads as rows, not as a grid ---- */
+.tbl { width: 100%; border-collapse: collapse; text-align: left; }
+.tbl th {
+  font-family: var(--font-mono); font-size: var(--fs-2xs); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
+  padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--muted);
+}
+.tbl td { padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: var(--fs-base); vertical-align: middle; }
+.tbl tr:last-child td { border-bottom: 0; }
+
+/* ---- a rendered wiki page. Markdown in, this out. ---- */
+.wiki-prose { font-size: var(--fs-body); line-height: 1.65; color: var(--ink-2); }
+.wiki-prose h2 {
+  font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -0.01em; font-weight: 700;
+  color: var(--ink); margin: 36px 0 10px; padding-top: 20px; border-top: 1px solid var(--line);
+}
+.wiki-prose h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.wiki-prose p { margin: 0 0 14px; }
+.wiki-prose b, .wiki-prose strong { color: var(--ink); font-weight: 600; }
+.wiki-prose ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
+.wiki-prose li { margin-bottom: 6px; }
+.wiki-prose code {
+  font-family: var(--font-mono); font-size: 0.86em; padding: 1px 6px;
+  border-radius: 6px; background: var(--muted); border: 1px solid var(--line);
+}
+.wiki-prose a { color: var(--brand-500); text-decoration: underline; text-decoration-color: var(--brand-200); text-underline-offset: 3px; }
+
+/* The header's own blur, so the bar stays readable over a screenshot. */
+.site-head {
+  position: sticky; top: 0; z-index: 30;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.nav-link { color: var(--ink-2); font-size: var(--fs-base); font-weight: 500; white-space: nowrap; padding: 6px 0; border-bottom: 2px solid transparent; }
+.nav-link:hover { color: var(--ink); }
+.nav-link--on { color: var(--ink); border-bottom-color: var(--brand-500); }
+
+/* The hairline inside the inverted band. --line belongs to the page, not the band. */
+.band-rule { border-top: 1px solid color-mix(in srgb, var(--band-2) 30%, transparent); }

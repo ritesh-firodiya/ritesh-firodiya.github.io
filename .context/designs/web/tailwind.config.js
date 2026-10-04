@@ -35,45 +35,17 @@ tailwind.config = {
           700: "var(--brand-700)", 900: "var(--brand-900)",
           DEFAULT: "var(--brand-500)",
         },
-        /* The second red. §8 allows accent where a product has one, and this
-           set does: #FF3B00 is 3.4:1 on white and fails AA outright, so it is
-           for FIELDS and DISPLAY TYPE ONLY, never a sentence. Splitting it from
-           brand is what lets the bright red exist at all. */
-        accent:  {
-          50: "var(--accent-50)", 100: "var(--accent-100)", 200: "var(--accent-200)",
-          400: "var(--accent-400)", 500: "var(--accent-500)", 600: "var(--accent-600)",
-          700: "var(--accent-700)", 900: "var(--accent-900)",
-          DEFAULT: "var(--accent-500)",
-        },
-        /* An inverted band — the contact block and the footer. Deliberately
-           NOT ink + ink-inverse, which flip with the theme. */
-        band:    { DEFAULT: "var(--band)", ink: "var(--band-ink)", 2: "var(--band-2)" },
-
         success: { DEFAULT: "var(--success)", bg: "var(--success-bg)", fg: "var(--success-fg)" },
         warn:    { DEFAULT: "var(--warn)",    bg: "var(--warn-bg)",    fg: "var(--warn-fg)" },
         danger:  { DEFAULT: "var(--danger)",  bg: "var(--danger-bg)",  fg: "var(--danger-fg)" },
         info:    { DEFAULT: "var(--info)",    bg: "var(--info-bg)",    fg: "var(--info-fg)" },
 
-        /* RESERVED · MONETIZATION MODEL — five, at equal visual weight.
-           There is no good colour and no bad colour here. This is the scale
-           the whole site exists to carry, and spending it on decoration would
-           flatten the one signal that matters. */
-        m: {
-          free: { DEFAULT: "var(--m-free)", bg: "var(--m-free-bg)" },
-          ads:  { DEFAULT: "var(--m-ads)",  bg: "var(--m-ads-bg)" },
-          once: { DEFAULT: "var(--m-once)", bg: "var(--m-once-bg)" },
-          sub:  { DEFAULT: "var(--m-sub)",  bg: "var(--m-sub-bg)" },
-          year: { DEFAULT: "var(--m-year)", bg: "var(--m-year-bg)" },
-        },
-
-        /* RESERVED · RELEASE STATE — independent of the model above. A product
-           has a price AND a release state; conflating them is how "coming
-           soon" ends up meaning four things. No model colour may read as a
-           warning, which is why neither scale borrows from `success`/`warn`. */
+        /* RESERVED · RELEASE STATE. How far along a project is — a fact, not a
+           verdict, which is why it borrows from neither `success` nor `warn`. */
         live:  { DEFAULT: "var(--live)",  bg: "var(--live-bg)" },
-        beta:  { DEFAULT: "var(--beta)",  bg: "var(--beta-bg)" },
+        test:  { DEFAULT: "var(--test)",  bg: "var(--test-bg)" },
         build: { DEFAULT: "var(--build)", bg: "var(--build-bg)" },
-        idea:  { DEFAULT: "var(--idea)",  bg: "var(--idea-bg)" },
+        draft: { DEFAULT: "var(--draft)", bg: "var(--draft-bg)" },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

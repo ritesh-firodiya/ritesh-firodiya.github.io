@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ritesh Firodiya — Get in touch</title>
+  <title>Ritesh Firodiya — Contact</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="../tailwind.config.js"></script>
   <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
@@ -13,82 +13,93 @@
 
 <div class="stage">
   <div class="phone">
-    <header class="sticky top-0 z-30 flex items-center gap-6 border-b border-line bg-page/92 px-6 py-3.5 backdrop-blur md:gap-10 md:px-10">
-      <a href="../home/home.html" class="font-mono text-2xs uppercase tracking-label font-medium">Ritesh Firodiya</a>
-      <nav class="font-mono text-2xs uppercase tracking-label ml-auto hidden gap-7 text-ink-3 md:flex">
-        <a href="../work/work.html" class="transition hover:text-ink">Work</a>
-        <a href="../products/products.html" class="transition hover:text-ink">Products</a>
-        <a href="../about/about.html" class="transition hover:text-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-ink">Hire</a>
+
+    <header class="site-head">
+      <div class="wrap flex items-center gap-4 py-3 md:gap-6">
+        <a href="../home/home.html" class="flex items-center gap-2.5 text-base font-bold">
+          <img src="../../../../public/me.webp" alt="" class="h-8 w-8 rounded-full object-cover" />
+          Ritesh Firodiya
+        </a>
+        <nav class="ml-auto hidden items-center gap-7 md:flex" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
+        </nav>
+        <button type="button" class="ml-auto grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2 md:ml-0" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="../contact/contact.html" class="btn btn-primary">Get in touch</a>
+      </div>
+      <nav class="wrap flex gap-6 overflow-x-auto pb-1 md:hidden" aria-label="Main">
+        <a href="../work/work.html" class="nav-link">Work</a>
+        <a href="../process/process.html" class="nav-link">How I build</a>
+        <a href="../about/about.html" class="nav-link">About</a>
+        <a href="../about/resume.html" class="nav-link">Résumé</a>
       </nav>
-      <a href="../contact/contact.html"
-         class="font-mono text-2xs uppercase tracking-label ml-auto border border-ink px-3 py-1.5 font-medium transition hover:bg-ink hover:text-page md:ml-0">Get in touch</a>
     </header>
 
-    <section class="px-6 pb-14 pt-16 md:px-10">
-      <p class="font-mono text-2xs uppercase tracking-label text-brand-500">Get in touch</p>
-      <h1 class="huge mt-6 max-w-[14ch]">Say what<br>you need.</h1>
-      <p class="mt-10 max-w-[58ch] text-lead text-ink-2">
-        Email is best and I answer all of it. A paragraph is plenty — what you are building, and
-        what is in the way.
-      </p>
+      <main class="wrap pb-16 pt-12 lg:pt-16">
+        <p class="eyebrow">Contact</p>
+        <h1 class="page-title mt-3">Get in touch.</h1>
+        <p class="mt-4 max-w-[56ch] text-lead text-ink-2">Email is fastest. Usually a reply within two working days.</p>
 
-      <!-- Email, not a form. This is a static export with no server to post
-           to, and a contact form that silently drops messages is worse than no
-           form. A third-party handler would also put a stranger between a job
-           offer and an inbox. -->
-      <div class="mt-12">
-        <a class="row" href="#">
-          <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">01</span>
-          <span class="row-name">Email</span>
-          <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">firodiya.ritesh@gmail.com · usually same day</span>
-          <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="card mt-8 flex flex-wrap items-center justify-between gap-6 p-8">
+          <div>
+            <p class="eyebrow">Email</p>
+            <p class="section-title mt-2 break-all">firodiya.ritesh@gmail.com</p>
+          </div>
+          <span class="btn btn-primary"><i data-lucide="mail" class="h-4 w-4"></i> Write an email</span>
         </a>
-        <a class="row" href="#">
-          <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">02</span>
-          <span class="row-name">LinkedIn</span>
-          <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">in/riteshfirodiya · for recruiters</span>
-          <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
-        </a>
-        <a class="row" href="#">
-          <span class="font-mono text-2xs uppercase tracking-label row-quiet text-ink-3">03</span>
-          <span class="row-name">GitHub</span>
-          <span class="font-mono text-2xs uppercase tracking-label row-quiet hidden text-ink-3 sm:block">ritesh-firodiya · most product repos are private</span>
-          <span class="font-mono text-2xs uppercase tracking-label row-go">→</span>
-        </a>
-      </div>
 
-      <div class="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
-        <div>
-          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Where</p>
-          <p class="mt-2 font-semibold">Pune, India · IST</p>
-          <p class="mt-1 text-ink-2">Remote, and used to overlapping with other time zones.</p>
+        <div class="mt-6 grid gap-6 lg:grid-cols-3">
+          <a href="https://linkedin.com/in/riteshfirodiya" class="card p-6"><i data-lucide="briefcase" class="h-6 w-6 text-brand-500"></i><h2 class="mt-4 text-h3 font-bold">LinkedIn</h2><p class="mt-1 text-base text-ink-2">in/riteshfirodiya · for recruiters</p></a>
+          <a href="https://github.com/ritesh-firodiya" class="card p-6"><i data-lucide="git-branch" class="h-6 w-6 text-brand-500"></i><h2 class="mt-4 text-h3 font-bold">GitHub</h2><p class="mt-1 text-base text-ink-2">ritesh-firodiya · most product repos are private</p></a>
+          <a href="../../../../public/resume.pdf" class="card p-6"><i data-lucide="download" class="h-6 w-6 text-brand-500"></i><h2 class="mt-4 text-h3 font-bold">Résumé PDF</h2><p class="mt-1 text-base text-ink-2">One file, for your applicant system</p></a>
         </div>
+
+        <section class="mt-12 grid gap-10 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <p class="eyebrow">What I am open to</p>
+            <h2 class="section-title mt-2">In this order.</h2>
+          </div>
+          <ol>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[3rem_1fr]"><p class="mono text-xs text-ink-3">01</p><p class="text-body"><b class="font-semibold">Senior or staff engineer</b> <span class="text-ink-2">— full-stack TypeScript, web or mobile.</span></p></li>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[3rem_1fr]"><p class="mono text-xs text-ink-3">02</p><p class="text-body"><b class="font-semibold">Tech lead</b> <span class="text-ink-2">— a small team, with hands still on the code.</span></p></li>
+            <li class="grid gap-1 border-y border-line py-4 sm:grid-cols-[3rem_1fr]"><p class="mono text-xs text-ink-3">03</p><p class="text-body"><b class="font-semibold">Short contracts</b> <span class="text-ink-2">— an MVP taken from designs to a store release.</span></p></li>
+          </ol>
+        </section>
+
+        <p class="mt-10 rounded-lg border border-line bg-muted p-5 text-base text-ink-2">Using one of my apps and need help? <a href="../support/support.html" class="text-link">Go to Support</a> — a bug, a purchase, or deleting your account.</p>
+      </main>
+
+    <footer class="mt-auto bg-band text-band-ink">
+      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <p class="font-mono text-2xs uppercase tracking-label text-ink-3">Open to</p>
-          <p class="mt-2 font-semibold">Senior and staff IC, and tech lead.</p>
-          <p class="mt-1 text-ink-2">
-            Consulting too —
-            <a href="../hire/hire.html" class="border-b border-line-strong text-brand-500 transition hover:border-brand-500">what that looks like</a>.
-          </p>
+          <p class="text-body font-bold">Ritesh Firodiya</p>
+          <p class="mt-2 max-w-[34ch] text-sm text-band-2">Full-stack engineer in Pune, India. Open to senior, staff and tech-lead roles.</p>
+          <a href="mailto:firodiya.ritesh@gmail.com" class="mt-4 inline-block text-sm font-semibold underline underline-offset-4">firodiya.ritesh@gmail.com</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Site</p>
+          <a href="../work/work.html">Work</a>
+          <a href="../process/process.html">How I build</a>
+          <a href="../about/about.html">About</a>
+          <a href="../about/resume.html">Résumé</a>
+          <a href="../contact/contact.html">Contact</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">For app users</p>
+          <a href="../support/support.html">Support</a>
+          <a href="../legal/legal.html">Privacy and legal</a>
+        </div>
+        <div class="flex flex-col gap-2 text-sm">
+          <p class="eyebrow mb-1 !text-band-2">Elsewhere</p>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
         </div>
       </div>
-    </section>
-    <footer class="field-ink mt-auto px-6 pb-8 pt-14 md:px-10">
-      <p class="font-mono text-2xs uppercase tracking-label text-accent-500">Get in touch</p>
-      <a href="../contact/contact.html"
-         class="mt-5 block break-all text-[clamp(1.35rem,5vw,3.5rem)] font-extrabold leading-none tracking-[-.04em] transition hover:text-accent-500">
-        firodiya.ritesh@gmail.com
-      </a>
-      <div class="font-mono text-2xs uppercase tracking-label mt-12 flex flex-wrap gap-x-7 gap-y-2.5 border-t border-band-ink/15 pt-6 text-band-2">
-        <span>© 2026 Ritesh Firodiya</span>
-        <a href="../products/products.html" class="transition hover:text-band-ink">Products</a>
-        <a href="../legal/legal.html" class="transition hover:text-band-ink">Legal</a>
-        <a href="../about/about.html" class="transition hover:text-band-ink">About</a>
-        <a href="../hire/hire.html" class="transition hover:text-band-ink">Hire</a>
-      </div>
+      <div class="wrap band-rule py-4 text-xs text-band-2">© 2026 Ritesh Firodiya · Pune, India</div>
     </footer>
-
   </div>
 </div>
 

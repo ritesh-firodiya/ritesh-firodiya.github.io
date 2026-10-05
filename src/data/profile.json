@@ -8,7 +8,7 @@
   "location": "Pune, India",
   "avatar": "https://avatars.githubusercontent.com/u/40817224?v=4",
   "headline": "Full-stack engineer who takes a product from an idea to the store.",
-  "tagline": "~9 years across web, mobile, and backend. Now building my own products for India — web and mobile — and agent tooling on Anthropic SDK + MCP.",
+  "tagline": "~9 years across web, mobile, and backend. Now building my own products — web and mobile — and agent tooling on Anthropic SDK + MCP.",
   "about": [
     "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. Most recently, I spent a year as a Senior Engineer at Walmart on internal revenue tooling — wrapped up May 2026.",
     "Before that I ran short-term contract engagements (TopLegal as Tech Lead, ManifestIT, Speechify), and held senior IC roles at Masai, Swiggy, Globant, and Confluxsys. I move comfortably across the stack — Postgres schema, GraphQL APIs, React/RN UI, EAS releases — and I've shipped solo on monorepos using Turborepo + Yarn workspaces.",
@@ -376,7 +376,7 @@
     },
     {
       "name": "Seedha Ghar",
-      "tagline": "Map-based property listings for India",
+      "tagline": "Map-based property listings",
       "description": "Property search on a map, with a prepaid wallet and a universal ₹5-per-action friction filter so only serious enquiries get through. Every listing is verified by a human.",
       "stack": [
         "Turborepo",
@@ -404,7 +404,7 @@
     },
     {
       "name": "Plan-Kid",
-      "tagline": "Parenthood journey app for couples in India",
+      "tagline": "Parenthood journey app for couples",
       "description": "From the pre-decision stage through to parenting, across Knowledge, Journal, Motivation and Tracking. Design and product stage.",
       "stack": [
         "Expo",

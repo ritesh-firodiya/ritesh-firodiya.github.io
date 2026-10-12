@@ -113,115 +113,88 @@
       "repo": null
     },
     {
-      "slug": "chitragupt",
-      "name": "Chitragupt",
-      "stageLabel": "Pre-launch",
-      "shots": [
-        "02-tax",
-        "01-home",
-        "03-expenses"
-      ],
-      "fullName": "Chitragupt — Household tax review",
-      "tagline": "Household tax review for salaried Indian filers.",
-      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
-      "sourceOfTruth": "apps/chitragupt",
-      "model": "per-period",
-      "price": "₹249 / ₹499 / ₹799",
-      "priceNote": "per assessment year, three tiers",
-      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
-      "tiers": [
-        {
-          "label": "Free",
-          "amount": "₹0",
-          "unit": " forever",
-          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
-        },
-        {
-          "label": "Self",
-          "amount": "₹249",
-          "unit": "/AY",
-          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
-        },
-        {
-          "label": "AI Self",
-          "amount": "₹499",
-          "unit": "/AY",
-          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
-        },
-        {
-          "label": "Pro Family",
-          "amount": "₹799",
-          "unit": "/AY",
-          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
-        }
-      ],
+      "slug": "imposter",
+      "name": "Imposter",
+      "stageLabel": "In App Store review",
+      "fullName": "Imposter: Find the Liar",
+      "tagline": "Everyone gets the word. Except one of you.",
+      "blurb": "Social deduction for 3–20 people, on one phone or online by text.",
+      "sourceOfTruth": "apps/imposter",
+      "model": "subscription",
+      "price": "$4.99 once · $2.99/mo · $14.99/yr",
+      "priceNote": "3 packs and one-phone play free; rooms renew until cancelled",
+      "modelDetail": "Three packs, every game on one phone, joining any online room and one room of your own are free. Imposter Pro is one payment for all ten packs. Imposter Online is a subscription for the person who makes rooms, and it opens every pack while it runs. No ad SDK in the project at all. Prices are the US ones; the stores set the rest.",
       "ads": "None",
       "adSurfaces": [],
-      "offline": "No — it is a web app",
-      "analytics": "PostHog + Sentry",
-      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
-      "version": null,
+      "offline": "One phone, yes. Online rooms need a connection",
+      "analytics": "None",
+      "version": "2.0.0",
       "platforms": {
         "web": {
-          "state": "beta",
-          "label": "Open chitragupt.ai",
-          "url": "https://chitragupt.ai",
-          "note": "Deployed and reachable; version one has not launched"
+          "state": "none",
+          "label": "No web app",
+          "url": null,
+          "note": "Mobile only — nothing to open in a browser"
         },
         "android": {
-          "state": "none",
-          "label": "Draft on Google Play",
+          "state": "closed",
+          "label": "Closed testing, not public",
           "url": null,
-          "note": "A draft in the Play Console; no release on any track yet"
+          "note": "Production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter",
+          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers"
         },
         "ios": {
-          "state": "none",
-          "label": "No iOS app",
+          "state": "closed",
+          "label": "Waiting for App Store review",
           "url": null,
-          "note": "Android only"
+          "note": "Submitted for review; there is no public build yet",
+          "testUrl": "https://testflight.apple.com/join/qYT8tpPr"
         }
       },
+      "unreleasedNote": "Neither store has a public release yet. The build is in review on iOS. Both test tracks are open to anyone: the tester group for Android, the TestFlight for iPhone.",
       "stack": [
-        "Next.js",
-        "Cloud Run",
-        "Firebase Functions",
-        "Firestore",
-        "Zod",
-        "Turborepo"
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "RevenueCat",
+        "Firebase"
       ],
       "features": [
         {
-          "icon": "inbox",
-          "title": "Four pillars, one ledger",
-          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
+          "icon": "venetian-mask",
+          "title": "A hint, hand-written",
+          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
         },
         {
-          "icon": "upload",
-          "title": "Parses what you upload",
-          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
+          "icon": "users",
+          "title": "One phone, or online",
+          "body": "Pass one phone round the table, or make a room with a four-letter code and play by text. No voice, no video."
         },
         {
-          "icon": "columns-2",
-          "title": "Both regimes, side by side",
-          "body": "With the right ITR form picked for you and the delta stated in rupees."
-        },
-        {
-          "icon": "file-text",
-          "title": "CA-ready handoff",
-          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
+          "icon": "eye-off",
+          "title": "No analytics, at all",
+          "body": "There is no analytics or ad SDK in the project. A game on one phone never leaves it; an online room is deleted about a day after it goes quiet."
         }
       ],
-      "permissions": [],
-      "screens": [],
+      "permissions": [
+        {
+          "name": "Not requested",
+          "why": "None declared at all. The app reaches the network for purchases, for online rooms and to check for updates.",
+          "absent": true
+        }
+      ],
+      "screens": [
+        "Home",
+        "Your card",
+        "Online clues"
+      ],
       "legal": {
-        "privacy": "https://chitragupt.ai/legal/privacy",
-        "delete": "/legal/chitragupt/delete-account.html",
-        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
+        "privacy": "/legal/imposter/privacy-policy.html",
+        "delete": null
       },
       "kind": "app",
-      "repo": null,
-      "embed": "web/home/home.html",
-      "embedMobile": "mobile/home/home.html"
+      "repo": null
     },
     {
       "slug": "aakalan",
@@ -430,289 +403,280 @@
       "repo": null
     },
     {
-      "slug": "tic-tac-toe",
-      "name": "Tic Tac Toe",
-      "stageLabel": "Live on both stores",
-      "fullName": "Tic Tac Toe — 2 Player XO",
-      "tagline": "The classic 3×3, done properly.",
-      "blurb": "Two players on one device, or a minimax AI that never loses on Hard.",
-      "sourceOfTruth": "apps/tic-tac-toe",
-      "model": "free-ads",
-      "price": "Nothing",
-      "priceNote": "no in-app purchases at all",
-      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, Chess is the only other app of mine with ads.",
-      "ads": "Banner + interstitial",
-      "adSurfaces": [
+      "slug": "chitragupt",
+      "name": "Chitragupt",
+      "stageLabel": "Pre-launch",
+      "shots": [
+        "02-tax",
+        "01-home",
+        "03-expenses"
+      ],
+      "fullName": "Chitragupt — Household tax review",
+      "tagline": "Household tax review for salaried Indian filers.",
+      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
+      "sourceOfTruth": "apps/chitragupt",
+      "model": "per-period",
+      "price": "₹249 / ₹499 / ₹799",
+      "priceNote": "per assessment year, three tiers",
+      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
+      "tiers": [
         {
-          "kind": "Banner",
-          "where": "Bottom of the board, always on screen"
+          "label": "Free",
+          "amount": "₹0",
+          "unit": " forever",
+          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
         },
         {
-          "kind": "Interstitial",
-          "where": "Full screen, when a game finishes"
+          "label": "Self",
+          "amount": "₹249",
+          "unit": "/AY",
+          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
         },
         {
-          "kind": "Rewarded",
-          "where": "None — not used",
-          "absent": true
+          "label": "AI Self",
+          "amount": "₹499",
+          "unit": "/AY",
+          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
+        },
+        {
+          "label": "Pro Family",
+          "amount": "₹799",
+          "unit": "/AY",
+          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
         }
       ],
-      "offline": "No — ads need a network",
-      "analytics": "AdMob measurement",
-      "version": "1.0.12",
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "Mobile only — nothing to open in a browser"
-        },
-        "android": {
-          "state": "live",
-          "label": "Google Play",
-          "url": "https://play.google.com/store/apps/details?id=com.riteshf.tictactoe",
-          "note": ""
-        },
-        "ios": {
-          "state": "live",
-          "label": "App Store",
-          "url": "https://apps.apple.com/in/app/tic-tac-toe-classic-xo/id6811345763",
-          "note": ""
-        }
-      },
-      "stack": [
-        "Expo Router",
-        "React Native",
-        "UniWind",
-        "Zustand"
-      ],
-      "features": [
-        {
-          "icon": "users",
-          "title": "Two players on one phone",
-          "body": "Pass and tap. No accounts, no lobby, no second device to pair."
-        },
-        {
-          "icon": "cpu",
-          "title": "A perfect opponent",
-          "body": "Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten."
-        },
-        {
-          "icon": "history",
-          "title": "Running score",
-          "body": "Kept across a session, so a best-of-seven actually resolves."
-        }
-      ],
-      "permissions": [
-        {
-          "name": "Network",
-          "why": "Required — it is what fetches the ads."
-        },
-        {
-          "name": "Ad identifier",
-          "why": "Asked for on iOS via the system prompt. Declining costs you nothing."
-        },
-        {
-          "name": "Not requested",
-          "why": "No camera, microphone, contacts, location or storage.",
-          "absent": true
-        }
-      ],
-      "screens": [
-        "Board, with banner visible",
-        "Difficulty",
-        "Win state"
-      ],
-      "legal": {
-        "privacy": "/legal/tictactoe/privacy-policy.html",
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
-      "slug": "imposter",
-      "name": "Imposter",
-      "stageLabel": "In App Store review",
-      "fullName": "Imposter: Find the Liar",
-      "tagline": "Everyone gets the word. Except one of you.",
-      "blurb": "Social deduction for 3–20 people, on one phone or online by text.",
-      "sourceOfTruth": "apps/imposter",
-      "model": "subscription",
-      "price": "$4.99 once · $2.99/mo · $14.99/yr",
-      "priceNote": "3 packs and one-phone play free; rooms renew until cancelled",
-      "modelDetail": "Three packs, every game on one phone, joining any online room and one room of your own are free. Imposter Pro is one payment for all ten packs. Imposter Online is a subscription for the person who makes rooms, and it opens every pack while it runs. No ad SDK in the project at all. Prices are the US ones; the stores set the rest.",
       "ads": "None",
       "adSurfaces": [],
-      "offline": "One phone, yes. Online rooms need a connection",
-      "analytics": "None",
-      "version": "2.0.0",
+      "offline": "No — it is a web app",
+      "analytics": "PostHog + Sentry",
+      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
+      "version": null,
       "platforms": {
         "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "Mobile only — nothing to open in a browser"
+          "state": "beta",
+          "label": "Open chitragupt.ai",
+          "url": "https://chitragupt.ai",
+          "note": "Deployed and reachable; version one has not launched"
         },
         "android": {
-          "state": "closed",
-          "label": "Closed testing, not public",
+          "state": "none",
+          "label": "Draft on Google Play",
           "url": null,
-          "note": "Production track has never had a release",
-          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter",
-          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers"
+          "note": "A draft in the Play Console; no release on any track yet"
         },
         "ios": {
-          "state": "closed",
-          "label": "Waiting for App Store review",
+          "state": "none",
+          "label": "No iOS app",
           "url": null,
-          "note": "Submitted for review; there is no public build yet",
-          "testUrl": "https://testflight.apple.com/join/qYT8tpPr"
+          "note": "Android only"
         }
       },
-      "unreleasedNote": "Neither store has a public release yet. The build is in review on iOS. Both test tracks are open to anyone: the tester group for Android, the TestFlight for iPhone.",
       "stack": [
-        "React Native",
-        "Expo",
-        "TypeScript",
-        "RevenueCat",
-        "Firebase"
+        "Next.js",
+        "Cloud Run",
+        "Firebase Functions",
+        "Firestore",
+        "Zod",
+        "Turborepo"
       ],
       "features": [
         {
-          "icon": "venetian-mask",
-          "title": "A hint, hand-written",
-          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
+          "icon": "inbox",
+          "title": "Four pillars, one ledger",
+          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
         },
         {
-          "icon": "users",
-          "title": "One phone, or online",
-          "body": "Pass one phone round the table, or make a room with a four-letter code and play by text. No voice, no video."
+          "icon": "upload",
+          "title": "Parses what you upload",
+          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
         },
         {
-          "icon": "eye-off",
-          "title": "No analytics, at all",
-          "body": "There is no analytics or ad SDK in the project. A game on one phone never leaves it; an online room is deleted about a day after it goes quiet."
-        }
-      ],
-      "permissions": [
+          "icon": "columns-2",
+          "title": "Both regimes, side by side",
+          "body": "With the right ITR form picked for you and the delta stated in rupees."
+        },
         {
-          "name": "Not requested",
-          "why": "None declared at all. The app reaches the network for purchases, for online rooms and to check for updates.",
-          "absent": true
+          "icon": "file-text",
+          "title": "CA-ready handoff",
+          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
         }
       ],
-      "screens": [
-        "Home",
-        "Your card",
-        "Online clues"
-      ],
+      "permissions": [],
+      "screens": [],
       "legal": {
-        "privacy": "/legal/imposter/privacy-policy.html",
+        "privacy": "https://chitragupt.ai/legal/privacy",
+        "delete": "/legal/chitragupt/delete-account.html",
+        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
+      },
+      "kind": "app",
+      "repo": null,
+      "embed": "web/home/home.html",
+      "embedMobile": "mobile/home/home.html"
+    },
+    {
+      "slug": "trunk",
+      "name": "Trunk",
+      "stageLabel": "In build",
+      "embed": "web/design/journey.html",
+      "fullName": "Trunk",
+      "tagline": "Product development where every change is a delta.",
+      "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
+      "sourceOfTruth": "ventures/trunk",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Not decided. It is in build and not open.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Not open yet"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Turborepo"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "One record per change",
+          "body": "Spec, flag, signal and doc all hang off the same delta."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "seedha-ghar",
+      "name": "Seedha Ghar",
+      "stageLabel": "In design",
+      "embed": "web/buyer/home.html",
+      "embedMobile": "mobile/buyer/home.html",
+      "fullName": "Seedha Ghar",
+      "tagline": "Map-based property listings.",
+      "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",
+      "sourceOfTruth": "apps/property-app",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Not decided yet. It is listed here so the list is complete, not because there is anything to buy.",
+      "ads": null,
+      "adSurfaces": [],
+      "offline": null,
+      "analytics": null,
+      "version": null,
+      "notBuilt": true,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Web screens are drawn; no application code and no deployment"
+        },
+        "android": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Pre-product"
+        },
+        "ios": {
+          "state": "none",
+          "label": "In design",
+          "url": null,
+          "note": "Pre-product"
+        }
+      },
+      "stack": [
+        "Turborepo",
+        "Next.js",
+        "Expo",
+        "NestJS",
+        "PostgreSQL"
+      ],
+      "features": [],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
         "delete": null
       },
       "kind": "app",
       "repo": null
     },
     {
-      "slug": "chess",
-      "name": "Chess",
-      "stageLabel": "Closed test, in redesign",
-      "fullName": "Chess — Classic Game",
-      "tagline": "The whole game, on one phone.",
-      "blurb": "Two players passing one device, or a computer opponent at three levels. Every rule is in: castling, en passant, promotion and the draws.",
-      "sourceOfTruth": "apps/chess",
-      "model": "free-ads",
-      "price": "Nothing",
-      "priceNote": "no in-app purchases at all",
-      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner and a full-screen ad between games, so the ad network receives an advertising identifier from your device. The app asks for non-personalised ads only. There is no ad-free tier.",
-      "ads": "Banner + interstitial",
-      "adSurfaces": [
-        {
-          "kind": "Banner",
-          "where": "On the home and game screens"
-        },
-        {
-          "kind": "Interstitial",
-          "where": "Full screen, between games"
-        },
-        {
-          "kind": "Rewarded",
-          "where": "None — not used",
-          "absent": true
-        }
-      ],
-      "offline": "Plays offline — only the ads need a network",
-      "analytics": "None of its own — AdMob measurement only",
-      "version": "1.0.0",
-      "unreleasedNote": "Version 1.0.0 is on a closed Play track. The app is being redrawn from scratch before it goes public; the new designs are under review.",
+      "slug": "dwarseva",
+      "name": "DwarSeva",
+      "stageLabel": "In build",
+      "embed": "web/home/home.html",
+      "embedMobile": "mobile/visitors/guard-visitors.html",
+      "fullName": "DwarSeva",
+      "tagline": "Approval and society management.",
+      "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
+      "sourceOfTruth": "ventures/dwarseva",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Sold to societies rather than to individuals, so there is no consumer price.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
       "platforms": {
         "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "Mobile only — nothing to open in a browser"
-        },
-        "android": {
-          "state": "closed",
-          "label": "Closed testing only",
-          "url": null,
-          "note": "On the closed track; the production track has never had a release",
-          "testUrl": "https://play.google.com/apps/testing/com.riteshf.chess"
-        },
-        "ios": {
-          "state": "none",
-          "label": "No iOS build",
-          "url": null,
-          "note": "Not built for iPhone yet"
+          "state": "beta",
+          "label": "Open dwarseva.com",
+          "url": "https://dwarseva.com",
+          "note": "The domain is not answering today; hosting is being moved"
         }
       },
       "stack": [
-        "Expo Router",
-        "React Native",
-        "NativeWind",
-        "Zustand"
+        "NestJS",
+        "Next.js",
+        "GraphQL",
+        "Prisma",
+        "PostgreSQL",
+        "Docker"
       ],
       "features": [
         {
-          "icon": "users",
-          "title": "Two players on one phone",
-          "body": "Pass and play. No accounts, no lobby, no second device."
-        },
-        {
-          "icon": "cpu",
-          "title": "Three computer levels",
-          "body": "Easy moves at random, Medium mixes in real moves, Hard searches two to three moves ahead."
-        },
-        {
-          "icon": "scale",
-          "title": "The full rules",
-          "body": "Castling, en passant, promotion, check and checkmate, stalemate and the fifty-move draw."
+          "icon": "check",
+          "title": "Visitors, events, dues, staff",
+          "body": "The four things a society actually runs on, in one system."
         }
       ],
-      "permissions": [
-        {
-          "name": "Network",
-          "why": "Only to fetch ads. The game itself needs none."
-        },
-        {
-          "name": "Not requested",
-          "why": "No camera, microphone, contacts, location or storage.",
-          "absent": true
-        }
-      ],
+      "permissions": [],
       "screens": [],
       "legal": {
-        "privacy": "/legal/chess/privacy-policy.html",
-        "delete": null
+        "privacy": "https://dwarseva.com/privacy",
+        "delete": null,
+        "privacyNote": "The policy is a page of the product's own website, which is not answering until its hosting is moved."
       },
-      "kind": "app",
       "repo": null
     },
     {
       "slug": "learning-platform",
       "name": "Learning Platform",
       "stageLabel": "Live demo",
+      "embed": "web/home/home.html",
       "fullName": "Learning Platform",
       "tagline": "An LMS where courses are code.",
       "blurb": "Courses are authored as markdown in a Git repository and synced into the product on push, so content review happens in pull requests rather than in a CMS.",
@@ -820,154 +784,205 @@
       "repo": null
     },
     {
-      "slug": "trunk",
-      "name": "Trunk",
-      "stageLabel": "In build",
-      "embed": "web/design/journey.html",
-      "fullName": "Trunk",
-      "tagline": "Product development where every change is a delta.",
-      "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",
-      "sourceOfTruth": "ventures/trunk",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Not decided. It is in build and not open.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
+      "slug": "chess",
+      "name": "Chess",
+      "stageLabel": "In Play testing",
+      "fullName": "Chess — Classic Game",
+      "tagline": "The whole game, on one phone.",
+      "blurb": "Two players passing one device, or a computer opponent at three levels. Every rule is in: castling, en passant, promotion and the draws.",
+      "sourceOfTruth": "apps/chess",
+      "model": "free-ads",
+      "price": "Nothing",
+      "priceNote": "no in-app purchases at all",
+      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner and a full-screen ad between games, so the ad network receives an advertising identifier from your device. The app asks for non-personalised ads only. There is no ad-free tier.",
+      "ads": "Banner + interstitial",
+      "adSurfaces": [
+        {
+          "kind": "Banner",
+          "where": "On the home and game screens"
+        },
+        {
+          "kind": "Interstitial",
+          "where": "Full screen, between games"
+        },
+        {
+          "kind": "Rewarded",
+          "where": "None — not used",
+          "absent": true
+        }
+      ],
+      "offline": "Plays offline — only the ads need a network",
+      "analytics": "None of its own — AdMob measurement only",
+      "version": "2.0.0",
+      "unreleasedNote": "Version 2.0.0 is on a Play test track. It was rebuilt from a new design set, and there is no iPhone build yet.",
       "platforms": {
         "web": {
           "state": "none",
-          "label": "In build",
+          "label": "No web app",
           "url": null,
-          "note": "Not open yet"
+          "note": "Mobile only — nothing to open in a browser"
+        },
+        "android": {
+          "state": "closed",
+          "label": "Closed testing only",
+          "url": null,
+          "note": "On a test track; the production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.chess"
+        },
+        "ios": {
+          "state": "none",
+          "label": "No iOS build",
+          "url": null,
+          "note": "Not built for iPhone yet"
         }
       },
       "stack": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Turborepo"
+        "Expo",
+        "React Native",
+        "UniWind",
+        "Zustand",
+        "MMKV"
       ],
       "features": [
         {
-          "icon": "check",
-          "title": "One record per change",
-          "body": "Spec, flag, signal and doc all hang off the same delta."
+          "icon": "users",
+          "title": "Two players on one phone",
+          "body": "Pass and play. No accounts, no lobby, no second device."
+        },
+        {
+          "icon": "cpu",
+          "title": "Three computer levels",
+          "body": "Easy moves at random, Medium mixes in real moves, Hard searches two to three moves ahead."
+        },
+        {
+          "icon": "scale",
+          "title": "The full rules",
+          "body": "Castling, en passant, promotion, check and checkmate, stalemate and the fifty-move draw."
         }
       ],
-      "permissions": [],
+      "permissions": [
+        {
+          "name": "Network",
+          "why": "Only to fetch ads. The game itself needs none."
+        },
+        {
+          "name": "Not requested",
+          "why": "No camera, microphone, contacts, location or storage.",
+          "absent": true
+        }
+      ],
       "screens": [],
       "legal": {
-        "privacy": null,
+        "privacy": "/legal/chess/privacy-policy.html",
         "delete": null
       },
-      "repo": null
+      "kind": "app",
+      "repo": null,
+      "shots": [
+        "01-board",
+        "02-setup",
+        "05-checkmate"
+      ]
     },
     {
-      "slug": "dwarseva",
-      "name": "DwarSeva",
-      "stageLabel": "In build",
-      "embed": "web/home/home.html",
-      "embedMobile": "mobile/visitors/guard-visitors.html",
-      "fullName": "DwarSeva",
-      "tagline": "Approval and society management.",
-      "blurb": "Visitor check-ins, community events, service requests, payments and staff attendance in one modular system. Backend, web admin and mobile share a single monorepo.",
-      "sourceOfTruth": "ventures/dwarseva",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Sold to societies rather than to individuals, so there is no consumer price.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "beta",
-          "label": "Open dwarseva.com",
-          "url": "https://dwarseva.com",
-          "note": "The domain is not answering today; hosting is being moved"
-        }
-      },
-      "stack": [
-        "NestJS",
-        "Next.js",
-        "GraphQL",
-        "Prisma",
-        "PostgreSQL",
-        "Docker"
-      ],
-      "features": [
+      "slug": "tic-tac-toe",
+      "name": "Tic Tac Toe",
+      "stageLabel": "Live on both stores",
+      "fullName": "Tic Tac Toe — 2 Player XO",
+      "tagline": "The classic 3×3, done properly.",
+      "blurb": "Two players on one device, or a minimax AI that never loses on Hard.",
+      "sourceOfTruth": "apps/tic-tac-toe",
+      "model": "free-ads",
+      "price": "Nothing",
+      "priceNote": "no in-app purchases at all",
+      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, Chess is the only other app of mine with ads.",
+      "ads": "Banner + interstitial",
+      "adSurfaces": [
         {
-          "icon": "check",
-          "title": "Visitors, events, dues, staff",
-          "body": "The four things a society actually runs on, in one system."
+          "kind": "Banner",
+          "where": "Bottom of the board, always on screen"
+        },
+        {
+          "kind": "Interstitial",
+          "where": "Full screen, when a game finishes"
+        },
+        {
+          "kind": "Rewarded",
+          "where": "None — not used",
+          "absent": true
         }
       ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": "https://dwarseva.com/privacy",
-        "delete": null,
-        "privacyNote": "The policy is a page of the product's own website, which is not answering until its hosting is moved."
-      },
-      "repo": null
-    },
-    {
-      "slug": "tradx",
-      "name": "tradx",
-      "stageLabel": "In build",
-      "fullName": "tradx",
-      "tagline": "India-focused trading research and paper trading.",
-      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
-      "sourceOfTruth": "trading/tradx",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Internal. Not sold.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
+      "offline": "No — ads need a network",
+      "analytics": "AdMob measurement",
+      "version": "1.0.12",
       "platforms": {
         "web": {
           "state": "none",
-          "label": "In build",
+          "label": "No web app",
           "url": null,
-          "note": "Internal, not open"
+          "note": "Mobile only — nothing to open in a browser"
+        },
+        "android": {
+          "state": "live",
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.tictactoe",
+          "note": ""
+        },
+        "ios": {
+          "state": "live",
+          "label": "App Store",
+          "url": "https://apps.apple.com/in/app/tic-tac-toe-classic-xo/id6811345763",
+          "note": ""
         }
       },
       "stack": [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "Docker",
-        "TypeScript"
+        "Expo Router",
+        "React Native",
+        "UniWind",
+        "Zustand"
       ],
       "features": [
         {
-          "icon": "check",
-          "title": "Paper-only by default",
-          "body": "Live routing is gated behind a flag, deliberately."
+          "icon": "users",
+          "title": "Two players on one phone",
+          "body": "Pass and tap. No accounts, no lobby, no second device to pair."
+        },
+        {
+          "icon": "cpu",
+          "title": "A perfect opponent",
+          "body": "Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten."
+        },
+        {
+          "icon": "history",
+          "title": "Running score",
+          "body": "Kept across a session, so a best-of-seven actually resolves."
         }
       ],
-      "permissions": [],
-      "screens": [],
+      "permissions": [
+        {
+          "name": "Network",
+          "why": "Required — it is what fetches the ads."
+        },
+        {
+          "name": "Ad identifier",
+          "why": "Asked for on iOS via the system prompt. Declining costs you nothing."
+        },
+        {
+          "name": "Not requested",
+          "why": "No camera, microphone, contacts, location or storage.",
+          "absent": true
+        }
+      ],
+      "screens": [
+        "Board, with banner visible",
+        "Difficulty",
+        "Win state"
+      ],
       "legal": {
-        "privacy": null,
+        "privacy": "/legal/tictactoe/privacy-policy.html",
         "delete": null
       },
+      "kind": "app",
       "repo": null
     },
     {
@@ -1025,63 +1040,6 @@
       "repo": null
     },
     {
-      "slug": "seedha-ghar",
-      "name": "Seedha Ghar",
-      "stageLabel": "In design",
-      "embed": "web/buyer/home.html",
-      "embedMobile": "mobile/buyer/home.html",
-      "fullName": "Seedha Ghar",
-      "tagline": "Map-based property listings.",
-      "blurb": "Every listing verified by a human, with a small per-action friction filter so only serious enquiries get through.",
-      "sourceOfTruth": "apps/property-app",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Not decided yet. It is listed here so the list is complete, not because there is anything to buy.",
-      "ads": null,
-      "adSurfaces": [],
-      "offline": null,
-      "analytics": null,
-      "version": null,
-      "notBuilt": true,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In design",
-          "url": null,
-          "note": "Web screens are drawn; no application code and no deployment"
-        },
-        "android": {
-          "state": "none",
-          "label": "In design",
-          "url": null,
-          "note": "Pre-product"
-        },
-        "ios": {
-          "state": "none",
-          "label": "In design",
-          "url": null,
-          "note": "Pre-product"
-        }
-      },
-      "stack": [
-        "Turborepo",
-        "Next.js",
-        "Expo",
-        "NestJS",
-        "PostgreSQL"
-      ],
-      "features": [],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
       "slug": "cooking",
       "name": "Hamburg",
       "stageLabel": "In design",
@@ -1120,6 +1078,55 @@
         "delete": null
       },
       "kind": "app",
+      "repo": null
+    },
+    {
+      "slug": "tradx",
+      "name": "tradx",
+      "stageLabel": "In build",
+      "fullName": "tradx",
+      "tagline": "India-focused trading research and paper trading.",
+      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
+      "sourceOfTruth": "trading/tradx",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Internal. Not sold.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Internal, not open"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Prisma",
+        "PostgreSQL",
+        "Docker",
+        "TypeScript"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Paper-only by default",
+          "body": "Live routing is gated behind a flag, deliberately."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
       "repo": null
     }
   ]

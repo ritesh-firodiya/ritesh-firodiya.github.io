@@ -42,15 +42,16 @@ function Phone({ p, className }: { p: Product; className: string }) {
   );
 }
 
-/** The picture at the top of a card. */
-export function CardPicture({ p, tall = false }: { p: Product; tall?: boolean }) {
-  const h = tall ? "h-52" : "h-40";
+/** The picture at the top of a card. Every card gets the slot: a product with
+ *  nothing to show gets a hatched one that says so. */
+export function CardPicture({ p }: { p: Product }) {
+  const h = "h-32 md:h-36";
   const shot = shotsOf(p, 1)[0];
   const embed = embedPathOf(p);
   if (embed && isPhoneEmbed(p)) {
     return (
-      <div className={`flex ${h} justify-center overflow-hidden bg-muted pt-4`}>
-        <div className="w-36 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong">
+      <div className={`flex ${h} justify-center overflow-hidden bg-muted pt-3`}>
+        <div className="w-28 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:w-32">
           <Embed src={embed} title={`${p.name} design screen`} phone />
         </div>
       </div>
@@ -60,7 +61,7 @@ export function CardPicture({ p, tall = false }: { p: Product; tall?: boolean })
     return (
       <div className={`relative ${h} overflow-hidden bg-muted`}>
         <Embed src={embed} title={`${p.name} design screen`} fill />
-        <Phone p={p} className="absolute -bottom-10 right-3 w-20" />
+        <Phone p={p} className="absolute -bottom-10 right-2 w-16 md:w-20" />
       </div>
     );
   }
@@ -71,7 +72,11 @@ export function CardPicture({ p, tall = false }: { p: Product; tall?: boolean })
       </div>
     );
   }
-  return null;
+  return (
+    <div className={`slot grid ${h} place-items-center border-x-0 border-t-0`}>
+      <span className="font-mono text-2xs text-ink-3">No picture yet</span>
+    </div>
+  );
 }
 
 /** The picture on a product page: the web screen with the phone beside it,

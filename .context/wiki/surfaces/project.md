@@ -25,7 +25,7 @@ One project with a build: what it is, how to get it, its screens and wiki, and t
 
 **A product with a site and an app shows both.** The web screen is the picture and the phone stands on its corner.
 
-**The write-up is two columns of short sections**, and one column on a phone. A bold lead and what follows it; no cards, nothing nested.
+**The write-up is two balanced columns of short sections**, and one column on a phone. The sections flow down one column and into the next, so three sections leave no hole (2026-10-12). A bold lead and what follows it; no cards, nothing nested.
 
 **No price anywhere on the page.**
 

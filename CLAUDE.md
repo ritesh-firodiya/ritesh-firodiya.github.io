@@ -94,8 +94,9 @@ A promise on behalf of every app is only as true as the least convenient app.
 ## Data model
 
 `src/data/products.json` is the single source of truth for every app fact.
-**Its array order is the running order of the site**: the first three lead the
-home page. To change what leads, re-order the file.
+**Its array order is the running order of the site**: the home page shows
+every project as one card, four to a row, in this order. To change the order,
+re-order the file.
 
 - The release state pill is **derived** from `platforms` (`stageOf` in
   `src/lib/products.ts`): any `live` → live; any `beta`/`closed` → in testing;
@@ -112,8 +113,8 @@ home page. To change what leads, re-order the file.
   page, shown as a second button.
 - `embed` also gives a product with no store art a picture: one of its own
   design screens, live. `embedMobile` names a phone screen to stand beside a
-  web one. A product with a picture is a card on the home page; the rest are
-  rows.
+  web one. Every product is a card on the home page; one with no picture shows
+  a hatched slot.
 - **Mobile / Web tags** are derived (`surfaceTags` in `src/lib/products.ts`)
   from the surfaces a product draws and the platforms it has built. A product
   with both shows both.
@@ -233,3 +234,13 @@ publish. `actions/checkout` runs with `persist-credentials: false`, or git
 sends the job's own token instead of these.
 
 One-time setup: repo **Settings → Pages → Source = GitHub Actions**.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

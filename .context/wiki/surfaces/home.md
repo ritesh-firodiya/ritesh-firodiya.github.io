@@ -2,7 +2,7 @@
 id: SURFACE.WEB.HOME
 type: surface
 status: canonical
-last-verified: 2026-10-04
+last-verified: 2026-10-12
 supersedes: []
 superseded-by: null
 ---
@@ -19,7 +19,7 @@ The whole site on one page: who, then every project, then the eight stages each 
 ## Why it is drawn this way
 **One page, three parts.** Who I am is one sentence and three buttons. Work is every project. Process is one board. Work, Process, About and Contact used to be four more pages that repeated what was here; their addresses forward (2026-10-04, review round 4).
 
-**AskCal, Chitragupt and Aakalan lead.** They are the first three in `products.json` and get the larger cards. Everything else sits four to a row.
+**Every project is one card, all the same size** (2026-10-12). Four to a row from tablet up, two on a phone, in the order of `products.json`: the four mobile apps, then the four larger products, then the rest. The name and tagline come first; the state, the tags and the counts sit at the foot. A project with no picture keeps its card and shows a hatched slot.
 
 **A card says what the project is before it is opened:** the release state, a Mobile or Web tag, and how many screens and wiki pages it left behind. A product with a site and an app carries both tags and shows a phone standing beside its web screen.
 

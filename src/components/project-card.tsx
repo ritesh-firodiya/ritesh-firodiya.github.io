@@ -4,20 +4,20 @@ import { CardPicture } from "@/components/picture";
 import type { Product } from "@/lib/products";
 import { evidenceLine } from "@/lib/evidence";
 
-/** One project: its picture, its state, whether it is an app or a site, and
- *  what it left behind. */
-export function ProjectCard({ p, lead = false }: { p: Product; lead?: boolean }) {
+/** One project: its picture, its name, its state, whether it is an app or a
+ *  site, and what it left behind. Every card is the same size. */
+export function ProjectCard({ p }: { p: Product }) {
   return (
     <Link href={`/products/${p.slug}/`} className="card flex flex-col overflow-hidden">
-      <CardPicture p={p} tall={lead} />
-      <div className="flex flex-1 flex-col p-3.5">
-        <div className="flex flex-wrap items-center gap-1.5">
+      <CardPicture p={p} />
+      <div className="flex flex-1 flex-col p-3">
+        <h3 className="text-body font-bold leading-tight">{p.name}</h3>
+        <p className="mt-1 text-sm text-ink-2">{p.tagline}</p>
+        <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-2.5">
           <StatePill p={p} />
           <SurfaceTags p={p} />
         </div>
-        <h3 className="mt-2 text-body font-bold">{p.name}</h3>
-        <p className="mt-0.5 text-sm text-ink-2">{p.tagline}</p>
-        <p className="mt-auto pt-2.5 font-mono text-2xs text-ink-3">{evidenceLine(p)}</p>
+        <p className="mt-2 font-mono text-2xs text-ink-3">{evidenceLine(p)}</p>
       </div>
     </Link>
   );

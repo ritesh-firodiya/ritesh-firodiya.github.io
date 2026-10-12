@@ -1,12 +1,14 @@
 ---
-updated: 2026-10-04
-horizon: 2026-10-18
+updated: 2026-10-12
+horizon: 2026-10-26
 ---
 
 # Tasks — ritesh-firodiya.github.io
 
 ## Now
-1. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
+1. [ ] T029 Add `ritvi-apps/chess` and `ritvi-apps/learning-platform` to `DESIGNS_TOKEN`'s selected repositories, and push `chess` — until then the deploy fails at the sync step  owner
+       <https://github.com/settings/personal-access-tokens>
+2. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
 
 ## Parallel
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
@@ -20,6 +22,7 @@ horizon: 2026-10-18
       unblock: read each listing's website field  next-check:2026-10-11
 
 ## Done
+- [x] T030 Home is one grid of fifteen equal cards in a new order; Chess and Learning Platform are synced; project pages tightened  done:2026-10-12
 - [x] T028 Design set redrawn to the built site: 11 screens + 1 state, phone first  done:2026-10-04
 - [x] T020 Committed, pushed and merged to main  done:2026-10-04
 - [x] T021 New org-owned `DESIGNS_TOKEN` created and set  done:2026-10-04
@@ -94,3 +97,15 @@ horizon: 2026-10-18
   The generator lives outside the repo; the screens are the source.
 - Mobile first: the board is a list under `md`, the wiki rail follows the
   article on a phone, and `CLAUDE.md` now states the rule.
+
+### 2026-10-12
+- Done: T030. Order is AskCal, Imposter, Aakalan, Charades / Chitragupt, Trunk,
+  Seedha Ghar, DwarSeva / Learning Platform, Scrvio, Chess, Tic Tac Toe /
+  Plan-Kid, Hamburg, tradx.
+- Chess and Learning Platform were rows because neither was in `SETS`; both
+  design sets pass the publish gate. tradx has no design set and keeps a
+  hatched slot.
+- Not verified: whether `DESIGNS_TOKEN` can read the two new repos (T029), and
+  whether the Chess Play track admits `ritvi-chess-testers`. No `groupUrl` was
+  added for Chess, so its page still shows the email button.
+- Next: T029.

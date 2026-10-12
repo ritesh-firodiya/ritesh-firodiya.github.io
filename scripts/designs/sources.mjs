@@ -36,6 +36,8 @@ export const SETS = {
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
   "seedha-ghar": { repo: "ritvi-apps/property-app", local: "property-app" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
+  chess: { repo: "ritvi-apps/chess", local: "chess" },
+  "learning-platform": { repo: "ritvi-apps/learning-platform", local: "learning-platform" },
   /* Public repo: any token, or none, can read it. */
   cooking: { repo: "ritvi-apps/cooking", local: "cooking" },
   /* These three moved into ritvi-apps on 2026-10-04 and kept the read-only

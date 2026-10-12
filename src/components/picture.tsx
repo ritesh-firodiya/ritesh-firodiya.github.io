@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Embed } from "@/components/embed";
 import { type Product, type Shot, shotsOf, hasScreen } from "@/lib/products";
 
@@ -42,26 +43,42 @@ function Phone({ p, className }: { p: Product; className: string }) {
   );
 }
 
+/** A phone standing in a card's picture slot, cut off at the foot. */
+function PhoneSlot({ h, children }: { h: string; children: ReactNode }) {
+  return (
+    <div className={`flex ${h} justify-center overflow-hidden bg-muted pt-3`}>
+      <div className="w-36 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:w-40">{children}</div>
+    </div>
+  );
+}
+
 /** The picture at the top of a card. Every card gets the slot: a product with
  *  nothing to show gets a hatched one that says so. */
 export function CardPicture({ p }: { p: Product }) {
-  const h = "h-32 md:h-36";
+  /* A ratio, not a height: the slot keeps its shape from a phone to a desktop,
+     so an embedded web screen always covers it. */
+  const h = "aspect-[11/8]";
   const shot = shotsOf(p, 1)[0];
   const embed = embedPathOf(p);
   if (embed && isPhoneEmbed(p)) {
     return (
-      <div className={`flex ${h} justify-center overflow-hidden bg-muted pt-3`}>
-        <div className="w-28 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:w-32">
-          <Embed src={embed} title={`${p.name} design screen`} phone />
-        </div>
-      </div>
+      <PhoneSlot h={h}>
+        <Embed src={embed} title={`${p.name} design screen`} phone />
+      </PhoneSlot>
+    );
+  }
+  if (shot && p.bareShots) {
+    return (
+      <PhoneSlot h={h}>
+        <ShotImage shot={shot} name={p.name} className="rounded-none" />
+      </PhoneSlot>
     );
   }
   if (embed) {
     return (
       <div className={`relative ${h} overflow-hidden bg-muted`}>
         <Embed src={embed} title={`${p.name} design screen`} fill />
-        <Phone p={p} className="absolute -bottom-10 right-2 w-16 md:w-20" />
+        <Phone p={p} className="absolute -bottom-10 right-2 w-20 md:w-24" />
       </div>
     );
   }

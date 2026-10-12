@@ -19,7 +19,7 @@ The whole site on one page: who, then every project, then the eight stages each 
 ## Why it is drawn this way
 **One page, three parts.** Who I am is one sentence and three buttons. Work is every project. Process is one board. Work, Process, About and Contact used to be four more pages that repeated what was here; their addresses forward (2026-10-04, review round 4).
 
-**Every project is one card, all the same size** (2026-10-12). Four to a row from tablet up, two on a phone, in the order of `products.json`: the four mobile apps, then the four larger products, then the rest. The name and tagline come first; the state, the tags and the counts sit at the foot. A project with no picture keeps its card and shows a hatched slot.
+**Every project is one card, all the same size** (2026-10-12). Four to a row from tablet up, two on a phone, in the order of `products.json`: the leads, then the phone apps, then the web products, then the rest. The picture is tall and the panel under it is short and solid: name, state, tags and counts. The tagline is on the project page. A see-through panel over the picture was drawn and dropped the same day: it hid the app under a blur and made text hard to read on a dark screen. A store screenshot with no device around it (Chess) is drawn inside a phone. A project with no picture keeps its card and shows a hatched slot.
 
 **A card says what the project is before it is opened:** the release state, a Mobile or Web tag, and how many screens and wiki pages it left behind. A product with a site and an app carries both tags and shows a phone standing beside its web screen.
 

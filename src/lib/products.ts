@@ -51,6 +51,9 @@ export type Product = {
    *  page; a tilted close-up reads badly at card size, so the straight-on
    *  shots are named here. Without it, the listing order is used. */
   shots?: string[];
+  /** The store screenshots are bare screens with no device around them, so
+   *  the card draws the phone. Store art that already shows one leaves this off. */
+  bareShots?: boolean;
   fullName: string;
   tagline: string;
   blurb: string;
@@ -100,8 +103,8 @@ export function shotsOf(p: Pick<Product, "slug" | "shots">, limit = 3): Shot[] {
 export const verifiedOn: string = raw.verifiedOn;
 /**
  * **The array order in products.json is the running order of this site** —
- * set by hand (Oct 2026), not derived: the four mobile apps, the four larger
- * products, then the rest. Every listing renders in this order:
+ * set by hand (Oct 2026), not derived. Each row of four on the home page is
+ * one group: the leads, the phone apps, the web products, then the rest. Every listing renders in this order:
  * the products table, the landing page, the résumé, "more products".
  * To re-order the site, re-order the file.
  */

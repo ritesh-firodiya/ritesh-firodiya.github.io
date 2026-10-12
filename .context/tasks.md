@@ -109,3 +109,8 @@ horizon: 2026-10-26
   added for Chess, so its page still shows the email button.
 - T029 done: the first deploy failed on `ritvi-apps/chess`, the owner added both
   repos to the token, and the re-run went live. Next: T027.
+- Later the same day: cards are a tall picture (11:8) over a short solid panel
+  with no tagline; Chess is drawn inside a phone (`bareShots`); the order is
+  AskCal, Imposter, Chitragupt, Trunk / Aakalan, Charades, Chess, Tic Tac Toe /
+  Scrvio, Learning Platform, DwarSeva, Seedha Ghar / Plan-Kid, Hamburg, tradx.
+  A see-through panel was drawn and dropped.

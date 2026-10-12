@@ -662,8 +662,7 @@
         "01-board",
         "02-setup",
         "05-checkmate"
-      ],
-      "shotTint": "#2f7350"
+      ]
     },
     {
       "slug": "tic-tac-toe",

@@ -6,9 +6,7 @@ horizon: 2026-10-26
 # Tasks — ritesh-firodiya.github.io
 
 ## Now
-1. [ ] T029 Add `ritvi-apps/chess` and `ritvi-apps/learning-platform` to `DESIGNS_TOKEN`'s selected repositories, and push `chess` — until then the deploy fails at the sync step  owner
-       <https://github.com/settings/personal-access-tokens>
-2. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
+1. [ ] T027 Rotate `DESIGNS_TOKEN` before 2027-10-05, and sooner if this session's transcript is ever shared — the value was pasted into chat once
 
 ## Parallel
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
@@ -22,6 +20,7 @@ horizon: 2026-10-26
       unblock: read each listing's website field  next-check:2026-10-11
 
 ## Done
+- [x] T029 `DESIGNS_TOKEN` reads `chess` and `learning-platform`; deployed and checked live  done:2026-10-12
 - [x] T030 Home is one grid of fifteen equal cards in a new order; Chess and Learning Platform are synced; project pages tightened  done:2026-10-12
 - [x] T028 Design set redrawn to the built site: 11 screens + 1 state, phone first  done:2026-10-04
 - [x] T020 Committed, pushed and merged to main  done:2026-10-04
@@ -108,4 +107,5 @@ horizon: 2026-10-26
 - Not verified: whether `DESIGNS_TOKEN` can read the two new repos (T029), and
   whether the Chess Play track admits `ritvi-chess-testers`. No `groupUrl` was
   added for Chess, so its page still shows the email button.
-- Next: T029.
+- T029 done: the first deploy failed on `ritvi-apps/chess`, the owner added both
+  repos to the token, and the re-run went live. Next: T027.

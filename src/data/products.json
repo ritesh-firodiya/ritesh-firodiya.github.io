@@ -566,7 +566,7 @@
       "slug": "chess",
       "name": "Chess",
       "stageLabel": "In Play testing",
-      "fullName": "Chess — Classic Game",
+      "fullName": "Chess — 2 Player & Computer",
       "tagline": "The whole game, on one phone.",
       "blurb": "Two players passing one device, or a computer opponent at three levels. Every rule is in: castling, en passant, promotion and the draws.",
       "sourceOfTruth": "apps/chess",
@@ -593,7 +593,7 @@
       "offline": "Plays offline — only the ads need a network",
       "analytics": "None of its own — AdMob measurement only",
       "version": "2.0.0",
-      "unreleasedNote": "Version 2.0.0 is on a Play test track. It was rebuilt from a new design set, and there is no iPhone build yet.",
+      "unreleasedNote": "Version 2.0.0 was rebuilt from a new design set. It is with internal testers on Play and on TestFlight; the closed Play track anyone can join still serves 1.0.0.",
       "platforms": {
         "web": {
           "state": "none",
@@ -605,14 +605,15 @@
           "state": "closed",
           "label": "Closed testing only",
           "url": null,
-          "note": "On a test track; the production track has never had a release",
-          "testUrl": "https://play.google.com/apps/testing/com.riteshf.chess"
+          "note": "On the closed track, which still serves 1.0.0; 2.0.0 is on internal testing. The production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.riteshf.chess",
+          "groupUrl": "https://groups.google.com/g/ritvi-chess-testers"
         },
         "ios": {
-          "state": "none",
-          "label": "No iOS build",
+          "state": "closed",
+          "label": "TestFlight, internal testers only",
           "url": null,
-          "note": "Not built for iPhone yet"
+          "note": "Version 2.0.0 is on TestFlight for the internal group; there is no public link yet"
         }
       },
       "stack": [

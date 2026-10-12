@@ -197,9 +197,13 @@ static files, deliberately not routes: **the paths are hardcoded in shipped app
 builds and in store listings and must never change**, and no legal text passes
 through a re-author. `public/legal/legal.css` is their one stylesheet.
 
-**`ritvi-apps/legal` must never be deleted, and Pages must stay enabled on it.**
-Shipped builds hardcode the old URLs and two live Play listings use them. That
-repo is a set of redirect pages pointing here.
+**This repo is the only publisher of legal documents.** `ritvi-apps/legal` was
+deleted on 2026-10-12, so the old `ritvi-apps.github.io/legal/...` URLs are
+404s. Builds older than Charades 1.0.32, Tic Tac Toe 1.0.11 and Aakalan 1.0.19
+hardcode them and have lost their privacy link. `ritvi-apps.github.io` still
+redirects here and is being retired; do not delete it until AdMob reads
+`app-ads.txt` from this host for the iOS Tic Tac Toe app — see
+`~/git/products/invite.md` under "Not products".
 
 ## Gotchas
 

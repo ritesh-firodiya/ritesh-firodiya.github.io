@@ -12,7 +12,7 @@
 <p class="crumb"><a href="/legal/">Legal</a></p>
 
 <h1>Privacy Policy</h1>
-<p class="subtitle">Imposter: Find the Liar — the social deduction party game<br>Last updated: 12 October 2026 (version 2.0)</p>
+<p class="subtitle">Imposter: Find the Liar — the social deduction party game<br>Last updated: 12 October 2026 (version 2.0.1)</p>
 
 <div class="highlight">
   <p><strong>A game on one phone sends us nothing.</strong> Your players, scores and settings stay on your device. <strong>Online rooms are different:</strong> to play with people on other phones, the name you pick and the clues you type are kept on our server for about a day, so the others in your room can see them. The app has no ads, no analytics and no crash reporting.</p>
@@ -49,6 +49,7 @@
 <p><strong>How long it is kept.</strong> A room expires a day after the last thing that happened in it. The room, its players, cards, clues and votes are then deleted automatically. Deletion is not instant, and normally completes within two days of that last activity.</p>
 <p><strong>What is kept longer.</strong> Two things, neither of which names you: the random ID itself, and a count of how many rooms that ID has made. The count is how the app knows whether your one free room has been used. A table you played online is also saved on your own device, in your history, like a one-phone table.</p>
 <p><strong>Where it is.</strong> Rooms are stored in Google Cloud Firestore and handled by Google Cloud Functions, in Mumbai, India. When your phone talks to these services, Google receives technical data such as your IP address, as any internet service does. Firebase Authentication keeps the IP addresses it logs for a few weeks. See <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</p>
+<p><strong>Checking it is the real app.</strong> From version 2.0.1, when you play online the app uses Firebase App Check, a Google service. Your phone asks Google Play (Play Integrity) or Apple (App Attest) to confirm that the app is a real copy on a real device, and sends the answer to Google with each request. This is used only to keep scripts and fake apps out of rooms. It does not say who you are.</p>
 
 <h2>Purchases</h2>
 <p>The app sells two things: <strong>Imposter Pro</strong>, a one-time purchase that opens every word pack, and <strong>Imposter Online</strong>, a monthly or yearly subscription for the person who makes online rooms. Joining a room is free.</p>

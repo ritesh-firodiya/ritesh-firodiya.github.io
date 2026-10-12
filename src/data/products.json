@@ -593,7 +593,7 @@
       "offline": "Plays offline — only the ads need a network",
       "analytics": "None of its own — AdMob measurement only",
       "version": "2.0.0",
-      "unreleasedNote": "Version 2.0.0 was rebuilt from a new design set. It is with internal testers on Play and on TestFlight; the closed Play track anyone can join still serves 1.0.0.",
+      "unreleasedNote": "Version 2.0.0 was rebuilt from a new design set. It is with internal testers on Play and on TestFlight, and the public TestFlight build is in Apple’s beta review; the closed Play track anyone can join still serves 1.0.0.",
       "platforms": {
         "web": {
           "state": "none",
@@ -611,9 +611,10 @@
         },
         "ios": {
           "state": "closed",
-          "label": "TestFlight, internal testers only",
+          "label": "Join the TestFlight",
           "url": null,
-          "note": "Version 2.0.0 is on TestFlight for the internal group; there is no public link yet"
+          "note": "Public TestFlight link; build 2.0.0 (2.0.5) is waiting for Apple’s beta review, and the link serves it once that passes",
+          "testUrl": "https://testflight.apple.com/join/XjytTyb1"
         }
       },
       "stack": [

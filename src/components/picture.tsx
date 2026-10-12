@@ -57,7 +57,7 @@ function PhoneSlot({ h, children }: { h: string; children: ReactNode }) {
 export function CardPicture({ p }: { p: Product }) {
   /* A ratio, not a height: the slot keeps its shape from a phone to a desktop,
      so an embedded web screen always covers it. */
-  const h = "aspect-[11/8]";
+  const h = "aspect-[11/9]";
   const shot = shotsOf(p, 1)[0];
   const embed = embedPathOf(p);
   if (embed && isPhoneEmbed(p)) {
@@ -78,7 +78,7 @@ export function CardPicture({ p }: { p: Product }) {
     return (
       <div className={`relative ${h} overflow-hidden bg-muted`}>
         <Embed src={embed} title={`${p.name} design screen`} fill />
-        <Phone p={p} className="absolute -bottom-10 right-2 w-20 md:w-24" />
+        <Phone p={p} className="absolute right-2 top-3 w-16 md:w-20" />
       </div>
     );
   }
@@ -90,7 +90,7 @@ export function CardPicture({ p }: { p: Product }) {
     );
   }
   return (
-    <div className={`slot grid ${h} place-items-center border-x-0 border-t-0`}>
+    <div className={`slot grid ${h} place-items-start justify-center border-0 pt-10`}>
       <span className="font-mono text-2xs text-ink-3">No picture yet</span>
     </div>
   );

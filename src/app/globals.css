@@ -382,6 +382,14 @@
   .dot--half { background: linear-gradient(90deg, var(--color-brand-500) 50%, transparent 50%); }
   .dot--none { background: transparent; border-color: var(--color-line-strong); }
 
+  /* The details panel of a project card, laid over the foot of its picture.
+     See-through, with a blur so the words stay readable on any picture. */
+  .card-glass {
+    background: color-mix(in srgb, var(--color-surface) 68%, transparent);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3); backdrop-filter: blur(12px) saturate(1.3);
+    border-top: 1px solid color-mix(in srgb, var(--color-line) 60%, transparent);
+  }
+
   /* A deliberately empty slot. A missing asset is visibly missing; a plain grey
      box reads as a surface that happens to be blank, and hatching does not. */
   .slot {

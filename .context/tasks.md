@@ -114,3 +114,5 @@ horizon: 2026-10-26
   AskCal, Imposter, Chitragupt, Trunk / Aakalan, Charades, Chess, Tic Tac Toe /
   Scrvio, Learning Platform, DwarSeva, Seedha Ghar / Plan-Kid, Hamburg, tradx.
   A see-through panel was drawn and dropped.
+- Then, on the owner's choice: the panel is see-through after all, laid over
+  the foot of an 11:9 picture (`.card-glass`, 68% surface, 12px blur).

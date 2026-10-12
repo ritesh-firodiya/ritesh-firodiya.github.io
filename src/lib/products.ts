@@ -51,9 +51,10 @@ export type Product = {
    *  page; a tilted close-up reads badly at card size, so the straight-on
    *  shots are named here. Without it, the listing order is used. */
   shots?: string[];
-  /** The store screenshots are bare screens with no device around them, so
-   *  the card draws the phone. Store art that already shows one leaves this off. */
-  bareShots?: boolean;
+  /** The store screenshots are bare screens with no device and no backdrop,
+   *  so the card draws both: a phone on this colour, the product's own brand
+   *  colour, at the size store art shows one. Store art leaves this off. */
+  shotTint?: string;
   fullName: string;
   tagline: string;
   blurb: string;

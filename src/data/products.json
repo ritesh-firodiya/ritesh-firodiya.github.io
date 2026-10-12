@@ -662,7 +662,7 @@
         "02-setup",
         "05-checkmate"
       ],
-      "bareShots": true
+      "shotTint": "#2f7350"
     },
     {
       "slug": "tic-tac-toe",

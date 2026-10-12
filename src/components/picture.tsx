@@ -67,11 +67,14 @@ export function CardPicture({ p }: { p: Product }) {
       </PhoneSlot>
     );
   }
-  if (shot && p.bareShots) {
+  if (shot && p.shotTint) {
+    /* Sized in cqw so the phone keeps the proportions store art has at any card width. */
     return (
-      <PhoneSlot h={h}>
-        <ShotImage shot={shot} name={p.name} className="rounded-none" />
-      </PhoneSlot>
+      <div className={`${h} overflow-hidden [container-type:inline-size]`} style={{ background: p.shotTint }}>
+        <div className="mx-auto mt-[16cqw] w-[94cqw] overflow-hidden rounded-t-[13cqw]">
+          <ShotImage shot={shot} name={p.name} className="rounded-none" />
+        </div>
+      </div>
     );
   }
   if (embed) {

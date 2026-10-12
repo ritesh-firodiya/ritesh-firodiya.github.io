@@ -536,17 +536,17 @@
       "stageLabel": "In App Store review",
       "fullName": "Imposter: Find the Liar",
       "tagline": "Everyone gets the word. Except one of you.",
-      "blurb": "Social deduction for 3–20 people on one phone.",
+      "blurb": "Social deduction for 3–20 people, on one phone or online by text.",
       "sourceOfTruth": "apps/imposter",
-      "model": "one-time",
-      "price": "Not priced yet",
-      "priceNote": "3 packs free, rest in one payment",
-      "modelDetail": "Three categories will be free with no time limit. The other seven are a single payment — no subscription, nothing that renews, and no ad SDK in the project at all. The price is not set yet, so there is no number on this page.",
+      "model": "subscription",
+      "price": "$4.99 once · $2.99/mo · $14.99/yr",
+      "priceNote": "3 packs and one-phone play free; rooms renew until cancelled",
+      "modelDetail": "Three packs, every game on one phone, joining any online room and one room of your own are free. Imposter Pro is one payment for all ten packs. Imposter Online is a subscription for the person who makes rooms, and it opens every pack while it runs. No ad SDK in the project at all. Prices are the US ones; the stores set the rest.",
       "ads": "None",
       "adSurfaces": [],
-      "offline": "Yes — fully",
+      "offline": "One phone, yes. Online rooms need a connection",
       "analytics": "None",
-      "version": "1.0.3",
+      "version": "2.0.0",
       "platforms": {
         "web": {
           "state": "none",
@@ -575,7 +575,8 @@
         "React Native",
         "Expo",
         "TypeScript",
-        "RevenueCat"
+        "RevenueCat",
+        "Firebase"
       ],
       "features": [
         {
@@ -584,27 +585,27 @@
           "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
         },
         {
-          "icon": "ghost",
-          "title": "Mr. White sees nothing",
-          "body": "And can still steal the round by naming the word at the end."
+          "icon": "users",
+          "title": "One phone, or online",
+          "body": "Pass one phone round the table, or make a room with a four-letter code and play by text. No voice, no video."
         },
         {
           "icon": "eye-off",
           "title": "No analytics, at all",
-          "body": "There is no analytics SDK in the project. Nothing about your rounds leaves the phone."
+          "body": "There is no analytics or ad SDK in the project. A game on one phone never leaves it; an online room is deleted about a day after it goes quiet."
         }
       ],
       "permissions": [
         {
           "name": "Not requested",
-          "why": "None declared at all. The app makes exactly one network call, to the purchase service.",
+          "why": "None declared at all. The app reaches the network for purchases, for online rooms and to check for updates.",
           "absent": true
         }
       ],
       "screens": [
-        "Word reveal",
-        "The hint",
-        "Pack picker"
+        "Home",
+        "Your card",
+        "Online clues"
       ],
       "legal": {
         "privacy": "/legal/imposter/privacy-policy.html",

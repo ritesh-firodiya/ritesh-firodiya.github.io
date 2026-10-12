@@ -12,42 +12,74 @@
 <p class="crumb"><a href="/legal/">Legal</a></p>
 
 <h1>Privacy Policy</h1>
-<p class="subtitle">Imposter: Find the Liar — the social deduction party game<br>Last updated: September 2026</p>
+<p class="subtitle">Imposter: Find the Liar — the social deduction party game<br>Last updated: 12 October 2026 (version 2.0)</p>
 
 <div class="highlight">
-  <p><strong>Imposter: Find the Liar does not collect your personal data.</strong> The app has no ads, no analytics and no user accounts. Your players, packs and settings stay on your device. We run no servers that store your personal data.</p>
+  <p><strong>A game on one phone sends us nothing.</strong> Your players, scores and settings stay on your device. <strong>Online rooms are different:</strong> to play with people on other phones, the name you pick and the clues you type are kept on our server for about a day, so the others in your room can see them. The app has no ads, no analytics and no crash reporting.</p>
 </div>
 
-<h2>Information We Collect</h2>
-<p>We collect nothing. The app contains no advertising SDK, no analytics SDK and no crash-reporting SDK, and it does not send your usage, your device identifiers or your game data to us.</p>
-<p>The game is played entirely offline on one device. Network access is used only to look up the unlock price and to complete a purchase you start yourself.</p>
-
-<h2>Data Stored On Your Device</h2>
-<p>The following is stored locally and never transmitted to us:</p>
+<h2>The short version</h2>
 <ul>
-  <li>The player names you type, and the icon assigned to each</li>
-  <li>Your round settings (word packs, number of imposters, hints, talking time)</li>
-  <li>Whether haptics are on</li>
-  <li>Whether you have completed onboarding</li>
+  <li>No email, no phone number, no password. The app never asks who you are.</li>
+  <li>One phone: nothing leaves the device.</li>
+  <li>Online: a random ID, the name and icon you choose, your one-word clues, your vote and your score go to our server. A room and everything in it is deleted automatically, normally within two days of the last thing that happened in it.</li>
+  <li>We do not sell data, and there is no advertising or analytics company in this app.</li>
 </ul>
-<p>Player names are typed by you and are used only to label the cards during a round. A round in progress is never written to disk at all. Uninstalling the app permanently deletes everything above.</p>
+
+<h2>Playing on one phone</h2>
+<p>This is stored on your device and is never sent to us:</p>
+<ul>
+  <li>The player names you type, and the icon given to each</li>
+  <li>The tables you have played with, and their scores</li>
+  <li>Your round settings: word packs, levels, number of imposters, hints, talking time</li>
+  <li>Any words you write yourself</li>
+  <li>Whether haptics are on, and whether you have seen the welcome screens</li>
+</ul>
+<p>A round in progress is never written to disk at all. Uninstalling the app deletes everything above.</p>
+
+<h2>Playing online</h2>
+<p>Online rooms need a server, because nobody's phone may hold another player's card. When you make or join a room, this happens:</p>
+<ul>
+  <li><strong>A random ID.</strong> The app signs in anonymously with Firebase Authentication, a Google service. It gives your install a random ID. There is no email, phone number or password behind it, and we cannot tell from it who you are.</li>
+  <li><strong>What you choose and type.</strong> The name and icon you play as, the one-word clues you type, who you voted for, and your score.</li>
+  <li><strong>What the game deals.</strong> Your card (the word, or the hint), the room code, the room's settings, and whether your phone is still connected.</li>
+</ul>
+<p><strong>Who can see it.</strong> Everyone in your room sees your name, icon, clues and score. Only your own phone can read your card and your vote. The result shows who the room accused, not who voted for whom. A room can be joined only by someone who has its four-letter code.</p>
+<p><strong>There is no chat, voice or video.</strong> The only things a player can type are a name and one-word clues.</p>
+<p><strong>How long it is kept.</strong> A room expires a day after the last thing that happened in it. The room, its players, cards, clues and votes are then deleted automatically. Deletion is not instant, and normally completes within two days of that last activity.</p>
+<p><strong>What is kept longer.</strong> Two things, neither of which names you: the random ID itself, and a count of how many rooms that ID has made. The count is how the app knows whether your one free room has been used. A table you played online is also saved on your own device, in your history, like a one-phone table.</p>
+<p><strong>Where it is.</strong> Rooms are stored in Google Cloud Firestore and handled by Google Cloud Functions, in Mumbai, India. When your phone talks to these services, Google receives technical data such as your IP address, as any internet service does. Firebase Authentication keeps the IP addresses it logs for a few weeks. See <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</p>
 
 <h2>Purchases</h2>
-<p>The app sells a single one-time unlock for the remaining word packs. There is no subscription and no advertising.</p>
+<p>The app sells two things: <strong>Imposter Pro</strong>, a one-time purchase that opens every word pack, and <strong>Imposter Online</strong>, a monthly or yearly subscription for the person who makes online rooms. Joining a room is free.</p>
 <p><strong>The App Store and Google Play</strong> process the payment. We never see or handle your card or billing details.</p>
-<p><strong>RevenueCat</strong> — purchase and entitlement state is managed by RevenueCat so your unlock can be restored on a new device. RevenueCat receives an anonymous app-user identifier and the purchase receipt from the store. It does not receive your name, email or payment details from us. See <a href="https://www.revenuecat.com/privacy">RevenueCat's Privacy Policy</a>.</p>
+<p><strong>RevenueCat</strong> keeps track of what has been bought, so a purchase can be restored on a new device. It receives an anonymous app-user identifier and the purchase receipt from the store. Once you have used an online room, that identifier is the same random ID described above, so that our server can check that a host's subscription is running. RevenueCat does not receive your name, your clues or your payment details from us. See <a href="https://www.revenuecat.com/privacy">RevenueCat's Privacy Policy</a>.</p>
+
+<h2>App updates</h2>
+<p>The app checks Expo's update service for small fixes when it starts. That request carries the app version and your device's platform, and Expo's servers see your IP address when they answer it. See <a href="https://expo.dev/privacy">Expo's Privacy Policy</a>.</p>
+
+<h2>What the app does not do</h2>
+<ul>
+  <li>No advertising SDK, no analytics SDK, no crash-reporting SDK</li>
+  <li>No access to your contacts, photos, camera, microphone or location</li>
+  <li>No tracking across other apps or websites</li>
+</ul>
 
 <h2>Sharing</h2>
-<p>We do not sell, share or rent personal information. There is no advertising network and no analytics provider in this app, so there is nothing to share with one.</p>
+<p>We do not sell, share or rent personal information. The only companies that handle data for this app are the ones named above: Google (Firebase), RevenueCat, Expo, and the store you bought from. Each acts on our behalf or as the store of record.</p>
+
+<h2>Deleting your data</h2>
+<p>Online rooms delete themselves, as described above. Uninstalling the app removes everything on your device, including the random ID.</p>
+<p>To have a room, or the room count kept against your random ID, deleted sooner, write to the address below. We do not know who you are, so tell us the room code and roughly when you played, and we will delete it.</p>
 
 <h2>No Account Required</h2>
-<p>The app does not require sign-up, login or any account creation. It works immediately after installation.</p>
+<p>The app does not require sign-up, login or any account creation. One-phone games work immediately and offline. Online rooms sign in anonymously on their own.</p>
 
 <h2>Children's Privacy</h2>
-<p>The app is a word game played out loud in a group. One optional word pack, "After Dark", contains adult themes and is not included in the free packs. Because the app collects no personal information from anyone, it collects none from children. We do not knowingly collect personal information from children under 13.</p>
+<p>The app is a word game played in a group. One optional word pack, "After Dark", contains adult themes, is not among the free packs, and asks before it is added. Online rooms let players type a name and one-word clues to the other people in the room. The app is not directed at children under 13, and we do not knowingly collect personal information from them. If you believe a child has given us personal information, contact us and we will delete it.</p>
 
 <h2>Changes to This Policy</h2>
-<p>We may update this policy from time to time. The latest version is always available in the app under Settings &gt; Privacy Policy.</p>
+<p>We may update this policy from time to time. The date at the top changes when we do. The latest version is always available in the app under Settings &gt; Privacy Policy.</p>
 
 <h2>Contact</h2>
 <p>If you have questions about this privacy policy, contact us at: <strong>firodiya.ritesh@gmail.com</strong></p>

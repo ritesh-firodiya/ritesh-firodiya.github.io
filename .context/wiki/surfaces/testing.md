@@ -21,6 +21,9 @@ One project that is in closed testing: the same page, with the direct way in.
   address opens the conversations, which are members-only, so a non-member got
   "You don't have permission to access this content" and no way to join. The
   about page is the one Google shows non-members, with the Join button.
+  Since 2026-10-15 every tester group also lets anyone view conversations, so
+  links shared before this change work too. Posting and the member list stay
+  managers-only.
 - iOS gets one button, the public TestFlight link.
 - The steps are written out under the buttons, not left in a hover title.
   Phones have no hover, and testers kept getting stuck at the two places a

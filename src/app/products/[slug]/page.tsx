@@ -70,17 +70,50 @@ function doorsOf(p: Product): Door[] {
   return doors;
 }
 
+/**
+ * What a tester does after the button, written out. It used to live in each
+ * button's title, which a phone never shows, and testers got stuck at exactly
+ * these two places: a test app is not in Play search, and an iPhone beta is
+ * not in the App Store.
+ */
+const STEPS = {
+  android: "join the group with the Google account on your phone. Then open step 2, tap Become a tester, and use its Google Play link. A test app does not show up in Play search.",
+  ios: "install TestFlight from the App Store first, then open the link. The app installs through TestFlight, not from the App Store.",
+};
+
+const isTestFlight = (url?: string | null) => !!url && url.startsWith("https://testflight.apple.com/");
+
+function stepsOf(p: Product): { key: string; who: string; text: string }[] {
+  const { android, ios } = p.platforms;
+  const steps = [];
+  if (android?.state === "closed" && android.groupUrl && android.testUrl) steps.push({ key: "android", who: "Android", text: STEPS.android });
+  if (ios && (isTestFlight(ios.testUrl) || (ios.state === "beta" && isTestFlight(ios.url)))) steps.push({ key: "ios", who: "iPhone", text: STEPS.ios });
+  return steps;
+}
+
 function Access({ p }: { p: Product }) {
   const doors = doorsOf(p);
   if (doors.length === 0) return null;
+  const steps = stepsOf(p);
   return (
-    <div className="mt-3 flex flex-wrap gap-2">
-      {doors.map((d, i) => (
-        <a key={d.key} href={d.href} target="_blank" rel="noopener" title={d.title} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
-          <d.Icon size={16} aria-hidden /> {d.label}
-        </a>
-      ))}
-    </div>
+    <>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {doors.map((d, i) => (
+          <a key={d.key} href={d.href} target="_blank" rel="noopener" title={d.title} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
+            <d.Icon size={16} aria-hidden /> {d.label}
+          </a>
+        ))}
+      </div>
+      {steps.length > 0 && (
+        <ul className="mt-2 max-w-[58ch] space-y-1 text-sm text-ink-3">
+          {steps.map((s) => (
+            <li key={s.key}>
+              <strong className="text-ink-2">{s.who}:</strong> {s.text}
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
 

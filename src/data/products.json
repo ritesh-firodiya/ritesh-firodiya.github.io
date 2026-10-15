@@ -51,7 +51,7 @@
           "url": null,
           "note": "On the closed track; the production track has never had a release",
           "testUrl": "https://play.google.com/apps/testing/com.riteshf.askcal",
-          "groupUrl": "https://groups.google.com/g/askcal-testers"
+          "groupUrl": "https://groups.google.com/g/askcal-testers/about"
         },
         "ios": {
           "state": "closed",
@@ -142,7 +142,7 @@
           "url": null,
           "note": "Production track has never had a release",
           "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter",
-          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers"
+          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers/about"
         },
         "ios": {
           "state": "closed",
@@ -405,7 +405,7 @@
           "url": null,
           "note": "Play Console declarations pending; alpha is the ceiling",
           "testUrl": "https://play.google.com/apps/testing/com.riteshf.aakalan",
-          "groupUrl": "https://groups.google.com/g/aakalan-testers"
+          "groupUrl": "https://groups.google.com/g/aakalan-testers/about"
         },
         "ios": {
           "state": "beta",
@@ -607,7 +607,7 @@
           "url": null,
           "note": "On the closed track, which still serves 1.0.0; 2.0.0 is on internal testing. The production track has never had a release",
           "testUrl": "https://play.google.com/apps/testing/com.riteshf.chess",
-          "groupUrl": "https://groups.google.com/g/ritvi-chess-testers"
+          "groupUrl": "https://groups.google.com/g/ritvi-chess-testers/about"
         },
         "ios": {
           "state": "closed",

@@ -17,6 +17,10 @@ One project that is in closed testing: the same page, with the direct way in.
 - A closed Android track that admits a Google Group gets two numbered buttons:
   join the group, then install from Play. Both are needed, because Play only
   lets group members opt in, so they are numbered rather than merged.
+- The group button opens the group's `/about` page, not `/g/<group>`. The bare
+  address opens the conversations, which are members-only, so a non-member got
+  "You don't have permission to access this content" and no way to join. The
+  about page is the one Google shows non-members, with the Join button.
 - iOS gets one button, the public TestFlight link.
 - The steps are written out under the buttons, not left in a hover title.
   Phones have no hover, and testers kept getting stuck at the two places a

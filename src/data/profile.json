@@ -281,8 +281,8 @@
     },
     {
       "name": "Imposter: Find the Liar",
-      "tagline": "Social deduction for 3–20 people on one phone",
-      "description": "Most players see a secret word. The Imposter sees only a one-word hint, hand-written for every single word. Mr. White sees nothing and can still steal the round. Three categories free forever, the other seven are one payment — no ads and no analytics in the project at all.",
+      "tagline": "Social deduction for 3–20 people, on one phone or online",
+      "description": "Most players see a secret word. The Imposter sees only a one-word hint, hand-written for every single word. Pass one phone round the table, or play online in a room with a four-letter code, talking or typing the clues. Three packs are free; the rest come with Pro or the Online plan. No ads and no analytics in the project at all.",
       "stack": [
         "React Native",
         "Expo",

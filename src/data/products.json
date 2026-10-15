@@ -118,7 +118,7 @@
       "stageLabel": "In App Store review",
       "fullName": "Imposter: Find the Liar",
       "tagline": "Everyone gets the word. Except one of you.",
-      "blurb": "Social deduction for 3–20 people, on one phone or online by text.",
+      "blurb": "Social deduction for 3–20 people, on one phone or online with a phone each.",
       "sourceOfTruth": "apps/imposter",
       "model": "subscription",
       "price": "$4.99 once · $2.99/mo · $14.99/yr",
@@ -169,7 +169,7 @@
         {
           "icon": "users",
           "title": "One phone, or online",
-          "body": "Pass one phone round the table, or make a room with a four-letter code and play by text. No voice, no video."
+          "body": "Pass one phone round the table, or make a room with a four-letter code. The host picks Talk or Type: say the clues aloud, or type them at once. Everyone votes on their own phone and sees who voted for whom. The app itself carries no voice or video."
         },
         {
           "icon": "eye-off",

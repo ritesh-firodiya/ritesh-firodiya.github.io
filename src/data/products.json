@@ -311,7 +311,7 @@
       "slug": "trunk",
       "name": "Trunk",
       "stageLabel": "In build",
-      "embed": "web/design/journey.html",
+      "embed": "web/journey/journey.html",
       "fullName": "Trunk",
       "tagline": "Product development where every change is a delta.",
       "blurb": "One platform replacing the stack most product teams cobble together: deltas instead of tickets, documentation instead of a wiki, signals instead of two analytics vendors, and feature flags — all against the same change record.",

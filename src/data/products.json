@@ -310,7 +310,7 @@
     {
       "slug": "trunk",
       "name": "Trunk",
-      "stageLabel": "In build",
+      "stageLabel": "Live demo",
       "embed": "web/journey/journey.html",
       "fullName": "Trunk",
       "tagline": "Product development where every change is a delta.",
@@ -329,10 +329,10 @@
       "notBuilt": false,
       "platforms": {
         "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Not open yet"
+          "state": "live",
+          "label": "Open the demo",
+          "url": "https://trunk-staging.vercel.app/",
+          "note": "Demo on the staging hostname — TODO: move to a real domain"
         }
       },
       "stack": [
@@ -351,7 +351,7 @@
       "permissions": [],
       "screens": [],
       "legal": {
-        "privacy": null,
+        "privacy": "https://trunk-staging.vercel.app/privacy",
         "delete": null
       },
       "repo": null

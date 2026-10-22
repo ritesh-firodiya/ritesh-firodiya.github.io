@@ -235,7 +235,7 @@
     {
       "name": "Charades — Act it Out!",
       "tagline": "Offline party game, 5,149 cards",
-      "description": "A charades party game with 5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline with no daily limits. Live on the Play Store, with a public TestFlight beta on iOS.",
+      "description": "A charades party game with 5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline with no daily limits. Live on the Play Store and the App Store.",
       "stack": [
         "React Native",
         "Expo Router",
@@ -243,15 +243,15 @@
         "Zustand",
         "RevenueCat"
       ],
-      "status": "Live on Play Store",
+      "status": "Live on both stores",
       "links": [
         {
           "label": "Google Play",
           "url": "https://play.google.com/store/apps/details?id=com.riteshf.charadesbollywood"
         },
         {
-          "label": "iOS Beta",
-          "url": "https://testflight.apple.com/join/fBBEpk9h"
+          "label": "App Store",
+          "url": "https://apps.apple.com/in/app/charades-act-it-out-party/id6811345858"
         }
       ],
       "private": true

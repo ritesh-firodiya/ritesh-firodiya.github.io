@@ -471,7 +471,7 @@
     {
       "slug": "charades",
       "name": "Charades",
-      "stageLabel": "Live on Google Play",
+      "stageLabel": "Live on both stores",
       "shots": [
         "01-home",
         "05-packs",
@@ -504,9 +504,9 @@
           "note": ""
         },
         "ios": {
-          "state": "beta",
-          "label": "Join the TestFlight",
-          "url": "https://testflight.apple.com/join/fBBEpk9h",
+          "state": "live",
+          "label": "App Store",
+          "url": "https://apps.apple.com/in/app/charades-act-it-out-party/id6811345858",
           "note": ""
         }
       },

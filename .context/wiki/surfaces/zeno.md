@@ -34,4 +34,4 @@ zeno's own page: what it is, how to install it, the problem, how it works, what 
 
 ## Sources
 - .context/designs/web/work/zeno.html
-- https://github.com/ritesh-firodiya/zeno-ai
+- https://github.com/ritesh-firodiya/zeno

@@ -20,6 +20,8 @@ horizon: 2026-10-26
       unblock: read each listing's website field  next-check:2026-10-11
 
 ## Done
+- [x] T031 Trunk is Babul: name, tagline, blurb, stack, features and picture (All products); marked In build while it is rebuilt (the staging demo still runs the old app); the slug stays `trunk` until the owner renames the infrastructure  done:2026-10-23
+- [x] T032 Phone-first pass: every page in the sitemap (1029) loaded at 390 × 844; the wiki pages that scrolled sideways (long paths, URLs, wide tables) now wrap, in `globals.css` and the design set's `shared.css`  done:2026-10-23
 - [x] T029 `DESIGNS_TOKEN` reads `chess` and `learning-platform`; deployed and checked live  done:2026-10-12
 - [x] T030 Home is one grid of fifteen equal cards in a new order; Chess and Learning Platform are synced; project pages tightened  done:2026-10-12
 - [x] T028 Design set redrawn to the built site: 11 screens + 1 state, phone first  done:2026-10-04
@@ -43,6 +45,11 @@ horizon: 2026-10-26
 - [x] T015 `products.json`: Chitragupt is pre-launch with an Android app; AskCal is in App Store review  done:2026-10-04
 
 ## Session Notes
+### 2026-10-23
+- Done: T031, T032. Home, a project page, the résumé and the wiki checked by eye at 390; home keeps two cards a row, as drawn.
+- Learned: the sync's routes.js evaluation timed out once under load (Babul's manifest is 208KB but evaluates in 0.04s); a rerun passed.
+- Next: push to deploy, on the owner's word.
+
 ### 2026-10-04
 - Done: T000. 15 screens + 1 state, light and dark, responsive to 390px.
 - Learned: CORE's bare mode pins the frame width, so a web set needs

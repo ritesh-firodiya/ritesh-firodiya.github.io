@@ -434,6 +434,15 @@
     border-radius: 6px; background: var(--color-muted); border: 1px solid var(--color-line);
   }
   .wiki-prose a { color: var(--color-brand-500); text-decoration: underline; text-decoration-color: var(--color-brand-200); text-underline-offset: 3px; }
+  /* A long path, address or name breaks rather than pushing the page sideways on a phone. */
+  .wiki-prose { overflow-wrap: anywhere; }
+  /* Tables fit the column and wrap their cells: the page never scrolls sideways, on a phone or anywhere. */
+  .wiki-prose table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0 0 14px; font-size: var(--text-sm); line-height: 1.5; }
+  .wiki-prose th, .wiki-prose td { padding: 6px 8px; border-top: 1px solid var(--color-line); text-align: left; vertical-align: top; }
+  .wiki-prose th { color: var(--color-ink); font-weight: 600; border-top: 0; }
+  .wiki-prose pre { overflow-x: auto; margin: 0 0 14px; padding: 12px; border-radius: 8px; background: var(--color-muted); font-size: 0.86em; }
+  .wiki-prose pre code { padding: 0; border: 0; background: none; }
+  .wiki-prose img { max-width: 100%; height: auto; }
 
   /* The header's own blur, so the bar stays readable over a screenshot. */
   .site-head {

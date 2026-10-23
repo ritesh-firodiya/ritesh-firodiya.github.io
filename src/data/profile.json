@@ -347,14 +347,17 @@
       "link": "https://scrvio.com"
     },
     {
-      "name": "Trunk",
-      "tagline": "Product development where every change is a delta",
-      "description": "One platform replacing the stack most product teams cobble together: deltas instead of Jira, documentation instead of Notion, signals instead of Segment and Sentry, and feature flags instead of LaunchDarkly — all against the same change record.",
+      "name": "Babul",
+      "tagline": "Version control for design",
+      "description": "Captures a live product into pages, components and styles, then changes it on branches, verifies the branch against the live site and merges it as a version of main — with AI edits, a CLI and an MCP server for coding agents. Row-level security keeps each company's data apart.",
       "stack": [
         "Next.js",
         "React",
         "TypeScript",
-        "Turborepo"
+        "Turborepo",
+        "Prisma",
+        "Postgres",
+        "Playwright"
       ],
       "status": "In build",
       "private": true

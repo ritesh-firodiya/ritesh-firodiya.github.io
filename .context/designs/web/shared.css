@@ -947,7 +947,7 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .display {
-  font-size: clamp(2.1rem, 5.4vw, 4rem); line-height: 1.04; letter-spacing: -0.045em; font-weight: 800;
+  font-size: clamp(1.9rem, 4.4vw, 3.25rem); line-height: 1.06; letter-spacing: -0.045em; font-weight: 800;
 }
 /* Glass: a see-through card with a hairline that catches the glow. */
 .glass {

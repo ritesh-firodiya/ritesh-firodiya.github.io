@@ -1,7 +1,7 @@
 ---
 id: DECISION.2026-10-23.LAUNCH-REDESIGN
 type: decision
-status: draft
+status: canonical
 last-verified: 2026-10-23
 supersedes: [DECISION.2026-10-23.ZENO-AND-UX-REDESIGN]
 superseded-by: null
@@ -34,6 +34,12 @@ domain, not code".
   how it works, what it caught, the lifecycle, then one closing card. The
   principles list moved to a link.
 - **Project pages and the résumé** take the glow, gradient title and glass cards.
+
+## After approval (same day)
+The owner approved the designs and asked for two changes: tighter spacing, and
+product pages that match. Heroes, headlines, section gaps and card padding are
+all smaller, and step numbers sit inline. The three product variants are now
+one template (see [[project]]). Approved, pending these two edits.
 
 ## Not changed
 - Reserved release-state colours and what they mean.

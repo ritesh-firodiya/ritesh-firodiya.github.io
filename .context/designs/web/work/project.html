@@ -30,62 +30,42 @@
       </div>
     </header>
 
-      <main class="wrap pb-10">
-        <section class="glow -mx-4 grid items-center gap-8 px-4 py-10 md:-mx-7 md:px-7 lg:grid-cols-[1fr_1fr]">
+      <main class="wrap pb-12">
+        <section class="glow -mx-4 grid items-center gap-6 px-4 py-6 md:-mx-7 md:px-7 lg:grid-cols-[1fr_1fr]">
           <div>
             <a href="../home/home.html#work" class="inline-flex items-center gap-1 text-sm text-ink-3 hover:text-ink"><i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Work</a>
-            <div class="mt-2 flex flex-wrap items-center gap-2.5">
-              <img src="../../../../public/media/chitragupt/icon.svg" alt="" class="h-10 w-10 rounded-lg border border-line" />
+            <div class="mt-2 flex flex-wrap items-center gap-3">
+              <img src="../../../../public/media/chitragupt/icon.svg" alt="" class="app-icon" />
               <h1 class="page-title grad-text">Chitragupt</h1>
-              <span class="state state--test">Pre-launch</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span>
+              <span class="state state--test">Pre-launch</span>
             </div>
-            <p class="mt-2.5 max-w-[58ch] text-body text-ink-2">Household tax review for salaried Indian filers. Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.</p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <a href="https://chitragupt.ai" target="_blank" rel="noopener" class="btn btn-primary"><i data-lucide="external-link" class="h-4 w-4"></i> Open chitragupt.ai</a>
-            </div>
-            <p class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-              <a href="#" data-to="/designs/chitragupt/mobile/screenshots.html" target="_blank" rel="noopener" class="text-link inline-flex items-center gap-1"><i data-lucide="smartphone" class="h-3.5 w-3.5"></i> 106 mobile screens</a>
-              <a href="#" data-to="/designs/chitragupt/web/screenshots.html" target="_blank" rel="noopener" class="text-link inline-flex items-center gap-1"><i data-lucide="monitor" class="h-3.5 w-3.5"></i> 139 web screens</a>
-              <a href="../wiki/wiki.html" class="text-link inline-flex items-center gap-1"><i data-lucide="book-open" class="h-3.5 w-3.5"></i> 330 wiki pages</a>
-              <a href="https://chitragupt.ai/legal/privacy" class="text-ink-3 hover:text-ink">Privacy</a>
-              <a href="../legal/policy.html" class="text-ink-3 hover:text-ink">Delete account</a>
-            </p>
-            <div class="mt-3"><p class="flex flex-wrap gap-1.5"><span class="chip">Next.js</span> <span class="chip">Cloud Run</span> <span class="chip">Firebase Functions</span> <span class="chip">Firestore</span> <span class="chip">Zod</span> <span class="chip">Turborepo</span> <span class="chip">TypeScript</span></p></div>
+            <p class="mt-2 text-lead text-ink-2">Household tax review for salaried Indian filers.</p>
+            <p class="mt-2.5 flex flex-wrap gap-1.5"><span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span> <span class="chip">Next.js</span> <span class="chip">Cloud Run</span> <span class="chip">Firebase Functions</span> <span class="chip">Firestore</span> <span class="chip">Zod</span> <span class="chip">TypeScript</span></p>
+            <div class="mt-4 flex flex-wrap gap-2"><a href="https://chitragupt.ai" target="_blank" rel="noopener" class="btn btn-primary"><i data-lucide="external-link" class="h-4 w-4"></i> Open chitragupt.ai</a> <button type="button" class="btn btn-quiet" disabled title="Internal testing only"><i data-lucide="smartphone" class="h-4 w-4"></i> Android: internal testing</button></div>
           </div>
-          <div class="relative pb-6 pr-6"><div class="overflow-hidden rounded-xl border border-line-strong shadow-lg"><div class="embed "><iframe src="../../../../../../products/chitragupt/.context/designs/web/home/home.html?bare" title="Chitragupt design screen" loading="lazy" tabindex="-1"></iframe></div></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute bottom-0 right-0 w-[22%]"><div class="embed embed--phone"><iframe src="../../../../../../products/chitragupt/.context/designs/mobile/home/home.html?bare" title="Chitragupt mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
+                    <div class="relative pb-6 pr-6"><div class="overflow-hidden rounded-xl border border-line-strong shadow-lg"><div class="embed "><iframe src="../../../../../../products/chitragupt/.context/designs/web/home/home.html?bare" title="Chitragupt design screen" loading="lazy" tabindex="-1"></iframe></div></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute bottom-0 right-0 w-[22%]"><div class="embed embed--phone"><iframe src="../../../../../../products/chitragupt/.context/designs/mobile/home/home.html?bare" title="Chitragupt mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
         </section>
 
-        <a href="../work/zeno.html" class="glass flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5 text-sm">
-          <i data-lucide="shield-check" class="h-4 w-4 text-brand-500"></i>
-          <b class="font-semibold">Checked by zeno</b>
-          <span class="text-ink-2">7 modules · 0 errors, 0 warnings</span>
-          <span class="text-link ml-auto">What is zeno</span>
-        </a>
+        <dl class="glass grid grid-cols-2 gap-px overflow-hidden text-sm md:grid-cols-4">
+          <div class="p-3"><dt class="text-xs text-ink-3">Screens</dt><dd class="mt-0.5"><a href="#" data-to="/designs/chitragupt/mobile/screenshots.html" target="_blank" rel="noopener" class="text-link">106 mobile</a> · <a href="#" data-to="/designs/chitragupt/web/screenshots.html" target="_blank" rel="noopener" class="text-link">139 web</a></dd></div>
+          <div class="p-3"><dt class="text-xs text-ink-3">Wiki</dt><dd class="mt-0.5"><a href="../wiki/wiki.html" class="text-link">330 pages</a></dd></div>
+          <div class="p-3"><dt class="text-xs text-ink-3">Checked by zeno</dt><dd class="mt-0.5"><a href="../work/zeno.html" class="text-link">7 modules · 0 errors</a></dd></div>
+          <div class="p-3"><dt class="text-xs text-ink-3">Privacy</dt><dd class="mt-0.5"><a href="../legal/policy.html" class="text-link">Policy · delete account</a></dd></div>
+        </dl>
 
-
-        <section class="mt-6 grid gap-3 lg:grid-cols-2">
-          <div class="glass p-5">
-            <h2 class="section-title">The problem</h2>
-            <p class="mt-1.5 max-w-[68ch] text-base text-ink-2">Every Indian tax calculator answers one question — which regime is cheaper for you, one person, this year. That is the wrong unit. Tax in an Indian household moves across people: a parent's medical premium, a spouse's home-loan interest, a child's tuition. Filed one at a time, a family routinely leaves a deduction on the table that was always claimable.</p>
-          </div>
-          <div class="glass p-5">
-            <h2 class="section-title">What it does</h2>
-            <ul class="mt-1.5 grid max-w-[68ch] gap-1.5 text-base">
-              <li><b class="font-semibold">Parses a Form 16 upload</b> <span class="text-ink-2">into a structured return, rather than asking you to retype it.</span></li>
-              <li><b class="font-semibold">Shows both regimes side by side</b> <span class="text-ink-2">with the delta stated in rupees, not drawn as a chart.</span></li>
-              <li><b class="font-semibold">Adds a household lens</b> <span class="text-ink-2">across spouse, parents and kids, surfacing deductions that only exist between people.</span></li>
-              <li><b class="font-semibold">Runs a 15-question Quick Check</b> <span class="text-ink-2">for anyone without a Form 16 to hand.</span></li>
-              <li><b class="font-semibold">Prints what you can act on</b> <span class="text-ink-2">the refund claimable and the deductions still unused.</span></li>
-            </ul>
-          </div>
-          <div class="glass p-5">
-            <h2 class="section-title">Decisions worth defending</h2>
-            <ul class="mt-1.5 grid max-w-[68ch] gap-1.5 text-base">
-              <li><b class="font-semibold">Zod as the only contract</b> <span class="text-ink-2">— Tax rules change every budget. A schema shared by the form, the function and the stored document means a rule change is one edit with the type system finding the rest.</span></li>
-              <li><b class="font-semibold">189 small functions, not one service</b> <span class="text-ink-2">— Each deduction is its own function with its own tests, so a wrong number is traceable to one file.</span></li>
-              <li><b class="font-semibold">The verdict is free</b> <span class="text-ink-2">— Which regime wins, and by how much, costs nothing. The paid tiers are the full workings and the household lens.</span></li>
-            </ul>
-          </div>
+        <section class="mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <div class="glass p-4"><h2 class="font-bold">The problem</h2><p class="mt-1.5 text-sm text-ink-2">Every Indian tax calculator answers one question: which regime is cheaper for you, this year. That is the wrong unit. Tax in a household moves across people — a parent's medical premium, a spouse's home-loan interest, a child's tuition — and filed one at a time, a family leaves a deduction on the table.</p></div>
+          <div class="glass p-4"><h2 class="font-bold">What it does</h2><ul class="mt-1.5 grid gap-1.5 text-sm text-ink-2">
+                <li><b class="font-semibold text-ink">Four pillars, one ledger.</b> Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers.</li>
+                <li><b class="font-semibold text-ink">Parses what you upload.</b> Form 16, AIS, 26AS and bank statements go in as files, not retyped numbers.</li>
+                <li><b class="font-semibold text-ink">Both regimes, side by side.</b> With the right ITR form picked and the delta in rupees.</li>
+                <li><b class="font-semibold text-ink">CA-ready handoff.</b> A one-click PDF, or a verified CA if you would rather hand it over.</li>
+              </ul></div>
+          <div class="glass p-4"><h2 class="font-bold">Decisions worth defending</h2><ul class="mt-1.5 grid gap-1.5 text-sm text-ink-2">
+                <li><b class="font-semibold text-ink">Zod as the only contract.</b> Tax rules change every budget. One schema for the form, the function and the stored document makes a rule change one edit.</li>
+                <li><b class="font-semibold text-ink">189 small functions, not one service.</b> Each deduction is its own function with its own tests, so a wrong number traces to one file.</li>
+                <li><b class="font-semibold text-ink">The verdict is free.</b> Which regime wins, and by how much, costs nothing. The paid tiers are the workings and the household lens.</li>
+              </ul></div>
         </section>
       </main>
 

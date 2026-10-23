@@ -2,7 +2,7 @@
 id: SURFACE.WEB.PROJECT
 type: surface
 status: canonical
-last-verified: 2026-10-04
+last-verified: 2026-10-23
 supersedes: []
 superseded-by: null
 ---
@@ -17,6 +17,8 @@ One project with a build: what it is, how to get it, its screens and wiki, and t
 - .context/designs/web/work/project.html
 
 ## Why it is drawn this way
+**One layout for every product (2026-10-23, owner: "make product pages consistent").** Project, closed test and no-build are the same template; only the contents differ. In order: back link · icon, name, state · one-line tagline · Mobile/Web tags and stack in one row · the "Get it" row (store or site buttons, "Join the test" with a folded how-to, or a disabled button saying why) · the picture on the right. Then one fact strip: screens · wiki · checked by zeno · privacy. Then glass cards: The problem, What it does, Decisions worth defending — each only where the product has it, and "No feature list yet" as a hatched slot where it has none. The paragraphs below describe the 2026-10-04 layout and are kept for history.
+
 **The first screenful is the whole answer.** Name, state, Mobile and Web tags, one paragraph, the buttons, the screens and wiki, the stack, and the picture. The write-up is under it for whoever wants the reasoning.
 
 **Every way to get it is one row of buttons.** A live or beta platform is a link. A closed one is "Join the test", which opens a written email asking to be added; the store's own test page sits beside it where there is one. A platform with nothing built is not drawn.

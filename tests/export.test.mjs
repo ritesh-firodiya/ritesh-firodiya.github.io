@@ -65,7 +65,7 @@ const NOT_A_PAGE = (route) => route === "/404/" || route === "/_not-found/";
    meta refresh, not a page — noindex, no canonical, not in the sitemap. */
 const forwardOf = (html) => html.match(/<meta http-equiv="refresh" content="0; url=([^"]+)"/)?.[1] ?? null;
 const FORWARDS = {
-  "/work/": "/#work", "/products/": "/#work", "/process/": "/#process", "/design/gallery/": "/#process",
+  "/work/": "/#work", "/products/": "/#work", "/process/": "/products/zeno/#lifecycle", "/design/gallery/": "/products/zeno/#lifecycle",
   "/about/": "/resume/", "/contact/": "/resume/", "/hire/": "/resume/",
   "/work/chitragupt/": "/products/chitragupt/",
   "/products/dwarseva-property/": "/products/seedha-ghar/",

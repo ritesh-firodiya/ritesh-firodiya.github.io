@@ -89,7 +89,7 @@ const FILES = [
     url: new URL("../src/app/globals.css", import.meta.url),
     lightFrom: "@theme",
     lightTo: "/* ═══ Dark",
-    darkFrom: ':root[data-theme="dark"] {\n    --color-page',
+    darkFrom: ':root:not([data-theme="light"]) {\n    --color-page',
   },
   {
     name: "set · .context/designs/web/shared.css",

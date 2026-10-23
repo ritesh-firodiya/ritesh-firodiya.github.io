@@ -10,8 +10,8 @@ import { Moon, Sun } from "lucide-react";
  * this component sets one attribute and touches nothing else — every utility
  * on the page already reads `var(--color-…)` and follows on its own.
  *
- * Until someone presses the button there is no stored choice, and the media
- * query in globals.css follows the OS. A press stores the opposite of what is
+ * Until someone presses the button there is no stored choice, and the page
+ * is dark. A press stores the opposite of what is
  * on screen, so the button always does something visible.
  *
  * The choice lives in localStorage, which is an external store, so it is read
@@ -48,11 +48,10 @@ function readTheme(): Theme {
    script in layout.tsx assumes when it finds nothing stored. */
 const serverTheme = (): Theme => "system";
 
-/* What is actually on screen. "system" is the absence of a choice, so it
-   resolves to whatever the OS asks for. */
+/* What is actually on screen. "system" is the absence of a choice, and the
+   site is dark until the reader picks light (globals.css, 2026-10-23). */
 function shownDark(theme: Theme): boolean {
-  if (theme === "system") return typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return theme === "dark";
+  return theme !== "light";
 }
 
 export function ThemeToggle() {

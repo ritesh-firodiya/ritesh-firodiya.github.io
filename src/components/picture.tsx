@@ -54,10 +54,9 @@ function PhoneSlot({ h, children }: { h: string; children: ReactNode }) {
 
 /** The picture at the top of a card. Every card gets the slot: a product with
  *  nothing to show gets a hatched one that says so. */
-export function CardPicture({ p }: { p: Product }) {
+export function CardPicture({ p, h = "aspect-[11/9]" }: { p: Product; h?: string }) {
   /* A ratio, not a height: the slot keeps its shape from a phone to a desktop,
      so an embedded web screen always covers it. */
-  const h = "aspect-[11/9]";
   const shot = shotsOf(p, 1)[0];
   const embed = embedPathOf(p);
   if (embed && isPhoneEmbed(p)) {

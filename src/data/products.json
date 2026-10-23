@@ -3,6 +3,100 @@
   "verifiedOn": "2026-10-04",
   "products": [
     {
+      "slug": "charades",
+      "name": "Charades",
+      "stageLabel": "Live on both stores",
+      "shots": [
+        "01-home",
+        "05-packs",
+        "06-history"
+      ],
+      "fullName": "Charades — Act it Out!",
+      "tagline": "Dumb charades for the room you are already in.",
+      "blurb": "5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline, no daily limits.",
+      "sourceOfTruth": "apps/charades",
+      "model": "one-time",
+      "price": "from ₹99",
+      "priceNote": "32 packs, buy what you want",
+      "modelDetail": "You pay once and keep it. There are 32 things you can buy — 28 individual packs and 4 industry bundles. Each is a single payment that restores on a new phone from your store account. No subscription, and no ad SDK anywhere in the project.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "Yes — fully",
+      "analytics": "None",
+      "version": "1.0.33",
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "No web app",
+          "url": null,
+          "note": "Mobile only — nothing to open in a browser"
+        },
+        "android": {
+          "state": "live",
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.charadesbollywood",
+          "note": ""
+        },
+        "ios": {
+          "state": "live",
+          "label": "App Store",
+          "url": "https://apps.apple.com/in/app/charades-act-it-out-party/id6811345858",
+          "note": ""
+        }
+      },
+      "stack": [
+        "React Native",
+        "Expo Router",
+        "UniWind",
+        "Zustand",
+        "RevenueCat"
+      ],
+      "features": [
+        {
+          "icon": "layers",
+          "title": "Four packs, 5,149 cards",
+          "body": "Bollywood, Tollywood, Hollywood, Family & Kids. Enough that a group will not see a repeat in a night."
+        },
+        {
+          "icon": "wifi-off",
+          "title": "Entirely offline",
+          "body": "Every card ships inside the app. Aeroplane mode, a basement, a road trip — it does not care."
+        },
+        {
+          "icon": "timer",
+          "title": "Tilt to score",
+          "body": "Down for got it, up for pass — the way everyone already plays it."
+        }
+      ],
+      "permissions": [
+        {
+          "name": "Billing",
+          "why": "Only if you buy a pack. Handled by the store, never by us."
+        },
+        {
+          "name": "Vibration",
+          "why": "The buzz when a round ends."
+        },
+        {
+          "name": "Not requested",
+          "why": "No camera, microphone, contacts, location or storage — and no network permission for gameplay.",
+          "absent": true
+        }
+      ],
+      "screens": [
+        "Card in play",
+        "Pack picker",
+        "Team setup",
+        "Round result"
+      ],
+      "legal": {
+        "privacy": "/legal/charades/privacy-policy.html",
+        "delete": null
+      },
+      "kind": "app",
+      "repo": null
+    },
+    {
       "slug": "askcal",
       "name": "AskCal",
       "stageLabel": "In App Store review",
@@ -110,263 +204,6 @@
         "delete": "/legal/askcal/delete-account.html"
       },
       "kind": "app",
-      "repo": null
-    },
-    {
-      "slug": "imposter",
-      "name": "Imposter",
-      "stageLabel": "In App Store review",
-      "fullName": "Imposter: Find the Liar",
-      "tagline": "Everyone gets the word. Except one of you.",
-      "blurb": "Social deduction for 3–20 people, on one phone or online with a phone each.",
-      "sourceOfTruth": "apps/imposter",
-      "model": "subscription",
-      "price": "$4.99 once · $2.99/mo · $14.99/yr",
-      "priceNote": "3 packs and one-phone play free; rooms renew until cancelled",
-      "modelDetail": "Three packs, every game on one phone, joining any online room and one room of your own are free. Imposter Pro is one payment for all ten packs. Imposter Online is a subscription for the person who makes rooms, and it opens every pack while it runs. No ad SDK in the project at all. Prices are the US ones; the stores set the rest.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "One phone, yes. Online rooms need a connection",
-      "analytics": "None",
-      "version": "2.0.0",
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "Mobile only — nothing to open in a browser"
-        },
-        "android": {
-          "state": "closed",
-          "label": "Closed testing, not public",
-          "url": null,
-          "note": "Production track has never had a release",
-          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter",
-          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers/about"
-        },
-        "ios": {
-          "state": "closed",
-          "label": "Waiting for App Store review",
-          "url": null,
-          "note": "Submitted for review; there is no public build yet",
-          "testUrl": "https://testflight.apple.com/join/qYT8tpPr"
-        }
-      },
-      "unreleasedNote": "Neither store has a public release yet. The build is in review on iOS. Both test tracks are open to anyone: the tester group for Android, the TestFlight for iPhone.",
-      "stack": [
-        "React Native",
-        "Expo",
-        "TypeScript",
-        "RevenueCat",
-        "Firebase"
-      ],
-      "features": [
-        {
-          "icon": "venetian-mask",
-          "title": "A hint, hand-written",
-          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
-        },
-        {
-          "icon": "users",
-          "title": "One phone, or online",
-          "body": "Pass one phone round the table, or make a room with a four-letter code. The host picks Talk or Type: say the clues aloud, or type them at once. Everyone votes on their own phone and sees who voted for whom. The app itself carries no voice or video."
-        },
-        {
-          "icon": "eye-off",
-          "title": "No analytics, at all",
-          "body": "There is no analytics or ad SDK in the project. A game on one phone never leaves it; an online room is deleted about a day after it goes quiet."
-        }
-      ],
-      "permissions": [
-        {
-          "name": "Not requested",
-          "why": "None declared at all. The app reaches the network for purchases, for online rooms and to check for updates.",
-          "absent": true
-        }
-      ],
-      "screens": [
-        "Home",
-        "Your card",
-        "Online clues"
-      ],
-      "legal": {
-        "privacy": "/legal/imposter/privacy-policy.html",
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
-      "slug": "chitragupt",
-      "name": "Chitragupt",
-      "stageLabel": "Pre-launch",
-      "shots": [
-        "02-tax",
-        "01-home",
-        "03-expenses"
-      ],
-      "fullName": "Chitragupt — Household tax review",
-      "tagline": "Household tax review for salaried Indian filers.",
-      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
-      "sourceOfTruth": "apps/chitragupt",
-      "model": "per-period",
-      "price": "₹249 / ₹499 / ₹799",
-      "priceNote": "per assessment year, three tiers",
-      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
-      "tiers": [
-        {
-          "label": "Free",
-          "amount": "₹0",
-          "unit": " forever",
-          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
-        },
-        {
-          "label": "Self",
-          "amount": "₹249",
-          "unit": "/AY",
-          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
-        },
-        {
-          "label": "AI Self",
-          "amount": "₹499",
-          "unit": "/AY",
-          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
-        },
-        {
-          "label": "Pro Family",
-          "amount": "₹799",
-          "unit": "/AY",
-          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
-        }
-      ],
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web app",
-      "analytics": "PostHog + Sentry",
-      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
-      "version": null,
-      "platforms": {
-        "web": {
-          "state": "beta",
-          "label": "Open chitragupt.ai",
-          "url": "https://chitragupt.ai",
-          "note": "Deployed and reachable; version one has not launched"
-        },
-        "android": {
-          "state": "none",
-          "label": "Draft on Google Play",
-          "url": null,
-          "note": "A draft in the Play Console; no release on any track yet"
-        },
-        "ios": {
-          "state": "none",
-          "label": "No iOS app",
-          "url": null,
-          "note": "Android only"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "Cloud Run",
-        "Firebase Functions",
-        "Firestore",
-        "Zod",
-        "Turborepo"
-      ],
-      "features": [
-        {
-          "icon": "inbox",
-          "title": "Four pillars, one ledger",
-          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
-        },
-        {
-          "icon": "upload",
-          "title": "Parses what you upload",
-          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
-        },
-        {
-          "icon": "columns-2",
-          "title": "Both regimes, side by side",
-          "body": "With the right ITR form picked for you and the delta stated in rupees."
-        },
-        {
-          "icon": "file-text",
-          "title": "CA-ready handoff",
-          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": "https://chitragupt.ai/legal/privacy",
-        "delete": "/legal/chitragupt/delete-account.html",
-        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
-      },
-      "kind": "app",
-      "repo": null,
-      "embed": "web/home/home.html",
-      "embedMobile": "mobile/home/home.html"
-    },
-    {
-      "slug": "babul",
-      "name": "Babul",
-      "stageLabel": "In build",
-      "embed": "web/northwind/products.html",
-      "fullName": "Babul",
-      "tagline": "Your design and your product, always in sync.",
-      "blurb": "Version control for design. Capture what you shipped from a URL or screenshots, or start blank; change it on a branch; verify it against the live product; merge when it ships. Every merge makes a version of main, and AI, a CLI and an MCP server take the design into code.",
-      "sourceOfTruth": "products/babul",
-      "kind": "platform",
-      "model": "subscription",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "A free month with no card, then a subscription per editor; viewers are free. In build and not open.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "Being rebuilt",
-          "url": null,
-          "note": "Rebuilt to a new design; the demo comes back on staging with release 1.0.0"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Turborepo",
-        "Prisma",
-        "Postgres",
-        "Playwright"
-      ],
-      "features": [
-        {
-          "icon": "check",
-          "title": "Capture what you shipped",
-          "body": "From a live URL, from screenshots, or blank — pages, components and styles."
-        },
-        {
-          "icon": "check",
-          "title": "Branches and versions",
-          "body": "Every change is a commit on a branch; a merge makes a version of main."
-        },
-        {
-          "icon": "check",
-          "title": "Verify against the live product",
-          "body": "A match score per page shows what really shipped."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": "https://babul-staging.vercel.app/privacy",
-        "delete": null
-      },
       "repo": null
     },
     {
@@ -482,27 +319,36 @@
       "repo": null
     },
     {
-      "slug": "charades",
-      "name": "Charades",
+      "slug": "tic-tac-toe",
+      "name": "Tic Tac Toe",
       "stageLabel": "Live on both stores",
-      "shots": [
-        "01-home",
-        "05-packs",
-        "06-history"
+      "fullName": "Tic Tac Toe — 2 Player XO",
+      "tagline": "The classic 3×3, done properly.",
+      "blurb": "Two players on one device, or a minimax AI that never loses on Hard.",
+      "sourceOfTruth": "apps/tic-tac-toe",
+      "model": "free-ads",
+      "price": "Nothing",
+      "priceNote": "no in-app purchases at all",
+      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, Chess is the only other app of mine with ads.",
+      "ads": "Banner + interstitial",
+      "adSurfaces": [
+        {
+          "kind": "Banner",
+          "where": "Bottom of the board, always on screen"
+        },
+        {
+          "kind": "Interstitial",
+          "where": "Full screen, when a game finishes"
+        },
+        {
+          "kind": "Rewarded",
+          "where": "None — not used",
+          "absent": true
+        }
       ],
-      "fullName": "Charades — Act it Out!",
-      "tagline": "Dumb charades for the room you are already in.",
-      "blurb": "5,149 cards across Bollywood, Tollywood, Hollywood and Family & Kids. Fully offline, no daily limits.",
-      "sourceOfTruth": "apps/charades",
-      "model": "one-time",
-      "price": "from ₹99",
-      "priceNote": "32 packs, buy what you want",
-      "modelDetail": "You pay once and keep it. There are 32 things you can buy — 28 individual packs and 4 industry bundles. Each is a single payment that restores on a new phone from your store account. No subscription, and no ad SDK anywhere in the project.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "Yes — fully",
-      "analytics": "None",
-      "version": "1.0.33",
+      "offline": "No — ads need a network",
+      "analytics": "AdMob measurement",
+      "version": "1.0.12",
       "platforms": {
         "web": {
           "state": "none",
@@ -513,63 +359,311 @@
         "android": {
           "state": "live",
           "label": "Google Play",
-          "url": "https://play.google.com/store/apps/details?id=com.riteshf.charadesbollywood",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.tictactoe",
           "note": ""
         },
         "ios": {
           "state": "live",
           "label": "App Store",
-          "url": "https://apps.apple.com/in/app/charades-act-it-out-party/id6811345858",
+          "url": "https://apps.apple.com/in/app/tic-tac-toe-classic-xo/id6811345763",
           "note": ""
         }
       },
       "stack": [
-        "React Native",
         "Expo Router",
+        "React Native",
         "UniWind",
-        "Zustand",
-        "RevenueCat"
+        "Zustand"
       ],
       "features": [
         {
-          "icon": "layers",
-          "title": "Four packs, 5,149 cards",
-          "body": "Bollywood, Tollywood, Hollywood, Family & Kids. Enough that a group will not see a repeat in a night."
+          "icon": "users",
+          "title": "Two players on one phone",
+          "body": "Pass and tap. No accounts, no lobby, no second device to pair."
         },
         {
-          "icon": "wifi-off",
-          "title": "Entirely offline",
-          "body": "Every card ships inside the app. Aeroplane mode, a basement, a road trip — it does not care."
+          "icon": "cpu",
+          "title": "A perfect opponent",
+          "body": "Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten."
         },
         {
-          "icon": "timer",
-          "title": "Tilt to score",
-          "body": "Down for got it, up for pass — the way everyone already plays it."
+          "icon": "history",
+          "title": "Running score",
+          "body": "Kept across a session, so a best-of-seven actually resolves."
         }
       ],
       "permissions": [
         {
-          "name": "Billing",
-          "why": "Only if you buy a pack. Handled by the store, never by us."
+          "name": "Network",
+          "why": "Required — it is what fetches the ads."
         },
         {
-          "name": "Vibration",
-          "why": "The buzz when a round ends."
+          "name": "Ad identifier",
+          "why": "Asked for on iOS via the system prompt. Declining costs you nothing."
         },
         {
           "name": "Not requested",
-          "why": "No camera, microphone, contacts, location or storage — and no network permission for gameplay.",
+          "why": "No camera, microphone, contacts, location or storage.",
           "absent": true
         }
       ],
       "screens": [
-        "Card in play",
-        "Pack picker",
-        "Team setup",
-        "Round result"
+        "Board, with banner visible",
+        "Difficulty",
+        "Win state"
       ],
       "legal": {
-        "privacy": "/legal/charades/privacy-policy.html",
+        "privacy": "/legal/tictactoe/privacy-policy.html",
+        "delete": null
+      },
+      "kind": "app",
+      "repo": null
+    },
+    {
+      "slug": "learning-platform",
+      "name": "Learning Platform",
+      "stageLabel": "Live demo",
+      "embed": "web/home/home.html",
+      "fullName": "Learning Platform",
+      "tagline": "An LMS where courses are code.",
+      "blurb": "Courses are authored as markdown in a Git repository and synced into the product on push, so content review happens in pull requests rather than in a CMS.",
+      "sourceOfTruth": "private",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Built for a client rather than sold directly, so there is no public price.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "live",
+          "label": "Open the demo",
+          "url": "https://learning-platform-web-gamma.vercel.app/",
+          "note": "Demo on a Vercel preview hostname — TODO: move to a real domain"
+        }
+      },
+      "stack": [
+        "NestJS",
+        "Apollo GraphQL",
+        "Next.js",
+        "Prisma",
+        "PostgreSQL"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Courses live in Git",
+          "body": "Authored as markdown and synced on push, so a content change is a pull request."
+        },
+        {
+          "icon": "check",
+          "title": "Review before publish",
+          "body": "Content goes through the same review as code, because it is code."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "chitragupt",
+      "name": "Chitragupt",
+      "stageLabel": "Pre-launch",
+      "shots": [
+        "02-tax",
+        "01-home",
+        "03-expenses"
+      ],
+      "fullName": "Chitragupt — Household tax review",
+      "tagline": "Household tax review for salaried Indian filers.",
+      "blurb": "Upload Form 16, AIS, 26AS and bank statements. It pulls out the numbers, picks the right ITR form, compares old against new regime, and hands you a CA-ready PDF.",
+      "sourceOfTruth": "apps/chitragupt",
+      "model": "per-period",
+      "price": "₹249 / ₹499 / ₹799",
+      "priceNote": "per assessment year, three tiers",
+      "modelDetail": "One payment per assessment year, and nothing auto-renews — the site's own words are “one plan per AY, no subscription”. There is a free tier that is not time-limited: uploading and storing documents is free, and past-AY reviews stay free. You pay when you want the answers. Paid tiers are refundable within 14 days if you have not exported.",
+      "tiers": [
+        {
+          "label": "Free",
+          "amount": "₹0",
+          "unit": " forever",
+          "note": "Upload and store 200MB. Documents parse when you upgrade. Past-AY reviews always free."
+        },
+        {
+          "label": "Self",
+          "amount": "₹249",
+          "unit": "/AY",
+          "note": "Right ITR form picked for you. Old vs new regime compared. Expense and Portfolio review, 1-click CA handoff PDF."
+        },
+        {
+          "label": "AI Self",
+          "amount": "₹499",
+          "unit": "/AY",
+          "note": "Everything in Self, plus 5 questions a day on your own documents. Every answer cites its source."
+        },
+        {
+          "label": "Pro Family",
+          "amount": "₹799",
+          "unit": "/AY",
+          "note": "Everything in AI Self, for up to 6 PANs in one household. The AI quota is shared across the family."
+        }
+      ],
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web app",
+      "analytics": "PostHog + Sentry",
+      "analyticsNote": "The only product of mine that carries analytics. It asks before anything is collected.",
+      "version": null,
+      "platforms": {
+        "web": {
+          "state": "beta",
+          "label": "Open chitragupt.ai",
+          "url": "https://chitragupt.ai",
+          "note": "Deployed and reachable; version one has not launched"
+        },
+        "android": {
+          "state": "none",
+          "label": "Draft on Google Play",
+          "url": null,
+          "note": "A draft in the Play Console; no release on any track yet"
+        },
+        "ios": {
+          "state": "none",
+          "label": "No iOS app",
+          "url": null,
+          "note": "Android only"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Cloud Run",
+        "Firebase Functions",
+        "Firestore",
+        "Zod",
+        "Turborepo"
+      ],
+      "features": [
+        {
+          "icon": "inbox",
+          "title": "Four pillars, one ledger",
+          "body": "Inbox keeps the documents; Tax, Expense and Portfolio turn them into answers. Same data, four lenses."
+        },
+        {
+          "icon": "upload",
+          "title": "Parses what you upload",
+          "body": "Form 16, AIS, 26AS and bank statements go in as files, not as retyped numbers."
+        },
+        {
+          "icon": "columns-2",
+          "title": "Both regimes, side by side",
+          "body": "With the right ITR form picked for you and the delta stated in rupees."
+        },
+        {
+          "icon": "file-text",
+          "title": "CA-ready handoff",
+          "body": "A one-click PDF, or a verified CA from the marketplace if you would rather hand it over."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": "https://chitragupt.ai/legal/privacy",
+        "delete": "/legal/chitragupt/delete-account.html",
+        "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
+      },
+      "kind": "app",
+      "repo": null,
+      "embed": "web/home/home.html",
+      "embedMobile": "mobile/home/home.html"
+    },
+    {
+      "slug": "imposter",
+      "name": "Imposter",
+      "stageLabel": "In App Store review",
+      "fullName": "Imposter: Find the Liar",
+      "tagline": "Everyone gets the word. Except one of you.",
+      "blurb": "Social deduction for 3–20 people, on one phone or online with a phone each.",
+      "sourceOfTruth": "apps/imposter",
+      "model": "subscription",
+      "price": "$4.99 once · $2.99/mo · $14.99/yr",
+      "priceNote": "3 packs and one-phone play free; rooms renew until cancelled",
+      "modelDetail": "Three packs, every game on one phone, joining any online room and one room of your own are free. Imposter Pro is one payment for all ten packs. Imposter Online is a subscription for the person who makes rooms, and it opens every pack while it runs. No ad SDK in the project at all. Prices are the US ones; the stores set the rest.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "One phone, yes. Online rooms need a connection",
+      "analytics": "None",
+      "version": "2.0.0",
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "No web app",
+          "url": null,
+          "note": "Mobile only — nothing to open in a browser"
+        },
+        "android": {
+          "state": "closed",
+          "label": "Closed testing, not public",
+          "url": null,
+          "note": "Production track has never had a release",
+          "testUrl": "https://play.google.com/apps/testing/com.ritvi.imposter",
+          "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers/about"
+        },
+        "ios": {
+          "state": "closed",
+          "label": "Waiting for App Store review",
+          "url": null,
+          "note": "Submitted for review; there is no public build yet",
+          "testUrl": "https://testflight.apple.com/join/qYT8tpPr"
+        }
+      },
+      "unreleasedNote": "Neither store has a public release yet. The build is in review on iOS. Both test tracks are open to anyone: the tester group for Android, the TestFlight for iPhone.",
+      "stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "RevenueCat",
+        "Firebase"
+      ],
+      "features": [
+        {
+          "icon": "venetian-mask",
+          "title": "A hint, hand-written",
+          "body": "The Imposter sees one word of help, written by a person for that exact word — not generated."
+        },
+        {
+          "icon": "users",
+          "title": "One phone, or online",
+          "body": "Pass one phone round the table, or make a room with a four-letter code. The host picks Talk or Type: say the clues aloud, or type them at once. Everyone votes on their own phone and sees who voted for whom. The app itself carries no voice or video."
+        },
+        {
+          "icon": "eye-off",
+          "title": "No analytics, at all",
+          "body": "There is no analytics or ad SDK in the project. A game on one phone never leaves it; an online room is deleted about a day after it goes quiet."
+        }
+      ],
+      "permissions": [
+        {
+          "name": "Not requested",
+          "why": "None declared at all. The app reaches the network for purchases, for online rooms and to check for updates.",
+          "absent": true
+        }
+      ],
+      "screens": [
+        "Home",
+        "Your card",
+        "Online clues"
+      ],
+      "legal": {
+        "privacy": "/legal/imposter/privacy-policy.html",
         "delete": null
       },
       "kind": "app",
@@ -679,107 +773,6 @@
       ]
     },
     {
-      "slug": "tic-tac-toe",
-      "name": "Tic Tac Toe",
-      "stageLabel": "Live on both stores",
-      "fullName": "Tic Tac Toe — 2 Player XO",
-      "tagline": "The classic 3×3, done properly.",
-      "blurb": "Two players on one device, or a minimax AI that never loses on Hard.",
-      "sourceOfTruth": "apps/tic-tac-toe",
-      "model": "free-ads",
-      "price": "Nothing",
-      "priceNote": "no in-app purchases at all",
-      "modelDetail": "Free to install with nothing to buy. It is paid for by a banner at the bottom of the board and a full-screen ad when a game ends — which means it needs a network, and the ad network receives an advertising identifier from your device. There is no ad-free tier. If that trade is not one you want, Chess is the only other app of mine with ads.",
-      "ads": "Banner + interstitial",
-      "adSurfaces": [
-        {
-          "kind": "Banner",
-          "where": "Bottom of the board, always on screen"
-        },
-        {
-          "kind": "Interstitial",
-          "where": "Full screen, when a game finishes"
-        },
-        {
-          "kind": "Rewarded",
-          "where": "None — not used",
-          "absent": true
-        }
-      ],
-      "offline": "No — ads need a network",
-      "analytics": "AdMob measurement",
-      "version": "1.0.12",
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "No web app",
-          "url": null,
-          "note": "Mobile only — nothing to open in a browser"
-        },
-        "android": {
-          "state": "live",
-          "label": "Google Play",
-          "url": "https://play.google.com/store/apps/details?id=com.riteshf.tictactoe",
-          "note": ""
-        },
-        "ios": {
-          "state": "live",
-          "label": "App Store",
-          "url": "https://apps.apple.com/in/app/tic-tac-toe-classic-xo/id6811345763",
-          "note": ""
-        }
-      },
-      "stack": [
-        "Expo Router",
-        "React Native",
-        "UniWind",
-        "Zustand"
-      ],
-      "features": [
-        {
-          "icon": "users",
-          "title": "Two players on one phone",
-          "body": "Pass and tap. No accounts, no lobby, no second device to pair."
-        },
-        {
-          "icon": "cpu",
-          "title": "A perfect opponent",
-          "body": "Three AI levels. Hard runs minimax, so it draws or wins — it cannot be beaten."
-        },
-        {
-          "icon": "history",
-          "title": "Running score",
-          "body": "Kept across a session, so a best-of-seven actually resolves."
-        }
-      ],
-      "permissions": [
-        {
-          "name": "Network",
-          "why": "Required — it is what fetches the ads."
-        },
-        {
-          "name": "Ad identifier",
-          "why": "Asked for on iOS via the system prompt. Declining costs you nothing."
-        },
-        {
-          "name": "Not requested",
-          "why": "No camera, microphone, contacts, location or storage.",
-          "absent": true
-        }
-      ],
-      "screens": [
-        "Board, with banner visible",
-        "Difficulty",
-        "Win state"
-      ],
-      "legal": {
-        "privacy": "/legal/tictactoe/privacy-policy.html",
-        "delete": null
-      },
-      "kind": "app",
-      "repo": null
-    },
-    {
       "slug": "scrvio",
       "name": "Scrvio",
       "stageLabel": "Site is up",
@@ -836,61 +829,6 @@
       "repo": null
     },
     {
-      "slug": "learning-platform",
-      "name": "Learning Platform",
-      "stageLabel": "Live demo",
-      "embed": "web/home/home.html",
-      "fullName": "Learning Platform",
-      "tagline": "An LMS where courses are code.",
-      "blurb": "Courses are authored as markdown in a Git repository and synced into the product on push, so content review happens in pull requests rather than in a CMS.",
-      "sourceOfTruth": "private",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Built for a client rather than sold directly, so there is no public price.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "live",
-          "label": "Open the demo",
-          "url": "https://learning-platform-web-gamma.vercel.app/",
-          "note": "Demo on a Vercel preview hostname — TODO: move to a real domain"
-        }
-      },
-      "stack": [
-        "NestJS",
-        "Apollo GraphQL",
-        "Next.js",
-        "Prisma",
-        "PostgreSQL"
-      ],
-      "features": [
-        {
-          "icon": "check",
-          "title": "Courses live in Git",
-          "body": "Authored as markdown and synced on push, so a content change is a pull request."
-        },
-        {
-          "icon": "check",
-          "title": "Review before publish",
-          "body": "Content goes through the same review as code, because it is code."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "repo": null
-    },
-    {
       "slug": "dwarseva",
       "name": "DwarSeva",
       "stageLabel": "In build",
@@ -940,6 +878,117 @@
         "privacy": "https://dwarseva.com/privacy",
         "delete": null,
         "privacyNote": "The policy is a page of the product's own website, which is not answering until its hosting is moved."
+      },
+      "repo": null
+    },
+    {
+      "slug": "babul",
+      "name": "Babul",
+      "stageLabel": "In build",
+      "embed": "web/northwind/products.html",
+      "fullName": "Babul",
+      "tagline": "Your design and your product, always in sync.",
+      "blurb": "Version control for design. Capture what you shipped from a URL or screenshots, or start blank; change it on a branch; verify it against the live product; merge when it ships. Every merge makes a version of main, and AI, a CLI and an MCP server take the design into code.",
+      "sourceOfTruth": "products/babul",
+      "kind": "platform",
+      "model": "subscription",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "A free month with no card, then a subscription per editor; viewers are free. In build and not open.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "Being rebuilt",
+          "url": null,
+          "note": "Rebuilt to a new design; the demo comes back on staging with release 1.0.0"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Turborepo",
+        "Prisma",
+        "Postgres",
+        "Playwright"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Capture what you shipped",
+          "body": "From a live URL, from screenshots, or blank — pages, components and styles."
+        },
+        {
+          "icon": "check",
+          "title": "Branches and versions",
+          "body": "Every change is a commit on a branch; a merge makes a version of main."
+        },
+        {
+          "icon": "check",
+          "title": "Verify against the live product",
+          "body": "A match score per page shows what really shipped."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": "https://babul-staging.vercel.app/privacy",
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "tradx",
+      "name": "tradx",
+      "stageLabel": "In build",
+      "fullName": "tradx",
+      "tagline": "India-focused trading research and paper trading.",
+      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
+      "sourceOfTruth": "trading/tradx",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Internal. Not sold.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "none",
+          "label": "In build",
+          "url": null,
+          "note": "Internal, not open"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Prisma",
+        "PostgreSQL",
+        "Docker",
+        "TypeScript"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "Paper-only by default",
+          "body": "Live routing is gated behind a flag, deliberately."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
       },
       "repo": null
     },
@@ -1093,55 +1142,6 @@
         "delete": null
       },
       "kind": "app",
-      "repo": null
-    },
-    {
-      "slug": "tradx",
-      "name": "tradx",
-      "stageLabel": "In build",
-      "fullName": "tradx",
-      "tagline": "India-focused trading research and paper trading.",
-      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
-      "sourceOfTruth": "trading/tradx",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Internal. Not sold.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Internal, not open"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "Docker",
-        "TypeScript"
-      ],
-      "features": [
-        {
-          "icon": "check",
-          "title": "Paper-only by default",
-          "body": "Live routing is gated behind a flag, deliberately."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
       "repo": null
     }
   ]

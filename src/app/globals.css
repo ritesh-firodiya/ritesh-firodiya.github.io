@@ -22,31 +22,35 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
   /* ── Ground ── */
-  --color-page:    #F5F6F8;
-  --color-frame:   #F5F6F8;
+  --color-page:    #F7F7FB;
+  --color-frame:   #F7F7FB;
   --color-surface: #FFFFFF;
-  --color-muted:   #ECEEF2;
-  --color-sunken:  #E1E4EA;
+  --color-muted:   #EFEFF6;
+  --color-sunken:  #E4E4EE;
 
   /* ── Ink. ink-3 is the quiet floor that still passes AA on page; ink-4 is
      for disabled and struck-through only. ── */
-  --color-ink:         #0B1220;
-  --color-ink-2:       #3A4458;
-  --color-ink-3:       #5A6478;
-  --color-ink-4:       #7A8496;
+  --color-ink:         #0E0F1A;
+  --color-ink-2:       #3C3F52;
+  --color-ink-3:       #5A5E73;
+  --color-ink-4:       #7B7F93;
   --color-ink-inverse: #FFFFFF;
 
-  --color-line:        #DFE3EA;
-  --color-line-strong: #C3C9D4;
+  --color-line:        #E2E3EC;
+  --color-line-strong: #C8CAD8;
 
   /* ── Brand — the one blue. Links, the primary button, the active tab. ── */
-  --color-brand-50:  #EEF1FF;
-  --color-brand-100: #DDE3FF;
-  --color-brand-200: #BBC6FF;
-  --color-brand-400: #6177F5;
-  --color-brand-500: #3147E8;
-  --color-brand-700: #2233B0;
-  --color-brand-900: #141E6B;
+  --color-brand-50:  #F1EEFF;
+  --color-brand-100: #E3DDFF;
+  --color-brand-200: #C7BBFF;
+  --color-brand-400: #7A64F7;
+  --color-brand-500: #5B3FF0;
+  --color-brand-700: #4429C9;
+  --color-brand-900: #22146B;
+
+  /* ── Accent · cyan. Only the far end of the glow and the gradient. ── */
+  --color-accent-400: #22B8D1;
+  --color-accent-500: #0E7C90;
 
   /* ── Status ── */
   --color-success:    #14713F;
@@ -64,9 +68,9 @@
 
   /* ── Inverted band — the contact block and the footer. NOT ink + ink-inverse:
      those flip with the theme and turn a dark page's footer into a white slab. ── */
-  --color-band:     #0B1220;
-  --color-band-ink: #FFFFFF;
-  --color-band-2:   #9AA5BA;
+  --color-band:     #0B0C14;
+  --color-band-ink: #F2F3F7;
+  --color-band-2:   #9A9EB2;
 
   /* r g b, so a shadow can follow the theme. */
   --shadow-tint: 11 18 32;
@@ -112,6 +116,9 @@
   --text-h2: 1.75rem;
   --text-h2--line-height: 1.15;
   --text-h2--letter-spacing: -0.02em;
+  --text-h1: 2.25rem;
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.02em;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -128,123 +135,64 @@
    Every utility already reads `var(--color-…)`, so nothing below restyles a
    class — it moves what the classes resolve to.
 
-   Three states, and the order matters. `@theme` defines the light palette. The
-   media query catches the system default and is guarded so an explicit light
-   choice still wins. The attribute block comes last so the toggle beats the
-   system in both directions.
+   Dark is the default (2026-10-23, LAUNCH): `@theme` holds the light palette,
+   and this block applies unless the reader chose light with the toggle.
 
    Roles invert rather than values: brand-50 stays "the quietest wash of the
    brand" and becomes the darkest blue, and brand-500 moves up the ramp because
    the readable blue on navy is the lighter one. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { color-scheme: dark; }
-}
-:root[data-theme="dark"] { color-scheme: dark; }
+:root:not([data-theme="light"]) { color-scheme: dark; }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-page:    #0A0E16;
-    --color-frame:   #0A0E16;
-    --color-surface: #131926;
-    --color-muted:   #101521;
-    --color-sunken:  #06090F;
-
-    --color-ink:         #EDF0F6;
-    --color-ink-2:       #B5BDCC;
-    --color-ink-3:       #8D97AA;
-    --color-ink-4:       #687286;
-    --color-ink-inverse: #0A0E16;
-
-    --color-line:        #222A3A;
-    --color-line-strong: #364057;
-
-    --color-brand-50:  #111838;
-    --color-brand-100: #18224F;
-    --color-brand-200: #25347A;
-    --color-brand-400: #6F84FF;
-    --color-brand-500: #8C9DFF;
-    --color-brand-700: #B7C2FF;
-    --color-brand-900: #E0E5FF;
-
-    --color-success:    #57C98A;
-    --color-success-bg: #12261B;
+:root:not([data-theme="light"]) {
+    --color-page: #07080C;
+    --color-frame: #07080C;
+    --color-surface: #10121A;
+    --color-muted: #0C0E15;
+    --color-sunken: #040509;
+    --color-ink: #F2F3F7;
+    --color-ink-2: #B4B8C7;
+    --color-ink-3: #8A8FA3;
+    --color-ink-4: #6A6F82;
+    --color-ink-inverse: #07080C;
+    --color-line: #1C1F2C;
+    --color-line-strong: #2C3044;
+    --color-brand-50: #15112F;
+    --color-brand-100: #1D1745;
+    --color-brand-200: #2C246B;
+    --color-brand-400: #8F7BFF;
+    --color-brand-500: #A595FF;
+    --color-brand-700: #C9BEFF;
+    --color-brand-900: #EDE9FF;
+    --color-accent-400: #3CC8DB;
+    --color-accent-500: #5EE1F0;
+    --color-success: #57C98A;
+    --color-success-bg: #10231A;
     --color-success-fg: #A6E3C2;
-    --color-warn:       #D9A441;
-    --color-warn-bg:    #261E0F;
-    --color-warn-fg:    #EBCB8B;
-    --color-danger:     #EF7A7A;
-    --color-danger-bg:  #2A1414;
-    --color-danger-fg:  #F6B5B5;
-    --color-info:       #7FA8DE;
-    --color-info-bg:    #131C28;
-    --color-info-fg:    #B7CFEE;
-
-    --color-band:     #131926;
-    --color-band-ink: #EDF0F6;
-    --color-band-2:   #8D97AA;
+    --color-warn: #D9A441;
+    --color-warn-bg: #241C0E;
+    --color-warn-fg: #EBCB8B;
+    --color-danger: #F08A8A;
+    --color-danger-bg: #2A1215;
+    --color-danger-fg: #F6B5B5;
+    --color-info: #7FA8DE;
+    --color-info-bg: #111A27;
+    --color-info-fg: #B7CFEE;
+    --color-band: #0B0C14;
+    --color-band-ink: #F2F3F7;
+    --color-band-2: #9A9EB2;
+    --color-live: #57C98A;
+    --color-live-bg: #10231A;
+    --color-test: #D9A441;
+    --color-test-bg: #241C0E;
+    --color-build: #A893F0;
+    --color-build-bg: #1B1630;
+    --color-draft: #A3ACBD;
+    --color-draft-bg: #171A24;
 
     --shadow-tint: 0 0 0;
     --shadow-a1: 0.3;
     --shadow-a2: 0.4;
     --shadow-a3: 0.6;
-
-    --color-live:  #57C98A; --color-live-bg:  #12261B;
-    --color-test:  #D9A441; --color-test-bg:  #261E0F;
-    --color-build: #A893F0; --color-build-bg: #1C1730;
-    --color-draft: #A3ACBD; --color-draft-bg: #1A1F2B;
-  }
-}
-
-:root[data-theme="dark"] {
-    --color-page:    #0A0E16;
-    --color-frame:   #0A0E16;
-    --color-surface: #131926;
-    --color-muted:   #101521;
-    --color-sunken:  #06090F;
-
-    --color-ink:         #EDF0F6;
-    --color-ink-2:       #B5BDCC;
-    --color-ink-3:       #8D97AA;
-    --color-ink-4:       #687286;
-    --color-ink-inverse: #0A0E16;
-
-    --color-line:        #222A3A;
-    --color-line-strong: #364057;
-
-    --color-brand-50:  #111838;
-    --color-brand-100: #18224F;
-    --color-brand-200: #25347A;
-    --color-brand-400: #6F84FF;
-    --color-brand-500: #8C9DFF;
-    --color-brand-700: #B7C2FF;
-    --color-brand-900: #E0E5FF;
-
-    --color-success:    #57C98A;
-    --color-success-bg: #12261B;
-    --color-success-fg: #A6E3C2;
-    --color-warn:       #D9A441;
-    --color-warn-bg:    #261E0F;
-    --color-warn-fg:    #EBCB8B;
-    --color-danger:     #EF7A7A;
-    --color-danger-bg:  #2A1414;
-    --color-danger-fg:  #F6B5B5;
-    --color-info:       #7FA8DE;
-    --color-info-bg:    #131C28;
-    --color-info-fg:    #B7CFEE;
-
-    --color-band:     #131926;
-    --color-band-ink: #EDF0F6;
-    --color-band-2:   #8D97AA;
-
-    --shadow-tint: 0 0 0;
-    --shadow-a1: 0.3;
-    --shadow-a2: 0.4;
-    --shadow-a3: 0.6;
-
-    --color-live:  #57C98A; --color-live-bg:  #12261B;
-    --color-test:  #D9A441; --color-test-bg:  #261E0F;
-    --color-build: #A893F0; --color-build-bg: #1C1730;
-    --color-draft: #A3ACBD; --color-draft-bg: #1A1F2B;
 }
 
 @layer base {
@@ -460,13 +408,91 @@
      a sun on a light page, a moon on a dark one. Chosen in CSS, from the same
      conditions that pick the palette, so there is no flash and no mismatch. */
   .theme-icon-dark { display: none; }
-  :root[data-theme="dark"] .theme-icon-light { display: none; }
-  :root[data-theme="dark"] .theme-icon-dark { display: block; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .theme-icon-light { display: none; }
-    :root:not([data-theme="light"]) .theme-icon-dark { display: block; }
-  }
+  :root:not([data-theme="light"]) .theme-icon-light { display: none; }
+  :root:not([data-theme="light"]) .theme-icon-dark { display: block; }
 
+
+  /* ---- LAUNCH components (2026-10-23) ------------------------------------------ */
+  /* A terminal transcript, on the band in both themes. Pass and fail are written
+     as ✓ and ✗, never green and red: green is the reserved release colour. */
+  .term {
+    font-family: var(--font-mono); font-size: var(--text-sm); line-height: 1.6;
+    background: var(--color-band); color: var(--color-band-ink);
+    border: 1px solid color-mix(in srgb, var(--color-band-2) 25%, transparent);
+    border-radius: var(--radius-lg); padding: 14px 16px; white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  .term-dim { color: var(--color-band-2); }
+
+  /* The glow behind a hero: violet from the top, cyan from the side. Drawn on a
+     pseudo-element so it never takes clicks and never widens the page. */
+  .glow { position: relative; isolation: isolate; overflow: hidden; }
+  .glow::before {
+    content: ""; position: absolute; inset: -20% -10% auto -10%; height: 140%; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(40% 45% at 50% 0%, color-mix(in srgb, var(--color-brand-500) 38%, transparent), transparent 70%),
+      radial-gradient(30% 35% at 85% 20%, color-mix(in srgb, var(--color-accent-500) 22%, transparent), transparent 70%);
+  }
+  /* A faint grid under the glow, the "product launch" texture. */
+  .grid-bg {
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--color-ink) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-ink) 5%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(60% 60% at 50% 30%, #000 30%, transparent 75%);
+            mask-image: radial-gradient(60% 60% at 50% 30%, #000 30%, transparent 75%);
+  }
+  /* The gradient headline. Ink to brand to accent, so it still reads as ink. */
+  .grad-text {
+    background: linear-gradient(100deg, var(--color-ink) 30%, var(--color-brand-500) 70%, var(--color-accent-500));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .display {
+    font-size: clamp(1.9rem, 4.4vw, 3.25rem); line-height: 1.06; letter-spacing: -0.045em; font-weight: 800;
+  }
+  /* Glass: a see-through card with a hairline that catches the glow. */
+  .glass {
+    background: color-mix(in srgb, var(--color-surface) 72%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+    border-radius: var(--radius-xl);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-ink) 6%, transparent);
+  }
+  :where(a.glass) { display: block; }
+  a.glass { color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
+  a.glass:hover { border-color: color-mix(in srgb, var(--color-brand-500) 55%, transparent); transform: translateY(-2px); }
+  /* The step number in Know → Enforce → Ship. */
+  .step-num {
+    display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px;
+    font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 700; color: var(--color-ink-inverse);
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-accent-500));
+  }
+  /* A verdict. Push back is danger, do it differently is warn, do it is success:
+     these are verdicts, which is what the status roles are for. */
+  .verdict { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: var(--radius-pill);
+    font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: .04em; }
+  .verdict--push { color: var(--color-danger); background: var(--color-danger-bg); }
+  .verdict--diff { color: var(--color-warn); background: var(--color-warn-bg); }
+  .verdict--do   { color: var(--color-success); background: var(--color-success-bg); }
+  /* The request a verdict answered, set as a quote. */
+  .ask { font-size: var(--text-lead); line-height: 1.35; font-weight: 600; color: var(--color-ink); }
+  .ask::before { content: "“"; color: var(--color-brand-500); }
+  .ask::after  { content: "”"; color: var(--color-brand-500); }
+  /* The lifecycle strip: eight stages joined by one gradient line. */
+  .pdlc { position: relative; }
+  .pdlc::before { content: ""; position: absolute; left: 15px; top: 16px; bottom: 16px; width: 2px;
+    background: linear-gradient(var(--color-brand-500), var(--color-accent-500)); opacity: .5; }
+  @media (min-width: 768px) {
+    .pdlc::before { left: 16px; right: 16px; top: 15px; bottom: auto; width: auto; height: 2px;
+      background: linear-gradient(90deg, var(--color-brand-500), var(--color-accent-500)); }
+  }
+  .pdlc-dot { position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 999px; display: grid; place-items: center;
+    background: var(--color-page); border: 2px solid var(--color-brand-500); color: var(--color-brand-500); }
+  .app-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--color-line); object-fit: cover; }
+  .app-icon--none { display: grid; place-items: center; background: var(--color-muted); font-weight: 700; color: var(--color-ink-3); }
+  /* The in-page section switcher on a long page. Sticky under the header. */
+  .subnav { position: sticky; top: 53px; z-index: 20; background: color-mix(in srgb, var(--color-page) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-line); }
+  /* The project-card picture on the dark ground: a soft spotlight behind the art. */
+  .spot { background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--color-brand-500) 18%, transparent), transparent 70%), var(--color-muted); }
 }
 
 /* ── Print · /resume only ──────────────────────────────────────────────────

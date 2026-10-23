@@ -45,7 +45,8 @@ and commits none of them.
 | Wiki | `.context/wiki/` | `src/data/generated/wiki/<slug>.json` |
 | Store art | `.context/listing/…/screenshots` | `public/media/<slug>/*.webp` |
 | Icon | `.context/designs/brand/icon.*` | `public/media/<slug>/icon.*` |
-| Stage board | which `.context/` folders have files | `src/data/generated/context.json` |
+| Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
+| zeno config | `.claude/zeno.yaml` (version, modules) | `src/data/generated/zeno.json` |
 
 - `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
   and **withholds any surface that fails `STYLE-GUIDE.md`** — the reasons land
@@ -53,7 +54,7 @@ and commits none of them.
 - It also publishes each product's wiki surface pages as Markdown at
   `/designs/<slug>/wiki/surfaces/` and rewrites one path in the copied
   `_chrome.js`, so the bar's notes button works on the site.
-- `scripts/sync-context.mjs` does the wiki, the pictures and the board. Run it
+- `scripts/sync-context.mjs` does the wiki, the pictures and the zeno config. Run it
   second: a wiki page about a screen links to that screen, and only the design
   manifest knows which screens were published.
 - `scripts/designs/sources.mjs` decides where a repo comes from: a sparse,
@@ -86,9 +87,9 @@ A promise on behalf of every app is only as true as the least convenient app.
 3. **An unavailable platform renders disabled with its reason**, never hidden
    and never as a link most people cannot open.
 4. **Facts live in `src/data/products.json`, never in a page.**
-5. **A count is derived, never typed.** "13 projects", "3 live", "529 screens"
-   come from the data. The stage board's dots are counted from each product's
-   `.context/` folders (`src/lib/board.ts`); nobody edits this site to move one.
+5. **A count is derived, never typed.** "15 projects", "3 live", "7 modules"
+   come from the data. The zeno strip on a project page reads the product's own
+   `.claude/zeno.yaml` (synced into `zeno.json`); nobody edits this site to change it.
 6. **A missing thing is visibly missing.** No screenshot is a hatched slot that
    says so. A withheld design set is a card that lists the failed checks.
 
@@ -130,7 +131,8 @@ re-order the file.
 
 | Route | What it is |
 |---|---|
-| `/` | one line on who, then `#work` (every project) and `#process` (the eight stages as a board) |
+| `/` | who (one line), then `#zeno` (Know → Enforce → Ship and three verdicts), then `#work` (three large cards, then a tile per project) |
+| `/products/zeno/` | zeno: the problem, how it works, what it caught, the lifecycle. Not in `products.json`; its content is `src/lib/zeno.ts` |
 | `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
 | `/products/[slug]/designs/` | that project's own design gallery — a static file, not a route |
@@ -142,7 +144,7 @@ re-order the file.
 **Mobile first.** Every base style and every unprefixed utility is the phone
 layout; `sm:`, `md:` and `lg:` only add to it. There is no `max-width` media
 query and no `max-*:` utility in this repo. Where a wide layout cannot shrink
-(the stage board is a nine-column table), the phone gets its own markup and the
+(a wide table), the phone gets its own markup and the
 table appears from `md` up — never a table that scrolls sideways.
 
 **Keep it short.** The site was cut down on 2026-10-04 because it explained too

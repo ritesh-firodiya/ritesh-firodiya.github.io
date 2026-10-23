@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Download, Mail } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { Chips } from "@/components/ui";
 import { profile } from "@/lib/profile";
 import { gmailCompose } from "@/lib/mail";
+import { products, stageCounts } from "@/lib/products";
+import { zenoFor } from "@/lib/zeno";
 
 export const metadata: Metadata = {
   title: "Résumé",
@@ -18,12 +21,12 @@ export default function ResumePage() {
   return (
     <>
       <SiteHeader on="resume" />
-      <main id="main" className="wrap pb-10 pt-6">
+      <main id="main" className="wrap pb-10 pt-5">
         <div className="flex flex-wrap items-center gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/me.webp" alt="" width={64} height={64} className="h-16 w-16 rounded-full border border-line object-cover" />
           <div className="min-w-0 flex-1">
-            <h1 className="page-title">{profile.name}</h1>
+            <h1 className="page-title grad-text">{profile.name}</h1>
             <p className="text-base text-ink-2">Senior full-stack engineer · {profile.location}</p>
             {/* The buttons beside this are hidden on paper, so the sheet needs its own contact line. */}
             <p className="print-only text-sm text-ink-2">
@@ -44,7 +47,37 @@ export default function ResumePage() {
 
         <p className="mt-4 max-w-[90ch] text-body text-ink-2">{profile.summary}</p>
 
-        <ol className="mt-5 border-b border-line">
+        <section className="no-print mt-5 grid gap-3 md:grid-cols-2" aria-label="Own work">
+          <Link href="/products/zeno/" className="glass glow p-4">
+            <p className="eyebrow">Open source · 2026</p>
+            <h2 className="mt-1 text-body font-bold">
+              zeno <span className="font-semibold text-brand-500">· Claude Code plugin + CLI</span>
+            </h2>
+            <p className="mt-1 text-base text-ink-2">
+              Keeps domain knowledge and AI rules local and enforced across {products.filter((p) => zenoFor(p.slug)).length} product repos, so the AI
+              hallucinates less and work ships faster.
+            </p>
+            <p className="mt-2 flex flex-wrap gap-1.5">
+              {["TypeScript", "Node.js", "Claude Code", "dependency-cruiser"].map((x) => (
+                <span key={x} className="chip">{x}</span>
+              ))}
+            </p>
+          </Link>
+          <Link href="/#work" className="glass p-4">
+            <p className="eyebrow">Independent · 2026</p>
+            <h2 className="mt-1 text-body font-bold">{products.length} products, idea to store</h2>
+            <p className="mt-1 text-base text-ink-2">
+              Mobile and web apps, each with its own designs, wiki and release. {stageCounts.live} are live.
+            </p>
+            <p className="mt-2 flex flex-wrap gap-1.5">
+              {["Expo", "Next.js", "Firebase", "NestJS"].map((x) => (
+                <span key={x} className="chip">{x}</span>
+              ))}
+            </p>
+          </Link>
+        </section>
+        <h2 className="section-title mt-7">Experience</h2>
+        <ol className="mt-2 border-b border-line">
           {profile.experiences.map((e) => (
             <li key={e.company} className="grid gap-x-6 gap-y-1 border-t border-line py-3.5 lg:grid-cols-[11rem_1fr]">
               <p className="pt-0.5 font-mono text-xs text-ink-3">

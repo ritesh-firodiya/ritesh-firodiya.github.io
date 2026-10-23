@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Apple, ArrowLeft, BookOpen, ExternalLink, FlaskConical, Mail, Monitor, Play, Smartphone, Users, type LucideIcon } from "lucide-react";
+import { Apple, ArrowLeft, Ban, ExternalLink, FlaskConical, Mail, Monitor, Play, Users, type LucideIcon } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
-import { Chips, StatePill, SurfaceTags } from "@/components/ui";
+import { StatePill, SurfaceTags } from "@/components/ui";
 import { ProductPicture } from "@/components/picture";
 import { gmailCompose } from "@/lib/mail";
 import { products, bySlug, mediaFor, galleriesFor, screensFor, sheetFor, type Platform, type Product } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
+import { zenoFor } from "@/lib/zeno";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -91,27 +92,41 @@ function stepsOf(p: Product): { key: string; who: string; text: string }[] {
   return steps;
 }
 
+/** Why there is nothing to install, for a product with no door at all. */
+function noDoorReason(p: Product): string {
+  if (p.notBuilt) return "Not built yet — designs only";
+  return p.unreleasedNote ?? "Not released yet";
+}
+
 function Access({ p }: { p: Product }) {
   const doors = doorsOf(p);
-  if (doors.length === 0) return null;
   const steps = stepsOf(p);
   return (
     <>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {doors.map((d, i) => (
-          <a key={d.key} href={d.href} target="_blank" rel="noopener" title={d.title} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
-            <d.Icon size={16} aria-hidden /> {d.label}
-          </a>
-        ))}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {doors.length === 0 ? (
+          <button type="button" className="btn btn-quiet" disabled>
+            <Ban size={16} aria-hidden /> {noDoorReason(p)}
+          </button>
+        ) : (
+          doors.map((d, i) => (
+            <a key={d.key} href={d.href} target="_blank" rel="noopener" title={d.title} className={`btn ${i === 0 ? "btn-primary" : "btn-quiet"}`}>
+              <d.Icon size={16} aria-hidden /> {d.label}
+            </a>
+          ))
+        )}
       </div>
       {steps.length > 0 && (
-        <ul className="mt-2 max-w-[58ch] space-y-1 text-sm text-ink-3">
-          {steps.map((s) => (
-            <li key={s.key}>
-              <strong className="text-ink-2">{s.who}:</strong> {s.text}
-            </li>
-          ))}
-        </ul>
+        <details className="mt-2 text-sm text-ink-3">
+          <summary className="cursor-pointer text-ink-2">How to join the test</summary>
+          <ul className="mt-1.5 max-w-[58ch] space-y-1">
+            {steps.map((s) => (
+              <li key={s.key}>
+                <strong className="text-ink-2">{s.who}:</strong> {s.text}
+              </li>
+            ))}
+          </ul>
+        </details>
       )}
     </>
   );
@@ -129,78 +144,148 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const count = (surface: string) => screensFor(p.slug).filter((x) => x.surface === surface).length;
   const sections = study
     ? study.sections
-    : p.features.length > 1
+    : p.features.length > 0
       ? [{ h: "What it does", list: p.features.map((f) => ({ t: f.title, b: f.body })) }]
       : [];
+
+  const zeno = zenoFor(p.slug);
 
   return (
     <>
       <SiteHeader on="work" />
-      <main id="main" className="wrap pb-10">
-        <section className="grid items-center gap-6 py-5 lg:grid-cols-[1fr_1fr]">
+      <main id="main" className="wrap pb-12">
+        <section className="glow -mx-4 grid items-center gap-6 px-4 py-6 md:-mx-7 md:px-7 lg:grid-cols-[1fr_1fr]">
           <div>
             <Link href="/#work" className="inline-flex items-center gap-1 text-sm text-ink-3 hover:text-ink">
               <ArrowLeft size={14} aria-hidden /> Work
             </Link>
-            <div className="mt-2 flex flex-wrap items-center gap-2.5">
-              {icon && (
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              {icon ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={icon} alt="" width={40} height={40} className="h-10 w-10 rounded-lg border border-line" />
+                <img src={icon} alt="" width={40} height={40} className="app-icon" />
+              ) : (
+                <span className="app-icon app-icon--none" aria-hidden>
+                  {p.name[0].toUpperCase()}
+                </span>
               )}
-              <h1 className="page-title">{p.name}</h1>
+              <h1 className="page-title grad-text">{p.name}</h1>
               <StatePill p={p} />
+            </div>
+            <p className="mt-2 text-lead text-ink-2">{p.tagline}</p>
+            <p className="mt-2.5 flex flex-wrap gap-1.5">
               <SurfaceTags p={p} />
-            </div>
-            <p className="mt-2.5 max-w-[58ch] text-body text-ink-2">{study?.lead ?? `${p.tagline} ${p.blurb}`}</p>
-            <Access p={p} />
-            <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-              {/* Plain anchors: a design set is the product's own static page.
-                  Each opens its contact sheet in a new tab. */}
-              {galleries.map((g) => {
-                const Icon = g.surface === "mobile" ? Smartphone : Monitor;
-                return (
-                  <a key={g.surface} href={sheetFor(p.slug, g)} target="_blank" rel="noopener" className="text-link inline-flex items-center gap-1">
-                    <Icon size={14} aria-hidden /> {count(g.surface)} {g.surface} screens
-                  </a>
-                );
-              })}
-              {wiki && (
-                <Link href={wikiHref(p.slug)} className="text-link inline-flex items-center gap-1">
-                  <BookOpen size={14} aria-hidden /> {wiki.total} wiki pages
-                </Link>
-              )}
-              {p.legal.privacy && <a href={p.legal.privacy} className="text-ink-3 hover:text-ink">Privacy</a>}
-              {p.legal.delete && <a href={p.legal.delete} className="text-ink-3 hover:text-ink">Delete account</a>}
+              {(study?.stack ?? p.stack).map((x) => (
+                <span key={x} className="chip">
+                  {x}
+                </span>
+              ))}
             </p>
-            <div className="mt-3">
-              <Chips items={study?.stack ?? p.stack} />
-            </div>
+            <Access p={p} />
           </div>
           <ProductPicture p={p} />
         </section>
 
-        {sections.length > 0 && (
-          <section className="gap-x-10 border-t border-line pt-5 lg:columns-2">
-            {sections.map((s) => (
-              <div key={s.h} className="mb-5 break-inside-avoid">
-                <h2 className="section-title">{s.h}</h2>
+        {/* One strip, the same four facts on every product page. A fact with
+            nothing behind it says so rather than dropping out. */}
+        <dl className="glass grid grid-cols-2 gap-px overflow-hidden text-sm md:grid-cols-4">
+          <div className="p-3">
+            <dt className="text-xs text-ink-3">Screens</dt>
+            <dd className="mt-0.5">
+              {galleries.length === 0 ? (
+                <span className="text-ink-3">None yet</span>
+              ) : (
+                galleries.map((g, i) => (
+                  <span key={g.surface}>
+                    {i > 0 && " · "}
+                    {/* Plain anchors: a design set is the product's own static page. */}
+                    <a href={sheetFor(p.slug, g)} target="_blank" rel="noopener" className="text-link">
+                      {count(g.surface)} {g.surface}
+                    </a>
+                  </span>
+                ))
+              )}
+            </dd>
+          </div>
+          <div className="p-3">
+            <dt className="text-xs text-ink-3">Wiki</dt>
+            <dd className="mt-0.5">
+              {wiki ? (
+                <Link href={wikiHref(p.slug)} className="text-link">
+                  {wiki.total} pages
+                </Link>
+              ) : (
+                <span className="text-ink-3">None yet</span>
+              )}
+            </dd>
+          </div>
+          <div className="p-3">
+            <dt className="text-xs text-ink-3">Checked by zeno</dt>
+            <dd className="mt-0.5">
+              {zeno ? (
+                <Link href="/products/zeno/" className="text-link">
+                  {zeno.modules.length} modules{zeno.version ? ` · zeno ${zeno.version}` : ""}
+                </Link>
+              ) : (
+                <span className="text-ink-3">Not on zeno yet</span>
+              )}
+            </dd>
+          </div>
+          <div className="p-3">
+            <dt className="text-xs text-ink-3">Privacy</dt>
+            <dd className="mt-0.5">
+              {p.legal.privacy ? (
+                <>
+                  <a href={p.legal.privacy} className="text-link">
+                    Policy
+                  </a>
+                  {p.legal.delete && (
+                    <>
+                      {" · "}
+                      <a href={p.legal.delete} className="text-link">
+                        delete account
+                      </a>
+                    </>
+                  )}
+                </>
+              ) : (
+                <span className="text-ink-3">{p.notBuilt ? "No app yet, no data" : "No policy published"}</span>
+              )}
+            </dd>
+          </div>
+        </dl>
+
+        <section className={`mt-3 grid gap-3 ${sections.length > 1 ? "md:grid-cols-2 lg:grid-cols-3" : ""}`}>
+          {sections.length === 0 ? (
+            <div className="slot grid place-items-center rounded-xl p-4 text-center">
+              <p className="text-sm text-ink-3">
+                <b className="block text-ink-2">No feature list yet</b>
+                It is still being designed. The screens and wiki are linked above.
+              </p>
+            </div>
+          ) : (
+            sections.map((s) => (
+              <div key={s.h} className="glass p-4">
+                <h2 className="font-bold">{s.h}</h2>
                 {s.p?.map((t) => (
-                  <p key={t.slice(0, 32)} className="mt-1.5 max-w-[68ch] text-base text-ink-2">{t}</p>
+                  <p key={t.slice(0, 32)} className="mt-1.5 text-sm text-ink-2">
+                    {t}
+                  </p>
                 ))}
                 {s.list && (
-                  <ul className="mt-1.5 grid max-w-[68ch] gap-1.5 text-base">
+                  <ul className="mt-1.5 grid gap-1.5 text-sm text-ink-2">
                     {s.list.map((f) => (
                       <li key={f.t}>
-                        <b className="font-semibold">{f.t}</b>{" "}
-                        <span className="text-ink-2">{/^[a-z—–-]/.test(f.b) ? f.b : `— ${f.b}`}</span>
+                        {/* A body that carries on the title's sentence starts lowercase and
+                        joins it; anything else is a sentence of its own. */}
+                        <b className="font-semibold text-ink">{/^[a-z]/.test(f.b) ? f.t : `${f.t}.`}</b> {f.b.replace(/^[—–-]\s*/, "")}
                       </li>
                     ))}
                   </ul>
                 )}
               </div>
-            ))}
-          </section>
-        )}
+            ))
+          )}
+        </section>
       </main>
       <SiteFooter />
     </>

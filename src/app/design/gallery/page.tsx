@@ -1,7 +1,7 @@
 import { Forward, forwardMetadata } from "@/components/forward";
 
-export const metadata = forwardMetadata("/#process");
+export const metadata = forwardMetadata("/products/zeno/#lifecycle");
 
 export default function Moved() {
-  return <Forward to="/#process" />;
+  return <Forward to="/products/zeno/#lifecycle" />;
 }

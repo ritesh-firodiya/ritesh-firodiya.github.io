@@ -15,18 +15,19 @@
   <div class="phone">
 
     <header class="site-head">
-      <div class="wrap flex items-center gap-4 py-2 md:gap-6">
-        <a href="../home/home.html" class="flex items-center gap-2 text-base font-bold">
+      <div class="wrap flex items-center gap-3 py-2 md:gap-6">
+        <a href="../home/home.html" class="flex shrink-0 items-center gap-2 text-base font-bold" aria-label="Ritesh Firodiya, home">
           <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
-          <span class="hidden sm:inline">Ritesh Firodiya</span>
+          <span class="hidden md:inline">Ritesh Firodiya</span>
         </a>
-        <nav class="ml-auto flex items-center gap-5" aria-label="Main">
+        <nav class="ml-auto flex items-center gap-4 md:gap-6" aria-label="Main">
           <a href="../home/home.html#work" class="nav-link">Work</a>
+          <a href="../work/zeno.html" class="nav-link">zeno</a>
           <a href="../home/home.html#process" class="nav-link">Process</a>
-          <a href="../resume/resume.html" class="nav-link nav-link--on">Résumé</a>
+          <a href="../resume/resume.html" class="nav-link nav-link--on" aria-current="page">Résumé</a>
         </nav>
-        <button type="button" class="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> <span class="hidden sm:inline">Email</span></a>
+        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
       </div>
     </header>
 
@@ -44,7 +45,22 @@
           </div>
         </div>
         <p class="mt-4 max-w-[90ch] text-body text-ink-2">Full-stack engineer and lead with ~9 years shipping production TypeScript across React, Next.js, React Native, and NestJS. Comfortable end-to-end — Postgres schema to Play Store release. Currently building AI-assisted developer tooling on Anthropic SDK + MCP.</p>
-        <ol class="mt-5 border-b border-line">
+        <section class="mt-5 grid gap-3 md:grid-cols-2" aria-label="Own work">
+          <a href="../work/zeno.html" class="card p-4">
+            <p class="eyebrow">Open source · 2026</p>
+            <h2 class="mt-1 text-body font-bold">zeno <span class="font-semibold text-brand-500">· Claude Code plugin + CLI</span></h2>
+            <p class="mt-1 text-base text-ink-2">Shared rules, searchable decisions and a decision gate across 15 product repos. Each repo's architecture is a check that fails the build.</p>
+            <p class="mt-2 flex flex-wrap gap-1.5"><span class="chip">TypeScript</span> <span class="chip">Node.js</span> <span class="chip">Claude Code</span> <span class="chip">dependency-cruiser</span></p>
+          </a>
+          <a href="../home/home.html#work" class="card p-4">
+            <p class="eyebrow">Independent · 2026</p>
+            <h2 class="mt-1 text-body font-bold">15 products, idea to store</h2>
+            <p class="mt-1 text-base text-ink-2">Mobile and web apps, each with its own designs, wiki and release. Three are live.</p>
+            <p class="mt-2 flex flex-wrap gap-1.5"><span class="chip">Expo</span> <span class="chip">Next.js</span> <span class="chip">Firebase</span> <span class="chip">NestJS</span></p>
+          </a>
+        </section>
+        <h2 class="section-title mt-7">Experience</h2>
+        <ol class="mt-2 border-b border-line">
           <li class="grid gap-x-6 gap-y-1 border-t border-line py-3.5 lg:grid-cols-[11rem_1fr]">
             <p class="mono pt-0.5 text-xs text-ink-3">Apr 2025 — May 2026</p>
             <div>
@@ -126,12 +142,15 @@
       </main>
 
     <footer class="mt-auto border-t border-line">
-      <div class="wrap flex flex-wrap items-center gap-x-5 gap-y-1.5 py-4 text-sm text-ink-2">
-        <a href="mailto:firodiya.ritesh@gmail.com" class="font-semibold text-ink">firodiya.ritesh@gmail.com</a>
-        <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-        <a href="https://github.com/ritesh-firodiya">GitHub</a>
-        <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        <span class="ml-auto flex gap-5 text-ink-3">
+      <div class="wrap grid gap-3 py-5 text-sm text-ink-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5">
+        <a href="mailto:firodiya.ritesh@gmail.com" class="inline-flex items-center gap-1.5 font-semibold text-ink"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
+        <span class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://github.com/ritesh-firodiya/zeno-ai">zeno on GitHub</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        </span>
+        <span class="flex gap-5 text-ink-3 sm:ml-auto">
           <a href="../support/support.html">Support</a>
           <a href="../legal/legal.html">Legal</a>
         </span>

@@ -15,18 +15,19 @@
   <div class="phone">
 
     <header class="site-head">
-      <div class="wrap flex items-center gap-4 py-2 md:gap-6">
-        <a href="../home/home.html" class="flex items-center gap-2 text-base font-bold">
+      <div class="wrap flex items-center gap-3 py-2 md:gap-6">
+        <a href="../home/home.html" class="flex shrink-0 items-center gap-2 text-base font-bold" aria-label="Ritesh Firodiya, home">
           <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
-          <span class="hidden sm:inline">Ritesh Firodiya</span>
+          <span class="hidden md:inline">Ritesh Firodiya</span>
         </a>
-        <nav class="ml-auto flex items-center gap-5" aria-label="Main">
-          <a href="../home/home.html#work" class="nav-link nav-link--on">Work</a>
+        <nav class="ml-auto flex items-center gap-4 md:gap-6" aria-label="Main">
+          <a href="../home/home.html#work" class="nav-link nav-link--on" aria-current="page">Work</a>
+          <a href="../work/zeno.html" class="nav-link">zeno</a>
           <a href="../home/home.html#process" class="nav-link">Process</a>
           <a href="../resume/resume.html" class="nav-link">Résumé</a>
         </nav>
-        <button type="button" class="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> <span class="hidden sm:inline">Email</span></a>
+        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
       </div>
     </header>
 
@@ -55,7 +56,15 @@
           <div class="relative pb-6 pr-6"><div class="overflow-hidden rounded-lg border border-line-strong shadow-lg"><div class="embed "><iframe src="../../../../../../products/chitragupt/.context/designs/web/home/home.html?bare" title="Chitragupt design screen" loading="lazy" tabindex="-1"></iframe></div></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute bottom-0 right-0 w-[22%]"><div class="embed embed--phone"><iframe src="../../../../../../products/chitragupt/.context/designs/mobile/home/home.html?bare" title="Chitragupt mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
         </section>
 
-        <section class="gap-x-10 border-t border-line pt-5 lg:columns-2">
+        <a href="../work/zeno.html" class="card flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5 text-sm">
+          <i data-lucide="shield-check" class="h-4 w-4 text-brand-500"></i>
+          <b class="font-semibold">Checked by zeno</b>
+          <span class="text-ink-2">7 modules · 0 errors, 0 warnings</span>
+          <span class="text-link ml-auto">What is zeno</span>
+        </a>
+
+
+        <section class="mt-6 grid max-w-[72ch] gap-1 border-t border-line pt-5">
           <div class="mb-5 break-inside-avoid">
             <h2 class="section-title">The problem</h2>
             <p class="mt-1.5 max-w-[68ch] text-base text-ink-2">Every Indian tax calculator answers one question — which regime is cheaper for you, one person, this year. That is the wrong unit. Tax in an Indian household moves across people: a parent's medical premium, a spouse's home-loan interest, a child's tuition. Filed one at a time, a family routinely leaves a deduction on the table that was always claimable.</p>
@@ -82,12 +91,15 @@
       </main>
 
     <footer class="mt-auto border-t border-line">
-      <div class="wrap flex flex-wrap items-center gap-x-5 gap-y-1.5 py-4 text-sm text-ink-2">
-        <a href="mailto:firodiya.ritesh@gmail.com" class="font-semibold text-ink">firodiya.ritesh@gmail.com</a>
-        <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-        <a href="https://github.com/ritesh-firodiya">GitHub</a>
-        <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        <span class="ml-auto flex gap-5 text-ink-3">
+      <div class="wrap grid gap-3 py-5 text-sm text-ink-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5">
+        <a href="mailto:firodiya.ritesh@gmail.com" class="inline-flex items-center gap-1.5 font-semibold text-ink"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
+        <span class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://github.com/ritesh-firodiya/zeno-ai">zeno on GitHub</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        </span>
+        <span class="flex gap-5 text-ink-3 sm:ml-auto">
           <a href="../support/support.html">Support</a>
           <a href="../legal/legal.html">Legal</a>
         </span>

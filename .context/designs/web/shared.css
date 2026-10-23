@@ -905,3 +905,32 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
 
 /* A store screenshot standing on the page rather than lying in a box. */
 .shot--lift { box-shadow: var(--shadow-lg); border: 1px solid var(--line); }
+
+/* ---- 2026-10-23 redesign: zeno, the featured strip and the project list ---- */
+/* A terminal transcript. Drawn on the inverted band so it reads as a terminal
+   in both themes; the text is real zeno output, never a mock prompt. */
+.term {
+  font-family: var(--font-mono); font-size: var(--fs-sm); line-height: 1.6;
+  background: var(--band); color: var(--band-ink);
+  border: 1px solid color-mix(in srgb, var(--band-2) 30%, transparent);
+  border-radius: var(--radius-lg); padding: 14px 16px; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.term-dim { color: var(--band-2); }
+/* No green or red here: green is the reserved release colour, and the band is
+   dark in both themes, so pass and fail are written as ✓ and ✗. */
+/* The zeno strip on Home: the inverted band, inset as a card. */
+.feature { background: var(--band); color: var(--band-ink); border-radius: var(--radius-lg); }
+.feature .eyebrow { color: var(--band-2); }
+.feature .btn-quiet { background: transparent; color: var(--band-ink); border-color: color-mix(in srgb, var(--band-2) 50%, transparent); }
+/* One row of the project list. */
+.row-link {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
+}
+.row-link:hover { background: var(--muted); }
+.app-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--line); object-fit: cover; }
+.app-icon--none { display: grid; place-items: center; background: var(--muted); font-weight: 700; color: var(--ink-3); }
+/* A stage of the process: number, name, what it leaves, what zeno holds it to. */
+.step { border-top: 2px solid var(--brand-500); padding-top: 10px; }
+/* The in-page section switcher on a project page. Sticky under the header. */
+.subnav { position: sticky; top: 53px; z-index: 20; background: color-mix(in srgb, var(--page) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }

@@ -15,170 +15,146 @@
   <div class="phone">
 
     <header class="site-head">
-      <div class="wrap flex items-center gap-4 py-2 md:gap-6">
-        <a href="../home/home.html" class="flex items-center gap-2 text-base font-bold">
+      <div class="wrap flex items-center gap-3 py-2 md:gap-6">
+        <a href="../home/home.html" class="flex shrink-0 items-center gap-2 text-base font-bold" aria-label="Ritesh Firodiya, home">
           <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
-          <span class="hidden sm:inline">Ritesh Firodiya</span>
+          <span class="hidden md:inline">Ritesh Firodiya</span>
         </a>
-        <nav class="ml-auto flex items-center gap-5" aria-label="Main">
+        <nav class="ml-auto flex items-center gap-4 md:gap-6" aria-label="Main">
           <a href="../home/home.html#work" class="nav-link">Work</a>
+          <a href="../work/zeno.html" class="nav-link">zeno</a>
           <a href="../home/home.html#process" class="nav-link">Process</a>
           <a href="../resume/resume.html" class="nav-link">Résumé</a>
         </nav>
-        <button type="button" class="grid h-9 w-9 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> <span class="hidden sm:inline">Email</span></a>
+        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
       </div>
     </header>
 
-      <main class="wrap pb-10">
-        <section class="flex flex-wrap items-center gap-x-8 gap-y-3 py-5">
-          <div class="min-w-0 flex-1 basis-[30rem]">
-            <h1 class="hero-title">Full-stack engineer who takes a product from an idea to the store.</h1>
-            <p class="mt-2 text-body text-ink-2">Nine years of TypeScript at Walmart, Swiggy, Speechify, Globant. Pune, India. Open to senior, staff and tech-lead roles.</p>
+      <main class="wrap pb-12">
+        <section class="grid gap-5 py-6 md:py-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+          <div>
+            <p class="eyebrow">Senior full-stack engineer · Pune, India</p>
+            <h1 class="hero-title mt-2 max-w-[22ch]">I ship products, and I built the tool that keeps fifteen of them consistent.</h1>
+            <p class="mt-3 max-w-[60ch] text-body text-ink-2">Nine years of TypeScript at Walmart, Swiggy, Speechify and Globant. Open to senior, staff and tech-lead roles.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="../resume/resume.html" class="btn btn-primary"><i data-lucide="file-text" class="h-4 w-4"></i> Résumé</a>
+              <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-quiet"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
+              <a href="https://linkedin.com/in/riteshfirodiya" class="btn btn-quiet"><i data-lucide="briefcase" class="h-4 w-4"></i> LinkedIn</a>
+            </div>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <a href="../resume/resume.html" class="btn btn-primary"><i data-lucide="file-text" class="h-4 w-4"></i> Résumé</a>
-            <a href="https://linkedin.com/in/riteshfirodiya" class="btn btn-quiet"><i data-lucide="briefcase" class="h-4 w-4"></i> LinkedIn</a>
-            <a href="https://github.com/ritesh-firodiya" class="btn btn-quiet"><i data-lucide="git-branch" class="h-4 w-4"></i> GitHub</a>
-          </div>
+          <dl class="grid grid-cols-3 gap-2 text-center lg:text-left">
+            <div class="card p-3"><dt class="text-xs text-ink-3">Projects</dt><dd class="num mt-0.5 text-h3 font-bold">15</dd></div>
+            <div class="card p-3"><dt class="text-xs text-ink-3">Live</dt><dd class="num mt-0.5 text-h3 font-bold">3</dd></div>
+            <div class="card p-3"><dt class="text-xs text-ink-3">Repos on zeno</dt><dd class="num mt-0.5 text-h3 font-bold">15</dd></div>
+          </dl>
         </section>
 
-        <section id="work">
-          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2 class="section-title">Work</h2>
-            <p class="mono text-xs text-ink-3">15 projects · 3 live · 940 screens · 950 wiki pages</p>
+        <section id="zeno" class="feature grid gap-5 p-4 md:p-6 lg:grid-cols-[1fr_1.1fr] lg:gap-8">
+          <div class="flex flex-col">
+            <p class="eyebrow">Open source · MIT · Claude Code plugin + CLI</p>
+            <h2 class="mt-2 text-h2 font-extrabold">zeno</h2>
+            <p class="mt-1 text-body text-band-2">Rules, knowledge and a decision gate for teams that build with Claude Code.</p>
+            <ul class="mt-4 grid gap-2.5 text-base">
+              <li class="flex gap-2.5"><i data-lucide="scale" class="mt-0.5 h-4 w-4 shrink-0"></i><span><b class="font-semibold">Weighs a request before acting.</b> <span class="text-band-2">DO IT, DO IT DIFFERENTLY or PUSH BACK, each reason cited.</span></span></li>
+              <li class="flex gap-2.5"><i data-lucide="search" class="mt-0.5 h-4 w-4 shrink-0"></i><span><b class="font-semibold">Finds what was decided.</b> <span class="text-band-2">Every wiki and decision record is searchable by Claude.</span></span></li>
+              <li class="flex gap-2.5"><i data-lucide="shield-check" class="mt-0.5 h-4 w-4 shrink-0"></i><span><b class="font-semibold">Turns hard rules into checks.</b> <span class="text-band-2">Layout, wiki, copies and each repo's architecture.</span></span></li>
+            </ul>
+            <div class="mt-5 flex flex-wrap gap-2 lg:mt-auto lg:pt-5">
+              <a href="../work/zeno.html" class="btn btn-primary"><i data-lucide="arrow-right" class="h-4 w-4"></i> How it works</a>
+              <a href="https://github.com/ritesh-firodiya/zeno-ai" class="btn btn-quiet"><i data-lucide="git-branch" class="h-4 w-4"></i> GitHub</a>
+            </div>
           </div>
-          <div class="mt-3 grid grid-cols-2 gap-2.5 md:grid-cols-4 md:gap-3">
-            <a href="../work/testing.html" class="card relative block overflow-hidden">
-              <div class="aspect-[11/9] overflow-hidden bg-muted"><img src="../../../../public/media/askcal/01-today.webp" alt="AskCal screenshot" class="shot shot--crop" /></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">AskCal</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--test">In App Store review</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">40 screens · 45 wiki pages</p>
+          <div class="term self-start" role="img" aria-label="zeno check across every repo finds an architecture breach in scrvio"><span class="term-dim">~/git/products $</span> zeno check --all -q
+scrvio  1 error, 1 warning
+  ✗ architecture  health.controller.ts → prisma.service.ts
+    <span class="term-dim">only-repositories-touch-prisma</span>
+  ! architecture  input-sanitizer.utils.ts
+    <span class="term-dim">no-orphans</span>
+14 products · 6 errors · 4 warnings
+
+<span class="term-dim">~/git/products/charades $</span> zeno check
+charades  ok  ✓</div>
+        </section>
+
+        <section id="work" class="mt-10">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 class="section-title">Selected work</h2>
+            <a href="#all" class="text-link text-sm">All 15 projects</a>
+          </div>
+          <div class="mt-3 grid gap-3 md:grid-cols-3">
+            <a href="../work/testing.html" class="card overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden bg-muted"><img src="../../../../public/media/askcal/01-today.webp" alt="AskCal, the Today screen" class="shot shot--crop" /></div>
+              <div class="p-4">
+                <div class="flex items-center gap-2"><img src="../../../../public/media/askcal/icon.svg" alt="" class="h-6 w-6 rounded-md" /><h3 class="text-body font-bold">AskCal</h3></div>
+                <p class="mt-1 text-base text-ink-2">A calorie counter that admits what it cannot see.</p>
+                <div class="mt-3 flex flex-wrap items-center gap-1.5"><span class="state state--test">In App Store review</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
               </div>
             </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="aspect-[11/9] overflow-hidden bg-muted"><img src="../../../../public/media/imposter/01-home.webp" alt="Imposter screenshot" class="shot shot--crop" /></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Imposter</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--test">In App Store review</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">65 screens · 4 wiki pages</p>
+            <a href="../work/project.html" class="card overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden bg-muted"><img src="../../../../public/media/aakalan/01-balances.webp" alt="Aakalan, the Balances screen" class="shot shot--crop" /></div>
+              <div class="p-4">
+                <div class="flex items-center gap-2"><img src="../../../../public/media/aakalan/icon.svg" alt="" class="h-6 w-6 rounded-md" /><h3 class="text-body font-bold">Aakalan</h3></div>
+                <p class="mt-1 text-base text-ink-2">Your expenses and everyone else's, on one ledger.</p>
+                <div class="mt-3 flex flex-wrap items-center gap-1.5"><span class="state state--test">Public iOS beta</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
               </div>
             </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/chitragupt/.context/designs/web/home/home.html?bare" title="Chitragupt design screen" loading="lazy" tabindex="-1"></iframe></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute right-2 top-3 w-16 md:w-20"><div class="embed embed--phone"><iframe src="../../../../../../products/chitragupt/.context/designs/mobile/home/home.html?bare" title="Chitragupt mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Chitragupt</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--test">Pre-launch</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">251 screens · 332 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/unreleased.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/babul/.context/designs/web/northwind/products.html?bare" title="Babul design screen" loading="lazy" tabindex="-1"></iframe></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Babul</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--build">In build</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">51 screens · 48 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="aspect-[11/9] overflow-hidden bg-muted"><img src="../../../../public/media/aakalan/01-balances.webp" alt="Aakalan screenshot" class="shot shot--crop" /></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Aakalan</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--test">Public iOS beta</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">49 screens · 49 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="aspect-[11/9] overflow-hidden bg-muted"><img src="../../../../public/media/charades/01-home.webp" alt="Charades screenshot" class="shot shot--crop" /></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Charades</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--live">Live on Google Play</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">16 screens · 20 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/testing.html" class="card relative block overflow-hidden">
-              <div class="aspect-[11/9] overflow-hidden [container-type:inline-size]" style="background:#2f7350"><div class="mx-auto mt-[16cqw] w-[94cqw] overflow-hidden rounded-t-[13cqw]"><img src="../../../../public/media/chess/01-board.webp" alt="Chess screenshot" class="shot rounded-none" /></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Chess</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--test">In Play testing</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">28 screens · 36 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="aspect-[11/9] overflow-hidden bg-muted"><img src="../../../../public/media/tic-tac-toe/01-home.webp" alt="Tic Tac Toe screenshot" class="shot shot--crop" /></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Tic Tac Toe</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--live">Live on both stores</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">8 screens · 13 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/scrvio/.context/designs/web/home/home.html?bare" title="Scrvio design screen" loading="lazy" tabindex="-1"></iframe></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Scrvio</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--test">Site is up</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">96 screens · 75 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/project.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/learning-platform/.context/designs/web/home/home.html?bare" title="Learning Platform design screen" loading="lazy" tabindex="-1"></iframe></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Learning Platform</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--live">Live demo</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">58 screens · 50 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/unreleased.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/dwarseva/.context/designs/web/home/home.html?bare" title="DwarSeva design screen" loading="lazy" tabindex="-1"></iframe></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute right-2 top-3 w-16 md:w-20"><div class="embed embed--phone"><iframe src="../../../../../../products/dwarseva/.context/designs/mobile/visitors/guard-visitors.html?bare" title="DwarSeva mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">DwarSeva</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--build">In build</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">104 screens · 91 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/unreleased.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/property-app/.context/designs/web/buyer/home.html?bare" title="Seedha Ghar design screen" loading="lazy" tabindex="-1"></iframe></div><div class="overflow-hidden rounded-lg border border-line-strong bg-surface shadow-lg absolute right-2 top-3 w-16 md:w-20"><div class="embed embed--phone"><iframe src="../../../../../../products/property-app/.context/designs/mobile/buyer/home.html?bare" title="Seedha Ghar mobile screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Seedha Ghar</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--draft">In design</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">81 screens · 34 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/unreleased.html" class="card relative block overflow-hidden">
-              <div class="flex aspect-[11/9] justify-center overflow-hidden bg-muted pt-3"><div class="w-36 shrink-0 overflow-hidden rounded-t-xl border border-b-0 border-line-strong md:w-40"><div class="embed embed--phone"><iframe src="../../../../../../products/plan-kid/.context/designs/mobile/home/home-conceive.html?bare" title="Plan-Kid design screen" loading="lazy" tabindex="-1"></iframe></div></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Plan-Kid</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--draft">In design</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">54 screens · 102 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/unreleased.html" class="card relative block overflow-hidden">
-              <div class="relative aspect-[11/9] overflow-hidden bg-muted"><div class="embed embed--fill"><iframe src="../../../../../../products/cooking/.context/designs/web/home/home.html?bare" title="Hamburg design screen" loading="lazy" tabindex="-1"></iframe></div></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">Hamburg</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--draft">In design</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">39 screens · 51 wiki pages</p>
-              </div>
-            </a>
-            <a href="../work/unreleased.html" class="card relative block overflow-hidden">
-              <div class="slot grid aspect-[11/9] place-items-start justify-center border-0 pt-10"><span class="mono text-2xs text-ink-3">No picture yet</span></div>
-              <div class="card-glass absolute inset-x-0 bottom-0 p-3">
-                <h3 class="text-body font-bold leading-tight">tradx</h3>
-                <div class="flex flex-wrap items-center gap-1.5 pt-2"><span class="state state--build">In build</span> <span class="tag"><i data-lucide="monitor" class="h-3 w-3"></i> Web</span></div>
-                <p class="mono mt-2 text-2xs text-ink-2">No design set yet</p>
+            <a href="../work/project.html" class="card overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden bg-muted"><img src="../../../../public/media/charades/01-home.webp" alt="Charades, the Home screen" class="shot shot--crop" /></div>
+              <div class="p-4">
+                <div class="flex items-center gap-2"><img src="../../../../public/media/charades/icon.webp" alt="" class="h-6 w-6 rounded-md" /><h3 class="text-body font-bold">Charades</h3></div>
+                <p class="mt-1 text-base text-ink-2">Dumb charades for the room you are already in.</p>
+                <div class="mt-3 flex flex-wrap items-center gap-1.5"><span class="state state--live">Live on both stores</span> <span class="tag"><i data-lucide="smartphone" class="h-3 w-3"></i> Mobile</span></div>
               </div>
             </a>
           </div>
         </section>
 
-        <section id="process" class="mt-8">
-          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h2 class="section-title">Process</h2>
-            <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-3"><span class="inline-flex items-center gap-1.5"><span class="dot"></span> Done</span><span class="inline-flex items-center gap-1.5"><span class="dot dot--half"></span> Under way</span><span class="inline-flex items-center gap-1.5"><span class="dot dot--none"></span> Not started</span></p>
+        <section id="all" class="mt-10">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h2 class="section-title">All projects</h2>
+            <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter by state">
+              <button type="button" class="chip chip--on" aria-pressed="true">All 15</button>
+              <button type="button" class="chip" aria-pressed="false">Live 3</button>
+              <button type="button" class="chip" aria-pressed="false">In testing 6</button>
+              <button type="button" class="chip" aria-pressed="false">In build 3</button>
+              <button type="button" class="chip" aria-pressed="false">In design 3</button>
+            </div>
           </div>
-          <div class="mt-3">
-          <div class="card overflow-hidden">
+          <div class="card mt-3 overflow-hidden md:grid md:grid-cols-2 md:[&>a:nth-child(odd)]:border-r md:[&>a]:border-line">
+            <a href="../work/testing.html" class="row-link"><img src="../../../../public/media/askcal/icon.svg" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">AskCal</b><span class="block truncate text-sm text-ink-2">A calorie counter that admits what it cannot see.</span></span><span class="state state--test">Review</span></a>
+            <a href="../work/project.html" class="row-link"><img src="../../../../public/media/imposter/icon.svg" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">Imposter</b><span class="block truncate text-sm text-ink-2">Everyone gets the word. Except one of you.</span></span><span class="state state--test">Review</span></a>
+            <a href="../work/project.html" class="row-link"><img src="../../../../public/media/chitragupt/icon.svg" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">Chitragupt</b><span class="block truncate text-sm text-ink-2">Household tax review for salaried Indian filers.</span></span><span class="state state--test">Pre-launch</span></a>
+            <a href="../work/unreleased.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">B</span><span class="min-w-0 flex-1"><b class="block font-semibold">Babul</b><span class="block truncate text-sm text-ink-2">Your design and your product, always in sync.</span></span><span class="state state--build">Build</span></a>
+            <a href="../work/project.html" class="row-link"><img src="../../../../public/media/aakalan/icon.svg" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">Aakalan</b><span class="block truncate text-sm text-ink-2">Your expenses and everyone else's, on one ledger.</span></span><span class="state state--test">Beta</span></a>
+            <a href="../work/project.html" class="row-link"><img src="../../../../public/media/charades/icon.webp" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">Charades</b><span class="block truncate text-sm text-ink-2">Dumb charades for the room you are already in.</span></span><span class="state state--live">Live</span></a>
+            <a href="../work/testing.html" class="row-link"><img src="../../../../public/media/chess/icon.svg" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">Chess</b><span class="block truncate text-sm text-ink-2">The whole game, on one phone.</span></span><span class="state state--test">Testing</span></a>
+            <a href="../work/project.html" class="row-link"><img src="../../../../public/media/tic-tac-toe/icon.webp" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">Tic Tac Toe</b><span class="block truncate text-sm text-ink-2">The classic 3×3, done properly.</span></span><span class="state state--live">Live</span></a>
+            <a href="../work/project.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">S</span><span class="min-w-0 flex-1"><b class="block font-semibold">Scrvio</b><span class="block truncate text-sm text-ink-2">Privacy-first browser screen recorder.</span></span><span class="state state--test">Site up</span></a>
+            <a href="../work/project.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">L</span><span class="min-w-0 flex-1"><b class="block font-semibold">Learning Platform</b><span class="block truncate text-sm text-ink-2">An LMS where courses are code.</span></span><span class="state state--live">Demo</span></a>
+            <a href="../work/unreleased.html" class="row-link"><img src="../../../../public/media/dwarseva/icon.webp" alt="" class="app-icon" /><span class="min-w-0 flex-1"><b class="block font-semibold">DwarSeva</b><span class="block truncate text-sm text-ink-2">Approval and society management.</span></span><span class="state state--build">Build</span></a>
+            <a href="../work/unreleased.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">S</span><span class="min-w-0 flex-1"><b class="block font-semibold">Seedha Ghar</b><span class="block truncate text-sm text-ink-2">Map-based property listings.</span></span><span class="state state--draft">Design</span></a>
+            <a href="../work/unreleased.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">P</span><span class="min-w-0 flex-1"><b class="block font-semibold">Plan-Kid</b><span class="block truncate text-sm text-ink-2">A parenthood journey app for couples.</span></span><span class="state state--draft">Design</span></a>
+            <a href="../work/unreleased.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">H</span><span class="min-w-0 flex-1"><b class="block font-semibold">Hamburg</b><span class="block truncate text-sm text-ink-2">Cook, learn, remember.</span></span><span class="state state--draft">Design</span></a>
+            <a href="../work/unreleased.html" class="row-link"><span class="app-icon app-icon--none" aria-hidden="true">T</span><span class="min-w-0 flex-1"><b class="block font-semibold">tradx</b><span class="block truncate text-sm text-ink-2">India-focused trading research and paper trading.</span></span><span class="state state--build">Build</span></a>
+          </div>
+        </section>
+
+        <section id="process" class="mt-10">
+          <h2 class="section-title">How I build</h2>
+          <ol class="mt-3 grid grid-cols-2 gap-x-4 gap-y-5 md:grid-cols-4">
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="lightbulb" class="h-4 w-4 text-brand-500"></i> 1. Idea</p><p class="mt-1 text-sm text-ink-2">A thesis</p><p class="mt-1.5 text-xs text-ink-3">zeno weighs it against the constitution</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="search" class="h-4 w-4 text-brand-500"></i> 2. Research</p><p class="mt-1 text-sm text-ink-2">Notes, a brief</p><p class="mt-1.5 text-xs text-ink-3">filed in the wiki, searchable</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="list-checks" class="h-4 w-4 text-brand-500"></i> 3. Define</p><p class="mt-1 text-sm text-ink-2">Decisions, features</p><p class="mt-1.5 text-xs text-ink-3">decision records the gate cites</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="pencil-ruler" class="h-4 w-4 text-brand-500"></i> 4. Design</p><p class="mt-1 text-sm text-ink-2">Screens, a flow chart</p><p class="mt-1.5 text-xs text-ink-3">design sets checked against one standard</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="hammer" class="h-4 w-4 text-brand-500"></i> 5. Build</p><p class="mt-1 text-sm text-ink-2">The app, tests</p><p class="mt-1.5 text-xs text-ink-3">import rules fail the check</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="rocket" class="h-4 w-4 text-brand-500"></i> 6. Release</p><p class="mt-1 text-sm text-ink-2">An installable build</p><p class="mt-1.5 text-xs text-ink-3">secrets backed up, never committed</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="megaphone" class="h-4 w-4 text-brand-500"></i> 7. Market</p><p class="mt-1 text-sm text-ink-2">A findable listing</p><p class="mt-1.5 text-xs text-ink-3">one home for every price</p></li>
+            <li class="step"><p class="flex items-center gap-1.5 font-bold"><i data-lucide="activity" class="h-4 w-4 text-brand-500"></i> 8. Operate</p><p class="mt-1 text-sm text-ink-2">Metrics, fixes</p><p class="mt-1.5 text-xs text-ink-3">overrides logged, rules learn</p></li>
+          </ol>
+          <details class="card mt-5 overflow-hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-3 px-4 py-3 font-semibold">Where each project is <span class="flex flex-wrap items-center gap-x-3 text-xs font-normal text-ink-3"><span class="inline-flex items-center gap-1.5"><span class="dot"></span> Done</span><span class="inline-flex items-center gap-1.5"><span class="dot dot--half"></span> Under way</span><span class="inline-flex items-center gap-1.5"><span class="dot dot--none"></span> Not started</span></span></summary>
+            <div class="border-t border-line">
             <div class="md:hidden">
               <ol class="grid grid-cols-2 gap-x-3 gap-y-1.5 border-b border-line bg-muted p-3 text-xs">
                 <li><b class="font-bold">1. Idea</b> <span class="text-ink-3">A thesis</span></li>
@@ -204,7 +180,6 @@
                 <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/unreleased.html" class="text-base font-semibold">Seedha Ghar</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
                 <li class="border-b border-line px-3 py-2.5 last:border-b-0"><a href="../work/unreleased.html" class="text-base font-semibold">Hamburg</a><div class="mt-1.5 grid grid-cols-8"><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></div></li>
               </ul>
-            </div>
             <table class="tbl board hidden md:table">
               <thead><tr><th scope="col">Project</th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="lightbulb" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 1. Idea</span><span class="board-leaves">A thesis</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="search" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 2. Research</span><span class="board-leaves">Notes, a brief</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="list-checks" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 3. Define</span><span class="board-leaves">Decisions, features</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="pencil-ruler" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 4. Design</span><span class="board-leaves">Screens, a flow chart</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="hammer" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 5. Build</span><span class="board-leaves">The app, tests</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="rocket" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 6. Release</span><span class="board-leaves">An installable build</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="megaphone" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 7. Market</span><span class="board-leaves">A findable listing</span></th><th scope="col"><span class="flex items-center gap-1.5 text-ink"><i data-lucide="activity" class="h-3.5 w-3.5 shrink-0 text-brand-500"></i> 8. Operate</span><span class="board-leaves">Metrics, fixes</span></th></tr></thead>
               <tbody>
@@ -222,18 +197,22 @@
                 <tr><td><a href="../work/unreleased.html" class="font-semibold hover:text-brand-500">Hamburg</a></td><td><span class="dot" role="img" aria-label="Idea: Done" title="Idea: Done"></span></td><td><span class="dot" role="img" aria-label="Research: Done" title="Research: Done"></span></td><td><span class="dot" role="img" aria-label="Define: Done" title="Define: Done"></span></td><td><span class="dot" role="img" aria-label="Design: Done" title="Design: Done"></span></td><td><span class="dot dot--none" role="img" aria-label="Build: Not started" title="Build: Not started"></span></td><td><span class="dot dot--none" role="img" aria-label="Release: Not started" title="Release: Not started"></span></td><td><span class="dot dot--half" role="img" aria-label="Market: Under way" title="Market: Under way"></span></td><td><span class="dot dot--none" role="img" aria-label="Operate: Not started" title="Operate: Not started"></span></td></tr>
               </tbody>
             </table>
-          </div>
-          </div>
+            </table>
+            </div>
+          </details>
         </section>
       </main>
 
     <footer class="mt-auto border-t border-line">
-      <div class="wrap flex flex-wrap items-center gap-x-5 gap-y-1.5 py-4 text-sm text-ink-2">
-        <a href="mailto:firodiya.ritesh@gmail.com" class="font-semibold text-ink">firodiya.ritesh@gmail.com</a>
-        <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-        <a href="https://github.com/ritesh-firodiya">GitHub</a>
-        <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        <span class="ml-auto flex gap-5 text-ink-3">
+      <div class="wrap grid gap-3 py-5 text-sm text-ink-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5">
+        <a href="mailto:firodiya.ritesh@gmail.com" class="inline-flex items-center gap-1.5 font-semibold text-ink"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
+        <span class="flex flex-wrap gap-x-5 gap-y-1">
+          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
+          <a href="https://github.com/ritesh-firodiya">GitHub</a>
+          <a href="https://github.com/ritesh-firodiya/zeno-ai">zeno on GitHub</a>
+          <a href="../../../../public/resume.pdf">Résumé PDF</a>
+        </span>
+        <span class="flex gap-5 text-ink-3 sm:ml-auto">
           <a href="../support/support.html">Support</a>
           <a href="../legal/legal.html">Legal</a>
         </span>

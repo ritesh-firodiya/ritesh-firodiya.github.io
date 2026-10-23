@@ -7,6 +7,7 @@ Navigation. The screen inventory is the flow chart at
 | Page | Screen | Route |
 |---|---|---|
 | [[home]] | home/home.html | `/`, with `#work` and `#process` |
+| [[zeno]] | work/zeno.html | `/products/zeno/` |
 | [[project]] | work/project.html | `/products/<slug>/` |
 | [[testing]] | work/testing.html | `/products/<slug>/` |
 | [[unreleased]] | work/unreleased.html | `/products/<slug>/` |
@@ -24,3 +25,4 @@ Navigation. The screen inventory is the flow chart at
 |---|---|
 | 2026-10-04 | [[2026-10-04-hiring-first-redesign]] |
 | 2026-10-04 | [[2026-10-04-four-pages-mobile-first]] |
+| 2026-10-23 | [[2026-10-23-zeno-and-ux-redesign]] |

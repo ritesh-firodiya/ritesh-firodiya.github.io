@@ -45,7 +45,7 @@ export const SETS = {
      named repos and does not list them, so the key is still how each is read.
      The org setting "deploy keys" must stay enabled for this to work. */
   scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
-  trunk: { repo: "ritvi-apps/trunk", local: "trunk", key: "DEPLOY_KEY_TRUNK" },
+  babul: { repo: "ritvi-apps/babul", local: "babul", key: "DEPLOY_KEY_BABUL" },
   dwarseva: { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
 };
 

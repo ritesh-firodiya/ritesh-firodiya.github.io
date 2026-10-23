@@ -228,7 +228,7 @@ data tests, **`pnpm sync`**, build, export tests, then publish `out/`.
 |---|---|---|
 | `DESIGNS_TOKEN` | the eight repos under `ritvi-apps` | fine-grained PAT, Contents: read. **Expires 2027-10-05.** Its resource owner must be the org: a token owned by the user account cannot see org repos |
 | `DEPLOY_KEY_SCRVIO` | `ritvi-apps/scrvio` | deploy key, never expires |
-| `DEPLOY_KEY_TRUNK` | `ritvi-apps/trunk` | deploy key |
+| `DEPLOY_KEY_BABUL` | `ritvi-apps/babul` | deploy key (made 2026-10-23; the private half is in `~/git/local/secrets/personal/ritesh-firodiya.github.io/`) |
 | `DEPLOY_KEY_DWARSEVA` | `ritvi-apps/dwarseva` | deploy key |
 
 A fine-grained PAT covers one owner, so a product under another owner gets a

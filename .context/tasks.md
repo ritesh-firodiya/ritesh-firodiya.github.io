@@ -20,6 +20,7 @@ horizon: 2026-10-26
       unblock: read each listing's website field  next-check:2026-10-11
 
 ## Done
+- [x] T033 The full rename: the slug is `babul` and `/products/trunk/` forwards to `/products/babul/`; the sync reads `ritvi-apps/babul` from `~/git/products/babul` with a new read-only deploy key (`DEPLOY_KEY_BABUL`; the old key and secret removed); staging links are `babul-staging.vercel.app`  done:2026-10-23
 - [x] T031 Trunk is Babul: name, tagline, blurb, stack, features and picture (All products); marked In build while it is rebuilt (the staging demo still runs the old app); the slug stays `trunk` until the owner renames the infrastructure  done:2026-10-23
 - [x] T032 Phone-first pass: every page in the sitemap (1029) loaded at 390 × 844; the wiki pages that scrolled sideways (long paths, URLs, wide tables) now wrap, in `globals.css` and the design set's `shared.css`  done:2026-10-23
 - [x] T029 `DESIGNS_TOKEN` reads `chess` and `learning-platform`; deployed and checked live  done:2026-10-12
@@ -48,7 +49,8 @@ horizon: 2026-10-26
 ### 2026-10-23
 - Done: T031, T032. Home, a project page, the résumé and the wiki checked by eye at 390; home keeps two cards a row, as drawn.
 - Learned: the sync's routes.js evaluation timed out once under load (Babul's manifest is 208KB but evaluates in 0.04s); a rerun passed.
-- Next: push to deploy, on the owner's word.
+- T033 the same day, on the owner's word: the full rename. The deploy key was checked with `git ls-remote` as CI uses it.
+- Next: push to deploy.
 
 ### 2026-10-04
 - Done: T000. 15 screens + 1 state, light and dark, responsive to 390px.

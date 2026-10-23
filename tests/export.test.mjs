@@ -70,6 +70,7 @@ const FORWARDS = {
   "/work/chitragupt/": "/products/chitragupt/",
   "/products/dwarseva-property/": "/products/seedha-ghar/",
   "/products/dwarseva-societies/": "/products/dwarseva/",
+  "/products/trunk/": "/products/babul/",
 };
 
 test("out/ actually contains the site", () => {

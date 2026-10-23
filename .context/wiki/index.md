@@ -25,4 +25,5 @@ Navigation. The screen inventory is the flow chart at
 |---|---|
 | 2026-10-04 | [[2026-10-04-hiring-first-redesign]] |
 | 2026-10-04 | [[2026-10-04-four-pages-mobile-first]] |
-| 2026-10-23 | [[2026-10-23-zeno-and-ux-redesign]] |
+| 2026-10-23 | [[2026-10-23-zeno-and-ux-redesign]] | superseded
+| 2026-10-23 | [[2026-10-23-launch-redesign]] |

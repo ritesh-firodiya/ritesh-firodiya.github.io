@@ -583,9 +583,10 @@ select:focus-visible {
 /* ============================================================================
    PALETTE — ritesh-firodiya.github.io. The only block that differs between sets.
    ============================================================================
-   Direction: PROOF. The reader is hiring. Cool paper, navy ink, one blue, and
-   white cards that hold real screenshots. Colour is spent on two things only:
-   the next action (brand) and how far along a project is (the state scale).
+   Direction: LAUNCH (2026-10-23, replaces PROOF). Dark first: a near-black
+   ground, glass cards, one violet brand and a cyan accent that only ever
+   appear together in the glow and the gradient headline. Light is the same
+   design remapped, not a second design.
 
    RESERVED: release state — `--live` / `--test` / `--build` / `--draft`.
    Green means anyone can install or open it today. Amber means a build exists
@@ -604,43 +605,47 @@ select:focus-visible {
 
 :root {
   /* ---- ground ---- */
-  --page:    #F5F6F8;
-  --frame:   #F5F6F8;
+  --page:    #F7F7FB;
+  --frame:   #F7F7FB;
   --surface: #FFFFFF;
-  --muted:   #ECEEF2;
-  --sunken:  #E1E4EA;
+  --muted:   #EFEFF6;
+  --sunken:  #E4E4EE;
 
   /* ---- ink ---- */
-  --ink:         #0B1220;
-  --ink-2:       #3A4458;
-  --ink-3:       #5A6478;
-  --ink-4:       #7A8496;
+  --ink:         #0E0F1A;
+  --ink-2:       #3C3F52;
+  --ink-3:       #5A5E73;
+  --ink-4:       #7B7F93;
   --ink-inverse: #FFFFFF;
 
-  --line:        #DFE3EA;
-  --line-strong: #C3C9D4;
+  --line:        #E2E3EC;
+  --line-strong: #C8CAD8;
 
-  /* ---- brand · the one blue. Links, the primary button, the active tab. ---- */
-  --brand-50:  #EEF1FF;
-  --brand-100: #DDE3FF;
-  --brand-200: #BBC6FF;
-  --brand-400: #6177F5;
-  --brand-500: #3147E8;
-  --brand-700: #2233B0;
-  --brand-900: #141E6B;
+  /* ---- brand · violet. The next action, the active tab, the glow. ---- */
+  --brand-50:  #F1EEFF;
+  --brand-100: #E3DDFF;
+  --brand-200: #C7BBFF;
+  --brand-400: #7A64F7;
+  --brand-500: #5B3FF0;
+  --brand-700: #4429C9;
+  --brand-900: #22146B;
 
-  /* ---- status ---- */
+  /* ---- accent · cyan. Only the far end of the glow and the gradient. ---- */
+  --accent-400: #22B8D1;
+  --accent-500: #0E7C90;
+
+  /* ---- status · verdicts and errors, never release state ---- */
   --success:    #14713F;  --success-bg: #E6F3EB;  --success-fg: #0D4A29;
   --warn:       #8A5A00;  --warn-bg:    #F8EEDC;  --warn-fg:    #5C3C00;
   --danger:     #A11B1B;  --danger-bg:  #F8E7E7;  --danger-fg:  #6E1212;
   --info:       #1F4E8C;  --info-bg:    #E7EEF8;  --info-fg:    #14355F;
 
-  /* ---- the inverted band · contact block and footer ---- */
-  --band:     #0B1220;
-  --band-ink: #FFFFFF;
-  --band-2:   #9AA5BA;
+  /* ---- the inverted band · terminals ---- */
+  --band:     #0B0C14;
+  --band-ink: #F2F3F7;
+  --band-2:   #9A9EB2;
 
-  --shadow-tint: 11 18 32;
+  --shadow-tint: 14 15 26;
 
   /* ---- RESERVED · release state ---- */
   --live:  #14713F;  --live-bg:  #E6F3EB;
@@ -650,52 +655,53 @@ select:focus-visible {
 }
 
 /* A theme is a token remap (§8) — never a `dark:` prefix. `.phone--dark` is
-   what _chrome.js toggles. Roles invert rather than values: brand-50 stays
-   "the quietest wash of the brand" and becomes the darkest blue here, and
-   brand-500 moves up the ramp because the readable blue on navy is the
-   lighter one. */
+   what _chrome.js toggles, and dark is this set's first theme (routes.js), so
+   it is what a screen opens in. */
 .phone--dark {
-  --page:    #0A0E16;
-  --frame:   #0A0E16;
-  --surface: #131926;
-  --muted:   #101521;
-  --sunken:  #06090F;
+  --page:    #07080C;
+  --frame:   #07080C;
+  --surface: #10121A;
+  --muted:   #0C0E15;
+  --sunken:  #040509;
 
-  --ink:         #EDF0F6;
-  --ink-2:       #B5BDCC;
-  --ink-3:       #8D97AA;
-  --ink-4:       #687286;
-  --ink-inverse: #0A0E16;
+  --ink:         #F2F3F7;
+  --ink-2:       #B4B8C7;
+  --ink-3:       #8A8FA3;
+  --ink-4:       #6A6F82;
+  --ink-inverse: #07080C;
 
-  --line:        #222A3A;
-  --line-strong: #364057;
+  --line:        #1C1F2C;
+  --line-strong: #2C3044;
 
-  --brand-50:  #111838;
-  --brand-100: #18224F;
-  --brand-200: #25347A;
-  --brand-400: #6F84FF;
-  --brand-500: #8C9DFF;
-  --brand-700: #B7C2FF;
-  --brand-900: #E0E5FF;
+  --brand-50:  #15112F;
+  --brand-100: #1D1745;
+  --brand-200: #2C246B;
+  --brand-400: #8F7BFF;
+  --brand-500: #A595FF;
+  --brand-700: #C9BEFF;
+  --brand-900: #EDE9FF;
 
-  --success:    #57C98A;  --success-bg: #12261B;  --success-fg: #A6E3C2;
-  --warn:       #D9A441;  --warn-bg:    #261E0F;  --warn-fg:    #EBCB8B;
-  --danger:     #EF7A7A;  --danger-bg:  #2A1414;  --danger-fg:  #F6B5B5;
-  --info:       #7FA8DE;  --info-bg:    #131C28;  --info-fg:    #B7CFEE;
+  --accent-400: #3CC8DB;
+  --accent-500: #5EE1F0;
 
-  --band:     #131926;
-  --band-ink: #EDF0F6;
-  --band-2:   #8D97AA;
+  --success:    #57C98A;  --success-bg: #10231A;  --success-fg: #A6E3C2;
+  --warn:       #D9A441;  --warn-bg:    #241C0E;  --warn-fg:    #EBCB8B;
+  --danger:     #F08A8A;  --danger-bg:  #2A1215;  --danger-fg:  #F6B5B5;
+  --info:       #7FA8DE;  --info-bg:    #111A27;  --info-fg:    #B7CFEE;
+
+  --band:     #0B0C14;
+  --band-ink: #F2F3F7;
+  --band-2:   #9A9EB2;
 
   --shadow-tint: 0 0 0;
   --shadow-a1: 0.3;
   --shadow-a2: 0.4;
   --shadow-a3: 0.6;
 
-  --live:  #57C98A;  --live-bg:  #12261B;
-  --test:  #D9A441;  --test-bg:  #261E0F;
-  --build: #A893F0;  --build-bg: #1C1730;
-  --draft: #A3ACBD;  --draft-bg: #1A1F2B;
+  --live:  #57C98A;  --live-bg:  #10231A;
+  --test:  #D9A441;  --test-bg:  #241C0E;
+  --build: #A893F0;  --build-bg: #1B1630;
+  --draft: #A3ACBD;  --draft-bg: #171A24;
 }
 
 /* ============================================================================
@@ -906,31 +912,84 @@ a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transf
 /* A store screenshot standing on the page rather than lying in a box. */
 .shot--lift { box-shadow: var(--shadow-lg); border: 1px solid var(--line); }
 
-/* ---- 2026-10-23 redesign: zeno, the featured strip and the project list ---- */
-/* A terminal transcript. Drawn on the inverted band so it reads as a terminal
-   in both themes; the text is real zeno output, never a mock prompt. */
+/* ---- LAUNCH components (2026-10-23) ------------------------------------------ */
+/* A terminal transcript, on the band in both themes. Pass and fail are written
+   as ✓ and ✗, never green and red: green is the reserved release colour. */
 .term {
   font-family: var(--font-mono); font-size: var(--fs-sm); line-height: 1.6;
   background: var(--band); color: var(--band-ink);
-  border: 1px solid color-mix(in srgb, var(--band-2) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--band-2) 25%, transparent);
   border-radius: var(--radius-lg); padding: 14px 16px; white-space: pre-wrap; overflow-wrap: anywhere;
 }
 .term-dim { color: var(--band-2); }
-/* No green or red here: green is the reserved release colour, and the band is
-   dark in both themes, so pass and fail are written as ✓ and ✗. */
-/* The zeno strip on Home: the inverted band, inset as a card. */
-.feature { background: var(--band); color: var(--band-ink); border-radius: var(--radius-lg); }
-.feature .eyebrow { color: var(--band-2); }
-.feature .btn-quiet { background: transparent; color: var(--band-ink); border-color: color-mix(in srgb, var(--band-2) 50%, transparent); }
-/* One row of the project list. */
-.row-link {
-  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
-  border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
+
+/* The glow behind a hero: violet from the top, cyan from the side. Drawn on a
+   pseudo-element so it never takes clicks and never widens the page. */
+.glow { position: relative; isolation: isolate; overflow: hidden; }
+.glow::before {
+  content: ""; position: absolute; inset: -20% -10% auto -10%; height: 140%; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(40% 45% at 50% 0%, color-mix(in srgb, var(--brand-500) 38%, transparent), transparent 70%),
+    radial-gradient(30% 35% at 85% 20%, color-mix(in srgb, var(--accent-500) 22%, transparent), transparent 70%);
 }
-.row-link:hover { background: var(--muted); }
+/* A faint grid under the glow, the "product launch" texture. */
+.grid-bg {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(60% 60% at 50% 30%, #000 30%, transparent 75%);
+          mask-image: radial-gradient(60% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+/* The gradient headline. Ink to brand to accent, so it still reads as ink. */
+.grad-text {
+  background: linear-gradient(100deg, var(--ink) 30%, var(--brand-500) 70%, var(--accent-500));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.display {
+  font-size: clamp(2.1rem, 5.4vw, 4rem); line-height: 1.04; letter-spacing: -0.045em; font-weight: 800;
+}
+/* Glass: a see-through card with a hairline that catches the glow. */
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: var(--radius-xl);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+}
+:where(a.glass) { display: block; }
+a.glass { color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
+a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transparent); transform: translateY(-2px); }
+/* The step number in Know → Enforce → Ship. */
+.step-num {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 700; color: var(--ink-inverse);
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+}
+/* A verdict. Push back is danger, do it differently is warn, do it is success:
+   these are verdicts, which is what the status roles are for. */
+.verdict { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: var(--radius-pill);
+  font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .04em; }
+.verdict--push { color: var(--danger); background: var(--danger-bg); }
+.verdict--diff { color: var(--warn); background: var(--warn-bg); }
+.verdict--do   { color: var(--success); background: var(--success-bg); }
+/* The request a verdict answered, set as a quote. */
+.ask { font-size: var(--fs-lead); line-height: 1.35; font-weight: 600; color: var(--ink); }
+.ask::before { content: "“"; color: var(--brand-500); }
+.ask::after  { content: "”"; color: var(--brand-500); }
+/* The lifecycle strip: eight stages joined by one gradient line. */
+.pdlc { position: relative; }
+.pdlc::before { content: ""; position: absolute; left: 15px; top: 16px; bottom: 16px; width: 2px;
+  background: linear-gradient(var(--brand-500), var(--accent-500)); opacity: .5; }
+@media (min-width: 768px) {
+  .pdlc::before { left: 16px; right: 16px; top: 15px; bottom: auto; width: auto; height: 2px;
+    background: linear-gradient(90deg, var(--brand-500), var(--accent-500)); }
+}
+.pdlc-dot { position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--page); border: 2px solid var(--brand-500); color: var(--brand-500); }
 .app-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--line); object-fit: cover; }
 .app-icon--none { display: grid; place-items: center; background: var(--muted); font-weight: 700; color: var(--ink-3); }
-/* A stage of the process: number, name, what it leaves, what zeno holds it to. */
-.step { border-top: 2px solid var(--brand-500); padding-top: 10px; }
-/* The in-page section switcher on a project page. Sticky under the header. */
-.subnav { position: sticky; top: 53px; z-index: 20; background: color-mix(in srgb, var(--page) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+/* The in-page section switcher on a long page. Sticky under the header. */
+.subnav { position: sticky; top: 53px; z-index: 20; background: color-mix(in srgb, var(--page) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+/* The project-card picture on the dark ground: a soft spotlight behind the art. */
+.spot { background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--brand-500) 18%, transparent), transparent 70%), var(--muted); }

@@ -19,7 +19,7 @@ window.ROUTES = {
      phone layout. There is no separate mobile surface, so the toggle shows
      `mobile` struck through. */
   surfaces: ["web"],
-  themes: ["light", "dark"],
+  themes: ["dark", "light"],
 
   /* The laptop this is designed against. _chrome.js publishes these as
      --frame-w / --frame-h. */

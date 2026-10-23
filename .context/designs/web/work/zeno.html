@@ -23,143 +23,113 @@
         <nav class="ml-auto flex items-center gap-4 md:gap-6" aria-label="Main">
           <a href="../home/home.html#work" class="nav-link">Work</a>
           <a href="../work/zeno.html" class="nav-link nav-link--on" aria-current="page">zeno</a>
-          <a href="../home/home.html#process" class="nav-link">Process</a>
           <a href="../resume/resume.html" class="nav-link">Résumé</a>
         </nav>
         <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-primary hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
+        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-quiet hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
       </div>
     </header>
 
-      <main class="pb-12">
-        <section class="wrap grid gap-6 py-6 md:py-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-          <div>
-            <a href="../home/home.html#zeno" class="inline-flex items-center gap-1 text-sm text-ink-3 hover:text-ink"><i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Home</a>
-            <div class="mt-2 flex flex-wrap items-center gap-2.5">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-band text-band-ink"><i data-lucide="scale" class="h-5 w-5"></i></span>
-              <h1 class="page-title">zeno</h1>
-              <span class="chip">Open source · MIT</span> <span class="chip">v0.7.0</span>
+      <main class="pb-16">
+        <section class="glow">
+          <div class="grid-bg absolute inset-0 -z-10" aria-hidden="true"></div>
+          <div class="wrap pb-12 pt-12 text-center md:pb-16 md:pt-20">
+            <p class="flex flex-wrap justify-center gap-1.5"><span class="chip">Open source · MIT</span> <span class="chip">v0.7.0</span> <span class="chip">Claude Code plugin + CLI</span></p>
+            <h1 class="display grad-text mx-auto mt-5 max-w-[15ch]">Your domain knowledge, kept local. Enforced.</h1>
+            <p class="mx-auto mt-5 max-w-[56ch] text-lead text-ink-2">zeno is a productivity tool for the whole product lifecycle. Your rules, prices and past decisions stay in your repo, and the AI checks them before it acts. It guesses less, and you ship faster.</p>
+            <div class="mt-7 flex flex-wrap justify-center gap-2">
+              <a href="https://github.com/ritesh-firodiya/zeno" class="btn btn-primary"><i data-lucide="git-branch" class="h-4 w-4"></i> Get it on GitHub</a>
+              <a href="#caught" class="btn btn-quiet">What it caught <i data-lucide="arrow-down" class="h-4 w-4"></i></a>
             </div>
-            <p class="mt-2.5 max-w-[56ch] text-body text-ink-2">A productivity tool for the product development lifecycle. It keeps your domain knowledge and AI rules in your own repos, and enforces them, so the AI hallucinates less and your team ships faster. A Claude Code plugin and a CLI.</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <a href="https://github.com/ritesh-firodiya/zeno" class="btn btn-primary"><i data-lucide="git-branch" class="h-4 w-4"></i> View on GitHub</a>
-              <a href="#how" class="btn btn-quiet"><i data-lucide="arrow-down" class="h-4 w-4"></i> How it works</a>
-            </div>
-            <div class="term mt-4 text-xs"><span class="term-dim">$</span> claude plugin marketplace add ritesh-firodiya/zeno
+            <div class="term mx-auto mt-8 max-w-[34rem] text-left text-xs"><span class="term-dim">$</span> claude plugin marketplace add ritesh-firodiya/zeno
 <span class="term-dim">$</span> claude plugin install zeno@zeno
 <span class="term-dim">$</span> npm install -g @freetesh/zeno</div>
-            <dl class="mt-4 grid grid-cols-3 gap-2 text-center">
-              <div class="card p-3"><dt class="text-xs text-ink-3">Repos on it</dt><dd class="num mt-0.5 text-h3 font-bold">15</dd></div>
-              <div class="card p-3"><dt class="text-xs text-ink-3">Principles</dt><dd class="num mt-0.5 text-h3 font-bold">13</dd></div>
-              <div class="card p-3"><dt class="text-xs text-ink-3">Eval cases</dt><dd class="num mt-0.5 text-h3 font-bold">5</dd></div>
-            </dl>
           </div>
-          <figure>
-            <div class="term"><span class="term-dim">› Move every product to Firebase to cut the hosting bill.</span>
-
-Verdict: PUSH BACK
-Goal: Lower the monthly hosting bill across the products
-Size: too-large
-Why:
-- C-07 Four apps are already on Firebase; three are offline games with no server. <span class="term-dim">— */firebase.json</span>
-- C-07 The Postgres apps cost ~$0 today on Neon Free + Vercel Hobby. <span class="term-dim">— trunk/.context/ops/runbooks/staging.md</span>
-- C-08 Four apps use Prisma + Postgres. Moving means rewriting data model, queries and auth for each. <span class="term-dim">— */packages/db/package.json</span>
-Instead: measure the bills first.</div>
-            <figcaption class="mt-2 text-xs text-ink-3">A real verdict from the weigh gate, shortened. Every reason cites a principle and a file.</figcaption>
-          </figure>
         </section>
 
-        <nav class="subnav" aria-label="On this page">
-          <div class="wrap no-scrollbar flex gap-5 overflow-x-auto py-2 text-sm">
-            <a href="#problem" class="nav-link nav-link--on">The problem</a>
-            <a href="#how" class="nav-link">How it works</a>
-            <a href="#caught" class="nav-link">What it caught</a>
-            <a href="#decisions" class="nav-link">Decisions</a>
-            <a href="#principles" class="nav-link">Principles</a>
-          </div>
-        </nav>
-
         <div class="wrap">
-          <section id="problem" class="grid gap-3 pt-6 md:grid-cols-3">
-            <h2 class="section-title md:col-span-3">The problem</h2>
-            <div class="card p-4"><i data-lucide="copy" class="h-5 w-5 text-brand-500"></i><p class="mt-2 font-semibold">Rules drift</p><p class="mt-1 text-sm text-ink-2">The same rules were copied into fifteen CLAUDE.md files. Each copy changed on its own.</p></div>
-            <div class="card p-4"><i data-lucide="history" class="h-5 w-5 text-brand-500"></i><p class="mt-2 font-semibold">Decisions get re-made</p><p class="mt-1 text-sm text-ink-2">Every session starts fresh. A choice settled last month came back as a new idea.</p></div>
-            <div class="card p-4"><i data-lucide="zap" class="h-5 w-5 text-brand-500"></i><p class="mt-2 font-semibold">The agent says yes too fast</p><p class="mt-1 text-sm text-ink-2">A large request got built before anyone asked if it was worth the cost.</p></div>
-          </section>
-
-          <section id="how" class="pt-10">
-            <h2 class="section-title">How it works</h2>
-            <div class="mt-3 grid gap-3 md:grid-cols-3">
-              <div class="card p-4">
-                <p class="eyebrow">Plugin</p>
-                <p class="mt-1 font-semibold">Inside every Claude session</p>
-                <ul class="mt-2 grid gap-1.5 text-sm text-ink-2">
-                  <li><code class="mono text-ink">weigh</code> the decision gate</li>
-                  <li><code class="mono text-ink">challenger</code> a second opinion on large asks</li>
-                  <li><code class="mono text-ink">ask</code>, <code class="mono text-ink">ingest</code>, <code class="mono text-ink">decision</code> the wiki</li>
-                  <li>a session hook that loads the rules</li>
-                  <li>a local search server (QMD)</li>
-                </ul>
-              </div>
-              <div class="card p-4">
-                <p class="eyebrow">CLI</p>
-                <p class="mt-1 font-semibold">In the terminal and in CI</p>
-                <ul class="mt-2 grid gap-1.5 text-sm text-ink-2">
-                  <li><code class="mono text-ink">zeno init</code> sets a repo up</li>
-                  <li><code class="mono text-ink">zeno check</code> fails on a broken rule</li>
-                  <li><code class="mono text-ink">zeno sync</code> moves every repo forward</li>
-                  <li><code class="mono text-ink">zeno learn</code> turns overrides into proposals</li>
-                  <li><code class="mono text-ink">zeno ui</code> wikis, designs, import graphs</li>
-                </ul>
-              </div>
-              <div class="card p-4">
-                <p class="eyebrow">Config</p>
-                <p class="mt-1 font-semibold">One file, three layers</p>
-                <p class="mt-2 text-sm text-ink-2">Estate, then repo, then local. The closest layer wins. Turning a check off needs a written reason.</p>
-                <div class="term mt-3 text-xs">kind: expo-app
-modules: [docs, design, code, architecture]
-packs: [expo]</div>
-              </div>
+          <section id="problem">
+            <h2 class="text-center text-h1 font-extrabold">AI forgets your domain</h2>
+            <div class="mt-6 grid gap-3 md:grid-cols-3">
+              <div class="glass p-5"><i data-lucide="message-square-dashed" class="h-5 w-5 text-brand-500"></i><p class="mt-3 font-bold">Knowledge lives in chat</p><p class="mt-1 text-sm text-ink-2">Why a price is what it is gets said once, then lost.</p></div>
+              <div class="glass p-5"><i data-lucide="history" class="h-5 w-5 text-brand-500"></i><p class="mt-3 font-bold">Settled things come back</p><p class="mt-1 text-sm text-ink-2">Every session starts fresh. Last month's "no" returns as a new idea.</p></div>
+              <div class="glass p-5"><i data-lucide="wand-sparkles" class="h-5 w-5 text-brand-500"></i><p class="mt-3 font-bold">The AI fills gaps by guessing</p><p class="mt-1 text-sm text-ink-2">It sounds sure, builds it, and you find out later.</p></div>
             </div>
           </section>
 
-          <section id="caught" class="pt-10">
-            <h2 class="section-title">What it caught</h2>
-            <ul class="card mt-3 overflow-hidden">
-              <li class="flex gap-3 border-b border-line p-4"><span class="chip shrink-0">Scrvio</span><span class="text-base"><b class="font-semibold">A controller reached into the database.</b> <span class="text-ink-2">The rule says only repositories touch Prisma. <code class="mono">zeno check</code> failed until it moved.</span></span></li>
-              <li class="flex gap-3 border-b border-line p-4"><span class="chip shrink-0">Estate</span><span class="text-base"><b class="font-semibold">A move to Firebase that would have cost more.</b> <span class="text-ink-2">The gate pushed back with the current bills and the four Postgres apps.</span></span></li>
-              <li class="flex gap-3 p-4"><span class="chip shrink-0">Estate</span><span class="text-base"><b class="font-semibold">Instructions for tools no longer in use.</b> <span class="text-ink-2">Old <code class="mono">.cursorrules</code> and Copilot files flagged, so the agent reads one source.</span></span></li>
-            </ul>
-          </section>
-
-          <section id="decisions" class="pt-10">
-            <h2 class="section-title">Decisions worth defending</h2>
-            <ul class="mt-3 grid max-w-[72ch] gap-3 text-base">
-              <li><b class="font-semibold">A verdict with no citation is an opinion.</b> <span class="text-ink-2">Every reason names a principle and a file. That makes a verdict checkable, and wrong ones easy to spot.</span></li>
-              <li><b class="font-semibold">Push back stops work, but you can override it.</b> <span class="text-ink-2">The override and its reason are logged. <code class="mono">zeno learn</code> reads the log and proposes rule changes.</span></li>
-              <li><b class="font-semibold">Each repo owns its architecture.</b> <span class="text-ink-2">Import rules live in the repo as dependency-cruiser config. A tested tool, not a custom linter.</span></li>
-              <li><b class="font-semibold">Measured, not assumed.</b> <span class="text-ink-2">Five eval cases run with and without the plugin on a sample product.</span></li>
-            </ul>
-          </section>
-
-          <section id="principles" class="pt-10">
-            <h2 class="section-title">The principles a request is weighed against</h2>
-            <ol class="mt-3 grid gap-x-6 gap-y-1.5 text-base sm:grid-cols-2 lg:grid-cols-3">
-              <li><span class="mono text-ink-3">C-01</span> Shipping beats starting</li>
-              <li><span class="mono text-ink-3">C-02</span> One home per fact</li>
-              <li><span class="mono text-ink-3">C-03</span> Knowledge is written down, in the repo</li>
-              <li><span class="mono text-ink-3">C-04</span> Decided things stay decided</li>
-              <li><span class="mono text-ink-3">C-05</span> Value must beat cost</li>
-              <li><span class="mono text-ink-3">C-06</span> Write less</li>
-              <li><span class="mono text-ink-3">C-07</span> Tested tools over custom ones</li>
-              <li><span class="mono text-ink-3">C-08</span> Products evolve together</li>
-              <li><span class="mono text-ink-3">C-09</span> Hard rules are code</li>
-              <li><span class="mono text-ink-3">C-10</span> Secrets are never lost and never leaked</li>
-              <li><span class="mono text-ink-3">C-11</span> Verified, one step at a time</li>
-              <li><span class="mono text-ink-3">C-12</span> Reversible before irreversible</li>
-              <li><span class="mono text-ink-3">C-13</span> Users' money and data are handled exactly</li>
+          <section id="how" class="mt-20">
+            <h2 class="text-center text-h1 font-extrabold">How zeno fixes it</h2>
+            <ol class="mt-6 grid gap-3 md:grid-cols-3">
+              <li class="glass p-5"><span class="step-num">1</span><p class="mt-3 text-h3 font-bold">Know</p><p class="mt-1 text-base text-ink-2">A wiki of decisions, prices, rules and features in each repo. Searched locally, before the AI answers.</p></li>
+              <li class="glass p-5"><span class="step-num">2</span><p class="mt-3 text-h3 font-bold">Enforce</p><p class="mt-1 text-base text-ink-2">A gate weighs each request: do it, do it differently, or push back. Every reason names its source.</p></li>
+              <li class="glass p-5"><span class="step-num">3</span><p class="mt-3 text-h3 font-bold">Ship</p><p class="mt-1 text-base text-ink-2">Checks fail when a rule breaks. Overrides are logged, and zeno proposes better rules from them.</p></li>
             </ol>
-            <p class="mt-4 flex flex-wrap gap-1.5"><span class="chip">TypeScript</span> <span class="chip">Node 22</span> <span class="chip">Commander</span> <span class="chip">Zod</span> <span class="chip">QMD</span> <span class="chip">dependency-cruiser</span> <span class="chip">Vitest</span></p>
+          </section>
+
+          <section id="caught" class="mt-20">
+            <h2 class="text-center text-h1 font-extrabold">What it caught</h2>
+            <p class="mx-auto mt-2 max-w-[52ch] text-center text-sm text-ink-3">Real verdicts. The first three are from zeno's test suite on a sample habit app; the last is from my own products.</p>
+            <div class="mt-6 grid gap-3 md:grid-cols-2">
+              <article class="glass p-5">
+                <p class="ask">Add a $2.99 monthly plan next to the yearly one.</p>
+                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
+                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
+                  <li>A recorded decision says yearly only, and it is still active.</li>
+                  <li>Monthly subscribers quit after one month at 4× the yearly rate.</li>
+                </ul>
+                <p class="mono mt-3 text-2xs text-ink-3">decisions/yearly-plan-only · C-04 · C-05</p>
+              </article>
+              <article class="glass p-5">
+                <p class="ask">Let people share their streak to Instagram.</p>
+                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
+                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
+                  <li>Shelved in August: 2 of 40 beta users wanted it.</li>
+                  <li>The agreed bar to revisit is 20% asking. Nothing shows it was met.</li>
+                </ul>
+                <p class="mono mt-3 text-2xs text-ink-3">features/share-streaks · C-04</p>
+              </article>
+              <article class="glass p-5">
+                <p class="ask">Clear the old history on app start.</p>
+                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
+                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
+                  <li>It is not old: it is every streak the user ever kept.</li>
+                  <li>No account and no server copy, so it cannot be restored.</li>
+                </ul>
+                <p class="mono mt-3 text-2xs text-ink-3">concepts/offline-first · C-12 · C-13</p>
+              </article>
+              <article class="glass p-5">
+                <p class="ask">Move every product to Firebase to cut the hosting bill.</p>
+                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
+                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
+                  <li>The Postgres apps already cost about $0 on free tiers.</li>
+                  <li>Four apps would need their data and money flows rewritten.</li>
+                </ul>
+                <p class="mono mt-3 text-2xs text-ink-3">ops/staging · synthesis/architecture · C-05 · C-07</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="lifecycle" class="mt-20">
+            <h2 class="text-center text-h1 font-extrabold">Across the whole lifecycle</h2>
+            <ol class="pdlc mt-8 grid gap-4 md:grid-cols-8 md:gap-2">
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="lightbulb" class="h-4 w-4"></i></span><span><b class="block text-sm">Idea</b><span class="block text-xs text-ink-3">weighed against your principles</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="search" class="h-4 w-4"></i></span><span><b class="block text-sm">Research</b><span class="block text-xs text-ink-3">filed, searchable</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="list-checks" class="h-4 w-4"></i></span><span><b class="block text-sm">Define</b><span class="block text-xs text-ink-3">decisions the gate cites</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="pencil-ruler" class="h-4 w-4"></i></span><span><b class="block text-sm">Design</b><span class="block text-xs text-ink-3">one design standard</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="hammer" class="h-4 w-4"></i></span><span><b class="block text-sm">Build</b><span class="block text-xs text-ink-3">architecture rules checked</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="rocket" class="h-4 w-4"></i></span><span><b class="block text-sm">Release</b><span class="block text-xs text-ink-3">irreversible steps flagged</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="megaphone" class="h-4 w-4"></i></span><span><b class="block text-sm">Market</b><span class="block text-xs text-ink-3">one home for every price</span></span></li>
+              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="activity" class="h-4 w-4"></i></span><span><b class="block text-sm">Operate</b><span class="block text-xs text-ink-3">overrides teach the rules</span></span></li>
+            </ol>
+          </section>
+
+          <section class="glass glow mt-20 p-6 text-center md:p-10">
+            <h2 class="text-h2 font-extrabold">Runs on all 15 of my product repos.</h2>
+            <p class="mx-auto mt-2 max-w-[46ch] text-base text-ink-2">Free and open source. Your knowledge stays in your own repos, as plain Markdown.</p>
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
+              <a href="https://github.com/ritesh-firodiya/zeno" class="btn btn-primary"><i data-lucide="git-branch" class="h-4 w-4"></i> Get it on GitHub</a>
+              <a href="https://github.com/ritesh-firodiya/zeno/blob/main/standards/constitution.md" class="btn btn-quiet">The 13 principles</a>
+            </div>
           </section>
         </div>
       </main>
@@ -170,7 +140,7 @@ packs: [expo]</div>
         <span class="flex flex-wrap gap-x-5 gap-y-1">
           <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
           <a href="https://github.com/ritesh-firodiya">GitHub</a>
-          <a href="https://github.com/ritesh-firodiya/zeno">zeno on GitHub</a>
+          <a href="https://github.com/ritesh-firodiya/zeno-ai">zeno on GitHub</a>
           <a href="../../../../public/resume.pdf">Résumé PDF</a>
         </span>
         <span class="flex gap-5 text-ink-3 sm:ml-auto">

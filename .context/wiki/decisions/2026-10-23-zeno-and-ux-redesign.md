@@ -1,10 +1,10 @@
 ---
 id: DECISION.2026-10-23.ZENO-AND-UX-REDESIGN
 type: decision
-status: draft
+status: superseded
 last-verified: 2026-10-23
 supersedes: []
-superseded-by: null
+superseded-by: DECISION.2026-10-23.LAUNCH-REDESIGN
 ---
 
 ## Decision

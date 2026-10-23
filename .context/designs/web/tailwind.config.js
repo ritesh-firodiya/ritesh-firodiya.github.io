@@ -35,6 +35,7 @@ tailwind.config = {
           700: "var(--brand-700)", 900: "var(--brand-900)",
           DEFAULT: "var(--brand-500)",
         },
+        accent:  { 400: "var(--accent-400)", 500: "var(--accent-500)", DEFAULT: "var(--accent-500)" },
         success: { DEFAULT: "var(--success)", bg: "var(--success-bg)", fg: "var(--success-fg)" },
         warn:    { DEFAULT: "var(--warn)",    bg: "var(--warn-bg)",    fg: "var(--warn-fg)" },
         danger:  { DEFAULT: "var(--danger)",  bg: "var(--danger-bg)",  fg: "var(--danger-fg)" },

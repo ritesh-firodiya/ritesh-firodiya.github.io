@@ -17,15 +17,13 @@ zeno's own page: what it is, how to install it, the problem, how it works, what 
 - .context/designs/web/work/zeno.html
 
 ## Why it is drawn this way
-**zeno is a tool, not an app**, so its page has no store buttons and no screenshots. The picture is a real verdict from the weigh gate, shortened. A terminal transcript shows a tool better than a screenshot does.
+**The story is the product, not the code** (owner, 2026-10-23). zeno is a productivity tool for the product lifecycle: domain knowledge kept local, then enforced. The page says that in the hero and never shows a file path or terminal output except the install lines.
 
-**The install is three commands** in a terminal block, under the GitHub button. A reader who wants to try it should not have to open the README.
+**Five short sections**: the problem (AI forgets your domain) → how zeno fixes it (Know, Enforce, Ship) → what it caught → across the lifecycle → one closing card. The principles list is a link, not a section.
 
-**"What it caught" is real output.** The Scrvio Prisma breach is from `zeno check --all -q` on 2026-10-23. The Firebase verdict is from an eval run. Nothing on this page is a mock.
+**"What it caught" is domain mistakes**: a price plan, a shelved feature, the user's only data, a hosting move. Three are eval verdicts on a sample app and the page says so; one is from the owner's products. Each card is the request as a quote, the verdict, two reasons and the sources.
 
-**A sticky in-page nav** (The problem · How it works · What it caught · Decisions · Principles). The page is long, and a hiring reader jumps to the part they care about.
-
-**Counts are derived**: repos on zeno is the number of `.claude/zeno.yaml` files; principles is the constitution; eval cases is `evals/`.
+**The lifecycle strip** carries what used to be the Process board on Home: eight stages, each with what zeno keeps there.
 
 ## Related
 - [[home]]

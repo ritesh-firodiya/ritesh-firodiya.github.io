@@ -17,9 +17,11 @@
  * belong in the product repo rather than in a website's build:
  *   links · click-through · flow-complete · acyclic   (§12)
  */
-import { readFile, readdir, stat } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { join, relative, sep, extname, basename } from "node:path";
+import { exists, walk } from "./fs.mjs";
 
 /* §13: the canonical set. Every other set's _chrome.js and _gallery.js must
    match it byte for byte. Naming a set rather than "the nearest one" is the
@@ -53,26 +55,31 @@ const REQUIRED_TOKENS = [
 ];
 
 const md5 = (buf) => createHash("md5").update(buf).digest("hex");
-const exists = async (p) => { try { await stat(p); return true; } catch { return false; } };
-
-async function* walk(dir) {
-  for (const e of await readdir(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) yield* walk(p);
-    else yield p;
-  }
-}
+/* routes.js comes from another repo. It runs in its own process with an empty
+   environment, so it cannot read DESIGNS_TOKEN or the deploy keys. */
+const ROUTES_RUNNER =
+  'const window={};new Function("window",require("fs").readFileSync(0,"utf8"))(window);' +
+  "process.stdout.write(JSON.stringify(window.ROUTES ?? null))";
+const ROUTES_TIMEOUT_MS = 10_000;
 
 /** Evaluate routes.js without a browser. It only ever assigns window.ROUTES. */
-function readRoutes(src) {
-  const window = {};
+export function readRoutes(src) {
+  let routes;
   try {
-    new Function("window", src)(window);
+    const out = execFileSync(process.execPath, ["-e", ROUTES_RUNNER], {
+      input: src,
+      env: {},
+      encoding: "utf8",
+      timeout: ROUTES_TIMEOUT_MS,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+    routes = JSON.parse(out);
   } catch (e) {
-    return { error: `routes.js did not evaluate: ${e.message}` };
+    const why = String(e.stderr || e.message).split("\n").find((l) => /Error/.test(l)) ?? e.message;
+    return { error: `routes.js did not evaluate: ${why.trim()}` };
   }
-  if (!window.ROUTES) return { error: "routes.js does not assign window.ROUTES" };
-  return { routes: window.ROUTES };
+  if (!routes) return { error: "routes.js does not assign window.ROUTES" };
+  return { routes };
 }
 
 /**

@@ -21,6 +21,7 @@ import sharp from "sharp";
 import { marked } from "marked";
 import { resolveSources, listTree } from "./designs/sources.mjs";
 import { assertNoSecrets } from "./designs/secrets.mjs";
+import { escapeHtml, isSafeHref } from "./designs/html.mjs";
 
 const GEN = join(process.cwd(), "src", "data", "generated");
 const MEDIA = join(process.cwd(), "public", "media");
@@ -121,11 +122,6 @@ function summaryOf(body) {
    context is too; syncWiki sets it before each parse. */
 let page = null;
 
-const escapeHtml = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-/** A link this site can honour: another site, an email, an anchor, or a path
- *  on this host. `//host` is another site wearing a path's clothes. */
-const isSafeHref = (href) => /^(https?:|mailto:|#)/i.test(href) || (href.startsWith("/") && !href.startsWith("//"));
-
 marked.use({
   extensions: [
     {
@@ -149,6 +145,11 @@ marked.use({
     },
   ],
   renderer: {
+    /* Raw HTML in a wiki is prose, not markup: "Viewing as <name>" must show
+       its words, and nothing from a product repo may run on this site. */
+    html({ text }) {
+      return escapeHtml(text);
+    },
     link({ href, tokens }) {
       const text = this.parser.parseInline(tokens);
       /* A relative link pointed at a file in the product repo. There is no

@@ -28,8 +28,9 @@ pnpm build        # static export → out/
 pnpm lint         # eslint
 pnpm typecheck    # tsc --noEmit
 pnpm test:data    # data invariants — no build needed
+pnpm test:sync    # the publish gates: secrets, links, routes.js sandbox
 pnpm test:export  # assertions on the exported HTML in out/ — needs a build
-pnpm check        # sync + contrast + lint + typecheck + test:data + build + test:export
+pnpm check        # sync + contrast + lint + typecheck + test:data + test:sync + build + test:export
 ```
 
 ## Nothing about a product is copied into this repo

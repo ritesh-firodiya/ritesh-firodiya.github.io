@@ -1,5 +1,6 @@
-import { readdir, readFile, writeFile, rename, stat } from "node:fs/promises";
+import { readFile, writeFile, rename } from "node:fs/promises";
 import { join, extname } from "node:path";
+import { exists, walk } from "./designs/fs.mjs";
 
 const OUT = "out";
 
@@ -22,18 +23,6 @@ const RENAMES = [
   { from: "opengraph-image", to: "og.png" },
   { from: "apple-icon", to: "apple-touch-icon.png" },
 ];
-
-async function exists(p) {
-  try { await stat(p); return true; } catch { return false; }
-}
-
-async function* walk(dir) {
-  for (const e of await readdir(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) yield* walk(p);
-    else yield p;
-  }
-}
 
 let renamed = 0;
 for (const r of RENAMES) {

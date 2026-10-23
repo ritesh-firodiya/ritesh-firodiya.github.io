@@ -140,8 +140,8 @@ function cloneSparse(slug, repo, token, keyName) {
   try {
     git(["clone", "--depth", "1", "--filter=blob:none", "--sparse", "--quiet", url, dir]);
     git(["sparse-checkout", "set", ...SPARSE], dir);
-  } catch {
-    throw new Error(`${repo}: sparse clone failed`);
+  } catch (e) {
+    throw new Error(`${repo}: sparse clone failed — ${redact(String(e.stderr || e.message || ""), token)}`);
   }
   writeFileSync(stamp, want + "\n");
   return { dir: join(dir, SUBDIR), root: dir, sha: head, cached: false };
@@ -200,14 +200,13 @@ export function resolveSources() {
  * marketing?" — questions about which files exist, not what is in them. A
  * blobless clone already holds the whole tree, so `ls-tree` answers for free.
  * Locally `ls-files` gives the same list and skips node_modules.
+ *
+ * Throws when git cannot answer: an empty list would put the product on the
+ * board as "not started", and a missing thing must be visibly missing.
  */
 export function listTree(source) {
   const args = source.mode === "remote" ? ["ls-tree", "-r", "--name-only", "HEAD"] : ["ls-files"];
-  try {
-    return execFileSync("git", args, { cwd: source.root, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 })
-      .split("\n")
-      .filter(Boolean);
-  } catch {
-    return [];
-  }
+  return execFileSync("git", args, { cwd: source.root, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 })
+    .split("\n")
+    .filter(Boolean);
 }

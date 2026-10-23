@@ -55,6 +55,7 @@ jobs:
       # The invariants CLAUDE.md states in prose. No build needed, so a stale
       # verifiedOn or a legal path pointing at nothing fails in seconds.
       - run: pnpm test:data
+      - run: pnpm test:sync
 
       # Everything the site shows about a product other than its facts lives in
       # that product's own private repo and is NOT committed here: the design

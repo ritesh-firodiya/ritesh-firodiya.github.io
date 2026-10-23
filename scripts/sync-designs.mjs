@@ -23,7 +23,7 @@
  *    moment a screen is added
  *  - the breadcrumb strip is kept for the same reason — with the index present
  *    the copied set is a self-navigating mini-site, and stripping it left every
- *    screen a dead end. `stripElement` is retained for when that changes again
+ *    screen a dead end
  *  - links that cannot resolve (never-drawn screens, the skipped _review.html)
  *    are neutralised rather than deleted, so the gap stays visible
  *  - _review.html is skipped: a 14-iframe local contact sheet, not a document
@@ -31,12 +31,13 @@
  *
  *   node scripts/sync-designs.mjs
  */
-import { mkdir, readdir, readFile, writeFile, rm, stat, copyFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile, rm, copyFile } from "node:fs/promises";
 import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } from "node:path";
 import { existsSync } from "node:fs";
 import { resolveSources } from "./designs/sources.mjs";
 import { checkSurface, canonicalHashes, CANONICAL } from "./designs/conformance.mjs";
 import { assertNoSecrets } from "./designs/secrets.mjs";
+import { exists, walk } from "./designs/fs.mjs";
 
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
@@ -54,40 +55,8 @@ const PAGES = join(process.cwd(), "public", "products");
 const SKIP_FILES = new Set(["_review.html"]);
 
 const COPY_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg"]);
-
-const exists = async (p) => {
-  try {
-    await stat(p);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
-/** Remove an element by walking tag depth. Regex cannot do this: the chrome
- *  contains nested divs and a non-greedy `</div>` stops at the first one. */
-function stripElement(html, openRe) {
-  const m = openRe.exec(html);
-  if (!m) return html;
-  let depth = 1;
-  const tag = /<\/?div\b/gi;
-  tag.lastIndex = m.index + m[0].length;
-  let t;
-  while ((t = tag.exec(html))) {
-    depth += t[0][1] === "/" ? -1 : 1;
-    if (depth === 0) {
-      const end = html.indexOf(">", t.index) + 1;
-      return html.slice(0, m.index) + html.slice(end);
-    }
-  }
-  return html;
-}
-
-// The breadcrumb strip is NOT stripped any more. It is the set's own
-// navigation, and with the index page included the copied set becomes a
-// self-navigating mini-site: index -> screen -> back. Removing it left every
-// screen a dead end.
-const CHROME = [];
+/* Text files are scanned for secrets like the HTML is; only images are copied blind. */
+const TEXT_EXT = new Set([".css", ".js", ".svg"]);
 
 /* Hosts served from here instead of from them.
  *
@@ -123,29 +92,14 @@ async function vendorAsset(rawUrl) {
   if (held) return held;
 
   const name = vendorName(url);
-  const dest = join(VENDOR, name);
-  let bytes;
-  if (await exists(dest)) {
-    bytes = (await stat(dest)).size;
-  } else {
-    const r = await fetch(url);
-    if (!r.ok) throw new Error(`vendoring ${url}: HTTP ${r.status}`);
-    const body = Buffer.from(await r.arrayBuffer());
-    await mkdir(VENDOR, { recursive: true });
-    await writeFile(dest, body);
-    bytes = body.length;
-  }
-  const rec = { url, name, bytes };
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`vendoring ${url}: HTTP ${r.status}`);
+  const body = Buffer.from(await r.arrayBuffer());
+  await mkdir(VENDOR, { recursive: true });
+  await writeFile(join(VENDOR, name), body);
+  const rec = { url, name, bytes: body.length };
   vendored.set(url, rec);
   return rec;
-}
-
-async function* walk(dir) {
-  for (const e of await readdir(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) yield* walk(p);
-    else yield p;
-  }
 }
 
 await rm(OUT, { recursive: true, force: true }).catch(() => {});
@@ -218,11 +172,18 @@ for (const [slug, source] of Object.entries(sets)) {
          this one path is rewritten. Without it the button answered 404 on
          every screen of every set. */
       const js = await readFile(file, "utf8");
+      assertNoSecrets(js, `${slug}/${rel}`);
       const needle = '"../../wiki/surfaces/"';
       if (js.split(needle).length !== 2) {
         throw new Error(`${slug}/${rel}: expected exactly one ${needle} to rewrite — has _chrome.js changed?`);
       }
       await writeFile(dest, js.replace(needle, '"../wiki/surfaces/"'));
+      continue;
+    }
+    if (TEXT_EXT.has(ext)) {
+      const text = await readFile(file, "utf8");
+      assertNoSecrets(text, `${slug}/${rel}`);
+      await writeFile(dest, text);
       continue;
     }
     if (ext !== ".html") {
@@ -231,7 +192,6 @@ for (const [slug, source] of Object.entries(sets)) {
     }
 
     let h = await readFile(file, "utf8");
-    for (const re of CHROME) h = stripElement(h, re);
 
     /* Rewrite whatever this file asks for, rather than the two things an
        earlier version assumed it would. Both `src` and `href`: reactflow ships
@@ -316,7 +276,13 @@ for await (const file of walk(OUT)) {
   const dir = dirname(file);
   const before = await readFile(file, "utf8");
   const after = before.replace(LINK, (whole, pre, href, post) => {
-    const clean = decodeURIComponent(href.split("#")[0].split("?")[0]);
+    const path = href.split("#")[0].split("?")[0];
+    let clean;
+    try {
+      clean = decodeURIComponent(path);
+    } catch {
+      return whole; // a stray % (e.g. "50%-off.html") is left exactly as written
+    }
     if (!clean.endsWith(".html")) return whole;
     if (/^(?:[a-z]+:)?\/\//i.test(clean) || isAbsolute(clean)) return whole;
     if (existsSync(resolve(dir, clean))) return whole;

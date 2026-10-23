@@ -1,5 +1,5 @@
 ---
-updated: 2026-10-12
+updated: 2026-10-23
 horizon: 2026-10-26
 ---
 
@@ -11,7 +11,7 @@ horizon: 2026-10-26
 ## Parallel
 - [ ] T011 [P] Copy the frame-derived `screenshots.html` back to the canonical charades set
 - [ ] T023 [P] Re-verify every row of `products.json` against the stores and bump `verifiedOn` (due by 2026-10-26)
-- [ ] T024 [P] Case studies for Aakalan and Charades — they lead the site and show a feature list, not a write-up
+- [ ] T024 [P] Case studies for Aakalan and Charades  `feat:0001`
 - [ ] T025 [P] Wiki pages ship ~125KB each because Next writes the page three times; 617 pages is 89MB of the 103MB export. Fine for Pages (1GB), worth trimming
 
 ## Blocked

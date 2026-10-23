@@ -1,0 +1,7 @@
+zeno: 0.7.0
+kind: web
+modules:
+  - docs
+  - design
+  - knowledge
+  - code

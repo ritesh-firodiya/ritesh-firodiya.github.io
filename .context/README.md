@@ -1,14 +1,14 @@
 # .context — ritesh-firodiya.github.io
 
-Non-code material for the portfolio site. Layout follows
-`~/git/products/CLAUDE.md`.
+Non-code material for the portfolio site. Layout follows the zeno
+`context-layout` standard (`zeno standards` shows where it lives).
 
 | Folder | State |
 |---|---|
 | `designs/web/` | the site's own design set. Redrawn and built 2026-10-04 |
 | `wiki/` | one notes page per screen, plus decisions |
 | `raw/` | empty |
-| `features/` | n/a — nothing planned beyond `tasks.md` |
+| `features/` | one page per feature too big for a line in `tasks.md` |
 | `listing/` | n/a — a website, not a store app |
 | `marketing/` | n/a — the site is the marketing |
 | `metrics/` | n/a — no analytics on this site |

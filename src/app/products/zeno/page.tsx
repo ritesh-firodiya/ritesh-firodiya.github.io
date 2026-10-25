@@ -39,7 +39,7 @@ export default function ZenoPage() {
             <h1 className="display grad-text mx-auto mt-4 max-w-[15ch]">Your domain knowledge, kept local. Enforced.</h1>
             <p className="mx-auto mt-3 max-w-[56ch] text-lead text-ink-2">
               zeno is a productivity tool for the whole product lifecycle. Your rules, prices and past decisions stay in your repo, and the AI
-              checks them before it acts. It guesses less, and you ship faster.
+              checks them, and every claim you make, against facts before it acts. It guesses less, and you ship faster.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-2">
               <a href={ZENO_REPO} className="btn btn-primary">
@@ -105,7 +105,7 @@ export default function ZenoPage() {
                 <GitBranch size={16} aria-hidden /> Get it on GitHub
               </a>
               <a href={`${ZENO_REPO}/blob/main/standards/constitution.md`} className="btn btn-quiet">
-                The 13 principles
+                The 15 principles
               </a>
             </div>
           </section>

@@ -10,7 +10,7 @@ export const zenoFor = (slug: string): ZenoConfig | null => raw.zeno[slug] ?? nu
 
 export const ZENO_REPO = "https://github.com/ritesh-firodiya/zeno";
 
-export const ZENO_VERSION = "0.7.0";
+export const ZENO_VERSION = "0.9.0";
 
 export const INSTALL = [
   "claude plugin marketplace add ritesh-firodiya/zeno",
@@ -27,8 +27,8 @@ export const STEPS = [
   },
   {
     title: "Enforce",
-    short: "Every request is weighed against them before any work starts.",
-    long: "A gate weighs each request: do it, do it differently, or push back. Every reason names its source.",
+    short: "Every request, and every claim in it, is checked against facts before any work starts.",
+    long: "A gate weighs each request: do it, do it differently, or push back. Every claim is marked backed or not, and every reason names its source.",
   },
   {
     title: "Ship",

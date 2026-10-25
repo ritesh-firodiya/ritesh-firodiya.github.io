@@ -55,7 +55,7 @@ export default function ResumePage() {
             </h2>
             <p className="mt-1 text-base text-ink-2">
               Keeps domain knowledge and AI rules local and enforced across {products.filter((p) => zenoFor(p.slug)).length} product repos, so the AI
-              hallucinates less and work ships faster.
+              checks claims against facts and work ships faster.
             </p>
             <p className="mt-2 flex flex-wrap gap-1.5">
               {["TypeScript", "Node.js", "Claude Code", "dependency-cruiser"].map((x) => (

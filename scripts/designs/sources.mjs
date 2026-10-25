@@ -34,7 +34,7 @@ export const SETS = {
   askcal: { repo: "ritvi-apps/askcal", local: "askcal" },
   "tic-tac-toe": { repo: "ritvi-apps/tic-tac-toe", local: "tic-tac-toe" },
   "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
-  "seedha-ghar": { repo: "ritvi-apps/property-app", local: "property-app" },
+  "seedha-ghar": { repo: "ritvi-apps/seedha-ghar", local: "seedha-ghar" },
   chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
   chess: { repo: "ritvi-apps/chess", local: "chess" },
   "learning-platform": { repo: "ritvi-apps/learning-platform", local: "learning-platform" },

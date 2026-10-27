@@ -63,6 +63,8 @@ const SPARSE = [
   /* Read for the funnel on each project page (feature status, release state); never published. */
   ".context/features",
   ".context/ops",
+  /* flow.json, the conversation flow ~/git/bin/flow writes; counts only. */
+  ".context/metrics",
 ];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git", "products");

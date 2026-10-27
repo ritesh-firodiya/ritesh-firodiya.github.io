@@ -47,7 +47,8 @@ and commits none of them.
 | Icon | `.context/designs/brand/icon.*` | `public/media/<slug>/icon.*` |
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
 | zeno config | `.claude/zeno.yaml` (version, modules) | `src/data/generated/zeno.json` |
-| Funnel | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
+| Release state | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
+| Conversation flow | `.context/metrics/flow.json` (written by `~/git/bin/flow`) | `src/data/generated/flow.json` |
 
 - `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
   and **withholds any surface that fails `STYLE-GUIDE.md`** — the reasons land
@@ -121,15 +122,16 @@ re-order the file.
 - **Mobile / Web tags** are derived (`surfaceTags` in `src/lib/products.ts`)
   from the surfaces a product draws and the platforms it has built. A product
   with both shows both.
-- **The funnel is derived, never typed** (`scripts/funnel.mjs`, tested in
-  `tests/funnel.test.mjs`). Plan and Build count features by `status:`;
-  Testers, Store review, Deployed and Live come from each surface in
-  `release.yml`, and a block marked `verified: false` is skipped. Shipped
-  features sit with the furthest build; shelved and superseded ones are only
-  counted. Work "waits" at the furthest stage short of Live that holds
-  anything. The tool lines (`helpAt` in `src/lib/funnel.ts`) state only what
-  zeno and canon do today — no gated zeno `pipeline:` is declared yet, so
-  nothing may say zeno holds a stage.
+- **"How it ships" is derived, never typed.** Its numbers are the product's
+  `.context/metrics/flow.json`, which `~/git/bin/flow` writes on the owner's
+  machine from Claude transcripts and git (CI cannot read transcripts; counts
+  and times only, never prompt text). Asked → Committed → Released → Live, each
+  step's share and median time, the slowest step and the biggest drop
+  (`scripts/flow.mjs`, `tests/flow.test.mjs`). Re-run `bin/flow <product>
+  --write` and commit the file in the product repo to refresh it. Below it,
+  each surface's state and the feature counts come from `scripts/funnel.mjs`
+  (`release.yml` and `features/` statuses; a `verified: false` block is
+  skipped). A product with no flow.json shows no section.
 - `src/lib/case-studies.ts` holds the long-form text for a project page. A
   product without one shows its `features` instead.
 - `src/data/profile.json` drives the home page and the résumé.

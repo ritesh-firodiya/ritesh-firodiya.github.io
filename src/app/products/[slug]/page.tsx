@@ -11,6 +11,7 @@ import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
 import { zenoFor } from "@/lib/zeno";
 import { funnelFor } from "@/lib/funnel";
+import { flowFor } from "@/lib/flow";
 import { Funnel } from "@/components/funnel";
 
 export function generateStaticParams() {
@@ -152,6 +153,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const zeno = zenoFor(p.slug);
   const funnel = funnelFor(p.slug);
+  const flow = flowFor(p.slug);
 
   return (
     <>
@@ -257,7 +259,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </dl>
 
-        {funnel && <Funnel name={p.name} funnel={funnel} modules={zeno?.modules ?? []} />}
+        {flow && <Funnel name={p.name} flow={flow} release={funnel} />}
 
         <section className={`mt-3 grid gap-3 ${sections.length > 1 ? "md:grid-cols-2 lg:grid-cols-3" : ""}`}>
           {sections.length === 0 ? (

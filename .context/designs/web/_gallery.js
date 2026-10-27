@@ -77,6 +77,22 @@
      straight horizontal line and everything else hangs below it. Ordering the
      rows by whoever was declared first made the spine zig-zag between columns,
      which is exactly the thing a flow chart is supposed to make obvious. */
+  function screenNode(f, x, y) {
+    var m = meta[f];
+    return {
+      id: f,
+      type: "screen",
+      position: { x: x, y: y },
+      draggable: false,
+      data: m,
+      style: { borderLeftColor: tintOf(m.flow) },
+      className: "fnode"
+        + (f === START ? " is-start" : "")
+        + (ENDS.indexOf(f) !== -1 ? " is-end" : "")
+        + (mainNodes[f] || f === START ? " is-main" : ""),
+    };
+  }
+
   var byCol = {};
   Object.keys(col).forEach(function (f) {
     if (!meta[f]) return;          // ranked but not a screen the chart shows
@@ -93,27 +109,13 @@
     });
     files.forEach(function (f, k) {
       rowOf[f] = k;
-      var m = meta[f];
-      var isStart = f === START;
-      var isEnd = ENDS.indexOf(f) !== -1;
-      var onMain = mainNodes[f] || isStart;
-      nodes.push({
-        id: f,
-        type: "screen",
-        position: { x: Number(c) * COL_W, y: k * ROW_H },
-        draggable: false,
-        data: m,
-        style: { borderLeftColor: tintOf(m.flow) },
-        className: "fnode"
-          + (isStart ? " is-start" : "")
-          + (isEnd ? " is-end" : "")
-          + (onMain ? " is-main" : ""),
-      });
+      nodes.push(screenNode(f, Number(c) * COL_W, k * ROW_H));
     });
   });
 
+  function makeEdges(list, rowOf, col) {
   var fanIndex = {};
-  var edges = links.map(function (e, i) {
+  return list.map(function (e, i) {
     var isMain = mainPath[e.from + ">" + e.to];
     var quiet = e.back;
     var side = e.side;
@@ -168,6 +170,35 @@
       markerEnd: { type: "arrowclosed", width: 13, height: 13, color: stroke },
     };
   });
+  }
+  var edges = makeEdges(links, rowOf, col);
+
+  /* ---- key screens, one row per lane --------------------------------------
+     When the set marks key screens, the chart opens on those alone: one row
+     per lane (a flow, or several flows a set names together), each row read
+     left to right in journey order, the rows in manifest order. Arrows stay
+     inside a row; the rows themselves are the order of the journey. */
+  var LANE_W = 170;
+  var keyNodes = [], keyEdges = [];
+  if (WF.keys && WF.keys.length) {
+    var keyRow = {}, keyCol = {};
+    WF.keyJourney.forEach(function (g, lane) {
+      keyNodes.push({
+        id: "lane:" + g.lane, type: "lane", draggable: false, selectable: false,
+        position: { x: 0, y: lane * ROW_H }, data: { flow: g.lane, tint: tintOf(g.screens[0].flow) },
+      });
+      g.screens.forEach(function (m, c) {
+        keyRow[m.file] = lane;
+        keyCol[m.file] = c;
+        keyNodes.push(screenNode(m.file, LANE_W + c * COL_W, lane * ROW_H));
+      });
+    });
+    /* Neighbours only: an arrow that skips a box runs underneath it. */
+    keyEdges = makeEdges(WF.keyLinks.filter(function (e) {
+      return keyRow[e.from] === keyRow[e.to] && keyCol[e.to] === keyCol[e.from] + 1;
+    }), keyRow, keyCol);
+  }
+  var HAS_KEYS = keyNodes.length > 0;
 
   /* ---- the node ---------------------------------------------------------- */
   /* The whole box selects; only the arrow opens. Clicking a box used to
@@ -193,7 +224,13 @@
   }
   /* Defined once, outside the component: React Flow warns and re-mounts every
      node when nodeTypes is a new object each render. */
-  var nodeTypes = { screen: ScreenNode };
+  function LaneNode(p) {
+    return h("span", { style: { display: "flex", alignItems: "center", gap: 8, height: 64, width: LANE_W - 24,
+                                fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ink-3)" } },
+      h("span", { style: { width: 4, alignSelf: "stretch", borderRadius: 2, background: p.data.tint } }),
+      h("span", { className: "mono" }, p.data.flow));
+  }
+  var nodeTypes = { screen: ScreenNode, lane: LaneNode };
 
   /* ---- labels that still land on something ------------------------------- */
   /* Putting a label at the target's row settles most of it, but not all: two
@@ -255,13 +292,16 @@
        observers below — once per mouse move across the chart. */
     var sv = React.useState(null), sel = sv[0], setSel = sv[1];
     var bk = React.useState(false), showBack = bk[0], setShowBack = bk[1];
+    var md = React.useState(HAS_KEYS ? "key" : "all"), mode = md[0], setMode = md[1];
+    var graphNodes = mode === "key" ? keyNodes : nodes;
+    var graphEdges = mode === "key" ? keyEdges : edges;
 
     /* Returns are off by default. They are the least interesting paths in the
        product and the most destructive to read: every screen goes back to
        Home, so they all converge and cross everything on the way. */
     var shown = React.useMemo(function () {
-      return edges.filter(function (e) { return showBack || !e.quiet; });
-    }, [showBack]);
+      return graphEdges.filter(function (e) { return showBack || !e.quiet; });
+    }, [showBack, mode]);
 
     /* ONE HOP: what gets me here, and where can I go from here.
 
@@ -313,13 +353,14 @@
     }, [sel, shown]);
 
     var styledNodes = React.useMemo(function () {
-      if (!lit) return nodes;
-      return nodes.map(function (n) {
+      if (!lit) return graphNodes;
+      return graphNodes.map(function (n) {
+        if (n.type === "lane") return n;
         return Object.assign({}, n, {
           className: n.className + (lit[n.id] ? " is-lit" : " is-dim") + (n.id === sel ? " is-sel" : ""),
         });
       });
-    }, [lit, sel]);
+    }, [lit, sel, mode]);
 
     /* No dep list: the label geometry depends on what is currently lit.
        The observer is the part that matters. Tailwind's CDN build compiles at
@@ -370,6 +411,9 @@
     }, [lit]);
 
     return h(RF.default || RF.ReactFlow, {
+      /* Keyed on the mode, so switching re-frames the chart: fitView runs once,
+         when React Flow first measures the nodes. */
+      key: mode,
       nodes: styledNodes,
       edges: styledEdges,
       nodeTypes: nodeTypes,
@@ -388,18 +432,23 @@
       proOptions: { hideAttribution: true },
       minZoom: 0.2,
       maxZoom: 1.6,
-      onNodeClick: function (_, n) { setSel(n.id === sel ? null : n.id); },
+      onNodeClick: function (_, n) { if (n.type !== "lane") setSel(n.id === sel ? null : n.id); },
       onPaneClick: function () { setSel(null); },
     },
       h(RF.Background, { gap: 22, size: 1, color: "var(--line)" }),
       h(RF.Controls, { showInteractive: false }),
       h(RF.Panel, { position: "bottom-right", className: "fkey" },
+        HAS_KEYS ? h("button", {
+          type: "button",
+          className: "fkey-toggle" + (mode === "all" ? " is-on" : ""),
+          onClick: function () { setSel(null); setMode(mode === "key" ? "all" : "key"); },
+        }, mode === "key" ? "all " + nodes.length + " screens" : "key screens only") : null,
         h("button", {
           type: "button",
           className: "fkey-toggle" + (showBack ? " is-on" : ""),
           onClick: function () { setShowBack(!showBack); },
         }, showBack ? "hide returns" : "show returns"),
-        usedFlows.map(function (fl) {
+        (mode === "key" ? [] : usedFlows).map(function (fl) {
           return h("span", { key: fl, className: "fkey-item" },
             h("span", { className: "fkey-dot", style: { background: tintOf(fl) } }),
             h("span", { className: "mono" }, fl));

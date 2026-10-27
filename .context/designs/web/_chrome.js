@@ -22,7 +22,7 @@
  * One bar, the same on every page — a screen, the flow chart, the screenshots.
  * Left to right, and this order does not vary:
  *
- *   LEFT    ⌘ all routes · ▦ screenshots · ‹ back · › next
+ *   LEFT    ⌘ all routes · ▦ screenshots · ◇ architecture · ‹ back · › next
  *   MIDDLE  every screen in this flow, then this screen's states
  *   RIGHT   ☀/☾ · ▭/▢ · ⓘ notes
  *
@@ -60,7 +60,7 @@
   var meta = {}, baseOf = {}, order = {}, n = 0;
   R.flows.forEach(function (f) {
     f.screens.forEach(function (s) {
-      meta[s.file] = { flow: f.flow, name: s.screen, screen: s.screen, file: s.file, base: s };
+      meta[s.file] = { flow: f.flow, name: s.screen, screen: s.screen, file: s.file, base: s, key: s.key || false };
       order[s.file] = n++;
       flat.push({ flow: f.flow, base: s, file: s.file, screen: s.screen, state: null });
       Object.keys(s.states || {}).forEach(function (st) {
@@ -218,8 +218,56 @@
     journey.push({ flow: fl, screens: byFlow[fl].map(function (f) { return meta[f]; }) });
   });
 
+  /* ---- the key screens: the few that explain the product -----------------
+     A set marks them `key: true` in routes.js. With 100+ screens the chart and
+     the sheet are a wall; the key screens, one lane per flow, are what someone
+     new reads first. Everything else is one toggle away.
+
+     The links between key screens step OVER the screens that are not key: a
+     key screen links to every key screen it reaches forward through screens
+     that are not key, so hiding a screen never cuts the journey in two. */
+  var keys = Object.keys(meta).filter(function (f) { return meta[f].key; });
+  var keyLinks = [], keyJourney = [];
+  if (keys.length) {
+    var fwdNext = {};
+    forward.forEach(function (e) { (fwdNext[e.from] = fwdNext[e.from] || []).push(e); });
+    keys.forEach(function (from) {
+      var seen = {}, queue = [{ at: from, label: null }];
+      seen[from] = true;
+      while (queue.length) {
+        var cur = queue.shift();
+        (fwdNext[cur.at] || []).forEach(function (e) {
+          if (seen[e.to]) return;
+          seen[e.to] = true;
+          /* Only a direct link keeps its label: a path through hidden screens
+             would borrow the label of a step the reader cannot see. */
+          var label = cur.at === from ? e.label : null;
+          if (meta[e.to].key) keyLinks.push({ from: from, to: e.to, label: label, back: false, side: false });
+          else queue.push({ at: e.to, label: label });
+        });
+      }
+    });
+    /* Lanes: `key: true` puts a screen in its flow's lane; `key: "Editor"`
+       puts it in a lane of that name, so related flows read as one row. Lanes
+       come in manifest order, screens in a lane by journey rank. */
+    var laneOf = function (f) { return meta[f].key === true ? meta[f].flow : String(meta[f].key); };
+    var lanes = {}, laneOrder = [];
+    keys.slice().sort(function (a, b) { return order[a] - order[b]; }).forEach(function (f) {
+      var ln = laneOf(f);
+      if (!lanes[ln]) { lanes[ln] = []; laneOrder.push(ln); }
+      lanes[ln].push(f);
+    });
+    laneOrder.forEach(function (ln) {
+      lanes[ln].sort(function (a, b) { return col[a] - col[b] || order[a] - order[b]; });
+      keyJourney.push({ flow: ln, lane: ln, screens: lanes[ln].map(function (f) { return meta[f]; }) });
+    });
+  }
+
   window.WF = {
     routes: R,
+    keys: keys,            // the key screens, if the set marked any
+    keyLinks: keyLinks,    // forward links between key screens, stepping over the rest
+    keyJourney: keyJourney,// [{ lane, screens }] — key screens by lane, in manifest order
     flat: flat,            // every file, states inline, manifest order
     meta: meta,            // base file -> { flow, name, file, base }
     base: base,            // any file -> the screen it is a state of
@@ -309,6 +357,12 @@
   left.appendChild(iconChip("chrome-chip" + (page === "screenshots" ? " is-current" : ""),
                             "layout-grid", "Screenshots — every screen at once",
                             page === "screenshots" ? null : rel("screenshots.html")));
+  /* How the product is built, for a set that has drawn it: routes.js names the
+     page in `architecture`, relative to this surface. Always rendered, struck
+     out where there is none, so the chips after it never move. */
+  left.appendChild(R.architecture
+    ? iconChip("chrome-chip", "network", "Architecture — how the product is built", rel(R.architecture))
+    : iconChip("chrome-chip is-absent", "network", "Architecture — not drawn for this product"));
   if (isScreen) {
     /* back / next step through the set in route order and are shown struck
        out at the ends rather than dropped, so the bar does not reflow as you

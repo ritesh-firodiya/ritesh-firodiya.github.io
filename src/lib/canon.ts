@@ -8,12 +8,12 @@ const raw = generated<{ canon: Record<string, CanonConfig> }>("canon.json", { ca
 
 export const canonFor = (slug: string): CanonConfig | null => raw.canon[slug] ?? null;
 
-export const CANON_REPO = "https://github.com/ritesh-firodiya/canon";
+export const CANON_REPO = "https://github.com/ritesh-firodiya/canon-cli";
 
-export const CANON_VERSION = "0.9.0";
+export const CANON_VERSION = "0.15.0";
 
 export const INSTALL = [
-  "claude plugin marketplace add ritesh-firodiya/canon",
+  "claude plugin marketplace add ritesh-firodiya/canon-cli",
   "claude plugin install canon@canon",
   "npm install -g @freetesh/canon",
 ];

@@ -51,7 +51,7 @@ and commits none of them.
 | Conversation flow | `.context/metrics/flow.json` (written by `~/git/bin/flow`) | `src/data/generated/flow.json` |
 
 - `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
-  and **withholds any surface that fails `STYLE-GUIDE.md`** — the reasons land
+  and **withholds any surface that fails the `design-sets` standard** — the reasons land
   in `designs.json` and the project page prints them.
 - It also publishes each product's wiki surface pages as Markdown at
   `/designs/<slug>/wiki/surfaces/` and rewrites one path in the copied
@@ -175,7 +175,7 @@ a static export `redirect()` only works once the page's JavaScript has run.
 ## Design set and style
 
 `.context/designs/web/` is this site's own design set, built to
-`~/git/personal/STYLE-GUIDE.md`. **When a page and its wireframe disagree, the
+the `design-sets` standard. **When a page and its wireframe disagree, the
 wireframe wins**: fix the page, or change the wireframe first and say so in its
 notes page (`.context/wiki/surfaces/`). `node scripts/designs/serve.mjs` serves
 the set for review.

@@ -238,7 +238,7 @@ export function sheetFor(slug: string, g: Gallery): string {
 }
 
 /* ── Style-guide conformance ──────────────────────────────────────────────
-   A design set is published only if it follows ~/git/personal/STYLE-GUIDE.md;
+   A design set is published only if it follows the design-sets standard;
    scripts/designs/conformance.mjs is the gate and its verdicts land here.
 
    Every product is recorded, passing or not. A set that fails is not copied

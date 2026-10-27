@@ -17,7 +17,7 @@ const eslintConfig = defineConfig([
     "scripts/captured/**",
     // .context/ is the design set, not the app. _chrome.js and _gallery.js are
     // copied BYTE FOR BYTE from the canonical set and must never be edited per
-    // product (STYLE-GUIDE.md §13), so a lint rule that would have us "fix" an
+    // product (design-sets §13), so a lint rule that would have us "fix" an
     // unused catch binding in them is pointed at the wrong repository — the fix
     // belongs upstream, in every set at once, or nowhere.
     ".context/**",

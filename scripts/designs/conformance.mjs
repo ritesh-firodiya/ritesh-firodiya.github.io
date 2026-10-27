@@ -1,5 +1,5 @@
 /**
- * Does a design set follow ~/git/personal/STYLE-GUIDE.md?
+ * Does a design set follow the design-sets standard?
  *
  * The guide is mostly about product design sets, not about this website, and
  * most of it is not mechanically checkable — whether a screen describes the app

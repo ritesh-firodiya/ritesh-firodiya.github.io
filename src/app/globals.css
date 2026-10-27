@@ -16,7 +16,7 @@
    A token with no entry here has no utility. That is the enforcement: you
    cannot use a colour you did not define.
 
-   Role names, never hues (STYLE-GUIDE.md §8). The CSS variable is the Tailwind
+   Role names, never hues (design-sets §8). The CSS variable is the Tailwind
    token path with dots as dashes; v4's `--color-` prefix is the one unavoidable
    difference from the set's `shared.css`. `pnpm contrast` checks both files.
    ═══════════════════════════════════════════════════════════════════════════ */

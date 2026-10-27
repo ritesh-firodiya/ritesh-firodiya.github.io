@@ -151,7 +151,7 @@ for (const [slug, source] of Object.entries(sets)) {
     if (!COPY_EXT.has(ext)) continue;
     if (ext === ".html" && SKIP_FILES.has(basename(file))) continue;
 
-    /* THE GATE. A surface that does not follow STYLE-GUIDE.md is not copied,
+    /* THE GATE. A surface that does not follow the design-sets standard is not copied,
        so it cannot be reached on the site at all — not merely unlinked. Its
        reasons are in `conformance` and the product page states them.
        brand/ is shared artwork rather than a surface; it rides along only when
@@ -345,7 +345,7 @@ await writeFile(
       source: mode,
       styleGuide: {
         canonical: `${CANONICAL.slug}/${CANONICAL.surface}`,
-        note: "Surfaces that fail are not published at all. See STYLE-GUIDE.md.",
+        note: "Surfaces that fail are not published at all. See the design-sets standard.",
         results: conformance,
       },
       commits: Object.fromEntries(
@@ -360,7 +360,7 @@ await writeFile(
 );
 
 console.log(`source: ${mode}${mode === "remote" ? " (private repos, default branch)" : " (~/git/products)"}`);
-console.log(`\nSTYLE-GUIDE.md conformance — canonical set is ${CANONICAL.slug}/${CANONICAL.surface}`);
+console.log(`\ndesign-sets conformance — canonical set is ${CANONICAL.slug}/${CANONICAL.surface}`);
 for (const [slug, c] of Object.entries(conformance)) {
   for (const [surface, r] of Object.entries(c.surfaces)) {
     console.log(`  ${r.pass ? "PASS" : "FAIL"}  ${slug}/${surface}`);

@@ -2,6 +2,13 @@
 
 One line per page. Rules: `canon standards` → `wiki-schema`.
 
+## Concepts
+Store know-how every product shares.
+- [[marketing]] — Marketing and measuring
+- [[selling-in-app]] — Selling inside an app
+- [[store-capture]] — Adding store capture to an app
+- [[store-listing-and-review]] — Store listings, review and testers
+
 ## Decisions
 - [[site]] — The portfolio site
 

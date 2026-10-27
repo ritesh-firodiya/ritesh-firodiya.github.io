@@ -48,7 +48,7 @@ and commits none of them.
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
 | canon config | `.claude/canon.yaml` (version, modules) | `src/data/generated/canon.json` |
 | Release state | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
-| Conversation flow | `.context/metrics/flow.json` (written by `~/git/bin/flow`) | `src/data/generated/flow.json` |
+| Conversation flow | `.context/metrics/flow.json` (written by `canon flow`) | `src/data/generated/flow.json` |
 
 - `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
   and **withholds any surface that fails the `design-sets` standard** — the reasons land
@@ -123,12 +123,12 @@ re-order the file.
   from the surfaces a product draws and the platforms it has built. A product
   with both shows both.
 - **"How it ships" is derived, never typed.** Its numbers are the product's
-  `.context/metrics/flow.json`, which `~/git/bin/flow` writes on the owner's
+  `.context/metrics/flow.json`, which `canon flow` writes on the owner's
   machine from Claude transcripts and git (CI cannot read transcripts; counts
   and times only, never prompt text). The stages are the product's own — the
   `pipeline:` in its `.claude/canon.yaml`, which `canon pipeline` resolves —
-  each with a one-line rule in `bin/flow` and `FLOW_STAGE`; each step's share and median time, the slowest step and the biggest drop
-  (`scripts/flow.mjs`, `tests/flow.test.mjs`). Re-run `bin/flow <product>
+  each with a one-line rule in canon's `scripts/flow.py` and `FLOW_STAGE`; each step's share and median time, the slowest step and the biggest drop
+  (`scripts/flow.mjs`, `tests/flow.test.mjs`). Re-run `canon flow <product>
   --write` and commit the file in the product repo to refresh it. Below it,
   each surface's state and the feature counts come from `scripts/funnel.mjs`
   (`release.yml` and `features/` statuses; a `verified: false` block is

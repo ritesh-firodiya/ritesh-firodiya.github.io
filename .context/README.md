@@ -3,15 +3,7 @@
 Non-code material for the portfolio site. Layout follows the zeno
 `context-layout` standard (`zeno standards` shows where it lives).
 
-| Absent or empty | Why |
-|---|---|
-| `raw/` | empty |
-| `listing/` | n/a — a website, not a store app |
-| `marketing/` | n/a — the site is the marketing |
-| `metrics/` | n/a — no analytics on this site |
-| `support/` | n/a — support for the apps is a page of the site |
-| `legal/` | n/a — the legal documents are shipped files in `public/legal/` |
-| `ops/` | `release.yml` — what is live, and what is built and not yet deployed |
+Legal: every app's legal documents are shipped from `public/legal/`.
 
 ## Viewing the design set
 

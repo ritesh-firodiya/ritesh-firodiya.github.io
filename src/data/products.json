@@ -116,7 +116,7 @@
       "slug": "babul",
       "name": "Babul",
       "stageLabel": "In build",
-      "embed": "web/northwind/products.html",
+      "embed": "web/marketing/landing.html",
       "fullName": "Babul",
       "tagline": "Your design and your product, always in sync.",
       "blurb": "Version control for design. Capture what you shipped from a URL or screenshots, or start blank; change it on a branch; verify it against the live product; merge when it ships. Every merge makes a version of main, and AI, a CLI and an MCP server take the design into code.",

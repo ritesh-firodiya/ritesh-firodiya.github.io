@@ -4,7 +4,7 @@ last-verified: 2026-10-23
 
 # home
 
-**Redrawn 2026-10-23 (LAUNCH)** — see [[2026-10-23-launch-redesign]]. Three parts: who → zeno (Know → Enforce → Ship, then three domain verdicts it stopped) → Work (three large cards, twelve small tiles). Dark first, glow and gradient headline. The process board is gone; the stages are on [[zeno]]. The paragraphs below describe the 2026-10-04 layout and are kept for history.
+**Redrawn 2026-10-23 (LAUNCH)** — see [[site]]. Three parts: who → zeno (Know → Enforce → Ship, then three domain verdicts it stopped) → Work (three large cards, twelve small tiles). Dark first, glow and gradient headline. The process board is gone; the stages are on [[zeno]]. The paragraphs below describe the 2026-10-04 layout and are kept for history.
 
 **One page, three parts.** Who I am is one sentence and three buttons. Work is every project. Process is one board. Work, Process, About and Contact used to be four more pages that repeated what was here; their addresses forward (2026-10-04, review round 4).
 

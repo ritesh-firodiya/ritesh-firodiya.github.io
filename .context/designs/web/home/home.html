@@ -35,28 +35,98 @@
           <div class="grid-bg absolute inset-0 -z-10" aria-hidden="true"></div>
           <div class="wrap pb-10 pt-10 text-center md:pb-12 md:pt-16">
             <p class="eyebrow">Ritesh Firodiya · Senior full-stack engineer · Pune</p>
-            <h1 class="display grad-text mx-auto mt-3 max-w-[16ch]">I build products. And the tool that keeps AI on my domain.</h1>
+            <h1 class="display grad-text mx-auto mt-3 max-w-[16ch]">I build products. And the tools that keep AI on my domain.</h1>
             <p class="mx-auto mt-3 max-w-[52ch] text-lead text-ink-2">Nine years of TypeScript at Walmart, Swiggy and Speechify. Fifteen products of my own, idea to store.</p>
             <div class="mt-5 flex flex-wrap justify-center gap-2">
-              <a href="../work/zeno.html" class="btn btn-primary"><i data-lucide="sparkles" class="h-4 w-4"></i> Meet zeno</a>
+              <a href="#pipeline" class="btn btn-primary"><i data-lucide="sparkles" class="h-4 w-4"></i> How I ship</a>
               <a href="#work" class="btn btn-quiet">See my work <i data-lucide="arrow-down" class="h-4 w-4"></i></a>
               <a href="../resume/resume.html" class="btn btn-quiet"><i data-lucide="file-text" class="h-4 w-4"></i> Résumé</a>
             </div>
           </div>
         </section>
 
-        <section id="zeno" class="wrap">
+        <section id="pipeline" class="wrap">
           <div class="text-center">
-            <p class="eyebrow">zeno · open source</p>
-            <h2 class="mx-auto mt-2 max-w-[22ch] text-h2 font-extrabold">Your domain knowledge, kept local. Enforced.</h2>
+            <p class="eyebrow">How I ship · powered by canon and zeno</p>
+            <h2 class="mx-auto mt-2 max-w-[24ch] text-h2 font-extrabold">Eight stages. Two tools. Every product shows where it is stuck.</h2>
           </div>
-          <ol class="mt-5 grid gap-3 md:grid-cols-3">
-            <li class="glass p-4"><p class="flex items-center gap-2.5 text-h3 font-bold"><span class="step-num">1</span> Know</p><p class="mt-2 text-base text-ink-2">Prices, rules and past decisions live in your repo, where the AI searches them first.</p></li>
-            <li class="glass p-4"><p class="flex items-center gap-2.5 text-h3 font-bold"><span class="step-num">2</span> Enforce</p><p class="mt-2 text-base text-ink-2">Every request, and every claim in it, is checked against facts before any work starts.</p></li>
-            <li class="glass p-4"><p class="flex items-center gap-2.5 text-h3 font-bold"><span class="step-num">3</span> Ship</p><p class="mt-2 text-base text-ink-2">Less guessing, fewer redos. Overrides are logged so the rules improve.</p></li>
+
+          <!-- The two tools. canon is private for now, so its card links nowhere. -->
+          <div class="mt-5 grid gap-3 md:grid-cols-2">
+            <div class="glass p-4">
+              <div class="flex items-center gap-3">
+                <span class="tool-mark tool-mark--canon"><i data-lucide="library" class="h-5 w-5"></i></span>
+                <span class="min-w-0"><b class="block text-h3 font-bold">canon</b><span class="text-sm text-ink-3">Knowledge, shared</span></span>
+                <span class="chip ml-auto">Private for now</span>
+              </div>
+              <p class="mt-3 text-base text-ink-2">One site and one search over every product's wiki. Specs, decisions and runbooks start from the same templates, and every edit is a reviewed pull request.</p>
+            </div>
+            <a href="../work/zeno.html" class="glass p-4">
+              <div class="flex items-center gap-3">
+                <span class="tool-mark tool-mark--zeno"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
+                <span class="min-w-0"><b class="block text-h3 font-bold">zeno</b><span class="text-sm text-ink-3">Rules, enforced</span></span>
+                <span class="chip ml-auto">Open source</span>
+              </div>
+              <p class="mt-3 text-base text-ink-2">Each repo keeps its prices, rules and past decisions. The AI checks every request against them before it acts, and each stage waits at its gate.</p>
+            </a>
+          </div>
+
+          <h3 class="mt-8 text-center text-h3 font-bold">What helps at each stage</h3>
+          <ol class="pdlc mt-5 grid gap-4 md:grid-cols-8 md:gap-2">
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="lightbulb" class="h-4 w-4"></i></span><span><b class="block text-sm">Idea</b><span class="block text-xs text-ink-3">Weighed against my principles; earlier tries found first</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--zeno">zeno</span><span class="tool tool--canon">canon</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="search" class="h-4 w-4"></i></span><span><b class="block text-sm">Discovery</b><span class="block text-xs text-ink-3">One search across every repo; research filed where it is found</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--canon">canon</span><span class="tool tool--zeno">zeno</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="list-checks" class="h-4 w-4"></i></span><span><b class="block text-sm">Plan</b><span class="block text-xs text-ink-3">Spec and RFC templates; decisions the gate cites</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--canon">canon</span><span class="tool tool--zeno">zeno</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="code" class="h-4 w-4"></i></span><span><b class="block text-sm">Code</b><span class="block text-xs text-ink-3">Architecture rules checked; docs inside the editor</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--zeno">zeno</span><span class="tool tool--canon">canon</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="git-pull-request" class="h-4 w-4"></i></span><span><b class="block text-sm">Review</b><span class="block text-xs text-ink-3">Checks on every change; knowledge edits reviewed too</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--zeno">zeno</span><span class="tool tool--canon">canon</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="layers" class="h-4 w-4"></i></span><span><b class="block text-sm">Staging</b><span class="block text-xs text-ink-3">The stage waits for my approval</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--zeno">zeno</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="flask-conical" class="h-4 w-4"></i></span><span><b class="block text-sm">Testing</b><span class="block text-xs text-ink-3">Test plans and verification pages</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--canon">canon</span></span></span></li>
+            <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="rocket" class="h-4 w-4"></i></span><span><b class="block text-sm">Deploy / Live</b><span class="block text-xs text-ink-3">Steps you cannot undo flagged; runbooks kept</span><span class="mt-1.5 flex flex-wrap gap-1 md:justify-center"><span class="tool tool--zeno">zeno</span><span class="tool tool--canon">canon</span></span></span></li>
           </ol>
 
-          <h3 class="mt-8 text-center text-h3 font-bold">What it stopped</h3>
+          <h3 class="mt-10 text-center text-h3 font-bold">Where each product is stuck</h3>
+          <!-- One row per lead product. The 8-segment bar fits a phone as is, so
+               there is no separate phone markup; stage names head it from md. -->
+          <div class="glass mt-5 p-4 md:p-5">
+            <div class="hidden md:grid md:grid-cols-[160px_1fr] md:gap-4">
+              <span></span>
+              <div class="pipe text-center font-mono text-2xs text-ink-3"><span>Idea</span><span>Discovery</span><span>Plan</span><span>Code</span><span>Review</span><span>Staging</span><span>Testing</span><span>Deploy</span></div>
+            </div>
+            <ul class="grid gap-5 md:mt-3">
+              <li class="grid gap-2 md:grid-cols-[160px_1fr] md:items-start md:gap-4">
+                <a href="../work/testing.html" class="flex items-center gap-2.5"><img src="../../../../public/media/askcal/icon.svg" alt="" class="app-icon h-7 w-7" /><b class="text-sm">AskCal</b></a>
+                <div>
+                  <div class="pipe" role="img" aria-label="AskCal: seven of eight stages done, stuck at Deploy"><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--now"></span></div>
+                  <p class="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink-2"><span class="pipe-stuck"><i data-lucide="hourglass" class="h-3 w-3"></i> Deploy</span> Waiting for App Store review</p>
+                </div>
+              </li>
+              <li class="grid gap-2 md:grid-cols-[160px_1fr] md:items-start md:gap-4">
+                <a href="../work/unreleased.html" class="flex items-center gap-2.5"><img src="../../../../public/media/babul/icon.svg" alt="" class="app-icon h-7 w-7" /><b class="text-sm">Babul</b></a>
+                <div>
+                  <div class="pipe" role="img" aria-label="Babul: three of eight stages done, stuck at Code"><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--now"></span><span class="pipe-seg"></span><span class="pipe-seg"></span><span class="pipe-seg"></span><span class="pipe-seg"></span></div>
+                  <p class="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink-2"><span class="pipe-stuck"><i data-lucide="hourglass" class="h-3 w-3"></i> Code</span> Rebuilding 12 features to the new screens</p>
+                </div>
+              </li>
+              <li class="grid gap-2 md:grid-cols-[160px_1fr] md:items-start md:gap-4">
+                <a href="../work/project.html" class="flex items-center gap-2.5"><img src="../../../../public/media/chitragupt/icon.svg" alt="" class="app-icon h-7 w-7" /><b class="text-sm">Chitragupt</b></a>
+                <div>
+                  <div class="pipe" role="img" aria-label="Chitragupt: five of eight stages done, stuck at Staging"><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--now"></span><span class="pipe-seg"></span><span class="pipe-seg"></span></div>
+                  <p class="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink-2"><span class="pipe-stuck"><i data-lucide="hourglass" class="h-3 w-3"></i> Staging</span> Email sender records and the payment webhook, then a 10-user soft launch</p>
+                </div>
+              </li>
+              <li class="grid gap-2 md:grid-cols-[160px_1fr] md:items-start md:gap-4">
+                <a href="../work/testing.html" class="flex items-center gap-2.5"><img src="../../../../public/media/imposter/icon.svg" alt="" class="app-icon h-7 w-7" /><b class="text-sm">Imposter</b></a>
+                <div>
+                  <div class="pipe" role="img" aria-label="Imposter: seven of eight stages done, stuck at Deploy"><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--done"></span><span class="pipe-seg pipe-seg--now"></span></div>
+                  <p class="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink-2"><span class="pipe-stuck"><i data-lucide="hourglass" class="h-3 w-3"></i> Deploy</span> Waiting for App Store review</p>
+                </div>
+              </li>
+            </ul>
+            <p class="mt-5 border-t border-line pt-3 text-sm text-ink-3">2 of 4 wait at Deploy — on store review, not on code.</p>
+          </div>
+        </section>
+
+        <section id="zeno" class="wrap mt-12">
+          <h3 class="text-center text-h3 font-bold">What zeno stopped</h3>
           <div class="mt-4 grid gap-3 md:grid-cols-3">
             <article class="glass flex flex-col p-5">
               <p class="ask">Add a $2.99 monthly plan next to the yearly one.</p>
@@ -85,29 +155,32 @@
             <h2 class="text-h2 font-extrabold">Work</h2>
             <p class="text-sm text-ink-3">15 projects · 3 live</p>
           </div>
-          <div class="mt-5 grid gap-3 md:grid-cols-3">
-            <a href="../work/project.html" class="glass overflow-hidden">
-              <div class="aspect-[4/3] overflow-hidden"><img src="../../../../public/media/charades/01-home.webp" alt="Charades, the Home screen" class="shot shot--crop" /></div>
-              <div class="p-4"><div class="flex items-center justify-between gap-2"><h3 class="text-body font-bold">Charades</h3><span class="state state--live">Live</span></div><p class="mt-1 text-sm text-ink-2">Dumb charades for the room you are already in.</p></div>
-            </a>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <a href="../work/testing.html" class="glass overflow-hidden">
               <div class="aspect-[4/3] overflow-hidden"><img src="../../../../public/media/askcal/01-today.webp" alt="AskCal, the Today screen" class="shot shot--crop" /></div>
               <div class="p-4"><div class="flex items-center justify-between gap-2"><h3 class="text-body font-bold">AskCal</h3><span class="state state--test">In review</span></div><p class="mt-1 text-sm text-ink-2">A calorie counter that admits what it cannot see.</p></div>
             </a>
+            <a href="../work/unreleased.html" class="glass overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden"><div class="embed embed--fill"><iframe src="../../../../../../products/babul/.context/designs/web/northwind/products.html?bare" title="Babul design screen" loading="lazy" tabindex="-1"></iframe></div></div>
+              <div class="p-4"><div class="flex items-center justify-between gap-2"><h3 class="text-body font-bold">Babul</h3><span class="state state--build">Build</span></div><p class="mt-1 text-sm text-ink-2">Your design and your product, always in sync.</p></div>
+            </a>
             <a href="../work/project.html" class="glass overflow-hidden">
-              <div class="aspect-[4/3] overflow-hidden"><img src="../../../../public/media/aakalan/01-balances.webp" alt="Aakalan, the Balances screen" class="shot shot--crop" /></div>
-              <div class="p-4"><div class="flex items-center justify-between gap-2"><h3 class="text-body font-bold">Aakalan</h3><span class="state state--test">Beta</span></div><p class="mt-1 text-sm text-ink-2">Your expenses and everyone else's, on one ledger.</p></div>
+              <div class="aspect-[4/3] overflow-hidden"><img src="../../../../public/media/chitragupt/02-tax.webp" alt="Chitragupt, the Tax screen" class="shot shot--crop" /></div>
+              <div class="p-4"><div class="flex items-center justify-between gap-2"><h3 class="text-body font-bold">Chitragupt</h3><span class="state state--test">Pre-launch</span></div><p class="mt-1 text-sm text-ink-2">Household tax review for salaried Indian filers.</p></div>
+            </a>
+            <a href="../work/testing.html" class="glass overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden"><img src="../../../../public/media/imposter/01-home.webp" alt="Imposter, the Home screen" class="shot shot--crop" /></div>
+              <div class="p-4"><div class="flex items-center justify-between gap-2"><h3 class="text-body font-bold">Imposter</h3><span class="state state--test">In review</span></div><p class="mt-1 text-sm text-ink-2">Everyone gets the word. Except one of you.</p></div>
             </a>
           </div>
           <div class="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+            <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/charades/icon.svg" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">Charades</b><span class="state state--live mt-1">Live</span></span></a>
+            <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/aakalan/icon.svg" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">Aakalan</b><span class="state state--test mt-1">Beta</span></span></a>
             <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/tic-tac-toe/icon.webp" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">Tic Tac Toe</b><span class="state state--live mt-1">Live</span></span></a>
             <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><span class="app-icon app-icon--none" aria-hidden="true">L</span><span class="min-w-0"><b class="block truncate text-sm font-semibold">Learning Platform</b><span class="state state--live mt-1">Demo</span></span></a>
-            <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/chitragupt/icon.svg" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">Chitragupt</b><span class="state state--test mt-1">Pre-launch</span></span></a>
-            <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/imposter/icon.svg" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">Imposter</b><span class="state state--test mt-1">In review</span></span></a>
             <a href="../work/testing.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/chess/icon.svg" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">Chess</b><span class="state state--test mt-1">Testing</span></span></a>
             <a href="../work/project.html" class="glass flex items-center gap-3 p-3"><span class="app-icon app-icon--none" aria-hidden="true">S</span><span class="min-w-0"><b class="block truncate text-sm font-semibold">Scrvio</b><span class="state state--test mt-1">Site up</span></span></a>
             <a href="../work/unreleased.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/dwarseva/icon.webp" alt="" class="app-icon" /><span class="min-w-0"><b class="block truncate text-sm font-semibold">DwarSeva</b><span class="state state--build mt-1">Build</span></span></a>
-            <a href="../work/unreleased.html" class="glass flex items-center gap-3 p-3"><img src="../../../../public/media/babul/icon.svg" alt="" class="app-icon"><span class="min-w-0"><b class="block truncate text-sm font-semibold">Babul</b><span class="state state--build mt-1">Build</span></span></a>
             <a href="../work/unreleased.html" class="glass flex items-center gap-3 p-3"><span class="app-icon app-icon--none" aria-hidden="true">T</span><span class="min-w-0"><b class="block truncate text-sm font-semibold">tradx</b><span class="state state--build mt-1">Build</span></span></a>
             <a href="../work/unreleased.html" class="glass flex items-center gap-3 p-3"><span class="app-icon app-icon--none" aria-hidden="true">S</span><span class="min-w-0"><b class="block truncate text-sm font-semibold">Seedha Ghar</b><span class="state state--draft mt-1">Design</span></span></a>
             <a href="../work/unreleased.html" class="glass flex items-center gap-3 p-3"><span class="app-icon app-icon--none" aria-hidden="true">P</span><span class="min-w-0"><b class="block truncate text-sm font-semibold">Plan-Kid</b><span class="state state--draft mt-1">Design</span></span></a>

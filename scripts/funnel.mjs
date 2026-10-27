@@ -1,5 +1,5 @@
 /**
- * A product's funnel, from two files zeno's context layout already defines:
+ * A product's funnel, from two files canon's context layout already defines:
  * each `.context/features/*.md` (its `status:`) and `.context/ops/release.yml`
  * (what is live right now, per surface). Nothing here is typed by hand; a
  * stage exists only when the product's own files give it something to count.
@@ -10,7 +10,7 @@
 /** Every stage a funnel can have, in order. A product shows a subset. */
 export const STAGE_ORDER = ["plan", "build", "testers", "review", "deployed", "live"];
 
-/** zeno's feature statuses. The last two leave the funnel and are only counted. */
+/** canon's feature statuses. The last two leave the funnel and are only counted. */
 const BY_STATUS = { planned: "plan", building: "build" };
 const SET_ASIDE = ["shelved", "superseded"];
 

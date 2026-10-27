@@ -1,6 +1,6 @@
 # Wiki index
 
-One line per page. Rules: `zeno standards` → `wiki-schema`.
+One line per page. Rules: `canon standards` → `wiki-schema`.
 
 ## Decisions
 - [[site]] — The portfolio site
@@ -18,4 +18,4 @@ One line per page. Rules: `zeno standards` → `wiki-schema`.
 - [[unreleased]] — It is the same page.
 - [[wiki-page]] — The article is the Markdown, unedited.
 - [[wiki]] — Grouped by type, because that is how the wiki is written.
-- [[zeno]] — The story is the product, not the code (owner, 2026-10-23).
+- [[canon]] — The story is the product, not the code (owner, 2026-10-23).

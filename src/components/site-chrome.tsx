@@ -3,13 +3,13 @@ import { Mail } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { profile } from "@/lib/profile";
 import { gmailCompose } from "@/lib/mail";
-import { ZENO_REPO } from "@/lib/zeno";
+import { CANON_REPO } from "@/lib/canon";
 
-export type NavKey = "work" | "zeno" | "resume";
+export type NavKey = "work" | "canon" | "resume";
 
 const NAV: { key: NavKey; label: string; href: string }[] = [
   { key: "work", label: "Work", href: "/#work" },
-  { key: "zeno", label: "zeno", href: "/products/zeno/" },
+  { key: "canon", label: "canon", href: "/products/canon/" },
   { key: "resume", label: "Résumé", href: "/resume/" },
 ];
 
@@ -52,7 +52,7 @@ export function SiteFooter() {
         <span className="flex flex-wrap gap-x-5 gap-y-1">
           <a href={`https://linkedin.com/in/${profile.linkedin}`}>LinkedIn</a>
           <a href={`https://github.com/${profile.github}`}>GitHub</a>
-          <a href={ZENO_REPO}>zeno on GitHub</a>
+          <a href={CANON_REPO}>canon on GitHub</a>
           <a href="/resume.pdf">Résumé PDF</a>
         </span>
         <span className="flex gap-5 text-ink-3 sm:ml-auto">

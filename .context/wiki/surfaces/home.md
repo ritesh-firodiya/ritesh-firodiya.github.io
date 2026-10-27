@@ -4,9 +4,9 @@ last-verified: 2026-10-27
 
 # home
 
-**2026-10-27 (in review).** Who → Work → Tools. The leads are AskCal, Babul, Chitragupt and Imposter. canon and zeno are said once, in one row at the foot, one line each; canon links nowhere while its repo is private. No pipeline here: each product shows its own on its project page. The zeno verdicts live on [[zeno]] only.
+**2026-10-27 (in review).** Who → Work → Tools. The leads are AskCal, Babul, Chitragupt and Imposter. canon and canon are said once, in one row at the foot, one line each; canon links nowhere while its repo is private. No pipeline here: each product shows its own on its project page. The canon verdicts live on [[canon]] only.
 
-**Redrawn 2026-10-23 (LAUNCH)** — see [[site]]. Three parts: who → zeno (Know → Enforce → Ship, then three domain verdicts it stopped) → Work (three large cards, twelve small tiles). Dark first, glow and gradient headline. The process board is gone; the stages are on [[zeno]]. The paragraphs below describe the 2026-10-04 layout and are kept for history.
+**Redrawn 2026-10-23 (LAUNCH)** — see [[site]]. Three parts: who → canon (Know → Enforce → Ship, then three domain verdicts it stopped) → Work (three large cards, twelve small tiles). Dark first, glow and gradient headline. The process board is gone; the stages are on [[canon]]. The paragraphs below describe the 2026-10-04 layout and are kept for history.
 
 **One page, three parts.** Who I am is one sentence and three buttons. Work is every project. Process is one board. Work, Process, About and Contact used to be four more pages that repeated what was here; their addresses forward (2026-10-04, review round 4).
 

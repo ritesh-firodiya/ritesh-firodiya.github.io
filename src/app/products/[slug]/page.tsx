@@ -9,7 +9,7 @@ import { gmailCompose } from "@/lib/mail";
 import { products, bySlug, mediaFor, galleriesFor, screensFor, sheetFor, type Platform, type Product } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
-import { zenoFor } from "@/lib/zeno";
+import { canonFor } from "@/lib/canon";
 import { funnelFor } from "@/lib/funnel";
 import { flowFor } from "@/lib/flow";
 import { Funnel } from "@/components/funnel";
@@ -151,7 +151,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       ? [{ h: "What it does", list: p.features.map((f) => ({ t: f.title, b: f.body })) }]
       : [];
 
-  const zeno = zenoFor(p.slug);
+  const canon = canonFor(p.slug);
   const funnel = funnelFor(p.slug);
   const flow = flowFor(p.slug);
 
@@ -224,14 +224,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </dd>
           </div>
           <div className="p-3">
-            <dt className="text-xs text-ink-3">Checked by zeno</dt>
+            <dt className="text-xs text-ink-3">Checked by canon</dt>
             <dd className="mt-0.5">
-              {zeno ? (
-                <Link href="/products/zeno/" className="text-link">
-                  {zeno.modules.length} modules{zeno.version ? ` · zeno ${zeno.version}` : ""}
+              {canon ? (
+                <Link href="/products/canon/" className="text-link">
+                  {canon.modules.length} modules{canon.version ? ` · canon ${canon.version}` : ""}
                 </Link>
               ) : (
-                <span className="text-ink-3">Not on zeno yet</span>
+                <span className="text-ink-3">Not on canon yet</span>
               )}
             </dd>
           </div>

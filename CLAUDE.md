@@ -46,7 +46,7 @@ and commits none of them.
 | Store art | `.context/listing/…/screenshots` | `public/media/<slug>/*.webp` |
 | Icon | `.context/designs/brand/icon.*` | `public/media/<slug>/icon.*` |
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
-| zeno config | `.claude/zeno.yaml` (version, modules) | `src/data/generated/zeno.json` |
+| canon config | `.claude/canon.yaml` (version, modules) | `src/data/generated/canon.json` |
 | Release state | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
 | Conversation flow | `.context/metrics/flow.json` (written by `~/git/bin/flow`) | `src/data/generated/flow.json` |
 
@@ -56,7 +56,7 @@ and commits none of them.
 - It also publishes each product's wiki surface pages as Markdown at
   `/designs/<slug>/wiki/surfaces/` and rewrites one path in the copied
   `_chrome.js`, so the bar's notes button works on the site.
-- `scripts/sync-context.mjs` does the wiki, the pictures and the zeno config. Run it
+- `scripts/sync-context.mjs` does the wiki, the pictures and the canon config. Run it
   second: a wiki page about a screen links to that screen, and only the design
   manifest knows which screens were published.
 - `scripts/designs/sources.mjs` decides where a repo comes from: a sparse,
@@ -90,8 +90,8 @@ A promise on behalf of every app is only as true as the least convenient app.
    and never as a link most people cannot open.
 4. **Facts live in `src/data/products.json`, never in a page.**
 5. **A count is derived, never typed.** "15 projects", "3 live", "7 modules"
-   come from the data. The zeno strip on a project page reads the product's own
-   `.claude/zeno.yaml` (synced into `zeno.json`); nobody edits this site to change it.
+   come from the data. The canon strip on a project page reads the product's own
+   `.claude/canon.yaml` (synced into `canon.json`); nobody edits this site to change it.
 6. **A missing thing is visibly missing.** No screenshot is a hatched slot that
    says so. A withheld design set is a card that lists the failed checks.
 
@@ -143,8 +143,8 @@ re-order the file.
 
 | Route | What it is |
 |---|---|
-| `/` | who (one line), then `#work` (four large cards, then a tile per project), then `#tools` (canon and zeno, one line each) |
-| `/products/zeno/` | zeno: the problem, how it works, what it caught, the lifecycle. Not in `products.json`; its content is `src/lib/zeno.ts` |
+| `/` | who (one line), then `#work` (four large cards, then a tile per project), then `#tools` (canon and canon, one line each) |
+| `/products/canon/` | canon: the problem, how it works, what it caught, the lifecycle. Not in `products.json`; its content is `src/lib/canon.ts` |
 | `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, its funnel ("How it ships"), the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
 | `/products/[slug]/designs/` | that project's own design gallery — a static file, not a route |

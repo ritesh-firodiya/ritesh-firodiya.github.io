@@ -1,5 +1,5 @@
 import { Activity, Hammer, Lightbulb, ListChecks, Megaphone, PencilRuler, Rocket, Search, type LucideIcon } from "lucide-react";
-import { LIFECYCLE, STEPS, type Verdict } from "@/lib/zeno";
+import { LIFECYCLE, STEPS, type Verdict } from "@/lib/canon";
 
 /** Know → Enforce → Ship, as three glass cards. */
 export function Steps({ long = false }: { long?: boolean }) {

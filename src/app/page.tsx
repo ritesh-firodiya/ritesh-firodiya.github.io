@@ -110,12 +110,12 @@ export default function Home() {
                 <b className="text-ink">canon</b> — one searchable home for every product&apos;s specs, decisions and runbooks.
               </p>
             </div>
-            <Link href="/products/zeno/" className="glass flex gap-3 p-4">
-              <span className="tool-mark tool-mark--zeno">
+            <Link href="/products/canon/" className="glass flex gap-3 p-4">
+              <span className="tool-mark tool-mark--canon">
                 <ShieldCheck size={20} aria-hidden />
               </span>
               <p className="text-base text-ink-2">
-                <b className="text-ink">zeno</b> — checks every AI request against a product&apos;s own rules and past decisions before work starts.
+                <b className="text-ink">canon</b> — checks every AI request against a product&apos;s own rules and past decisions before work starts.
               </p>
             </Link>
           </div>

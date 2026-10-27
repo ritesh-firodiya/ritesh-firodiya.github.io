@@ -58,7 +58,7 @@ const SPARSE = [
   ".context/wiki",
   ".context/listing/ios/screenshots/en-US",
   ".context/listing/android/metadata/en-US/images",
-  /* Read for the zeno strip on each project page (modules and version); never published. */
+  /* Read for the canon strip on each project page (modules and version); never published. */
   ".claude",
   /* Read for the funnel on each project page (feature status, release state); never published. */
   ".context/features",

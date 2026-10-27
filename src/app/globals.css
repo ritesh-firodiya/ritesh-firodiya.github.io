@@ -494,9 +494,9 @@
   /* The project-card picture on the dark ground: a soft spotlight behind the art. */
   .spot { background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--color-brand-500) 18%, transparent), transparent 70%), var(--color-muted); }
 
-  /* The two tools on Home: zeno is brand, canon is accent. */
+  /* The two tools on Home: canon is brand, canon is accent. */
   .tool-mark { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: var(--color-ink-inverse); flex-shrink: 0; }
-  .tool-mark--zeno  { background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700)); }
+  .tool-mark--canon  { background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700)); }
   .tool-mark--canon { background: linear-gradient(135deg, var(--color-accent-500), var(--color-brand-500)); }
 
   /* A product's funnel: one band per stage, its thickness the stage's item

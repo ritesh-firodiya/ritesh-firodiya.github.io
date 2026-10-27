@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s — Ritesh Firodiya",
   },
   description:
-    "Full-stack engineer with nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. Products of my own, idea to store, and zeno: the open-source tool that keeps AI on my domain.",
+    "Full-stack engineer with nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. Products of my own, idea to store, and canon: the open-source tool that keeps AI on my domain.",
   openGraph: {
     type: "website",
     siteName: "Ritesh Firodiya",

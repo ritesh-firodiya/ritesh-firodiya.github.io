@@ -1,7 +1,7 @@
 # .context — ritesh-firodiya.github.io
 
-Non-code material for the portfolio site. Layout follows the zeno
-`context-layout` standard (`zeno standards` shows where it lives).
+Non-code material for the portfolio site. Layout follows the canon
+`context-layout` standard (`canon standards` shows where it lives).
 
 Legal: every app's legal documents are shipped from `public/legal/`.
 

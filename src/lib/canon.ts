@@ -1,24 +1,24 @@
 import { generated } from "@/lib/generated";
 
-/** What a product's `.claude/zeno.yaml` says: the zeno version it is pinned to
+/** What a product's `.claude/canon.yaml` says: the canon version it is pinned to
  *  and the modules it runs. Read at build time by scripts/sync-context.mjs. */
-export type ZenoConfig = { version: string | null; modules: string[] };
+export type CanonConfig = { version: string | null; modules: string[] };
 
-const raw = generated<{ zeno: Record<string, ZenoConfig> }>("zeno.json", { zeno: {} });
+const raw = generated<{ canon: Record<string, CanonConfig> }>("canon.json", { canon: {} });
 
-export const zenoFor = (slug: string): ZenoConfig | null => raw.zeno[slug] ?? null;
+export const canonFor = (slug: string): CanonConfig | null => raw.canon[slug] ?? null;
 
-export const ZENO_REPO = "https://github.com/ritesh-firodiya/zeno";
+export const CANON_REPO = "https://github.com/ritesh-firodiya/canon";
 
-export const ZENO_VERSION = "0.9.0";
+export const CANON_VERSION = "0.9.0";
 
 export const INSTALL = [
-  "claude plugin marketplace add ritesh-firodiya/zeno",
-  "claude plugin install zeno@zeno",
-  "npm install -g @freetesh/zeno",
+  "claude plugin marketplace add ritesh-firodiya/canon",
+  "claude plugin install canon@canon",
+  "npm install -g @freetesh/canon",
 ];
 
-/** Know → Enforce → Ship. `short` is Home, `long` is the zeno page. */
+/** Know → Enforce → Ship. `short` is Home, `long` is the canon page. */
 export const STEPS = [
   {
     title: "Know",
@@ -33,13 +33,13 @@ export const STEPS = [
   {
     title: "Ship",
     short: "Less guessing, fewer redos. Overrides are logged so the rules improve.",
-    long: "Checks fail when a rule breaks. Overrides are logged, and zeno proposes better rules from them.",
+    long: "Checks fail when a rule breaks. Overrides are logged, and canon proposes better rules from them.",
   },
 ];
 
 /**
- * Verdicts the gate gave. `eval` ones are zeno's own test suite run on a
- * sample habit app (zeno/evals: contradicts-adr, shelved-feature,
+ * Verdicts the gate gave. `eval` ones are canon's own test suite run on a
+ * sample habit app (canon/evals: contradicts-adr, shelved-feature,
  * irreversible-data); `own` is from the owner's products. The page says which.
  */
 export type Verdict = {
@@ -81,7 +81,7 @@ export const VERDICTS: Verdict[] = [
   },
 ];
 
-/** The product lifecycle, and what zeno keeps at each stage. */
+/** The product lifecycle, and what canon keeps at each stage. */
 export const LIFECYCLE = [
   { stage: "Idea", icon: "lightbulb", keeps: "weighed against your principles" },
   { stage: "Research", icon: "search", keeps: "filed, searchable" },

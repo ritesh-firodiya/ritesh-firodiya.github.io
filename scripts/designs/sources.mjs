@@ -60,6 +60,9 @@ const SPARSE = [
   ".context/listing/android/metadata/en-US/images",
   /* Read for the zeno strip on each project page (modules and version); never published. */
   ".claude",
+  /* Read for the funnel on each project page (feature status, release state); never published. */
+  ".context/features",
+  ".context/ops",
 ];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git", "products");

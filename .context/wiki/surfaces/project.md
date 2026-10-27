@@ -17,3 +17,5 @@ last-verified: 2026-10-23
 **The write-up is two balanced columns of short sections**, and one column on a phone. The sections flow down one column and into the next, so three sections leave no hole (2026-10-12). A bold lead and what follows it; no cards, nothing nested.
 
 **No price anywhere on the page.**
+
+**How it ships (2026-10-27, in review).** A horizontal funnel under the facts row. The stages are the product's own, not a fixed eight: its `pipeline:` in zeno.yaml. Items are its features (by `status`) and its releases (`ops/release.yml`), counted at sync. A band's thickness is its count; the stage where work waits — the biggest pile before Live — is warn. An empty stage shows its 0 and nothing else. One line names the waiting stage and what canon and zeno do there. A product with no pipeline declared shows no funnel.

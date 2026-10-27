@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "check": "pnpm sync && pnpm contrast && pnpm lint && pnpm typecheck && pnpm test:data && pnpm test:sync && pnpm build && pnpm test:export",
     "postbuild": "node scripts/postbuild.mjs",
-    "test:data": "node --test tests/data.test.mjs",
+    "test:data": "node --test tests/data.test.mjs tests/funnel.test.mjs",
     "test:sync": "node --test tests/sync.test.mjs",
     "test:export": "node --test tests/export.test.mjs",
     "test": "node --test tests/",
@@ -34,7 +34,8 @@
     "marked": "^18.0.14",
     "sharp": "0.35.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "yaml": "2.8.1"
   },
   "packageManager": "pnpm@12.3.4",
   "engines": {

@@ -1,22 +1,21 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowDown, FileText, Sparkles } from "lucide-react";
+import { ArrowDown, FileText, Library, ShieldCheck } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { StatePill } from "@/components/ui";
 import { CardPicture } from "@/components/picture";
-import { Steps, VerdictCard } from "@/components/zeno";
 import { products, stageCounts, mediaFor, type Product } from "@/lib/products";
 import { profile } from "@/lib/profile";
-import { VERDICTS } from "@/lib/zeno";
 
 /* Every page states its own canonical — an inherited one silently becomes a
    duplicate-content claim the moment a route is added. */
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-/* Three parts: who, zeno, work (LAUNCH, 2026-10-23). The order of
-   products.json is the running order: the first three are the large cards,
-   the rest are tiles. To change either, re-order the file. */
-const FEATURED = 3;
+/* Three parts: who, work, the tools (2026-10-27). The order of products.json
+   is the running order: the first four are the large cards, the rest are
+   tiles. To change either, re-order the file. Each product's funnel is on its
+   own page, not here. */
+const FEATURED = 4;
 
 function Tile({ p }: { p: Product }) {
   const icon = mediaFor(p.slug).icon;
@@ -60,10 +59,7 @@ export default function Home() {
               Nine years of TypeScript at {list(profile.workedAt.slice(0, 3))}. {products.length} products of my own, idea to store.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-2">
-              <Link href="/products/zeno/" className="btn btn-primary">
-                <Sparkles size={16} aria-hidden /> Meet zeno
-              </Link>
-              <a href="#work" className="btn btn-quiet">
+              <a href="#work" className="btn btn-primary">
                 See my work <ArrowDown size={16} aria-hidden />
               </a>
               <Link href="/resume/" className="btn btn-quiet">
@@ -73,25 +69,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="zeno" className="wrap scroll-mt-16">
-          <div className="text-center">
-            <p className="eyebrow">zeno · open source</p>
-            <h2 className="mx-auto mt-2 max-w-[22ch] text-h2 font-extrabold">Your domain knowledge, kept local. Enforced.</h2>
-          </div>
-          <Steps />
-          <h3 className="mt-8 text-center text-h3 font-bold">What it stopped</h3>
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
-            {VERDICTS.filter((v) => v.origin === "eval").map((v) => (
-              <VerdictCard key={v.ask} v={v} />
-            ))}
-          </div>
-          <p className="mt-6 text-center">
-            <Link href="/products/zeno/" className="text-link">
-              How zeno works
-            </Link>
-          </p>
-        </section>
-
         <section id="work" className="wrap mt-12 scroll-mt-16">
           <div className="flex flex-wrap items-end justify-between gap-2">
             <h2 className="text-h2 font-extrabold">Work</h2>
@@ -99,7 +76,7 @@ export default function Home() {
               {products.length} projects · {stageCounts.live} live
             </p>
           </div>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {products.slice(0, FEATURED).map((p) => (
               <Link key={p.slug} href={`/products/${p.slug}/`} className="glass overflow-hidden">
                 <CardPicture p={p} h="aspect-[4/3]" />
@@ -117,6 +94,30 @@ export default function Home() {
             {products.slice(FEATURED).map((p) => (
               <Tile key={p.slug} p={p} />
             ))}
+          </div>
+        </section>
+
+        {/* Said once, here. Each project page shows what they do for that product. */}
+        <section id="tools" className="wrap mt-12 scroll-mt-16">
+          <h2 className="text-h2 font-extrabold">Tools I built to ship them</h2>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {/* canon's repo is private, so its card links nowhere. */}
+            <div className="glass flex gap-3 p-4">
+              <span className="tool-mark tool-mark--canon">
+                <Library size={20} aria-hidden />
+              </span>
+              <p className="text-base text-ink-2">
+                <b className="text-ink">canon</b> — one searchable home for every product&apos;s specs, decisions and runbooks.
+              </p>
+            </div>
+            <Link href="/products/zeno/" className="glass flex gap-3 p-4">
+              <span className="tool-mark tool-mark--zeno">
+                <ShieldCheck size={20} aria-hidden />
+              </span>
+              <p className="text-base text-ink-2">
+                <b className="text-ink">zeno</b> — checks every AI request against a product&apos;s own rules and past decisions before work starts.
+              </p>
+            </Link>
           </div>
         </section>
       </main>

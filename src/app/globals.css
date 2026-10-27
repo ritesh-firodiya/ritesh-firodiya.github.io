@@ -493,6 +493,25 @@
   .subnav { position: sticky; top: 53px; z-index: 20; background: color-mix(in srgb, var(--color-page) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-line); }
   /* The project-card picture on the dark ground: a soft spotlight behind the art. */
   .spot { background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--color-brand-500) 18%, transparent), transparent 70%), var(--color-muted); }
+
+  /* The two tools on Home: zeno is brand, canon is accent. */
+  .tool-mark { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: var(--color-ink-inverse); flex-shrink: 0; }
+  .tool-mark--zeno  { background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-700)); }
+  .tool-mark--canon { background: linear-gradient(135deg, var(--color-accent-500), var(--color-brand-500)); }
+
+  /* A product's funnel: one band per stage, its thickness the stage's item
+     count, sloping into the next stage's. --a is this stage's share, --b the
+     next one's (0–100). The stage where work waits is warn; the rest brand. */
+  .funnel { display: grid; grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); }
+  .funnel-band { height: 88px; --a2: calc(max(var(--a), 6) * 0.5%); --b2: calc(max(var(--b), 6) * 0.5%);
+    clip-path: polygon(0 calc(50% - var(--a2)), 100% calc(50% - var(--b2)), 100% calc(50% + var(--b2)), 0 calc(50% + var(--a2)));
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-brand-500) 70%, transparent), color-mix(in srgb, var(--color-accent-500) 55%, transparent)); }
+  .funnel-band--wait { background: linear-gradient(90deg, var(--color-warn), color-mix(in srgb, var(--color-warn) 55%, transparent)); }
+  .funnel-band + .funnel-band { margin-left: 2px; }
+  .funnel-n { font-family: var(--font-mono); font-size: var(--text-h3); font-weight: 800; line-height: 1; }
+  /* The item lists sit under their band from md; on a phone they stack. */
+  .funnel-items { display: grid; gap: 16px; }
+  @media (min-width: 768px) { .funnel-items { grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); gap: 12px; } }
 }
 
 /* ── Print · /resume only ──────────────────────────────────────────────────

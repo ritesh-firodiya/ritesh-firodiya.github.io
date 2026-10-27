@@ -10,6 +10,8 @@ import { products, bySlug, mediaFor, galleriesFor, screensFor, sheetFor, type Pl
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
 import { zenoFor } from "@/lib/zeno";
+import { funnelFor } from "@/lib/funnel";
+import { Funnel } from "@/components/funnel";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -149,6 +151,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       : [];
 
   const zeno = zenoFor(p.slug);
+  const funnel = funnelFor(p.slug);
 
   return (
     <>
@@ -253,6 +256,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </dd>
           </div>
         </dl>
+
+        {funnel && <Funnel name={p.name} funnel={funnel} modules={zeno?.modules ?? []} />}
 
         <section className={`mt-3 grid gap-3 ${sections.length > 1 ? "md:grid-cols-2 lg:grid-cols-3" : ""}`}>
           {sections.length === 0 ? (

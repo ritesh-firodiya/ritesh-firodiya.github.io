@@ -47,6 +47,7 @@ and commits none of them.
 | Icon | `.context/designs/brand/icon.*` | `public/media/<slug>/icon.*` |
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
 | zeno config | `.claude/zeno.yaml` (version, modules) | `src/data/generated/zeno.json` |
+| Funnel | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
 
 - `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
   and **withholds any surface that fails `STYLE-GUIDE.md`** — the reasons land
@@ -96,8 +97,8 @@ A promise on behalf of every app is only as true as the least convenient app.
 ## Data model
 
 `src/data/products.json` is the single source of truth for every app fact.
-**Its array order is the running order of the site**: the home page shows
-every project as one card, four to a row, in this order. To change the order,
+**Its array order is the running order of the site**: the first four are the
+home page's large cards, the rest are tiles, in this order. To change the order,
 re-order the file.
 
 - The release state pill is **derived** from `platforms` (`stageOf` in
@@ -120,6 +121,15 @@ re-order the file.
 - **Mobile / Web tags** are derived (`surfaceTags` in `src/lib/products.ts`)
   from the surfaces a product draws and the platforms it has built. A product
   with both shows both.
+- **The funnel is derived, never typed** (`scripts/funnel.mjs`, tested in
+  `tests/funnel.test.mjs`). Plan and Build count features by `status:`;
+  Testers, Store review, Deployed and Live come from each surface in
+  `release.yml`, and a block marked `verified: false` is skipped. Shipped
+  features sit with the furthest build; shelved and superseded ones are only
+  counted. Work "waits" at the furthest stage short of Live that holds
+  anything. The tool lines (`helpAt` in `src/lib/funnel.ts`) state only what
+  zeno and canon do today — no gated zeno `pipeline:` is declared yet, so
+  nothing may say zeno holds a stage.
 - `src/lib/case-studies.ts` holds the long-form text for a project page. A
   product without one shows its `features` instead.
 - `src/data/profile.json` drives the home page and the résumé.
@@ -131,9 +141,9 @@ re-order the file.
 
 | Route | What it is |
 |---|---|
-| `/` | who (one line), then `#zeno` (Know → Enforce → Ship and three verdicts), then `#work` (three large cards, then a tile per project) |
+| `/` | who (one line), then `#work` (four large cards, then a tile per project), then `#tools` (canon and zeno, one line each) |
 | `/products/zeno/` | zeno: the problem, how it works, what it caught, the lifecycle. Not in `products.json`; its content is `src/lib/zeno.ts` |
-| `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, the write-up |
+| `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, its funnel ("How it ships"), the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
 | `/products/[slug]/designs/` | that project's own design gallery — a static file, not a route |
 | `/resume/` | the person |

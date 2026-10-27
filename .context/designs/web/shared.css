@@ -994,40 +994,21 @@ a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transpare
 /* The project-card picture on the dark ground: a soft spotlight behind the art. */
 .spot { background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--brand-500) 18%, transparent), transparent 70%), var(--muted); }
 
-/* The two tools, told apart by role: zeno is brand, canon is accent. */
-.tool { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: var(--radius-pill);
-  font-family: var(--font-mono); font-size: var(--fs-2xs); font-weight: 700; letter-spacing: .04em; border: 1px solid; }
-.tool--zeno  { color: var(--brand-500);  border-color: color-mix(in srgb, var(--brand-500) 40%, transparent);  background: color-mix(in srgb, var(--brand-500) 10%, transparent); }
-.tool--canon { color: var(--accent-500); border-color: color-mix(in srgb, var(--accent-500) 40%, transparent); background: color-mix(in srgb, var(--accent-500) 10%, transparent); }
-.tool--none  { color: var(--ink-3); border-style: dashed; border-color: var(--line-strong); }
-.tool-mark { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-inverse); flex-shrink: 0; }
+/* The two tools on Home: zeno is brand, canon is accent. */
+.tool-mark { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-inverse); flex-shrink: 0; }
 .tool-mark--zeno  { background: linear-gradient(135deg, var(--brand-500), var(--brand-700)); }
 .tool-mark--canon { background: linear-gradient(135deg, var(--accent-500), var(--brand-500)); }
 
-/* The bottleneck pipeline: one product is eight segments on one line.
-   Done is the gradient, the stage it is stuck at is warn and breathes, the
-   rest are empty. Warn because a bottleneck is a verdict, not a release state. */
-.pipe { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
-.pipe-seg { position: relative; height: 10px; border-radius: var(--radius-pill); background: var(--muted);
-  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent); overflow: hidden; }
-.pipe-seg--done { border-color: transparent;
-  background: linear-gradient(90deg, var(--brand-500), var(--accent-500)); background-size: 800% 100%; }
-/* Each done segment shows its own slice of one long gradient, so a row reads as one line. */
-.pipe-seg--done:nth-child(1) { background-position: 0% 0; }
-.pipe-seg--done:nth-child(2) { background-position: 14% 0; }
-.pipe-seg--done:nth-child(3) { background-position: 28% 0; }
-.pipe-seg--done:nth-child(4) { background-position: 43% 0; }
-.pipe-seg--done:nth-child(5) { background-position: 57% 0; }
-.pipe-seg--done:nth-child(6) { background-position: 71% 0; }
-.pipe-seg--done:nth-child(7) { background-position: 86% 0; }
-.pipe-seg--done::after { content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, white 45%, transparent), transparent);
-  transform: translateX(-100%); animation: pipe-shine 3.2s ease-in-out infinite; }
-.pipe-seg--now { border-color: var(--warn); background: var(--warn-bg); overflow: visible;
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--warn) 55%, transparent); animation: pipe-breathe 2s ease-out infinite; }
-.pipe-seg--now::before { content: ""; position: absolute; inset: 2px; border-radius: inherit; background: var(--warn); width: 45%; }
-.pipe-stuck { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: var(--radius-pill);
-  color: var(--warn); background: var(--warn-bg); font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .04em; }
-@keyframes pipe-shine { 60%, 100% { transform: translateX(100%); } }
-@keyframes pipe-breathe { 70% { box-shadow: 0 0 0 7px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
-@media (prefers-reduced-motion: reduce) { .pipe-seg--done::after, .pipe-seg--now { animation: none; } }
+/* A product's funnel: one band per stage, its thickness the stage's item
+   count, sloping into the next stage's. --a is this stage's share, --b the
+   next one's (0–100). The stage where work waits is warn; the rest brand. */
+.funnel { display: grid; grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); }
+.funnel-band { height: 88px; --a2: calc(max(var(--a), 6) * 0.5%); --b2: calc(max(var(--b), 6) * 0.5%);
+  clip-path: polygon(0 calc(50% - var(--a2)), 100% calc(50% - var(--b2)), 100% calc(50% + var(--b2)), 0 calc(50% + var(--a2)));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--brand-500) 70%, transparent), color-mix(in srgb, var(--accent-500) 55%, transparent)); }
+.funnel-band--wait { background: linear-gradient(90deg, var(--warn), color-mix(in srgb, var(--warn) 55%, transparent)); }
+.funnel-band + .funnel-band { margin-left: 2px; }
+.funnel-n { font-family: var(--font-mono); font-size: var(--fs-h3); font-weight: 800; line-height: 1; }
+/* The item lists sit under their band from md; on a phone they stack. */
+.funnel-items { display: grid; gap: 16px; }
+@media (min-width: 768px) { .funnel-items { grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); gap: 12px; } }

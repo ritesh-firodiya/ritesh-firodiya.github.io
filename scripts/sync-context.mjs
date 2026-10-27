@@ -330,7 +330,11 @@ const canon = {};
 const funnel = {};
 const flow = {};
 
+/* A design set with no product (canon) lends its screens only: no wiki, art or funnel. */
+const PRODUCTS = new Set(JSON.parse(await readFile("src/data/products.json", "utf8")).products.map((p) => p.slug));
+
 for (const [slug, source] of Object.entries(sets)) {
+  if (!PRODUCTS.has(slug)) continue;
   const m = await syncMedia(slug, source.root);
   if (m) media[slug] = m;
   const w = await syncWiki(slug, source.root);

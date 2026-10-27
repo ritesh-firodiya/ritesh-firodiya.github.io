@@ -995,9 +995,6 @@ a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transpare
 .spot { background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--brand-500) 18%, transparent), transparent 70%), var(--muted); }
 
 /* The two tools on Home: canon is brand, canon is accent. */
-.tool-mark { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-inverse); flex-shrink: 0; }
-.tool-mark--canon  { background: linear-gradient(135deg, var(--brand-500), var(--brand-700)); }
-.tool-mark--canon { background: linear-gradient(135deg, var(--accent-500), var(--brand-500)); }
 
 /* A product's funnel: one band per stage, its thickness the stage's item
    count, sloping into the next stage's. --a is this stage's share, --b the

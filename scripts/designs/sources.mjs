@@ -47,6 +47,10 @@ export const SETS = {
   scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
   babul: { repo: "ritvi-apps/babul", local: "babul", key: "DEPLOY_KEY_BABUL" },
   dwarseva: { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
+  /* canon is under the personal account, outside DESIGNS_TOKEN's org, so it is
+     read with its own deploy key. Not in products.json: the home card embeds
+     its landing screen. */
+  canon: { repo: "ritesh-firodiya/canon", local: "canon", key: "DEPLOY_KEY_CANON" },
 };
 
 const SUBDIR = ".context/designs";

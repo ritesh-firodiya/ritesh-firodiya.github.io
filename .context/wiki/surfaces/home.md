@@ -2,7 +2,7 @@
 last-verified: 2026-10-27
 ---
 
-# home
+**2026-10-27 (in review).** Who → Work. Every project is the same card, picture first, in the order of `products.json`, with canon placed third: the first row is AskCal, Babul, canon, Chitragupt. canon's picture is its own landing screen (`canon/.context/designs/web/marketing/landing.html`, embedded live). The tools row is gone, so canon is said once. No pipeline here: each product shows its own on its project page. The canon verdicts live on [[canon]] only.
 
 **2026-10-27 (in review).** Who → Work → Tools. The leads are AskCal, Babul, Chitragupt and Imposter. canon and canon are said once, in one row at the foot, one line each; canon links nowhere while its repo is private. No pipeline here: each product shows its own on its project page. The canon verdicts live on [[canon]] only.
 

@@ -75,6 +75,7 @@ jobs:
           DEPLOY_KEY_SCRVIO: ${{ secrets.DEPLOY_KEY_SCRVIO }}
           DEPLOY_KEY_BABUL: ${{ secrets.DEPLOY_KEY_BABUL }}
           DEPLOY_KEY_DWARSEVA: ${{ secrets.DEPLOY_KEY_DWARSEVA }}
+          DEPLOY_KEY_CANON: ${{ secrets.DEPLOY_KEY_CANON }}
           DESIGNS_SOURCE: remote
         run: |
           test -n "$DESIGNS_TOKEN" || {

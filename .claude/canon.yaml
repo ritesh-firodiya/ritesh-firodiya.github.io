@@ -1,5 +1,7 @@
-canon: 0.16.0
+canon: 0.17.0
 kind: web
+# Standards imported from canon by name; `canon standards` lists them.
+standards: [design-sets, frontend, performance, secrets]
 modules:
   - docs
   - design

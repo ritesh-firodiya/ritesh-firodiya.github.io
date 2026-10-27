@@ -1,0 +1,4 @@
+# The site measures nothing: it is a static export with no analytics script and
+# no cookies. Add a tracking script only as a recorded decision, and disclose it
+# on /legal/ in the same change.
+metrics: []

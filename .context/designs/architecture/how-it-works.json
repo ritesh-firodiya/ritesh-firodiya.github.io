@@ -1,0 +1,14 @@
+{"schema_version":1,"diagram_type":"architecture","meta":{"title":"2 · How the site is built","output":"how-it-works.html","quality_profile":"showcase"},
+ "components":[
+  {"id":"repos","type":"external","label":"Product repos","sublabel":"each one's .context/","pos":[40,40],"size":[180,64]},
+  {"id":"sync","type":"backend","label":"pnpm sync","sublabel":"sync-designs, sync-context","pos":[320,40],"size":[190,64]},
+  {"id":"scan","type":"security","label":"Secret scan","sublabel":"stops the build on a hit","pos":[320,190],"size":[190,64]},
+  {"id":"generated","type":"database","label":"Generated data","sublabel":"public/, src/data/generated · gitignored","pos":[610,40],"size":[230,64]},
+  {"id":"facts","type":"database","label":"products.json","sublabel":"every app fact, in running order","pos":[610,190],"size":[230,64]},
+  {"id":"next","type":"frontend","label":"Next.js static export","sublabel":"App Router, Tailwind v4 → out/","pos":[940,110],"size":[220,64]}],
+ "connections":[
+  {"id":"a","from":"repos","to":"sync","label":"read at build time","variant":"emphasis"},
+  {"id":"b","from":"sync","to":"scan","label":"every screen, every page"},
+  {"id":"c","from":"sync","to":"generated","label":"writes"},
+  {"id":"d","from":"generated","to":"next","label":"pages read"},
+  {"id":"e","from":"facts","to":"next","label":"pages read"}]}

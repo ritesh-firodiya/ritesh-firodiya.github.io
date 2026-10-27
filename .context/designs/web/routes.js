@@ -12,6 +12,7 @@
  */
 window.ROUTES = {
   product: "Ritesh Firodiya",
+  architecture: "architecture/overview.html",
   surface: "web",
 
   /* Web only, and written phone first: every unprefixed class is the 390px
@@ -58,6 +59,12 @@ window.ROUTES = {
       {file: "work/testing.html", screen: "Project, closed test", status: "review", notes: "testing"},
       {file: "work/unreleased.html", screen: "Project, no build", status: "review", notes: "unreleased"},
     ]},
+    { flow: "architecture", screens: [
+      { file: "architecture/overview.html", route: null, screen: "Architecture", status: "needs review", notes: "architecture" },
+      { file: "architecture/who-uses.html", route: null, screen: "Who uses it", status: "needs review", notes: "architecture" },
+      { file: "architecture/how-it-works.html", route: null, screen: "How the site is built", status: "needs review", notes: "architecture" },
+      { file: "architecture/relies-on.html", route: null, screen: "What it relies on", status: "needs review", notes: "architecture" },
+    ]},
   ],
 
   /* No splash, so the chart starts where the site does. The résumé is the
@@ -66,6 +73,9 @@ window.ROUTES = {
     start: "home/home.html",
     end: ["resume/resume.html"],
     edges: [
+      { from: "architecture/overview.html", to: "architecture/who-uses.html", side: true },
+      { from: "architecture/overview.html", to: "architecture/how-it-works.html", side: true },
+      { from: "architecture/overview.html", to: "architecture/relies-on.html", side: true },
       {from: "states/404.html", to: "home/home.html", back: true},
       {from: "states/404.html", to: "resume/resume.html", side: true},
       {from: "states/404.html", to: "support/support.html", side: true},

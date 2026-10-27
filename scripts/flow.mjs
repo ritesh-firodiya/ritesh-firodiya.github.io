@@ -7,13 +7,17 @@
  * Pure: the sync passes the parsed file in, the test passes fixtures.
  */
 
-const IDS = ["asked", "committed", "released", "live"];
+/* Every stage ~/git/bin/flow knows how to measure, in the order they can appear.
+   A product's own pipeline (`canon pipeline`) is an ordered subset. */
+const KNOWN = ["idea", "research", "plan", "design", "code", "review", "release", "store-review", "deployed", "live"];
 
 /** @param {any} raw the parsed flow.json */
 export function flowOf(raw) {
   const stages = raw?.stages;
-  if (!Array.isArray(stages) || stages.map((s) => s.id).join() !== IDS.join()) {
-    throw new Error(`flow.json must list the stages ${IDS.join(", ")} in order`);
+  const ids = Array.isArray(stages) ? stages.map((s) => s.id) : [];
+  const order = ids.map((id) => KNOWN.indexOf(id));
+  if (ids.length < 2 || order.includes(-1) || order.some((n, i) => i > 0 && n <= order[i - 1])) {
+    throw new Error(`flow.json must list two or more of ${KNOWN.join(", ")}, in that order`);
   }
   if (!stages.every((s) => Number.isInteger(s.count) && s.count >= 0)) throw new Error("flow.json: every count must be a whole number");
 
@@ -34,5 +38,5 @@ export function flowOf(raw) {
   const shared = hops.filter((h) => h.share !== null);
   const drop = shared.length ? shared.reduce((a, b) => (b.share < a.share ? b : a)).to : null;
 
-  return { stages: stages.map(({ id, count }) => ({ id, count })), hops, slowest, drop, asOf: raw.updated ?? null };
+  return { stages: stages.map(({ id, count }) => ({ id, count })), hops, slowest, drop, asOf: raw.updated ?? null, since: raw.since ?? null };
 }

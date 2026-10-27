@@ -52,7 +52,7 @@ function NextUp({ release }: { release: Release }) {
 
 /** Every conversation about the product, and how far it got. */
 export function Funnel({ name, flow, release }: FunnelProps) {
-  const { stages, hops, slowest, drop, asOf } = flow;
+  const { stages, hops, slowest, drop, asOf, since } = flow;
   const max = Math.max(1, ...stages.map((s) => s.count));
   const share = (i: number) => Math.round(((stages[i]?.count ?? 0) * 100) / max);
   const cols = { "--stages": stages.length } as CSSProperties;
@@ -68,7 +68,10 @@ export function Funnel({ name, flow, release }: FunnelProps) {
         </h2>
         {asOf && <p className="text-xs text-ink-3">As of {asOf}</p>}
       </div>
-      <p className="mt-1 text-sm text-ink-2">Every conversation I had with Claude about {name}, and how far it got.</p>
+      <p className="mt-1 text-sm text-ink-2">
+        Every conversation I had with Claude about {name}{since ? ` since ${since}` : ""}, and how far it got. Each counts at every stage up to the
+        furthest it reached.
+      </p>
       <div
         className="funnel mt-4"
         style={cols}
@@ -83,23 +86,27 @@ export function Funnel({ name, flow, release }: FunnelProps) {
           />
         ))}
       </div>
-      <div className="funnel gap-1" style={cols}>
+      {/* A list on a phone, where nine columns of words cannot fit; one column per band from md. */}
+      <ol className="funnel-heads mt-2" style={cols}>
         {stages.map((s, i) => {
           const hop = i > 0 ? hops[i - 1] : null;
           return (
-            <div key={s.id} className="pt-2 text-center">
+            <li key={s.id} className="funnel-head">
               <p className={`funnel-n${s.id === drop ? " text-warn" : ""}`}>{s.count}</p>
-              <p className="mt-1 text-xs font-semibold text-ink">{FLOW_STAGE[s.id].label}</p>
-              <p className="text-2xs text-ink-3">{FLOW_STAGE[s.id].counts}</p>
-              {hop && (
-                <p className={`mt-1 font-mono text-2xs ${s.id === slowest ? "text-warn" : "text-ink-3"}`}>
-                  {hop.share === null ? "—" : `${hop.share}%`} · {duration(hop.medianHours)}
-                </p>
-              )}
-            </div>
+              <div>
+                <p className="text-xs font-semibold text-ink">{FLOW_STAGE[s.id].label}</p>
+                <p className="text-2xs text-ink-3">{FLOW_STAGE[s.id].counts}</p>
+                {/* Nothing reached the stage before: no share to state. */}
+                {hop && hop.share !== null && (
+                  <p className={`mt-1 font-mono text-2xs ${s.id === slowest ? "text-warn" : "text-ink-3"}`}>
+                    {hop.share}% · {duration(hop.medianHours)}
+                  </p>
+                )}
+              </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
       {(slowHop || dropHop) && (
         <p className="mt-4 text-sm text-ink-2">
           {slowHop && (

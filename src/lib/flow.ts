@@ -4,7 +4,9 @@ import { generated } from "@/lib/generated";
    .context/metrics/flow.json, which ~/git/bin/flow writes on the owner's
    machine from Claude transcripts and git. Counts and times only. */
 
-export type FlowStageId = "asked" | "committed" | "released" | "live";
+/* The stages ~/git/bin/flow can measure. A product shows its own ordered
+   subset — the `pipeline:` in its .claude/canon.yaml. */
+export type FlowStageId = "idea" | "research" | "plan" | "design" | "code" | "review" | "release" | "store-review" | "deployed" | "live";
 
 export interface FlowHop {
   from: FlowStageId;
@@ -22,18 +24,26 @@ export interface Flow {
   /** The stage reached by the step with the lowest share. */
   drop: FlowStageId | null;
   asOf: string | null;
+  /** The oldest conversation counted; older transcripts are gone. */
+  since: string | null;
 }
 
 const { flow } = generated<{ flow: Record<string, Flow> }>("flow.json", { flow: {} });
 
 export const flowFor = (slug: string): Flow | null => flow[slug] ?? null;
 
-/** Each stage's name and, in one line, what counts. */
+/** Each stage's name and, in one line, what counts (the rules in ~/git/bin/flow). */
 export const FLOW_STAGE: Record<FlowStageId, { label: string; counts: string }> = {
-  asked: { label: "Asked", counts: "conversations with Claude about it" },
-  committed: { label: "Committed", counts: "ended in a commit" },
-  released: { label: "Released", counts: "that commit is in a version tag" },
-  live: { label: "Live", counts: "that version is live" },
+  idea: { label: "Idea", counts: "a conversation started" },
+  research: { label: "Research", counts: "searched the web or filed research" },
+  plan: { label: "Plan", counts: "a commit touched features, tasks or decisions" },
+  design: { label: "Design", counts: "a commit touched the design set" },
+  code: { label: "Code", counts: "a commit touched app code" },
+  review: { label: "Review", counts: "that commit is in a merged pull request" },
+  release: { label: "Release", counts: "that commit is in a version tag" },
+  "store-review": { label: "Store review", counts: "in the version under store review" },
+  deployed: { label: "Deployed", counts: "in the deployed web build" },
+  live: { label: "Live", counts: "in the live version" },
 };
 
 const HOURS_PER_DAY = 24;

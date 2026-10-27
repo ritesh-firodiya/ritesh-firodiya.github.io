@@ -1012,3 +1012,12 @@ a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transpare
 /* The item lists sit under their band from md; on a phone they stack. */
 .funnel-items { display: grid; gap: 16px; }
 @media (min-width: 768px) { .funnel-items { grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); gap: 12px; } }
+/* The stage under each band: a row (count, then words) on a phone, a centred column from md. */
+.funnel-heads { display: grid; gap: 10px; }
+.funnel-head { display: flex; align-items: baseline; gap: 12px; }
+.funnel-head .funnel-n { min-width: 3ch; text-align: right; }
+@media (min-width: 768px) {
+  .funnel-heads { grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); gap: 4px; }
+  .funnel-head { flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .funnel-head .funnel-n { min-width: 0; text-align: center; }
+}

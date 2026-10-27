@@ -125,8 +125,9 @@ re-order the file.
 - **"How it ships" is derived, never typed.** Its numbers are the product's
   `.context/metrics/flow.json`, which `~/git/bin/flow` writes on the owner's
   machine from Claude transcripts and git (CI cannot read transcripts; counts
-  and times only, never prompt text). Asked → Committed → Released → Live, each
-  step's share and median time, the slowest step and the biggest drop
+  and times only, never prompt text). The stages are the product's own — the
+  `pipeline:` in its `.claude/canon.yaml`, which `canon pipeline` resolves —
+  each with a one-line rule in `bin/flow` and `FLOW_STAGE`; each step's share and median time, the slowest step and the biggest drop
   (`scripts/flow.mjs`, `tests/flow.test.mjs`). Re-run `bin/flow <product>
   --write` and commit the file in the product repo to refresh it. Below it,
   each surface's state and the feature counts come from `scripts/funnel.mjs`

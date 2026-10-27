@@ -3,7 +3,7 @@
 Guidance for Claude Code working in this repository.
 
 **Before starting work, read `.context/tasks.md`.** It is the ordered queue.
-After finishing, tick the task and append a Session Note.
+After finishing, delete the task.
 
 ## What this is
 

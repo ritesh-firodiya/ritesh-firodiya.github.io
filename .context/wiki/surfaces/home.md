@@ -1,22 +1,9 @@
 ---
-id: SURFACE.WEB.HOME
-type: surface
-status: canonical
 last-verified: 2026-10-23
-supersedes: []
-superseded-by: null
 ---
 
-## Summary
-Who, then zeno, then three selected projects, then every project as a list, then how I build.
+# home
 
-## Route
-`/`
-
-## Raw wireframe
-- .context/designs/web/home/home.html
-
-## Why it is drawn this way
 **Redrawn 2026-10-23 (LAUNCH)** — see [[2026-10-23-launch-redesign]]. Three parts: who → zeno (Know → Enforce → Ship, then three domain verdicts it stopped) → Work (three large cards, twelve small tiles). Dark first, glow and gradient headline. The process board is gone; the stages are on [[zeno]]. The paragraphs below describe the 2026-10-04 layout and are kept for history.
 
 **One page, three parts.** Who I am is one sentence and three buttons. Work is every project. Process is one board. Work, Process, About and Contact used to be four more pages that repeated what was here; their addresses forward (2026-10-04, review round 4).
@@ -32,12 +19,3 @@ Who, then zeno, then three selected projects, then every project as a list, then
 **The board is the process.** The eight stages head the columns, each with what it leaves behind, and every project is a row of dots counted from its own repository. On a phone it is a key and a list, not a table that scrolls sideways.
 
 **Nothing is said twice.** No stats row, no closing band. The email is in the header and the footer, on every page.
-
-## Related
-- [[zeno]]
-- [[project]]
-- [[unreleased]]
-- [[resume]]
-
-## Sources
-- .context/designs/web/home/home.html

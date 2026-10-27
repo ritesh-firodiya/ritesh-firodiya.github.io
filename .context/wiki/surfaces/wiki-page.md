@@ -1,22 +1,9 @@
 ---
-id: SURFACE.WEB.WIKI-PAGE
-type: surface
-status: canonical
 last-verified: 2026-10-04
-supersedes: []
-superseded-by: null
 ---
 
-## Summary
-One wiki page, rendered from the project's Markdown.
+# wiki-page
 
-## Route
-`/products/<slug>/wiki/<type>/<page>/`
-
-## Raw wireframe
-- .context/designs/web/wiki/page.html
-
-## Why it is drawn this way
 **The article is the Markdown, unedited.** Headings, bold leads and lists render as written. The site adds nothing to the text.
 
 **The frontmatter becomes the line under the title.** Type, status and the last-verified date are what tell a reader how far to trust the page, so they are shown rather than dropped.
@@ -26,11 +13,3 @@ One wiki page, rendered from the project's Markdown.
 **`[[links]]` become real links**, and the pages they point to are listed again in the rail, so the wiki can be walked.
 
 **On a phone the article comes first**, then its screen, then the rail.
-
-## Related
-- [[wiki]]
-- [[home]]
-- [[resume]]
-
-## Sources
-- .context/designs/web/wiki/page.html

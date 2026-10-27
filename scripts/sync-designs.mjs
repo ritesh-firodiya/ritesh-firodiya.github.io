@@ -222,6 +222,9 @@ for (const [slug, source] of Object.entries(sets)) {
       .replace(/\s*[—·|]\s*(wireframes?|mobile|web).*$/i, "")
       .trim();
     const parts = rel.split(sep);
+    /* A page inside brand/ (Charades' store-screenshots sheet) is artwork: it
+       is copied, but it is not a screen and brand/ is not a surface. */
+    if (top === "brand") continue;
     entries.push({
       path: `/designs/${slug}/${parts.join("/")}`,
       title,

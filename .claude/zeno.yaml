@@ -1,4 +1,4 @@
-zeno: 0.11.0
+zeno: 0.12.0
 kind: web
 modules:
   - docs

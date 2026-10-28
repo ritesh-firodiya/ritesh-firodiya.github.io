@@ -178,7 +178,7 @@
       "slug": "canon",
       "name": "canon",
       "stageLabel": "In build",
-      "embed": "web/home/today.html",
+      "embed": "web/marketing/landing.html",
       "fullName": "canon",
       "tagline": "Every repo's rules and knowledge in one place.",
       "blurb": "A private docs workspace over every product repo's .context/ folder: decisions, PRDs, ideas and checks, one space per repo. The paid site on top of the free canon-cli. Community edition is free; Team and Enterprise add review in the browser, members and SSO.",

@@ -134,10 +134,10 @@
       "notBuilt": false,
       "platforms": {
         "web": {
-          "state": "none",
-          "label": "Being rebuilt",
-          "url": null,
-          "note": "Rebuilt to a new design; the demo comes back on staging with release 1.0.0"
+          "state": "beta",
+          "label": "Open staging",
+          "url": "https://babul-staging.vercel.app",
+          "note": "Staging build; not open for sign-ups yet"
         }
       },
       "stack": [

@@ -144,8 +144,8 @@ re-order the file.
 
 | Route | What it is |
 |---|---|
-| `/` | who (one line), then `#work` (four large cards, then a tile per project), then `#tools` (canon and canon, one line each) |
-| `/products/canon/` | canon: the problem, how it works, what it caught, the lifecycle. Not in `products.json`; its content is `src/lib/canon.ts` |
+| `/` | who (one line), then `#work` (four large cards, then a tile per project) |
+| `/products/canon/` | canon, the private docs site: a product in `products.json` like the rest. Its page adds one section, `#cli`: canon-cli, the free CLI and plugin canon is built on (`src/components/canon-cli.tsx`, content in `src/lib/canon.ts`). canon-cli is never listed on its own |
 | `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, its funnel ("How it ships"), the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
 | `/products/[slug]/designs/` | that project's own design gallery — a static file, not a route |

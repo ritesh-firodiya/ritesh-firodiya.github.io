@@ -48,10 +48,10 @@ export default function ResumePage() {
         <p className="mt-4 max-w-[90ch] text-body text-ink-2">{profile.summary}</p>
 
         <section className="no-print mt-5 grid gap-3 md:grid-cols-2" aria-label="Own work">
-          <Link href="/products/canon/" className="glass glow p-4">
+          <Link href="/products/canon/#cli" className="glass glow p-4">
             <p className="eyebrow">Open source · 2026</p>
             <h2 className="mt-1 text-body font-bold">
-              canon <span className="font-semibold text-brand-500">· Claude Code plugin + CLI</span>
+              canon-cli <span className="font-semibold text-brand-500">· Claude Code plugin + CLI</span>
             </h2>
             <p className="mt-1 text-base text-ink-2">
               Keeps domain knowledge and AI rules local and enforced across {products.filter((p) => canonFor(p.slug)).length} product repos, so the AI

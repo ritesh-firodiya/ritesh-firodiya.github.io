@@ -48,8 +48,7 @@ export const SETS = {
   babul: { repo: "ritvi-apps/babul", local: "babul", key: "DEPLOY_KEY_BABUL" },
   dwarseva: { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
   /* canon is under the personal account, outside DESIGNS_TOKEN's org, so it is
-     read with its own deploy key. Not in products.json: the home card embeds
-     its landing screen. */
+     read with its own deploy key. */
   canon: { repo: "ritesh-firodiya/canon", local: "canon", key: "DEPLOY_KEY_CANON" },
 };
 

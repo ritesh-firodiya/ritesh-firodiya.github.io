@@ -10,7 +10,7 @@ export const canonFor = (slug: string): CanonConfig | null => raw.canon[slug] ??
 
 export const CANON_REPO = "https://github.com/ritesh-firodiya/canon-cli";
 
-export const CANON_VERSION = "0.15.0";
+export const CANON_VERSION = "0.18.2";
 
 export const INSTALL = [
   "claude plugin marketplace add ritesh-firodiya/canon-cli",

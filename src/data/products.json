@@ -175,6 +175,56 @@
       "repo": null
     },
     {
+      "slug": "canon",
+      "name": "canon",
+      "stageLabel": "In build",
+      "embed": "web/home/today.html",
+      "fullName": "canon",
+      "tagline": "Every repo's rules and knowledge in one place.",
+      "blurb": "A private docs workspace over every product repo's .context/ folder: decisions, PRDs, ideas and checks, one space per repo. The paid site on top of the free canon-cli. Community edition is free; Team and Enterprise add review in the browser, members and SSO.",
+      "sourceOfTruth": "products/canon",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Community is free. Team is billed per editor, free up to 3; its price is not set. Enterprise is a yearly contract.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "No — it is a web product",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {
+        "web": {
+          "state": "beta",
+          "label": "Open staging",
+          "url": "https://canon-gules-two.vercel.app",
+          "note": "Private staging: it asks for a Vercel sign-in"
+        }
+      },
+      "stack": [
+        "Next.js",
+        "Prisma",
+        "PostgreSQL",
+        "Vercel",
+        "TypeScript"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "One space per repo",
+          "body": "Each repo's wiki, ideas, features and checks, read from its own .context/."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
       "slug": "chitragupt",
       "name": "Chitragupt",
       "stageLabel": "Pre-launch",

@@ -54,7 +54,7 @@ window.ROUTES = {
       {file: "wiki/page.html", screen: "Wiki page", status: "review", notes: "wiki-page"},
     ]},
     { flow: "work", screens: [
-      {file: "work/canon.html", screen: "canon", status: "review", notes: "canon"},
+      {file: "work/canon.html", screen: "canon-cli section", status: "review", notes: "canon"},
       {file: "work/project.html", screen: "Project", status: "review", notes: "project"},
       {file: "work/testing.html", screen: "Project, closed test", status: "review", notes: "testing"},
       {file: "work/unreleased.html", screen: "Project, no build", status: "review", notes: "unreleased"},

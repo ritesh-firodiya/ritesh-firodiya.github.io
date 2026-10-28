@@ -13,6 +13,7 @@ import { canonFor } from "@/lib/canon";
 import { funnelFor } from "@/lib/funnel";
 import { flowFor } from "@/lib/flow";
 import { Funnel } from "@/components/funnel";
+import { CanonCli } from "@/components/canon-cli";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -157,7 +158,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <SiteHeader on="work" />
+      <SiteHeader on={p.slug === "canon" ? "canon" : "work"} />
       <main id="main" className="wrap pb-12">
         <section className="glow -mx-4 grid items-center gap-6 px-4 py-6 md:-mx-7 md:px-7 lg:grid-cols-[1fr_1fr]">
           <div>
@@ -227,7 +228,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <dt className="text-xs text-ink-3">Checked by canon</dt>
             <dd className="mt-0.5">
               {canon ? (
-                <Link href="/products/canon/" className="text-link">
+                <Link href="/products/canon/#cli" className="text-link">
                   {canon.modules.length} modules{canon.version ? ` · canon ${canon.version}` : ""}
                 </Link>
               ) : (
@@ -293,6 +294,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             ))
           )}
         </section>
+        {p.slug === "canon" && <CanonCli />}
       </main>
       <SiteFooter />
     </>

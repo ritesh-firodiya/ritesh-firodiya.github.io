@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     { path: "", priority: 1.0, freq: "monthly" as const },
     { path: "/resume", priority: 0.9, freq: "monthly" as const },
-    { path: "/products/canon", priority: 0.9, freq: "monthly" as const },
     { path: "/legal", priority: 0.3, freq: "yearly" as const },
     { path: "/support", priority: 0.5, freq: "yearly" as const },
   ];

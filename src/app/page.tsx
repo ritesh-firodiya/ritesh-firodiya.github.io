@@ -6,7 +6,6 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { StatePill } from "@/components/ui";
 import { CardPicture } from "@/components/picture";
 import { products, stageCounts } from "@/lib/products";
-import { Embed } from "@/components/embed";
 import { profile } from "@/lib/profile";
 
 /* Every page states its own canonical — an inherited one silently becomes a
@@ -14,12 +13,8 @@ import { profile } from "@/lib/profile";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 /* Two parts: who, then work (2026-10-27). The order of products.json is the
-   running order, with canon placed among them at CANON_AT: the first row is
-   AskCal, Babul, canon, Chitragupt. Every project is the same card, picture
-   first. Each product's funnel is on its own page, not here. */
-const CANON_AT = 2;
-const CANON_LANDING = "/designs/canon/web/marketing/landing.html";
-
+   running order: the first row is AskCal, Babul, canon, Chitragupt. Every
+   project is the same card, picture first. Each product's funnel is on its own page, not here. */
 function Card({ href, picture, name, state, tagline }: { href: string; picture: ReactNode; name: string; state: ReactNode; tagline: string }) {
   return (
     <Link href={href} className="glass overflow-hidden">
@@ -35,22 +30,6 @@ function Card({ href, picture, name, state, tagline }: { href: string; picture: 
   );
 }
 
-/* canon is a tool, not in products.json: its picture is its own landing screen. */
-const canonCard = (
-  <Card
-    key="canon"
-    href="/products/canon/"
-    picture={
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-        <Embed src={CANON_LANDING} title="canon landing screen" fill />
-      </div>
-    }
-    name="canon"
-    state={<span className="state state--live">Open source</span>}
-    tagline="Checks every AI request against a product's own rules and past decisions."
-  />
-);
-
 /** "A, B and C" */
 const list = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`);
 
@@ -58,7 +37,6 @@ export default function Home() {
   const cards = products.map((p) => (
     <Card key={p.slug} href={`/products/${p.slug}/`} picture={<CardPicture p={p} h="aspect-[4/3]" />} name={p.name} state={<StatePill p={p} />} tagline={p.tagline} />
   ));
-  cards.splice(CANON_AT, 0, canonCard);
   return (
     <>
       <SiteHeader />

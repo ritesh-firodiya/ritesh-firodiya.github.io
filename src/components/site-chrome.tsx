@@ -52,7 +52,7 @@ export function SiteFooter() {
         <span className="flex flex-wrap gap-x-5 gap-y-1">
           <a href={`https://linkedin.com/in/${profile.linkedin}`}>LinkedIn</a>
           <a href={`https://github.com/${profile.github}`}>GitHub</a>
-          <a href={CANON_REPO}>canon on GitHub</a>
+          <a href={CANON_REPO}>canon-cli on GitHub</a>
           <a href="/resume.pdf">Résumé PDF</a>
         </span>
         <span className="flex gap-5 text-ink-3 sm:ml-auto">

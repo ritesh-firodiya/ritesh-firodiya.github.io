@@ -4,12 +4,12 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { assertNoSecrets } from "../scripts/designs/secrets.mjs";
 import { escapeHtml, isSafeHref } from "../scripts/designs/html.mjs";
-import { checkSurface, readRoutes } from "../scripts/designs/conformance.mjs";
+import { checkSet, shellOf } from "../scripts/designs/conformance.mjs";
 
 test("a credential shape stops the publish, naming the file", () => {
   const key = `ghp_${"a".repeat(36)}`;
@@ -29,27 +29,65 @@ test("raw HTML in a wiki is shown as text", () => {
   assert.equal(escapeHtml('Viewing as <name> "x" & y'), "Viewing as &lt;name&gt; &quot;x&quot; &amp; y");
 });
 
-test("routes.js cannot read the build's secrets", () => {
+/** A minimal Babul set on disk whose scan.mjs reports what it can see of the environment. */
+function fakeSet({ boot = '"https://cdn.tailwindcss.com/3.4.17"; "https://unpkg.com/lucide@0.544.0/x.js"' } = {}) {
+  const dir = mkdtempSync(join(tmpdir(), "set-"));
+  for (const d of ["_shell", "assets", "web"]) mkdirSync(join(dir, d));
+  writeFileSync(join(dir, "babul.js"), "(window.BABUL ||= {}).product = {};");
+  writeFileSync(join(dir, "tokens.js"), "(window.BABUL ||= {}).tokens = {};");
+  writeFileSync(join(dir, "web", "index.html"), "<html></html>");
+  writeFileSync(join(dir, "_shell", "boot.js"), boot);
+  writeFileSync(
+    join(dir, "_shell", "scan.mjs"),
+    'console.log(JSON.stringify({ errors: [], components: [], pages: [{ id: "a/b", name: process.env.DESIGNS_TOKEN ?? "none", states: [] }] }));',
+  );
+  return dir;
+}
+
+test("a set's scan runs without the build's secrets", async () => {
+  const dir = fakeSet();
   process.env.DESIGNS_TOKEN = "must-not-leak";
   try {
-    const r = readRoutes("window.ROUTES = { token: typeof process === 'undefined' ? null : process.env.DESIGNS_TOKEN ?? null };");
-    assert.deepEqual(r, { routes: { token: null } });
+    const { sizes, models } = await checkSet(dir, await shellOf(dir));
+    assert.equal(sizes.web.pass, true, JSON.stringify(sizes.web.checks));
+    assert.equal(models.web.pages[0].name, "none");
   } finally {
     delete process.env.DESIGNS_TOKEN;
+    rmSync(dir, { recursive: true, force: true });
   }
 });
 
-test("a routes.js that throws is reported, not crashed on", () => {
-  assert.match(readRoutes("throw new Error('boom')").error, /did not evaluate: .*boom/);
+test("a set whose shell drifted is withheld and its code is never run", async () => {
+  const dir = fakeSet();
+  try {
+    const canonical = new Map(await shellOf(dir));
+    canonical.set("boot.js", Buffer.from("// the canonical copy"));
+    const { sizes, models } = await checkSet(dir, canonical);
+    assert.equal(sizes.web.pass, false);
+    assert.ok(sizes.web.checks.some((c) => c.id === "shell" && !c.ok));
+    assert.match(sizes.web.checks.find((c) => c.id === "scan").detail, /not run/);
+    assert.deepEqual(models, {});
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
-test("a set with no routes.js does not pass the publish gate", async () => {
-  const dir = mkdtempSync(join(tmpdir(), "set-"));
+test("an unpinned CDN fails the gate", async () => {
+  const dir = fakeSet({ boot: '"https://cdn.tailwindcss.com/3.4.17"; "https://unpkg.com/lucide@latest/x.js"' });
   try {
-    writeFileSync(join(dir, "index.html"), "<html></html>");
-    const r = await checkSurface(dir, {});
-    assert.equal(r.pass, false);
-    assert.ok(r.checks.some((c) => c.id === "routes-manifest" && !c.ok));
+    const { sizes } = await checkSet(dir, await shellOf(dir));
+    assert.match(sizes.web.checks.find((c) => c.id === "pinned-cdns").detail, /lucide/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("a set with no babul.js does not pass the publish gate", async () => {
+  const dir = fakeSet();
+  rmSync(join(dir, "babul.js"));
+  try {
+    const { sizes } = await checkSet(dir, await shellOf(dir));
+    assert.ok(sizes.web.checks.some((c) => c.id === "files" && !c.ok && /babul\.js/.test(c.detail)));
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

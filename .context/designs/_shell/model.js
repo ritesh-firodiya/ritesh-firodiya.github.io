@@ -82,9 +82,9 @@
 
   /* ---- rank = longest path from the start, so a link always points right ---
      Only defined on a DAG, and the forward graph is one by construction. When
-     it is violated anyway, relaxation never settles: aakalan once ranked 34
-     screens at column 727 and drew a chart 185,385px wide. So a cycle is
-     detected and the rank falls back to BFS depth, and the console says so. */
+     it is violated anyway, relaxation never settles and the columns run into
+     the hundreds. So a cycle is detected and the rank falls back to BFS
+     depth, and the console says so. */
   var col = {};
   if (START) col[START] = 0;
   var settled = false;

@@ -181,17 +181,9 @@ export const MODEL_LABEL: Record<Model, string> = {
    design changes and nothing tells you. */
 
 export type Screen = { path: string; title: string; surface: string; area: string | null };
-export type Gallery = {
-  /** The original file under /designs/, where its own relative links resolve. */
-  path: string;
-  /** The clean per-product URL that serves those same bytes via <base>. */
-  href: string;
-  title: string;
-  surface: string;
-};
-/* The generated JSON carries no `href` — that is derived here, and `area` is
-   narrowed per-set by TS's literal inference, so the cast goes via unknown. */
-type DesignSet = { indexes: Omit<Gallery, "href">[]; screens: Screen[] };
+/** A size's journey: the set's own `<size>/index.html`, its flow chart. */
+export type Gallery = { href: string; surface: string };
+type DesignSet = { journeys: { path: string; surface: string }[]; screens: Screen[] };
 type StyleGuide = {
   canonical: string;
   results: Record<string, { surfaces: Record<string, SurfaceVerdict>; publishable: string[] }>;
@@ -199,43 +191,13 @@ type StyleGuide = {
 const designsRaw = generated<{ sets: Record<string, DesignSet>; styleGuide?: StyleGuide }>("designs.json", { sets: {} });
 const designSets = designsRaw.sets;
 
-/** The contact sheet is a page of the set, not a screen of the product. */
-export const screensFor = (slug: string): Screen[] =>
-  (designSets[slug]?.screens ?? []).filter((s) => !s.path.endsWith("/screenshots.html"));
-export const hasScreen = (slug: string, path: string): boolean =>
-  (designSets[slug]?.screens ?? []).some((s) => s.path === path);
+/** Every page of a set, and every `?state=` of each, as the set's scan found them. */
+export const screensFor = (slug: string): Screen[] => designSets[slug]?.screens ?? [];
+export const hasScreen = (slug: string, path: string): boolean => screensFor(slug).some((s) => s.path === path);
 
-/** The set's own gallery page for each surface — the index.html sitting at the
- *  top of `mobile/` or `web/`, written in the app repo. Deeper index.html files
- *  (one per flow) are still copied so the links inside it work, but they are
- *  reached by navigating the gallery, not by entering at them. */
-export function galleriesFor(slug: string): Gallery[] {
-  const all = designSets[slug]?.indexes ?? [];
-  const depth = (g: { path: string }) => g.path.split("/").length;
-  const roots = new Map<string, Omit<Gallery, "href">>();
-  for (const g of all) {
-    const held = roots.get(g.surface);
-    if (!held || depth(g) < depth(held)) roots.set(g.surface, g);
-  }
-  const sorted = [...roots.values()].sort((a, b) => a.surface.localeCompare(b.surface));
-  // One surface needs no disambiguating segment; several do. Kept in step with
-  // the paths scripts/sync-designs.mjs writes into public/products/.
-  return sorted.map((g) => ({
-    ...g,
-    href:
-      sorted.length === 1
-        ? `/products/${slug}/designs/`
-        : `/products/${slug}/designs/${g.surface}/`,
-  }));
-}
-
-/** Where a design link lands: the surface's contact sheet, every screen at
- *  once. The flow chart is one click away in the set's own bar. Falls back to
- *  the gallery when a set ships no sheet. */
-export function sheetFor(slug: string, g: Gallery): string {
-  const sheet = `/designs/${slug}/${g.surface}/screenshots.html`;
-  return (designSets[slug]?.screens ?? []).some((s) => s.path === sheet) ? sheet : g.href;
-}
+/** The journey of each size the set publishes, in size order. */
+export const galleriesFor = (slug: string): Gallery[] =>
+  (designSets[slug]?.journeys ?? []).map((j) => ({ href: j.path, surface: j.surface }));
 
 /* ── Style-guide conformance ──────────────────────────────────────────────
    A design set is published only if it follows the design-sets standard;

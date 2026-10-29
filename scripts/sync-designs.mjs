@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Pull the real design screens out of the (private) app repos into
- * public/designs/, so the site shows the actual wireframes instead of essays
+ * Pull the real design sets out of the (private) app repos into
+ * public/designs/, so the site shows the actual designs instead of essays
  * about them.
  *
  * NOTHING THIS WRITES IS COMMITTED. public/designs/ and public/products/ are
@@ -10,71 +10,45 @@
  * decides where each set comes from — a sparse clone of the private repo in
  * CI, the working copy under ~/git/products locally.
  *
- * Each design set is plain HTML that loads Tailwind from a CDN, lucide from
- * unpkg, and its own shared.css / tailwind.config.js by relative path. So:
+ * Each set is a Babul set (canon's design-sets standard): `babul.js`,
+ * `tokens.js`, `assets/`, the shared `_shell/`, and one folder per size. The
+ * shell reads everything from the HTML at runtime, by paths relative to the
+ * set's root, so the whole folder is copied with its shape intact.
  *
- *  - the folder shape is preserved, which keeps every relative link working
- *  - every CDN asset is vendored into public/designs/_vendor/ and the tags
- *    rewritten. A public site should not depend on four third-party hosts
- *    being up, and each would otherwise see every visitor's IP
- *  - each set's own index.html is kept and is what /products/<slug>/designs
- *    shows. It is the gallery the screens were designed and reviewed against;
- *    a second grid written here would be a different document that drifts the
- *    moment a screen is added
- *  - the breadcrumb strip is kept for the same reason — with the index present
- *    the copied set is a self-navigating mini-site, and stripping it left every
- *    screen a dead end
- *  - links that cannot resolve (never-drawn screens, the skipped _review.html)
- *    are neutralised rather than deleted, so the gap stays visible
- *  - _review.html is skipped: a 14-iframe local contact sheet, not a document
- *    anyone else needs
+ *  - a size that fails the publish gate (scripts/designs/conformance.mjs) is
+ *    not copied; its reasons land in designs.json and the product page says so
+ *  - every CDN the shell loads is named in `_shell/boot.js` as a string. Each
+ *    is vendored into public/designs/_vendor/ and the copied boot.js points
+ *    there: a public site should not depend on third-party hosts being up,
+ *    and each would otherwise see every visitor's IP
+ *  - the screens list is the set's own scan (`_shell/scan.mjs <size> --json`):
+ *    each page, and each `?state=` of it
+ *  - /products/<slug>/designs/ forwards to the set's journey, so the address
+ *    the site has always used still opens it
  *
  *   node scripts/sync-designs.mjs
  */
-import { mkdir, readdir, readFile, writeFile, rm, copyFile } from "node:fs/promises";
-import { join, dirname, relative, extname, basename, sep, resolve, isAbsolute } from "node:path";
-import { existsSync } from "node:fs";
+import { mkdir, readFile, writeFile, rm, copyFile } from "node:fs/promises";
+import { join, dirname, relative, extname, sep } from "node:path";
 import { resolveSources } from "./designs/sources.mjs";
-import { checkSurface, canonicalHashes, CANONICAL } from "./designs/conformance.mjs";
+import { checkSet, shellOf, CANONICAL } from "./designs/conformance.mjs";
 import { assertNoSecrets } from "./designs/secrets.mjs";
-import { exists, walk } from "./designs/fs.mjs";
+import { walk } from "./designs/fs.mjs";
 
 const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
 const DATA = join(process.cwd(), "src", "data", "generated", "designs.json");
-/* Clean per-product URLs for the galleries. These are static files, not Next
-   routes — the page served is the app repo's own index.html, unaltered but
-   for a <base> tag. Wrapping it in a route would put our header, our back
-   link and our scroll container around a document that already has its own. */
 const PAGES = join(process.cwd(), "public", "products");
 
-// index.html is KEPT: it is the design set's own gallery, written in the app
-// repo, and the site shows that page rather than inventing a second one.
-// _review.html is a 14-iframe contact sheet for local review — not a document
-// anyone else needs.
-const SKIP_FILES = new Set(["_review.html"]);
+/* Text is scanned for secrets before it leaves a private repo; images are copied as they are. */
+const TEXT_EXT = new Set([".html", ".css", ".js", ".mjs", ".svg", ".json"]);
+const COPY_EXT = new Set([...TEXT_EXT, ".png", ".webp", ".jpg", ".jpeg", ".ico"]);
 
-const COPY_EXT = new Set([".html", ".css", ".js", ".svg", ".png", ".webp", ".jpg"]);
-/* Text files are scanned for secrets like the HTML is; only images are copied blind. */
-const TEXT_EXT = new Set([".css", ".js", ".svg"]);
-
-/* Hosts served from here instead of from them.
- *
- * This used to be a two-entry list — tailwind and lucide — written when those
- * were the only things the sets loaded. They are not any more: the sets on
- * main also pull reactflow (script AND stylesheet), chart.js, mermaid, and
- * react/react-dom. Hardcoding the list is what let that happen unseen, so the
- * rewrite is now driven by what the HTML actually asks for. */
 const VENDOR_HOSTS = ["cdn.tailwindcss.com", "unpkg.com", "cdn.jsdelivr.net", "cdnjs.cloudflare.com"];
 const HOSTS_RE = VENDOR_HOSTS.map((h) => h.replace(/\./g, "\\.")).join("|");
-const ASSET_RE = new RegExp(`(?:src|href)="(https://(?:${HOSTS_RE})[^"]*)"`, "g");
-
-/* `@latest` is not a version. 112 files ask for it, so two builds a month
-   apart would ship different icons from the same commit — and the claim that
-   these pages are the repo's own bytes would quietly stop being true. Pin it
-   to what the rest of the estate already pins. */
-const PINS = [[/^https:\/\/unpkg\.com\/lucide@latest\//, "https://unpkg.com/lucide@0.544.0/"]];
-const pin = (url) => PINS.reduce((u, [re, to]) => u.replace(re, to), url);
+/* In boot.js a CDN is a JS string literal, not a src/href attribute. */
+const CDN_STRING = new RegExp(`"(https://(?:${HOSTS_RE})[^"]*)"`, "g");
+const CDN_ANY = new RegExp(`https://(?:${HOSTS_RE})[^"'\\s)]*`);
 
 /** A readable, collision-free local filename for a vendored URL. */
 function vendorName(url) {
@@ -83,253 +57,112 @@ function vendorName(url) {
   return /\.(js|mjs|css)$/.test(name) ? name : `${name}.js`;
 }
 
-/** url → { name, bytes }, downloaded at most once per run. */
+/** url → { url, name, bytes }, downloaded at most once per run. */
 const vendored = new Map();
-
-async function vendorAsset(rawUrl) {
-  const url = pin(rawUrl);
+async function vendorAsset(url) {
   const held = vendored.get(url);
   if (held) return held;
-
-  const name = vendorName(url);
   const r = await fetch(url);
   if (!r.ok) throw new Error(`vendoring ${url}: HTTP ${r.status}`);
   const body = Buffer.from(await r.arrayBuffer());
-  await mkdir(VENDOR, { recursive: true });
-  await writeFile(join(VENDOR, name), body);
-  const rec = { url, name, bytes: body.length };
+  const rec = { url, name: vendorName(url), bytes: body.length };
+  await writeFile(join(VENDOR, rec.name), body);
   vendored.set(url, rec);
   return rec;
 }
 
-await rm(OUT, { recursive: true, force: true }).catch(() => {});
-await mkdir(OUT, { recursive: true });
-await mkdir(VENDOR, { recursive: true });
+/** boot.js with every CDN string pointing at the vendored copy. */
+async function vendorBoot(js) {
+  let out = js;
+  for (const url of new Set([...js.matchAll(CDN_STRING)].map((m) => m[1]))) {
+    const { name } = await vendorAsset(url);
+    out = out.split(`"${url}"`).join(`"/designs/_vendor/${name}"`);
+  }
+  return out;
+}
 
-const manifest = {};
-let screens = 0;
-let notes = 0;
-let bytes = 0;
+await rm(OUT, { recursive: true, force: true });
+await mkdir(VENDOR, { recursive: true });
 
 const { mode, sets } = resolveSources();
 
-/* §13 — every set's _chrome.js and _gallery.js is measured against this one.
-   If charades itself is absent nothing can be compared, so say so loudly
-   rather than pass every set by default. */
-const canonDir = join(sets[CANONICAL.slug]?.dir ?? "", CANONICAL.surface);
-const canon = await canonicalHashes(canonDir);
-if (!canon["_chrome.js"]) {
+/* Every set's _shell is measured against this one. If it is absent nothing
+   can be compared, so stop rather than pass every set by default. */
+const canonicalShell = await shellOf(sets[CANONICAL]?.dir ?? "");
+if (!canonicalShell.has("boot.js") || !canonicalShell.has("scan.mjs")) {
   throw new Error(
-    `canonical set ${CANONICAL.slug}/${CANONICAL.surface} has no _chrome.js at ${canonDir}.\n` +
+    `canonical set ${CANONICAL} has no _shell/boot.js and scan.mjs at ${sets[CANONICAL]?.dir}.\n` +
       "  Nothing can be checked against it — refusing to publish rather than pass every set by default.",
   );
 }
 
-/* Which surfaces may be published, and why the rest may not. Filled by the
-   conformance pass below and recorded in the manifest either way: a product
-   whose set is withheld says so on its page rather than silently losing a
-   section. */
+const manifest = {};
+/* slug → { surfaces: size → verdict, publishable: sizes }. Every product is
+   recorded, passing or not: a withheld set says so on its page. */
 const conformance = {};
+let files = 0;
+let bytes = 0;
 
 for (const [slug, source] of Object.entries(sets)) {
   const src = source.dir;
-  const entries = [];
-
-  /* One verdict per surface. A product can have a conforming mobile set and a
-     web set that is not there yet, and the mobile one should still publish. */
-  conformance[slug] = { surfaces: {}, publishable: [] };
-  for (const s of await readdir(src, { withFileTypes: true })) {
-    if (!s.isDirectory() || !["mobile", "web"].includes(s.name)) continue;
-    const r = await checkSurface(join(src, s.name), canon);
-    conformance[slug].surfaces[s.name] = r;
-    if (r.pass) conformance[slug].publishable.push(s.name);
-  }
+  const { sizes, models } = await checkSet(src, canonicalShell);
+  const publishable = Object.keys(models).sort();
+  conformance[slug] = { surfaces: sizes, publishable };
+  if (publishable.length === 0) continue;
 
   for await (const file of walk(src)) {
     const rel = relative(src, file);
+    const top = rel.split(sep)[0];
     const ext = extname(file).toLowerCase();
     if (!COPY_EXT.has(ext)) continue;
-    if (ext === ".html" && SKIP_FILES.has(basename(file))) continue;
-
-    /* THE GATE. A surface that does not follow the design-sets standard is not copied,
-       so it cannot be reached on the site at all — not merely unlinked. Its
-       reasons are in `conformance` and the product page states them.
-       brand/ is shared artwork rather than a surface; it rides along only when
-       at least one surface of this product publishes. */
-    const top = rel.split(sep)[0];
-    if (top === "brand") {
-      if (conformance[slug].publishable.length === 0) continue;
-    } else if (!conformance[slug].publishable.includes(top)) continue;
+    /* A size that failed is not copied, so it cannot be reached at all. */
+    if (top in sizes && !publishable.includes(top)) continue;
 
     const dest = join(OUT, slug, rel);
     await mkdir(dirname(dest), { recursive: true });
-
-    if (basename(file) === "_chrome.js") {
-      /* The bar's notes button fetches `../../wiki/surfaces/<page>.md`, which
-         in the product repo is `.context/wiki/`. Here a set lives at
-         /designs/<slug>/<surface>/, two levels up is /designs/ — shared by
-         every product. So the notes are published at /designs/<slug>/wiki/ and
-         this one path is rewritten. Without it the button answered 404 on
-         every screen of every set. */
-      const js = await readFile(file, "utf8");
-      assertNoSecrets(js, `${slug}/${rel}`);
-      const needle = '"../../wiki/surfaces/"';
-      if (js.split(needle).length !== 2) {
-        throw new Error(`${slug}/${rel}: expected exactly one ${needle} to rewrite — has _chrome.js changed?`);
-      }
-      await writeFile(dest, js.replace(needle, '"../wiki/surfaces/"'));
-      continue;
-    }
-    if (TEXT_EXT.has(ext)) {
-      const text = await readFile(file, "utf8");
-      assertNoSecrets(text, `${slug}/${rel}`);
-      await writeFile(dest, text);
-      continue;
-    }
-    if (ext !== ".html") {
+    files++;
+    if (!TEXT_EXT.has(ext)) {
       await copyFile(file, dest);
       continue;
     }
-
-    let h = await readFile(file, "utf8");
-
-    /* Rewrite whatever this file asks for, rather than the two things an
-       earlier version assumed it would. Both `src` and `href`: reactflow ships
-       a stylesheet, and a design set missing its stylesheet is a broken page
-       that still passes every check. */
-    const up = relative(dirname(dest), VENDOR).split(sep).join("/") || ".";
-    for (const url of new Set([...h.matchAll(ASSET_RE)].map((m) => m[1]))) {
-      const { name } = await vendorAsset(url);
-      h = h.split(`"${url}"`).join(`"${up}/${name}"`);
-    }
-
-    /* Fail loudly rather than publish a page that still calls a CDN. A silent
-       miss here is invisible until someone reads the network tab. */
-    const leaked = h.match(new RegExp(`https://(?:${HOSTS_RE})[^"']*`, "g"));
+    let text = await readFile(file, "utf8");
+    if (rel === join("_shell", "boot.js")) text = await vendorBoot(text);
+    /* Fail loudly rather than publish a page that still calls a CDN. */
+    const leaked = text.match(CDN_ANY);
     if (leaked) throw new Error(`${slug}/${rel}: un-vendored CDN reference ${leaked[0]}`);
-
     /* These bytes came out of a PRIVATE repo and are about to sit on a public
-       host. A wireframe that hardcoded a real key to make a demo work would be
-       published by this script and nothing else would ever look at it. So the
-       scan runs here, at the boundary, and stops the build. */
-    assertNoSecrets(h, `${slug}/${rel}`);
-
-    await writeFile(dest, h);
-    bytes += Buffer.byteLength(h);
-    screens++;
-
-    const title = (h.match(/<title>([^<]*)<\/title>/) || [, basename(file, ".html")])[1]
-      .replace(/\s*[—·|]\s*(wireframes?|mobile|web).*$/i, "")
-      .trim();
-    const parts = rel.split(sep);
-    /* A page inside brand/ (Charades' store-screenshots sheet) is artwork: it
-       is copied, but it is not a screen and brand/ is not a surface. */
-    if (top === "brand") continue;
-    entries.push({
-      path: `/designs/${slug}/${parts.join("/")}`,
-      title,
-      surface: parts[0],
-      area: parts.length > 2 ? parts[parts.length - 2] : null,
-      isIndex: basename(file) === "index.html",
-    });
+       host, and nothing else looks at them. So the scan runs here and stops
+       the build. */
+    assertNoSecrets(text, `${slug}/${rel}`);
+    await writeFile(dest, text);
+    bytes += Buffer.byteLength(text);
   }
-  /* The notes pages the bar opens: the product's own wiki surface pages, as
-     Markdown, scanned like everything else that leaves a private repo. */
-  const notesDir = join(source.root, ".context", "wiki", "surfaces");
-  if (entries.length && (await exists(notesDir))) {
-    const out = join(OUT, slug, "wiki", "surfaces");
-    await mkdir(out, { recursive: true });
-    for (const f of await readdir(notesDir)) {
-      if (!f.endsWith(".md")) continue;
-      const md = await readFile(join(notesDir, f), "utf8");
-      assertNoSecrets(md, `${slug} wiki surfaces/${f}`);
-      await writeFile(join(out, f), md);
-      notes++;
+
+  const screens = [];
+  for (const size of publishable) {
+    for (const page of models[size].pages) {
+      const path = `/designs/${slug}/${size}/${page.id}.html`;
+      const area = page.id.includes("/") ? page.id.split("/")[0] : null;
+      screens.push({ path, title: page.name, surface: size, area });
+      for (const s of page.states) {
+        screens.push({ path: `${path}?state=${encodeURIComponent(s.name)}`, title: `${page.name} · ${s.name}`, surface: size, area });
+      }
     }
   }
+  manifest[slug] = {
+    journeys: publishable.map((size) => ({ surface: size, path: `/designs/${slug}/${size}/index.html` })),
+    screens,
+  };
 
-  if (entries.length) {
-    entries.sort((a, b) => a.path.localeCompare(b.path));
-    manifest[slug] = {
-      // The set's own gallery pages, one per surface (mobile / web).
-      indexes: entries.filter((e) => e.isIndex).map(({ path, title, surface }) => ({ path, title, surface })),
-      screens: entries
-        .filter((e) => !e.isIndex)
-        .map((e) => ({ path: e.path, title: e.title, surface: e.surface, area: e.area })),
-    };
-  }
-}
-
-/* Second pass: neutralise links that cannot resolve.
- *
- * Some galleries link to screens that were never drawn (aakalan's account and
- * settle flows), and imposter's links to the _review.html contact sheet this
- * script deliberately does not publish. Left alone those are 404s on a public
- * page; deleted outright the gap disappears, which the site's own rule forbids
- * — a missing thing is visibly missing. So the anchor keeps its label and
- * loses its href, and says why on hover.
- *
- * Runs after everything is on disk, because a link may point forward to a file
- * this walk had not reached yet. */
-const LINK = /<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi;
-let neutralised = 0;
-
-for await (const file of walk(OUT)) {
-  if (extname(file).toLowerCase() !== ".html") continue;
-  const dir = dirname(file);
-  const before = await readFile(file, "utf8");
-  const after = before.replace(LINK, (whole, pre, href, post) => {
-    const path = href.split("#")[0].split("?")[0];
-    let clean;
-    try {
-      clean = decodeURIComponent(path);
-    } catch {
-      return whole; // a stray % (e.g. "50%-off.html") is left exactly as written
-    }
-    if (!clean.endsWith(".html")) return whole;
-    if (/^(?:[a-z]+:)?\/\//i.test(clean) || isAbsolute(clean)) return whole;
-    if (existsSync(resolve(dir, clean))) return whole;
-    neutralised++;
-    return `<a${pre}aria-disabled="true" title="Not drawn yet" style="opacity:.45;text-decoration:line-through;cursor:default;pointer-events:none"${post}>`;
-  });
-  if (after !== before) await writeFile(file, after);
-}
-
-/* Publish each root gallery at /products/<slug>/designs/ (and, where a set has
- * more than one surface, /products/<slug>/designs/<surface>/ as well).
- *
- * The file is the original byte-for-byte apart from one injected <base>. Every
- * link and script src inside it is relative to where it lives under /designs/,
- * so <base> is what lets the same bytes be served from a second path without
- * rewriting a single href. Clicking through then lands on the real screen at
- * its real URL, which is the point — these pages are a front door, not a copy. */
-await rm(PAGES, { recursive: true, force: true }).catch(() => {});
-let pages = 0;
-
-for (const [slug, set] of Object.entries(manifest)) {
-  const roots = [];
-  for (const g of set.indexes) {
-    const held = roots.find((r) => r.surface === g.surface);
-    const depth = (x) => x.path.split("/").length;
-    if (!held) roots.push(g);
-    else if (depth(g) < depth(held)) roots[roots.indexOf(held)] = g;
-  }
-  roots.sort((a, b) => a.surface.localeCompare(b.surface));
-  if (roots.length === 0) continue;
-
-  for (const [i, g] of roots.entries()) {
-    const html = await readFile(join(OUT, g.path.replace("/designs/", "")), "utf8");
-    const base = `${g.path.slice(0, g.path.lastIndexOf("/"))}/`;
-    const withBase = html.replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}">`);
-    if (withBase === html) throw new Error(`${g.path}: no <head> to anchor <base> to`);
-
-    // The first surface is the product's designs page; the rest get their own.
-    const dests = [join(PAGES, slug, "designs", g.surface, "index.html")];
+  /* The address the site has always linked, forwarding to the journey. */
+  const forward = (to) =>
+    `<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><link rel="canonical" href="${to}"><a href="${to}">Open the design set</a>\n`;
+  for (const [i, j] of manifest[slug].journeys.entries()) {
+    const dests = [join(PAGES, slug, "designs", j.surface, "index.html")];
     if (i === 0) dests.push(join(PAGES, slug, "designs", "index.html"));
-    for (const dest of dests) {
-      await mkdir(dirname(dest), { recursive: true });
-      await writeFile(dest, withBase);
-      pages++;
+    for (const d of dests) {
+      await mkdir(dirname(d), { recursive: true });
+      await writeFile(d, forward(j.path));
     }
   }
 }
@@ -339,18 +172,15 @@ await writeFile(
   DATA,
   JSON.stringify(
     {
-      $comment:
-        "GENERATED by scripts/sync-designs.mjs from the private app repos. Do not hand-edit.",
+      $comment: "GENERATED by scripts/sync-designs.mjs from the private app repos. Do not hand-edit.",
       generatedOn: new Date().toISOString().slice(0, 10),
       source: mode,
       styleGuide: {
-        canonical: `${CANONICAL.slug}/${CANONICAL.surface}`,
-        note: "Surfaces that fail are not published at all. See the design-sets standard.",
+        canonical: CANONICAL,
+        note: "Sizes that fail are not published at all. See the design-sets standard.",
         results: conformance,
       },
-      commits: Object.fromEntries(
-        Object.entries(sets).map(([s, x]) => [s, { repo: x.origin, sha: x.sha }]),
-      ),
+      commits: Object.fromEntries(Object.entries(sets).map(([s, x]) => [s, { repo: x.origin, sha: x.sha }])),
       vendored: [...vendored.values()].sort((a, b) => a.name.localeCompare(b.name)),
       sets: manifest,
     },
@@ -360,23 +190,19 @@ await writeFile(
 );
 
 console.log(`source: ${mode}${mode === "remote" ? " (private repos, default branch)" : " (~/git/products)"}`);
-console.log(`\ndesign-sets conformance — canonical set is ${CANONICAL.slug}/${CANONICAL.surface}`);
+console.log(`\ndesign-sets conformance — the canonical shell is ${CANONICAL}'s`);
 for (const [slug, c] of Object.entries(conformance)) {
-  for (const [surface, r] of Object.entries(c.surfaces)) {
-    console.log(`  ${r.pass ? "PASS" : "FAIL"}  ${slug}/${surface}`);
+  if (Object.keys(c.surfaces).length === 0) console.log(`  NONE  ${slug} (no size folder)`);
+  for (const [size, r] of Object.entries(c.surfaces)) {
+    console.log(`  ${r.pass ? "PASS" : "FAIL"}  ${slug}/${size}`);
     if (!r.pass) for (const f of r.checks.filter((x) => !x.ok)) console.log(`          ${f.id}: ${f.detail}`);
   }
 }
 const published = Object.values(conformance).filter((c) => c.publishable.length).length;
-console.log(`\npublishing ${published} of ${Object.keys(conformance).length} products' design sets\n`);
-console.log(`published ${pages} gallery page(s) under /products/<slug>/designs/`);
-console.log(`neutralised ${neutralised} dead link(s) to screens that were never drawn`);
-console.log(`synced ${screens} screens, ${(bytes / 1024 / 1024).toFixed(2)}MB html, ${notes} notes pages`);
+console.log(`\npublishing ${published} of ${Object.keys(conformance).length} products' design sets`);
+console.log(`copied ${files} files, ${(bytes / 1024 / 1024).toFixed(2)}MB of text`);
 const vendorKB = [...vendored.values()].reduce((n, x) => n + x.bytes, 0) / 1024;
-console.log(`vendored ${vendored.size} asset(s), ${vendorKB.toFixed(0)}KB, from ${VENDOR_HOSTS.length} host(s)`);
-for (const x of [...vendored.values()].sort((a, b) => b.bytes - a.bytes)) {
-  console.log(`  ${String(Math.round(x.bytes / 1024)).padStart(4)}KB  ${x.url}`);
-}
+console.log(`vendored ${vendored.size} asset(s), ${vendorKB.toFixed(0)}KB`);
 for (const [s, e] of Object.entries(manifest)) {
-  console.log(`  ${s.padEnd(20)} ${String(e.screens.length).padStart(3)} screens · ${e.indexes.length} gallery page(s)`);
+  console.log(`  ${s.padEnd(20)} ${String(e.screens.length).padStart(3)} screens · ${e.journeys.map((j) => j.surface).join(", ")}`);
 }

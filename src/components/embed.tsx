@@ -28,8 +28,8 @@ export function Embed({ src, title, phone = false, fill = false }: { src: string
         const doc = frame.contentDocument;
         if (!doc) return;
         const dark = isDark();
-        doc.documentElement.dataset.wfTheme = dark ? "dark" : "light";
-        doc.querySelectorAll(".phone").forEach((el) => el.classList.toggle("phone--dark", dark));
+        // The set's theme.js paints dark under :root[data-theme="dark"].
+        doc.documentElement.dataset.theme = dark ? "dark" : "light";
       } catch {
         // A frame that refuses access keeps its own theme; that is not worth throwing over.
       }
@@ -48,7 +48,7 @@ export function Embed({ src, title, phone = false, fill = false }: { src: string
 
   return (
     <div className={`embed${phone ? " embed--phone" : ""}${fill ? " embed--fill" : ""}`}>
-      <iframe ref={ref} src={`${src}?bare`} title={title} loading="lazy" tabIndex={-1} />
+      <iframe ref={ref} src={`${src}${src.includes("?") ? "&" : "?"}bare`} title={title} loading="lazy" tabIndex={-1} />
     </div>
   );
 }

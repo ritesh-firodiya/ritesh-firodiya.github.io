@@ -8,7 +8,7 @@
  * carried a grey at 2.9:1 while a comment beside it said otherwise.
  *
  * Two files, because two declare the same role names: the app's globals.css
- * and the design set's shared.css. Checking one lets the other drift, and the
+ * and the design set's tokens.js. Checking one lets the other drift, and the
  * set is where a colour is chosen before it ever reaches the app.
  *
  *   node scripts/check-contrast.mjs
@@ -83,20 +83,50 @@ const PAIRS = [
   ["draft", "draft-bg", AA, "state pill"],
 ];
 
+/**
+ * The set's palettes, from tokens.js: every colour role (`ink.2` → `ink-2`,
+ * `.DEFAULT` dropped), light from `$value` and dark from the dev.babul dark
+ * mode, each `{color.…}` alias followed to its hex.
+ */
+function tokensOf(json) {
+  const color = JSON.parse(json.replace("(window.BABUL ||= {}).tokens = ", "").replace(/;\s*$/, "")).color;
+  const at = (path) => path.split(".").reduce((n, k) => n?.[k], color);
+  const hex = (v, seen = 0) => {
+    const m = /^\{color\.([\w.-]+)\}$/.exec(v);
+    if (!m) return v;
+    if (seen > 8) throw new Error(`tokens.js: alias loop at ${v}`);
+    const t = at(m[1]) ?? at(`${m[1]}.DEFAULT`);
+    if (!t) throw new Error(`tokens.js: ${v} names no token`);
+    return hex(t.$value, seen + 1);
+  };
+  const light = {};
+  const dark = {};
+  const walk = (node, path) => {
+    if (node && typeof node === "object" && "$value" in node) {
+      if (path[0] === "palette") return;
+      const name = path.filter((k) => k !== "DEFAULT").join("-");
+      light[name] = hex(node.$value);
+      const d = node.$extensions?.["dev.babul"]?.modes?.dark;
+      dark[name] = d === undefined ? light[name] : hex(d);
+      return;
+    }
+    for (const k of Object.keys(node ?? {})) if (!k.startsWith("$")) walk(node[k], [...path, k]);
+  };
+  walk(color, []);
+  return { light, dark };
+}
+
 const FILES = [
   {
     name: "app · src/app/globals.css",
     url: new URL("../src/app/globals.css", import.meta.url),
-    lightFrom: "@theme",
-    lightTo: "/* ═══ Dark",
-    darkFrom: ':root:not([data-theme="light"]) {\n    --color-page',
+    read: (css) =>
+      split(css, { lightFrom: "@theme", lightTo: "/* ═══ Dark", darkFrom: ':root:not([data-theme="light"]) {\n    --color-page' }),
   },
   {
-    name: "set · .context/designs/web/shared.css",
-    url: new URL("../.context/designs/web/shared.css", import.meta.url),
-    lightFrom: "   PALETTE — ritesh",
-    lightTo: "\n.phone--dark {",
-    darkFrom: "\n.phone--dark {",
+    name: "set · .context/designs/tokens.js",
+    url: new URL("../.context/designs/tokens.js", import.meta.url),
+    read: tokensOf,
   },
 ];
 
@@ -104,8 +134,7 @@ let failed = 0;
 const vocab = {};
 
 for (const f of FILES) {
-  const css = await readFile(f.url, "utf8");
-  const { light, dark } = split(css, f);
+  const { light, dark } = f.read(await readFile(f.url, "utf8"));
   assertDistinct(f.name, light, dark);
   vocab[f.name] = new Set(Object.keys(light));
   console.log(`\n\x1b[1m${f.name}\x1b[0m`);

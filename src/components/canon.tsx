@@ -1,16 +1,20 @@
 import { Activity, Hammer, Lightbulb, ListChecks, Megaphone, PencilRuler, Rocket, Search, type LucideIcon } from "lucide-react";
-import { LIFECYCLE, STEPS, type Verdict } from "@/lib/canon";
+import type { ReactNode } from "react";
+import { LIFECYCLE, VALUE, type Verdict } from "@/lib/canon";
 
-/** Know → Enforce → Ship, as three glass cards. */
-export function Steps({ long = false }: { long?: boolean }) {
+/** What canon is worth: four glass cards, each naming its mechanism. `extra`
+ *  adds a line of real output under a card, keyed by its title. */
+export function Value({ extra = {} }: { extra?: Partial<Record<(typeof VALUE)[number]["title"], ReactNode>> }) {
   return (
-    <ol className="mt-5 grid gap-3 md:grid-cols-3">
-      {STEPS.map((s, i) => (
-        <li key={s.title} className="glass p-4">
+    <ol className="mt-5 grid gap-3 md:grid-cols-2">
+      {VALUE.map((v, i) => (
+        <li key={v.title} className="glass flex flex-col p-4">
           <p className="flex items-center gap-2.5 text-h3 font-bold">
-            <span className="step-num">{i + 1}</span> {s.title}
+            <span className="step-num">{i + 1}</span> {v.title}
           </p>
-          <p className="mt-2 text-base text-ink-2">{long ? s.long : s.short}</p>
+          <p className="mt-2 text-base text-ink-2">{v.body}</p>
+          {extra[v.title] && <p className="mt-2 text-sm text-ink-2">{extra[v.title]}</p>}
+          <p className="mt-auto pt-4 font-mono text-2xs text-ink-3">{v.how}</p>
         </li>
       ))}
     </ol>

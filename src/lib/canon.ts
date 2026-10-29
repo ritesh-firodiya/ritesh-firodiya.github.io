@@ -10,7 +10,7 @@ export const canonFor = (slug: string): CanonConfig | null => raw.canon[slug] ??
 
 export const CANON_REPO = "https://github.com/ritesh-firodiya/canon-cli";
 
-export const CANON_VERSION = "0.18.2";
+export const CANON_VERSION = "0.19.1";
 
 export const INSTALL = [
   "claude plugin marketplace add ritesh-firodiya/canon-cli",
@@ -18,24 +18,32 @@ export const INSTALL = [
   "npm install -g @freetesh/canon",
 ];
 
-/** Know → Enforce → Ship. `short` is Home, `long` is the canon page. */
-export const STEPS = [
+/**
+ * What canon is worth, four ways. Each `how` names the command or file that
+ * does it, so every claim points at a mechanism a reader can check in the repo.
+ */
+export const VALUE = [
   {
-    title: "Know",
-    short: "Prices, rules and past decisions live in your repo, where the AI searches them first.",
-    long: "A wiki of decisions, prices, rules and features in each repo. Searched locally, before the AI answers.",
+    title: "Finds the bottleneck",
+    body: "It measures how far each conversation about a product got: idea, plan, design, code, review, release, live. Each step gets its share and its median wait, so the slowest step and the biggest drop are plain to see.",
+    how: "canon pipeline · canon flow <product>",
   },
   {
-    title: "Enforce",
-    short: "Every request, and every claim in it, is checked against facts before any work starts.",
-    long: "A gate weighs each request: do it, do it differently, or push back. Every claim is marked backed or not, and every reason names its source.",
+    title: "Keeps the domain respected",
+    body: "Each repo imports the standards it follows by name. canon check turns them into checks, and a pre-push hook runs it, so a broken rule stops the push. Designs are checked against the app's routes, its navigation and its copy.",
+    how: "standards: [design-sets, pipeline, …] · canon check · canon hooks install",
   },
   {
-    title: "Ship",
-    short: "Less guessing, fewer redos. Overrides are logged so the rules improve.",
-    long: "Checks fail when a rule breaks. Overrides are logged, and canon proposes better rules from them.",
+    title: "Weighs each decision",
+    body: "A decision is one file per topic, with a Rejected line: what was turned down, and why. The weigh gate reads them before work starts and answers do it, do it differently, or push back, with its sources. Overrides are logged, and repeats become rule proposals.",
+    how: "/canon:decision · /canon:weigh · canon learn",
   },
-];
+  {
+    title: "Saves time",
+    body: "A request that breaks a recorded decision stops before any code is written. One design shell is copied into every product and kept equal. The shell reads the designs straight from the HTML, so no list drifts from them. Failures show before a push, not after a deploy.",
+    how: "canon copies --sync · _shell/scan.mjs · the pre-push hook",
+  },
+] as const;
 
 /**
  * Verdicts the gate gave. `eval` ones are canon's own test suite run on a

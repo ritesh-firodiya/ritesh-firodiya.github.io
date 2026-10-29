@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { GitBranch, History, MessageSquareDashed, WandSparkles } from "lucide-react";
-import { Lifecycle, Steps, VerdictCard } from "@/components/canon";
+import { Lifecycle, Value, VerdictCard } from "@/components/canon";
 import { products } from "@/lib/products";
+import { flowFor } from "@/lib/flow";
 import { canonFor, INSTALL, VERDICTS, CANON_REPO, CANON_VERSION } from "@/lib/canon";
 
 /* canon-cli is the free, open-source CLI and plugin under canon. It is not a
@@ -15,6 +17,8 @@ const PROBLEMS = [
 export function CanonCli() {
   /* Derived: how many of the products shown here carry a canon config. */
   const onCanon = products.filter((p) => canonFor(p.slug)).length;
+  /* Derived: the products whose "How it ships" is canon flow's own output. */
+  const measured = products.filter((p) => flowFor(p.slug));
   return (
     <section id="cli" className="mt-12 scroll-mt-16">
       <div className="text-center">
@@ -25,7 +29,7 @@ export function CanonCli() {
         <h2 className="mt-3 text-h2 font-extrabold">Under the hood: canon-cli</h2>
         <p className="mx-auto mt-2 max-w-[56ch] text-base text-ink-2">
           The free part canon is built on. Your rules, prices and past decisions stay in your repo, and the AI checks them, and every claim you
-          make, against facts before it acts. It guesses less, and you ship faster.
+          make, against facts before it acts. It guesses less, and you redo less.
         </p>
         <pre className="term mx-auto mt-4 max-w-[34rem] text-left text-xs">
           {INSTALL.map((line) => (
@@ -47,8 +51,25 @@ export function CanonCli() {
         ))}
       </div>
 
-      <h3 className="mt-10 text-center text-h3 font-bold">How it fixes it</h3>
-      <Steps long />
+      <h3 className="mt-10 text-center text-h3 font-bold">What it is worth</h3>
+      <Value
+        extra={{
+          "Finds the bottleneck": measured.length > 0 && (
+            <>
+              Measured on {measured.length} of my products. See &ldquo;How it ships&rdquo; on{" "}
+              <Link href={`/products/${measured[0].slug}/`} className="text-link">
+                {measured[0].name}
+              </Link>
+              .
+            </>
+          ),
+          "Weighs each decision": (
+            <a href="#caught" className="text-link">
+              Real verdicts below.
+            </a>
+          ),
+        }}
+      />
 
       <div id="caught" className="scroll-mt-16">
         <h3 className="mt-10 text-center text-h3 font-bold">What it caught</h3>

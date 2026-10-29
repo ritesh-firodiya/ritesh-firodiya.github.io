@@ -39,8 +39,8 @@ const SHOT_DIRS = [
   ".context/listing/android/metadata/en-US/images/phoneScreenshots",
 ];
 const ICONS = [
-  ".context/designs/brand/icon.svg",
-  ".context/designs/brand/icon.png",
+  ".context/designs/assets/icon.svg",
+  ".context/designs/assets/icon.png",
   ".context/listing/android/metadata/en-US/images/icon.png",
 ];
 /** fastlane's own naming: NN-<screen>.png. Tablet art is named differently. */
@@ -210,7 +210,7 @@ async function syncWiki(slug, root) {
     page = { product: slug, slug: p.slug, where, links };
     const html = marked.parse(p.body, { async: false });
 
-    const frame = p.body.match(/\.context\/designs\/((?:mobile|web)\/[\w\-/]+\.html)/);
+    const frame = p.body.match(/\.context\/designs\/((?:mobile|tablet|web|email)\/[\w\-/]+\.html)/);
     const wireframe = frame && published.has(`/designs/${slug}/${frame[1]}`) ? `/designs/${slug}/${frame[1]}` : null;
 
     linksOf.set(p.slug, links);

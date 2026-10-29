@@ -6,7 +6,7 @@ import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { StatePill, SurfaceTags } from "@/components/ui";
 import { ProductPicture } from "@/components/picture";
 import { gmailCompose } from "@/lib/mail";
-import { products, bySlug, mediaFor, galleriesFor, screensFor, sheetFor, type Platform, type Product } from "@/lib/products";
+import { products, bySlug, mediaFor, galleriesFor, screensFor, withheldFor, type Platform, type Product } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
 import { canonFor } from "@/lib/canon";
@@ -144,6 +144,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const study = studyBySlug(p.slug);
   const icon = mediaFor(p.slug).icon;
   const galleries = galleriesFor(p.slug);
+  const withheld = withheldFor(p.slug);
   const wiki = wikiOf(p.slug);
   const count = (surface: string) => screensFor(p.slug).filter((x) => x.surface === surface).length;
   const sections = study
@@ -197,14 +198,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div className="p-3">
             <dt className="text-xs text-ink-3">Screens</dt>
             <dd className="mt-0.5">
-              {galleries.length === 0 ? (
+              {galleries.length === 0 && withheld.length > 0 ? (
+                /* A set that fails the publish gate says why, rather than vanishing. */
+                <span className="text-ink-3">
+                  Withheld:{" "}
+                  {withheld.flatMap((w) => w.failed.map((c) => `${w.surface} ${c.id}: ${c.detail}`)).join("; ")}
+                </span>
+              ) : galleries.length === 0 ? (
                 <span className="text-ink-3">None yet</span>
               ) : (
                 galleries.map((g, i) => (
                   <span key={g.surface}>
                     {i > 0 && " · "}
                     {/* Plain anchors: a design set is the product's own static page. */}
-                    <a href={sheetFor(p.slug, g)} target="_blank" rel="noopener" className="text-link">
+                    <a href={g.href} target="_blank" rel="noopener" className="text-link">
                       {count(g.surface)} {g.surface}
                     </a>
                   </span>

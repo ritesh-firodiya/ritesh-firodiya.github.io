@@ -1,211 +1,120 @@
 /**
- * Does a design set follow the design-sets standard?
+ * Does a design set follow the design-sets standard (a Babul set)?
  *
- * The guide is mostly about product design sets, not about this website, and
- * most of it is not mechanically checkable — whether a screen describes the app
- * that exists (§11) is a judgement. What IS checkable is the machinery: the
- * manifest, the five shared files, pinned CDNs, the token contract. Those are
- * exactly the things that decide whether a set can be *published*, because a
- * set without them has no gallery, no flow chart and no working bar.
+ * This is the publish gate. It checks what decides whether a set works once
+ * it is copied onto a public host: the files are there, the shell is the
+ * canonical copy, the CDNs are pinned, and the set's own scan passes. A size
+ * that fails is not published and its reasons are recorded, so the product
+ * page says what is missing instead of quietly dropping the section.
  *
- * So this is the publish gate. A set that passes goes on the site. A set that
- * fails is not published and its reasons are recorded, so the product page can
- * say what is missing instead of quietly dropping the section — the same rule
- * the rest of this site runs on.
- *
- * Deliberately NOT checked here, because they need the whole set walked and
- * belong in the product repo rather than in a website's build:
- *   links · click-through · flow-complete · acyclic   (§12)
+ * The rest of the standard (routes, app-flow, copy) needs the app's source and
+ * belongs to `canon check` in the product repo, not to a website's build.
  */
-import { readFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
+import { readFile, readdir } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
-import { join, relative, sep, extname, basename } from "node:path";
-import { exists, walk } from "./fs.mjs";
+import { join } from "node:path";
+import { exists } from "./fs.mjs";
 
-/* §13: the canonical set. Every other set's _chrome.js and _gallery.js must
-   match it byte for byte. Naming a set rather than "the nearest one" is the
-   whole point of that section — a migration that copies from a set which is
-   itself behind looks finished and is a version behind. */
-export const CANONICAL = { slug: "charades", surface: "mobile" };
+/* The canonical set: every set's `_shell/` must match its copy byte for byte
+   (design-sets §13). Babul is the shell's source, not the nearest set. */
+export const CANONICAL = "babul";
 
-/* §1 — the files a set is made of. */
-const REQUIRED = ["routes.js", "_chrome.js", "_gallery.js", "shared.css", "tailwind.config.js", "index.html", "screenshots.html"];
+/** The size folders a set may have. */
+export const SIZES = ["mobile", "tablet", "web", "email"];
 
-/* §13 — copied byte for byte, never edited per product. */
-const BYTE_IDENTICAL = ["_chrome.js", "_gallery.js"];
+/* Each a strict JSON file behind one assignment, and the folders beside them. */
+const REQUIRED = ["babul.js", "tokens.js", "assets", "_shell"];
 
-/* §3 — pinned, because an unpinned CDN restyles the estate overnight. */
+/* Pinned in `_shell/boot.js`: an unpinned CDN restyles every set overnight. */
 const PINS = [
-  { name: "tailwind", bad: /cdn\.tailwindcss\.com(?!\/3\.4\.17)["'\s]/ },
-  { name: "lucide", bad: /lucide@(?!0\.544\.0)[a-z0-9.]+/ },
+  { name: "tailwind", version: "3.4.17", re: /cdn\.tailwindcss\.com\/([\w.]+)/g },
+  { name: "lucide", version: "0.544.0", re: /lucide@([\w.]+)/g },
 ];
 
-/* §8 — the palette every product must declare. Role names, never hues. */
-const REQUIRED_TOKENS = [
-  "--page", "--frame", "--surface", "--muted", "--sunken",
-  "--ink", "--ink-2", "--ink-3", "--ink-4", "--ink-inverse",
-  "--line", "--line-strong",
-  "--brand-50", "--brand-100", "--brand-200", "--brand-400", "--brand-500", "--brand-700", "--brand-900",
-  "--success", "--success-bg", "--success-fg",
-  "--warn", "--warn-bg", "--warn-fg",
-  "--danger", "--danger-bg", "--danger-fg",
-  "--info", "--info-bg", "--info-fg",
-  "--shadow-tint",
-];
-
-const md5 = (buf) => createHash("md5").update(buf).digest("hex");
-/* routes.js comes from another repo. It runs in its own process with an empty
+/* scan.mjs comes from another repo. It runs in its own process with an empty
    environment, so it cannot read DESIGNS_TOKEN or the deploy keys. */
-const ROUTES_RUNNER =
-  'const window={};new Function("window",require("fs").readFileSync(0,"utf8"))(window);' +
-  "process.stdout.write(JSON.stringify(window.ROUTES ?? null))";
-const ROUTES_TIMEOUT_MS = 10_000;
+const SCAN_TIMEOUT_MS = 30_000;
 
-/** Evaluate routes.js without a browser. It only ever assigns window.ROUTES. */
-export function readRoutes(src) {
-  let routes;
+/** The shell's files, name → bytes. */
+export async function shellOf(designsDir) {
+  const dir = join(designsDir, "_shell");
+  const out = new Map();
+  if (!(await exists(dir))) return out;
+  for (const f of await readdir(dir)) out.set(f, await readFile(join(dir, f)));
+  return out;
+}
+
+/** Run the set's own `_shell/scan.mjs <size> --json`. */
+export function scanSize(designsDir, size) {
   try {
-    const out = execFileSync(process.execPath, ["-e", ROUTES_RUNNER], {
-      input: src,
+    const out = execFileSync(process.execPath, [join(designsDir, "_shell", "scan.mjs"), size, "--json"], {
       env: {},
       encoding: "utf8",
-      timeout: ROUTES_TIMEOUT_MS,
-      stdio: ["pipe", "pipe", "pipe"],
+      timeout: SCAN_TIMEOUT_MS,
+      maxBuffer: 64 * 1024 * 1024,
+      stdio: ["ignore", "pipe", "pipe"],
     });
-    routes = JSON.parse(out);
+    return { model: JSON.parse(out) };
   } catch (e) {
     const why = String(e.stderr || e.message).split("\n").find((l) => /Error/.test(l)) ?? e.message;
-    return { error: `routes.js did not evaluate: ${why.trim()}` };
+    return { error: `scan.mjs ${size} did not run: ${why.trim()}` };
   }
-  if (!routes) return { error: "routes.js does not assign window.ROUTES" };
-  return { routes };
 }
+
+const trim = (a) => `${a.slice(0, 3).join("; ")}${a.length > 3 ? `; and ${a.length - 3} more` : ""}`;
 
 /**
- * Check one surface directory. Every check is always reported, passing or not,
- * so a product page can show the whole scorecard rather than only the first
- * thing that broke.
+ * Check one set. Returns one verdict per size folder, each with every check
+ * passing or not (so a page can show the whole scorecard), and the scan model
+ * of each size that passed.
  */
-export async function checkSurface(dir, canonicalHashes) {
-  const checks = [];
-  const add = (id, ok, detail = "") => checks.push({ id, ok, detail });
+export async function checkSet(designsDir, canonicalShell) {
+  const shared = [];
+  const add = (id, ok, detail) => shared.push({ id, ok, detail });
 
-  // ── §1 · the files a set is made of ────────────────────────────────────
   const missing = [];
-  for (const f of REQUIRED) if (!(await exists(join(dir, f)))) missing.push(f);
-  add("files", missing.length === 0, missing.length ? `missing ${missing.join(", ")}` : "all seven present");
+  for (const f of REQUIRED) if (!(await exists(join(designsDir, f)))) missing.push(f);
+  add("files", missing.length === 0, missing.length ? `missing ${missing.join(", ")}` : "babul.js, tokens.js, assets/, _shell/");
 
-  // ── §13 · the shared files are copies, not versions ────────────────────
-  const drifted = [];
-  for (const f of BYTE_IDENTICAL) {
-    const p = join(dir, f);
-    if (!(await exists(p))) { drifted.push(`${f} (absent)`); continue; }
-    const got = md5(await readFile(p));
-    if (canonicalHashes[f] && got !== canonicalHashes[f]) drifted.push(f);
-  }
-  add("shared-files", drifted.length === 0,
-    drifted.length
-      ? `${drifted.join(", ")} differs from the canonical ${CANONICAL.slug}/${CANONICAL.surface} copy — §13 says these are copied byte for byte`
-      : "byte-identical to canonical");
+  const shell = await shellOf(designsDir);
+  const drifted = [...canonicalShell.keys()].filter((f) => !shell.get(f)?.equals(canonicalShell.get(f)));
+  const extra = [...shell.keys()].filter((f) => !canonicalShell.has(f));
+  add("shell", drifted.length + extra.length === 0,
+    drifted.length + extra.length
+      ? [drifted.length ? `${drifted.join(", ")} differ${drifted.length === 1 ? "s" : ""} from ${CANONICAL}'s _shell` : "",
+         extra.length ? `${extra.join(", ")} not in ${CANONICAL}'s _shell` : ""].filter(Boolean).join("; ")
+      : `byte-identical to ${CANONICAL}'s _shell`);
 
-  // ── §3 · pinned CDNs ───────────────────────────────────────────────────
-  const unpinned = new Set();
-  const htmlFiles = [];
-  for await (const f of walk(dir)) if (extname(f).toLowerCase() === ".html") htmlFiles.push(f);
-  for (const f of htmlFiles) {
-    const h = await readFile(f, "utf8");
-    for (const p of PINS) if (p.bad.test(h)) unpinned.add(p.name);
-  }
-  add("pinned-cdns", unpinned.size === 0,
-    unpinned.size ? `unpinned ${[...unpinned].join(", ")} — §3` : "tailwind 3.4.17, lucide 0.544.0");
+  const boot = shell.get("boot.js")?.toString("utf8") ?? "";
+  const pinned = (p) => {
+    const found = [...boot.matchAll(p.re)].map((m) => m[1]);
+    return found.length > 0 && found.every((v) => v === p.version);
+  };
+  const unpinned = PINS.filter((p) => !pinned(p));
+  add("pinned-cdns", unpinned.length === 0,
+    unpinned.length
+      ? `_shell/boot.js does not pin ${unpinned.map((p) => `${p.name} ${p.version}`).join(", ")}`
+      : PINS.map((p) => `${p.name} ${p.version}`).join(", "));
 
-  // ── §2 · routes.js is the single source ────────────────────────────────
-  let routes = null;
-  if (await exists(join(dir, "routes.js"))) {
-    const r = readRoutes(await readFile(join(dir, "routes.js"), "utf8"));
-    if (r.error) add("routes-manifest", false, r.error);
-    else {
-      routes = r.routes;
-      const absent = ["product", "surface", "flows"].filter((k) => routes[k] === undefined);
-      if (!routes.flow?.start) absent.push("flow.start");
-      add("routes-manifest", absent.length === 0,
-        absent.length ? `routes.js has no ${absent.join(", ")}` : `${routes.product} · ${(routes.flows || []).length} flows`);
+  const sizes = {};
+  const models = {};
+  for (const size of SIZES) {
+    if (!(await exists(join(designsDir, size)))) continue;
+    const checks = [...shared];
+    const hasIndex = await exists(join(designsDir, size, "index.html"));
+    checks.push({ id: "journey", ok: hasIndex, detail: hasIndex ? `${size}/index.html` : `no ${size}/index.html` });
+
+    /* Never run code from a set whose shell is not the canonical copy. */
+    if (shared.every((c) => c.ok)) {
+      const r = scanSize(designsDir, size);
+      const errors = r.error ? [r.error] : r.model.errors ?? [];
+      checks.push({ id: "scan", ok: errors.length === 0,
+        detail: errors.length ? trim(errors) : `${r.model.pages.length} pages, ${r.model.components.length} components` });
+      if (r.model && errors.length === 0) models[size] = r.model;
+    } else {
+      checks.push({ id: "scan", ok: false, detail: "not run: the set's shell is not the canonical copy" });
     }
-  } else add("routes-manifest", false, "no routes.js");
-
-  // ── §2 · a screen not in routes.js appears nowhere ─────────────────────
-  if (routes?.flows) {
-    const declared = new Set();
-    for (const f of routes.flows) for (const s of f.screens || []) {
-      declared.add(s.file);
-      for (const v of Object.values(s.states || {})) declared.add(v);
-    }
-    const onDisk = htmlFiles
-      .map((f) => relative(dir, f).split(sep).join("/"))
-      .filter((f) => f.includes("/") && !basename(f).startsWith("_"));
-
-    const undeclared = onDisk.filter((f) => !declared.has(f));
-    const phantom = [...declared].filter((f) => !onDisk.includes(f));
-    const trim = (a) => `${a.slice(0, 3).join(", ")}${a.length > 3 ? ", …" : ""}`;
-    add("declared-screens", undeclared.length === 0 && phantom.length === 0,
-      [undeclared.length ? `${undeclared.length} on disk not in routes.js (${trim(undeclared)})` : "",
-       phantom.length ? `${phantom.length} declared but absent (${trim(phantom)})` : ""]
-        .filter(Boolean).join("; ") || `${declared.size} screens, all accounted for`);
-
-    // ── §2 · every screen declares its own path ──────────────────────────
-    const badChrome = [];
-    for (const rel of onDisk) {
-      const h = await readFile(join(dir, rel), "utf8");
-      const m = h.match(/data-file="([^"]+)"/);
-      if (!/data-chrome\b/.test(h) || !m) badChrome.push(`${rel} (no data-chrome/data-file)`);
-      else if (m[1] !== rel) badChrome.push(`${rel} says data-file="${m[1]}"`);
-    }
-    add("screen-identity", badChrome.length === 0,
-      badChrome.length ? `${badChrome.length}: ${badChrome.slice(0, 2).join("; ")}${badChrome.length > 2 ? ", …" : ""}`
-                       : "every screen declares its own path");
-  } else {
-    add("declared-screens", false, "no manifest to check against");
-    add("screen-identity", false, "no manifest to check against");
+    sizes[size] = { pass: checks.every((c) => c.ok), checks };
   }
-
-  // ── §8 · the palette contract ──────────────────────────────────────────
-  if (await exists(join(dir, "shared.css"))) {
-    const css = await readFile(join(dir, "shared.css"), "utf8");
-    const absent = REQUIRED_TOKENS.filter((t) => !new RegExp(`${t}\\s*:`).test(css));
-    add("palette-tokens", absent.length === 0,
-      absent.length ? `${absent.length} required token(s) undeclared: ${absent.slice(0, 5).join(", ")}${absent.length > 5 ? ", …" : ""} — §8`
-                    : `all ${REQUIRED_TOKENS.length} declared`);
-  } else add("palette-tokens", false, "no shared.css");
-
-  // ── §8 · every config value is var(--token), never a literal ───────────
-  if (await exists(join(dir, "tailwind.config.js"))) {
-    const cfg = await readFile(join(dir, "tailwind.config.js"), "utf8");
-    const stripped = cfg.replace(/\/\*[\s\S]*?\*\//g, "").replace(/(^|[^:])\/\/.*$/gm, "$1");
-    const literals = [...new Set(stripped.match(/["']#[0-9a-fA-F]{3,8}["']/g) || [])];
-    add("no-literal-colours", literals.length === 0,
-      literals.length ? `${literals.length} literal hex in tailwind.config.js: ${literals.slice(0, 4).join(", ")} — §8`
-                      : "every value is var(--token)");
-  } else add("no-literal-colours", false, "no tailwind.config.js");
-
-  // ── §8 · one stylesheet per surface ────────────────────────────────────
-  const strayCss = [];
-  for await (const f of walk(dir)) {
-    const rel = relative(dir, f).split(sep).join("/");
-    if (extname(f) === ".css" && rel !== "shared.css") strayCss.push(rel);
-  }
-  add("one-stylesheet", strayCss.length === 0,
-    strayCss.length ? `stray stylesheet(s): ${strayCss.join(", ")} — §8` : "shared.css only");
-
-  return { pass: checks.every((c) => c.ok), checks };
-}
-
-/** md5 of the canonical set's shared files, for everyone else to match. */
-export async function canonicalHashes(dirOfCanonicalSurface) {
-  const out = {};
-  for (const f of BYTE_IDENTICAL) {
-    const p = join(dirOfCanonicalSurface, f);
-    if (await exists(p)) out[f] = md5(await readFile(p));
-  }
-  return out;
+  return { sizes, models };
 }

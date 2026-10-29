@@ -10,7 +10,4 @@ modules:
   - knowledge
   - code
 
-# Files copied from charades (its copies.sets); canon check keeps them equal.
-copies:
-  source: ../charades
-  use: [design-shell, design-shell-web]
+copies: { source: ../babul, use: [design-shell, design-shell-web] }

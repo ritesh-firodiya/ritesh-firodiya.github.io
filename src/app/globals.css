@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Design tokens — ported from .context/designs/web/shared.css
+   Design tokens — in step with .context/designs/tokens.js
    Direction: PROOF. The reader is hiring. Cool paper, navy ink, one blue, and
    white cards that hold real screenshots.
 
@@ -18,7 +18,7 @@
 
    Role names, never hues (design-sets §8). The CSS variable is the Tailwind
    token path with dots as dashes; v4's `--color-` prefix is the one unavoidable
-   difference from the set's `shared.css`. `pnpm contrast` checks both files.
+   difference from the set's `tokens.js`. `pnpm contrast` checks both files.
    ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
   /* ── Ground ── */
@@ -460,7 +460,7 @@
   :where(a.glass) { display: block; }
   a.glass { color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
   a.glass:hover { border-color: color-mix(in srgb, var(--color-brand-500) 55%, transparent); transform: translateY(-2px); }
-  /* The step number in Know → Enforce → Ship. */
+  /* The step number on the canon value cards. */
   .step-num {
     display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px;
     font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 700; color: var(--color-ink-inverse);

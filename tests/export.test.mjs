@@ -103,17 +103,18 @@ test("the wikis exported, one page per wiki page", () => {
   }
 });
 
-test("every published design set ships its notes pages, and its bar points at them", () => {
-  // The bar's notes button fetches Markdown. It answered 404 on every screen
-  // of every set until the wiki pages were published beside the designs.
+test("every published design set loads its libraries from this host", () => {
+  // The shell names its CDNs as strings in _shell/boot.js; the sync points
+  // them at /designs/_vendor/. A set still calling a CDN, or calling a file
+  // that did not ship, is a broken page that passes every other check.
   const designs = JSON.parse(readFileSync(join(root, "src/data/generated/designs.json"), "utf8"));
-  for (const [slug, set] of Object.entries(designs.sets)) {
-    const notes = join(out, "designs", slug, "wiki", "surfaces");
-    assert.ok(existsSync(notes) && readdirSync(notes).some((f) => f.endsWith(".md")), `${slug}: no notes pages at /designs/${slug}/wiki/surfaces/`);
-    for (const surface of new Set(set.screens.map((s) => s.surface))) {
-      const chrome = readFileSync(join(out, "designs", slug, surface, "_chrome.js"), "utf8");
-      assert.ok(chrome.includes('"../wiki/surfaces/"'), `${slug}/${surface}: _chrome.js still points two levels up`);
-    }
+  for (const slug of Object.keys(designs.sets)) {
+    const boot = readFileSync(join(out, "designs", slug, "_shell", "boot.js"), "utf8");
+    assert.ok(!/https:\/\//.test(boot), `${slug}: boot.js still names a remote URL`);
+    const vendored = [...boot.matchAll(/"\/designs\/_vendor\/([^"]+)"/g)].map((m) => m[1]);
+    assert.ok(vendored.length > 0, `${slug}: boot.js names no vendored file`);
+    for (const f of vendored) assert.ok(existsSync(join(out, "designs", "_vendor", f)), `${slug}: ${f} did not ship`);
+    for (const j of designs.sets[slug].journeys) assert.ok(existsSync(join(out, j.path)), `${slug}: ${j.path} did not ship`);
   }
 });
 
@@ -236,7 +237,7 @@ test("nothing large enough to notice ships unreferenced", () => {
       if (/\.(html|txt|xml|ico|pdf|json|webmanifest)$/.test(e.name)) continue;
       if (statSync(p).size < LIMIT) continue;
       // Matched on basename, not on the absolute path: the synced design sets
-      // reference their own assets relatively ("routes.js", "../../_vendor/x.js"),
+      // reference their own assets relatively ("../_shell/boot.js", "tokens.js"),
       // so an absolute-href search reports every one of them as an orphan. A
       // basename is a weaker match but still catches the case this exists for —
       // a file nothing anywhere mentions, like the 604KB sample.png.

@@ -23,12 +23,12 @@ Node 22, pnpm. No server, no request-time data.
 ```bash
 pnpm sync         # pull design sets, wikis and store art out of the product repos
 pnpm dev          # dev server (run `pnpm sync` once first)
-pnpm contrast     # WCAG AA on both palettes, in globals.css AND the design set
+pnpm contrast     # WCAG AA on both palettes, in globals.css AND the set's tokens.js
 pnpm build        # static export → out/
 pnpm lint         # eslint
 pnpm typecheck    # tsc --noEmit
 pnpm test:data    # data invariants — no build needed
-pnpm test:sync    # the publish gates: secrets, links, routes.js sandbox
+pnpm test:sync    # the publish gates: secrets, links, the design-set gate and its scan sandbox
 pnpm test:export  # assertions on the exported HTML in out/ — needs a build
 pnpm check        # sync + contrast + lint + typecheck + test:data + test:sync + build + test:export
 ```
@@ -44,18 +44,19 @@ and commits none of them.
 | Design sets | `.context/designs/` | `public/designs/`, `public/products/<slug>/designs/` |
 | Wiki | `.context/wiki/` | `src/data/generated/wiki/<slug>.json` |
 | Store art | `.context/listing/…/screenshots` | `public/media/<slug>/*.webp` |
-| Icon | `.context/designs/brand/icon.*` | `public/media/<slug>/icon.*` |
+| Icon | `.context/designs/assets/icon.*` | `public/media/<slug>/icon.*` |
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
 | canon config | `.claude/canon.yaml` (version, modules) | `src/data/generated/canon.json` |
 | Release state | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
 | Conversation flow | `.context/metrics/flow.json` (written by `canon flow`) | `src/data/generated/flow.json` |
 
-- `scripts/sync-designs.mjs` copies each design set, vendors its CDN assets,
-  and **withholds any surface that fails the `design-sets` standard** — the reasons land
-  in `designs.json` and the project page prints them.
-- It also publishes each product's wiki surface pages as Markdown at
-  `/designs/<slug>/wiki/surfaces/` and rewrites one path in the copied
-  `_chrome.js`, so the bar's notes button works on the site.
+- `scripts/sync-designs.mjs` copies each Babul design set whole (`babul.js`,
+  `tokens.js`, `assets/`, `_shell/`, the size folders), vendors the CDNs named
+  in its `_shell/boot.js`, and **withholds any size that fails the gate** in
+  `scripts/designs/conformance.mjs`: the files are there, `_shell/` is
+  byte-identical to babul's, Tailwind and lucide are pinned, and the set's own
+  `_shell/scan.mjs <size>` passes. The reasons land in `designs.json` and the
+  project page prints them. The screens list is that scan's pages and states.
 - `scripts/sync-context.mjs` does the wiki, the pictures and the canon config. Run it
   second: a wiki page about a screen links to that screen, and only the design
   manifest knows which screens were published.
@@ -148,7 +149,7 @@ re-order the file.
 | `/products/canon/` | canon, the private docs site: a product in `products.json` like the rest. Its page adds one section, `#cli`: canon-cli, the free CLI and plugin canon is built on (`src/components/canon-cli.tsx`, content in `src/lib/canon.ts`). canon-cli is never listed on its own |
 | `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, its funnel ("How it ships"), the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
-| `/products/[slug]/designs/` | that project's own design gallery — a static file, not a route |
+| `/products/[slug]/designs/` | forwards to that project's design journey (`/designs/<slug>/<size>/index.html`) — a static file, not a route |
 | `/resume/` | the person |
 | `/support/`, `/legal/` | for app users and store reviewers |
 | `/go/[slug]/` | short links for QR codes and bios, `noindex` |

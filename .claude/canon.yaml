@@ -13,4 +13,4 @@ modules:
 # Files copied from charades (its copies.sets); canon check keeps them equal.
 copies:
   source: ../charades
-  use: [design-shell-web]
+  use: [design-shell, design-shell-web]

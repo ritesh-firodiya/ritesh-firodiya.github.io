@@ -3,111 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ritesh Firodiya — Charades wiki — home</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="../tailwind.config.js"></script>
-  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="../shared.css" />
+  <title>Ritesh Firodiya — Wiki page</title>
+  <script src="../../_shell/boot.js"></script>
 </head>
-<body data-chrome data-file="wiki/page.html">
+<body data-page="wiki/page" data-status="review" data-journeys="A project">
 
 <div class="stage">
   <div class="phone">
-
-    <header class="site-head">
-      <div class="wrap flex items-center gap-3 py-2 md:gap-6">
-        <a href="../home/home.html" class="flex shrink-0 items-center gap-2 text-base font-bold" aria-label="Ritesh Firodiya, home">
-          <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
-          <span class="hidden md:inline">Ritesh Firodiya</span>
-        </a>
-        <nav class="ml-auto flex items-center gap-4 md:gap-6" aria-label="Main">
-          <a href="../home/home.html#work" class="nav-link nav-link--on" aria-current="page">Work</a>
-          <a href="../work/canon.html" class="nav-link">canon</a>
-          <a href="../resume/resume.html" class="nav-link">Résumé</a>
-        </nav>
-        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-quiet hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
-      </div>
-    </header>
-
-      <main class="wrap pb-10 pt-6">
-        <div class="grid gap-8 lg:grid-cols-[14rem_1fr_15rem]">
-
-          <aside class="order-last lg:sticky lg:top-20 lg:order-first lg:self-start">
-            <p class="eyebrow">Project</p>
-            <div class="card mt-2 flex items-center justify-between gap-3 px-4 py-3">
-              <span class="flex items-center gap-3 font-semibold"><img src="../../../../../../products/charades/.context/designs/brand/icon.png" alt="" class="h-7 w-7 rounded-sm" /> Charades</span>
-              <i data-lucide="chevrons-up-down" class="h-4 w-4 text-ink-3"></i>
-            </div>
-            <p class="eyebrow mt-7">Page types</p>
-            <nav class="mt-2 flex flex-col text-base" aria-label="Page types">
-              <a href="../wiki/wiki.html" class="flex items-center justify-between rounded-sm px-3 py-2 text-ink-2">All pages <span class="mono text-xs text-ink-3">20</span></a>
-              <a href="../wiki/wiki.html" class="flex items-center justify-between rounded-sm px-3 py-2 text-ink-2">Concepts <span class="mono text-xs text-ink-3">2</span></a>
-              <a href="../wiki/wiki.html" class="flex items-center justify-between rounded-sm px-3 py-2 text-ink-2">Entities <span class="mono text-xs text-ink-3">1</span></a>
-              <a href="../wiki/wiki.html" class="flex items-center justify-between rounded-sm px-3 py-2 bg-brand-50 font-semibold text-brand-700">Surfaces <span class="mono text-xs text-ink-3">15</span></a>
-              <a href="../wiki/wiki.html" class="flex items-center justify-between rounded-sm px-3 py-2 text-ink-2">Decisions <span class="mono text-xs text-ink-3">2</span></a>
-            </nav>
-            <a href="#" data-to="/products/charades/designs/" class="btn btn-quiet mt-7 w-full"><i data-lucide="workflow" class="h-4 w-4"></i> Open the design set</a>
-          </aside>
-          <article class="min-w-0">
-            <p class="text-sm text-ink-3"><a href="../home/home.html#work" class="hover:text-ink">Work</a> / <a href="../work/project.html" class="hover:text-ink">Charades</a> / <a href="../wiki/wiki.html" class="hover:text-ink">Wiki</a> / Surfaces</p>
-            <h1 class="page-title mt-2">home</h1>
-            <p class="mt-2 flex flex-wrap items-center gap-2"><span class="chip">Surface</span> <span class="chip">canonical</span> <span class="chip">verified 2026-09-22</span> <span class="mono text-xs text-ink-3">SURFACE.MOBILE.HOME</span></p>
-            <div class="wiki-prose mt-5">
-              <h2>Summary</h2>
-              <p>The pack shelves, a resume row, and the pinned Play button.</p>
-              <h2>Raw wireframe</h2>
-              <ul><li><code>.context/designs/mobile/home/home.html</code></li></ul>
-              <h2>Why it is drawn this way</h2>
-              <p><b>There is no pack store.</b> Packs are shelves on Home, one horizontal row per industry. A wrapping grid pushed the later industries off-screen and had to cap what it showed; a row keeps every industry visible and lets a section carry all eight packs.</p>
-              <p><b>A compact top bar, not a centred logo.</b> The merchandising below has to stay above the fold, so the app mark, the history button and settings share one row.</p>
-              <p><b>Owned packs come first in each shelf</b>, so the deck the user can actually play sits above the upsells.</p>
-              <p><b>Buying happens in a sheet, not a trip.</b> Tapping a locked tile opens the preview sheet over Home — reaching a locked pack used to cost two taps and lose the user's place.</p>
-              <p><b>The footer is pinned and carries the deck summary</b> the old hero card used to show. That is what lets Home lead with the packs themselves. Play is gold because it is the one action that matters; see <a href="../wiki/page.html">reserved-gold</a>.</p>
-              <p><b>Resume only appears when a saved round still has unplayed movies.</b> Otherwise the row would go nowhere.</p>
-              <h2>Related</h2>
-              <ul>
-                <li><a href="../wiki/page.html">reserved-gold</a></li>
-                <li><a href="../wiki/page.html">packs</a></li>
-                <li><a href="../wiki/page.html">play</a></li>
-                <li><a href="../wiki/page.html">2026-09-22-packs-move-to-home</a></li>
-              </ul>
-            </div>
-          </article>
-          <aside class="lg:sticky lg:top-24 lg:self-start">
-            <p class="eyebrow">The screen</p>
-            <div class="mt-3 w-40 overflow-hidden rounded-xl border border-line-strong"><div class="embed embed--phone"><iframe src="../../../../../../products/charades/.context/designs/mobile/home/home.html?bare" title="Charades home wireframe" loading="lazy" tabindex="-1"></iframe></div></div>
-            <a href="#" data-to="/designs/charades/mobile/home/home.html" class="btn btn-quiet mt-4"><i data-lucide="external-link" class="h-4 w-4"></i> Open the wireframe</a>
-            <p class="eyebrow mt-8">Linked from</p>
-            <ul class="mt-2 grid gap-1.5 text-sm">
-              <li><a href="../wiki/page.html" class="text-link">play</a></li>
-              <li><a href="../wiki/page.html" class="text-link">pack-preview</a></li>
-              <li><a href="../wiki/page.html" class="text-link">2026-09-22-packs-move-to-home</a></li>
+    <c-site-header on="work"></c-site-header>
+    <main class="wrap pb-10 pt-6">
+      <div class="grid gap-8 lg:grid-cols-[14rem_1fr_15rem]">
+        <c-wiki-rail on="surfaces"></c-wiki-rail>
+        <article class="min-w-0">
+          <p class="text-sm text-ink-3"><a href="../home/home.html#work" class="hover:text-ink" data-link="back">Work</a> / <a href="../work/project.html" class="hover:text-ink" data-link="back">Charades</a> / <a href="../wiki/wiki.html" class="hover:text-ink" data-link="back">Wiki</a> / Surfaces</p>
+          <h1 class="page-title mt-2">home</h1>
+          <p class="mt-2 flex flex-wrap items-center gap-2"><span class="chip">Surface</span> <span class="chip">canonical</span> <span class="chip">verified 2026-09-22</span> <span class="mono text-xs text-ink-3">SURFACE.MOBILE.HOME</span></p>
+          <div class="wiki-prose mt-5">
+            <h2>Summary</h2>
+            <p>The pack shelves, a resume row, and the pinned Play button.</p>
+            <h2>Raw wireframe</h2>
+            <ul><li><code>.context/designs/mobile/home/home.html</code></li></ul>
+            <h2>Why it is drawn this way</h2>
+            <p><b>There is no pack store.</b> Packs are shelves on Home, one horizontal row per industry. A wrapping grid pushed the later industries off-screen and had to cap what it showed; a row keeps every industry visible and lets a section carry all eight packs.</p>
+            <p><b>A compact top bar, not a centred logo.</b> The merchandising below has to stay above the fold, so the app mark, the history button and settings share one row.</p>
+            <p><b>Owned packs come first in each shelf</b>, so the deck the user can actually play sits above the upsells.</p>
+            <p><b>Buying happens in a sheet, not a trip.</b> Tapping a locked tile opens the preview sheet over Home — reaching a locked pack used to cost two taps and lose the user's place.</p>
+            <p><b>The footer is pinned and carries the deck summary</b> the old hero card used to show. That is what lets Home lead with the packs themselves. Play is gold because it is the one action that matters; see <a href="../wiki/page.html">reserved-gold</a>.</p>
+            <p><b>Resume only appears when a saved round still has unplayed movies.</b> Otherwise the row would go nowhere.</p>
+            <h2>Related</h2>
+            <ul>
+              <li><a href="../wiki/page.html">reserved-gold</a></li>
+              <li><a href="../wiki/page.html">packs</a></li>
+              <li><a href="../wiki/page.html">play</a></li>
+              <li><a href="../wiki/page.html">2026-09-22-packs-move-to-home</a></li>
             </ul>
-          </aside>
-        </div>
-      </main>
-
-    <footer class="mt-auto border-t border-line">
-      <div class="wrap grid gap-3 py-5 text-sm text-ink-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5">
-        <a href="mailto:firodiya.ritesh@gmail.com" class="inline-flex items-center gap-1.5 font-semibold text-ink"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
-        <span class="flex flex-wrap gap-x-5 gap-y-1">
-          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-          <a href="https://github.com/ritesh-firodiya">GitHub</a>
-          <a href="https://github.com/ritesh-firodiya/canon-cli">canon-cli on GitHub</a>
-          <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        </span>
-        <span class="flex gap-5 text-ink-3 sm:ml-auto">
-          <a href="../support/support.html">Support</a>
-          <a href="../legal/legal.html">Legal</a>
-        </span>
+          </div>
+        </article>
+        <aside class="lg:sticky lg:top-24 lg:self-start">
+          <p class="eyebrow">The screen</p>
+          <div class="mt-3 w-40 overflow-hidden rounded-xl border border-line-strong"><c-embed variant="phone" src="../../../../../../products/charades/.context/designs/mobile/home/home.html?bare" title="Charades home wireframe"></c-embed></div>
+          <c-button variant="quiet" href="#" icon="external-link" class="mt-4">Open the wireframe</c-button>
+          <p class="eyebrow mt-8">Linked from</p>
+          <ul class="mt-2 grid gap-1.5 text-sm">
+            <li><a href="../wiki/page.html" class="text-link">play</a></li>
+            <li><a href="../wiki/page.html" class="text-link">pack-preview</a></li>
+            <li><a href="../wiki/page.html" class="text-link">2026-09-22-packs-move-to-home</a></li>
+          </ul>
+        </aside>
       </div>
-    </footer>
+    </main>
+    <c-site-footer></c-site-footer>
   </div>
 </div>
 
-<script src="../routes.js"></script>
-<script src="../_chrome.js"></script>
-<script>lucide.createIcons();</script>
 </body>
 </html>

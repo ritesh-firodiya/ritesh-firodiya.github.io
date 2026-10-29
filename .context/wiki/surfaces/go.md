@@ -1,11 +1,13 @@
 ---
-last-verified: 2026-10-04
+last-verified: 2026-10-29
 ---
 
 # go
 
-**It is a page, not a bare redirect.** A wrong platform guess has to be recoverable in one tap, a platform with nothing to install has to say why, and a desktop visitor needs something other than a store they cannot install from.
+**A page, not a bare redirect.** A wrong platform guess has to be recoverable in one tap, and a desktop visitor needs something other than a store.
 
-**No site header.** Someone who scanned a QR code came for one app. The only ways out are the store, the app's page, and the work index.
+**No site header.** Someone who scanned a QR code came for one app.
 
-**A closed platform is listed with its reason**, never hidden. That is the site-wide rule, and it matters most here, where the visitor expected to install something.
+**A closed platform is listed with its reason**, never hidden.
+
+**Nothing on the site links here**: the visitor arrives from a QR code or a store listing.

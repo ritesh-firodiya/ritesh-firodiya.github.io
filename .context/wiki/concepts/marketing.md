@@ -13,7 +13,7 @@ last-verified: 2026-10-27
 7. **A global app names no country.** A second locale goes on both stores, or the reason goes in `tasks.md`.
 8. **Publish the honest number**; claim no accuracy figure you have not measured.
 9. **No dates around a blocked step.**
-10. **Press kit: source art lives in `designs/brand/`**; `marketing/press/media/` holds exports only.
+10. **Press kit: source art lives in `designs/assets/`**; `marketing/press/media/` holds exports only.
 11. **Contact address**: every product uses the founder's Gmail address (each `marketing/context.md` names it) until its domain has mail records.
 
 ## Keeping numbers honest

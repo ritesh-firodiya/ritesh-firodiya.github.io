@@ -1,0 +1,273 @@
+/* ============================================================================
+   Ritesh Firodiya — the classes its pages and components are built from.
+   ============================================================================
+   Colours, type, radius and shadow are tokens (tokens.js); this file is only
+   the shapes made of them. Mobile first: every rule is the phone layout and a
+   min-width query only adds to it. Kept in step with the @layer components
+   block of src/app/globals.css. A class here that nothing draws fails the check.
+   ============================================================================ */
+
+.mono { font-family: var(--font-mono); }
+
+/* A website frame is not a device: a page radius and shadow, not the phone's. */
+.phone {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Bare is the real page: it fills the window, so `?bare` at 390px is the phone layout. */
+[data-bare] .phone { width: 100%; }
+
+/* The page column. One width for every band on every screen. */
+.wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: 16px; }
+@media (min-width: 768px) { .wrap { padding-inline: 28px; } }
+
+/* ---- type ---- */
+.page-title {
+  font-size: clamp(1.4rem, 2.1vw, 1.75rem);
+  line-height: 1.12; letter-spacing: -0.03em; font-weight: 800;
+}
+.section-title {
+  font-size: 1.125rem;
+  line-height: 1.15; letter-spacing: -0.02em; font-weight: 700;
+}
+.eyebrow {
+  font-family: var(--font-mono); font-size: var(--fs-xs); line-height: 1.4;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
+}
+
+/* ---- actions ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 7px 14px; border-radius: var(--radius-pill);
+  font-size: var(--fs-base); font-weight: 600; line-height: 1.2;
+  border: 1px solid transparent; text-decoration: none; white-space: nowrap;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.btn-primary { background: var(--brand-500); color: var(--ink-inverse); }
+.btn-primary:hover { background: var(--brand-700); }
+.btn-quiet { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
+.btn-quiet:hover { border-color: var(--brand-500); color: var(--brand-500); }
+.text-link {
+  color: var(--brand-500); font-weight: 600; text-decoration: underline;
+  text-decoration-color: var(--brand-200); text-underline-offset: 4px;
+}
+.text-link:hover { text-decoration-color: var(--brand-500); }
+
+/* ---- surfaces ---- */
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+}
+/* :where keeps this at zero specificity, so a `flex` utility on the same link wins. */
+:where(a.card) { display: block; }
+a.card { text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s, transform .15s; }
+a.card:hover { border-color: var(--brand-200); box-shadow: var(--shadow); transform: translateY(-2px); }
+
+/* ---- RESERVED · the release state pill ---- */
+.state {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: 600; line-height: 1.5; white-space: nowrap;
+}
+.state::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.state--live  { color: var(--live);  background: var(--live-bg); }
+.state--test  { color: var(--test);  background: var(--test-bg); }
+.state--build { color: var(--build); background: var(--build-bg); }
+.state--draft { color: var(--draft); background: var(--draft-bg); }
+
+/* A stack name, a page type, a filter. Never a state. */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); line-height: 1.5; color: var(--ink-2);
+  background: var(--muted); border: 1px solid var(--line); white-space: nowrap;
+}
+/* Mobile or Web: what kind of product it is. Outlined, so it never reads as a state. */
+.tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: 600; line-height: 1.5; white-space: nowrap;
+  color: var(--ink-2); border: 1px solid var(--line-strong);
+}
+
+/* ---- pictures. NOTHING IS COPIED INTO THIS REPO. ------------------------------
+   A picture is either a product's own store art, read from its listing folder,
+   or a product's own design screen, embedded live. */
+.shot { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
+/* In a fixed-height card slot: fill it, and start just under the headline so the app itself shows. */
+.shot--crop { height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 0; }
+
+/* A design screen at its own logical size, scaled to the box. tan(atan2()) is
+   how CSS divides one length by another and gets a number. Because it is the
+   real file, it follows the theme toggle. */
+.embed {
+  position: relative; width: 100%; aspect-ratio: 1440 / 900; overflow: hidden;
+  container-type: inline-size; background: var(--sunken);
+}
+.embed iframe {
+  position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0;
+  pointer-events: none; transform-origin: 0 0;
+  transform: scale(tan(atan2(100cqw, 1440px)));
+}
+/* In a card slot: fill the slot rather than keep 16:10, and draw the page a
+   little narrower so a 900px-tall screen covers the whole slot. */
+.embed--fill { height: 100%; aspect-ratio: auto; }
+.embed--fill iframe { width: 1100px; transform: scale(tan(atan2(100cqw, 1100px))); }
+.embed--phone { aspect-ratio: 390 / 844; }
+.embed--phone iframe { width: 390px; height: 844px; transform: scale(tan(atan2(100cqw, 390px))); }
+
+
+/* A deliberately empty slot. A missing asset is visibly missing; a plain grey
+   box reads as a surface that happens to be blank, and hatching does not. */
+.slot {
+  background:
+    repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--band) 6%, transparent) 10px 11px),
+    var(--muted);
+  border: 1px dashed var(--line-strong);
+}
+
+/* ---- a table that reads as rows, not as a grid ---- */
+.tbl { width: 100%; border-collapse: collapse; text-align: left; }
+.tbl th {
+  font-family: var(--font-mono); font-size: var(--fs-2xs); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
+  padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--muted);
+}
+.tbl td { padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: var(--fs-base); vertical-align: middle; }
+.tbl tr:last-child td { border-bottom: 0; }
+
+/* ---- a rendered wiki page. Markdown in, this out. ---- */
+.wiki-prose { font-size: var(--fs-body); line-height: 1.65; color: var(--ink-2); }
+.wiki-prose h2 {
+  font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -0.01em; font-weight: 700;
+  color: var(--ink); margin: 24px 0 8px; padding-top: 16px; border-top: 1px solid var(--line);
+}
+.wiki-prose h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.wiki-prose p { margin: 0 0 14px; }
+.wiki-prose b, .wiki-prose strong { color: var(--ink); font-weight: 600; }
+.wiki-prose ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
+.wiki-prose li { margin-bottom: 6px; }
+.wiki-prose code {
+  font-family: var(--font-mono); font-size: 0.86em; padding: 1px 6px;
+  border-radius: 6px; background: var(--muted); border: 1px solid var(--line);
+}
+.wiki-prose a { color: var(--brand-500); text-decoration: underline; text-decoration-color: var(--brand-200); text-underline-offset: 3px; }
+/* A long path, address or name breaks rather than pushing the page sideways on a phone. */
+.wiki-prose { overflow-wrap: anywhere; }
+/* Tables fit the column and wrap their cells: the page never scrolls sideways. */
+.wiki-prose table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0 0 14px; font-size: var(--fs-sm); line-height: 1.5; }
+.wiki-prose th, .wiki-prose td { padding: 6px 8px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+.wiki-prose th { color: var(--ink); font-weight: 600; border-top: 0; }
+.wiki-prose pre { overflow-x: auto; margin: 0 0 14px; padding: 12px; border-radius: 8px; background: var(--muted); font-size: 0.86em; }
+.wiki-prose pre code { padding: 0; border: 0; background: none; }
+.wiki-prose img { max-width: 100%; height: auto; }
+
+/* The header's own blur, so the bar stays readable over a screenshot. */
+.site-head {
+  position: sticky; top: 0; z-index: 30;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.nav-link { color: var(--ink-2); font-size: var(--fs-base); font-weight: 500; white-space: nowrap; padding: 6px 0; border-bottom: 2px solid transparent; }
+.nav-link:hover { color: var(--ink); }
+.nav-link--on { color: var(--ink); border-bottom-color: var(--brand-500); }
+
+/* A store screenshot standing on the page rather than lying in a box. */
+.shot--lift { box-shadow: var(--shadow-lg); border: 1px solid var(--line); }
+
+/* A terminal transcript, on the band in both themes. Pass and fail are written
+   as ✓ and ✗, never green and red: green is the reserved release colour. */
+.term {
+  font-family: var(--font-mono); font-size: var(--fs-sm); line-height: 1.6;
+  background: var(--band); color: var(--band-ink);
+  border: 1px solid color-mix(in srgb, var(--band-2) 25%, transparent);
+  border-radius: var(--radius-lg); padding: 14px 16px; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.term-dim { color: var(--band-2); }
+
+/* The glow behind a hero: violet from the top, cyan from the side. Drawn on a
+   pseudo-element so it never takes clicks and never widens the page. */
+.glow { position: relative; isolation: isolate; overflow: hidden; }
+.glow::before {
+  content: ""; position: absolute; inset: -20% -10% auto -10%; height: 140%; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(40% 45% at 50% 0%, color-mix(in srgb, var(--brand-500) 38%, transparent), transparent 70%),
+    radial-gradient(30% 35% at 85% 20%, color-mix(in srgb, var(--accent-500) 22%, transparent), transparent 70%);
+}
+/* A faint grid under the glow, the "product launch" texture. */
+.grid-bg {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(60% 60% at 50% 30%, #000 30%, transparent 75%);
+          mask-image: radial-gradient(60% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+/* The gradient headline. Ink to brand to accent, so it still reads as ink. */
+.grad-text {
+  background: linear-gradient(100deg, var(--ink) 30%, var(--brand-500) 70%, var(--accent-500));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.display {
+  font-size: clamp(1.9rem, 4.4vw, 3.25rem); line-height: 1.06; letter-spacing: -0.045em; font-weight: 800;
+}
+/* Glass: a see-through card with a hairline that catches the glow. */
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: var(--radius-xl);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 6%, transparent);
+}
+:where(a.glass) { display: block; }
+a.glass { color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
+a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transparent); transform: translateY(-2px); }
+/* The step number in Know → Enforce → Ship. */
+.step-num {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 700; color: var(--ink-inverse);
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+}
+/* A verdict is danger: it is a verdict, which is what the status roles are for. */
+.verdict { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: var(--radius-pill);
+  font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .04em; }
+.verdict--push { color: var(--danger); background: var(--danger-bg); }
+/* The request a verdict answered, set as a quote. */
+.ask { font-size: var(--fs-lead); line-height: 1.35; font-weight: 600; color: var(--ink); }
+.ask::before { content: "“"; color: var(--brand-500); }
+.ask::after  { content: "”"; color: var(--brand-500); }
+/* The lifecycle strip: eight stages joined by one gradient line. */
+.pdlc { position: relative; }
+.pdlc::before { content: ""; position: absolute; left: 15px; top: 16px; bottom: 16px; width: 2px;
+  background: linear-gradient(var(--brand-500), var(--accent-500)); opacity: .5; }
+@media (min-width: 768px) {
+  .pdlc::before { left: 16px; right: 16px; top: 15px; bottom: auto; width: auto; height: 2px;
+    background: linear-gradient(90deg, var(--brand-500), var(--accent-500)); }
+}
+.pdlc-dot { position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--page); border: 2px solid var(--brand-500); color: var(--brand-500); }
+.app-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--line); object-fit: cover; }
+.app-icon--none { display: grid; place-items: center; background: var(--muted); font-weight: 700; color: var(--ink-3); }
+
+/* The two tools on Home: canon is brand, canon is accent. */
+
+/* A product's funnel: one band per stage, its thickness the stage's item
+   count, sloping into the next stage's. --a is this stage's share, --b the
+   next one's (0–100). The stage where work waits is warn; the rest brand. */
+.funnel { display: grid; grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); }
+.funnel-band { height: 88px; --a2: calc(max(var(--a), 6) * 0.5%); --b2: calc(max(var(--b), 6) * 0.5%);
+  clip-path: polygon(0 calc(50% - var(--a2)), 100% calc(50% - var(--b2)), 100% calc(50% + var(--b2)), 0 calc(50% + var(--a2)));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--brand-500) 70%, transparent), color-mix(in srgb, var(--accent-500) 55%, transparent)); }
+.funnel-band--wait { background: linear-gradient(90deg, var(--warn), color-mix(in srgb, var(--warn) 55%, transparent)); }
+.funnel-band + .funnel-band { margin-left: 2px; }
+.funnel-n { font-family: var(--font-mono); font-size: var(--fs-h3); font-weight: 800; line-height: 1; }
+/* The stage under each band: a row (count, then words) on a phone, a centred column from md. */
+.funnel-heads { display: grid; gap: 10px; }
+.funnel-head { display: flex; align-items: baseline; gap: 12px; }
+.funnel-head .funnel-n { min-width: 3ch; text-align: right; }
+@media (min-width: 768px) {
+  .funnel-heads { grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); gap: 4px; }
+  .funnel-head { flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .funnel-head .funnel-n { min-width: 0; text-align: center; }
+}

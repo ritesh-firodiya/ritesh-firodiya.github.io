@@ -1,11 +1,11 @@
 ---
-last-verified: 2026-10-04
+last-verified: 2026-10-29
 ---
 
 # support
 
-**Three doors, because there are three reasons anyone writes.** Each button opens an email with the subject already filled in, so the request arrives sorted.
+**Footer only, beside Legal.** This page is not for the hiring reader.
 
-**It is in the footer, beside Legal.** This page is not for the hiring reader and must not sit in the header beside the résumé.
+**Each door opens an email with the subject filled in**, so the request arrives sorted.
 
-**The four questions are the ones the stores and users actually ask.** The answers name apps, because a claim on behalf of every app is only as true as the least convenient one.
+**The answers name apps.** A claim on behalf of every app is only as true as the least convenient one.

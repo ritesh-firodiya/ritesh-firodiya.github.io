@@ -3,7 +3,7 @@
 One line per page. Rules: `canon standards` → `wiki-schema`.
 
 ## Concepts
-Store know-how every product shares.
+- [[architecture]] — One question per diagram: who uses it, how the site is built, what it relies on.
 - [[marketing]] — Marketing and measuring
 - [[selling-in-app]] — Selling inside an app
 - [[store-capture]] — Adding store capture to an app
@@ -13,16 +13,14 @@ Store know-how every product shares.
 - [[site]] — The portfolio site
 
 ## Surfaces
-- [[go]] — It is a page, not a bare redirect.
-- [[home]] — Redrawn 2026-10-23 (LAUNCH) — see [[site]].
-- [[legal]] — A table, because the reader is a store reviewer or a user looking for one document.
-- [[not-found]] — It offers the one place a lost visitor wanted.
-- [[policy]] — One narrow column and nothing beside it.
-- [[project]] — One layout for every product (2026-10-23, owner: "make product pages consistent").
+- [[canon]] — The story is the product, not the code.
+- [[go]] — A page, not a bare redirect.
+- [[home]] — Cards follow `products.json`, with canon placed third.
+- [[legal]] — Footer only, never the header.
+- [[not-found]] — Old addresses forward; the nav is the recovery.
+- [[policy]] — Static files in `public/legal/`, byte-identical paths.
+- [[project]] — One template for every product.
 - [[resume]] — A page first and a PDF second.
-- [[support]] — Three doors, because there are three reasons anyone writes.
-- [[testing]] — A closed Android track that admits a Google Group gets two numbered buttons:
-- [[unreleased]] — It is the same page.
+- [[support]] — Footer only, beside Legal.
 - [[wiki-page]] — The article is the Markdown, unedited.
-- [[wiki]] — Grouped by type, because that is how the wiki is written.
-- [[canon]] — The story is the product, not the code (owner, 2026-10-23).
+- [[wiki]] — A filter, not a search.

@@ -174,19 +174,22 @@ a static export `redirect()` only works once the page's JavaScript has run.
 
 ## Design set and style
 
-`.context/designs/web/` is this site's own design set, built to
-the `design-sets` standard. **When a page and its wireframe disagree, the
-wireframe wins**: fix the page, or change the wireframe first and say so in its
-notes page (`.context/wiki/surfaces/`). `node scripts/designs/serve.mjs` serves
-the set for review.
+`.context/designs/` is a Babul design set: canon's `design-sets` standard
+(`canon standards`) says how it is built and `canon check` checks it. The
+shell reads pages, links, journeys and components from the HTML itself; there
+is no data file to update. Open `.context/designs/web/index.html` from disk.
+It holds only designs; a screen's notes, design decisions and colour rules are
+in `.context/wiki/`. **When a page and its wireframe disagree, the wireframe
+wins**: fix the page, or change the wireframe first and say so in its notes
+page (`.context/wiki/surfaces/`).
 
-`src/app/globals.css` holds the theme in a Tailwind v4 `@theme` block, ported
-from the set's `shared.css`: same role names, same values. `pnpm contrast`
-checks both files and reports any role one declares and the other does not.
+`src/app/globals.css` holds the theme in a Tailwind v4 `@theme` block, in step
+with the set's `tokens.js`: same role names, same values.
 
 - Role names, never hues. A theme is a **token remap**, never a `dark:` prefix.
-- The component classes (`.btn`, `.card`, `.state`, `.chip`, `.embed`, `.track`,
-  `.dot`) are the set's, in `@layer components` so a utility beside one wins.
+- The component classes (`.btn`, `.card`, `.state`, `.chip`, `.embed`) are the
+  set's (`web/styles.css`), mirrored in `@layer components` so a utility beside
+  one wins.
 - **Reserved colours: the release state** (`live`, `test`, `build`, `draft`).
   Used for nothing else.
 - Icons are lucide.

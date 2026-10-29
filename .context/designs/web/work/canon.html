@@ -3,157 +3,88 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ritesh Firodiya — canon, the canon-cli section</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="../tailwind.config.js"></script>
-  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
-  <link rel="stylesheet" href="../shared.css" />
+  <title>Ritesh Firodiya — canon-cli section</title>
+  <script src="../../_shell/boot.js"></script>
 </head>
-<body data-chrome data-file="work/canon.html">
+<body data-page="work/canon" data-status="review">
 
 <div class="stage">
   <div class="phone">
-
-    <header class="site-head">
-      <div class="wrap flex items-center gap-3 py-2 md:gap-6">
-        <a href="../home/home.html" class="flex shrink-0 items-center gap-2 text-base font-bold" aria-label="Ritesh Firodiya, home">
-          <img src="../../../../public/me.webp" alt="" class="h-7 w-7 rounded-full object-cover" />
-          <span class="hidden md:inline">Ritesh Firodiya</span>
-        </a>
-        <nav class="ml-auto flex items-center gap-4 md:gap-6" aria-label="Main">
-          <a href="../home/home.html#work" class="nav-link">Work</a>
-          <a href="../work/canon.html" class="nav-link nav-link--on" aria-current="page">canon</a>
-          <a href="../resume/resume.html" class="nav-link">Résumé</a>
-        </nav>
-        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-pill border border-line text-ink-2" title="Switch theme" aria-label="Switch theme"><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-        <a href="mailto:firodiya.ritesh@gmail.com" class="btn btn-quiet hidden sm:inline-flex" aria-label="Email firodiya.ritesh@gmail.com"><i data-lucide="mail" class="h-4 w-4"></i> Email</a>
-      </div>
-    </header>
-
-      <main class="pb-12">
-        <section class="glow">
-          <div class="grid-bg absolute inset-0 -z-10" aria-hidden="true"></div>
-          <div class="wrap pb-10 pt-8 text-center md:pb-12 md:pt-14">
-            <p class="flex flex-wrap justify-center gap-1.5"><span class="chip">Open source · MIT</span> <span class="chip">v0.15.0</span> <span class="chip">Claude Code plugin + CLI</span></p>
-            <h1 class="display grad-text mx-auto mt-4 max-w-[15ch]">Your domain knowledge, kept local. Enforced.</h1>
-            <p class="mx-auto mt-3 max-w-[56ch] text-lead text-ink-2">canon-cli is a productivity tool for the whole product lifecycle. Your rules, prices and past decisions stay in your repo, and the AI checks them, and every claim you make, against facts before it acts. It guesses less, and you ship faster.</p>
-            <div class="mt-5 flex flex-wrap justify-center gap-2">
-              <a href="https://github.com/ritesh-firodiya/canon-cli" class="btn btn-primary"><i data-lucide="git-branch" class="h-4 w-4"></i> Get it on GitHub</a>
-              <a href="#caught" class="btn btn-quiet">What it caught <i data-lucide="arrow-down" class="h-4 w-4"></i></a>
-            </div>
-            <div class="term mx-auto mt-6 max-w-[34rem] text-left text-xs"><span class="term-dim">$</span> claude plugin marketplace add ritesh-firodiya/canon-cli
+    <c-site-header on="canon"></c-site-header>
+    <main class="pb-12">
+      <section class="glow">
+        <div class="grid-bg absolute inset-0 -z-10" aria-hidden="true"></div>
+        <div class="wrap pb-10 pt-8 text-center md:pb-12 md:pt-14">
+          <p class="flex flex-wrap justify-center gap-1.5"><c-chip>Open source · MIT</c-chip> <c-chip>v0.15.0</c-chip> <c-chip>Claude Code plugin + CLI</c-chip></p>
+          <h1 class="display grad-text mx-auto mt-4 max-w-[15ch]">Your domain knowledge, kept local. Enforced.</h1>
+          <p class="mx-auto mt-3 max-w-[56ch] text-lead text-ink-2">canon-cli is a productivity tool for the whole product lifecycle. Your rules, prices and past decisions stay in your repo, and the AI checks them, and every claim you make, against facts before it acts. It guesses less, and you ship faster.</p>
+          <div class="mt-5 flex flex-wrap justify-center gap-2">
+            <c-button variant="primary" href="https://github.com/ritesh-firodiya/canon-cli" icon="git-branch">Get it on GitHub</c-button>
+            <c-button variant="quiet" href="#caught" icon-end="arrow-down">What it caught</c-button>
+          </div>
+          <div class="term mx-auto mt-6 max-w-[34rem] text-left text-xs"><span class="term-dim">$</span> claude plugin marketplace add ritesh-firodiya/canon-cli
 <span class="term-dim">$</span> claude plugin install canon@canon
 <span class="term-dim">$</span> npm install -g @freetesh/canon</div>
+        </div>
+      </section>
+
+      <div class="wrap">
+        <section id="problem">
+          <h2 class="text-center text-h2 font-extrabold">AI forgets your domain</h2>
+          <div class="mt-4 grid gap-3 md:grid-cols-3">
+            <c-problem-card icon="message-square-dashed" heading="Knowledge lives in chat">Why a price is what it is gets said once, then lost.</c-problem-card>
+            <c-problem-card icon="history" heading="Settled things come back">Every session starts fresh. Last month's "no" returns as a new idea.</c-problem-card>
+            <c-problem-card icon="wand-sparkles" heading="The AI fills gaps by guessing">It sounds sure, builds it, and you find out later.</c-problem-card>
           </div>
         </section>
 
-        <div class="wrap">
-          <section id="problem">
-            <h2 class="text-center text-h2 font-extrabold">AI forgets your domain</h2>
-            <div class="mt-4 grid gap-3 md:grid-cols-3">
-              <div class="glass p-4"><i data-lucide="message-square-dashed" class="h-5 w-5 text-brand-500"></i><p class="mt-3 font-bold">Knowledge lives in chat</p><p class="mt-1 text-sm text-ink-2">Why a price is what it is gets said once, then lost.</p></div>
-              <div class="glass p-4"><i data-lucide="history" class="h-5 w-5 text-brand-500"></i><p class="mt-3 font-bold">Settled things come back</p><p class="mt-1 text-sm text-ink-2">Every session starts fresh. Last month's "no" returns as a new idea.</p></div>
-              <div class="glass p-4"><i data-lucide="wand-sparkles" class="h-5 w-5 text-brand-500"></i><p class="mt-3 font-bold">The AI fills gaps by guessing</p><p class="mt-1 text-sm text-ink-2">It sounds sure, builds it, and you find out later.</p></div>
-            </div>
-          </section>
+        <section id="how" class="mt-20">
+          <h2 class="text-center text-h2 font-extrabold">How canon-cli fixes it</h2>
+          <ol class="mt-4 grid gap-3 md:grid-cols-3">
+            <c-step n="1" label="Know">A wiki of decisions, prices, rules and features in each repo. Searched locally, before the AI answers.</c-step>
+            <c-step n="2" label="Enforce">A gate weighs each request: do it, do it differently, or push back. Every claim is marked backed or not, and every reason names its source.</c-step>
+            <c-step n="3" label="Ship">Checks fail when a rule breaks. Overrides are logged, and canon proposes better rules from them.</c-step>
+          </ol>
+        </section>
 
-          <section id="how" class="mt-20">
-            <h2 class="text-center text-h2 font-extrabold">How canon-cli fixes it</h2>
-            <ol class="mt-4 grid gap-3 md:grid-cols-3">
-              <li class="glass p-4"><p class="flex items-center gap-2.5 text-h3 font-bold"><span class="step-num">1</span> Know</p><p class="mt-2 text-base text-ink-2">A wiki of decisions, prices, rules and features in each repo. Searched locally, before the AI answers.</p></li>
-              <li class="glass p-4"><p class="flex items-center gap-2.5 text-h3 font-bold"><span class="step-num">2</span> Enforce</p><p class="mt-2 text-base text-ink-2">A gate weighs each request: do it, do it differently, or push back. Every claim is marked backed or not, and every reason names its source.</p></li>
-              <li class="glass p-4"><p class="flex items-center gap-2.5 text-h3 font-bold"><span class="step-num">3</span> Ship</p><p class="mt-2 text-base text-ink-2">Checks fail when a rule breaks. Overrides are logged, and canon proposes better rules from them.</p></li>
-            </ol>
-          </section>
+        <section id="caught" class="mt-20">
+          <h2 class="text-center text-h2 font-extrabold">What it caught</h2>
+          <p class="mx-auto mt-2 max-w-[52ch] text-center text-sm text-ink-3">Real verdicts. The first three are from canon-cli's test suite on a sample habit app; the last is from my own products.</p>
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            <c-verdict-card ask="Add a $2.99 monthly plan next to the yearly one." sources="decisions/yearly-plan-only · C-04 · C-05"><li>A recorded decision says yearly only, and it is still active.</li><li>Monthly subscribers quit after one month at 4× the yearly rate.</li></c-verdict-card>
+            <c-verdict-card ask="Let people share their streak to Instagram." sources="features/share-streaks · C-04"><li>Shelved in August: 2 of 40 beta users wanted it.</li><li>The agreed bar to revisit is 20% asking. Nothing shows it was met.</li></c-verdict-card>
+            <c-verdict-card ask="Clear the old history on app start." sources="concepts/offline-first · C-12 · C-13"><li>It is not old: it is every streak the user ever kept.</li><li>No account and no server copy, so it cannot be restored.</li></c-verdict-card>
+            <c-verdict-card ask="Move every product to Firebase to cut the hosting bill." sources="ops/staging · synthesis/architecture · C-05 · C-07"><li>The Postgres apps already cost about $0 on free tiers.</li><li>Four apps would need their data and money flows rewritten.</li></c-verdict-card>
+          </div>
+        </section>
 
-          <section id="caught" class="mt-20">
-            <h2 class="text-center text-h2 font-extrabold">What it caught</h2>
-            <p class="mx-auto mt-2 max-w-[52ch] text-center text-sm text-ink-3">Real verdicts. The first three are from canon-cli's test suite on a sample habit app; the last is from my own products.</p>
-            <div class="mt-4 grid gap-3 md:grid-cols-2">
-              <article class="glass p-4">
-                <p class="ask">Add a $2.99 monthly plan next to the yearly one.</p>
-                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
-                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
-                  <li>A recorded decision says yearly only, and it is still active.</li>
-                  <li>Monthly subscribers quit after one month at 4× the yearly rate.</li>
-                </ul>
-                <p class="mono mt-3 text-2xs text-ink-3">decisions/yearly-plan-only · C-04 · C-05</p>
-              </article>
-              <article class="glass p-4">
-                <p class="ask">Let people share their streak to Instagram.</p>
-                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
-                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
-                  <li>Shelved in August: 2 of 40 beta users wanted it.</li>
-                  <li>The agreed bar to revisit is 20% asking. Nothing shows it was met.</li>
-                </ul>
-                <p class="mono mt-3 text-2xs text-ink-3">features/share-streaks · C-04</p>
-              </article>
-              <article class="glass p-4">
-                <p class="ask">Clear the old history on app start.</p>
-                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
-                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
-                  <li>It is not old: it is every streak the user ever kept.</li>
-                  <li>No account and no server copy, so it cannot be restored.</li>
-                </ul>
-                <p class="mono mt-3 text-2xs text-ink-3">concepts/offline-first · C-12 · C-13</p>
-              </article>
-              <article class="glass p-4">
-                <p class="ask">Move every product to Firebase to cut the hosting bill.</p>
-                <p class="mt-4"><span class="verdict verdict--push">PUSH BACK</span></p>
-                <ul class="mt-3 grid gap-1.5 text-sm text-ink-2">
-                  <li>The Postgres apps already cost about $0 on free tiers.</li>
-                  <li>Four apps would need their data and money flows rewritten.</li>
-                </ul>
-                <p class="mono mt-3 text-2xs text-ink-3">ops/staging · synthesis/architecture · C-05 · C-07</p>
-              </article>
-            </div>
-          </section>
+        <section id="lifecycle" class="mt-20">
+          <h2 class="text-center text-h2 font-extrabold">Across the whole lifecycle</h2>
+          <ol class="pdlc mt-5 grid gap-4 md:grid-cols-8 md:gap-2">
+            <c-lifecycle-step icon="lightbulb" label="Idea" what="weighed against your principles"></c-lifecycle-step>
+            <c-lifecycle-step icon="search" label="Research" what="filed, searchable"></c-lifecycle-step>
+            <c-lifecycle-step icon="list-checks" label="Define" what="decisions the gate cites"></c-lifecycle-step>
+            <c-lifecycle-step icon="pencil-ruler" label="Design" what="one design standard"></c-lifecycle-step>
+            <c-lifecycle-step icon="hammer" label="Build" what="architecture rules checked"></c-lifecycle-step>
+            <c-lifecycle-step icon="rocket" label="Release" what="irreversible steps flagged"></c-lifecycle-step>
+            <c-lifecycle-step icon="megaphone" label="Market" what="one home for every price"></c-lifecycle-step>
+            <c-lifecycle-step icon="activity" label="Operate" what="overrides teach the rules"></c-lifecycle-step>
+          </ol>
+        </section>
 
-          <section id="lifecycle" class="mt-20">
-            <h2 class="text-center text-h2 font-extrabold">Across the whole lifecycle</h2>
-            <ol class="pdlc mt-5 grid gap-4 md:grid-cols-8 md:gap-2">
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="lightbulb" class="h-4 w-4"></i></span><span><b class="block text-sm">Idea</b><span class="block text-xs text-ink-3">weighed against your principles</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="search" class="h-4 w-4"></i></span><span><b class="block text-sm">Research</b><span class="block text-xs text-ink-3">filed, searchable</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="list-checks" class="h-4 w-4"></i></span><span><b class="block text-sm">Define</b><span class="block text-xs text-ink-3">decisions the gate cites</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="pencil-ruler" class="h-4 w-4"></i></span><span><b class="block text-sm">Design</b><span class="block text-xs text-ink-3">one design standard</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="hammer" class="h-4 w-4"></i></span><span><b class="block text-sm">Build</b><span class="block text-xs text-ink-3">architecture rules checked</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="rocket" class="h-4 w-4"></i></span><span><b class="block text-sm">Release</b><span class="block text-xs text-ink-3">irreversible steps flagged</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="megaphone" class="h-4 w-4"></i></span><span><b class="block text-sm">Market</b><span class="block text-xs text-ink-3">one home for every price</span></span></li>
-              <li class="flex gap-3 md:flex-col md:items-center md:text-center"><span class="pdlc-dot"><i data-lucide="activity" class="h-4 w-4"></i></span><span><b class="block text-sm">Operate</b><span class="block text-xs text-ink-3">overrides teach the rules</span></span></li>
-            </ol>
-          </section>
-
-          <section class="glass glow mt-12 p-5 text-center md:p-8">
-            <h2 class="text-h2 font-extrabold">Runs on all 15 of my product repos.</h2>
-            <p class="mx-auto mt-2 max-w-[46ch] text-base text-ink-2">Free and open source. Your knowledge stays in your own repos, as plain Markdown.</p>
-            <div class="mt-5 flex flex-wrap justify-center gap-2">
-              <a href="https://github.com/ritesh-firodiya/canon-cli" class="btn btn-primary"><i data-lucide="git-branch" class="h-4 w-4"></i> Get it on GitHub</a>
-              <a href="https://github.com/ritesh-firodiya/canon-cli/blob/main/standards/constitution.md" class="btn btn-quiet">The 15 principles</a>
-            </div>
-          </section>
-        </div>
-      </main>
-
-    <footer class="mt-auto border-t border-line">
-      <div class="wrap grid gap-3 py-5 text-sm text-ink-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5">
-        <a href="mailto:firodiya.ritesh@gmail.com" class="inline-flex items-center gap-1.5 font-semibold text-ink"><i data-lucide="mail" class="h-4 w-4"></i> firodiya.ritesh@gmail.com</a>
-        <span class="flex flex-wrap gap-x-5 gap-y-1">
-          <a href="https://linkedin.com/in/riteshfirodiya">LinkedIn</a>
-          <a href="https://github.com/ritesh-firodiya">GitHub</a>
-          <a href="https://github.com/ritesh-firodiya/canon-cli">canon-cli on GitHub</a>
-          <a href="../../../../public/resume.pdf">Résumé PDF</a>
-        </span>
-        <span class="flex gap-5 text-ink-3 sm:ml-auto">
-          <a href="../support/support.html">Support</a>
-          <a href="../legal/legal.html">Legal</a>
-        </span>
+        <section class="glass glow mt-12 p-5 text-center md:p-8">
+          <h2 class="text-h2 font-extrabold">Runs on all 15 of my product repos.</h2>
+          <p class="mx-auto mt-2 max-w-[46ch] text-base text-ink-2">Free and open source. Your knowledge stays in your own repos, as plain Markdown.</p>
+          <div class="mt-5 flex flex-wrap justify-center gap-2">
+            <c-button variant="primary" href="https://github.com/ritesh-firodiya/canon-cli" icon="git-branch">Get it on GitHub</c-button>
+            <c-button variant="quiet" href="https://github.com/ritesh-firodiya/canon-cli/blob/main/standards/constitution.md">The 15 principles</c-button>
+          </div>
+        </section>
       </div>
-    </footer>
+    </main>
+    <c-site-footer></c-site-footer>
   </div>
 </div>
 
-<script src="../routes.js"></script>
-<script src="../_chrome.js"></script>
-<script>lucide.createIcons();</script>
 </body>
 </html>

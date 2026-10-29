@@ -1,21 +1,19 @@
 ---
-last-verified: 2026-10-23
+last-verified: 2026-10-29
 ---
 
 # project
 
-**One layout for every product (2026-10-23, owner: "make product pages consistent").** Project, closed test and no-build are the same template; only the contents differ. In order: back link · icon, name, state · one-line tagline · Mobile/Web tags and stack in one row · the "Get it" row (store or site buttons, "Join the test" with a folded how-to, or a disabled button saying why) · the picture on the right. Then one fact strip: screens · wiki · checked by canon · privacy. Then glass cards: The problem, What it does, Decisions worth defending — each only where the product has it, and "No feature list yet" as a hatched slot where it has none. The paragraphs below describe the 2026-10-04 layout and are kept for history.
-
-**The first screenful is the whole answer.** Name, state, Mobile and Web tags, one paragraph, the buttons, the screens and wiki, the stack, and the picture. The write-up is under it for whoever wants the reasoning.
-
-**Every way to get it is one row of buttons.** A live or beta platform is a link. A closed one is "Join the test", which opens a written email asking to be added; the store's own test page sits beside it where there is one. A platform with nothing built is not drawn.
+**One template for every product** (owner, 2026-10-23: "make product pages consistent"). The `testing` and `unreleased` states are the same page with other data.
 
 **The email opens in Gmail**, not through `mailto:`, which does nothing on a machine with no mail app.
 
-**A product with a site and an app shows both.** The web screen is the picture and the phone stands on its corner.
-
-**The write-up is two balanced columns of short sections**, and one column on a phone. The sections flow down one column and into the next, so three sections leave no hole (2026-10-12). A bold lead and what follows it; no cards, nothing nested.
-
 **No price anywhere on the page.**
 
-**How it ships (2026-10-27, redrawn, in review).** Flow, not feature counts (after Andrew Murphy's "speed of writing code" talk: find the stage that limits the rest). Every Claude conversation about the product, and how far it got, against the product's own stages (`pipeline:` in its `.claude/canon.yaml`; Seedha Ghar has four, the store apps nine). A conversation counts at every stage up to the furthest it reached. On a phone the stages under the bands are a list; from `md`, one column per band. Each stage says in one line what counts; each step shows its share and median time. Warn marks the slowest step and the biggest drop, and one sentence names both. "Why nothing is live yet" is each surface's state from `ops/release.yml`; "Next up" is the feature counts. Numbers come from `~/git/bin/flow`, which runs locally (CI cannot read transcripts) and writes counts only to the product's `.context/metrics/flow.json`.
+**How it ships counts conversations, not features.** Every Claude conversation about the product, against the product's own stages (`pipeline:` in its `.claude/canon.yaml`); a conversation counts at every stage up to the furthest it reached. Warn marks the slowest step and the biggest drop. Numbers come from `~/git/bin/flow`, which runs locally (CI cannot read transcripts) and writes counts only to the product's `.context/metrics/flow.json`.
+
+**A closed Android test that admits a Google Group** needs both steps (join the group, then install from Play), because Play only lets group members opt in. The group button opens the group's `/about` page: the bare `/g/<group>` address is members-only, so a non-member had no way to join.
+
+**The test steps are written out, not in a hover title.** Phones have no hover, and testers got stuck at the two places a title explained.
+
+**Nothing built: no buttons.** A disabled button says why; the state pill already says how far along it is.

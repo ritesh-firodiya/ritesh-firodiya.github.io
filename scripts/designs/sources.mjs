@@ -59,6 +59,7 @@ const SUBDIR = ".context/designs";
 const SPARSE = [
   SUBDIR,
   ".context/wiki",
+  ".context/architecture",
   ".context/listing/ios/screenshots/en-US",
   ".context/listing/android/metadata/en-US/images",
   /* Read for the canon strip on each project page (modules and version); never published. */

@@ -17,3 +17,13 @@ export function publicArchitecture(architecture) {
   const areas = (architecture.areas ?? []).filter((area) => used.has(area.id)).map(({ id, label }) => ({ id, label }));
   return parts.length ? { areas, parts, flows } : null;
 }
+
+/**
+ * The page a published design set's Architecture item opens. Canon's shell links to
+ * architecture.html beside the set, which only `canon ui` serves, so this host
+ * publishes one that forwards to the product's own public page.
+ */
+export function architectureRedirect(slug) {
+  const href = `/products/${slug}/architecture/`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Architecture</title><link rel="canonical" href="${href}"><meta http-equiv="refresh" content="0; url=${href}"></head><body><a href="${href}">Architecture</a></body></html>\n`;
+}

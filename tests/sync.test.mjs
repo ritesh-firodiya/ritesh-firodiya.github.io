@@ -10,7 +10,7 @@ import { tmpdir } from "node:os";
 import { assertNoSecrets } from "../scripts/designs/secrets.mjs";
 import { escapeHtml, isSafeHref } from "../scripts/designs/html.mjs";
 import { checkSet } from "../scripts/designs/conformance.mjs";
-import { publicArchitecture } from "../scripts/designs/public-architecture.mjs";
+import { architectureRedirect, publicArchitecture } from "../scripts/designs/public-architecture.mjs";
 
 test("a credential shape stops the publish, naming the file", () => {
   const key = `ghp_${"a".repeat(36)}`;
@@ -116,4 +116,8 @@ test("an architecture page publishes names and paths, and nothing else", () => {
 
 test("a page with no paths publishes nothing", () => {
   assert.equal(publicArchitecture({ parts: [{ id: "a", area: "x", label: "A" }] }), null);
+});
+
+test("a design set's Architecture item forwards to the product's public page", () => {
+  assert.match(architectureRedirect("babul"), /content="0; url=\/products\/babul\/architecture\/"/);
 });

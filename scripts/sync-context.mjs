@@ -21,7 +21,7 @@ import sharp from "sharp";
 import { marked } from "marked";
 import { resolveSources, listTree } from "./designs/sources.mjs";
 import { assertNoSecrets } from "./designs/secrets.mjs";
-import { publicArchitecture } from "./designs/public-architecture.mjs";
+import { architectureRedirect, publicArchitecture } from "./designs/public-architecture.mjs";
 import { escapeHtml, isSafeHref } from "./designs/html.mjs";
 import { parse as parseYaml } from "yaml";
 import { funnelOf, statusOf } from "./funnel.mjs";
@@ -361,7 +361,13 @@ for (const [slug, source] of Object.entries(sets)) {
   const f = await funnelFrom(slug, source.root);
   if (f) funnel[slug] = f;
   const a = await architectureFrom(slug, source.root);
-  if (a) architecture[slug] = a;
+  if (a) {
+    architecture[slug] = a;
+    const set = join("public", "designs", slug);
+    for (const entry of await readdir(set, { withFileTypes: true }).catch(() => [])) {
+      if (entry.isDirectory() && entry.name !== "assets") await writeFile(join(set, entry.name, "architecture.html"), architectureRedirect(slug));
+    }
+  }
   const fl = await flowFrom(slug, source.root);
   if (fl) flow[slug] = fl;
 }

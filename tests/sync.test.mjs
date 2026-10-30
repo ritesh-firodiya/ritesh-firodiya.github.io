@@ -10,6 +10,7 @@ import { tmpdir } from "node:os";
 import { assertNoSecrets } from "../scripts/designs/secrets.mjs";
 import { escapeHtml, isSafeHref } from "../scripts/designs/html.mjs";
 import { checkSet } from "../scripts/designs/conformance.mjs";
+import { publicArchitecture } from "../scripts/designs/public-architecture.mjs";
 
 test("a credential shape stops the publish, naming the file", () => {
   const key = `ghp_${"a".repeat(36)}`;
@@ -88,4 +89,31 @@ test("a set with no design.js does not pass the publish gate", async () => {
   } finally {
     set.done();
   }
+});
+
+test("an architecture page publishes names and paths, and nothing else", () => {
+  const published = publicArchitecture({
+    summary: "private",
+    verified: "2026-10-30",
+    headlines: [{ label: "Known cost", value: "$8" }],
+    unknowns: ["RISK: private"],
+    data: [{ what: "x", where: "private" }],
+    growth: { unit: "Scans", rate: 1 },
+    areas: [{ id: "phone", label: "On the phone", secret: "x" }, { id: "empty", label: "Only an unused part" }],
+    parts: [
+      { id: "app", area: "phone", label: "App", does: "private", price: "$1", cost: { today: "$1" }, ifDown: { user: "private" } },
+      { id: "api", area: "phone", label: "Api" },
+      { id: "bill", area: "empty", label: "On no path", cost: { today: "$9" } },
+    ],
+    flows: [{ name: "Scan", cost: "$1", note: "private", steps: ["private"], path: ["app", "api"] }],
+  });
+  assert.deepEqual(published, {
+    areas: [{ id: "phone", label: "On the phone" }],
+    parts: [{ id: "app", area: "phone", label: "App" }, { id: "api", area: "phone", label: "Api" }],
+    flows: [{ name: "Scan", path: ["app", "api"] }],
+  });
+});
+
+test("a page with no paths publishes nothing", () => {
+  assert.equal(publicArchitecture({ parts: [{ id: "a", area: "x", label: "A" }] }), null);
 });

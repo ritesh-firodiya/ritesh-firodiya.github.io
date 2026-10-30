@@ -6,6 +6,7 @@ export const dynamic = "force-static";
 
 import { products } from "@/lib/products";
 import { wikiHref, wikiPages, wikiSlugs } from "@/lib/wiki";
+import { architectureHref, architectureSlugs } from "@/lib/architecture";
 
 const BASE = "https://ritesh-firodiya.github.io";
 
@@ -31,6 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const wikis = wikiSlugs.filter((slug) => products.some((p) => p.slug === slug));
   const wikiRoutes = wikis.flatMap((slug) => [wikiHref(slug), ...wikiPages(slug).map((w) => wikiHref(slug, w))]);
 
+  const architectureRoutes = architectureSlugs.filter((slug) => products.some((p) => p.slug === slug)).map(architectureHref);
+
   const now = new Date();
 
   return [
@@ -46,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: p.notBuilt ? 0.4 : 0.8,
     })),
-    ...wikiRoutes.map((path) => ({
+    ...[...wikiRoutes, ...architectureRoutes].map((path) => ({
       url: `${BASE}${path}`,
       lastModified: now,
       changeFrequency: "monthly" as const,

@@ -9,6 +9,7 @@ import { gmailCompose } from "@/lib/mail";
 import { products, bySlug, mediaFor, galleriesFor, screensFor, withheldFor, type Platform, type Product } from "@/lib/products";
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
+import { architectureHref, architectureOf } from "@/lib/architecture";
 import { canonFor } from "@/lib/canon";
 import { funnelFor } from "@/lib/funnel";
 import { flowFor } from "@/lib/flow";
@@ -231,6 +232,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               )}
             </dd>
           </div>
+          {architectureOf(p.slug) && (
+            <div className="p-3">
+              <dt className="text-xs text-ink-3">Architecture</dt>
+              <dd className="mt-0.5">
+                <Link href={architectureHref(p.slug)} className="text-link">How it fits together</Link>
+              </dd>
+            </div>
+          )}
           <div className="p-3">
             <dt className="text-xs text-ink-3">Checked by canon</dt>
             <dd className="mt-0.5">

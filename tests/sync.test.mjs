@@ -58,7 +58,7 @@ test("a set's scan runs without the build's secrets", async () => {
   }
 });
 
-test("a set holds no shell.js: canon's shell is published once and each set's loader is written for it", async () => {
+test("a set's own shell.js is not the gate's concern: canon's shell is published once and each set's loader is written for it", async () => {
   const set = fakeSet();
   try {
     const { sizes } = await checkSet(set.dir, set.shell);

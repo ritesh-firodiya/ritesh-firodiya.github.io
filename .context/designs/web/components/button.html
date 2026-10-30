@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ritesh Firodiya — Button</title>
   <script src="../../shell.js" data-view="components"></script>
+<template><a class="btn btn-primary"><i data-if="icon" data-lucide="{icon}" class="h-4 w-4"></i> <slot></slot> <i data-if="icon-end" data-lucide="{icon-end}" class="h-4 w-4"></i></a></template>
+<template variant="quiet"><a class="btn btn-quiet"><i data-if="icon" data-lucide="{icon}" class="h-4 w-4"></i> <slot></slot> <i data-if="icon-end" data-lucide="{icon-end}" class="h-4 w-4"></i></a></template>
+<template variant="quiet" state="disabled"><button type="button" class="btn btn-quiet" disabled><i data-if="icon" data-lucide="{icon}" class="h-4 w-4"></i> <slot></slot></button></template>
 </head>
 <body data-component="button" data-group="Actions">
 

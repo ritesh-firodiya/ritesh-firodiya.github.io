@@ -13,9 +13,9 @@
  * Each set is a Babul set (canon's design-sets standard): `design.js`,
  * `tokens.js`, `assets/`, and one folder per size. The shell reads everything
  * from the HTML at runtime, by paths relative to the set's root, so the whole
- * folder is copied with its shape intact. The shell is canon's and a set holds
- * none of it: it is published once, at /designs/_shell/, and each set gets a
- * shell.js written here from canon's loader, pointed there.
+ * folder is copied with its shape intact. The shell is canon's: it is published
+ * once, at /designs/_shell/, and each set's own shell.js, which points at a CDN,
+ * is replaced by one written here from canon's loader, pointed there.
  *
  *  - a size that fails the publish gate (scripts/designs/conformance.mjs) is
  *    not copied; its reasons land in designs.json and the product page says so
@@ -117,7 +117,7 @@ for (const [slug, source] of Object.entries(sets)) {
   conformance[slug] = { surfaces: sizes, publishable };
   if (publishable.length === 0) continue;
 
-  /* Every page loads ../shell.js; the set holds none, so it is written from canon's loader. */
+  /* Every page loads ../shell.js; the set's own points at a CDN, so this one takes its place. */
   await mkdir(join(OUT, slug), { recursive: true });
   await writeFile(join(OUT, slug, "shell.js"), LOADER.replace(SHELL_LINE, 'var SHELL = "/designs/_shell/";'));
 

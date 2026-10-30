@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ritesh Firodiya — Embed</title>
   <script src="../../shell.js" data-view="components"></script>
+<template><div class="embed"><iframe src="{src}" title="{label}" loading="lazy" tabindex="-1"></iframe></div></template>
+<template variant="fill"><div class="embed embed--fill"><iframe src="{src}" title="{label}" loading="lazy" tabindex="-1"></iframe></div></template>
+<template variant="phone"><div class="embed embed--phone"><iframe src="{src}" title="{label}" loading="lazy" tabindex="-1"></iframe></div></template>
 </head>
 <body data-component="embed" data-group="Media" data-source="src/components/embed.tsx">
 

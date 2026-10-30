@@ -15,8 +15,7 @@ pnpm check    # sync, contrast, lint, typecheck, tests, build
 
 ## What is on it
 
-- **Home** — every project with its release state, then the eight stages every
-  product goes through and where each project is on them.
+- **Home** — every project with its release state.
 - **A project page** for each — what it is, where to get it, how it was built.
 - **Each project's wiki**, in full, and a link to its design set.
 - **Résumé.**
@@ -32,4 +31,5 @@ shows it here.
 `.context/designs/web/` holds this site's own design set. It is the spec: when
 a page and its wireframe disagree, the wireframe wins.
 
-See `CLAUDE.md` for the rules, the data model and the deploy.
+See `CLAUDE.md` for the rules, `.context/wiki/concepts/data-model.md` for the
+data model and `.context/ops/runbooks/deploy.md` for the deploy.

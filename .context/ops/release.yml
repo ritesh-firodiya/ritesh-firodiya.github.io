@@ -24,24 +24,8 @@ surfaces:
         addresses, a legal document and its stylesheet, app-ads.txt, the
         sitemap (646 URLs), resume.pdf and the 404
 
-secrets:
-  DESIGNS_TOKEN:
-    where: GitHub repo secret; copy in ~/git/local/secrets/personal/ritesh-firodiya.github.io/.env
-    what: >
-      fine-grained PAT "portfolio-context-ritvi-apps". Resource owner
-      ritvi-apps — a token owned by the user account cannot see org repos,
-      which is what the first token got wrong. Contents read on imposter,
-      charades, aakalan, askcal, tic-tac-toe, plan-kid, property-app, chitragupt.
-    created: "2026-10-04"
-    expires: "2027-10-05"
-    note: >
-      Adding a ninth product to scripts/designs/sources.mjs means adding its
-      repo to this token. The older "portfolio-designs" token is unused.
-
 known_gaps:
   - learning-platform is a live web demo with sign-up and no privacy policy.
     Pinned as a known exception in tests/data.test.mjs.
   - bin/products does not exist, so products.json is hand-maintained and
     verifiedOn plus the 30-day test are the only guarantee.
-  - products.json `verifiedOn` is 2026-09-26. On 2026-10-04 only Chitragupt and
-    AskCal were re-read, against their own ops/release.yml.

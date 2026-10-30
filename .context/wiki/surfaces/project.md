@@ -10,7 +10,7 @@ last-verified: 2026-10-29
 
 **No price anywhere on the page.**
 
-**How it ships counts conversations, not features.** Every Claude conversation about the product, against the product's own stages (`pipeline:` in its `.claude/canon.yaml`); a conversation counts at every stage up to the furthest it reached. Warn marks the slowest step and the biggest drop. Numbers come from `~/git/bin/flow`, which runs locally (CI cannot read transcripts) and writes counts only to the product's `.context/metrics/flow.json`.
+**How it ships counts conversations, not features.** Every Claude conversation about the product, against the product's own stages (`pipeline:` in its `.claude/canon.yaml`); a conversation counts at every stage up to the furthest it reached. Warn marks the slowest step and the biggest drop. Numbers: [[how-it-ships]].
 
 **A closed Android test that admits a Google Group** needs both steps (join the group, then install from Play), because Play only lets group members opt in. The group button opens the group's `/about` page: the bare `/g/<group>` address is members-only, so a non-member had no way to join.
 

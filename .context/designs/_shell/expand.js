@@ -96,7 +96,7 @@
       else [].forEach.call(n.attributes, function (a) { a.value = fill(a.value, props); });
     }
     [].slice.call(out.querySelectorAll("[class]")).forEach(function (n) {
-      n.className = n.className.replace(/\s+/g, " ").trim();
+      n.setAttribute("class", n.getAttribute("class").replace(/\s+/g, " ").trim());
     });
 
     [].slice.call(out.querySelectorAll("slot")).forEach(function (slot) {

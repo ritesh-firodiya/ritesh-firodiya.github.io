@@ -16,35 +16,42 @@
     var key = prop ? prop.name.toLowerCase().replace(/\s+/g, "-") : null;
     var variants = prop ? prop.options : ["default"];
     var states = c.states || [{ name: "default", status: "made" }];
-    var drawn = [].slice.call(cells.children);
+    // A wrapper around one instance (a positioned box) moves with it; a row of
+    // several is only layout, so each of its instances is a cell of its own.
+    var drawn = [];
+    [].forEach.call(cells.children, function (n) {
+      var inner = n.getAttribute("data-instance") === id ? [] : [].slice.call(n.querySelectorAll('[data-instance="' + id + '"]'));
+      if (inner.length > 1) inner.forEach(function (x) { drawn.push({ node: x, props: x.instanceProps }); });
+      else drawn.push({ node: n, props: (inner[0] || n).instanceProps });
+    });
     var find = function (v, s) {
-      return drawn.filter(function (n) {
-        var p = n.instanceProps || {};
+      return drawn.filter(function (d) {
+        var p = d.props || {};
         return (key ? p[key] === v : true) && p.state === s;
-      });
+      }).map(function (d) { return d.node; });
     };
 
-    var wrap = S.el("div", "board-wrap");
-    var head = S.el("div", "board-head");
+    var wrap = S.el("div", "shell-board-wrap");
+    var head = S.el("div", "shell-board-head");
     head.appendChild(S.el("b", null, c.name));
     head.appendChild(S.el("span", null, variants.length + " variants · " + states.length + " states"));
     wrap.appendChild(head);
 
-    var board = S.el("div", "board");
+    var board = S.el("div", "shell-board");
     board.style.gridTemplateColumns = "auto repeat(" + variants.length + ", auto)";
     board.appendChild(S.el("span"));
-    variants.forEach(function (v) { board.appendChild(S.el("span", "board-col", v)); });
+    variants.forEach(function (v) { board.appendChild(S.el("span", "shell-board-col", v)); });
     states.forEach(function (s) {
-      board.appendChild(S.el("span", "board-row", s.name));
+      board.appendChild(S.el("span", "shell-board-row", s.name));
       variants.forEach(function (v) {
         var found = find(v, s.name);
         if (found.length) {
-          var cell = S.el("div", "board-cell");
+          var cell = S.el("div", "shell-board-cell");
           found.forEach(function (n) { cell.appendChild(n); });
           board.appendChild(cell);
           return;
         }
-        board.appendChild(S.el("span", "board-cell board-cell--absent", s.status === "made" ? "missing" : s.status));
+        board.appendChild(S.el("span", "shell-board-cell shell-board-cell--absent", s.status === "made" ? "missing" : s.status));
       });
     });
     wrap.appendChild(board);

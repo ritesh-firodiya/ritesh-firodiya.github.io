@@ -81,7 +81,7 @@
   var fanIndex = {};
   return list.map(function (e, i) {
     var isMain = mainPath[e.from + ">" + e.to];
-    var quiet = e.back;
+    var quiet = e.back || e.nav;
     var side = e.side;
     /* An edge that skips a column passes straight over whatever sits between
        its ends, and React Flow puts the label at the path midpoint — which is
@@ -335,7 +335,7 @@
       h(RF.Controls, { showInteractive: false }),
       h(RF.Panel, { position: "bottom-right", className: "fkey" },
         h("button", { type: "button", className: "fkey-toggle" + (showBack ? " is-on" : ""), onClick: function () { setShowBack(!showBack); } },
-          showBack ? "hide returns" : "show returns"),
+          showBack ? "hide returns and nav" : "show returns and nav"),
         h("span", { className: "fkey-item" }, h("span", { className: "fkey-line" }), h("span", null, "main path")),
         h("span", { className: "fkey-item" }, h("span", { className: "fkey-line fkey-line--side" }), h("span", null, "shortcuts")),
         h("span", { className: "fkey-hint" },

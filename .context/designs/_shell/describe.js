@@ -98,7 +98,9 @@
     elements(tree).forEach(function (e) {
       var n = e[0];
       if (n.tag.indexOf("c-") === 0) components.push(n.tag.slice(2));
+      // A component's props can carry links (back="…"); elsewhere only href and src do.
       Object.keys(n.attrs).forEach(function (k) {
+        if (n.tag.indexOf("c-") !== 0 && k !== "href" && k !== "src") return;
         var t = /\.html([?#]|$)/.test(n.attrs[k]) && resolve(from, n.attrs[k]);
         if (t) (t.board ? components : pages).push(t.board ? t.id.slice(11) : t.id);
       });
@@ -131,9 +133,14 @@
   function model(product, tokens, lucideVersion, start, trees, boards, defs, fail, errors) {
     /* ---- components: how each definition uses its props, and its board ---- */
     function readProps(id) {
-      var d = defs[id], seen = {}, order = [];
+      var d = defs[id], seen = {}, passed = {}, order = [];
       function use(name) {
         if (name === "state") return null;
+        if (PASS.test(name)) {
+          if (!passed[name]) fail("components/" + id + ".js reads {" + name + "}, which passes to the root element and is never a prop — rename it");
+          passed[name] = true;
+          return null;
+        }
         if (!seen[name]) { seen[name] = { variant: [], truthy: false, value: false, icon: false, nested: [], token: null, tested: false }; order.push(name); }
         return seen[name];
       }
@@ -190,7 +197,12 @@
     }
     ids.forEach(function (id) {
       var c = components[id], board = boards[id];
-      if (!board) { fail("components/" + id + ".js has no board, components/" + id + ".html"); c.states = [{ name: "default", status: "made" }]; return; }
+      if (!board) {
+        fail("components/" + id + ".js has no board, components/" + id + ".html");
+        c.order.forEach(function (name) { c.props[name].options = c.props[name].used; });
+        c.states = [{ name: "default", status: "made" }];
+        return;
+      }
       var body = find(board, "body") || { attrs: {} };
       var cells = elements(body).filter(function (e) { return e[0].tag === "c-" + id; }).map(function (e) { return e[0].attrs; });
       if (!cells.length) fail("components/" + id + ".html draws no <c-" + id + ">");
@@ -291,6 +303,20 @@
         if (h) (linkProps[id] = linkProps[id] || {})[h[1]] = { kind: e[0].attrs["data-link"], title: e[0].attrs.title };
       });
     });
+    // A fixed href in a definition is a link from every page that uses it, nested ones too:
+    // the same on every page (a nav bar), so a shortcut the journey hides with the returns.
+    var defLinks = {};
+    function linksOf(id, path) {
+      if (defLinks[id]) return defLinks[id];
+      if (!defs[id] || path.indexOf(id) >= 0) return [];
+      var out = [];
+      elements(defs[id].tree).forEach(function (e) {
+        var n = e[0], a = n.attrs;
+        if (a.href && n.tag !== "link" && !/\{/.test(a.href)) out.push([a.href, a["data-label"] || a.title || textOf(n), a["data-link"] || "nav"]);
+        if (n.tag.indexOf("c-") === 0) out = out.concat(linksOf(n.tag.slice(2), path.concat([id])));
+      });
+      return (defLinks[id] = out);
+    }
     function fillTitle(template, attrs, id) {
       return (template || "").replace(HOLE, function (_, __, name, ___, fallback) {
         var p = components[id] && components[id].props[name];
@@ -307,7 +333,8 @@
       if (isModal(to.split(".")[0])) link.action = "overlay";
       if (kind === "auto") link.tap = false;
       if (kind === "back") link.back = true;
-      if (kind === "side") link.side = true;
+      if (kind === "side" || kind === "nav") link.side = true;
+      if (kind === "nav") link.nav = true;
       links.push(link);
     }
     function target(id, href) {
@@ -327,6 +354,7 @@
         }
         if (n.tag.indexOf("c-") === 0) {
           var cid = n.tag.slice(2);
+          linksOf(cid, []).forEach(function (f) { found.push([f[0], fillTitle(f[1], n.attrs, cid), f[2]]); });
           Object.keys(linkProps[cid] || {}).forEach(function (prop) {
             if (n.attrs[prop]) found.push([n.attrs[prop], fillTitle(linkProps[cid][prop].title, n.attrs, cid), linkProps[cid][prop].kind]);
           });

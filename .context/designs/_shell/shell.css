@@ -81,7 +81,7 @@ html, body {
    screen with. The gutter and the device rounding are framing for a screen
    being *looked at*; inside a 390x844 tile they are a white margin and four
    clipped corners, and the frame no longer fills the tile it was sized for. */
-[data-bare] .stage { padding: 0; }
+[data-bare] { --stage-pad: 0px; }
 [data-bare] .phone {
   border-radius: 0;
   box-shadow: none;
@@ -382,10 +382,10 @@ select:focus-visible {
 .shell-count--end { margin-left: auto; color: var(--chrome-ink-3); }
 
 /* A component's board: variants across, states down, as Babul draws it. */
-.board-wrap { padding: 32px; }
-.board-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; color: var(--chrome-ink-2); font-size: 12px; }
-.board-head b { color: var(--chrome-active); font-weight: 600; }
-.board {
+.shell-board-wrap { padding: 32px; }
+.shell-board-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; color: var(--chrome-ink-2); font-size: 12px; }
+.shell-board-head b { color: var(--chrome-active); font-weight: 600; }
+.shell-board {
   display: grid;
   gap: 12px 16px;
   align-items: center;
@@ -396,10 +396,10 @@ select:focus-visible {
   background: var(--page);
   color: var(--ink);
 }
-.board-col { font-size: 11.5px; color: var(--chrome-ink-2); }
-.board-row { font-size: 11.5px; color: var(--chrome-ink-2); text-transform: capitalize; padding-right: 8px; }
-.board-cell { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; min-height: 48px; }
-.board-cell--absent {
+.shell-board-col { font-size: 11.5px; color: var(--chrome-ink-2); }
+.shell-board-row { font-size: 11.5px; color: var(--chrome-ink-2); text-transform: capitalize; padding-right: 8px; }
+.shell-board-cell { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; min-height: 48px; }
+.shell-board-cell--absent {
   min-width: 120px;
   border: 1.5px dashed var(--chrome-line);
   border-radius: 10px;

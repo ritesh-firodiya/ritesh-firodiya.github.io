@@ -41,14 +41,15 @@
      duplicate; both are dropped. `side` is a shortcut or an upsell: real, but
      not a step forward, so it never ranks a page. */
   var edges = [], seen = {};
-  links.forEach(function (l) {
+  // A page's own link to a page wins over a nav bar's to the same one.
+  links.slice().sort(function (a, b) { return !!a.nav - !!b.nav; }).forEach(function (l) {
     if (l.tap === false) return;
     var from = pageOf(l.from), to = pageOf(l.to);
     if (from === to || !meta[from] || !meta[to]) return;
     var key = from + ">" + to + ">" + (l.back ? "back" : l.side ? "side" : "fwd");
     if (seen[key]) return;
     seen[key] = true;
-    edges.push({ from: from, to: to, label: l.label, back: !!l.back, side: !!l.side, action: l.action || "go" });
+    edges.push({ from: from, to: to, label: l.label, back: !!l.back, side: !!l.side, nav: !!l.nav, action: l.action || "go" });
   });
   var forward = edges.filter(function (e) { return !e.back && !e.side; });
 

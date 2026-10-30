@@ -44,10 +44,10 @@ for (const d of readdirSync(DIR, { withFileTypes: true })) {
     if ((f.endsWith(".html") || f.endsWith(".js")) && !seen.has(kind + id)) c.errors.push(`${d.name}/${f} is reached from no page — link it, or use the component on one`);
   }
 }
-const named = [product.logo, ...(product.art ?? [])];
-for (const f of readdirSync(join(ROOT, "assets"))) if (!named.includes(`assets/${f}`)) c.errors.push(`assets/${f} is not named in babul.js (logo or art)`);
-for (const f of named) if (f && !existsSync(join(ROOT, f))) c.errors.push(`babul.js names ${f}, which does not exist`);
 const model = c.finish();
+const named = [...model.assets.logos, ...model.assets.images].map((a) => a.file);
+for (const f of existsSync(join(ROOT, "assets")) ? readdirSync(join(ROOT, "assets")) : []) if (!named.includes(`assets/${f}`)) model.errors.push(`assets/${f} is drawn by no page and not named in babul.js (logo or art)`);
+for (const f of named) if (!existsSync(join(ROOT, f))) model.errors.push(`${f} is drawn or named, and does not exist`);
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify(model, null, 2));
 } else {

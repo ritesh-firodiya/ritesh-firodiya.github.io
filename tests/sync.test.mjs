@@ -29,16 +29,13 @@ test("raw HTML in a wiki is shown as text", () => {
   assert.equal(escapeHtml('Viewing as <name> "x" & y'), "Viewing as &lt;name&gt; &quot;x&quot; &amp; y");
 });
 
-const LOADER = 'var SHELL = "https://cdn.jsdelivr.net/npm/@freetesh/canon@0.20.0/shell/";';
-
 /** A minimal Babul set on disk, and a shell whose scan.mjs reports what it can see of the environment. */
-function fakeSet({ boot = '"https://cdn.tailwindcss.com/3.4.17"; "https://unpkg.com/lucide@0.544.0/x.js"', loader = LOADER } = {}) {
+function fakeSet({ boot = '"https://cdn.tailwindcss.com/3.4.17"; "https://unpkg.com/lucide@0.544.0/x.js"' } = {}) {
   const dir = mkdtempSync(join(tmpdir(), "set-"));
   const shell = mkdtempSync(join(tmpdir(), "shell-"));
   for (const d of ["assets", "web"]) mkdirSync(join(dir, d));
-  writeFileSync(join(dir, "babul.js"), "(window.BABUL ||= {}).product = {};");
+  writeFileSync(join(dir, "design.js"), "(window.BABUL ||= {}).product = {};");
   writeFileSync(join(dir, "tokens.js"), "(window.BABUL ||= {}).tokens = {};");
-  writeFileSync(join(dir, "shell.js"), loader);
   writeFileSync(join(dir, "web", "index.html"), "<html></html>");
   writeFileSync(join(shell, "boot.js"), boot);
   writeFileSync(
@@ -61,14 +58,12 @@ test("a set's scan runs without the build's secrets", async () => {
   }
 });
 
-test("a set that does not load canon's shell is withheld and never scanned", async () => {
-  const set = fakeSet({ loader: "document.write('<script src=x.js></script>')" });
+test("a set holds no shell.js: canon's shell is published once and each set's loader is written for it", async () => {
+  const set = fakeSet();
   try {
-    const { sizes, models } = await checkSet(set.dir, set.shell);
-    assert.equal(sizes.web.pass, false);
-    assert.ok(sizes.web.checks.some((c) => c.id === "shell" && !c.ok));
-    assert.match(sizes.web.checks.find((c) => c.id === "scan").detail, /not run/);
-    assert.deepEqual(models, {});
+    const { sizes } = await checkSet(set.dir, set.shell);
+    assert.equal(sizes.web.pass, true, JSON.stringify(sizes.web.checks));
+    assert.ok(!sizes.web.checks.some((c) => c.id === "shell"));
   } finally {
     set.done();
   }
@@ -84,12 +79,12 @@ test("an unpinned CDN fails the gate", async () => {
   }
 });
 
-test("a set with no babul.js does not pass the publish gate", async () => {
+test("a set with no design.js does not pass the publish gate", async () => {
   const set = fakeSet();
-  rmSync(join(set.dir, "babul.js"));
+  rmSync(join(set.dir, "design.js"));
   try {
     const { sizes } = await checkSet(set.dir, set.shell);
-    assert.ok(sizes.web.checks.some((c) => c.id === "files" && !c.ok && /babul\.js/.test(c.detail)));
+    assert.ok(sizes.web.checks.some((c) => c.id === "files" && !c.ok && /design\.js/.test(c.detail)));
   } finally {
     set.done();
   }

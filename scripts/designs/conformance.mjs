@@ -19,10 +19,7 @@ import { exists } from "./fs.mjs";
 export const SIZES = ["mobile", "tablet", "web", "email"];
 
 /* Each a strict JSON file behind one assignment, and the folders beside them. */
-const REQUIRED = ["babul.js", "tokens.js", "assets", "shell.js"];
-
-/* A set's shell.js is canon's loader: it names the canon whose shell it loads. */
-const LOADER = /var SHELL = "https:\/\/cdn\.jsdelivr\.net\/npm\/@freetesh\/canon@([\w.-]+)\/shell\/";/;
+const REQUIRED = ["design.js", "tokens.js", "assets"];
 
 /* Pinned in the shell's boot.js: an unpinned CDN restyles every set overnight. */
 const PINS = [
@@ -64,11 +61,7 @@ export async function checkSet(designsDir, shellDir) {
 
   const missing = [];
   for (const f of REQUIRED) if (!(await exists(join(designsDir, f)))) missing.push(f);
-  add("files", missing.length === 0, missing.length ? `missing ${missing.join(", ")}` : "babul.js, tokens.js, assets/, shell.js");
-
-  const loader = (await exists(join(designsDir, "shell.js"))) ? await readFile(join(designsDir, "shell.js"), "utf8") : "";
-  const version = LOADER.exec(loader)?.[1];
-  add("shell", Boolean(version), version ? `loads canon ${version}'s shell` : "shell.js is not canon's loader");
+  add("files", missing.length === 0, missing.length ? `missing ${missing.join(", ")}` : "design.js, tokens.js, assets/");
 
   const boot = await readFile(join(shellDir, "boot.js"), "utf8");
   const pinned = (p) => {

@@ -50,7 +50,7 @@ and commits none of them.
 | Release state | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
 | Conversation flow | `.context/metrics/flow.json` (written by `canon flow`) | `src/data/generated/flow.json` |
 
-- `scripts/sync-designs.mjs` copies each Babul design set whole (`babul.js`,
+- `scripts/sync-designs.mjs` copies each Babul design set whole (`design.js`,
   `tokens.js`, `assets/`, `shell.js`, the size folders) and publishes canon's
   shell once at `/designs/_shell/` (canon-cli's working copy locally, a clone
   in CI), with the CDNs its `boot.js` names vendored. It **withholds any size

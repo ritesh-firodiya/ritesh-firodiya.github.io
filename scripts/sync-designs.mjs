@@ -10,12 +10,12 @@
  * decides where each set comes from — a sparse clone of the private repo in
  * CI, the working copy under ~/git/products locally.
  *
- * Each set is a Babul set (canon's design-sets standard): `babul.js`,
- * `tokens.js`, `assets/`, `shell.js`, and one folder per size. The shell
- * reads everything from the HTML at runtime, by paths relative to the set's
- * root, so the whole folder is copied with its shape intact. The shell itself
- * is canon's: it is published once, at /designs/_shell/, and each set's
- * shell.js is pointed there.
+ * Each set is a Babul set (canon's design-sets standard): `design.js`,
+ * `tokens.js`, `assets/`, and one folder per size. The shell reads everything
+ * from the HTML at runtime, by paths relative to the set's root, so the whole
+ * folder is copied with its shape intact. The shell is canon's and a set holds
+ * none of it: it is published once, at /designs/_shell/, and each set gets a
+ * shell.js written here from canon's loader, pointed there.
  *
  *  - a size that fails the publish gate (scripts/designs/conformance.mjs) is
  *    not copied; its reasons land in designs.json and the product page says so
@@ -101,6 +101,7 @@ for (const f of await readdir(shellDir).catch(() => [])) {
   await writeFile(join(SHELL_OUT, f), text);
 }
 if (!(await readdir(SHELL_OUT)).includes("scan.mjs")) throw new Error(`no canon shell at ${shellDir} — refusing to publish`);
+const LOADER = await readFile(join(shellDir, "loader.js"), "utf8");
 
 const manifest = {};
 /* slug → { surfaces: size → verdict, publishable: sizes }. Every product is
@@ -116,8 +117,13 @@ for (const [slug, source] of Object.entries(sets)) {
   conformance[slug] = { surfaces: sizes, publishable };
   if (publishable.length === 0) continue;
 
+  /* Every page loads ../shell.js; the set holds none, so it is written from canon's loader. */
+  await mkdir(join(OUT, slug), { recursive: true });
+  await writeFile(join(OUT, slug, "shell.js"), LOADER.replace(SHELL_LINE, 'var SHELL = "/designs/_shell/";'));
+
   for await (const file of walk(src)) {
     const rel = relative(src, file);
+    if (rel === "shell.js") continue;
     const top = rel.split(sep)[0];
     const ext = extname(file).toLowerCase();
     if (!COPY_EXT.has(ext)) continue;
@@ -132,7 +138,6 @@ for (const [slug, source] of Object.entries(sets)) {
       continue;
     }
     let text = await readFile(file, "utf8");
-    if (rel === "shell.js") text = text.replace(SHELL_LINE, 'var SHELL = "/designs/_shell/";');
     /* Fail loudly rather than publish a page that still calls a CDN. */
     const leaked = text.match(CDN_ANY);
     if (leaked) throw new Error(`${slug}/${rel}: un-vendored CDN reference ${leaked[0]}`);

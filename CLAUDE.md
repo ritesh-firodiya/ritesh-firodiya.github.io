@@ -51,11 +51,12 @@ and commits none of them.
 | Conversation flow | `.context/metrics/flow.json` (written by `canon flow`) | `src/data/generated/flow.json` |
 
 - `scripts/sync-designs.mjs` copies each Babul design set whole (`babul.js`,
-  `tokens.js`, `assets/`, `_shell/`, the size folders), vendors the CDNs named
-  in its `_shell/boot.js`, and **withholds any size that fails the gate** in
-  `scripts/designs/conformance.mjs`: the files are there, `_shell/` is
-  byte-identical to babul's, Tailwind and lucide are pinned, and the set's own
-  `_shell/scan.mjs <size>` passes. The reasons land in `designs.json` and the
+  `tokens.js`, `assets/`, `shell.js`, the size folders) and publishes canon's
+  shell once at `/designs/_shell/` (canon-cli's working copy locally, a clone
+  in CI), with the CDNs its `boot.js` names vendored. It **withholds any size
+  that fails the gate** in `scripts/designs/conformance.mjs`: the files are
+  there, `shell.js` is canon's loader, Tailwind and lucide are pinned, and
+  canon's `scan.mjs` passes on the set. The reasons land in `designs.json` and the
   project page prints them. The screens list is that scan's pages and states.
 - `scripts/sync-context.mjs` does the wiki, the pictures and the canon config. Run it
   second: a wiki page about a screen links to that screen, and only the design
@@ -178,7 +179,7 @@ a static export `redirect()` only works once the page's JavaScript has run.
 `.context/designs/` is a Babul design set: canon's `design-sets` standard
 (`canon standards`) says how it is built and `canon check` checks it. The
 shell reads pages, links, journeys and components from the HTML itself; there
-is no data file to update. Open `.context/designs/web/index.html` from disk.
+is no data file to update. `canon ui` serves it; it also opens from disk.
 It holds only designs; a screen's notes, design decisions and colour rules are
 in `.context/wiki/`. **When a page and its wireframe disagree, the wireframe
 wins**: fix the page, or change the wireframe first and say so in its notes

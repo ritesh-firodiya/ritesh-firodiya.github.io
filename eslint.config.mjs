@@ -15,11 +15,7 @@ const eslintConfig = defineConfig([
     // public/ holds generated and vendored files, not source.
     "public/**",
     "scripts/captured/**",
-    // .context/ is the design set, not the app. Its _shell/ is
-    // copied BYTE FOR BYTE from the canonical set and must never be edited per
-    // product (design-sets §13), so a lint rule that would have us "fix" an
-    // unused catch binding in them is pointed at the wrong repository — the fix
-    // belongs upstream, in every set at once, or nowhere.
+    // .context/ is the design set, not the app.
     ".context/**",
   ]),
 ]);

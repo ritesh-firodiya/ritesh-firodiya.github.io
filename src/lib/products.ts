@@ -185,7 +185,6 @@ export type Screen = { path: string; title: string; surface: string; area: strin
 export type Gallery = { href: string; surface: string };
 type DesignSet = { journeys: { path: string; surface: string }[]; screens: Screen[] };
 type StyleGuide = {
-  canonical: string;
   results: Record<string, { surfaces: Record<string, SurfaceVerdict>; publishable: string[] }>;
 };
 const designsRaw = generated<{ sets: Record<string, DesignSet>; styleGuide?: StyleGuide }>("designs.json", { sets: {} });

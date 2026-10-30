@@ -103,17 +103,20 @@ test("the wikis exported, one page per wiki page", () => {
   }
 });
 
-test("every published design set loads its libraries from this host", () => {
-  // The shell names its CDNs as strings in _shell/boot.js; the sync points
-  // them at /designs/_vendor/. A set still calling a CDN, or calling a file
-  // that did not ship, is a broken page that passes every other check.
+test("every published design set loads its shell and libraries from this host", () => {
+  // The shell names its CDNs as strings in boot.js; the sync points them at
+  // /designs/_vendor/, and each set's shell.js at /designs/_shell/. A set
+  // still calling a CDN, or a file that did not ship, is a broken page that
+  // passes every other check.
+  const boot = readFileSync(join(out, "designs", "_shell", "boot.js"), "utf8");
+  assert.ok(!/https:\/\//.test(boot), "boot.js still names a remote URL");
+  const vendored = [...boot.matchAll(/"\/designs\/_vendor\/([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(vendored.length > 0, "boot.js names no vendored file");
+  for (const f of vendored) assert.ok(existsSync(join(out, "designs", "_vendor", f)), `${f} did not ship`);
   const designs = JSON.parse(readFileSync(join(root, "src/data/generated/designs.json"), "utf8"));
   for (const slug of Object.keys(designs.sets)) {
-    const boot = readFileSync(join(out, "designs", slug, "_shell", "boot.js"), "utf8");
-    assert.ok(!/https:\/\//.test(boot), `${slug}: boot.js still names a remote URL`);
-    const vendored = [...boot.matchAll(/"\/designs\/_vendor\/([^"]+)"/g)].map((m) => m[1]);
-    assert.ok(vendored.length > 0, `${slug}: boot.js names no vendored file`);
-    for (const f of vendored) assert.ok(existsSync(join(out, "designs", "_vendor", f)), `${slug}: ${f} did not ship`);
+    const loader = readFileSync(join(out, "designs", slug, "shell.js"), "utf8");
+    assert.ok(loader.includes('var SHELL = "/designs/_shell/";'), `${slug}: shell.js does not load the published shell`);
     for (const j of designs.sets[slug].journeys) assert.ok(existsSync(join(out, j.path)), `${slug}: ${j.path} did not ship`);
   }
 });
@@ -237,7 +240,7 @@ test("nothing large enough to notice ships unreferenced", () => {
       if (/\.(html|txt|xml|ico|pdf|json|webmanifest)$/.test(e.name)) continue;
       if (statSync(p).size < LIMIT) continue;
       // Matched on basename, not on the absolute path: the synced design sets
-      // reference their own assets relatively ("../_shell/boot.js", "tokens.js"),
+      // reference their own assets relatively ("../shell.js", "tokens.js"),
       // so an absolute-href search reports every one of them as an orphan. A
       // basename is a weaker match but still catches the case this exists for —
       // a file nothing anywhere mentions, like the 604KB sample.png.

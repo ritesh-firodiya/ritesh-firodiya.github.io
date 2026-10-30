@@ -11,27 +11,29 @@
  * CI, the working copy under ~/git/products locally.
  *
  * Each set is a Babul set (canon's design-sets standard): `babul.js`,
- * `tokens.js`, `assets/`, the shared `_shell/`, and one folder per size. The
- * shell reads everything from the HTML at runtime, by paths relative to the
- * set's root, so the whole folder is copied with its shape intact.
+ * `tokens.js`, `assets/`, `shell.js`, and one folder per size. The shell
+ * reads everything from the HTML at runtime, by paths relative to the set's
+ * root, so the whole folder is copied with its shape intact. The shell itself
+ * is canon's: it is published once, at /designs/_shell/, and each set's
+ * shell.js is pointed there.
  *
  *  - a size that fails the publish gate (scripts/designs/conformance.mjs) is
  *    not copied; its reasons land in designs.json and the product page says so
- *  - every CDN the shell loads is named in `_shell/boot.js` as a string. Each
- *    is vendored into public/designs/_vendor/ and the copied boot.js points
+ *  - every CDN the shell loads is named in its `boot.js` as a string. Each
+ *    is vendored into public/designs/_vendor/ and the published boot.js points
  *    there: a public site should not depend on third-party hosts being up,
  *    and each would otherwise see every visitor's IP
- *  - the screens list is the set's own scan (`_shell/scan.mjs <size> --json`):
+ *  - the screens list is canon's scan of the set (`scan.mjs <set> <size> --json`):
  *    each page, and each `?state=` of it
  *  - /products/<slug>/designs/ forwards to the set's journey, so the address
  *    the site has always used still opens it
  *
  *   node scripts/sync-designs.mjs
  */
-import { mkdir, readFile, writeFile, rm, copyFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile, rm, copyFile } from "node:fs/promises";
 import { join, dirname, relative, extname, sep } from "node:path";
-import { resolveSources } from "./designs/sources.mjs";
-import { checkSet, shellOf, CANONICAL } from "./designs/conformance.mjs";
+import { resolveSources, resolveShell } from "./designs/sources.mjs";
+import { checkSet } from "./designs/conformance.mjs";
 import { assertNoSecrets } from "./designs/secrets.mjs";
 import { walk } from "./designs/fs.mjs";
 
@@ -39,6 +41,8 @@ const OUT = join(process.cwd(), "public", "designs");
 const VENDOR = join(OUT, "_vendor");
 const DATA = join(process.cwd(), "src", "data", "generated", "designs.json");
 const PAGES = join(process.cwd(), "public", "products");
+const SHELL_OUT = join(OUT, "_shell");
+const SHELL_LINE = /var SHELL = "[^"]*";/;
 
 /* Text is scanned for secrets before it leaves a private repo; images are copied as they are. */
 const TEXT_EXT = new Set([".html", ".css", ".js", ".mjs", ".svg", ".json"]);
@@ -86,15 +90,17 @@ await mkdir(VENDOR, { recursive: true });
 
 const { mode, sets } = resolveSources();
 
-/* Every set's _shell is measured against this one. If it is absent nothing
-   can be compared, so stop rather than pass every set by default. */
-const canonicalShell = await shellOf(sets[CANONICAL]?.dir ?? "");
-if (!canonicalShell.has("boot.js") || !canonicalShell.has("scan.mjs")) {
-  throw new Error(
-    `canonical set ${CANONICAL} has no _shell/boot.js and scan.mjs at ${sets[CANONICAL]?.dir}.\n` +
-      "  Nothing can be checked against it — refusing to publish rather than pass every set by default.",
-  );
+/* One shell, canon's, published once for every set. Without it nothing can
+   be checked or shown, so stop rather than publish broken pages. */
+const shellDir = resolveShell(mode);
+await mkdir(SHELL_OUT, { recursive: true });
+for (const f of await readdir(shellDir).catch(() => [])) {
+  let text = await readFile(join(shellDir, f), "utf8");
+  if (f === "boot.js") text = await vendorBoot(text);
+  assertNoSecrets(text, `_shell/${f}`);
+  await writeFile(join(SHELL_OUT, f), text);
 }
+if (!(await readdir(SHELL_OUT)).includes("scan.mjs")) throw new Error(`no canon shell at ${shellDir} — refusing to publish`);
 
 const manifest = {};
 /* slug → { surfaces: size → verdict, publishable: sizes }. Every product is
@@ -105,7 +111,7 @@ let bytes = 0;
 
 for (const [slug, source] of Object.entries(sets)) {
   const src = source.dir;
-  const { sizes, models } = await checkSet(src, canonicalShell);
+  const { sizes, models } = await checkSet(src, shellDir);
   const publishable = Object.keys(models).sort();
   conformance[slug] = { surfaces: sizes, publishable };
   if (publishable.length === 0) continue;
@@ -126,7 +132,7 @@ for (const [slug, source] of Object.entries(sets)) {
       continue;
     }
     let text = await readFile(file, "utf8");
-    if (rel === join("_shell", "boot.js")) text = await vendorBoot(text);
+    if (rel === "shell.js") text = text.replace(SHELL_LINE, 'var SHELL = "/designs/_shell/";');
     /* Fail loudly rather than publish a page that still calls a CDN. */
     const leaked = text.match(CDN_ANY);
     if (leaked) throw new Error(`${slug}/${rel}: un-vendored CDN reference ${leaked[0]}`);
@@ -176,7 +182,6 @@ await writeFile(
       generatedOn: new Date().toISOString().slice(0, 10),
       source: mode,
       styleGuide: {
-        canonical: CANONICAL,
         note: "Sizes that fail are not published at all. See the design-sets standard.",
         results: conformance,
       },
@@ -190,7 +195,7 @@ await writeFile(
 );
 
 console.log(`source: ${mode}${mode === "remote" ? " (private repos, default branch)" : " (~/git/products)"}`);
-console.log(`\ndesign-sets conformance — the canonical shell is ${CANONICAL}'s`);
+console.log(`\ndesign-sets conformance — canon's shell from ${shellDir}`);
 for (const [slug, c] of Object.entries(conformance)) {
   if (Object.keys(c.surfaces).length === 0) console.log(`  NONE  ${slug} (no size folder)`);
   for (const [size, r] of Object.entries(c.surfaces)) {

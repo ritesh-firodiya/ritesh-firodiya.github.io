@@ -203,6 +203,23 @@ export function resolveSources() {
   return { mode, sets: out };
 }
 
+/* canon-cli is public: its shell is read without a token. */
+const CANON_CLI = { repo: "ritesh-firodiya/canon-cli", local: "canon-cli" };
+
+/**
+ * The design shell every set loads, which lives in canon-cli: the working copy
+ * locally, a sparse clone of the default branch in CI.
+ */
+export function resolveShell(mode) {
+  if (mode === "local") return join(LOCAL_ROOT, CANON_CLI.local, "shell");
+  const dir = join(CACHE, "canon-cli");
+  rmSync(dir, { recursive: true, force: true });
+  mkdirSync(CACHE, { recursive: true });
+  gitWith(null, ["clone", "--depth", "1", "--filter=blob:none", "--sparse", "--quiet", `https://github.com/${CANON_CLI.repo}.git`, dir]);
+  gitWith(null, ["sparse-checkout", "set", "shell"], dir);
+  return join(dir, "shell");
+}
+
 /**
  * Every tracked path in a product repo, without fetching a single blob.
  *

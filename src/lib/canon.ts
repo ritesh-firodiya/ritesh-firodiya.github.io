@@ -10,7 +10,7 @@ export const canonFor = (slug: string): CanonConfig | null => raw.canon[slug] ??
 
 export const CANON_REPO = "https://github.com/ritesh-firodiya/canon-cli";
 
-export const CANON_VERSION = "0.19.2";
+export const CANON_VERSION = "0.20.0";
 
 export const INSTALL = [
   "claude plugin marketplace add ritesh-firodiya/canon-cli",
@@ -40,8 +40,8 @@ export const VALUE = [
   },
   {
     title: "Saves time",
-    body: "A request that breaks a recorded decision stops before any code is written. One design shell is copied into every product and kept equal. The shell reads the designs straight from the HTML, so no list drifts from them. Failures show before a push, not after a deploy.",
-    how: "canon copies --sync · _shell/scan.mjs · the pre-push hook",
+    body: "A request that breaks a recorded decision stops before any code is written. One design shell lives in canon, and every product loads it. The shell reads the designs straight from the HTML, so no list drifts from them. Failures show before a push, not after a deploy.",
+    how: "canon ui · scan.mjs · the pre-push hook",
   },
 ] as const;
 

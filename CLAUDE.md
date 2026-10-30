@@ -74,6 +74,8 @@ build time into gitignored folders and commits none of them: [[nothing-copied]].
 
 **Public host.** Every wiki page is published, and `scripts/designs/secrets.mjs`
 stops the build on a credential shape. It is the only filter: [[nothing-copied]].
+Each product's architecture page is the one exception: `public-architecture.mjs`
+publishes it, costs and prices included, without its risk notes (owner, 2026-10-31).
 
 **Claims** ([[claims-and-facts]]). Earlier false claims on a page linked from live
 store listings are why these exist. Code and tests cite the numbers.

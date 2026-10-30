@@ -7,7 +7,7 @@ const WIDTH = 1000;
 const PAD = 14;
 const GAP = 52;
 const HEAD = 30;
-const BOX = 46;
+const BOX = 62;
 const BOX_GAP = 10;
 
 interface Box { x: number; y: number; w: number; h: number }
@@ -46,13 +46,13 @@ export function ArchitectureMap({ architecture: a }: { architecture: Architectur
 
   return (
     <div className="rounded-lg border border-line bg-surface">
-      <div className="flex flex-wrap gap-1 border-b border-line p-2 text-sm" role="group" aria-label="What a user does">
+      {a.flows.length > 0 && <div className="flex flex-wrap gap-1 border-b border-line p-2 text-sm" role="group" aria-label="What a user does">
         {a.flows.map((f, i) => (
           <button key={f.name} type="button" aria-pressed={i === picked} onClick={() => setPicked(i)} className={`rounded-md px-2.5 py-1 ${i === picked ? "bg-muted font-medium text-ink" : "text-ink-3 hover:bg-muted"}`}>
             {f.name}
           </button>
         ))}
-      </div>
+      </div>}
       <div className="overflow-x-auto">
         <svg viewBox={`0 0 ${WIDTH} ${height}`} className="block h-auto w-full min-w-[640px]" role="img" aria-label={flow ? `The path of: ${flow.name}` : "How the parts connect"}>
           <defs>
@@ -85,12 +85,29 @@ export function ArchitectureMap({ architecture: a }: { architecture: Architectur
               <g key={p.id} className={on ? "" : "opacity-30"}>
                 <title>{p.label}</title>
                 <rect x={b.x} y={b.y} width={b.w} height={b.h} rx={8} strokeWidth={on ? 2 : 1.5} className={`fill-surface ${on ? "stroke-ink" : "stroke-line"}`} />
-                <text x={b.x + 10} y={b.y + b.h / 2 + 5} clipPath={`url(#part-${p.id})`} className="fill-ink text-[14px] font-semibold">{p.label}</text>
+                <g clipPath={`url(#part-${p.id})`}>
+                  <text x={b.x + 10} y={b.y + 20} className="fill-ink text-[14px] font-semibold">{p.label}</text>
+                  <text x={b.x + 10} y={b.y + 36} className="fill-ink-3 text-[11px]">{p.does}</text>
+                  <text x={b.x + 10} y={b.y + 53} className="fill-ink-3 text-[11px] font-semibold">{p.price ?? p.cost?.today}</text>
+                </g>
               </g>
             );
           })}
         </svg>
       </div>
+      {flow && (flow.cost || flow.steps.length > 0) && (
+        <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1.5 border-t border-line px-4 py-3">
+          <div>
+            {flow.cost && <div className="text-sm font-semibold">{flow.cost}</div>}
+            {flow.note && <div className="text-xs text-ink-3">{flow.note}</div>}
+          </div>
+          {flow.steps.length > 0 && (
+            <ol className="flex-[1_1_380px] list-decimal pl-4 text-sm text-ink-3">
+              {flow.steps.map((step) => <li key={step}>{step}</li>)}
+            </ol>
+          )}
+        </div>
+      )}
     </div>
   );
 }

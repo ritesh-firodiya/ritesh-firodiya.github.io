@@ -91,31 +91,37 @@ test("a set with no design.js does not pass the publish gate", async () => {
   }
 });
 
-test("an architecture page publishes names and paths, and nothing else", () => {
+test("an architecture page publishes costs and failures, but no risk notes", () => {
   const published = publicArchitecture({
-    summary: "private",
-    verified: "2026-10-30",
-    headlines: [{ label: "Known cost", value: "$8" }],
-    unknowns: ["RISK: private"],
-    data: [{ what: "x", where: "private" }],
-    growth: { unit: "Scans", rate: 1 },
-    areas: [{ id: "phone", label: "On the phone", secret: "x" }, { id: "empty", label: "Only an unused part" }],
-    parts: [
-      { id: "app", area: "phone", label: "App", does: "private", price: "$1", cost: { today: "$1" }, ifDown: { user: "private" } },
-      { id: "api", area: "phone", label: "Api" },
-      { id: "bill", area: "empty", label: "On no path", cost: { today: "$9" } },
-    ],
-    flows: [{ name: "Scan", cost: "$1", note: "private", steps: ["private"], path: ["app", "api"] }],
-  });
-  assert.deepEqual(published, {
+    summary: "A phone app.",
+    verified: "2026-10-31",
+    secretField: "stays private",
+    headlines: [{ label: "Known cost", value: "$8" }, { label: "Biggest risk", value: "x" }],
+    unknowns: ["The real bill is not read.", "RISK: open", "DESIGNS_TOKEN was pasted once", "Rate limits are in memory", "App Check is not enforced", "A test key is in the source"],
+    data: [{ what: "Log", where: "On the phone" }],
+    growth: { unit: "Scans", rate: 1, steps: [1] },
     areas: [{ id: "phone", label: "On the phone" }],
-    parts: [{ id: "app", area: "phone", label: "App" }, { id: "api", area: "phone", label: "Api" }],
-    flows: [{ name: "Scan", path: ["app", "api"] }],
+    parts: [
+      { id: "app", area: "phone", label: "App", does: "the app", cost: { today: "$1", grows: "use", basis: "measured", source: "bill" }, ifDown: { user: "Stops.", data: "Safe", basis: "code", source: "a.ts" } },
+      { id: "api", area: "phone", label: "Api", does: "holds one shared key", ifDown: { user: "One burst uses up the shared key.", basis: "code", source: "b.ts" } },
+    ],
+    flows: [{ name: "Scan", cost: "$1", path: ["app", "api"], steps: ["Send it.", "The token is logged."] }],
   });
+  assert.equal(published.secretField, undefined);
+  assert.deepEqual(published.headlines, [{ label: "Known cost", value: "$8" }]);
+  assert.deepEqual(published.unknowns, ["The real bill is not read."]);
+  assert.equal(published.parts[0].cost.today, "$1");
+  assert.equal(published.parts[0].ifDown.user, "Stops.");
+  assert.equal(published.parts[1].does, "");
+  assert.equal(published.parts[1].ifDown, undefined);
+  assert.deepEqual(published.flows[0].steps, ["Send it."]);
+  const sourced = publicArchitecture({ parts: [{ id: "a", cost: { today: "$1", basis: "code", source: "a.ts has no key" } }], flows: [{ name: "x", path: ["a"], note: "the code goes to the log", steps: [] }] });
+  assert.equal(sourced.parts[0].cost.source, undefined);
+  assert.equal(sourced.flows[0].note, undefined);
 });
 
-test("a page with no paths publishes nothing", () => {
-  assert.equal(publicArchitecture({ parts: [{ id: "a", area: "x", label: "A" }] }), null);
+test("a page with no parts publishes nothing", () => {
+  assert.equal(publicArchitecture({ flows: [] }), null);
 });
 
 test("a design set's Architecture item forwards to the product's public page", () => {

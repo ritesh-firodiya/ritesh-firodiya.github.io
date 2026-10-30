@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "verified": "2026-10-30",
+  "summary": "A static site on GitHub Pages. No server, no request-time data. Every push to main builds it in GitHub Actions, pulling design sets and wikis from 16 product repos. It also hosts the apps' privacy policies and AdMob's app-ads.txt.",
+  "headlines": [
+    { "label": "Known cost a month", "value": "$0", "note": "Wiki says Pages and Actions are free on a public repo. No bill read, and repo visibility is not recorded in the repo." },
+    { "label": "What depends on it", "value": "7 apps' legal pages", "note": "Privacy and delete-account URLs are hardcoded in shipped builds and store listings." },
+    { "label": "First thing that will break", "value": "2027-10-05", "note": "DESIGNS_TOKEN expires. The deploy then stops; the old site stays up." },
+    { "label": "Live ad revenue", "value": "app-ads.txt", "note": "AdMob reads it from this host. Deleting it marks inventory unauthorised." }
+  ],
+  "areas": [
+    { "id": "build", "label": "Build, on GitHub Actions" },
+    { "id": "host", "label": "Served to visitors" },
+    { "id": "outside", "label": "Outside services" }
+  ],
+  "parts": [
+    { "id": "actions", "area": "build", "label": "Deploy workflow", "does": "Lint, types, tests, sync, build, publish out/. Runs on every push to main.",
+      "cost": { "today": "$0", "grows": "Pushes. Each build clones 16 repos.", "basis": "stated", "source": "wiki/concepts/architecture.md (old line, 2026-10-29); no bill read" },
+      "ifDown": { "user": "The live site stays as last published. Nothing new ships.", "data": "Safe, in git", "basis": "code", "source": ".github/workflows/deploy.yml: a failed step stops before the upload" } },
+    { "id": "secrets", "area": "build", "label": "Read keys for product repos", "does": "1 token (DESIGNS_TOKEN) and 4 deploy keys",
+      "cost": { "today": "$0", "grows": "Nothing", "basis": "stated", "source": ".context/ops/setup.md" },
+      "ifDown": { "user": "An expired or dead key fails the sync step on purpose. No deploy, so legal and app-ads.txt changes cannot go out.", "data": "None held", "basis": "code", "source": ".github/workflows/deploy.yml; ops/runbooks/deploy.md" } },
+    { "id": "repos", "area": "outside", "label": "16 product repos", "does": "Source of design sets, wikis and store art. Read at build time, never copied in.",
+      "cost": { "today": "$0", "grows": "Nothing", "basis": "stated", "source": "wiki/concepts/nothing-copied.md; scripts/designs/sources.mjs" },
+      "ifDown": { "user": "That product's pages ship without screens or wiki. The build is meant to stop instead.", "data": "Safe, in git", "basis": "stated", "source": "CLAUDE.md, Deploy" } },
+    { "id": "pages", "area": "host", "label": "GitHub Pages", "does": "Serves out/: plain HTML, 646 URLs in the sitemap, about 103 MB",
+      "cost": { "today": "$0", "grows": "Page weight. Wiki pages are ~125 KB each, 89 MB of the 103 MB.", "basis": "stated", "source": ".context/tasks.md T025; ops/release.yml; wiki says Pages is free on a public repo" },
+      "ifDown": { "user": "The portfolio, every legal page and app-ads.txt go down together.", "data": "Safe, in git", "basis": "assumed", "source": "No other host is recorded" } },
+    { "id": "legal", "area": "host", "label": "Legal documents", "does": "12 static HTML files under public/legal/ for 7 apps, plus terms",
+      "cost": { "today": "$0", "grows": "Nothing", "basis": "code", "source": "public/legal/ file count" },
+      "ifDown": { "user": "Privacy links in store listings and shipped app builds show a 404.", "data": "Safe, in git", "basis": "stated", "source": "wiki/concepts/legal-publisher.md" } },
+    { "id": "adsTxt", "area": "host", "label": "app-ads.txt", "does": "Tells AdMob who may sell the Tic Tac Toe ad space",
+      "cost": { "today": "$0", "grows": "Nothing", "basis": "code", "source": "public/app-ads.txt" },
+      "ifDown": { "user": "No user sees it. Ad revenue is marked unauthorised.", "data": "None", "basis": "stated", "source": "CLAUDE.md; deploy.yml comment" } },
+    { "id": "oldhost", "area": "outside", "label": "ritvi-apps.github.io", "does": "Old host. Redirects here. Being retired.",
+      "cost": { "today": "Not read", "grows": "Nothing", "basis": "unknown" },
+      "ifDown": { "user": "Old app builds lose their redirect to the legal pages.", "data": "None", "basis": "stated", "source": "wiki/concepts/legal-publisher.md" } }
+  ],
+  "flows": [
+    { "name": "Publish a change", "cost": "$0", "note": "a push to main",
+      "path": ["actions", "secrets", "repos", "actions", "pages"],
+      "steps": ["Checks run: lint, types, contrast, data and sync tests.", "The sync step stops if any key is missing or dead.", "It clones the design sets, wikis and store art from 16 repos and scans them for credentials.", "The build exports static HTML and checks that app-ads.txt survived.", "Pages publishes out/."] },
+    { "name": "Store listing opens a privacy policy", "cost": "$0", "note": "a static file, no code runs",
+      "path": ["pages", "legal"],
+      "steps": ["An app or store listing links to a path under /legal/.", "Pages returns the file."] },
+    { "name": "AdMob crawls app-ads.txt", "cost": "$0", "note": "revenue depends on it",
+      "path": ["pages", "adsTxt"],
+      "steps": ["AdMob fetches /app-ads.txt from this host.", "The deploy fails if the file is missing or has no publisher id."] }
+  ],
+  "data": [
+    { "what": "Product design sets, wikis, store art", "where": "Private repos; built into a public site. Every wiki page is published." },
+    { "what": "Credentials", "where": "GitHub repo secrets; offline copies in ~/git/local/secrets" },
+    { "what": "Visitor data", "where": "None collected in the code read: no analytics or fetch calls found in src" }
+  ],
+  "unknowns": [
+    "The real bill: nothing records a GitHub invoice. $0 rests on a wiki line that the repo is public.",
+    "Repo visibility itself is not written in the repo.",
+    "DESIGNS_TOKEN was pasted into a chat once (task T027). Rotate it, not only wait for 2027-10-05.",
+    "One expired key blocks every deploy, including legal fixes. The 30-day-old data test can block it too.",
+    "ops/release.yml was last updated 2026-10-04, so 'what is live' is stale.",
+    "learning-platform is live with sign-up and no privacy policy here (known gap, release.yml).",
+    "Whether AdMob now reads app-ads.txt from this host is unchecked, so ritvi-apps.github.io cannot yet be deleted.",
+    "Play listings for Charades and Tic Tac Toe still point at the site root, not their own page (task T012).",
+    "Pages limits are not recorded beyond the wiki's '1GB'. At 103 MB the export uses about a tenth of it."
+  ]
+}

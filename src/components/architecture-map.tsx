@@ -56,6 +56,8 @@ export function ArchitectureMap({ architecture: a }: { architecture: Architectur
       <div className="overflow-x-auto">
         <svg viewBox={`0 0 ${WIDTH} ${height}`} className="block h-auto w-full min-w-[640px]" role="img" aria-label={flow ? `The path of: ${flow.name}` : "How the parts connect"}>
           <defs>
+            <marker id="arrow" markerWidth={8} markerHeight={8} refX={7} refY={4} orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8z" className="fill-line" /></marker>
+            <marker id="arrow-on" markerWidth={8} markerHeight={8} refX={7} refY={4} orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0L8 4L0 8z" className="fill-ink" /></marker>
             {a.parts.map((p) => {
               const b = boxes.get(p.id);
               return b && <clipPath key={p.id} id={`part-${p.id}`}><rect x={b.x + 10} y={b.y} width={b.w - 20} height={b.h} /></clipPath>;
@@ -67,9 +69,14 @@ export function ArchitectureMap({ architecture: a }: { architecture: Architectur
               <text x={x + 10} y={PAD + 20} className="fill-ink-3 text-[11px] font-semibold uppercase tracking-wide">{area.label}</text>
             </g>
           ))}
-          {[...links.entries()].map(([k, [x, y]]) => (
-            <path key={k} d={line(boxes.get(x)!, boxes.get(y)!)} fill="none" strokeWidth={lit.has(k) ? 2.5 : 1.5} className={lit.has(k) ? "stroke-ink" : "stroke-line opacity-40"} />
-          ))}
+          {[...links.entries()].map(([k, [x, y]]) => {
+            const on = lit.has(k);
+            // A path shows the way it travels; a line off the path shows every way any action uses it.
+            const ways = on && flow ? [flow] : a.flows.filter((f) => f !== flow);
+            const goes = (from: string, to: string) => ways.some((f) => steps(f.path).some(([s, t]) => s === from && t === to));
+            const marker = `url(#${on ? "arrow-on" : "arrow"})`;
+            return <path key={k} d={line(boxes.get(x)!, boxes.get(y)!)} fill="none" markerEnd={goes(x, y) ? marker : undefined} markerStart={goes(y, x) ? marker : undefined} strokeWidth={on ? 2.5 : 1.5} className={on ? "stroke-ink" : "stroke-line opacity-40"} />;
+          })}
           {a.parts.map((p) => {
             const b = boxes.get(p.id);
             if (!b) return null;

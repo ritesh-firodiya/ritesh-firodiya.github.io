@@ -198,8 +198,8 @@
         "web": {
           "state": "beta",
           "label": "Open staging",
-          "url": "https://canon-gules-two.vercel.app",
-          "note": "Private staging: it asks for a Vercel sign-in"
+          "url": "https://canon-869060431532.asia-southeast1.run.app",
+          "note": "Staging: sign in with GitHub"
         }
       },
       "stack": [

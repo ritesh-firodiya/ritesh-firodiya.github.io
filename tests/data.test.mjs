@@ -151,8 +151,8 @@ const WEB_WITHOUT_POLICY = new Set([
   // A demo on a Vercel preview hostname that products.json already marks for a
   // move to a real domain. It has Login and Sign Up, so it does need a policy.
   "learning-platform",
-  // Private staging behind Vercel Authentication: only the owner gets past the
-  // sign-in, so nobody can sign up or hand it data. Needs a policy once it opens.
+  // Staging on Cloud Run, sign-in with GitHub, and it has no policy page yet.
+  // Needs one before production opens.
   "canon",
 ]);
 

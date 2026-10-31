@@ -2,10 +2,9 @@
 # here that is allowed to be *wrong*, which is why it is re-verified, not
 # assumed.
 
-updated: 2026-10-04
+updated: 2026-11-01
 verified_by: >
-  gh run watch (deploy run 37192784023, success); curl of 30 live URLs;
-  one project page opened in a browser
+  curl of every product, store and legal URL on the site
 
 surfaces:
   web:
@@ -13,16 +12,8 @@ surfaces:
     host: GitHub Pages, from the `main` branch via .github/workflows/deploy.yml
     live:
       branch: main
-      commit: 783c64d
-      since: "2026-10-04"
-      what: the hiring-first redesign
+      what: every product, beside the job at Zendesk
       verified: true
-      checked: >
-        home, work, process, about, resume, contact, support, legal, three
-        project pages, two wiki indexes, a wiki page, a design gallery, an
-        embedded design screen, store art, a short link, all four forwarding
-        addresses, a legal document and its stylesheet, app-ads.txt, the
-        sitemap (646 URLs), resume.pdf and the 404
 
 known_gaps:
   - learning-platform is a live web demo with sign-up and no privacy policy.

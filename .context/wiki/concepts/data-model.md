@@ -7,6 +7,7 @@ last-verified: 2026-10-30
 `src/data/products.json` is the single source of truth for every app fact. **Its array order is the running order of the site.** To change the order, re-order the file.
 
 - The release state pill is **derived** from `platforms` (`stageOf` in `src/lib/products.ts`): any `live` → live; any `beta`/`closed` → in testing; otherwise in build, or in design when `notBuilt`. Only the words (`stageLabel`) are typed, and a test checks the two agree.
+- **Live means anyone can open or install the production product today**: on a store, or on its own domain (owner, 2026-11-01). Having customers or a finished launch checklist is not part of it. A staging site counts as in testing, and in release.yml it is `in_review`.
 - `shots` names a product's best store screenshots, best first. The listing's own order is written for a store page, and its tilted close-ups read badly at card size.
 - A `closed` platform renders as a **"Join the test"** button: a pre-filled email asking to be added to the tester list. `none` is not shown.
 - A closed platform's button opens **Gmail's compose page**, not `mailto:` (`src/lib/mail.ts`). A mailto link does nothing on a machine with no mail app, and the button then looks broken. `testUrl` is the store's own tester page, shown as a second button.

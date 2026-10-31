@@ -60,3 +60,10 @@ test("reads a feature's status and names it from its file", () => {
   assert.equal(statusOf("## Summary\nstatus: building"), null);
   assert.equal(featureName("0017-holdings-from-demat-statement"), "Holdings from demat statement");
 });
+
+test("a web product live on its domain, with staging as its review", () => {
+  const release = { surfaces: { web: { live: { version: "0.0.1" } }, staging: { in_review: { version: "0.0.2" } } } };
+  const f = funnelOf({ features: [], release });
+  assert.equal(stage(f, "live").items[0].detail, "0.0.1");
+  assert.equal(stage(f, "review").items[0].detail, "0.0.2");
+});

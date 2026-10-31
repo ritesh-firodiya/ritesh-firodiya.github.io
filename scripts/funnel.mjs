@@ -18,6 +18,8 @@ const SURFACES = {
   app_store: { name: "iOS", mobile: true },
   play: { name: "Android", mobile: true },
   web: { name: "Web", mobile: false },
+  /* A web product's staging is its store review (owner, 2026-11-01). */
+  staging: { name: "Staging", review: true },
 };
 
 /** "0019-scan-a-document" → "Scan a document". The feature files carry no title. */
@@ -33,7 +35,7 @@ const str = (v) => (typeof v === "string" || typeof v === "number" ? String(v) :
 
 /** Where one surface stands, and the version it stands at. */
 function surfaceStage(key, s) {
-  if (s.live != null) return { stage: "live", detail: str(s.live) };
+  if (s.live != null) return { stage: "live", detail: str(s.live) ?? str(s.live.version) };
   if (s.in_review) {
     const r = s.in_review;
     const version = str(r) ?? str(r.version);
@@ -71,8 +73,8 @@ export function funnelOf({ features, release }) {
   /* `verified: false` is the file saying its own block is a guess. */
   const surfaces = Object.entries(release?.surfaces ?? {}).filter(([k, s]) => k in SURFACES && s && s.verified !== false);
   for (const [key, s] of surfaces) {
-    const { name, mobile } = SURFACES[key];
-    (mobile ? ["testers", "review"] : ["deployed"]).forEach((x) => stages.add(x));
+    const { name, mobile, review } = SURFACES[key];
+    (review ? ["review"] : mobile ? ["testers", "review"] : ["deployed"]).forEach((x) => stages.add(x));
     stages.add("live");
     const at = surfaceStage(key, s);
     if (!at) continue;

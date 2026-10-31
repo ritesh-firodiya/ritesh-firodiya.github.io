@@ -222,7 +222,7 @@
         "Zod",
         "Turborepo"
       ],
-      "status": "Pre-launch",
+      "status": "Live",
       "link": "https://chitragupt.ai",
       "private": true
     },
@@ -356,7 +356,7 @@
         "Stripe",
         "S3"
       ],
-      "status": "In build",
+      "status": "Live",
       "link": "https://scrvio.com"
     },
     {
@@ -372,8 +372,9 @@
         "Postgres",
         "Playwright"
       ],
-      "status": "In build",
-      "private": true
+      "status": "Live",
+      "private": true,
+      "link": "https://babul.dev"
     },
     {
       "name": "DwarSeva",

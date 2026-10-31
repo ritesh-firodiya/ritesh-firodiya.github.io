@@ -53,7 +53,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "chitragupt",
     product: "Chitragupt",
     title: "Household tax review for salaried Indian filers",
-    status: "Pre-launch",
+    status: "Live",
     period: "2025 — now",
     facts: [
       { k: "Role", v: "Everything — product, design, build, deploy" },

@@ -5,7 +5,7 @@
     {
       "slug": "askcal",
       "name": "AskCal",
-      "stageLabel": "In App Store review",
+      "stageLabel": "In store review",
       "shots": [
         "01-today",
         "05-meal",
@@ -37,7 +37,7 @@
       "adSurfaces": [],
       "offline": "No — scans run on a server",
       "analytics": "None",
-      "version": "1.3.0",
+      "version": "1.4.3",
       "platforms": {
         "web": {
           "state": "none",
@@ -47,9 +47,9 @@
         },
         "android": {
           "state": "closed",
-          "label": "Closed testing only",
+          "label": "In Google Play review",
           "url": null,
-          "note": "On the closed track; the production track has never had a release",
+          "note": "1.4.3 is in production review; the closed track stays open until it passes",
           "testUrl": "https://play.google.com/apps/testing/com.riteshf.askcal",
           "groupUrl": "https://groups.google.com/g/askcal-testers/about"
         },
@@ -61,7 +61,7 @@
           "testUrl": "https://testflight.apple.com/join/5VeKUcaj"
         }
       },
-      "unreleasedNote": "Not public yet. Both test tracks are open to anyone: join the tester group for Android, or the TestFlight for iPhone.",
+      "unreleasedNote": "Not public yet. Version 1.4.3 is in review on Google Play and the App Store. Until then, both test tracks are open to anyone: join the tester group for Android, or the TestFlight for iPhone.",
       "stack": [
         "Expo",
         "React Native",
@@ -284,7 +284,7 @@
           "state": "none",
           "label": "Draft on Google Play",
           "url": null,
-          "note": "A draft in the Play Console; no release on any track yet"
+          "note": "A draft in the Play Console, on internal testing only"
         },
         "ios": {
           "state": "none",
@@ -338,7 +338,7 @@
     {
       "slug": "imposter",
       "name": "Imposter",
-      "stageLabel": "In App Store review",
+      "stageLabel": "Live on the App Store",
       "fullName": "Imposter: Find the Liar",
       "tagline": "Everyone gets the word. Except one of you.",
       "blurb": "Social deduction for 3–20 people, on one phone or online with a phone each.",
@@ -351,7 +351,7 @@
       "adSurfaces": [],
       "offline": "One phone, yes. Online rooms need a connection",
       "analytics": "None",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "platforms": {
         "web": {
           "state": "none",
@@ -368,14 +368,12 @@
           "groupUrl": "https://groups.google.com/g/ritvi-imposter-testers/about"
         },
         "ios": {
-          "state": "closed",
-          "label": "Waiting for App Store review",
-          "url": null,
-          "note": "Submitted for review; there is no public build yet",
-          "testUrl": "https://testflight.apple.com/join/qYT8tpPr"
+          "state": "live",
+          "label": "App Store",
+          "url": "https://apps.apple.com/in/app/imposter-find-the-liar/id6811995450",
+          "note": ""
         }
       },
-      "unreleasedNote": "Neither store has a public release yet. The build is in review on iOS. Both test tracks are open to anyone: the tester group for Android, the TestFlight for iPhone.",
       "stack": [
         "React Native",
         "Expo",
@@ -440,7 +438,7 @@
       "adSurfaces": [],
       "offline": "Yes — fully",
       "analytics": "None",
-      "version": "1.0.33",
+      "version": "1.0.35",
       "platforms": {
         "web": {
           "state": "none",
@@ -457,7 +455,7 @@
         "ios": {
           "state": "live",
           "label": "App Store",
-          "url": "https://apps.apple.com/in/app/charades-act-it-out-party/id6811345858",
+          "url": "https://apps.apple.com/in/app/dumb-charades-movie-party/id6811345858",
           "note": ""
         }
       },
@@ -655,7 +653,7 @@
       ],
       "offline": "No — ads need a network",
       "analytics": "AdMob measurement",
-      "version": "1.0.12",
+      "version": "1.0.13",
       "platforms": {
         "web": {
           "state": "none",
@@ -784,7 +782,7 @@
     {
       "slug": "chess",
       "name": "Chess",
-      "stageLabel": "In Play testing",
+      "stageLabel": "In App Store review",
       "fullName": "Chess — 2 Player & Computer",
       "tagline": "The whole game, on one phone.",
       "blurb": "Two players passing one device, or a computer opponent at three levels. Every rule is in: castling, en passant, promotion and the draws.",
@@ -812,7 +810,7 @@
       "offline": "Plays offline — only the ads need a network",
       "analytics": "None of its own — AdMob measurement only",
       "version": "2.0.0",
-      "unreleasedNote": "Version 2.0.0 was rebuilt from a new design set. It is with internal testers on Play and on TestFlight, and the public TestFlight build is in Apple’s beta review; the closed Play track anyone can join still serves 1.0.0.",
+      "unreleasedNote": "Version 2.0.0 is in App Store review, and anyone can try it now on the public TestFlight. The closed Play track anyone can join still serves 1.0.0.",
       "platforms": {
         "web": {
           "state": "none",
@@ -830,9 +828,9 @@
         },
         "ios": {
           "state": "closed",
-          "label": "Join the TestFlight",
+          "label": "Waiting for App Store review",
           "url": null,
-          "note": "Public TestFlight link; build 2.0.0 (2.0.5) is waiting for Apple’s beta review, and the link serves it once that passes",
+          "note": "Submitted for review; the public TestFlight serves 2.0.0 until it passes",
           "testUrl": "https://testflight.apple.com/join/XjytTyb1"
         }
       },

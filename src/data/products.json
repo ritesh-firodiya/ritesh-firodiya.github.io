@@ -169,7 +169,7 @@
       "permissions": [],
       "screens": [],
       "legal": {
-        "privacy": "https://babul-staging.vercel.app/privacy",
+        "privacy": "https://babul.dev/privacy",
         "delete": null
       },
       "repo": null
@@ -327,7 +327,7 @@
       "screens": [],
       "legal": {
         "privacy": "https://chitragupt.ai/legal/privacy",
-        "delete": "/legal/chitragupt/delete-account.html",
+        "delete": "https://chitragupt.ai/legal/delete-account",
         "privacyNote": "The policy lives on chitragupt.ai, where it is a real page of the product rather than a copy."
       },
       "kind": "app",

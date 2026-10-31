@@ -9,8 +9,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/legal/" },
 };
 
-const withLegal = products.filter((p) => p.legal.privacy || p.legal.delete).sort((a, b) => a.name.localeCompare(b.name));
-const onThisHost = (href: string) => !href.startsWith("http");
+const onThisHost = (href: string | null) => Boolean(href) && !href?.startsWith("http");
+// A product with its own domain publishes its own documents; they are linked from its product page.
+const withLegal = products.filter((p) => onThisHost(p.legal.privacy) || onThisHost(p.legal.delete)).sort((a, b) => a.name.localeCompare(b.name));
 
 /* A table, because the reader is a store reviewer or a user looking for one
    document. Nobody browses this page. The documents themselves are static
@@ -38,12 +39,11 @@ export default function LegalPage() {
                   <td>
                     {p.legal.privacy && (
                       <a href={p.legal.privacy} className="text-link">
-                        {onThisHost(p.legal.privacy) ? "Privacy policy" : `Privacy policy on ${new URL(p.legal.privacy).hostname}`}
+                        Privacy policy
                       </a>
                     )}
                     {p.legal.privacy && p.legal.delete && " · "}
                     {p.legal.delete && <a href={p.legal.delete} className="text-link">Delete account</a>}
-                    {p.legal.privacyNote && <span className="mt-1 block text-xs text-ink-3">{p.legal.privacyNote}</span>}
                   </td>
                 </tr>
               ))}

@@ -95,7 +95,7 @@ fail once `verifiedOn` is 30 days old; check the **stores** and each product's
 **Wireframe.** When a page and its wireframe disagree, the wireframe wins: fix the
 page, or change the wireframe first and say so in its notes page: [[style-rules]].
 
-**Legal.** This repo is the only publisher of legal documents. The paths under
+**Legal.** This repo publishes legal documents only for products without their own domain; [[legal-publisher]] says who else does. The paths under
 `public/legal/` are hardcoded in shipped app builds and store listings and **must
 never change**. Do not delete `ritvi-apps.github.io` until AdMob reads `app-ads.txt`
 from this host: [[legal-publisher]].

@@ -15,11 +15,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ritesh-firodiya.github.io"),
   title: {
-    default: "Ritesh Firodiya — Full-stack engineer",
+    default: "Ritesh Firodiya — Side projects",
     template: "%s — Ritesh Firodiya",
   },
   description:
-    "Full-stack engineer with nine years of production TypeScript at Walmart, Swiggy, Speechify and Globant. Products of my own, idea to store, and canon: the open-source tool that keeps AI on my domain.",
+    "Hobby apps and developer tools by Ritesh Firodiya, a Senior Software Engineer at Zendesk: games, money tools and canon, the open-source tool that keeps AI on my domain.",
   openGraph: {
     type: "website",
     siteName: "Ritesh Firodiya",

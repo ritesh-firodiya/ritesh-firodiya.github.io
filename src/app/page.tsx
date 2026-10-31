@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { ArrowDown, FileText } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 import { StatePill } from "@/components/ui";
 import { CardPicture } from "@/components/picture";
@@ -30,9 +30,6 @@ function Card({ href, picture, name, state, tagline }: { href: string; picture: 
   );
 }
 
-/** "A, B and C" */
-const list = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`);
-
 export default function Home() {
   const cards = products.map((p) => (
     <Card key={p.slug} href={`/products/${p.slug}/`} picture={<CardPicture p={p} h="aspect-[4/3]" />} name={p.name} state={<StatePill p={p} />} tagline={p.tagline} />
@@ -45,26 +42,23 @@ export default function Home() {
           <div className="grid-bg absolute inset-0 -z-10" aria-hidden />
           <div className="wrap pb-10 pt-10 text-center md:pb-12 md:pt-16">
             <p className="eyebrow">
-              {profile.name} · Senior full-stack engineer · {profile.location.split(",")[0]}
+              {profile.name} · Senior Software Engineer at Zendesk · {profile.location.split(",")[0]}
             </p>
             <h1 className="display grad-text mx-auto mt-3 max-w-[16ch]">{profile.headline}</h1>
             <p className="mx-auto mt-3 max-w-[52ch] text-lead text-ink-2">
-              Nine years of TypeScript at {list(profile.workedAt.slice(0, 3))}. {products.length} products of my own, idea to store.
+              {products.length} hobby projects, from idea to store: games, money tools and developer tools. {stageCounts.live} are live.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-2">
               <a href="#work" className="btn btn-primary">
-                See my work <ArrowDown size={16} aria-hidden />
+                See the projects <ArrowDown size={16} aria-hidden />
               </a>
-              <Link href="/resume/" className="btn btn-quiet">
-                <FileText size={16} aria-hidden /> Résumé
-              </Link>
             </div>
           </div>
         </section>
 
         <section id="work" className="wrap mt-12 scroll-mt-16">
           <div className="flex flex-wrap items-end justify-between gap-2">
-            <h2 className="text-h2 font-extrabold">Work</h2>
+            <h2 className="text-h2 font-extrabold">Side projects</h2>
             <p className="text-sm text-ink-3">
               {cards.length} projects · {stageCounts.live} live
             </p>

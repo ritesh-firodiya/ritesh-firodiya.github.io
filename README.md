@@ -1,6 +1,6 @@
 # ritesh-firodiya.github.io
 
-Ritesh Firodiya's portfolio. One job: get him hired.
+Ritesh Firodiya's portfolio. It shows his hobby side projects.
 
 **https://ritesh-firodiya.github.io/**
 

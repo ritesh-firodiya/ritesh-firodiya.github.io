@@ -5,12 +5,11 @@ import { profile } from "@/lib/profile";
 import { gmailCompose } from "@/lib/mail";
 import { CANON_REPO } from "@/lib/canon";
 
-export type NavKey = "work" | "canon" | "resume";
+export type NavKey = "work" | "canon";
 
 const NAV: { key: NavKey; label: string; href: string }[] = [
-  { key: "work", label: "Work", href: "/#work" },
+  { key: "work", label: "Projects", href: "/#work" },
   { key: "canon", label: "canon", href: "/products/canon/" },
-  { key: "resume", label: "Résumé", href: "/resume/" },
 ];
 
 export function SiteHeader({ on }: { on?: NavKey }) {
@@ -52,8 +51,9 @@ export function SiteFooter() {
         <span className="flex flex-wrap gap-x-5 gap-y-1">
           <a href={`https://linkedin.com/in/${profile.linkedin}`}>LinkedIn</a>
           <a href={`https://github.com/${profile.github}`}>GitHub</a>
+          <a href="https://x.com/dev_riteshf">X</a>
           <a href={CANON_REPO}>canon-cli on GitHub</a>
-          <a href="/resume.pdf">Résumé PDF</a>
+          <Link href="/resume/">Résumé</Link>
         </span>
         <span className="flex gap-5 text-ink-3 sm:ml-auto">
           <Link href="/support/">Support</Link>

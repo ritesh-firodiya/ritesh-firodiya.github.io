@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Ritesh Firodiya — Full-stack engineer";
+export const alt = "Ritesh Firodiya — Side projects";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

@@ -10,9 +10,8 @@ After finishing, delete the task.
 The single public site for Ritesh Firodiya, deployed to **GitHub Pages** at
 https://ritesh-firodiya.github.io/ via GitHub Actions on every push to `main`.
 
-**It has one job: get Ritesh hired** into a senior, staff or tech-lead role
-(decided 2026-10-04). Every page is written for someone deciding whether to
-interview him. People who use the apps, and store reviewers, get Support and
+**It shows Ritesh's work: hobby side projects, beside his job at Zendesk**
+(decided 2026-10-31). No page pitches him for a job. People who use the apps, and store reviewers, get Support and
 Legal — reached from the footer, never from the header.
 
 Stack: **Next.js 16 (App Router) + React 19 + Tailwind v4**, statically exported.

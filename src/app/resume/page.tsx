@@ -20,7 +20,7 @@ export default function ResumePage() {
   const school = profile.education[0];
   return (
     <>
-      <SiteHeader on="resume" />
+      <SiteHeader />
       <main id="main" className="wrap pb-10 pt-5">
         <div className="flex flex-wrap items-center gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -64,7 +64,7 @@ export default function ResumePage() {
             </p>
           </Link>
           <Link href="/#work" className="glass p-4">
-            <p className="eyebrow">Independent · 2026</p>
+            <p className="eyebrow">Hobby side projects</p>
             <h2 className="mt-1 text-body font-bold">{products.length} products, idea to store</h2>
             <p className="mt-1 text-base text-ink-2">
               Mobile and web apps, each with its own designs, wiki and release. {stageCounts.live} are live.

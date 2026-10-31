@@ -13,7 +13,7 @@ A design set, a wiki page, a screenshot and an icon each have **one home: the pr
 | Store art | `.context/listing/…/screenshots` | `public/media/<slug>/*.webp` |
 | Icon | `.context/designs/assets/icon.*` | `public/media/<slug>/icon.*` |
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
-| canon config | `.claude/canon.yaml` (version, modules) | `src/data/generated/canon.json` |
+| canon config | `.context/context.yaml` (version, modules) | `src/data/generated/canon.json` |
 | Release state | `.context/features/*.md` (`status:`) and `.context/ops/release.yml` | `src/data/generated/funnel.json` |
 | Conversation flow | `.context/metrics/flow.json` (written by `canon flow`) | `src/data/generated/flow.json` |
 

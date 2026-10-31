@@ -32,3 +32,4 @@ yarn-error.log*
 # a wiki page has one home, the product's repo.
 /public/media/
 /src/data/generated/
+.context/context.local.yaml

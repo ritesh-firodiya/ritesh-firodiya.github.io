@@ -5,7 +5,7 @@ import { generated } from "@/lib/generated";
    machine from Claude transcripts and git. Counts and times only. */
 
 /* The stages ~/git/bin/flow can measure. A product shows its own ordered
-   subset — the `pipeline:` in its .claude/canon.yaml. */
+   subset — the `pipeline:` in its .context/context.yaml. */
 export type FlowStageId = "idea" | "research" | "plan" | "design" | "code" | "review" | "release" | "store-review" | "deployed" | "live";
 
 export interface FlowHop {

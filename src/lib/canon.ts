@@ -1,6 +1,6 @@
 import { generated } from "@/lib/generated";
 
-/** What a product's `.claude/canon.yaml` says: the canon version it is pinned to
+/** What a product's `.context/context.yaml` says: the canon version it is pinned to
  *  and the modules it runs. Read at build time by scripts/sync-context.mjs. */
 export type CanonConfig = { version: string | null; modules: string[] };
 

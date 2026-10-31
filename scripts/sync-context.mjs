@@ -262,13 +262,13 @@ function contextOf(paths) {
 
 /* ── which canon modules a product runs ────────────────────────────────────── */
 
-/* The repo's own `.claude/canon.yaml`. Only `canon:` and `modules:` are read, in
+/* The repo's own `.context/context.yaml`. Only `canon:` and `modules:` are read, in
    either YAML list style, so this needs no YAML dependency. A repo without the
    file is not on canon yet, and the page says so. */
 async function canonOf(root) {
   let text;
   try {
-    text = await readFile(join(root, ".claude", "canon.yaml"), "utf8");
+    text = await readFile(join(root, ".context", "context.yaml"), "utf8");
   } catch {
     return null;
   }

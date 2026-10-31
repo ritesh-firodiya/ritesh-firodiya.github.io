@@ -36,10 +36,10 @@ export default async function Image() {
             </div>
           </div>
           <div style={{ fontSize: 76, fontWeight: 700, color: INK, marginTop: 40, letterSpacing: -2.5, lineHeight: 1.06, maxWidth: 1000 }}>
-            Full-stack engineer who takes a product from an idea to the store.
+            Apps and tools I build on the side.
           </div>
           <div style={{ fontSize: 34, color: INK2, marginTop: 28, maxWidth: 900, lineHeight: 1.4 }}>
-            Nine years of production TypeScript. Thirteen products of my own.
+            Hobby projects, from idea to store.
           </div>
         </div>
 

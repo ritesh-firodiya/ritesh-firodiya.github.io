@@ -10,7 +10,7 @@
   "headline": "I build products. And the tools that keep AI on my domain.",
   "tagline": "~9 years across web, mobile, and backend. Now building my own products — web and mobile — and agent tooling on Anthropic SDK + MCP.",
   "about": [
-    "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. Most recently, I spent a year as a Senior Engineer at Walmart on internal revenue tooling — wrapped up May 2026.",
+    "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. I am a Senior Software Engineer at Zendesk. Before that I spent a year as a Senior Engineer at Walmart on internal revenue tooling.",
     "Before that I ran short-term contract engagements (TopLegal as Tech Lead, ManifestIT, Speechify), and held senior IC roles at Masai, Swiggy, Globant, and Confluxsys. I move comfortably across the stack — Postgres schema, GraphQL APIs, React/RN UI, EAS releases — and I've shipped solo on monorepos using Turborepo + Yarn workspaces.",
     "Right now I'm building a handful of products on the side and going deep on agent-based developer tooling with the Anthropic SDK and MCP."
   ],
@@ -92,6 +92,15 @@
     ]
   },
   "experiences": [
+    {
+      "company": "Zendesk",
+      "position": "Senior Software Engineer",
+      "from": "May 2026",
+      "to": "Present",
+      "companyLink": "https://www.zendesk.com/",
+      "description": "",
+      "tags": []
+    },
     {
       "company": "Walmart",
       "position": "Senior Software Engineer",

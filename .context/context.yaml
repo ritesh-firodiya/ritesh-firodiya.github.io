@@ -13,3 +13,4 @@ modules:
 features:
   - process
   - knowledge
+  - routing

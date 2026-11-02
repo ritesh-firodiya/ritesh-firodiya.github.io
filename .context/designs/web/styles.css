@@ -238,36 +238,61 @@ a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transpare
 .ask::before { content: "“"; color: var(--brand-500); }
 .ask::after  { content: "”"; color: var(--brand-500); }
 /* The lifecycle strip: eight stages joined by one gradient line. */
-.pdlc { position: relative; }
-.pdlc::before { content: ""; position: absolute; left: 15px; top: 16px; bottom: 16px; width: 2px;
-  background: linear-gradient(var(--brand-500), var(--accent-500)); opacity: .5; }
-@media (min-width: 768px) {
-  .pdlc::before { left: 16px; right: 16px; top: 15px; bottom: auto; width: auto; height: 2px;
-    background: linear-gradient(90deg, var(--brand-500), var(--accent-500)); }
-}
-.pdlc-dot { position: relative; z-index: 1; width: 32px; height: 32px; border-radius: 999px; display: grid; place-items: center;
-  background: var(--page); border: 2px solid var(--brand-500); color: var(--brand-500); }
 .app-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--line); object-fit: cover; }
 .app-icon--none { display: grid; place-items: center; background: var(--muted); font-weight: 700; color: var(--ink-3); }
 
 /* The two tools on Home: canon is brand, canon is accent. */
 
-/* A product's funnel: one band per stage, its thickness the stage's item
-   count, sloping into the next stage's. --a is this stage's share, --b the
-   next one's (0–100). The stage where work waits is warn; the rest brand. */
-.funnel { display: grid; grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); }
-.funnel-band { height: 88px; --a2: calc(max(var(--a), 6) * 0.5%); --b2: calc(max(var(--b), 6) * 0.5%);
-  clip-path: polygon(0 calc(50% - var(--a2)), 100% calc(50% - var(--b2)), 100% calc(50% + var(--b2)), 0 calc(50% + var(--a2)));
-  background: linear-gradient(90deg, color-mix(in srgb, var(--brand-500) 70%, transparent), color-mix(in srgb, var(--accent-500) 55%, transparent)); }
-.funnel-band--wait { background: linear-gradient(90deg, var(--warn), color-mix(in srgb, var(--warn) 55%, transparent)); }
-.funnel-band + .funnel-band { margin-left: 2px; }
-.funnel-n { font-family: var(--font-mono); font-size: var(--fs-h3); font-weight: 800; line-height: 1; }
-/* The stage under each band: a row (count, then words) on a phone, a centred column from md. */
-.funnel-heads { display: grid; gap: 10px; }
-.funnel-head { display: flex; align-items: baseline; gap: 12px; }
-.funnel-head .funnel-n { min-width: 3ch; text-align: right; }
-@media (min-width: 768px) {
-  .funnel-heads { grid-template-columns: repeat(var(--stages), minmax(0, 1fr)); gap: 4px; }
-  .funnel-head { flex-direction: column; align-items: center; gap: 4px; text-align: center; }
-  .funnel-head .funnel-n { min-width: 0; text-align: center; }
+/* A product's stages, drawn as a workflow canvas. On a phone: a list down a line.
+   From lg: nodes placed by --x and --y (percent) over the svg's connectors.
+   Colour says the kind of stage: problem, think, make, ship. */
+.map-node--problem, .map-line--problem, .map-key--problem { --tone: var(--stage-problem); }
+.map-node--think, .map-line--think, .map-key--think { --tone: var(--stage-think); }
+.map-node--make, .map-line--make, .map-key--make { --tone: var(--stage-make); }
+.map-node--ship, .map-line--ship, .map-key--ship { --tone: var(--stage-ship); }
+.stage-map { position: relative; display: grid; gap: 16px; }
+.stage-map::before { content: ""; position: absolute; left: 21px; top: 16px; bottom: 16px; width: 2px; background: var(--line-strong); }
+.map-lines { display: none; }
+.map-node { position: relative; display: flex; align-items: center; gap: 12px; }
+.map-node:has(details[open]) { z-index: 5; }
+.map-node--branch { margin-left: 28px; }
+.map-open { position: relative; flex-shrink: 0; }
+.map-tile { position: relative; flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px;
+  background: color-mix(in srgb, var(--tone) 16%, var(--page)); border: 2px solid var(--tone); color: var(--tone); }
+.map-tile--count { width: 76px; height: 56px; align-content: center; gap: 2px; cursor: pointer; list-style: none;
+  /* The stack behind it: this is many records, and it opens. */
+  box-shadow: 4px 4px 0 -2px var(--page), 4px 4px 0 0 var(--tone), 8px 8px 0 -2px var(--page), 8px 8px 0 0 color-mix(in srgb, var(--tone) 50%, transparent); }
+.map-tile--count::-webkit-details-marker { display: none; }
+.map-tile--count:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.map-n { font-family: var(--font-mono); font-size: var(--fs-h3); line-height: 1; font-weight: 800; }
+.map-unit { font-size: 0.625rem; line-height: 1; font-weight: 600; }
+.map-more { position: absolute; left: 0; top: calc(100% + 12px); min-width: 170px; display: grid; gap: 4px; padding: 10px 12px; text-align: left;
+  border-radius: 8px; border: 1px solid var(--tone); background: var(--page); box-shadow: var(--shadow-lg); font-size: var(--fs-xs); color: var(--ink-2); white-space: nowrap; }
+.map-more b { color: var(--tone); font-family: var(--font-mono); }
+.map-node--off .map-tile { border-style: dashed; background: var(--page); opacity: .7; }
+.map-gate { position: absolute; right: -7px; top: -7px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 999px;
+  background: var(--ink); color: var(--page); }
+.map-note { padding: 10px 12px; border-radius: 8px; border: 1px dashed var(--line-strong); font-size: var(--fs-xs); color: var(--ink-2); background: var(--muted); position: relative; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: var(--fs-xs); color: var(--ink-3); }
+.map-key { display: inline-flex; align-items: center; gap: 6px; }
+.map-key::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--tone); }
+@media (min-width: 1024px) {
+  .stage-map { display: block; aspect-ratio: var(--ratio); border-radius: var(--radius-lg);
+    background: radial-gradient(var(--line-strong) 1px, transparent 1px) 0 0 / 20px 20px; }
+  .stage-map::before { content: none; }
+  .map-lines { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .map-line { fill: none; stroke: var(--tone, var(--ink-3)); stroke-width: 2; stroke-dasharray: 6 7; opacity: .85; }
+  .map-line--off { stroke: var(--ink-3); opacity: .5; }
+  .map-node--branch { margin-left: 0; }
+  .map-edge { fill: var(--ink-3); font-size: 12px; text-anchor: middle; }
+  .map-node { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: 14%; flex-direction: column; gap: 6px; text-align: center;
+    transform: translateY(-28px) translateX(-50%); }
+  .map-tile { width: 56px; height: 56px; border-radius: 14px; }
+  .map-tile--count { width: 84px; height: 56px; }
+  .map-open { margin-bottom: 6px; }
+  .map-note { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: var(--w); transform: translateY(-50%); }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .map-line:not(.map-line--off) { animation: map-flow 1.4s linear infinite; }
+  @keyframes map-flow { to { stroke-dashoffset: -13; } }
 }

@@ -16,7 +16,9 @@ pnpm check    # sync, contrast, lint, typecheck, tests, build
 ## What is on it
 
 - **Home** — every project with its release state.
-- **A project page** for each — what it is, where to get it, how it was built.
+- **A project page** for each — what it is, where to get it, how it was built,
+  and "How it ships": its own stages and forks, from problem to result, with
+  live counts that open on click.
 - **Each project's wiki**, in full, and a link to its design set.
 - **Résumé.**
 - **Support and Legal** for people who use the apps.

@@ -40,8 +40,8 @@ src/
   components/   # forward.tsx is how an old address forwards
   data/         # products.json (every app fact), profile.json; generated/ is gitignored
   lib/          # products.ts (stageOf, surfaceTags), mail.ts, case-studies.ts, generated.ts
-scripts/        # sync-designs.mjs, sync-context.mjs, flow.mjs, funnel.mjs, designs/
-tests/          # data, sync, export, funnel, flow
+scripts/        # sync-designs.mjs, sync-context.mjs, stages.mjs, designs/
+tests/          # data, sync, export, stages
 public/legal/   # legal documents: never move a path
 public/app-ads.txt  # live AdMob revenue: never delete
 .context/       # everything that is not code. designs/ is this site's own design set
@@ -61,7 +61,8 @@ public/app-ads.txt  # live AdMob revenue: never delete
   twice on a page. Do not add a page for something a section can hold.
 - Role names, never hues. A theme is a token remap, never a `dark:` prefix.
   `globals.css` stays in step with the set's `tokens.js`. Reserved colours: the
-  release state, used for nothing else. Icons are lucide.
+  release state, used for nothing else; the four `stage-*` roles colour the
+  stage canvas only. Icons are lucide.
 - AskCal is a global app. Its own rule is that nothing a user reads brands it
   to one country, and that holds for its page here.
 

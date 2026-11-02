@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { GitBranch, History, MessageSquareDashed, WandSparkles } from "lucide-react";
-import { Lifecycle, Value, VerdictCard } from "@/components/canon";
+import { Value, VerdictCard } from "@/components/canon";
+import { StageMap } from "@/components/stage-map";
 import { products } from "@/lib/products";
-import { flowFor } from "@/lib/flow";
+import { defaultMap } from "@/lib/stages";
 import { canonFor, INSTALL, VERDICTS, CANON_REPO, CANON_VERSION } from "@/lib/canon";
 
 /* canon-cli is the free, open-source CLI and plugin under canon. It is not a
@@ -17,8 +17,6 @@ const PROBLEMS = [
 export function CanonCli() {
   /* Derived: how many of the products shown here carry a canon config. */
   const onCanon = products.filter((p) => canonFor(p.slug)).length;
-  /* Derived: the products whose "How it ships" is canon flow's own output. */
-  const measured = products.filter((p) => flowFor(p.slug));
   return (
     <section id="cli" className="mt-12 scroll-mt-16">
       <div className="text-center">
@@ -54,15 +52,6 @@ export function CanonCli() {
       <h3 className="mt-10 text-center text-h3 font-bold">What it is worth</h3>
       <Value
         extra={{
-          "Finds the bottleneck": measured.length > 0 && (
-            <>
-              Measured on {measured.length} of my products. See &ldquo;How it ships&rdquo; on{" "}
-              <Link href={`/products/${measured[0].slug}/`} className="text-link">
-                {measured[0].name}
-              </Link>
-              .
-            </>
-          ),
           "Weighs each decision": (
             <a href="#caught" className="text-link">
               Real verdicts below.
@@ -84,8 +73,12 @@ export function CanonCli() {
       </div>
 
       <div id="lifecycle" className="scroll-mt-16">
-        <h3 className="mt-10 text-center text-h3 font-bold">Across the whole lifecycle</h3>
-        <Lifecycle />
+        <h3 className="mt-10 text-center text-h3 font-bold">From problem to result</h3>
+        <p className="mx-auto mt-2 max-w-[52ch] text-center text-sm text-ink-3">The default stages. A person approves the marked ones.</p>
+        <StageMap
+          map={defaultMap}
+          note={<><b>Experiments</b> start at any stage. <b>A person can send a marked stage back.</b> Each repo can add, remove or rename stages.</>}
+        />
       </div>
 
       <div className="glass glow mt-10 p-5 text-center md:p-8">

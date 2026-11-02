@@ -6,7 +6,7 @@
   <title>Ritesh Firodiya — Project</title>
   <script src="../../shell.js"></script>
   <meta name="description" data-state="testing" content="A closed test: the doors are the test sign-ups, with the steps written out under them." />
-  <meta name="description" data-state="unreleased" content="Nothing built: no doors, no funnel, and a hatched slot for the write-up." />
+  <meta name="description" data-state="unreleased" content="Nothing built: no doors, its stages so far, and a hatched slot for the write-up." />
 </head>
 <body data-page="work/project" data-status="review" data-journeys="A project">
 
@@ -56,40 +56,69 @@
         <c-fact label="Privacy"><a data-state="data testing" href="../legal/policy.html" class="text-link" data-label="Privacy">Policy · delete account</a><span data-state="unreleased" class="text-ink-3">No app yet, no data</span></c-fact>
       </dl>
 
-      <!-- How it ships: drawn from the real flow.json of each product. The stages are the
-           product's own pipeline (canon pipeline); counts come from ~/git/bin/flow. -->
-      <section data-state="data testing" class="glass mt-3 p-4 md:p-5" aria-labelledby="funnel-h">
-        <div class="flex flex-wrap items-baseline justify-between gap-2"><h2 id="funnel-h" class="font-bold">How it ships</h2><p class="text-xs text-ink-3">As of 2026-10-27</p></div>
-        <p data-state="data" class="mt-1 text-sm text-ink-2">Every conversation I had with Claude about Chitragupt since 2026-10-02, and how far it got. Each counts at every stage up to the furthest it reached.</p>
-        <p data-state="testing" class="mt-1 text-sm text-ink-2">Every conversation I had with Claude about AskCal since 2026-09-26, and how far it got. Each counts at every stage up to the furthest it reached.</p>
-        <div data-state="data" class="funnel mt-4" style="--stages:9" role="img" aria-label="Chitragupt: 46 idea, 28 research, 26 plan, 26 design, 26 code, 25 review, 24 release, 7 deployed, 0 live"><div class="funnel-band" style="--a:100;--b:61"></div><div class="funnel-band" style="--a:61;--b:57"></div><div class="funnel-band" style="--a:57;--b:57"></div><div class="funnel-band" style="--a:57;--b:57"></div><div class="funnel-band" style="--a:57;--b:54"></div><div class="funnel-band" style="--a:54;--b:52"></div><div class="funnel-band" style="--a:52;--b:15"></div><div class="funnel-band" style="--a:15;--b:0"></div><div class="funnel-band funnel-band--wait" style="--a:0;--b:0"></div></div>
-        <div data-state="testing" class="funnel mt-4" style="--stages:9" role="img" aria-label="AskCal: 60 idea, 38 research, 36 plan, 36 design, 34 code, 22 review, 21 release, 0 store review, 0 live"><div class="funnel-band" style="--a:100;--b:63"></div><div class="funnel-band" style="--a:63;--b:60"></div><div class="funnel-band" style="--a:60;--b:60"></div><div class="funnel-band" style="--a:60;--b:57"></div><div class="funnel-band" style="--a:57;--b:37"></div><div class="funnel-band" style="--a:37;--b:35"></div><div class="funnel-band" style="--a:35;--b:0"></div><div class="funnel-band funnel-band--wait" style="--a:0;--b:0"></div><div class="funnel-band" style="--a:0;--b:0"></div></div>
-        <ol data-state="data" class="funnel-heads mt-2" style="--stages:9">
-          <c-funnel-stage n="46" label="Idea" what="a conversation started"></c-funnel-stage>
-          <c-funnel-stage n="28" label="Research" what="searched the web or filed research" share="61% · 2.7 h"></c-funnel-stage>
-          <c-funnel-stage n="26" label="Plan" what="a commit touched features, tasks or decisions" share="93% · 0.4 h"></c-funnel-stage>
-          <c-funnel-stage n="26" label="Design" what="a commit touched the design set" share="100% · 0 h"></c-funnel-stage>
-          <c-funnel-stage n="26" label="Code" what="a commit touched app code" share="100% · 0 h"></c-funnel-stage>
-          <c-funnel-stage n="25" label="Review" what="that commit is in a merged pull request" share="96% · 0 h"></c-funnel-stage>
-          <c-funnel-stage n="24" label="Release" what="that commit is in a version tag" share="96% · 4.1 days" slow></c-funnel-stage>
-          <c-funnel-stage n="7" label="Deployed" what="in the deployed web build" share="29% · —"></c-funnel-stage>
-          <c-funnel-stage n="0" label="Live" what="in the live version" share="0% · —" wait></c-funnel-stage>
-        </ol>
-        <ol data-state="testing" class="funnel-heads mt-2" style="--stages:9">
-          <c-funnel-stage n="60" label="Idea" what="a conversation started"></c-funnel-stage>
-          <c-funnel-stage n="38" label="Research" what="searched the web or filed research" share="63% · 1.6 h"></c-funnel-stage>
-          <c-funnel-stage n="36" label="Plan" what="a commit touched features, tasks or decisions" share="95% · 1.5 h"></c-funnel-stage>
-          <c-funnel-stage n="36" label="Design" what="a commit touched the design set" share="100% · 0 h"></c-funnel-stage>
-          <c-funnel-stage n="34" label="Code" what="a commit touched app code" share="94% · 0 h"></c-funnel-stage>
-          <c-funnel-stage n="22" label="Review" what="that commit is in a merged pull request" share="65% · 2.9 days" slow></c-funnel-stage>
-          <c-funnel-stage n="21" label="Release" what="that commit is in a version tag" share="95% · 0.5 h"></c-funnel-stage>
-          <c-funnel-stage n="0" label="Store review" what="in the version under store review" share="0% · —" wait></c-funnel-stage>
-          <c-funnel-stage n="0" label="Live" what="in the live version"></c-funnel-stage>
-        </ol>
-        <p data-state="data" class="mt-4 text-sm text-ink-2">Slowest step: <b class="text-ink">Review → Release</b>, median 4.1 days. Biggest drop: <b class="text-ink">Deployed → Live</b>, 7 to 0.</p>
-        <p data-state="testing" class="mt-4 text-sm text-ink-2">Slowest step: <b class="text-ink">Code → Review</b>, median 2.9 days. Biggest drop: <b class="text-ink">Release → Store review</b>, 21 to 0.</p>
-        <div class="mt-4 grid gap-4 border-t border-line pt-4 text-sm md:grid-cols-2">
-          <div><h3 class="text-xs font-semibold text-ink-3">Why nothing is live yet</h3><ul data-state="data" class="mt-1.5 grid gap-1 text-ink-2"><li><b class="font-semibold text-ink">Web</b> 0.1.0 · deployed, not launched</li></ul><ul data-state="testing" class="mt-1.5 grid gap-1 text-ink-2"><li><b class="font-semibold text-ink">Android</b> build 16 · with testers</li><li><b class="font-semibold text-ink">iOS</b> 1.4.3 · submitted 2026-10-27 · in store review</li></ul></div>
+      <!-- How it ships: the product's own stages (canon pipeline). A dashed stage has not started. Tap a count to open it.
+           Counts are the records in its .context folders. -->
+      <section class="glass mt-3 p-4 md:p-5" aria-labelledby="ships-h">
+        <h2 id="ships-h" class="font-bold">How it ships</h2>
+        <p data-state="data" class="mt-1 text-sm text-ink-2">The stages work on Chitragupt goes through. I approve at the marked ones and can send them back. A dashed stage has not started. Tap a count to open it.</p>
+        <p data-state="testing" class="mt-1 text-sm text-ink-2">The stages work on AskCal goes through. I approve at the marked ones and can send them back. A dashed stage has not started. Tap a count to open it.</p>
+        <p data-state="unreleased" class="mt-1 text-sm text-ink-2">The stages work on Seedha Ghar goes through. I approve at the marked ones and can send them back. A dashed stage has not started. Tap a count to open it.</p>
+        <div data-state="data"><ol class="stage-map mt-4" style="--ratio:1200/900" aria-label="Chitragupt: from Problem to Result, with forks">
+          <svg class="map-lines" viewBox="0 0 1200 900" aria-hidden="true"><path class="map-line map-line--think" d="M114 220 C171 220 171 220 229 220" /><path class="map-line map-line--think" d="M285 220 C343 220 343 100 401 100" /><path class="map-line map-line--think" d="M285 220 C343 220 343 220 401 220" /><path class="map-line map-line--problem" d="M285 220 C343 220 343 340 401 340" /><path class="map-line map-line--think" d="M457 100 C514 100 514 220 572 220" /><path class="map-line map-line--think" d="M457 220 C514 220 514 220 572 220" /><path class="map-line map-line--make" d="M628 220 C686 220 686 100 743 100" /><path class="map-line map-line--problem" d="M628 220 C686 220 686 340 743 340" /><path class="map-line map-line--make" d="M799 100 C857 100 857 100 915 100" /><path class="map-line map-line--make" d="M971 100 C1029 100 1029 220 1086 220" /><path class="map-line map-line--make" d="M799 340 C943 340 943 220 1086 220" /><path class="map-line map-line--make" d="M1142 220 C1212 220 1212 460 1114 460 L86 460 C-12 460 -12 690 58 690" /><path class="map-line map-line--ship" d="M114 690 C171 690 171 690 229 690" /><path class="map-line map-line--ship" d="M285 690 C343 690 343 570 401 570" /><path class="map-line map-line--ship" d="M285 690 C343 690 343 810 401 810" /><path class="map-line map-line--ship map-line--off" d="M457 570 C514 570 514 690 572 690" /><path class="map-line map-line--ship map-line--off" d="M457 810 C514 810 514 690 572 690" /><path class="map-line map-line--ship map-line--off" d="M628 690 C686 690 686 570 743 570" /><path class="map-line map-line--ship map-line--off" d="M799 570 C857 570 857 570 915 570" /><path class="map-line map-line--ship map-line--off" d="M628 690 C686 690 686 810 743 810" /><path class="map-line map-line--off" d="M771 68 C771 14 1114 14 1114 192" /><text class="map-edge" x="860" y="24">design is optional</text></svg>
+          <c-stage-node x="7.14" y="24.44" tone="problem" icon="circle-alert" label="Problem" what="what hurts" n="6" unit="problems"><li><b>5</b> being solved</li><li><b>1</b> open</li></c-stage-node>
+          <c-stage-node x="21.43" y="24.44" tone="think" icon="lightbulb" label="Idea" what="ways to solve it" n="8" unit="ideas"><li><b>3</b> accepted</li><li><b>1</b> draft</li><li><b>4</b> dropped</li></c-stage-node>
+          <c-stage-node x="35.71" y="24.44" tone="think" icon="search" label="Research" what="discoveries, findings"></c-stage-node>
+          <c-stage-node x="35.71" y="11.11" tone="think" icon="flask-conical" label="Experiment" what="try it, keep or discard" branch n="1" unit="experiment"><li><b>1</b> done</li></c-stage-node>
+          <c-stage-node x="35.71" y="37.78" tone="problem" icon="archive" label="Dropped" what="stays on file" branch n="4" unit="dropped"><li><b>4</b> ideas not taken</li></c-stage-node>
+          <c-stage-node x="50.00" y="24.44" tone="think" icon="list-checks" label="Plan" what="the approach" gate></c-stage-node>
+          <c-stage-node x="64.29" y="11.11" tone="make" icon="file-text" label="Feature" what="what gets built" n="19" unit="features"><li><b>9</b> shipped</li><li><b>5</b> building</li><li><b>4</b> planned</li><li><b>1</b> shelved</li></c-stage-node>
+          <c-stage-node x="78.57" y="11.11" tone="make" icon="pencil-ruler" label="Design" what="every screen, in HTML" gate branch></c-stage-node>
+          <c-stage-node x="64.29" y="37.78" tone="problem" icon="bug" label="Bug" what="what gets fixed" n="8" unit="bugs"><li><b>5</b> fixed</li><li><b>2</b> fixing</li><li><b>1</b> open</li></c-stage-node>
+          <c-stage-node x="92.86" y="24.44" tone="make" icon="code" label="Code" what="the build"></c-stage-node>
+          <c-stage-node x="7.14" y="76.67" tone="make" icon="git-pull-request" label="Review" what="a merged pull request" gate></c-stage-node>
+          <c-stage-node x="21.43" y="76.67" tone="ship" icon="tag" label="Release" what="a version"></c-stage-node>
+          <c-stage-node x="35.71" y="63.33" tone="ship" icon="monitor" label="Web" what="deployed, not launched" branch></c-stage-node>
+          <c-stage-node x="35.71" y="90.00" tone="ship" icon="smartphone" label="Android" what="internal testing" branch></c-stage-node>
+          <c-stage-node x="50.00" y="76.67" tone="ship" icon="globe" label="Live" what="anyone can use it" off></c-stage-node>
+          <c-stage-node x="64.29" y="63.33" tone="ship" icon="megaphone" label="Marketing" what="posts drafted" branch></c-stage-node>
+          <c-stage-node x="78.57" y="63.33" tone="ship" icon="clapperboard" label="Video" what="script, render, publish" off branch></c-stage-node>
+          <c-stage-node x="64.29" y="90.00" tone="ship" icon="activity" label="Result" what="did it work" off></c-stage-node>
+        </ol></div>
+        <div data-state="testing"><ol class="stage-map mt-4" style="--ratio:1200/900" aria-label="AskCal: from Problem to Result, with forks">
+          <svg class="map-lines" viewBox="0 0 1200 900" aria-hidden="true"><path class="map-line map-line--think" d="M114 220 C171 220 171 220 229 220" /><path class="map-line map-line--think" d="M285 220 C343 220 343 100 401 100" /><path class="map-line map-line--think" d="M285 220 C343 220 343 220 401 220" /><path class="map-line map-line--problem" d="M285 220 C343 220 343 340 401 340" /><path class="map-line map-line--think" d="M457 100 C514 100 514 220 572 220" /><path class="map-line map-line--think" d="M457 220 C514 220 514 220 572 220" /><path class="map-line map-line--make" d="M628 220 C686 220 686 100 743 100" /><path class="map-line map-line--problem" d="M628 220 C686 220 686 340 743 340" /><path class="map-line map-line--make" d="M799 100 C857 100 857 100 915 100" /><path class="map-line map-line--make" d="M971 100 C1029 100 1029 220 1086 220" /><path class="map-line map-line--make" d="M799 340 C943 340 943 220 1086 220" /><path class="map-line map-line--make" d="M1142 220 C1212 220 1212 460 1114 460 L86 460 C-12 460 -12 690 58 690" /><path class="map-line map-line--ship" d="M114 690 C171 690 171 690 229 690" /><path class="map-line map-line--ship" d="M285 690 C343 690 343 570 401 570" /><path class="map-line map-line--ship" d="M285 690 C343 690 343 810 401 810" /><path class="map-line map-line--ship map-line--off" d="M457 570 C514 570 514 690 572 690" /><path class="map-line map-line--ship" d="M457 810 C514 810 514 690 572 690" /><path class="map-line map-line--ship" d="M628 690 C686 690 686 570 743 570" /><path class="map-line map-line--ship" d="M799 570 C857 570 857 570 915 570" /><path class="map-line map-line--ship map-line--off" d="M628 690 C686 690 686 810 743 810" /><path class="map-line map-line--off" d="M771 68 C771 14 1114 14 1114 192" /><text class="map-edge" x="860" y="24">design is optional</text></svg>
+          <c-stage-node x="7.14" y="24.44" tone="problem" icon="circle-alert" label="Problem" what="what hurts" n="6" unit="problems"><li><b>3</b> solved</li><li><b>2</b> being solved</li><li><b>1</b> open</li></c-stage-node>
+          <c-stage-node x="21.43" y="24.44" tone="think" icon="lightbulb" label="Idea" what="ways to solve it" n="8" unit="ideas"><li><b>4</b> accepted</li><li><b>4</b> dropped</li></c-stage-node>
+          <c-stage-node x="35.71" y="24.44" tone="think" icon="search" label="Research" what="discoveries, findings"></c-stage-node>
+          <c-stage-node x="35.71" y="11.11" tone="think" icon="flask-conical" label="Experiment" what="try it, keep or discard" branch n="6" unit="experiments"><li><b>4</b> done</li><li><b>2</b> planned</li></c-stage-node>
+          <c-stage-node x="35.71" y="37.78" tone="problem" icon="archive" label="Dropped" what="stays on file" branch n="4" unit="dropped"><li><b>4</b> ideas not taken</li></c-stage-node>
+          <c-stage-node x="50.00" y="24.44" tone="think" icon="list-checks" label="Plan" what="the approach" gate></c-stage-node>
+          <c-stage-node x="64.29" y="11.11" tone="make" icon="file-text" label="Feature" what="what gets built" n="3" unit="features"><li><b>1</b> shipped</li><li><b>2</b> planned</li></c-stage-node>
+          <c-stage-node x="78.57" y="11.11" tone="make" icon="pencil-ruler" label="Design" what="every screen, in HTML" gate branch></c-stage-node>
+          <c-stage-node x="64.29" y="37.78" tone="problem" icon="bug" label="Bug" what="what gets fixed" n="8" unit="bugs"><li><b>7</b> fixed</li><li><b>1</b> open</li></c-stage-node>
+          <c-stage-node x="92.86" y="24.44" tone="make" icon="code" label="Code" what="the build"></c-stage-node>
+          <c-stage-node x="7.14" y="76.67" tone="make" icon="git-pull-request" label="Review" what="a merged pull request" gate></c-stage-node>
+          <c-stage-node x="21.43" y="76.67" tone="ship" icon="tag" label="Release" what="a version"></c-stage-node>
+          <c-stage-node x="35.71" y="63.33" tone="ship" icon="smartphone" label="iOS" what="in store review" branch></c-stage-node>
+          <c-stage-node x="35.71" y="90.00" tone="ship" icon="smartphone" label="Android" what="live · 1.4.4" branch></c-stage-node>
+          <c-stage-node x="50.00" y="76.67" tone="ship" icon="globe" label="Live" what="anyone can use it"></c-stage-node>
+          <c-stage-node x="64.29" y="63.33" tone="ship" icon="megaphone" label="Marketing" what="posts drafted" branch></c-stage-node>
+          <c-stage-node x="78.57" y="63.33" tone="ship" icon="clapperboard" label="Video" what="script, render, publish" branch></c-stage-node>
+          <c-stage-node x="64.29" y="90.00" tone="ship" icon="activity" label="Result" what="did it work" off></c-stage-node>
+        </ol></div>
+        <div data-state="unreleased"><ol class="stage-map mt-4" style="--ratio:1200/450" aria-label="Seedha Ghar: from Problem to Marketing, with forks">
+          <svg class="map-lines" viewBox="0 0 1200 450" aria-hidden="true"><path class="map-line map-line--think" d="M114 220 C171 220 171 220 229 220" /><path class="map-line map-line--think" d="M285 220 C343 220 343 100 401 100" /><path class="map-line map-line--think" d="M285 220 C343 220 343 220 401 220" /><path class="map-line map-line--problem" d="M285 220 C343 220 343 340 401 340" /><path class="map-line map-line--think" d="M457 100 C514 100 514 220 572 220" /><path class="map-line map-line--think" d="M457 220 C514 220 514 220 572 220" /><path class="map-line map-line--make" d="M628 220 C686 220 686 220 743 220" /><path class="map-line map-line--ship" d="M799 220 C857 220 857 220 915 220" /></svg>
+          <c-stage-node x="7.14" y="48.89" tone="problem" icon="circle-alert" label="Problem" what="what hurts" n="3" unit="problems"><li><b>1</b> solved</li><li><b>1</b> being solved</li><li><b>1</b> open</li></c-stage-node>
+          <c-stage-node x="21.43" y="48.89" tone="think" icon="lightbulb" label="Idea" what="ways to solve it" n="3" unit="ideas"><li><b>1</b> accepted</li><li><b>2</b> dropped</li></c-stage-node>
+          <c-stage-node x="35.71" y="48.89" tone="think" icon="search" label="Research" what="discoveries, findings"></c-stage-node>
+          <c-stage-node x="35.71" y="22.22" tone="think" icon="flask-conical" label="Experiment" what="try it, keep or discard" branch n="4" unit="experiments"><li><b>3</b> done</li><li><b>1</b> planned</li></c-stage-node>
+          <c-stage-node x="35.71" y="75.56" tone="problem" icon="archive" label="Dropped" what="stays on file" branch n="2" unit="dropped"><li><b>2</b> ideas not taken</li></c-stage-node>
+          <c-stage-node x="50.00" y="48.89" tone="think" icon="list-checks" label="Plan" what="the approach" gate n="2" unit="plans"><li><b>1</b> building</li><li><b>1</b> draft</li></c-stage-node>
+          <c-stage-node x="64.29" y="48.89" tone="make" icon="pencil-ruler" label="Design" what="every screen, in HTML" gate></c-stage-node>
+          <c-stage-node x="78.57" y="48.89" tone="ship" icon="megaphone" label="Marketing" what="posts drafted"></c-stage-node>
+        </ol></div>
+        <p class="map-legend mt-3"><span class="map-key map-key--problem">Problems</span><span class="map-key map-key--think">Thinking</span><span class="map-key map-key--make">Building</span><span class="map-key map-key--ship">Shipping</span></p>
+        <div data-state="data testing" class="mt-4 grid gap-4 border-t border-line pt-4 text-sm md:grid-cols-2">
+          <div><h3 class="text-xs font-semibold text-ink-3">Why nothing is live yet</h3><ul data-state="data" class="mt-1.5 grid gap-1 text-ink-2"><li><b class="font-semibold text-ink">Web</b> 0.1.0 · deployed, not launched</li></ul><ul data-state="testing" class="mt-1.5 grid gap-1 text-ink-2"><li><b class="font-semibold text-ink">Android</b> live · 1.4.4</li><li><b class="font-semibold text-ink">iOS</b> in store review · 1.4.4</li></ul></div>
           <div><h3 class="text-xs font-semibold text-ink-3">Next up</h3><p data-state="data" class="mt-1.5 text-ink-2">4 planned · 5 building · 1 shelved</p><p data-state="testing" class="mt-1.5 text-ink-2">2 planned</p></div>
         </div>
       </section>

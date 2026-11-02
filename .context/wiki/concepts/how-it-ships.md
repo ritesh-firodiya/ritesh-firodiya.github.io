@@ -1,16 +1,16 @@
 ---
-last-verified: 2026-10-30
+last-verified: 2026-11-02
 ---
 
 # how-it-ships
 
-**"How it ships" is derived, never typed.**
+**"How it ships" is derived, never typed.** `scripts/stages.mjs`, tested in `tests/stages.test.mjs`, builds the canvas during `pnpm sync`.
 
-- Its numbers are the product's `.context/metrics/flow.json`, which `canon flow` writes on the owner's machine from Claude transcripts and git (CI cannot read transcripts; counts and times only, never prompt text).
-- The stages are the product's own: the `pipeline:` in its `.context/context.yaml`, which `canon pipeline` resolves. Each has a one-line rule in canon-cli's `cli/src/flow/` and in `FLOW_STAGE` (`src/lib/flow.ts`).
-- Each step's share and median time, the slowest step and the biggest drop come from `scripts/flow.mjs`, tested in `tests/flow.test.mjs`.
-- To refresh, re-run `canon flow <product> --write` and commit the file in the product repo.
-- Below it, each surface's state and the feature counts come from `scripts/funnel.mjs` (`release.yml` and `features/` statuses; a `verified: false` block is skipped).
-- A product with no flow.json shows no section.
+- The stages are `pipelines.default` in the product's `.context/context.yaml`. The forks are fixed rules: idea to research, experiment or dropped; plan to feature or bug; design can be skipped; release to each surface; live to marketing (then video, if the repo has videos) and result.
+- The counts are the `status:` of each record in `problems/`, `ideas/`, `experiments/`, `plans/`, `features/` and `bugs/`. A tile opens to the count by status, never the titles: bug and problem titles can say more than a public page should (owner approved, 2026-11-02).
+- Surfaces come from `ops/release.yml`. **Live opens only when a surface is live there**, because `canon pipeline` counts Live as started when a support folder exists.
+- A dashed stage has nothing on disk yet. The Result stage stays dashed until a rule for it is written.
+- The canon page draws `DEFAULT_PIPELINE` with no counts.
+- A product not in `SETS` (`scripts/designs/sources.mjs`) has no canvas. Adding one needs `DESIGNS_TOKEN` to reach its repo, or the deploy stops.
 
 Related: [[project]], [[data-model]]

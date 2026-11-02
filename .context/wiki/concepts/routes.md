@@ -8,7 +8,7 @@ last-verified: 2026-10-30
 |---|---|
 | `/` | who (one line), then `#work` (a card per project) |
 | `/products/canon/` | canon, the private docs site: a product in `products.json` like the rest. Its page adds one section, `#cli`: canon-cli, the free CLI and plugin canon is built on (`src/components/canon-cli.tsx`, content in `src/lib/canon.ts`). canon-cli is never listed on its own |
-| `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, its funnel ("How it ships"), the write-up |
+| `/products/[slug]/` | one project: what it is, where to get it, its screens and wiki, its stage canvas ("How it ships"), the write-up |
 | `/products/[slug]/wiki/`, `…/wiki/[type]/[page]/` | that project's wiki |
 | `/products/[slug]/designs/` | forwards to that project's design journey (`/designs/<slug>/<size>/index.html`): a static file, not a route |
 | `/resume/` | the person |

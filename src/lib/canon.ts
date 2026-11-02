@@ -89,14 +89,3 @@ export const VERDICTS: Verdict[] = [
   },
 ];
 
-/** The product lifecycle, and what canon keeps at each stage. */
-export const LIFECYCLE = [
-  { stage: "Idea", icon: "lightbulb", keeps: "weighed against your principles" },
-  { stage: "Research", icon: "search", keeps: "filed, searchable" },
-  { stage: "Define", icon: "list-checks", keeps: "decisions the gate cites" },
-  { stage: "Design", icon: "pencil-ruler", keeps: "one design standard" },
-  { stage: "Build", icon: "hammer", keeps: "architecture rules checked" },
-  { stage: "Release", icon: "rocket", keeps: "irreversible steps flagged" },
-  { stage: "Market", icon: "megaphone", keeps: "one home for every price" },
-  { stage: "Operate", icon: "activity", keeps: "overrides teach the rules" },
-] as const;

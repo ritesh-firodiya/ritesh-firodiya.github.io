@@ -5,7 +5,7 @@
     {
       "slug": "askcal",
       "name": "AskCal",
-      "stageLabel": "In store review",
+      "stageLabel": "Live on Google Play",
       "shots": [
         "01-today",
         "05-meal",
@@ -46,12 +46,10 @@
           "note": "Mobile only — the scan runs on a server, but there is no web client"
         },
         "android": {
-          "state": "closed",
-          "label": "In Google Play review",
-          "url": null,
-          "note": "1.4.4 is in production review; the closed track stays open until it passes",
-          "testUrl": "https://play.google.com/apps/testing/com.riteshf.askcal",
-          "groupUrl": "https://groups.google.com/g/askcal-testers/about"
+          "state": "live",
+          "label": "Get it on Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.riteshf.askcal",
+          "note": ""
         },
         "ios": {
           "state": "closed",
@@ -61,7 +59,6 @@
           "testUrl": "https://testflight.apple.com/join/5VeKUcaj"
         }
       },
-      "unreleasedNote": "Not public yet. Version 1.4.4 is in review on Google Play and the App Store. Until then, both test tracks are open to anyone: join the tester group for Android, or the TestFlight for iPhone.",
       "stack": [
         "Expo",
         "React Native",
@@ -1031,6 +1028,52 @@
           "icon": "check",
           "title": "Paper-only by default",
           "body": "Live routing is gated behind a flag, deliberately."
+        }
+      ],
+      "permissions": [],
+      "screens": [],
+      "legal": {
+        "privacy": null,
+        "delete": null
+      },
+      "repo": null
+    },
+    {
+      "slug": "reel",
+      "name": "Reel",
+      "stageLabel": "In build",
+      "fullName": "Reel",
+      "tagline": "A script in, a video out.",
+      "blurb": "A video maker. Write a script as Markdown in a product's repo, and it renders a marketing or demo video there, with a voice, music and screens. The product keeps the script and the video; Reel holds only the engine.",
+      "sourceOfTruth": "products/reel",
+      "kind": "platform",
+      "model": "undecided",
+      "price": null,
+      "priceNote": null,
+      "modelDetail": "Internal. Not sold.",
+      "ads": "None",
+      "adSurfaces": [],
+      "offline": "Yes — it runs on your own machine",
+      "analytics": null,
+      "version": null,
+      "notBuilt": false,
+      "platforms": {},
+      "stack": [
+        "TypeScript",
+        "Remotion",
+        "Piper",
+        "ffmpeg"
+      ],
+      "features": [
+        {
+          "icon": "check",
+          "title": "A script in, a video out",
+          "body": "Title, screen, phone, clip and end scenes, in landscape or vertical."
+        },
+        {
+          "icon": "check",
+          "title": "Voice and music included",
+          "body": "A local voice reads each scene, and it makes original music with no licence to clear."
         }
       ],
       "permissions": [],

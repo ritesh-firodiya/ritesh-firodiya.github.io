@@ -11,9 +11,8 @@ import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
 import { architectureHref, architectureOf } from "@/lib/architecture";
 import { canonFor } from "@/lib/canon";
-import { funnelFor } from "@/lib/funnel";
-import { flowFor } from "@/lib/flow";
-import { Funnel } from "@/components/funnel";
+import { stagesFor } from "@/lib/stages";
+import { HowItShips } from "@/components/how-it-ships";
 import { CanonCli } from "@/components/canon-cli";
 
 export function generateStaticParams() {
@@ -155,8 +154,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       : [];
 
   const canon = canonFor(p.slug);
-  const funnel = funnelFor(p.slug);
-  const flow = flowFor(p.slug);
+  const stages = stagesFor(p.slug);
 
   return (
     <>
@@ -276,7 +274,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </dl>
 
-        {flow && <Funnel name={p.name} flow={flow} release={funnel} />}
+        {stages && <HowItShips name={p.name} stages={stages} />}
 
         <section className={`mt-3 grid gap-3 ${sections.length > 1 ? "md:grid-cols-2 lg:grid-cols-3" : ""}`}>
           {sections.length === 0 ? (

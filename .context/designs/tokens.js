@@ -26,6 +26,14 @@
         "900": {
           "$type": "color",
           "$value": "#2a1215"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#c92a2a"
+        },
+        "450": {
+          "$type": "color",
+          "$value": "#ff6b6b"
         }
       },
       "amber": {
@@ -52,6 +60,14 @@
         "900": {
           "$type": "color",
           "$value": "#241c0e"
+        },
+        "550": {
+          "$type": "color",
+          "$value": "#946c00"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#ffd43b"
         }
       },
       "green": {
@@ -78,6 +94,14 @@
         "900": {
           "$type": "color",
           "$value": "#10231a"
+        },
+        "605": {
+          "$type": "color",
+          "$value": "#2b8a3e"
+        },
+        "350": {
+          "$type": "color",
+          "$value": "#51cf66"
         }
       },
       "cyan": {
@@ -118,6 +142,14 @@
         "800": {
           "$type": "color",
           "$value": "#14355f"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#1971c2"
+        },
+        "350": {
+          "$type": "color",
+          "$value": "#4dabf7"
         }
       },
       "slate": {
@@ -799,6 +831,58 @@
         }
       },
       "$description": "Reserved, release state: designs only. Used for nothing else."
+    },
+    "stage-problem": {
+      "DEFAULT": {
+        "$type": "color",
+        "$value": "{color.palette.red.600}",
+        "$extensions": {
+          "dev.babul": {
+            "modes": {
+              "dark": "{color.palette.red.450}"
+            }
+          }
+        }
+      }
+    },
+    "stage-think": {
+      "DEFAULT": {
+        "$type": "color",
+        "$value": "{color.palette.amber.550}",
+        "$extensions": {
+          "dev.babul": {
+            "modes": {
+              "dark": "{color.palette.amber.200}"
+            }
+          }
+        }
+      }
+    },
+    "stage-make": {
+      "DEFAULT": {
+        "$type": "color",
+        "$value": "{color.palette.blue.600}",
+        "$extensions": {
+          "dev.babul": {
+            "modes": {
+              "dark": "{color.palette.blue.350}"
+            }
+          }
+        }
+      }
+    },
+    "stage-ship": {
+      "DEFAULT": {
+        "$type": "color",
+        "$value": "{color.palette.green.605}",
+        "$extensions": {
+          "dev.babul": {
+            "modes": {
+              "dark": "{color.palette.green.350}"
+            }
+          }
+        }
+      }
     }
   },
   "typography": {

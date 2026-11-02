@@ -64,11 +64,17 @@ const SPARSE = [
   ".context/listing/android/metadata/en-US/images",
   /* Read for the canon strip on each project page (modules and version); never published. */
   ".claude",
-  /* Read for the funnel on each project page (feature status, release state); never published. */
+  /* Read for "How it ships" on each project page (record statuses, release state); never published. */
   ".context/features",
   ".context/ops",
-  /* flow.json, the conversation flow ~/git/bin/flow writes; counts only. */
-  ".context/metrics",
+  ".context/problems",
+  ".context/ideas",
+  ".context/experiments",
+  ".context/plans",
+  ".context/bugs",
+  ".context/raw",
+  ".context/marketing",
+  ".context/videos",
 ];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git", "products");

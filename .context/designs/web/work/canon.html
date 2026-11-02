@@ -59,17 +59,26 @@
         </section>
 
         <section id="lifecycle" class="mt-20">
-          <h2 class="text-center text-h2 font-extrabold">Across the whole lifecycle</h2>
-          <ol class="pdlc mt-5 grid gap-4 md:grid-cols-8 md:gap-2">
-            <c-lifecycle-step icon="lightbulb" label="Idea" what="weighed against your principles"></c-lifecycle-step>
-            <c-lifecycle-step icon="search" label="Research" what="filed, searchable"></c-lifecycle-step>
-            <c-lifecycle-step icon="list-checks" label="Define" what="decisions the gate cites"></c-lifecycle-step>
-            <c-lifecycle-step icon="pencil-ruler" label="Design" what="one design standard"></c-lifecycle-step>
-            <c-lifecycle-step icon="hammer" label="Build" what="architecture rules checked"></c-lifecycle-step>
-            <c-lifecycle-step icon="rocket" label="Release" what="irreversible steps flagged"></c-lifecycle-step>
-            <c-lifecycle-step icon="megaphone" label="Market" what="one home for every price"></c-lifecycle-step>
-            <c-lifecycle-step icon="activity" label="Operate" what="overrides teach the rules"></c-lifecycle-step>
-          </ol>
+          <h2 class="text-center text-h2 font-extrabold">From problem to result</h2>
+          <p class="mx-auto mt-2 max-w-[52ch] text-center text-sm text-ink-3">The default stages. A person approves the marked ones.</p>
+          <ol class="stage-map mt-4" style="--ratio:1200/790" aria-label="The default stages: from Problem to Result, with forks">
+          <svg class="map-lines" viewBox="0 0 1200 790" aria-hidden="true"><path class="map-line map-line--think" d="M114 220 C171 220 171 220 229 220" /><path class="map-line map-line--think" d="M285 220 C343 220 343 100 401 100" /><path class="map-line map-line--think" d="M285 220 C343 220 343 220 401 220" /><path class="map-line map-line--problem" d="M285 220 C343 220 343 340 401 340" /><path class="map-line map-line--think" d="M457 100 C514 100 514 220 572 220" /><path class="map-line map-line--think" d="M457 220 C514 220 514 220 572 220" /><path class="map-line map-line--make" d="M628 220 C686 220 686 100 743 100" /><path class="map-line map-line--problem" d="M628 220 C686 220 686 340 743 340" /><path class="map-line map-line--make" d="M799 100 C857 100 857 100 915 100" /><path class="map-line map-line--make" d="M971 100 C1029 100 1029 220 1086 220" /><path class="map-line map-line--make" d="M799 340 C943 340 943 220 1086 220" /><path class="map-line map-line--make" d="M1142 220 C1212 220 1212 460 1114 460 L86 460 C-12 460 -12 690 58 690" /><path class="map-line map-line--ship" d="M114 690 C171 690 171 690 229 690" /><path class="map-line map-line--ship" d="M285 690 C343 690 343 690 401 690" /><path class="map-line map-line--off" d="M771 68 C771 14 1114 14 1114 192" /><text class="map-edge" x="860" y="24">design is optional</text></svg>
+          <c-stage-node x="7.14" y="27.85" tone="problem" icon="circle-alert" label="Problem" what="what hurts"></c-stage-node>
+          <c-stage-node x="21.43" y="27.85" tone="think" icon="lightbulb" label="Idea" what="ways to solve it"></c-stage-node>
+          <c-stage-node x="35.71" y="27.85" tone="think" icon="search" label="Research" what="discoveries, findings"></c-stage-node>
+          <c-stage-node x="35.71" y="12.66" tone="think" icon="flask-conical" label="Experiment" what="try it, keep or discard" branch></c-stage-node>
+          <c-stage-node x="35.71" y="43.04" tone="problem" icon="archive" label="Dropped" what="stays on file" branch></c-stage-node>
+          <c-stage-node x="50.00" y="27.85" tone="think" icon="list-checks" label="Plan" what="the approach" gate></c-stage-node>
+          <c-stage-node x="64.29" y="12.66" tone="make" icon="file-text" label="Feature" what="what gets built"></c-stage-node>
+          <c-stage-node x="78.57" y="12.66" tone="make" icon="pencil-ruler" label="Design" what="every screen, in HTML" gate branch></c-stage-node>
+          <c-stage-node x="64.29" y="43.04" tone="problem" icon="bug" label="Bug" what="what gets fixed"></c-stage-node>
+          <c-stage-node x="92.86" y="27.85" tone="make" icon="code" label="Code" what="the build"></c-stage-node>
+          <c-stage-node x="7.14" y="87.34" tone="make" icon="git-pull-request" label="Review" what="a merged pull request" gate></c-stage-node>
+          <c-stage-node x="21.43" y="87.34" tone="ship" icon="tag" label="Release" what="a version"></c-stage-node>
+          <c-stage-node x="35.71" y="87.34" tone="ship" icon="activity" label="Result" what="did it work"></c-stage-node>
+          <li class="map-note" style="--x:46;--y:87.34;--w:48%"><b>Experiments</b> start at any stage. <b>A person can send a marked stage back.</b> Each repo can add, remove or rename stages.</li>
+        </ol>
+          <p class="map-legend mt-3"><span class="map-key map-key--problem">Problems</span><span class="map-key map-key--think">Thinking</span><span class="map-key map-key--make">Building</span><span class="map-key map-key--ship">Shipping</span></p>
         </section>
 
         <section class="glass glow mt-12 p-5 text-center md:p-8">

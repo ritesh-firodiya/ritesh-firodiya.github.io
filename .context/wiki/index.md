@@ -6,7 +6,7 @@ One line per page. Rules: `canon standards` → `wiki-schema`.
 - [[architecture]] — One question per diagram: who uses it, how the site is built, what it relies on.
 - [[claims-and-facts]] — The six rules that exist because they were broken once.
 - [[data-model]] — `products.json`: its order and what each field does.
-- [[how-it-ships]] — The funnel section is derived from `flow.json` and `release.yml`.
+- [[how-it-ships]] — The stage canvas is derived from `context.yaml`, the records and `release.yml`.
 - [[legal-publisher]] — This repo alone publishes legal documents; the paths never change.
 - [[marketing]] — Marketing and measuring
 - [[nothing-copied]] — Product material is read at build time and never committed here.

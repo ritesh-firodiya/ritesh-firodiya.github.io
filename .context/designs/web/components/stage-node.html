@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ritesh Firodiya — StageNode</title>
+  <script src="../../shell.js" data-view="components"></script>
+<template><li class="map-node {tone=problem?map-node--problem} {tone=think?map-node--think} {tone=make?map-node--make} {tone=ship?map-node--ship} {off?map-node--off} {branch?map-node--branch}" style="--x:{x|50};--y:{y|50}"><details data-if="n" name="stage-map" class="map-open"><summary class="map-tile map-tile--count"><b class="map-n">{n}</b><span class="map-unit">{unit}</span><span data-if="gate" class="map-gate" title="A person approves"><i data-lucide="user-check" class="h-3 w-3"></i></span></summary><ul class="map-more"><slot></slot></ul></details><span data-if="!n" class="map-tile"><i data-lucide="{icon}" class="h-5 w-5"></i><span data-if="gate" class="map-gate" title="A person approves"><i data-lucide="user-check" class="h-3 w-3"></i></span></span><span class="map-words"><b class="block text-sm">{label}</b><span class="block text-xs text-ink-3">{what}</span></span></li></template>
+</head>
+<body data-component="stage-node" data-group="Content" data-source="src/components/stage-node.tsx">
+
+<div class="cells">
+  <ol class="w-[260px]"><c-stage-node tone="problem" icon="circle-alert" label="Problem" what="what hurts" n="6" unit="problems"><li><b>5</b> being solved</li><li><b>1</b> open</li></c-stage-node></ol>
+  <ol class="w-[260px]"><c-stage-node tone="think" icon="list-checks" label="Plan" what="the approach" gate></c-stage-node></ol>
+  <ol class="w-[260px]"><c-stage-node tone="make" icon="pencil-ruler" label="Design" what="every screen, in HTML" branch></c-stage-node></ol>
+  <ol class="w-[260px]"><c-stage-node tone="ship" icon="activity" label="Result" what="did it work" off></c-stage-node></ol>
+</div>
+
+</body>
+</html>

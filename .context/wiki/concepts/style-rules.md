@@ -17,6 +17,7 @@ last-verified: 2026-10-30
 - Role names, never hues. A theme is a **token remap**, never a `dark:` prefix.
 - The component classes (`.btn`, `.card`, `.state`, `.chip`, `.embed`) are the set's (`web/styles.css`), mirrored in `@layer components` so a utility beside one wins.
 - **Reserved colours: the release state** (`live`, `test`, `build`, `draft`). Used for nothing else.
+- **The stage canvas has its own four roles** (owner, 2026-11-02): `stage-problem` red, `stage-think` yellow, `stage-make` blue, `stage-ship` green. They colour stages only.
 - Icons are lucide.
 
 Related: [[site]], [[routes]]

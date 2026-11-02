@@ -10,7 +10,7 @@ last-verified: 2026-10-29
 
 **No price anywhere on the page.**
 
-**How it ships counts conversations, not features.** Every Claude conversation about the product, against the product's own stages (`pipeline:` in its `.context/context.yaml`); a conversation counts at every stage up to the furthest it reached. Warn marks the slowest step and the biggest drop. Numbers: [[how-it-ships]].
+**How it ships is a workflow canvas, not a funnel** (owner, 2026-11-02: the funnel is irrelevant now). Nodes are the product's own stages (`canon pipeline`), with its gates marked. A stage with records shows the count inside a stacked tile ("6 problems"); clicking opens the count by status, not the titles. It is not one line (owner, 2026-11-02): an idea forks to experiment, research or dropped; a plan to feature or bug; design can be skipped; a release forks by surface (`release.yml`); live forks to marketing, then video, and to result. Dashed means not started. Every state shows it, including unreleased. **Live follows `release.yml`, not `canon pipeline`**, which counts Chitragupt's Live as started because a support folder exists.
 
 **A closed Android test that admits a Google Group** needs both steps (join the group, then install from Play), because Play only lets group members opt in. The group button opens the group's `/about` page: the bare `/g/<group>` address is members-only, so a non-member had no way to join.
 

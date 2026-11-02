@@ -15,7 +15,7 @@
  *   node scripts/sync-context.mjs
  */
 import { mkdir, readdir, readFile, writeFile, rm, copyFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { join, basename, extname } from "node:path";
 import sharp from "sharp";
 import { marked } from "marked";
@@ -24,8 +24,7 @@ import { assertNoSecrets } from "./designs/secrets.mjs";
 import { architectureRedirect, publicArchitecture } from "./designs/public-architecture.mjs";
 import { escapeHtml, isSafeHref } from "./designs/html.mjs";
 import { parse as parseYaml } from "yaml";
-import { funnelOf, statusOf } from "./funnel.mjs";
-import { flowOf } from "./flow.mjs";
+import { DEFAULT_PIPELINE, shipStatus, stageMap, statusOf } from "./stages.mjs";
 
 const GEN = join(process.cwd(), "src", "data", "generated");
 const MEDIA = join(process.cwd(), "public", "media");
@@ -285,18 +284,27 @@ async function canonOf(root) {
 
 /* ── where each product's work stands ─────────────────────────────────────── */
 
-/* Its features' `status:` and its `ops/release.yml`. A product with neither
-   has no funnel, and its page shows none. A release.yml that does not parse
-   stops the sync: a funnel built on half a file would be a made-up number. */
-async function funnelFrom(slug, root) {
-  const dir = join(root, ".context", "features");
-  const files = existsSync(dir) ? (await readdir(dir)).filter((f) => /^\d+-.+\.md$/.test(f)) : [];
-  const features = [];
-  for (const f of files) {
-    const status = statusOf(await readFile(join(dir, f), "utf8"));
-    if (!status) console.warn(`  ${slug}: features/${f} has no status, left out of the funnel`);
-    else features.push({ slug: basename(f, ".md"), status });
-  }
+/* The statuses of every record of one kind. A record with no status counts as open. */
+async function statusesIn(root, kind) {
+  const dir = join(root, ".context", kind);
+  if (!existsSync(dir)) return [];
+  const files = (await readdir(dir)).filter((f) => f.endsWith(".md") && !/^(index|README)\.md$/.test(f));
+  return Promise.all(files.map(async (f) => statusOf(await readFile(join(dir, f), "utf8")) ?? "open"));
+}
+
+const hasFiles = (root, ...path) => {
+  const dir = join(root, ...path);
+  return existsSync(dir) && readdirSync(dir).length > 0;
+};
+
+/* A repo with no pipeline of its own has no canvas, and its page shows none. A
+   release.yml that does not parse stops the sync: a canvas built on half a file
+   would be a made-up state. */
+async function stagesFrom(slug, root) {
+  const config = join(root, ".context", "context.yaml");
+  if (!existsSync(config)) return null;
+  const pipeline = parseYaml(await readFile(config, "utf8"))?.pipelines?.default;
+  if (!pipeline?.length) return null;
   const file = join(root, ".context", "ops", "release.yml");
   let release = null;
   if (existsSync(file)) {
@@ -306,20 +314,20 @@ async function funnelFrom(slug, root) {
       throw new Error(`${slug}: .context/ops/release.yml does not parse — ${e.message}`);
     }
   }
-  if (features.length === 0 && !release) return null;
-  return funnelOf({ features, release });
-}
-
-/* The conversation flow, if the owner has run ~/git/bin/flow for this
-   product. A file that is there but malformed stops the sync. */
-async function flowFrom(slug, root) {
-  const file = join(root, ".context", "metrics", "flow.json");
-  if (!existsSync(file)) return null;
-  try {
-    return flowOf(JSON.parse(await readFile(file, "utf8")));
-  } catch (e) {
-    throw new Error(`${slug}: .context/metrics/flow.json — ${e.message}`);
-  }
+  const records = Object.fromEntries(
+    await Promise.all(["problems", "ideas", "experiments", "plans", "features", "bugs"].map(async (k) => [k, await statusesIn(root, k)])),
+  );
+  const out = records.features.some((s) => ["building", "shipped"].includes(s)) || Object.keys(release?.surfaces ?? {}).length > 0;
+  const started = {
+    research: hasFiles(root, ".context", "raw") || hasFiles(root, ".context", "wiki", "synthesis"),
+    design: hasFiles(root, ".context", "designs"),
+    code: out,
+    review: out,
+    release: out,
+    marketing: hasFiles(root, ".context", "marketing"),
+    video: hasFiles(root, ".context", "videos"),
+  };
+  return { map: stageMap({ pipeline, records, release, started }), status: shipStatus(release, records.features), asOf: release?.updated ? String(release.updated) : null };
 }
 
 /* ── run ────────────────────────────────────────────────────────────────── */
@@ -342,11 +350,10 @@ const media = {};
 const wiki = {};
 const context = {};
 const canon = {};
-const funnel = {};
-const flow = {};
+const stages = {};
 const architecture = {};
 
-/* A design set with no product (canon) lends its screens only: no wiki, art or funnel. */
+/* A design set with no product (canon) lends its screens only: no wiki, art or canvas. */
 const PRODUCTS = new Set(JSON.parse(await readFile("src/data/products.json", "utf8")).products.map((p) => p.slug));
 
 for (const [slug, source] of Object.entries(sets)) {
@@ -358,8 +365,8 @@ for (const [slug, source] of Object.entries(sets)) {
   context[slug] = contextOf(listTree(source));
   const z = await canonOf(source.root);
   if (z) canon[slug] = z;
-  const f = await funnelFrom(slug, source.root);
-  if (f) funnel[slug] = f;
+  const s = await stagesFrom(slug, source.root);
+  if (s) stages[slug] = s;
   const a = await architectureFrom(slug, source.root);
   if (a) {
     architecture[slug] = a;
@@ -368,8 +375,6 @@ for (const [slug, source] of Object.entries(sets)) {
       if (entry.isDirectory() && entry.name !== "assets") await writeFile(join(set, entry.name, "architecture.html"), architectureRedirect(slug));
     }
   }
-  const fl = await flowFrom(slug, source.root);
-  if (fl) flow[slug] = fl;
 }
 
 const header = { $comment: "GENERATED by scripts/sync-context.mjs from the private app repos. Do not hand-edit.", generatedOn: today };
@@ -378,8 +383,7 @@ await writeFile(join(GEN, "architecture.json"), JSON.stringify({ ...header, arch
 await writeFile(join(GEN, "wiki.json"), JSON.stringify({ ...header, wiki }, null, 2) + "\n");
 await writeFile(join(GEN, "context.json"), JSON.stringify({ ...header, context }, null, 2) + "\n");
 await writeFile(join(GEN, "canon.json"), JSON.stringify({ ...header, canon }, null, 2) + "\n");
-await writeFile(join(GEN, "funnel.json"), JSON.stringify({ ...header, funnel }, null, 2) + "\n");
-await writeFile(join(GEN, "flow.json"), JSON.stringify({ ...header, flow }, null, 2) + "\n");
+await writeFile(join(GEN, "stages.json"), JSON.stringify({ ...header, stages, defaultMap: stageMap({ pipeline: DEFAULT_PIPELINE, all: true }) }, null, 2) + "\n");
 
 const shots = Object.values(media).reduce((n, m) => n + m.shots.length, 0);
 const pages = Object.values(wiki).reduce((n, w) => n + w.total, 0);

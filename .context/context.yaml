@@ -10,3 +10,6 @@ modules:
   - knowledge
   - code
 
+features:
+  - process
+  - knowledge

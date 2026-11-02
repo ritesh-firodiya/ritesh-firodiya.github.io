@@ -524,6 +524,7 @@
   .map-node--off .map-tile { border-style: dashed; background: var(--color-page); opacity: .7; }
   .map-gate { position: absolute; right: -7px; top: -7px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 999px;
     background: var(--color-ink); color: var(--color-page); }
+  .map-rejected { display: block; font-size: var(--text-xs); font-weight: 600; color: var(--color-stage-problem); }
   .map-note { padding: 10px 12px; border-radius: 8px; border: 1px dashed var(--color-line-strong); font-size: var(--text-xs); color: var(--color-ink-2); background: var(--color-muted); position: relative; }
   .map-legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: var(--text-xs); color: var(--color-ink-3); }
   .map-key { display: inline-flex; align-items: center; gap: 6px; }

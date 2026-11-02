@@ -50,6 +50,7 @@ export function StageNode({ node, group }: { node: StageNodeData; group: string 
       <span className="map-words">
         <b className="block text-sm">{node.label}</b>
         <span className="block text-xs text-ink-3">{node.what}</span>
+        {node.rejected && <span className="map-rejected">{node.rejected} turned down</span>}
       </span>
     </li>
   );

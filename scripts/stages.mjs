@@ -105,9 +105,10 @@ function edgePath(a, b) {
  * @param records  statuses by kind: `{ problems: string[], ideas, experiments, plans, features, bugs }`
  * @param release  the parsed release.yml, or null
  * @param started  which undated stages have anything on disk: `{ research, design, code, review, release, marketing, video, result }`
+ * @param turnedDown owner rejections by stage id, from the history metrics
  * @param all      draw every stage as started, for the generic map on the canon page
  */
-export function stageMap({ pipeline, records = {}, release = null, started = {}, all = false }) {
+export function stageMap({ pipeline, records = {}, release = null, started = {}, turnedDown = {}, all = false }) {
   const has = new Set(pipeline.map((s) => s.id));
   const gate = (id) => pipeline.find((s) => s.id === id)?.gate ?? DEFAULT_GATES.has(id);
   const surfaces = surfacesOf(release);
@@ -135,6 +136,7 @@ export function stageMap({ pipeline, records = {}, release = null, started = {},
       gate: gate(id) && has.has(id),
       off: !all && !(extra.on ?? isOn[id]),
     };
+    if (!all && turnedDown[id]) node.rejected = turnedDown[id];
     if (!all && list[id]?.length) {
       node.n = list[id].length;
       node.unit = node.n === 1 && id !== "dropped" ? node.unit.slice(0, -1) : node.unit;
@@ -223,4 +225,29 @@ export function shipStatus(release, features) {
   const n = (st) => features.filter((f) => f === st).length;
   const next = [n("planned") && `${n("planned")} planned`, n("building") && `${n("building")} building`, n("shelved") && `${n("shelved")} shelved`].filter(Boolean);
   return { surfaces, next, anyLive: surfacesOf(release).some((s) => s.state?.live) };
+}
+
+/**
+ * `metrics/history/YYYY-MM.csv` (metric,period,value). `turned_down_<stage>` is
+ * monthly, so it sums. The rest are snapshots: the newest period wins.
+ */
+export function historyOf(csvTexts) {
+  const turnedDown = {};
+  const snapshot = {};
+  const period = {};
+  for (const text of csvTexts) {
+    for (const line of text.trim().split("\n").slice(1)) {
+      const [metric, at, value] = line.split(",");
+      const n = Number(value);
+      if (!metric || !Number.isFinite(n)) throw new Error(`bad metrics line: ${line}`);
+      if (metric.startsWith("turned_down_")) {
+        const stage = metric.slice("turned_down_".length);
+        turnedDown[stage] = (turnedDown[stage] ?? 0) + n;
+      } else if (!period[metric] || at > period[metric]) {
+        period[metric] = at;
+        snapshot[metric] = n;
+      }
+    }
+  }
+  return { turnedDown, snapshot };
 }

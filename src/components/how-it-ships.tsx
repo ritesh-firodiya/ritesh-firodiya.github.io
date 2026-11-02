@@ -1,6 +1,15 @@
 import { StageMap } from "@/components/stage-map";
 import type { Stages } from "@/lib/stages";
 
+const FACTS = [
+  { metric: "versions_total", label: "Versions cut" },
+  { metric: "ios_versions_approved", label: "iOS approved" },
+  { metric: "store_rejections_min", label: "Store rejections", min: true },
+  { metric: "reverted_total", label: "Decisions reverted" },
+  { metric: "experiments_discarded", label: "Experiments discarded" },
+  { metric: "features_shelved", label: "Features shelved" },
+];
+
 /** A product's own stages, and where each surface stands. */
 export function HowItShips({ name, stages }: { name: string; stages: Stages }) {
   const { surfaces, next, anyLive } = stages.status;
@@ -14,6 +23,22 @@ export function HowItShips({ name, stages }: { name: string; stages: Stages }) {
         The stages work on {name} goes through. I approve at the marked ones and can send them back. A dashed stage has not started. Tap a count to open it.
       </p>
       <StageMap map={stages.map} />
+      {stages.history && (
+        <>
+          <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4 text-sm md:grid-cols-6">
+            {FACTS.map((f) => {
+              const n = stages.history?.[f.metric] ?? 0;
+              return (
+                <div key={f.metric}>
+                  <dt className="text-xs text-ink-3">{f.label}</dt>
+                  <dd className="font-mono font-bold">{f.min && n > 0 ? `${n}+` : n}</dd>
+                </div>
+              );
+            })}
+          </dl>
+          <p className="mt-2 text-xs text-ink-3">Turned down: my chat since 2 Oct 2026, read and sampled by hand. Approximate, and a minimum. Store rejections are a minimum too.</p>
+        </>
+      )}
       {(surfaces.length > 0 || next.length > 0) && (
         <div className="mt-4 grid gap-4 border-t border-line pt-4 text-sm md:grid-cols-2">
           {surfaces.length > 0 && (

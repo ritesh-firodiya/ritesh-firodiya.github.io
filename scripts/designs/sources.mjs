@@ -75,6 +75,7 @@ const SPARSE = [
   ".context/raw",
   ".context/marketing",
   ".context/videos",
+  ".context/metrics",
 ];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git", "products");

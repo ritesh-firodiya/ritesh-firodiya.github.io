@@ -272,6 +272,7 @@ a.glass:hover { border-color: color-mix(in srgb, var(--brand-500) 55%, transpare
 .map-node--off .map-tile { border-style: dashed; background: var(--page); opacity: .7; }
 .map-gate { position: absolute; right: -7px; top: -7px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 999px;
   background: var(--ink); color: var(--page); }
+.map-rejected { display: block; font-size: var(--fs-xs); font-weight: 600; color: var(--stage-problem); }
 .map-note { padding: 10px 12px; border-radius: 8px; border: 1px dashed var(--line-strong); font-size: var(--fs-xs); color: var(--ink-2); background: var(--muted); position: relative; }
 .map-legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: var(--fs-xs); color: var(--ink-3); }
 .map-key { display: inline-flex; align-items: center; gap: 6px; }

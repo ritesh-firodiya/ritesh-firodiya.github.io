@@ -24,7 +24,7 @@ import { assertNoSecrets } from "./designs/secrets.mjs";
 import { architectureRedirect, publicArchitecture } from "./designs/public-architecture.mjs";
 import { escapeHtml, isSafeHref } from "./designs/html.mjs";
 import { parse as parseYaml } from "yaml";
-import { DEFAULT_PIPELINE, shipStatus, stageMap, statusOf } from "./stages.mjs";
+import { DEFAULT_PIPELINE, historyOf, shipStatus, stageMap, statusOf } from "./stages.mjs";
 
 const GEN = join(process.cwd(), "src", "data", "generated");
 const MEDIA = join(process.cwd(), "public", "media");
@@ -327,7 +327,10 @@ async function stagesFrom(slug, root) {
     marketing: hasFiles(root, ".context", "marketing"),
     video: hasFiles(root, ".context", "videos"),
   };
-  return { map: stageMap({ pipeline, records, release, started }), status: shipStatus(release, records.features), asOf: release?.updated ? String(release.updated) : null };
+  const historyDir = join(root, ".context", "metrics", "history");
+  const csvs = existsSync(historyDir) ? readdirSync(historyDir).filter((f) => f.endsWith(".csv")) : [];
+  const { turnedDown, snapshot } = historyOf(await Promise.all(csvs.map((f) => readFile(join(historyDir, f), "utf8"))));
+  return { map: stageMap({ pipeline, records, release, started, turnedDown }), status: shipStatus(release, records.features), history: csvs.length ? snapshot : null, asOf: release?.updated ? String(release.updated) : null };
 }
 
 /* ── run ────────────────────────────────────────────────────────────────── */

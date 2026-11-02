@@ -17,6 +17,7 @@ export interface StageNodeData {
   n?: number;
   unit?: string;
   counts?: { count: number; status: string }[];
+  rejected?: number;
 }
 
 export interface StageMapData {
@@ -30,6 +31,7 @@ export interface StageMapData {
 export interface Stages {
   map: StageMapData;
   status: { surfaces: { name: string; what: string }[]; next: string[]; anyLive: boolean };
+  history: Record<string, number> | null;
   asOf: string | null;
 }
 

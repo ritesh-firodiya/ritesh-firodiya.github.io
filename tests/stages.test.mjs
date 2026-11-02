@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { DEFAULT_PIPELINE, stageMap, shipStatus, statusOf } from "../scripts/stages.mjs";
+import { DEFAULT_PIPELINE, historyOf, stageMap, shipStatus, statusOf } from "../scripts/stages.mjs";
 
 const ids = (m) => m.nodes.map((n) => n.id);
 const node = (m, id) => m.nodes.find((n) => n.id === id);
@@ -62,4 +62,16 @@ test("the canon page's default map draws every stage as started, with the gates"
 test("the status lines name surfaces and what is next", () => {
   const s = shipStatus({ surfaces: { play: { live: "1.4.4" } } }, ["planned", "planned", "shipped"]);
   assert.deepEqual(s, { surfaces: [{ name: "Android", what: "live · 1.4.4" }], next: ["2 planned"], anyLive: true });
+});
+
+test("history: monthly rejections sum, snapshots take the newest month, a bad line stops the sync", () => {
+  const h = historyOf(["metric,period,value\nturned_down_design,2026-10,3\nversions_total,2026-10,5\n", "metric,period,value\nturned_down_design,2026-11,2\nversions_total,2026-11,9\n"]);
+  assert.deepEqual(h, { turnedDown: { design: 5 }, snapshot: { versions_total: 9 } });
+  assert.throws(() => historyOf(["metric,period,value\nversions_total,2026-11,x\n"]));
+});
+
+test("a stage shows its rejections", () => {
+  const m = stageMap({ pipeline: ALL, turnedDown: { design: 3 } });
+  assert.equal(node(m, "design").rejected, 3);
+  assert.equal(node(m, "code").rejected, undefined);
 });

@@ -16,7 +16,7 @@
  *   remote  `DESIGNS_TOKEN` is set → shallow, blobless, sparse clone of each
  *           repo at its default branch. This is what CI does. What ships is
  *           what is merged, never what happens to be on a laptop.
- *   local   otherwise → ~/git/<owner>/<repo>/.context/designs, so `pnpm dev`
+ *   local   otherwise → ~/git/[<org>/]<repo>/.context/designs, so `pnpm dev`
  *           works offline and a design can be previewed before it is pushed.
  *
  * Force either with DESIGNS_SOURCE=remote|local.
@@ -79,6 +79,8 @@ const SPARSE = [
 ];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
 const LOCAL_ROOT = join(homedir(), "git");
+/** Your own repos sit at ~/git/<repo>; org repos at ~/git/<org>/<repo>. */
+const localDir = (repo) => join(LOCAL_ROOT, repo.replace(/^ritesh-firodiya\//, ""));
 
 /* The empty extraheader clears any Authorization header a CI checkout left in
    the git config. With one set, git sends it instead of the token in the URL,
@@ -194,9 +196,9 @@ export function resolveSources() {
       if (!existsSync(r.dir)) { missing.push(`${slug} (${cfg.repo} has no ${SUBDIR})`); continue; }
       out[slug] = { ...r, origin: cfg.repo, mode };
     } else {
-      const dir = join(LOCAL_ROOT, cfg.repo, SUBDIR);
+      const dir = join(localDir(cfg.repo), SUBDIR);
       if (!existsSync(dir)) { missing.push(`${slug} (${dir})`); continue; }
-      out[slug] = { dir, root: join(LOCAL_ROOT, cfg.repo), sha: null, cached: false, origin: cfg.repo, mode };
+      out[slug] = { dir, root: localDir(cfg.repo), sha: null, cached: false, origin: cfg.repo, mode };
     }
   }
 
@@ -204,7 +206,7 @@ export function resolveSources() {
     throw new Error(
       `design sets not found (mode=${mode}):\n  ${missing.join("\n  ")}\n` +
         (mode === "local"
-          ? "Clone the app repos under ~/git/<owner>/, or set DESIGNS_TOKEN to pull them."
+          ? "Clone the app repos under ~/git, or set DESIGNS_TOKEN to pull them."
           : "Check the token's repository access."),
     );
   }
@@ -219,7 +221,7 @@ const CANON_CLI = { repo: "ritesh-firodiya/canon-cli" };
  * locally, a sparse clone of the default branch in CI.
  */
 export function resolveShell(mode) {
-  if (mode === "local") return join(LOCAL_ROOT, CANON_CLI.repo, "shell");
+  if (mode === "local") return join(localDir(CANON_CLI.repo), "shell");
   const dir = join(CACHE, "canon-cli");
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(CACHE, { recursive: true });

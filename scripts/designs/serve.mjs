@@ -3,12 +3,12 @@
  * Serve this site's design set for review.
  *
  * The screens use each product's own pictures and design screens, read straight
- * from ~/git/<owner>/, so the server root is ~/git rather than this repo. That
+ * from ~/git, so the server root is ~/git rather than this repo. That
  * tree also holds ~/git/local (credentials), so this serves an allow-list and
  * nothing else, and listens on localhost only.
  *
  *   node scripts/designs/serve.mjs
- *   → http://localhost:8845/ritesh-firodiya/ritesh-firodiya.github.io/.context/designs/web/index.html
+ *   → http://localhost:8845/ritesh-firodiya.github.io/.context/designs/web/index.html
  */
 import { createServer } from "node:http";
 import { readFile } from "node:fs";
@@ -18,8 +18,8 @@ import { homedir } from "node:os";
 const ROOT = join(homedir(), "git");
 const PORT = Number(process.env.PORT ?? 8845);
 const ALLOW = [
-  /^\/ritesh-firodiya\/ritesh-firodiya\.github\.io\/(\.context|public)\//,
-  /^\/(ritvi-apps\/[a-z-]+|ritesh-firodiya\/canon(-cli)?)\/\.context\/(designs|listing|wiki)\//,
+  /^\/ritesh-firodiya\.github\.io\/(\.context|public)\//,
+  /^\/(ritvi-apps\/[a-z-]+|canon(-cli)?)\/\.context\/(designs|listing|wiki)\//,
 ];
 const TYPES = {
   ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".md": "text/markdown",

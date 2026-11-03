@@ -8,7 +8,7 @@
  * gitignored: a public repo does not store private work, and a copy that has
  * to be refreshed by hand is a copy that is wrong. scripts/designs/sources.mjs
  * decides where each set comes from — a sparse clone of the private repo in
- * CI, the working copy under ~/git/products locally.
+ * CI, the working copy under ~/git/ritvi-apps locally.
  *
  * Each set is a Babul set (canon's design-sets standard): `design.js`,
  * `tokens.js`, `assets/`, and one folder per size. The shell reads everything
@@ -199,7 +199,7 @@ await writeFile(
   ) + "\n",
 );
 
-console.log(`source: ${mode}${mode === "remote" ? " (private repos, default branch)" : " (~/git/products)"}`);
+console.log(`source: ${mode}${mode === "remote" ? " (private repos, default branch)" : " (~/git/ritvi-apps)"}`);
 console.log(`\ndesign-sets conformance — canon's shell from ${shellDir}`);
 for (const [slug, c] of Object.entries(conformance)) {
   if (Object.keys(c.surfaces).length === 0) console.log(`  NONE  ${slug} (no size folder)`);

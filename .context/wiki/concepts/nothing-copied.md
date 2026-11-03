@@ -19,7 +19,7 @@ A design set, a wiki page, a screenshot and an icon each have **one home: the pr
 
 - `scripts/sync-designs.mjs` copies each Babul design set whole (`design.js`, `tokens.js`, `assets/`, `shell.js`, the size folders) and publishes canon's shell once at `/designs/_shell/` (canon-cli's working copy locally, a clone in CI), with the CDNs its `boot.js` names vendored. It **withholds any size that fails the gate** in `scripts/designs/conformance.mjs`: the files are there, `shell.js` is canon's loader, Tailwind and lucide are pinned, and canon's `scan.mjs` passes on the set. The reasons land in `designs.json` and the project page prints them. The screens list is that scan's pages and states.
 - `scripts/sync-context.mjs` does the wiki, the pictures and the canon config. Run it second: a wiki page about a screen links to that screen, and only the design manifest knows which screens were published.
-- `scripts/designs/sources.mjs` decides where a repo comes from: a sparse, blobless clone with `DESIGNS_TOKEN` in CI, `~/git/products/<repo>` locally.
+- `scripts/designs/sources.mjs` decides where a repo comes from: a sparse, blobless clone with `DESIGNS_TOKEN` in CI, `~/git/ritvi-apps/<repo>` locally.
 - `scripts/designs/secrets.mjs` scans every design screen and every wiki page for credential shapes and **stops the build on a hit**. These bytes come out of private repos onto a public host and nothing else looks at them.
 - `src/lib/generated.ts` reads the generated JSON off disk with a fallback, so a clean clone type-checks before the sync has run.
 

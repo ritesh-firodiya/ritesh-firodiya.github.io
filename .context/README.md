@@ -12,4 +12,4 @@ design set; everything else here is canon's, and the designs follow it.
 
 No picture is copied here: the pages read the site's `public/` (run `pnpm sync`
 for the store art) and other products' design sets beside this repo in
-`~/git/products/`.
+`~/git/ritvi-apps/`.

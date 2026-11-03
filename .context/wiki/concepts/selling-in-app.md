@@ -46,6 +46,6 @@ Lessons from charades, imposter, askcal, aakalan and chitragupt. Prices live in 
 27. **Play: BillDesk cross-border verification first**, or no subscription can be created.
 28. **Price every region.** A Draft product cannot be bought; one territory priced leaves the rest in Missing Metadata.
 29. **Apple subscription fields fail quietly**: 54-character description; a review screenshot per subscription, locked while in review.
-30. **The App Store description must link the Terms**, or subscriptions are auto-rejected under 3.1.2. The live legal host is named in `~/git/products/CLAUDE.md`.
+30. **The App Store description must link the Terms**, or subscriptions are auto-rejected under 3.1.2. The live legal host is named in `~/git/ritvi-apps/CLAUDE.md`.
 31. **Subscriptions go to review with the version, from the web UI only**: Add for Review on the group page, each subscription, then the version.
 32. **Never submit the version alone**: approval without purchases ships dead buy buttons.

@@ -16,7 +16,7 @@
  *   remote  `DESIGNS_TOKEN` is set → shallow, blobless, sparse clone of each
  *           repo at its default branch. This is what CI does. What ships is
  *           what is merged, never what happens to be on a laptop.
- *   local   otherwise → ~/git/products/<dir>/.context/designs, so `pnpm dev`
+ *   local   otherwise → ~/git/<owner>/<repo>/.context/designs, so `pnpm dev`
  *           works offline and a design can be previewed before it is pushed.
  *
  * Force either with DESIGNS_SOURCE=remote|local.
@@ -28,28 +28,28 @@ import { homedir } from "node:os";
 
 /** slug → the private repo that owns the set. Keys match products.json. */
 export const SETS = {
-  imposter: { repo: "ritvi-apps/imposter", local: "imposter" },
-  charades: { repo: "ritvi-apps/charades", local: "charades" },
-  aakalan: { repo: "ritvi-apps/aakalan", local: "aakalan" },
-  askcal: { repo: "ritvi-apps/askcal", local: "askcal" },
-  "tic-tac-toe": { repo: "ritvi-apps/tic-tac-toe", local: "tic-tac-toe" },
-  "plan-kid": { repo: "ritvi-apps/plan-kid", local: "plan-kid" },
-  "seedha-ghar": { repo: "ritvi-apps/seedha-ghar", local: "seedha-ghar" },
-  chitragupt: { repo: "ritvi-apps/chitragupt", local: "chitragupt" },
-  chess: { repo: "ritvi-apps/chess", local: "chess" },
-  "learning-platform": { repo: "ritvi-apps/learning-platform", local: "learning-platform" },
+  imposter: { repo: "ritvi-apps/imposter" },
+  charades: { repo: "ritvi-apps/charades" },
+  aakalan: { repo: "ritvi-apps/aakalan" },
+  askcal: { repo: "ritvi-apps/askcal" },
+  "tic-tac-toe": { repo: "ritvi-apps/tic-tac-toe" },
+  "plan-kid": { repo: "ritvi-apps/plan-kid" },
+  "seedha-ghar": { repo: "ritvi-apps/seedha-ghar" },
+  chitragupt: { repo: "ritvi-apps/chitragupt" },
+  chess: { repo: "ritvi-apps/chess" },
+  "learning-platform": { repo: "ritvi-apps/learning-platform" },
   /* Public repo: any token, or none, can read it. */
-  cooking: { repo: "ritvi-apps/cooking", local: "cooking" },
+  cooking: { repo: "ritvi-apps/cooking" },
   /* These three moved into ritvi-apps on 2026-10-04 and kept the read-only
      deploy keys they had under their old owners. DESIGNS_TOKEN is scoped to
      named repos and does not list them, so the key is still how each is read.
      The org setting "deploy keys" must stay enabled for this to work. */
-  scrvio: { repo: "ritvi-apps/scrvio", local: "scrvio", key: "DEPLOY_KEY_SCRVIO" },
-  babul: { repo: "ritvi-apps/babul", local: "babul", key: "DEPLOY_KEY_BABUL" },
-  dwarseva: { repo: "ritvi-apps/dwarseva", local: "dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
+  scrvio: { repo: "ritvi-apps/scrvio", key: "DEPLOY_KEY_SCRVIO" },
+  babul: { repo: "ritvi-apps/babul", key: "DEPLOY_KEY_BABUL" },
+  dwarseva: { repo: "ritvi-apps/dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
   /* canon is under the personal account, outside DESIGNS_TOKEN's org, so it is
      read with its own deploy key. */
-  canon: { repo: "ritesh-firodiya/canon", local: "canon", key: "DEPLOY_KEY_CANON" },
+  canon: { repo: "ritesh-firodiya/canon", key: "DEPLOY_KEY_CANON" },
 };
 
 const SUBDIR = ".context/designs";
@@ -78,7 +78,7 @@ const SPARSE = [
   ".context/metrics",
 ];
 const CACHE = join(process.cwd(), "node_modules", ".cache", "designs");
-const LOCAL_ROOT = join(homedir(), "git", "products");
+const LOCAL_ROOT = join(homedir(), "git");
 
 /* The empty extraheader clears any Authorization header a CI checkout left in
    the git config. With one set, git sends it instead of the token in the URL,
@@ -194,9 +194,9 @@ export function resolveSources() {
       if (!existsSync(r.dir)) { missing.push(`${slug} (${cfg.repo} has no ${SUBDIR})`); continue; }
       out[slug] = { ...r, origin: cfg.repo, mode };
     } else {
-      const dir = join(LOCAL_ROOT, cfg.local, SUBDIR);
+      const dir = join(LOCAL_ROOT, cfg.repo, SUBDIR);
       if (!existsSync(dir)) { missing.push(`${slug} (${dir})`); continue; }
-      out[slug] = { dir, root: join(LOCAL_ROOT, cfg.local), sha: null, cached: false, origin: cfg.local, mode };
+      out[slug] = { dir, root: join(LOCAL_ROOT, cfg.repo), sha: null, cached: false, origin: cfg.repo, mode };
     }
   }
 
@@ -204,7 +204,7 @@ export function resolveSources() {
     throw new Error(
       `design sets not found (mode=${mode}):\n  ${missing.join("\n  ")}\n` +
         (mode === "local"
-          ? "Clone the app repos under ~/git/products, or set DESIGNS_TOKEN to pull them."
+          ? "Clone the app repos under ~/git/<owner>/, or set DESIGNS_TOKEN to pull them."
           : "Check the token's repository access."),
     );
   }
@@ -212,14 +212,14 @@ export function resolveSources() {
 }
 
 /* canon-cli is public: its shell is read without a token. */
-const CANON_CLI = { repo: "ritesh-firodiya/canon-cli", local: "canon-cli" };
+const CANON_CLI = { repo: "ritesh-firodiya/canon-cli" };
 
 /**
  * The design shell every set loads, which lives in canon-cli: the working copy
  * locally, a sparse clone of the default branch in CI.
  */
 export function resolveShell(mode) {
-  if (mode === "local") return join(LOCAL_ROOT, CANON_CLI.local, "shell");
+  if (mode === "local") return join(LOCAL_ROOT, CANON_CLI.repo, "shell");
   const dir = join(CACHE, "canon-cli");
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(CACHE, { recursive: true });

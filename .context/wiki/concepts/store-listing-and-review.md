@@ -49,6 +49,6 @@ last-verified: 2026-10-27
 34. **Where the links come from.** Play: Test and release → Testing → the track → Testers → "Copy link"; stable per app and track. TestFlight: the External group → Enable Public Link. `imposter` wraps it: `pnpm tf:status`, `pnpm tf:add <email>`.
 
 ## Play API
-35. **One service account serves the Play account**, `play-service-account.json`, gitignored in each app and backed up under `local/secrets/products/<app>/`. On 2026-09-19 it could not reach chess or chitragupt (403); grant it per app under Users and permissions.
+35. **One service account serves the Play account**, `play-service-account.json`, gitignored in each app and backed up under `local/secrets/ritvi-apps/<app>/`. On 2026-09-19 it could not reach chess or chitragupt (403); grant it per app under Users and permissions.
 36. **Read a track without touching it**: open an edit, `GET .../edits/{id}/tracks`, then `DELETE` the edit. `askcal/scripts/play-upload-aab.py` already has the signing code (`token()`); reuse it.
 37. **Price subscriptions with `pricing:convertRegionPrices`**: pass back the `regionVersion` it returns ("Invalid currency for region code BG" means an old one), and create a subscription with at least one base plan in the same call.

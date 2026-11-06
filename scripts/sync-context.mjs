@@ -22,7 +22,7 @@ import { marked } from "marked";
 import { resolveSources, listTree } from "./designs/sources.mjs";
 import { assertNoSecrets } from "./designs/secrets.mjs";
 import { architectureRedirect, publicArchitecture } from "./designs/public-architecture.mjs";
-import { escapeHtml, isSafeHref } from "./designs/html.mjs";
+import { escapeHtml, isSafeHref, wikiSlugOf } from "./designs/html.mjs";
 import { parse as parseYaml } from "yaml";
 import { DEFAULT_PIPELINE, historyOf, shipStatus, stageMap, statusOf } from "./stages.mjs";
 
@@ -125,6 +125,14 @@ function summaryOf(body) {
    context is too; syncWiki sets it before each parse. */
 let page = null;
 
+/* A link to a page that exists; plain words where it does not — a link to
+   nothing is worse than no link. */
+function pageLink(target, text) {
+  if (!page.where.has(target) || target === page.slug) return text;
+  page.links.add(target);
+  return `<a href="/products/${page.product}/wiki/${page.where.get(target)}/${target}/">${text}</a>`;
+}
+
 marked.use({
   extensions: [
     {
@@ -139,11 +147,7 @@ marked.use({
       },
       renderer({ target, label }) {
         const text = escapeHtml(label ?? target);
-        /* A link to a page that exists; plain words where it does not — a
-           link to nothing is worse than no link. */
-        if (!page.where.has(target) || target === page.slug) return text;
-        page.links.add(target);
-        return `<a href="/products/${page.product}/wiki/${page.where.get(target)}/${target}/">${text}</a>`;
+        return pageLink(target, text);
       },
     },
   ],
@@ -157,7 +161,11 @@ marked.use({
       const text = this.parser.parseInline(tokens);
       /* A relative link pointed at a file in the product repo. There is no
          such file on this site, so the words stay and the link goes. */
-      if (!isSafeHref(href)) return text;
+      if (!isSafeHref(href)) {
+        /* A link to another page of the same wiki is a page on this site. */
+        const target = wikiSlugOf(href);
+        return target ? pageLink(target, text) : text;
+      }
       const outside = /^https?:/i.test(href);
       return `<a href="${escapeHtml(href)}"${outside ? ' rel="noopener"' : ""}>${text}</a>`;
     },
@@ -185,12 +193,15 @@ async function syncWiki(slug, root) {
   if (raw.length === 0) return null;
 
   /* What each page owns, in the wiki's own words: its index is a set of
-     `| [[page]] | what it owns |` rows. */
+     `- [page](type/page.md) — what it owns` lines. */
   const owns = {};
   if (existsSync(join(base, "index.md"))) {
     const index = await readFile(join(base, "index.md"), "utf8");
     assertNoSecrets(index, `${slug} wiki index.md`);
-    for (const row of index.matchAll(/^\|\s*\[\[([^\]|]+)\]\]\s*\|\s*([^|]+?)\s*\|/gm)) owns[row[1]] = plain(row[2]);
+    for (const row of index.matchAll(/^- \[[^\]]+\]\(([^)]+)\)\s*—\s*(.+)$/gm)) {
+      const target = wikiSlugOf(row[1]);
+      if (target) owns[target] = plain(row[2]);
+    }
   }
 
   /* [[page]] names a page by slug alone, so a slug used by two page types

@@ -8,7 +8,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { assertNoSecrets } from "../scripts/designs/secrets.mjs";
-import { escapeHtml, isSafeHref } from "../scripts/designs/html.mjs";
+import { escapeHtml, isSafeHref, wikiSlugOf } from "../scripts/designs/html.mjs";
 import { checkSet } from "../scripts/designs/conformance.mjs";
 import { architectureRedirect, publicArchitecture } from "../scripts/designs/public-architecture.mjs";
 
@@ -24,6 +24,13 @@ test("a vendor's documented example key is not a secret", () => {
 test("only links this site can honour survive", () => {
   for (const ok of ["https://example.com", "mailto:a@b.c", "#top", "/legal/"]) assert.ok(isSafeHref(ok), ok);
   for (const bad of ["//evil.com", "javascript:alert(1)", "../raw/notes.md", "data:text/html,x"]) assert.ok(!isSafeHref(bad), bad);
+});
+
+test("a relative link to a wiki page names that page", () => {
+  assert.equal(wikiSlugOf("../decisions/pricing.md"), "pricing");
+  assert.equal(wikiSlugOf("concepts/purpose.md#who"), "purpose");
+  assert.equal(wikiSlugOf("glossary.md"), "glossary");
+  for (const not of ["../../ops/run.md", "../raw/notes.txt", "https://x.com/a.md", "/legal/a.md"]) assert.equal(wikiSlugOf(not), null, not);
 });
 
 test("raw HTML in a wiki is shown as text", () => {

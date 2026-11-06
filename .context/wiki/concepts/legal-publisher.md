@@ -12,4 +12,4 @@ last-verified: 2026-10-30
 
 Chitragupt's old deletion path stays as a redirect, because the path must never move.
 
-Related: [[legal]], [[policy]]
+Related: [legal](../surfaces/legal.md), [policy](../surfaces/policy.md)

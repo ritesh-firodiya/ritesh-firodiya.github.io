@@ -15,4 +15,4 @@ Rules that exist because they were broken once. An earlier version claimed **"no
 
 Code and tests cite these by number ("CLAUDE.md rule 1"), so keep the numbers.
 
-Related: [[data-model]], [[site-tests]]
+Related: [data-model](data-model.md), [site-tests](site-tests.md)

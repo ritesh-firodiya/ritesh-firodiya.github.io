@@ -17,7 +17,7 @@ Not written down at the time.
 Not written down at the time.
 
 ## Result
-LAUNCH won and is live. The rejected looks are named in [[site]]; do not propose them again without new facts. Why each earlier look lost is only partly written down, in that page's owner reviews.
+LAUNCH won and is live. The rejected looks are named in [site](../wiki/decisions/site.md); do not propose them again without new facts. Why each earlier look lost is only partly written down, in that page's owner reviews.
 
 ## Evidence
 - 6e9a75c: first three directions.

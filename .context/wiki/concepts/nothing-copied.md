@@ -9,7 +9,7 @@ A design set, a wiki page, a screenshot and an icon each have **one home: the pr
 | What | Read from the product repo | Written here (gitignored) |
 |---|---|---|
 | Design sets | `.context/designs/` | `public/designs/`, `public/products/<slug>/designs/` |
-| Wiki | `.context/wiki/` | `src/data/generated/wiki/<slug>.json` |
+| Wiki | `.context/wiki/` | one JSON file per page in `src/data/generated/wiki/` (generated, not committed) |
 | Store art | `.context/listing/…/screenshots` | `public/media/<slug>/*.webp` |
 | Icon | `.context/designs/assets/icon.*` | `public/media/<slug>/icon.*` |
 | Stage counts | which `.context/` folders have files | `src/data/generated/context.json` |
@@ -27,4 +27,4 @@ A design set, a wiki page, a screenshot and an icon each have **one home: the pr
 
 A picture is the product's store art. A product with none can name one of its own design screens in `products.json` (`"embed": "web/tax/tax.html"`), and the page embeds it live, which is why Chitragupt follows the theme toggle.
 
-Related: [[site]], [[data-model]]. Secrets: `.context/ops/setup.md`
+Related: [site](../decisions/site.md), [data-model](data-model.md). Secrets: `.context/ops/setup.md`

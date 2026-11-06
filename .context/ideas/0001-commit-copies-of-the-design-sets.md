@@ -8,7 +8,7 @@ source: backfill
 # Commit copies of the design sets
 
 ## Summary
-Commit each product's design screens into this repo by hand-run sync. This is how the site first published them. It was dropped because nobody remembered to run the sync, and because a public repo was storing private work. Do not bring it back: [[nothing-copied]] is the rule now.
+Commit each product's design screens into this repo by hand-run sync. This is how the site first published them. It was dropped because nobody remembered to run the sync, and because a public repo was storing private work. Do not bring it back: [nothing-copied](../wiki/concepts/nothing-copied.md) is the rule now.
 
 ## Evidence
 - 4f665bf: the copies added.

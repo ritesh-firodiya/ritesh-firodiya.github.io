@@ -14,7 +14,7 @@ The site kept growing pages and words. One version had nine text pages with no p
 A reader had to work to reach the work. The first product sat at the fourth band of the home page.
 
 ## Expected
-The reader sees the work first, and no page explains itself. The current choice and what was rejected are in [[site]]. Removed pages forward, see [[routes]].
+The reader sees the work first, and no page explains itself. The current choice and what was rejected are in [site](../wiki/decisions/site.md). Removed pages forward, see [routes](../wiki/concepts/routes.md).
 
 ## Evidence
 - 4f665bf: the text pages removed, and the counts.

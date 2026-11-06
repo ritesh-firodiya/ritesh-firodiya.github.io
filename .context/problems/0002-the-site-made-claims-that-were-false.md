@@ -14,7 +14,7 @@ A page linked from live store listings made promises about every app, and two we
 Users and store reviewers read these pages. The claim breaks silently, because what breaks it lives in another repo. This false claim is the stated reason for the 2026 rebuild, not a wish for a new stack.
 
 ## Expected
-No claim is made for all apps, and facts have one home. The rules are in [[claims-and-facts]]; `tests/data.test.mjs` asserts them.
+No claim is made for all apps, and facts have one home. The rules are in [claims-and-facts](../wiki/concepts/claims-and-facts.md); `tests/data.test.mjs` asserts them.
 
 ## Evidence
 - 2047912: the claims and the rebuild.

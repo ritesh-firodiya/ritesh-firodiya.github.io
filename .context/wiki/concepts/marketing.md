@@ -18,4 +18,4 @@ last-verified: 2026-10-27
 
 ## Keeping numbers honest
 12. **A failed scrape is not "not ranked"**: record null, key every artefact by date, name what a total leaves out.
-13. **Define a metric before its first number** in `metrics/definitions.yml` (Play counts devices; many installs never open the app).
+13. **Define a metric before its first number** in the product's `.context/metrics/definitions.yml` (Play counts devices; many installs never open the app).

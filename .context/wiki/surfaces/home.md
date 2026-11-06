@@ -10,4 +10,4 @@ last-verified: 2026-10-29
 
 **The see-through panel costs text contrast over a dark picture** (owner's choice, 2026-10-12), which is why the counts use `ink-2`.
 
-**No pipeline and no canon verdicts here.** Each product shows its own pipeline on its project page; the verdicts live on [[canon]] only.
+**No pipeline here.** Each product shows its own pipeline on its project page.

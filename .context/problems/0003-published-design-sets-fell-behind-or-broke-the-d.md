@@ -16,7 +16,7 @@ The site shows each product's design screens, which live in private repos. Each 
 - While a deploy stayed red, the live site kept serving an old build.
 
 ## Expected
-What ships is what is merged, and a set that fails its checks is withheld with a stated reason. A dead token stops the deploy instead of publishing a site with holes. The token dependence was accepted on purpose (dac1b41). See [[nothing-copied]] and `.context/ops/runbooks/deploy.md`. The token's renewal is T027 in `tasks.md`.
+What ships is what is merged, and a set that fails its checks is withheld with a stated reason. A dead token stops the deploy instead of publishing a site with holes. The token dependence was accepted on purpose (dac1b41). See [nothing-copied](../wiki/concepts/nothing-copied.md) and `.context/ops/runbooks/deploy.md`. The token's renewal is T027 in `tasks.md`.
 
 ## Evidence
 - 2fecaa5: copies removed, the counts, and the red deploy.

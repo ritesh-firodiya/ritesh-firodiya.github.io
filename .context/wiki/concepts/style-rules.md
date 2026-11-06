@@ -15,9 +15,9 @@ last-verified: 2026-10-30
 **The theme.** `src/app/globals.css` holds it in a Tailwind v4 `@theme` block, in step with the set's `tokens.js`: same role names, same values.
 
 - Role names, never hues. A theme is a **token remap**, never a `dark:` prefix.
-- The component classes (`.btn`, `.card`, `.state`, `.chip`, `.embed`) are the set's (`web/styles.css`), mirrored in `@layer components` so a utility beside one wins.
+- The component classes (`.btn`, `.card`, `.state`, `.chip`, `.embed`) are the set's (`.context/designs/web/styles.css`), mirrored in `@layer components` so a utility beside one wins.
 - **Reserved colours: the release state** (`live`, `test`, `build`, `draft`). Used for nothing else.
 - **The stage canvas has its own four roles** (owner, 2026-11-02): `stage-problem` red, `stage-think` yellow, `stage-make` blue, `stage-ship` green. They colour stages only.
 - Icons are lucide.
 
-Related: [[site]], [[routes]]
+Related: [site](../decisions/site.md), [routes](routes.md)

@@ -8,7 +8,7 @@ Store screenshots are captured from the running app by goldie, framed in the hou
 
 ## Steps
 1. **Find what makes two runs differ**: randomness, the clock, the network, ads, store SDKs, anything read from disk.
-2. **`src/config/seams.ts` holds each difference as a plain default; `seams.screenshot.ts` beside it holds the capture value.** Copy the swap from any app's `metro.config.js` (under `EXPO_PUBLIC_SCREENSHOT_MODE=1`, `@/a/b` resolves to `src/a/b.screenshot.ts`) and copy `seams.test.ts`, which asserts the flag is in no `eas.json`, `.env*` or `app.config.ts` and that no app file reads it.
+2. **An app's src/config/seams.ts holds each difference as a plain default; seams.screenshot.ts beside it holds the capture value.** Copy the swap from any app's `metro.config.js` (under `EXPO_PUBLIC_SCREENSHOT_MODE=1`, an import of `@/x` resolves to its `.screenshot.ts` twin) and copy `seams.test.ts`, which asserts the flag is in no `eas.json`, `.env*` or `app.config.ts` and that no app file reads it.
 3. **App code never reads the flag.** Capture-only branches ship dead in every binary; App Review rejected imposter 1.0.3 under 5.6 for that.
 4. **One seam per difference**, always including a separate storage id. To swap a whole function, `x.screenshot.ts` can `export * from "./x"` and replace one export. Import swapped modules as `@/…`, and keep variants out of `src/app/`. Prefer a deterministic app to seeded state; stop the clock, not just the data.
 5. **Copy the shared scripts** and add the three `listing:*` commands.

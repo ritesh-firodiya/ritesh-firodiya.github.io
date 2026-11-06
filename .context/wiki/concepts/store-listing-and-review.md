@@ -5,7 +5,7 @@ last-verified: 2026-10-27
 # Store listings, review and testers
 
 ## Listing text
-1. **One authored file, generated outputs.** `listing/listing.md` → `scripts/listing-from-md.mjs`, which checks every cap. Leaf names are fastlane's.
+1. **One authored file, generated outputs.** an app's `listing/listing.md` → its scripts/listing-from-md.mjs, which checks every cap. Leaf names are fastlane's.
 2. **Pull before you push**; the live listing and the repo drift both ways.
 3. **Read which version deliver writes to**; it uploads to whichever is editable, rejected records included. A version waiting for review is locked.
 4. **Every word is true of the shipped app.** Keep a "Do not claim" list.
@@ -22,7 +22,7 @@ last-verified: 2026-10-27
 11. **Copy the age rating from the live record**; Apple adds questions.
 12. **Play's content rating counts AI output**, and Play declarations are console-only; `400 FAILED_PRECONDITION` on promote is a refusal, not a missing step.
 13. **Reviewers need a working account and a deletion page that opens without signing in.**
-14. **Privacy answers come from the code**; `legal/declaration.yml` is the one source.
+14. **Privacy answers come from the code**; each app's legal/declaration.yml is the one source.
 
 ## App Review
 15. **A new account gets a 2.1 information request.** Put a real-device recording, purpose, setup, services and a purchase walkthrough in the review notes up front.
@@ -41,7 +41,7 @@ last-verified: 2026-10-27
 26. **Email lists and Google Groups are a radio, not a checkbox**: switching drops everyone on the other.
 27. **TestFlight's public link serves the External group's build**, and a build joins no group by itself.
 28. **Testers cannot test a paywall with no products**; say so in the notes.
-29. **When the EAS quota is spent, build Android locally** with `scripts/release-android.mjs` (upload key, channel, version code, Gradle memory).
+29. **When the EAS quota is spent, build Android locally** with the app's scripts/release-android.mjs (upload key, channel, version code, Gradle memory).
 30. **A native change cannot ship as an OTA**, and an OTA reaches only installs on the same version.
 31. **"Live" is read from a console, not assumed.**
 32. **Tester links live in the portfolio's `products.json`** (`testUrl`, `groupUrl`) and show on each product page. Send that page, not a copied list.
@@ -50,5 +50,5 @@ last-verified: 2026-10-27
 
 ## Play API
 35. **One service account serves the Play account**, `play-service-account.json`, gitignored in each app and backed up under `local/secrets/ritvi-apps/<app>/`. On 2026-09-19 it could not reach chess or chitragupt (403); grant it per app under Users and permissions.
-36. **Read a track without touching it**: open an edit, `GET .../edits/{id}/tracks`, then `DELETE` the edit. `askcal/scripts/play-upload-aab.py` already has the signing code (`token()`); reuse it.
+36. **Read a track without touching it**: open an edit, `GET .../edits/{id}/tracks`, then `DELETE` the edit. askcal's scripts/play-upload-aab.py already has the signing code (`token()`); reuse it.
 37. **Price subscriptions with `pricing:convertRegionPrices`**: pass back the `regionVersion` it returns ("Invalid currency for region code BG" means an old one), and create a subscription with at least one base plan in the same call.

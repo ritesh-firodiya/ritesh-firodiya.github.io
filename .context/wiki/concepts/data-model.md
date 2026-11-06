@@ -17,4 +17,4 @@ last-verified: 2026-10-30
 - `src/data/profile.json` drives the home page and the résumé.
 - `verifiedOn` is the date a human last checked every row. The tests fail once it is 30 days old. Check the **stores** and each product's `.context/ops/release.yml`, not memory.
 
-Related: [[how-it-ships]], [[claims-and-facts]], [[nothing-copied]]
+Related: [how-it-ships](how-it-ships.md), [claims-and-facts](claims-and-facts.md), [nothing-copied](nothing-copied.md)

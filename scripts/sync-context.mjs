@@ -24,7 +24,7 @@ import { assertNoSecrets } from "./designs/secrets.mjs";
 import { architectureRedirect, publicArchitecture } from "./designs/public-architecture.mjs";
 import { escapeHtml, isSafeHref, wikiSlugOf } from "./designs/html.mjs";
 import { parse as parseYaml } from "yaml";
-import { DEFAULT_PIPELINE, historyOf, shipStatus, stageMap, statusOf } from "./stages.mjs";
+import { historyOf, shipStatus, stageMap, statusOf } from "./stages.mjs";
 
 const GEN = join(process.cwd(), "src", "data", "generated");
 const MEDIA = join(process.cwd(), "public", "media");
@@ -397,7 +397,7 @@ await writeFile(join(GEN, "architecture.json"), JSON.stringify({ ...header, arch
 await writeFile(join(GEN, "wiki.json"), JSON.stringify({ ...header, wiki }, null, 2) + "\n");
 await writeFile(join(GEN, "context.json"), JSON.stringify({ ...header, context }, null, 2) + "\n");
 await writeFile(join(GEN, "canon.json"), JSON.stringify({ ...header, canon }, null, 2) + "\n");
-await writeFile(join(GEN, "stages.json"), JSON.stringify({ ...header, stages, defaultMap: stageMap({ pipeline: DEFAULT_PIPELINE, all: true }) }, null, 2) + "\n");
+await writeFile(join(GEN, "stages.json"), JSON.stringify({ ...header, stages }, null, 2) + "\n");
 
 const shots = Object.values(media).reduce((n, m) => n + m.shots.length, 0);
 const pages = Object.values(wiki).reduce((n, w) => n + w.total, 0);

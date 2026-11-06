@@ -6,7 +6,7 @@ import { Chips } from "@/components/ui";
 import { profile } from "@/lib/profile";
 import { gmailCompose } from "@/lib/mail";
 import { products, stageCounts } from "@/lib/products";
-import { canonFor } from "@/lib/canon";
+import { canonFor, CANON_REPO } from "@/lib/canon";
 
 export const metadata: Metadata = {
   title: "Résumé",
@@ -48,7 +48,7 @@ export default function ResumePage() {
         <p className="mt-4 max-w-[90ch] text-body text-ink-2">{profile.summary}</p>
 
         <section className="no-print mt-5 grid gap-3 md:grid-cols-2" aria-label="Own work">
-          <Link href="/products/canon/#cli" className="glass glow p-4">
+          <a href={CANON_REPO} className="glass glow p-4">
             <p className="eyebrow">Open source · 2026</p>
             <h2 className="mt-1 text-body font-bold">
               canon-cli <span className="font-semibold text-brand-500">· Claude Code plugin + CLI</span>
@@ -62,7 +62,7 @@ export default function ResumePage() {
                 <span key={x} className="chip">{x}</span>
               ))}
             </p>
-          </Link>
+          </a>
           <Link href="/#work" className="glass p-4">
             <p className="eyebrow">Hobby side projects</p>
             <h2 className="mt-1 text-body font-bold">{products.length} products, idea to store</h2>

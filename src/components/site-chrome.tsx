@@ -5,11 +5,10 @@ import { profile } from "@/lib/profile";
 import { gmailCompose } from "@/lib/mail";
 import { CANON_REPO } from "@/lib/canon";
 
-export type NavKey = "work" | "canon";
+export type NavKey = "work";
 
 const NAV: { key: NavKey; label: string; href: string }[] = [
   { key: "work", label: "Projects", href: "/#work" },
-  { key: "canon", label: "canon", href: "/products/canon/" },
 ];
 
 export function SiteHeader({ on }: { on?: NavKey }) {

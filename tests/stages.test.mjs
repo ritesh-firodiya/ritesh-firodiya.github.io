@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { DEFAULT_PIPELINE, historyOf, stageMap, shipStatus, statusOf } from "../scripts/stages.mjs";
+import { historyOf, stageMap, shipStatus, statusOf } from "../scripts/stages.mjs";
 
 const ids = (m) => m.nodes.map((n) => n.id);
 const node = (m, id) => m.nodes.find((n) => n.id === id);
@@ -51,12 +51,6 @@ test("a design-only pipeline has no code stage, no bug, one row", () => {
 test("an unverified surface is ignored", () => {
   const m = stageMap({ pipeline: ALL, release: { surfaces: { play: { verified: false, live: "1" } } } });
   assert.equal(node(m, "surface-play"), undefined);
-});
-
-test("the canon page's default map draws every stage as started, with the gates", () => {
-  const m = stageMap({ pipeline: DEFAULT_PIPELINE, all: true });
-  assert.ok(m.nodes.every((n) => !n.off));
-  assert.deepEqual(m.nodes.filter((n) => n.gate).map((n) => n.id), ["plan", "design", "review"]);
 });
 
 test("the status lines name surfaces and what is next", () => {

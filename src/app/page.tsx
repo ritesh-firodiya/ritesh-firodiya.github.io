@@ -13,7 +13,7 @@ import { profile } from "@/lib/profile";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 /* Two parts: who, then work (2026-10-27). The order of products.json is the
-   running order: the first row is AskCal, Babul, canon, Chitragupt. Every
+   running order: the first row is AskCal, Babul, Chitragupt, Imposter. Every
    project is the same card, picture first. Each product's stages are on its own page, not here. */
 function Card({ href, picture, name, state, tagline }: { href: string; picture: ReactNode; name: string; state: ReactNode; tagline: string }) {
   return (

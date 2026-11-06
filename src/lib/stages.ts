@@ -35,10 +35,6 @@ export interface Stages {
   asOf: string | null;
 }
 
-const file = generated<{ stages: Record<string, Stages>; defaultMap: StageMapData }>("stages.json", {
-  stages: {},
-  defaultMap: { width: 1200, height: 450, lines: [], label: null, nodes: [] },
-});
+const file = generated<{ stages: Record<string, Stages> }>("stages.json", { stages: {} });
 
 export const stagesFor = (slug: string): Stages | null => file.stages[slug] ?? null;
-export const defaultMap = file.defaultMap;

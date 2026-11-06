@@ -33,12 +33,6 @@ const STAGES = {
   result: { label: "Result", icon: "activity", what: "did it work", tone: "ship" },
 };
 
-/** The stages canon's default flow has, for the canon page. */
-export const DEFAULT_PIPELINE = [
-  { id: "problem" }, { id: "idea" }, { id: "research" }, { id: "plan", gate: true }, { id: "feature" },
-  { id: "design", gate: true, optional: true }, { id: "code" }, { id: "review", gate: true }, { id: "release" }, { id: "result" },
-];
-
 /** canon's stages that default to a person's approval, when a repo does not say. */
 const DEFAULT_GATES = new Set(["plan", "design", "review"]);
 
@@ -106,9 +100,8 @@ function edgePath(a, b) {
  * @param release  the parsed release.yml, or null
  * @param started  which undated stages have anything on disk: `{ research, design, code, review, release, marketing, video, result }`
  * @param turnedDown owner rejections by stage id, from the history metrics
- * @param all      draw every stage as started, for the generic map on the canon page
  */
-export function stageMap({ pipeline, records = {}, release = null, started = {}, turnedDown = {}, all = false }) {
+export function stageMap({ pipeline, records = {}, release = null, started = {}, turnedDown = {} }) {
   const has = new Set(pipeline.map((s) => s.id));
   const gate = (id) => pipeline.find((s) => s.id === id)?.gate ?? DEFAULT_GATES.has(id);
   const surfaces = surfacesOf(release);
@@ -134,10 +127,10 @@ export function stageMap({ pipeline, records = {}, release = null, started = {},
       y: LANES[lane] + row * SECOND_ROW,
       lane,
       gate: gate(id) && has.has(id),
-      off: !all && !(extra.on ?? isOn[id]),
+      off: !(extra.on ?? isOn[id]),
     };
-    if (!all && turnedDown[id]) node.rejected = turnedDown[id];
-    if (!all && list[id]?.length) {
+    if (turnedDown[id]) node.rejected = turnedDown[id];
+    if (list[id]?.length) {
       node.n = list[id].length;
       node.unit = node.n === 1 && id !== "dropped" ? node.unit.slice(0, -1) : node.unit;
       node.counts = id === "dropped" ? [{ count: node.n, status: "ideas not taken" }] : breakdown(list[id]);

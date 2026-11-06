@@ -47,9 +47,6 @@ export const SETS = {
   scrvio: { repo: "ritvi-apps/scrvio", key: "DEPLOY_KEY_SCRVIO" },
   babul: { repo: "ritvi-apps/babul", key: "DEPLOY_KEY_BABUL" },
   dwarseva: { repo: "ritvi-apps/dwarseva", key: "DEPLOY_KEY_DWARSEVA" },
-  /* canon is under the personal account, outside DESIGNS_TOKEN's org, so it is
-     read with its own deploy key. */
-  canon: { repo: "ritesh-firodiya/canon", key: "DEPLOY_KEY_CANON" },
 };
 
 const SUBDIR = ".context/designs";

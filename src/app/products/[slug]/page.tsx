@@ -10,10 +10,9 @@ import { products, bySlug, mediaFor, galleriesFor, screensFor, withheldFor, type
 import { studyBySlug } from "@/lib/case-studies";
 import { wikiOf, wikiHref } from "@/lib/wiki";
 import { architectureHref, architectureOf } from "@/lib/architecture";
-import { canonFor } from "@/lib/canon";
+import { canonFor, CANON_REPO } from "@/lib/canon";
 import { stagesFor } from "@/lib/stages";
 import { HowItShips } from "@/components/how-it-ships";
-import { CanonCli } from "@/components/canon-cli";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -158,7 +157,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <SiteHeader on={p.slug === "canon" ? "canon" : "work"} />
+      <SiteHeader on="work" />
       <main id="main" className="wrap pb-12">
         <section className="glow -mx-4 grid items-center gap-6 px-4 py-6 md:-mx-7 md:px-7 lg:grid-cols-[1fr_1fr]">
           <div>
@@ -242,9 +241,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <dt className="text-xs text-ink-3">Checked by canon</dt>
             <dd className="mt-0.5">
               {canon ? (
-                <Link href="/products/canon/#cli" className="text-link">
+                <a href={CANON_REPO} className="text-link">
                   {canon.modules.length} modules{canon.version ? ` · canon ${canon.version}` : ""}
-                </Link>
+                </a>
               ) : (
                 <span className="text-ink-3">Not on canon yet</span>
               )}
@@ -308,7 +307,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             ))
           )}
         </section>
-        {p.slug === "canon" && <CanonCli />}
       </main>
       <SiteFooter />
     </>

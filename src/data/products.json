@@ -5,7 +5,7 @@
     {
       "slug": "askcal",
       "name": "AskCal",
-      "stageLabel": "Live on Google Play",
+      "stageLabel": "Live on both stores",
       "shots": [
         "01-today",
         "05-meal",
@@ -52,11 +52,10 @@
           "note": ""
         },
         "ios": {
-          "state": "closed",
-          "label": "Waiting for App Store review",
-          "url": null,
-          "note": "Submitted for review; there is no public build yet",
-          "testUrl": "https://testflight.apple.com/join/5VeKUcaj"
+          "state": "live",
+          "label": "App Store",
+          "url": "https://apps.apple.com/app/askcal-ai-calorie-counter/id6811875320",
+          "note": ""
         }
       },
       "stack": [

@@ -1,5 +1,5 @@
 ---
-last-verified: 2026-11-02
+last-verified: 2026-11-10
 ---
 
 # how-it-ships

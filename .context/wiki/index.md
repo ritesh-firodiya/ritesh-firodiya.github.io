@@ -10,7 +10,9 @@ One line per page. Rules: `canon standards` → `wiki-schema`.
 - [legal-publisher](concepts/legal-publisher.md) — This repo alone publishes legal documents; the paths never change.
 - [marketing](concepts/marketing.md) — Marketing and measuring
 - [nothing-copied](concepts/nothing-copied.md) — Product material is read at build time and never committed here.
+- [glossary](concepts/glossary.md) — The words this site uses, one meaning each.
 - [routes](concepts/routes.md) — Every route, and the addresses that only forward.
+- [purpose](concepts/purpose.md) — What the site is, who it is for and what it is not.
 - [selling-in-app](concepts/selling-in-app.md) — Selling inside an app
 - [site-tests](concepts/site-tests.md) — What the data and export tests assert.
 - [store-capture](concepts/store-capture.md) — Adding store capture to an app

@@ -938,55 +938,6 @@
       "repo": null
     },
     {
-      "slug": "tradx",
-      "name": "tradx",
-      "stageLabel": "In build",
-      "fullName": "tradx",
-      "tagline": "India-focused trading research and paper trading.",
-      "blurb": "A control centre for research and paper trading on Indian markets. It ships paper-only by default — live order routing stays behind an explicit flag until research, risk, approval and broker paths are each verified independently.",
-      "sourceOfTruth": "trading/tradx",
-      "kind": "platform",
-      "model": "undecided",
-      "price": null,
-      "priceNote": null,
-      "modelDetail": "Internal. Not sold.",
-      "ads": "None",
-      "adSurfaces": [],
-      "offline": "No — it is a web product",
-      "analytics": null,
-      "version": null,
-      "notBuilt": false,
-      "platforms": {
-        "web": {
-          "state": "none",
-          "label": "In build",
-          "url": null,
-          "note": "Internal, not open"
-        }
-      },
-      "stack": [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "Docker",
-        "TypeScript"
-      ],
-      "features": [
-        {
-          "icon": "check",
-          "title": "Paper-only by default",
-          "body": "Live routing is gated behind a flag, deliberately."
-        }
-      ],
-      "permissions": [],
-      "screens": [],
-      "legal": {
-        "privacy": null,
-        "delete": null
-      },
-      "repo": null
-    },
-    {
       "slug": "reel",
       "name": "Reel",
       "stageLabel": "In build",

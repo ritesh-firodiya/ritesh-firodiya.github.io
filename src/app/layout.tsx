@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s — Ritesh Firodiya",
   },
   description:
-    "Hobby apps and developer tools by Ritesh Firodiya, a Senior Software Engineer at Zendesk: games, money tools and canon, the open-source tool that keeps AI on my domain.",
+    "Hobby apps and developer tools by Ritesh Firodiya, a Senior Software Engineer at Zendesk: games, money tools and canon, the open-source Claude Code plugin that shows usage and prompt cache, and keeps AI on my domain.",
   openGraph: {
     type: "website",
     siteName: "Ritesh Firodiya",

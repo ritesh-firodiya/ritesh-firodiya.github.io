@@ -54,7 +54,7 @@ export default function ResumePage() {
               canon-cli <span className="font-semibold text-brand-500">· Claude Code plugin + CLI</span>
             </h2>
             <p className="mt-1 text-base text-ink-2">
-              Keeps domain knowledge and AI rules local and enforced across {products.filter((p) => canonFor(p.slug)).length} product repos, so the AI
+              A band above the Claude Code prompt for usage and prompt cache. Opt-in features keep domain knowledge and AI rules local and enforced across {products.filter((p) => canonFor(p.slug)).length} product repos, so the AI
               checks claims against facts and work ships faster.
             </p>
             <p className="mt-2 flex flex-wrap gap-1.5">

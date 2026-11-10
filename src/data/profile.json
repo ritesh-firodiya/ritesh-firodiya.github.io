@@ -406,20 +406,6 @@
       "private": true
     },
     {
-      "name": "tradx",
-      "tagline": "India-focused trading research and paper trading",
-      "description": "A unified control centre for trading research and paper trading on Indian markets. Ships paper-only by default — live order routing stays gated behind an explicit flag until the research, risk, approval and broker paths are each verified independently.",
-      "stack": [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "Docker",
-        "TypeScript"
-      ],
-      "status": "In build",
-      "private": true
-    },
-    {
       "name": "Plan-Kid",
       "tagline": "Parenthood journey app for couples",
       "description": "From the pre-decision stage through to parenting, across Knowledge, Journal, Motivation and Tracking. Design and product stage.",

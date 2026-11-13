@@ -1,6 +1,6 @@
 # Wiki index
 
-One line per page. Rules: `canon standards` → `wiki-schema`.
+One line per page. Rules: `.claude/rules/wiki.md`.
 
 ## Concepts
 - [architecture](concepts/architecture.md) — One question per diagram: who uses it, how the site is built, what it relies on.

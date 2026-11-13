@@ -16,4 +16,4 @@ last-verified: 2026-11-10
 | Sync | `pnpm sync`: reads design sets, wikis and store art out of the product repos. |
 | Forwarding address | An old URL that sends the visitor to its new page; it is noindex and has no canonical. |
 | Withheld | A design size that failed the conformance gate; the project page lists the failed checks. |
-| canon | The open-source Claude Code plugin and CLI (`ritesh-firodiya/canon-cli`) whose rules this repo follows. |
+| canon | The open-source Claude Code plugin and CLI (`ritesh-firodiya/canon-cli`) whose rules this repo followed until 2026-11-14, when it was retired. The site still shows it as a project. |

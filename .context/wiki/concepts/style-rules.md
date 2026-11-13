@@ -8,7 +8,7 @@ last-verified: 2026-11-10
 
 **Keep it short.** The site was cut down on 2026-10-04 because it explained too much: no intro paragraphs, no closing call-to-action bands, no fact that appears twice on a page.
 
-**The design set.** `.context/designs/` is a Babul design set: canon's `design-sets` standard says how it is built and `canon check` checks it. The shell reads pages, links, journeys and components from the HTML itself; there is no data file to update. `canon ui` serves it; it also opens from disk. It holds only designs; a screen's notes, design decisions and colour rules are in `.context/wiki/`.
+**The design set.** `.context/designs/` is a Babul design set: `.claude/rules/design-sets.md` says how it is built. No tool checks it, so read the diff against that file. The shell reads pages, links, journeys and components from the HTML itself; there is no data file to update. It opens from disk. It holds only designs; a screen's notes, design decisions and colour rules are in `.context/wiki/`.
 
 **When a page and its wireframe disagree, the wireframe wins**: fix the page, or change the wireframe first and say so in its notes page (`.context/wiki/surfaces/`).
 

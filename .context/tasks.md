@@ -13,3 +13,10 @@ horizon: 2026-11-17
 ## Parallel
 - [ ] T024 [P] Case studies for Aakalan and Charades  `feat:0001`
 - [ ] T025 [P] Wiki pages ship ~125KB each because Next writes the page three times; 617 pages is 89MB of the 103MB export. Fine for Pages (1GB), worth trimming
+
+## Canon removal
+- [ ] T029 Finish removing canon (`canon check` passed with no warnings on 2026-11-14; nothing checks `.context/` now). Left on purpose, since they are site features, not tooling:
+      the build still loads the design shell and `scan.mjs` from canon-cli (`scripts/sync-designs.mjs`, `scripts/designs/sources.mjs`, `scripts/designs/conformance.mjs`), and `.context/designs/shell.js` loads it from `unpkg.com/@freetesh/canon/shell/`.
+      The "Checked by canon" strip on each project page (`src/lib/canon.ts`, `src/app/products/[slug]/page.tsx`) reads each product's `.context/context.yaml`, which the product repos have deleted, so every page now says "Not on canon yet". The stage canvas (`scripts/stages.mjs`) reads `pipelines.default` from the same file and goes blank. Decide: drop both, or read them from somewhere else.
+      Wiki pages that describe that pipeline (`claims-and-facts`, `how-it-ships`, `nothing-copied`, `surfaces/project`) still name `canon pipeline`, `canon flow` and `context.yaml`; reword them when the strip and canvas are decided.
+      The canon project page, résumé line, footer link and home card are published content about canon and stay.

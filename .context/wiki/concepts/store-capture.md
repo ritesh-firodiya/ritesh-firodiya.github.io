@@ -17,7 +17,7 @@ Store screenshots are captured from the running app by goldie, framed in the hou
 8. **`pnpm listing:capture`, then look at the pictures**; `goldie verify` checks sizes, not content. Turn on `app_previews_path` in the Deliverfile once a preview exists.
 
 ## House style
-`template: "showcase"`, `layout: "classic"`, `screenOnly: true`, Merriweather, the `17-pro-silver` frame. Only the background is the product's own. `canon check` fails when an app differs from charades.
+`template: "showcase"`, `layout: "classic"`, `screenOnly: true`, Merriweather, the `17-pro-silver` frame. Only the background is the product's own. Each app's `pnpm check:goldie` fails when its own config disagrees with itself; nothing compares apps with charades now.
 
 ## Traps
 - `listing/` leaf names are fastlane's API; each store folder needs its own `metadata/` level.
